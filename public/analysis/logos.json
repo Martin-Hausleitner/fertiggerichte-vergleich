@@ -1,0 +1,83 @@
+{
+ "iglo": {
+  "file": "logos/iglo.png",
+  "source": "https://upload.wikimedia.org/wikipedia/en/3/3f/Iglo_logo.png",
+  "wiki": "en:Iglo"
+ },
+ "ja-natuerlich": {
+  "file": "logos/ja-natuerlich.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/de/3/38/Ja%21-Nat%C3%BCrlich-Logo.svg",
+  "wiki": "de:Ja! Natürlich"
+ },
+ "barilla": {
+  "file": "logos/barilla.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Barilla_brand_logo_%282022-present%29.svg",
+  "wiki": "de:Barilla"
+ },
+ "frosta": {
+  "file": "logos/frosta.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Frosta_Aktiengesellschaft_logo.svg",
+  "wiki": "de:Frosta"
+ },
+ "ben-s-original": {
+  "file": "logos/ben-s-original.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/4/47/BensOriginalLogo.svg",
+  "wiki": "de:Ben’s Original"
+ },
+ "billa": {
+  "file": "logos/billa.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Billa_logo.svg",
+  "wiki": "commons:File:Billa logo.svg"
+ },
+ "knorr": {
+  "file": "logos/knorr.png",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/0/01/Knorr_logo_old.png",
+  "wiki": "commons:File:Knorr logo old.png"
+ },
+ "maggi": {
+  "file": "logos/maggi.png",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/8/89/Maggi_logo_2020_%281%29.png",
+  "wiki": "commons:File:Maggi logo 2020 (1).png"
+ },
+ "hipp": {
+  "file": "logos/hipp.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/6/62/HIPP-Logo.svg",
+  "wiki": "commons:File:HIPP-Logo.svg"
+ },
+ "felix": {
+  "file": "logos/felix.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Felix_Austria_%28Unternehmen%29_logo.svg",
+  "wiki": "commons:File:Felix Austria (Unternehmen) logo.svg"
+ },
+ "hofer": {
+  "file": "logos/hofer.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Aldi_S%C3%BCd_2017_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+  "wiki": "commons:File:Aldi Süd 2017 logo.svg",
+  "note": "Aldi-Süd-Logo 2017 (Hofer = Aldi Süd Österreich; eigenes HOFER-Logo nicht auf Commons gefunden)"
+ },
+ "lidl": {
+  "file": "logos/lidl.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/9/91/Lidl-Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+  "wiki": "commons:File:Lidl-Logo.svg"
+ },
+ "dm": {
+  "file": "logos/dm.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/5/50/Dm_Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+  "wiki": "commons:File:Dm Logo.svg"
+ },
+ "spar": {
+  "file": "logos/spar.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Spar-logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+  "wiki": "commons:File:Spar-logo.svg"
+ },
+ "penny": {
+  "file": "logos/penny.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Penny-Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+  "wiki": "commons:File:Penny-Logo.svg"
+ },
+ "alnatura": {
+  "file": "logos/alnatura.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Alnatura_Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+  "wiki": "commons:File:Alnatura Logo.svg"
+ }
+}

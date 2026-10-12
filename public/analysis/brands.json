@@ -109,7 +109,9 @@
     "price": 1.19,
     "p10": 1.86,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-345102-0972005653--SD3bk8X.jpg"
-   }
+   },
+   "logo": "logos/knorr.png",
+   "logo_is_chain_logo": false
   },
   {
    "brand": "SPAR Natur*pur",
@@ -213,7 +215,9 @@
     "price": 2.85,
     "p10": 0.79,
     "img": "https://images.openfoodfacts.org/images/products/910/000/070/9185/front_de.34.400.jpg"
-   }
+   },
+   "logo": "logos/spar.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "iglo",
@@ -310,7 +314,9 @@
     "price": 3.52,
     "p10": 0.95,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-349612-028581437-9IJF893a.jpg"
-   }
+   },
+   "logo": "logos/iglo.png",
+   "logo_is_chain_logo": false
   },
   {
    "brand": "SPAR (Standard)",
@@ -414,7 +420,9 @@
     "price": 2.99,
     "p10": 1.08,
     "img": "https://cdn1.interspar.at/cachableservlets/articleImage.dam/at/4971221/dt_main.jpg"
-   }
+   },
+   "logo": "logos/spar.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Inzersdorfer",
@@ -520,7 +528,9 @@
     "price": 5.99,
     "p10": 1.19,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-911506-0480150128-VZ0Im43Q.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "BILLA Immer Gut",
@@ -629,7 +639,9 @@
     "price": 1.09,
     "p10": 0.36,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-703482-0152627594-ebcF8ArB.jpg"
-   }
+   },
+   "logo": "logos/billa.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Omis Schmankerl",
@@ -734,7 +746,9 @@
     "price": 3.29,
     "p10": 0.82,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-780264-0187189732-dsV3w9be.jpg"
-   }
+   },
+   "logo": "logos/billa.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "S-Budget",
@@ -847,7 +861,9 @@
     "price": 3.99,
     "p10": 0.59,
     "img": "https://cdn1.interspar.at/cachableservlets/articleImage.dam/at/7842306/dt_main.jpg"
-   }
+   },
+   "logo": "logos/spar.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Clever",
@@ -964,7 +980,9 @@
     "price": 1.6,
     "p10": 0.27,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-773056-989277448-oVQ9181V.jpg"
-   }
+   },
+   "logo": "logos/billa.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "SPAR Feine Küche",
@@ -1060,7 +1078,9 @@
     "price": 4.99,
     "p10": 1.5,
     "img": null
-   }
+   },
+   "logo": "logos/spar.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "SPAR Premium",
@@ -1160,7 +1180,9 @@
     "price": 6.99,
     "p10": 5.03,
     "img": "https://cdn1.interspar.at/cachableservlets/articleImage.dam/at/2020005724037/dt_main.jpg"
-   }
+   },
+   "logo": "logos/spar.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Maggi",
@@ -1237,7 +1259,9 @@
     "price": 0.79,
     "img": null
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": "logos/maggi.png",
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Fit to Go",
@@ -1325,7 +1349,9 @@
     "price": 9.99,
     "p10": 1.54,
     "img": "https://cdn.shopify.com/s/files/1/0580/7777/3988/files/1_28900442-1645-4163-b3a0-98775aa59380.png?v=1790673442"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Good Choice",
@@ -1426,7 +1452,9 @@
     "price": 2.29,
     "p10": 0.6,
     "img": "https://images.openfoodfacts.org/images/products/409/920/022/9058/front_de.12.400.jpg"
-   }
+   },
+   "logo": "logos/hofer.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Rana",
@@ -1527,7 +1555,9 @@
     "price": 3.79,
     "p10": 1.17,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-747772-1003805674-J0RLQeMB.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Primana",
@@ -1636,7 +1666,9 @@
     "price": 1.35,
     "p10": 0.69,
     "img": "https://images.openfoodfacts.org/images/products/409/920/012/1598/front_de.9.400.jpg"
-   }
+   },
+   "logo": "logos/hofer.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "BILLA Bio",
@@ -1740,7 +1772,9 @@
     "price": 2.99,
     "p10": 1.51,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-879063-2040253212-1sQyg7yZ.jpg"
-   }
+   },
+   "logo": "logos/billa.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Simply Good",
@@ -1840,7 +1874,9 @@
     "price": 4.99,
     "p10": 2.24,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-742202-0145973094-bYpqrtBf.jpg"
-   }
+   },
+   "logo": "logos/billa.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Ben's Original",
@@ -1941,7 +1977,9 @@
     "price": 6.94,
     "p10": 1.69,
     "img": "https://images.openfoodfacts.org/images/products/931/001/206/1076/front_en.3.400.jpg"
-   }
+   },
+   "logo": "logos/ben-s-original.svg",
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Ja! Natürlich",
@@ -2054,7 +2092,9 @@
     "price": 0.81,
     "p10": 0.94,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-880290-790982647-Ps5q8-j8.jpg"
-   }
+   },
+   "logo": "logos/ja-natuerlich.svg",
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Felix",
@@ -2155,7 +2195,9 @@
     "price": 6.49,
     "p10": 1.35,
     "img": "https://images.openfoodfacts.org/images/products/900/029/583/3094/front_en.4.400.jpg"
-   }
+   },
+   "logo": "logos/felix.svg",
+   "logo_is_chain_logo": false
   },
   {
    "brand": "BILLA Genusswelt",
@@ -2268,7 +2310,9 @@
     "price": 4.49,
     "p10": 1.06,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-880526-0142556503-uvldSpNR.jpg"
-   }
+   },
+   "logo": "logos/billa.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "SPAR Veggie",
@@ -2359,7 +2403,9 @@
     "price": 2.29,
     "img": "https://cdn1.interspar.at/cachableservlets/articleImage.dam/at/3828441/dt_main.jpg"
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": "logos/spar.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Vegavita",
@@ -2463,7 +2509,9 @@
     "price": 3.49,
     "p10": 1.45,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-869730-0988206357-mmF4gjuW.jpg"
-   }
+   },
+   "logo": "logos/billa.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Cucina Nobile",
@@ -2567,7 +2615,9 @@
     "price": 2.99,
     "p10": 1.33,
     "img": "https://images.openfoodfacts.org/images/products/409/920/005/3707/front_de.17.400.jpg"
-   }
+   },
+   "logo": "logos/hofer.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "dmBio",
@@ -2667,7 +2717,9 @@
     "price": 2.95,
     "p10": 0.89,
     "img": null
-   }
+   },
+   "logo": "logos/dm.svg",
+   "logo_is_chain_logo": false
   },
   {
    "brand": "BILLA (Standard)",
@@ -2767,7 +2819,9 @@
     "price": 4.49,
     "p10": 1.12,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-884553-0196079730-gkVLsj64.jpg"
-   }
+   },
+   "logo": "logos/billa.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Tann",
@@ -2826,7 +2880,9 @@
     "price": 4.99,
     "img": null
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": "logos/spar.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Ackerl",
@@ -2927,7 +2983,9 @@
     "price": 7.99,
     "p10": 1.21,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-412318-0574662732-OGVjvFW7.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Despar",
@@ -2982,7 +3040,9 @@
     "price": 1.13,
     "img": null
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": "logos/spar.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Little Lunch",
@@ -3080,7 +3140,9 @@
     "price": 3.55,
     "p10": 2.2,
     "img": null
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Hofstädter",
@@ -3189,7 +3251,9 @@
     "price": 7.59,
     "p10": 0.73,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-743364-1377750724-tksTZdyT.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Radatz",
@@ -3289,7 +3353,9 @@
     "price": 4.29,
     "p10": 0.89,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-98015-354789187-2L36YRCY.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Le Gusto",
@@ -3356,7 +3422,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": "logos/hofer.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Greisinger",
@@ -3424,7 +3492,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Cecchin",
@@ -3520,7 +3590,9 @@
     "price": 4.99,
     "p10": 1.51,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-515919-0794105318-FB3_fgx-.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Schär",
@@ -3617,7 +3689,9 @@
     "price": 1.8,
     "p10": 0.28,
     "img": "https://images.openfoodfacts.org/images/products/900/162/412/8508/front_de.9.400.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Stangl",
@@ -3718,7 +3792,9 @@
     "price": 1.51,
     "p10": 0.4,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-774361-1137972515-S2glXflm.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "HiPP",
@@ -3818,7 +3894,9 @@
     "price": 1.99,
     "p10": 3.21,
     "img": "https://images.openfoodfacts.org/images/products/406/230/043/2604/front_en.3.400.jpg"
-   }
+   },
+   "logo": "logos/hipp.svg",
+   "logo_is_chain_logo": false
   },
   {
    "brand": "SPAR enjoy",
@@ -3914,7 +3992,9 @@
     "price": 4.49,
     "p10": 2.67,
     "img": null
-   }
+   },
+   "logo": "logos/spar.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Wiesbauer",
@@ -3975,7 +4055,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Barilla",
@@ -4072,7 +4154,9 @@
     "price": 1.89,
     "p10": 0.3,
     "img": "https://images.openfoodfacts.org/images/products/807/680/208/5851/front.5.400.jpg"
-   }
+   },
+   "logo": "logos/barilla.svg",
+   "logo_is_chain_logo": false
   },
   {
    "brand": "SPAR Vital",
@@ -4131,7 +4215,9 @@
     "price": 1.79,
     "img": null
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": "logos/spar.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Vier Diamanten",
@@ -4206,7 +4292,9 @@
     "price": 0.99,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-864927-0147721791-0N91UXrS.jpg"
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Amlacher",
@@ -4302,7 +4390,9 @@
     "price": 7.49,
     "p10": 1.97,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-449026-717520869-rfcqB3mF.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Chef Select",
@@ -4369,7 +4459,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": "logos/lidl.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Cucina",
@@ -4452,7 +4544,9 @@
     "price": 1.99,
     "img": null
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": "logos/hofer.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Alnatura",
@@ -4556,7 +4650,9 @@
     "price": 1.89,
     "p10": 0.69,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-666418-1801611627-7oYiyjvm.jpg"
-   }
+   },
+   "logo": "logos/alnatura.svg",
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Frosta",
@@ -4656,7 +4752,9 @@
     "price": 4.79,
     "p10": 1.91,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-746118-0196787176-udanKnB-.jpg"
-   }
+   },
+   "logo": "logos/frosta.svg",
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Toni Kaiser",
@@ -4752,7 +4850,9 @@
     "price": 4.79,
     "p10": 1.34,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-912762-1111438289-qwUASXmU.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Kelly's",
@@ -4803,7 +4903,9 @@
     "price": 3.99,
     "img": null
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Pure",
@@ -4899,7 +5001,9 @@
     "price": 4.39,
     "p10": 2.07,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-398324-1911904995-scimBEd9.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Hink",
@@ -4974,7 +5078,9 @@
     "price": 10.49,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-949725-1216996145-Vqcz0HB5.jpg"
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Feelfood",
@@ -5049,7 +5155,9 @@
     "price": 3.99,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-731827-580710626-kl7KIDmS.jpg"
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Fratelli Barbaro",
@@ -5145,7 +5253,9 @@
     "price": 3.99,
     "p10": 1.81,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-732240-1183501817-ZKRuf12f.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Leibspeis'",
@@ -5241,7 +5351,9 @@
     "price": 3.09,
     "p10": 1.27,
     "img": "https://images.openfoodfacts.org/images/products/409/920/022/7733/front_de.3.400.jpg"
-   }
+   },
+   "logo": "logos/hofer.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Mamia",
@@ -5292,7 +5404,9 @@
     "price": 1.13,
     "img": null
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Hütthaler",
@@ -5375,7 +5489,9 @@
     "price": 2.99,
     "img": null
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Ager",
@@ -5426,7 +5542,9 @@
     "price": 9.99,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-730656-0432126918-r8rI-sGc.jpg"
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Indomie",
@@ -5501,7 +5619,9 @@
     "price": 2.99,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-279758-547049983-rQLE6PIQ.jpg"
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Johanna Maier",
@@ -5552,7 +5672,9 @@
     "price": 3.99,
     "img": null
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Youcook",
@@ -5648,7 +5770,9 @@
     "price": 4.99,
     "p10": 2.16,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-468303-0125368287-Q3LPKoKe.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "BioVegan",
@@ -5723,7 +5847,9 @@
     "price": 2.59,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-295340-754312094-vX6oMWDV.jpg"
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Njami",
@@ -5819,7 +5945,9 @@
     "price": 3.49,
     "p10": 1.93,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-885825-438096192-9NY20Ilx.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Auinger",
@@ -5907,7 +6035,9 @@
     "price": 12.99,
     "p10": 8.02,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-639588-709923473-0E6IIpuA.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Nature's Gold",
@@ -5970,7 +6100,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": "logos/hofer.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Gourmet Finest Cuisine",
@@ -6013,7 +6145,9 @@
     "price": 2.49,
     "img": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/232/770bbb53-8f0d-42ef-9c86-9e7c97fa8556/Gefllte%20Gnocchi%20Trffel"
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": "logos/hofer.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "McEnnedy",
@@ -6064,7 +6198,9 @@
     "price": 1.49,
     "img": "https://imgproxy-retcat.assets.schwarz/b5KVV3gupjVF4XAx-pI-D0YHRkz4fv9YqI3AtHh7qxA/sm:0/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvYXQvMS9GMjgyNjYzQ0JFMzdEMTM1Mjc1QkI2NkJ/EOTBCMjk2ODRGNUJBMTJDM0E1M0ZFMDdGNzIzMkZGMTJGMEMwNDgzLnBuZw.png"
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": "logos/lidl.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Die Grillerei",
@@ -6173,7 +6309,9 @@
     "price": 3.99,
     "p10": 2.49,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-775395-0201708039-68Cropl_.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Marinus",
@@ -6269,7 +6407,9 @@
     "price": 3.29,
     "p10": 2.32,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-939763-786292844-CoDHxmpt.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Staudinger",
@@ -6365,7 +6505,9 @@
     "price": 3.29,
     "p10": 2.19,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-698017-707306118-J1-9R-AF.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Rapunzel",
@@ -6426,7 +6568,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Rettenswert",
@@ -6487,7 +6631,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Blue Elephant",
@@ -6570,7 +6716,9 @@
     "price": 2.49,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-703476-0164252022-qfp3OQ4T.jpg"
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Carissa",
@@ -6653,7 +6801,9 @@
     "price": 7.99,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-768809-1572765855-8mHR9pvZ.jpg"
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Harrer",
@@ -6749,7 +6899,9 @@
     "price": 11.99,
     "p10": 5.1,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-724442-0703220670-7Ve5qmMQ.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Kikkoman",
@@ -6824,7 +6976,9 @@
     "price": 3.99,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-480249-309187886-VgsvMctb.jpg"
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Polly's",
@@ -6920,7 +7074,9 @@
     "price": 7.99,
     "p10": 2.38,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-908676-1512578803-TV_bEjpb.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Recheis",
@@ -7016,7 +7172,9 @@
     "price": 1.7,
     "p10": 0.49,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-418953-534433931-Zk5IrCtJ.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Reis-Fit",
@@ -7112,7 +7270,9 @@
     "price": 2.19,
     "p10": 2.74,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-701253-2102972277-zzPLrFCF.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Riso Gallo",
@@ -7208,7 +7368,9 @@
     "price": 2.46,
     "p10": 0.71,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-411802-0492825128-kyJzCXy-.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Kuwopa",
@@ -7251,7 +7413,9 @@
     "price": 2.69,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-344528-1944010747-ztnFowIp.jpg"
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "SPAR free from",
@@ -7302,7 +7466,9 @@
     "price": 2.39,
     "img": null
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": "logos/spar.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Sushitime",
@@ -7398,7 +7564,9 @@
     "price": 12.99,
     "p10": 5.39,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-731600-0165537535-Dts1bHw3.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Aumaerk",
@@ -7449,7 +7617,9 @@
     "price": 13.99,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-763187-0214810893-HLFzK_Kb.jpg"
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "franuí",
@@ -7545,7 +7715,9 @@
     "price": 4.99,
     "p10": 5.94,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-895905-0112815057-XPoOinJA.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Pop-Up",
@@ -7641,7 +7813,9 @@
     "price": 8.99,
     "p10": 5.91,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-897874-0824629239-8odLjutB.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Steirerkraft",
@@ -7737,7 +7911,9 @@
     "price": 3.99,
     "p10": 2.85,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-665193-050936806-mi0S9vyo.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Jürgen Langbein",
@@ -7820,7 +7996,9 @@
     "price": 2.49,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-937647-0190276079-G0sVfSCX.jpg"
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Gavrilovic",
@@ -7916,7 +8094,9 @@
     "price": 3.99,
     "p10": 1.48,
     "img": null
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Vemondo",
@@ -7979,7 +8159,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": "logos/lidl.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Lidl, Trattoria Alfredo",
@@ -8042,7 +8224,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Deluxe",
@@ -8105,7 +8289,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": "logos/lidl.svg",
+   "logo_is_chain_logo": true
   },
   {
    "brand": "Schwaben Krone",
@@ -8168,7 +8354,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Vitasia",
@@ -8231,7 +8419,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Aldi, Wonnemeyer Feinkost, Kühlmann",
@@ -8294,7 +8484,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Green Garden",
@@ -8357,7 +8549,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "PIZZ'AH",
@@ -8420,7 +8614,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "FairHOF",
@@ -8488,7 +8684,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "SONNHOF",
@@ -8539,7 +8737,9 @@
     "price": 9.49,
     "img": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/AT-Flagge_Badge?hei=128&amp;wid=128&amp;fit=constrain"
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "DOVGAN",
@@ -8590,7 +8790,9 @@
     "price": 1.99,
     "img": "https://imgproxy-retcat.assets.schwarz/vU3nEG2oIPBWb5me_qQ8PMGhtCN-pUNqjXt70sFR6rc/sm:0/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvYXQvMS9CNUNERjg5QzJCNEJFNkJCMDU5Mjk1RjN/BOUFGODBCNEY0ODE1MzI2MTRCRTBCQ0REMDBFMTk3NkI0MzUzQzU2LnBuZw.png"
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "SELECT&GO",
@@ -8641,7 +8843,9 @@
     "price": 5.49,
     "img": "https://imgproxy-retcat.assets.schwarz/grxQDyunXdA542UUI6tdwKKljfUjPBkkq4JdO6jKObs/sm:0/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvYXQvMS9COEQ4QThDRkZGRTY2MkNGNTE3NDEzNTU/2QjM2M0FERjMzODI2NjUyMzI1RTAyMUFEMjNFQTEyREU5NjBDRThBLnBuZw.png"
    },
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Ablinger",
@@ -8737,7 +8941,9 @@
     "price": 4.69,
     "p10": 1.29,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-435835-1878173439-9vbisNq-.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Efko",
@@ -8833,7 +9039,9 @@
     "price": 4.29,
     "p10": 10.72,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-479497-1729297833-KT0S4fiy.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Knödelwerkstatt",
@@ -8929,7 +9137,9 @@
     "price": 6.99,
     "p10": 3.24,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-736389-1080153041-N4onZB3-.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Mühlen",
@@ -9025,7 +9235,9 @@
     "price": 3.99,
     "p10": 1.25,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-323146-1399185890-gMYl8TcU.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Planted",
@@ -9121,7 +9333,9 @@
     "price": 4.99,
     "p10": 1.25,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-745527-561216948-r_eFOekz.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Revo",
@@ -9217,7 +9431,9 @@
     "price": 4.19,
     "p10": 3.01,
     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-755952-1107447777-wlfghdmw.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Eden",
@@ -9280,7 +9496,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "DM",
@@ -9333,7 +9551,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "My Vay",
@@ -9386,7 +9606,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Seitenbacher",
@@ -9447,7 +9669,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Kania",
@@ -9508,7 +9732,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Natur Compagnie",
@@ -9569,7 +9795,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Delikatessa",
@@ -9622,7 +9850,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Fit Taste",
@@ -9683,7 +9913,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Flotte Lotte",
@@ -9744,7 +9976,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Tress Brüder",
@@ -9805,7 +10039,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Mowi",
@@ -9866,7 +10102,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Yummy Dip",
@@ -9929,7 +10167,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Kotanyi",
@@ -9960,7 +10200,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Vitasia, Goldora",
@@ -10023,7 +10265,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Holle",
@@ -10084,7 +10328,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Gourmet",
@@ -10145,7 +10391,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Uncle Ben's",
@@ -10206,7 +10454,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Uncle Bens",
@@ -10267,7 +10517,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "McCormick",
@@ -10328,7 +10580,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Asia",
@@ -10391,7 +10645,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Almare",
@@ -10454,7 +10710,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "GMS Gourmet",
@@ -10515,7 +10773,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "BBQ Express Hofer, BBQ Zeit zum Grillen",
@@ -10576,7 +10836,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Sonnentor",
@@ -10637,7 +10899,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Iss mich!",
@@ -10666,7 +10930,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Limoni's",
@@ -10727,7 +10993,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Gallo",
@@ -10790,7 +11058,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Natur Aktiv",
@@ -10886,7 +11156,9 @@
     "price": 2.49,
     "p10": 1.68,
     "img": "https://images.openfoodfacts.org/images/products/409/920/001/3428/front_fr.4.400.jpg"
-   }
+   },
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Aldi, Natur Aktiv",
@@ -10949,7 +11221,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Saskia",
@@ -11012,7 +11286,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Every",
@@ -11073,7 +11349,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Ben Fatto",
@@ -11134,7 +11412,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Bio Natura",
@@ -11195,7 +11475,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Vegini",
@@ -11256,7 +11538,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Food for Future, Penny",
@@ -11319,7 +11603,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Hut&Stiel",
@@ -11380,7 +11666,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Chef Menü",
@@ -11433,7 +11721,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Ströck",
@@ -11494,7 +11784,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Omis",
@@ -11555,7 +11847,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   },
   {
    "brand": "Goldblatt",
@@ -11616,7 +11910,9 @@
     ]
    ],
    "cheapest": null,
-   "best_protein_value": null
+   "best_protein_value": null,
+   "logo": null,
+   "logo_is_chain_logo": false
   }
  ],
  "bar_rankings": {
@@ -19757,5 +20053,13 @@
     "salt_100": 1.0
    }
   ]
+ },
+ "store_logos": {
+  "BILLA": "logos/billa.svg",
+  "SPAR": "logos/spar.svg",
+  "HOFER": "logos/hofer.svg",
+  "LIDL": "logos/lidl.svg",
+  "dm": "logos/dm.svg",
+  "PENNY": "logos/penny.svg"
  }
 }
