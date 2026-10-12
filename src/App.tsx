@@ -23,9 +23,9 @@ const TABS:[string,string,any][]=[['alle','Alle Gerichte',Explorer],['top','Top-
 const Loading=()=><Card className="p-10 text-center text-slate-500 animate-pulse">Lädt…</Card>
 export default function App(){
   const [D,setD]=useState<Data|null>(null)
-  useEffect(()=>{fetch('./data.json').then(r=>r.json()).then(setD)},[])
+  useEffect(()=>{fetch('./data.json?v='+__BUILD__).then(r=>r.json()).then(setD)},[])
   const [stores,setStores]=useState<StoresT|null>(null)
-  useEffect(()=>{fetch('./stores.json').then(r=>r.ok?r.json():null).then(setStores).catch(()=>{})},[])
+  useEffect(()=>{fetch('./stores.json?v='+__BUILD__).then(r=>r.ok?r.json():null).then(setStores).catch(()=>{})},[])
   const nearest=useCallback((st:string):Shop|null=>{if(!stores)return null;let b:Shop|null=null;for(const s of stores.shops)if(s.chain===st&&(!b||(s.walk_m??s.dist)<(b.walk_m??b.dist)))b=s;return b},[stores])
   const [tab,setTab]=useHashState<string>('tab','alle')
   const [cmpS,setCmpS]=useHashState<string>('cmp',''),[det,setDet]=useHashState<string>('p','')
