@@ -6,8 +6,9 @@ import { fmt, useApp } from '../lib'
 type It={key:string;name:string;img:string|null;price:number;prot:number;kcal:number;salt:number;fib:number;store:string;score:number|null}
 export default function KombiBuilder(){
   const {D}=useApp(); const all=D.rows
-  const fromRow=(r:any):It|null=>r.price&&r.protpack!=null?{key:'r'+r.id,name:`${r.brand} ${r.name}`,img:r.img,price:r.price,prot:r.protpack,kcal:r.kcalpack??0,salt:(r.salt??0)*(r.size??0)/100,fib:(r.fib??0)*(r.size??0)/100,store:r.store,score:r.score}:null
-  const fromSide=(s:any):It=>({key:'s'+s.id,name:`${s.brand??''} ${s.name} (${s.portion} g)`,img:s.img,price:s.cost,prot:s.prot,kcal:s.kcal,salt:s.salt,fib:s.fib,store:s.store??'Billa',score:null})
+  const nm=(b:string|null,n:string)=>{if(!b)return n;const bl=b.toLowerCase();return n.toLowerCase().startsWith(bl.split(' ')[0])?n:`${b} ${n}`}
+  const fromRow=(r:any):It|null=>r.price&&r.protpack!=null&&!r.nonfood?{key:'r'+r.id,name:nm(r.brand,r.name),img:r.img,price:r.price,prot:r.protpack,kcal:r.kcalpack??0,salt:(r.salt??0)*(r.size??0)/100,fib:(r.fib??0)*(r.size??0)/100,store:r.store,score:r.score}:null
+  const fromSide=(s:any):It=>({key:'s'+s.id,name:`${nm(s.brand,s.name)} (${s.portion} g)`,img:s.img,price:s.cost,prot:s.prot,kcal:s.kcal,salt:s.salt,fib:s.fib,store:s.store??'Billa',score:null})
   const pool=useMemo(()=>{const by=(st:string)=>all.filter((r:any)=>r.stage===st&&!r.priceOnly).map(fromRow).filter(Boolean) as It[]
     const sd=(role:string[])=>D.sides.filter((s:any)=>role.includes(s.role)&&s.cost).map(fromSide)
     const srt=(a:It[],f:(x:It)=>number)=>a.sort((x,y)=>f(x)-f(y))

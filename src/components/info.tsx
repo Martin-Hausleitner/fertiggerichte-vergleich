@@ -18,8 +18,9 @@ export const packEmo=(p?:string|null)=>{if(!p)return '📦';const M:[string,stri
 const W='https://upload.wikimedia.org/wikipedia/commons/thumb/'
 const STATE:Record<string,[string,string]>={'Oberösterreich':['OÖ','./flags/OOE.png'],'Niederösterreich':['NÖ','./flags/NOE.png'],'Wien':['W','./flags/W.png'],'Kärnten':['K','./flags/K.png'],'Steiermark':['Stmk','./flags/ST.png'],'Vorarlberg':['Vbg','./flags/V.png'],'Salzburg':['Sbg','./flags/S.png'],'Tirol':['T','./flags/T.png'],'Burgenland':['Bgld','./flags/B.png']}
 const CC:Record<string,string>={AT:'🇦🇹',DE:'🇩🇪',NL:'🇳🇱',IT:'🇮🇹',HU:'🇭🇺',PL:'🇵🇱',CZ:'🇨🇿',FR:'🇫🇷',BE:'🇧🇪',ES:'🇪🇸',CH:'🇨🇭',SI:'🇸🇮',DK:'🇩🇰',TH:'🇹🇭',SK:'🇸🇰'}
-const NAME_CC:[RegExp,string][]=[[/österreich|austria/i,'AT'],[/deutschland|germany/i,'DE'],[/niederlande|netherlands/i,'NL'],[/itali/i,'IT'],[/ungarn|hungary/i,'HU'],[/polen|poland/i,'PL'],[/tschech|czech/i,'CZ'],[/frankreich|france/i,'FR'],[/belgi/i,'BE'],[/spanien|spain/i,'ES'],[/sloweni/i,'SI'],[/thailand/i,'TH']]
-export function Flag({country,state,text}:{country?:string|null;state?:string|null;text?:string|null}){
+const NAME_CC:[RegExp,string][]=[[/österreich|austria/i,'AT'],[/deutschland|germany/i,'DE'],[/niederlande|netherlands/i,'NL'],[/itali/i,'IT'],[/ungarn|hungary/i,'HU'],[/polen|poland/i,'PL'],[/tschech|czech/i,'CZ'],[/frankreich|france/i,'FR'],[/belgi/i,'BE'],[/spanien|spain/i,'ES'],[/sloweni/i,'SI'],[/thailand/i,'TH'],[/zoutkamp|b\.v\.|nederland/i,'NL']]
+export function Flag({country,state,text,code}:{country?:string|null;state?:string|null;text?:string|null;code?:string|null}){
+  if(!country&&code){const m=/^([A-Z]{2})\b/.exec(code.trim());if(m)country=m[1]}
   const s=state&&STATE[state]?state:Object.keys(STATE).find(k=>text&&text.includes(k))
   let cc=country&&CC[country.toUpperCase()]?country.toUpperCase():undefined
   if(!cc&&text)cc=NAME_CC.find(([re])=>re.test(text))?.[1]; if(!cc&&s)cc='AT'

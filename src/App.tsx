@@ -1,3 +1,4 @@
+import { ErrorBoundary } from './components/ErrorBoundary'
 import { STAGES, InfoTip } from './components/info'
 import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react'
 import { Moon, Sun, GitCompare, Maximize2, Minimize2, Salad } from 'lucide-react'
@@ -27,7 +28,7 @@ const TABS:[string,string,any][]=[['alle','Alle Gerichte',Explorer],['top','Top-
 const Loading=()=><Card className="p-10 text-center text-slate-500 animate-pulse">Lädt…</Card>
 export default function App(){
   const [D,setD]=useState<Data|null>(null)
-  useEffect(()=>{fetch('./data.json?v='+__BUILD__).then(r=>r.json()).then(setD)},[])
+  useEffect(()=>{setTimeout(()=>sessionStorage.removeItem('fg-reloaded'),10000);fetch('./data.json?v='+__BUILD__).then(r=>r.json()).then(setD)},[])
   const [stores,setStores]=useState<StoresT|null>(null)
   useEffect(()=>{fetch('./stores.json?v='+__BUILD__).then(r=>r.ok?r.json():null).then(setStores).catch(()=>{})},[])
   const nearest=useCallback((st:string):Shop|null=>{if(!stores)return null;let b:Shop|null=null;for(const s of stores.shops)if(s.chain===st&&(!b||(s.walk_m??s.dist)<(b.walk_m??b.dist)))b=s;return b},[stores])
@@ -50,7 +51,7 @@ export default function App(){
   const R=RR, live=R.filter(r=>r.pstat==='live 2026').length
   const Cur=TABS.find(t=>t[0]===tab)?.[2]??Explorer
   return <AppCtx.Provider value={{D,R,stageSel,compare,toggleCompare,setCompare,favs,toggleFav,open,dark,wide,stores,nearest}}>
-    <div className={cn('mx-auto px-3 sm:px-5 pb-24',wide?'max-w-none':'max-w-[1500px]')}>
+    <div className={cn('mx-auto px-3 sm:px-5 pb-24 overflow-x-clip',wide?'max-w-none':'max-w-[1500px]')}>
       <header className="sticky top-0 z-40 -mx-3 sm:-mx-5 px-3 sm:px-5 py-2 bg-slate-50/85 dark:bg-slate-950/85 backdrop-blur border-b border-slate-200 dark:border-slate-800 flex items-center gap-2">
         <div className="flex items-center gap-2 min-w-0"><div className="h-8 w-8 rounded-lg bg-brand text-white flex items-center justify-center shrink-0"><Salad size={18}/></div><div className="min-w-0"><div className="font-bold leading-tight truncate">Fertiggerichte-Vergleich</div><div className="text-[11px] text-slate-500 leading-tight hidden sm:block">Linz &amp; Oberösterreich · Stand 12.10.2026</div></div></div>
         <div className="ml-auto flex items-center gap-1">
@@ -73,7 +74,7 @@ export default function App(){
       </section>
       <div className="flex gap-1.5 overflow-x-auto scroll-x pb-2 items-center">{STAGES.map(([k,e,l])=>{const on=stageSel.includes(k),n=D.rows.filter(r=>r.stage===k).length;return <button key={k} onClick={()=>{const nx=on?stageSel.filter(x=>x!==k):[...stageSel,k];setFs(nx.length?nx.join('.'):'meal.stew')}} className={cn('flex items-center gap-1.5 rounded-xl border-2 px-3 py-2 text-sm font-medium whitespace-nowrap transition',on?'border-brand bg-brand/10 text-brand dark:text-emerald-300':'border-slate-200 dark:border-slate-700 opacity-70 hover:opacity-100')}><span className="text-xl">{e}</span>{l}<span className="text-xs opacity-60">{n}</span></button>})}<InfoTip k="stage"/></div>
       <nav className="sticky top-[49px] z-30 -mx-3 sm:-mx-5 px-3 sm:px-5 py-1.5 bg-slate-50/85 dark:bg-slate-950/85 backdrop-blur overflow-x-auto scroll-x"><div className="flex gap-1 w-max">{TABS.map(([k,l])=><button key={k} onClick={()=>setTab(k)} className={cn('rounded-full px-3 py-1.5 text-sm whitespace-nowrap transition',tab===k?'bg-brand text-white shadow':'hover:bg-slate-200 dark:hover:bg-slate-800')}>{l}</button>)}</div></nav>
-      <main className="pt-3"><Suspense fallback={<Loading/>}><Cur/></Suspense></main>
+      <main className="pt-3"><ErrorBoundary key={tab}><Suspense fallback={<Loading/>}><Cur/></Suspense></ErrorBoundary></main>
       <footer className="text-xs text-slate-400 py-6">Daten aus öffentlichen Shop-Seiten und Open Food Facts · Multipot-Angaben sind Richtwerte · keine Ernährungsberatung · ohne Gewähr</footer>
     </div>
     {compare.length>0&&<div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40"><button onClick={()=>setCmpOpen(true)} className="flex items-center gap-2 rounded-full bg-brand px-5 py-3 text-white shadow-xl hover:scale-105 transition"><GitCompare size={18}/>Vergleichen ({compare.length}/4)</button></div>}

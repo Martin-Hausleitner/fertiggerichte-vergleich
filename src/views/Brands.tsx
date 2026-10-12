@@ -6,7 +6,7 @@ const md=(a:(number|null)[])=>{const v=a.filter(x=>x!=null).sort((x,y)=>x!-y!) a
 export default function Brands(){
   const {R,open}=useApp()
   const [sort,setSort]=useState('n'),[q,setQ]=useState(''),[exp,setExp]=useState<string|null>(null)
-  const brands=useMemo(()=>{const g:Record<string,Row[]>={};R.filter(r=>!r.dry).forEach(r=>(g[r.brandN]??=[]).push(r))
+  const brands=useMemo(()=>{const g:Record<string,Row[]>={};R.filter(r=>!r.dry&&!r.nonfood&&!r.noBrand&&!r.store.startsWith('unbekannt')).forEach(r=>(g[r.brandN]??=[]).push(r))
     return Object.entries(g).map(([b,rs])=>({b,rs,n:rs.length,stores:[...new Set(rs.map(r=>r.store))],price:md(rs.filter(r=>r.pstat==='live 2026').map(r=>r.price)),ppk:md(rs.map(r=>r.ppk)),eur10p:md(rs.filter(r=>r.rankable).map(r=>r.eur10p)),score:md(rs.filter(r=>r.rankable).map(r=>r.score)),pli:md(rs.map(r=>r.pli))}))},[R])
   const list=brands.filter(b=>!q||b.b.toLowerCase().includes(q.toLowerCase())).sort((a,b)=>{const k=sort as keyof typeof a;if(k==='b')return a.b.localeCompare(b.b);const lo=['price','ppk','eur10p'].includes(sort);const x=(a as any)[k],y=(b as any)[k];if(x==null)return 1;if(y==null)return -1;return lo?x-y:y-x})
   return <div className="space-y-3">
