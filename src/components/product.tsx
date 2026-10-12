@@ -45,7 +45,7 @@ export function Chips({r,compact}:{r:Row;compact?:boolean}){
   </div>
 }
 export const isLive=(p:string|null)=>!!p&&/live|aktuell/i.test(p)
-export const Price=({r}:{r:Row})=> r.price==null?<span className="text-slate-400">–</span>:<span className="inline-flex items-center gap-1.5"><span className={cn('font-bold tabular-nums text-[1.05em]',isLive(r.pstat)?'text-slate-900 dark:text-white':'text-slate-500')}>{fmt(r.price,2)} €</span>{isLive(r.pstat)?<Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300 text-[10px]">✓ aktuell</Badge>:<Badge className="bg-amber-100 text-amber-800 text-[10px]">{r.pstat}</Badge>}</span>
+export const Price=({r}:{r:Row})=> r.price==null?<span className="text-slate-400">–</span>:<span className="inline-flex items-center gap-1.5 whitespace-nowrap"><span className={cn('font-bold tabular-nums text-[1.05em]',isLive(r.pstat)?'text-slate-900 dark:text-white':'text-slate-500')}>{fmt(r.price,2)} €</span>{isLive(r.pstat)?<Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300 text-[10px]">✓ aktuell</Badge>:<Badge className="bg-amber-100 text-amber-800 text-[10px]">{r.pstat}</Badge>}</span>
 export function BrandLogo({r,size=28}:{r:Pick<Row,'brandN'|'logo'>;size?:number}){
   const [err,setErr]=useState(false)
   if(r.logo&&!err) return <span title={r.brandN} style={{height:size,width:size*2.2}} className="inline-flex"><ZoomImage src={r.logo} className="h-full w-full p-0.5" onErr={()=>setErr(true)}/></span>
