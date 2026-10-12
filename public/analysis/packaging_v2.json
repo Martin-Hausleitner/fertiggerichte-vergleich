@@ -1,0 +1,1338 @@
+{
+ "generated": "2026-10-12",
+ "note": "Typische Werte nur mit Quelle; \"etiketten\" = echte Lagerhinweise aus BILLA-Produktdaten (det.json/det2.json, Feld storageAndUsageStatements); \"datensatz\" = scored.json. Echte MHD-Daten (Tage/Monate unopened) sind in den Shopdaten NICHT enthalten.",
+ "sources": {
+  "ara": "https://www.ara.at/news/sammelumstellung-2025-alle-details-im-ueberblick",
+  "oegv": "https://www.oesterreich.gv.at/de/themen/bauen_und_wohnen/abfall/metallverpackungen",
+  "tirol": "https://www.tirol.gv.at/fileadmin/presse/newsletter/2024/11/20241118_FAQ_Sammelumstellung_2025.pdf",
+  "bpa": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=OJ%3AL_202403190",
+  "bpa2": "https://www.bmleh.de/DE/themen/verbraucherschutz/lebensmittelsicherheit/lebensmittelverpackungen/bisphenol-a-vorsorglich-verboten.html",
+  "vzk": "https://www.verbraucherzentrale.de/wissen/lebensmittel/auswaehlen-zubereiten-aufbewahren/konserven-alles-zu-haltbarkeit-und-lagerung-58933",
+  "vzc": "https://www.verbraucherzentrale.de/wissen/lebensmittel/auswaehlen-zubereiten-aufbewahren/convenience-food-bequem-aber-auch-gesund-30403",
+  "vz": "https://www.verbraucherzentrale.de/tipps-zur-haltbarkeit-und-lagerung-von-lebensmitteln-59515",
+  "air": "https://www.airproducts.de/applications/modified-atmosphere-packaging/ready-meals-and-other-cook-chill-products",
+  "vama": "https://www.gastrouniversum.de/media/pdf/a0/e6/4f/VAMA-CASA-Anleitung-Haltbarkeit-vakuumierte-Lebensmittel.pdf",
+  "rick1": "https://scijournals.onlinelibrary.wiley.com/doi/10.1002/jsfa.2825",
+  "rick2": "https://scijournals.onlinelibrary.wiley.com/doi/10.1002/jsfa.2824",
+  "pouch_ham": "https://exa.ai/library/publication/sydcg1lmq6j",
+  "pouch_fish": "https://exa.ai/library/publication/7htrwr15rdh",
+  "ip_pro": "https://instantpot.co.uk/wp-content/uploads/2023/07/Pro-Manual-2021.pdf",
+  "ip_duo": "https://instantpot.co.uk/wp-content/uploads/2025/10/InstantPotDuoUserManual_18052026_singlePP_lowresDIGITAL.pdf"
+ },
+ "types": [
+  {
+   "process": "Befüllen, luftdicht verschließen, danach im Behälter erhitzt (Sterilisation) – Keime von außen kommen nicht mehr hinein",
+   "src_p": [
+    "vz"
+   ],
+   "storage_temp": "ungekühlt, trocken, unter 19 °C (Kellertemperatur)",
+   "src_t": [
+    "vzk"
+   ],
+   "mhd_unopened": "sehr lang; unbeschädigte Dosen oft noch Jahre nach MHD essbar (keine Monatszahl belegt)",
+   "src_m": [
+    "vzk",
+    "vz"
+   ],
+   "after_opening": "umfüllen in Gefäß mit Deckel, gekühlt; Etiketten im Datensatz: meist 2–3 Tage",
+   "src_a": [
+    "vzk",
+    "vz",
+    "etiketten"
+   ],
+   "nutrients": "Starke Anfangsverluste bei Vitamin C/B durch Erhitzen, danach in Lagerung stabil (kein Sauerstoff). Protein, Mineralstoffe, Ballaststoffe weitgehend stabil.",
+   "src_n": [
+    "rick1",
+    "rick2"
+   ],
+   "additives": "Fertigmenüs enthalten laut VZ meist Verdickungsmittel, Säuerungsmittel und Salz",
+   "src_ad": [
+    "vzc"
+   ],
+   "recycling_at": "Gelbe Tonne/Gelber Sack (seit 1.1.2025 österreichweit Metall + Kunststoff gemeinsam; Blaue Tonne abgeschafft)",
+   "src_r": [
+    "ara",
+    "oegv",
+    "tirol"
+   ],
+   "bpa": "EU-VO 2024/3190: BPA-Verbot; allg. Übergangsfrist bis 20.07.2026; für Dosen mit Obst/Gemüse/Fisch bis 20.01.2028; danach 12 Monate befüllen, Abverkauf bis Bestände aufgebraucht",
+   "src_b": [
+    "bpa",
+    "bpa2"
+   ],
+   "risk": "aufgeblähte/stark verbeulte Dosen entsorgen (C. botulinum)",
+   "src_risk": [
+    "vz",
+    "vzk"
+   ],
+   "instantpot": "Inhalt in den Edelstahl-Innentopf umfüllen; Dose nicht in den Topf. Für Druckgaren min. 375 ml dünne Flüssigkeit (5,7 L); bei dicker Dosensuppe Wasser zugeben – zum bloßen Erhitzen reicht Sauté",
+   "src_ip": [
+    "ip_duo",
+    "ip_pro"
+   ],
+   "microwave": "nicht in der Dose (Metall) – umfüllen (allgemeine Sicherheitsregel, keine Einzelquelle erhoben)",
+   "src_mw": [],
+   "type": "Dose",
+   "dataset_label": "Dose/Konserve",
+   "stats": {
+    "n_products": 160,
+    "n_rankable": 57,
+    "median_protein_100": 3.8,
+    "median_salt_100": 1.1,
+    "median_kcal_100": 99.0,
+    "median_price_per_kg": 8.11,
+    "median_price_per_10g_protein": 1.93,
+    "median_health_score": 33.3
+   },
+   "label_evidence": {
+    "n_with_statement": 34,
+    "storage_temps": [
+     [
+      "18°C",
+      2
+     ],
+     [
+      "+2°Cbis+6°C",
+      1
+     ],
+     [
+      "-18°C",
+      1
+     ],
+     [
+      "+4°C",
+      1
+     ]
+    ],
+    "after_opening": [
+     [
+      "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen",
+      10
+     ],
+     [
+      "Nach dem Öffnen 2 - 3 Tage im Kühlschrank haltbar",
+      7
+     ],
+     [
+      "Nach dem Öffnen in ein geeignetes Gefäß umfüllen, gekühlt lagern und innerhalb einiger Tage verarbeiten",
+      2
+     ],
+     [
+      "Nach dem Öffnen gekühlt lagern und innerhalb eines Tages verbrauchen",
+      2
+     ],
+     [
+      "Nach dem Öffnen zum unmittelbaren Verzehr bestimmt",
+      1
+     ],
+     [
+      "Nach dem Öffnen in einem gut verschlossenen, geeigneten Behälter gekühlt aufbewahren und innerhalb von 3 Tagen verzehren",
+      1
+     ]
+    ],
+    "duration_mentions": [
+     {
+      "sku": "00-384829",
+      "name": "Inzersdorfer Hühnercurry mit Gemüse",
+      "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen"
+     },
+     {
+      "sku": "00-405553",
+      "name": "Inzersdorfer Gefüllte Paprika",
+      "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen"
+     },
+     {
+      "sku": "00-414219",
+      "name": "Inzersdorfer Chili Con Carne",
+      "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen"
+     },
+     {
+      "sku": "00-419615",
+      "name": "Inzersdorfer Krautfleisch",
+      "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen"
+     },
+     {
+      "sku": "00-544255",
+      "name": "Inzersdorfer Huhn süß-sauer mit Gemüse",
+      "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen"
+     },
+     {
+      "sku": "00-747537",
+      "name": "Felix Höllenfeuer Gulaschsuppe",
+      "text": "Nach dem Öffnen 2 - 3 Tage im Kühlschrank haltbar"
+     },
+     {
+      "sku": "00-747542",
+      "name": "Felix Gulaschsuppe",
+      "text": "Nach dem Öffnen 2 - 3 Tage im Kühlschrank haltbar"
+     },
+     {
+      "sku": "00-747893",
+      "name": "Felix Höllenfeuer Gulaschsuppe",
+      "text": "Nach dem Öffnen 2 - 3 Tage im Kühlschrank haltbar"
+     },
+     {
+      "sku": "00-749530",
+      "name": "Clever gefüllte Paprika 400g",
+      "text": "Nach dem Öffnen in einem gut verschlossenen, geeigneten Behälter gekühlt aufbewahren und innerhalb von 3 Tagen verzehren"
+     },
+     {
+      "sku": "00-756531",
+      "name": "Clever Ravioli in Tomatensauce",
+      "text": "3 Tagen genießen"
+     },
+     {
+      "sku": "00-763774",
+      "name": "Felix Vegane Gulaschsuppe",
+      "text": "Nach dem Öffnen 2 - 3 Tage im Kühlschrank haltbar"
+     },
+     {
+      "sku": "00-767524",
+      "name": "Inzersdorfer Wiener Suppentopf",
+      "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen"
+     },
+     {
+      "sku": "00-767526",
+      "name": "Inzersdorfer Speckknödelsuppe",
+      "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen"
+     },
+     {
+      "sku": "00-832777",
+      "name": "Felix Gefüllte Paprika",
+      "text": "Nach dem Öffnen 2 - 3 Tage im Kühlschrank haltbar"
+     },
+     {
+      "sku": "00-832790",
+      "name": "Felix Gefüllte Paprika",
+      "text": "Nach dem Öffnen 2 - 3 Tage im Kühlschrank haltbar"
+     }
+    ],
+    "examples": [
+     {
+      "sku": "00-771705",
+      "name": "BILLA Chili Con Carne XXL",
+      "text": "Gekühlt lagern bei +2°C bis +6°C.\nNach dem Öffnen zum unmittelbaren Verzehr bestimmt."
+     },
+     {
+      "sku": "00-384829",
+      "name": "Inzersdorfer Hühnercurry mit Gemüse",
+      "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen."
+     },
+     {
+      "sku": "00-405553",
+      "name": "Inzersdorfer Gefüllte Paprika",
+      "text": "Trocken, vor Frost und Hitze geschützt lagern. Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen."
+     }
+    ]
+   }
+  },
+  {
+   "process": "Cook-Chill: hygienisch gekocht, pasteurisiert, schnell auf 0–3 °C gekühlt; Schutzgas (MAP) oder Vakuum verlängert die Haltbarkeit. Sporen (Clostridium, Bacillus) können überleben → Kühlkette entscheidend",
+   "src_p": [
+    "air",
+    "vzc"
+   ],
+   "storage_temp": "Etiketten im Datensatz: meist +2 bis +6 °C (73×), auch ≤+7 °C / ≤+4 °C",
+   "src_t": [
+    "etiketten"
+   ],
+   "mhd_unopened": "kurz (Tage bis wenige Wochen). Britische Cook-Chill-Richtlinie (Catering): max. 5 Tage; im SB-Handel mit MAP/Vakuum länger möglich. Unter 10 Tagen minimales Botulinum-Risiko. Konkrete MHD-Werte nicht in den Shopdaten.",
+   "src_m": [
+    "air"
+   ],
+   "after_opening": "Etiketten: überwiegend „zum unmittelbaren Verzehr“ (49×), sonst 24 h bis 3 Tage",
+   "src_a": [
+    "etiketten"
+   ],
+   "nutrients": "Kurzes Erhitzen + Kühlung; keine belastbare Studie zu Fertigmenüs erhoben",
+   "src_n": [],
+   "additives": "Verdickungs-/Säuerungsmittel und Salz häufig",
+   "src_ad": [
+    "vzc"
+   ],
+   "recycling_at": "Kunststoffschale + Folie → Gelbe Tonne; Alu-Menüschale ebenfalls Gelbe Tonne; Kartonhülle → Altpapier",
+   "src_r": [
+    "ara",
+    "tirol"
+   ],
+   "bpa": "VO 2024/3190 gilt auch für Kunststoffe, Lacke, Druckfarben, Klebstoffe (Frist 20.07.2026)",
+   "src_b": [
+    "bpa2"
+   ],
+   "risk": "Kühlkette beim Heimtransport nicht unterbrechen",
+   "src_risk": [
+    "vzc"
+   ],
+   "instantpot": "Schale nicht in den Topf (kein Kunststoff/Karton ins Gerät); Inhalt in Innentopf, Sauté oder Dampfgaren mit Flüssigkeit",
+   "src_ip": [
+    "ip_duo"
+   ],
+   "microwave": "meist laut Packung möglich – Herstellerhinweis beachten",
+   "src_mw": [
+    "vzc"
+   ],
+   "type": "Kühlschale/MAP",
+   "dataset_label": "Kühlregal (Menüschale/frisch)",
+   "stats": {
+    "n_products": 241,
+    "n_rankable": 201,
+    "median_protein_100": 6.5,
+    "median_salt_100": 1.1,
+    "median_kcal_100": 157.0,
+    "median_price_per_kg": 11.88,
+    "median_price_per_10g_protein": 1.99,
+    "median_health_score": 34.2
+   },
+   "label_evidence": {
+    "n_with_statement": 143,
+    "storage_temps": [
+     [
+      "+2°Cbis+6°C",
+      73
+     ],
+     [
+      "+7°C",
+      18
+     ],
+     [
+      "+4°C",
+      17
+     ],
+     [
+      "+6°C",
+      10
+     ],
+     [
+      "+2°Cbis+7°C",
+      8
+     ],
+     [
+      "0°Cbis+7°C",
+      4
+     ],
+     [
+      "+4°Cbis+7°C",
+      3
+     ],
+     [
+      "-6°C",
+      3
+     ]
+    ],
+    "after_opening": [
+     [
+      "Nach dem Öffnen zum unmittelbaren Verzehr bestimmt",
+      49
+     ],
+     [
+      "Nach dem Öffnen innerhalb von 3 Tagen verbrauchen",
+      10
+     ],
+     [
+      "Nach dem Öffnen zum baldigen Verzehr bestimmt",
+      7
+     ],
+     [
+      "Nach dem Öffnen zur sofortigen Zubereitung und anschließendem Verzehr bestimmt",
+      6
+     ],
+     [
+      "Nach dem Öffnen fest verschließen, gekühlt lagern und ehebaldigst verzehren",
+      5
+     ],
+     [
+      "Nach dem Öffnen der Verpackung innerhalb von einem Tag verbrauchen",
+      5
+     ]
+    ],
+    "duration_mentions": [
+     {
+      "sku": "00-465349",
+      "name": "Clever Lasagne Bolognese",
+      "text": "Nach dem Öffnen weiterhin gekühlt lagern und innerhalb von 24 Stunden verzehren"
+     },
+     {
+      "sku": "00-480687",
+      "name": "Clever Fleischlaibchen",
+      "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 2 Tagen verbrauchen"
+     },
+     {
+      "sku": "00-754845",
+      "name": "BILLA Beef Burger",
+      "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 2 Tagen verbrauchen"
+     },
+     {
+      "sku": "00-797586",
+      "name": "BILLA Balsamico Olivenöl Dressing",
+      "text": "Nach dem Öffnen fest verschließen und innerhalb von 3 Tagen verzehren"
+     },
+     {
+      "sku": "00-880799",
+      "name": "BILLA Pork Cheeseburger",
+      "text": "Auch nach dem Öffnen bei +2°C bis +7°C lagern und innerhalb von 2 Tagen verzehren"
+     },
+     {
+      "sku": "00-895905",
+      "name": "franuí Raspberry white & raspberry chocolate",
+      "text": "gekühlt halten und innerhalb von 5 Tagen verzehren"
+     },
+     {
+      "sku": "00-871619",
+      "name": "Ja! Natürlich Bio-Rinderfond",
+      "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 3 Tagen verbrauchen"
+     },
+     {
+      "sku": "00-871633",
+      "name": "Ja! Natürlich Bio-Hühnerfond",
+      "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 3 Tagen verbrauchen"
+     },
+     {
+      "sku": "00-871643",
+      "name": "Ja! Natürlich Bio-Fischfond",
+      "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 3 Tagen verbrauchen"
+     },
+     {
+      "sku": "00-871647",
+      "name": "Ja! Natürlich Bio-Gemüsefond",
+      "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 3 Tagen verbrauchen"
+     },
+     {
+      "sku": "00-266836",
+      "name": "Rana Lasagneblätter",
+      "text": "Nach dem Öffnen innerhalb von 3 Tagen"
+     },
+     {
+      "sku": "00-715254",
+      "name": "Fratelli Barbaro Gnocchi mit Kürbis",
+      "text": "Nach dem Öffnen innerhalb von 2 Tagen verbrauchen"
+     },
+     {
+      "sku": "00-732240",
+      "name": "Fratelli Barbaro Kürbisravioli",
+      "text": "Im Kühlschrank zwischen +2°C und +6°C aufbeawahren und innerhalb von 3 Tagen nach dem Öffnen der Verpackung verbrauchen"
+     },
+     {
+      "sku": "00-732242",
+      "name": "Fratelli Barbaro Ravioli Ricotta&Spinat",
+      "text": "Im Kühlschrank zwischen +2°C und +6°C aufbeawahren und innerhalb von 3 Tagen nach dem Öffnen der Verpackung verbrauchen"
+     },
+     {
+      "sku": "00-747770",
+      "name": "Rana Pesto Alla Genovese",
+      "text": "Nach dem Öffnen innerhalb von 3 Tagen verbrauchen"
+     }
+    ],
+    "examples": [
+     {
+      "sku": "00-398199",
+      "name": "PURE Spaghetti Bolognese",
+      "text": "Aufbewahren bei 0°C bis +7 °C"
+     },
+     {
+      "sku": "00-398204",
+      "name": "PURE Huhn Süß-Sauer mit Reis",
+      "text": "Aufbewahren bei 0°C bis +7 °C"
+     },
+     {
+      "sku": "00-398324",
+      "name": "PURE Huhn Tikka Masala mit Reis",
+      "text": "Aufbewahren bei 0°C bis +7 °C"
+     }
+    ]
+   }
+  },
+  {
+   "process": "Blanchieren/Garen, Schockfrosten, Lagerung −18 °C; meist ohne Konservierungsstoffe",
+   "src_p": [
+    "vzc",
+    "rick1"
+   ],
+   "storage_temp": "−18 °C (Etiketten 12×); Sternefächer laut Etiketten: ** (−12 °C) 2–3 Wochen, * (−6 °C) 4 Tage",
+   "src_t": [
+    "vzc",
+    "etiketten"
+   ],
+   "mhd_unopened": "„lange Haltbarkeit“ bei −18 °C (Monatswert nicht aus Quelle belegt; MHD je Packung)",
+   "src_m": [
+    "vzc"
+   ],
+   "after_opening": "aufgetaut nicht wieder einfrieren; Etiketten: innerhalb eines Tages verzehren",
+   "src_a": [
+    "vzc",
+    "etiketten"
+   ],
+   "nutrients": "Geringe Anfangsverluste (kurzes Blanchieren), aber Oxidationsverluste während Lagerung",
+   "src_n": [
+    "rick1"
+   ],
+   "additives": "kommen laut VZ in der Regel ohne Konservierungsstoffe aus",
+   "src_ad": [
+    "vzc"
+   ],
+   "recycling_at": "Folienbeutel für Tiefkühlware → Gelbe Tonne; Karton → Altpapier",
+   "src_r": [
+    "tirol"
+   ],
+   "bpa": "Kunststoffbeutel: VO 2024/3190 (Frist 20.07.2026)",
+   "src_b": [
+    "bpa2"
+   ],
+   "risk": "Kühlkette nicht unterbrechen",
+   "src_risk": [
+    "vzc"
+   ],
+   "instantpot": "Gefroren in den Innentopf möglich; längere Vorheizzeit, ausreichend wasserbasierte Flüssigkeit (min. 375 ml/5,7 L)",
+   "src_ip": [
+    "ip_duo"
+   ],
+   "microwave": "Packungshinweis beachten",
+   "src_mw": [
+    "vzc"
+   ],
+   "type": "Tiefkühl",
+   "dataset_label": "Tiefkühl (TK)",
+   "stats": {
+    "n_products": 136,
+    "n_rankable": 65,
+    "median_protein_100": 7.8,
+    "median_salt_100": 1.1,
+    "median_kcal_100": 189.0,
+    "median_price_per_kg": 14.37,
+    "median_price_per_10g_protein": 1.68,
+    "median_health_score": 40.3
+   },
+   "label_evidence": {
+    "n_with_statement": 16,
+    "storage_temps": [
+     [
+      "-18°C",
+      12
+     ],
+     [
+      "+2°Cbis+6°C",
+      4
+     ]
+    ],
+    "after_opening": [
+     [
+      "Nach dem Öffnen innerhalb eines Tages verzehren",
+      3
+     ],
+     [
+      "Nach dem Öffnen zum unmittelbaren Verzehr bestimmt",
+      1
+     ]
+    ],
+    "duration_mentions": [],
+    "examples": [
+     {
+      "sku": "00-600235",
+      "name": "iglo Paprikahuhn mit Spiralen",
+      "text": "Hinweise für die Aufbewahrung zu Hause: entweder sofort zubereiten oder bei -18°C mindestens haltbar bis Ende: siehe Aufdruck.\nHeiß beim Öffnen! Es können heiße Wassertropfen auf der Folienoberfläche sein. Nicht für die Zubereitung im Backrohr geeignet. Schale nicht wiederverwenden!\nBitte Schale und Überkarton getrennt entsorgen."
+     },
+     {
+      "sku": "00-745556",
+      "name": "Vegavita Nuggets",
+      "text": "Gekühlt bei +2°C bis +6°C lagern.\nNach dem Öffnen innerhalb eines Tages verzehren."
+     },
+     {
+      "sku": "00-756030",
+      "name": "Vegavita Dino Nuggets",
+      "text": "Gekühlt bei +2°C bis +6°C lagern.\nNach dem Öffnen innerhalb eines Tages verzehren."
+     }
+    ]
+   }
+  },
+  {
+   "process": "Im Vakuumbeutel gegart/pasteurisiert und gekühlt; kein Sauerstoff im Beutel",
+   "src_p": [
+    "air",
+    "vzc"
+   ],
+   "storage_temp": "Etiketten: +2 bis +6 °C",
+   "src_t": [
+    "etiketten"
+   ],
+   "mhd_unopened": "Herstellertabelle Vakuumierer (VAMA): „Fertige Speisen“ im Kühlschrank vakuumiert ~8–10 Tage vs. ~2 Tage unvakuumiert (Haushaltswert, nicht industriell)",
+   "src_m": [
+    "vama",
+    "air"
+   ],
+   "after_opening": "Etiketten: „zum unmittelbaren Verzehr“",
+   "src_a": [
+    "etiketten"
+   ],
+   "nutrients": "Im Datensatz bestes Protein/kcal-Verhältnis (fleischlastige Produkte – Effekt der Produktart, nicht der Verpackung)",
+   "src_n": [
+    "datensatz"
+   ],
+   "additives": "keine Quelle erhoben",
+   "src_ad": [],
+   "recycling_at": "Kunststoff-Vakuumbeutel → Gelbe Tonne",
+   "src_r": [
+    "tirol"
+   ],
+   "bpa": "Kunststoffe: VO 2024/3190",
+   "src_b": [
+    "bpa2"
+   ],
+   "risk": "Vakuum ersetzt Kühlung nicht (Sporenbildner)",
+   "src_risk": [
+    "air"
+   ],
+   "instantpot": "Beutel öffnen, Inhalt in Innentopf; Kunststoff gehört laut Handbuch nicht ins Gerät (Beutel im Wasserbad über Sous-vide-Funktion nur, wenn Modell diese Funktion hat und Beutel geeignet)",
+   "src_ip": [
+    "ip_duo",
+    "ip_pro"
+   ],
+   "microwave": "Packungshinweis beachten",
+   "src_mw": [],
+   "type": "Sous-vide/Vakuum",
+   "dataset_label": "Sous-vide (vakuum)",
+   "stats": {
+    "n_products": 10,
+    "n_rankable": 6,
+    "median_protein_100": 13.5,
+    "median_salt_100": 1.4,
+    "median_kcal_100": 123.0,
+    "median_price_per_kg": 26.75,
+    "median_price_per_10g_protein": 2.2,
+    "median_health_score": 57.85
+   },
+   "label_evidence": {
+    "n_with_statement": 7,
+    "storage_temps": [
+     [
+      "+2°Cbis+6°C",
+      4
+     ],
+     [
+      "+6°C",
+      3
+     ]
+    ],
+    "after_opening": [
+     [
+      "Nach dem Öffnen zum unmittelbaren Verzehr bestimmt",
+      4
+     ],
+     [
+      "Nach dem Öffnen zur unmittelbaren Verarbeitung bestimmt",
+      1
+     ],
+     [
+      "Nach dem Öffnen direkt zubereiten und verzehren",
+      1
+     ],
+     [
+      "Nach dem Öffnen ehebaldigst verzehren",
+      1
+     ]
+    ],
+    "duration_mentions": [],
+    "examples": [
+     {
+      "sku": "00-346357",
+      "name": "BILLA Genusswelt Rindsbackerl Sous Vide",
+      "text": "Gekühlt lagern bei +2°C bis +6°C.\nNach dem Öffnen zum unmittelbaren Verzehr bestimmt. Zubereitungsempfehlung beachten."
+     },
+     {
+      "sku": "00-477837",
+      "name": "Hofstädter Die Grillerei Beef Ribs Sous Vide",
+      "text": "Gekühlt lagern bei +2°C bis +6°C.\nNach dem Öffnen zur unmittelbaren Verarbeitung bestimmt.\nZubereitungsempfehlung beachten."
+     },
+     {
+      "sku": "00-517799",
+      "name": "BILLA Genusswelt Roastbeef Sous Vide",
+      "text": "Gekühlt lagern bei +2°C bis +6°C.\nNach dem Öffnen direkt zubereiten und verzehren."
+     }
+    ]
+   }
+  },
+  {
+   "process": "Heißabfüllung/Erhitzen im verschlossenen Glas (analog Konserve)",
+   "src_p": [
+    "vz"
+   ],
+   "storage_temp": "ungekühlt",
+   "src_t": [
+    "vz"
+   ],
+   "mhd_unopened": "lang (wie Konserve); keine Zahl belegt",
+   "src_m": [
+    "vz"
+   ],
+   "after_opening": "Etiketten: Kühlschrank, innerhalb ~2 Tagen bzw. „rasch“",
+   "src_a": [
+    "etiketten"
+   ],
+   "nutrients": "wie Dose (thermische Haltbarmachung)",
+   "src_n": [
+    "rick1"
+   ],
+   "additives": "keine Quelle erhoben",
+   "src_ad": [],
+   "recycling_at": "Glas → Altglas (Weiß-/Buntglas, unverändert); Metalldeckel → Gelbe Tonne",
+   "src_r": [
+    "ara",
+    "oegv"
+   ],
+   "bpa": "Deckel-Innenbeschichtung fällt unter VO 2024/3190 (Lacke/Beschichtungen)",
+   "src_b": [
+    "bpa2"
+   ],
+   "risk": "",
+   "src_risk": [],
+   "instantpot": "Inhalt umfüllen",
+   "src_ip": [
+    "ip_duo"
+   ],
+   "microwave": "Glas ohne Metalldeckel meist geeignet (keine Quelle erhoben)",
+   "src_mw": [],
+   "type": "Glas",
+   "dataset_label": "Glas",
+   "stats": {
+    "n_products": 13,
+    "n_rankable": 6,
+    "median_protein_100": 0.7,
+    "median_salt_100": 0.86,
+    "median_kcal_100": 49.5,
+    "median_price_per_kg": 10.2,
+    "median_price_per_10g_protein": 14.96,
+    "median_health_score": 32.15
+   },
+   "label_evidence": {
+    "n_with_statement": 6,
+    "storage_temps": [],
+    "after_opening": [
+     [
+      "Nach dem Öffnen: im Kühlschrank lagern und rasch konsumieren",
+      2
+     ],
+     [
+      "Nach dem Öffnen im Kühlschrank aufbewahren und innerhalb von 2 Tagen verzehren",
+      1
+     ],
+     [
+      "Nach dem Öffnen gekühlt lagern und bald verbrauchen",
+      1
+     ]
+    ],
+    "duration_mentions": [
+     {
+      "sku": "00-665193",
+      "name": "Steirerkraft Steirische Käferbohnensuppe g.U.",
+      "text": "Nach dem Öffnen im Kühlschrank aufbewahren und innerhalb von 2 Tagen verzehren"
+     }
+    ],
+    "examples": [
+     {
+      "sku": "00-890306",
+      "name": "BILLA Bio Gemüsebrühe im Glas",
+      "text": "Trocken und vor Wärme geschützt lagern."
+     },
+     {
+      "sku": "00-452802",
+      "name": "Little Lunch Karotten Orange Suppe",
+      "text": "Nach dem Öffnen: im Kühlschrank lagern und rasch konsumieren"
+     },
+     {
+      "sku": "00-545362",
+      "name": "Little Lunch Little Italy Suppe",
+      "text": "Nach dem Öffnen: im Kühlschrank lagern und rasch konsumieren"
+     }
+    ]
+   }
+  },
+  {
+   "process": "Trocknung (Wasserentzug) – Mikroorganismen können ohne Wasser nicht wachsen",
+   "src_p": [],
+   "storage_temp": "ungekühlt, trocken (Etiketten teils „unter 25 °C“)",
+   "src_t": [
+    "etiketten"
+   ],
+   "mhd_unopened": "lang; keine Zahl belegt",
+   "src_m": [],
+   "after_opening": "Etiketten: zubereitet im Kühlschrank, innerhalb 2 Tagen verzehren (14×)",
+   "src_a": [
+    "etiketten"
+   ],
+   "nutrients": "Trockenprodukte sind in scored.json nicht rankable (Nährwerte oft fürs Trockenprodukt) – keine Medianwerte; frühere v1-Analyse (packaging_stats.json) sah Instant/Beutel am schlechtesten",
+   "src_n": [
+    "datensatz"
+   ],
+   "additives": "Fertigmenüs: Verdickungsmittel, Säuerungsmittel, Salz",
+   "src_ad": [
+    "vzc"
+   ],
+   "recycling_at": "Kunststoff-/Verbundbeutel → Gelbe Tonne; Karton → Altpapier",
+   "src_r": [
+    "tirol"
+   ],
+   "bpa": "",
+   "src_b": [],
+   "risk": "",
+   "src_risk": [],
+   "instantpot": "problemlos: Inhalt + Wasser in Innentopf (Pasta/Reis max. Half-Fill-Linie)",
+   "src_ip": [
+    "ip_pro"
+   ],
+   "microwave": "nach Packung",
+   "src_mw": [],
+   "type": "Trocken/Instant-Beutel",
+   "dataset_label": "Trocken/Instant",
+   "stats": {
+    "n_products": 214,
+    "n_rankable": 0,
+    "median_protein_100": null,
+    "median_salt_100": null,
+    "median_kcal_100": null,
+    "median_price_per_kg": 10.98,
+    "median_price_per_10g_protein": null,
+    "median_health_score": null
+   },
+   "label_evidence": {
+    "n_with_statement": 65,
+    "storage_temps": [
+     [
+      "25°C",
+      3
+     ],
+     [
+      "+6°C",
+      1
+     ]
+    ],
+    "after_opening": [
+     [
+      "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren",
+      14
+     ],
+     [
+      "Nach dem Öffnen im Kühlschrank zugedeckt aufbewahren und innerhalb von zwei Tagen verzehren",
+      4
+     ],
+     [
+      "Nach dem Öffnen gekühlt lagern und rasch verbrauchen",
+      3
+     ],
+     [
+      "Nach dem Öffnen und Zubereiten unmittelbar verzehren",
+      1
+     ]
+    ],
+    "duration_mentions": [
+     {
+      "sku": "00-284505",
+      "name": "Knorr Meisterkessel XL Leberknödelsuppe",
+      "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren"
+     },
+     {
+      "sku": "00-335981",
+      "name": "Knorr Meisterkessel XL Gulaschsuppe",
+      "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren"
+     },
+     {
+      "sku": "00-358440",
+      "name": "Knorr Meisterkessel Debreziner Würstelsuppe",
+      "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren"
+     },
+     {
+      "sku": "00-402708",
+      "name": "Knorr Meisterkessel Kartoffelsuppe",
+      "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren"
+     },
+     {
+      "sku": "00-414166",
+      "name": "Knorr Meisterkessel Bohnen-Speck Suppe",
+      "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren"
+     },
+     {
+      "sku": "00-439465",
+      "name": "Knorr Meisterkessel Kräftige Rindsuppe",
+      "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren"
+     },
+     {
+      "sku": "00-527347",
+      "name": "Knorr Meisterkessel Xl Serbische Bohnensuppe",
+      "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren"
+     },
+     {
+      "sku": "00-705631",
+      "name": "Knorr Meisterkessel Feurige Gulaschsuppe",
+      "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren"
+     },
+     {
+      "sku": "00-777936",
+      "name": "Knorr Meisterkessel Deftige Gemüsesuppe mit Kartoffeln und Speck",
+      "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren"
+     },
+     {
+      "sku": "00-826516",
+      "name": "Knorr Meisterkessel Chili Con Carne",
+      "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren"
+     },
+     {
+      "sku": "00-826518",
+      "name": "Knorr Meisterkessel Reisfleisch",
+      "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren"
+     },
+     {
+      "sku": "00-826519",
+      "name": "Knorr Meisterkessel Rindsgulasch",
+      "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren"
+     },
+     {
+      "sku": "00-837886",
+      "name": "Knorr Meisterkessel Kalbsbeuschel",
+      "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren"
+     },
+     {
+      "sku": "00-867874",
+      "name": "Knorr Meisterkessel Hühnersuppe",
+      "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren"
+     }
+    ],
+    "examples": [
+     {
+      "sku": "00-745086",
+      "name": "BILLA Miso Ramen Suppe",
+      "text": "Gekühlt lagern bei max. +6°C.\nNach dem Öffnen und Zubereiten unmittelbar verzehren."
+     },
+     {
+      "sku": "00-284505",
+      "name": "Knorr Meisterkessel XL Leberknödelsuppe",
+      "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren."
+     },
+     {
+      "sku": "00-295340",
+      "name": "BioVegan Pasta Topping Klassisch",
+      "text": "Trocken lagern und vor Wärme schützen.\nEinfach einstreuen und unterrühren."
+     }
+    ]
+   }
+  },
+  {
+   "process": "Im flachen Beutel sterilisiert (wie Dose); dünnes Profil → 32–75 % kürzere Prozesszeit als Dose",
+   "src_p": [
+    "pouch_ham",
+    "pouch_fish"
+   ],
+   "storage_temp": "ungekühlt",
+   "src_t": [],
+   "mhd_unopened": "lang; abhängig von Sauerstoff-/Wasserdampfbarriere; keine Zahl belegt",
+   "src_m": [],
+   "after_opening": "wie Konserve: kühlen, rasch verbrauchen (keine Etikettdaten im Datensatz)",
+   "src_a": [],
+   "nutrients": "Mehr Vitamin B1 erhalten als in Dose: Schinken +16–26 %, Fisch +9–17 %",
+   "src_n": [
+    "pouch_ham",
+    "pouch_fish"
+   ],
+   "additives": "keine Quelle erhoben",
+   "src_ad": [],
+   "recycling_at": "Kunststoff-/Alu-Verbundbeutel → Gelbe Tonne",
+   "src_r": [
+    "ara",
+    "tirol"
+   ],
+   "bpa": "VO 2024/3190 (Kunststoffe/Klebstoffe)",
+   "src_b": [
+    "bpa2"
+   ],
+   "risk": "",
+   "src_risk": [],
+   "instantpot": "Beutel nicht ins Gerät; Inhalt umfüllen",
+   "src_ip": [
+    "ip_duo"
+   ],
+   "microwave": "nur wenn Packung „mikrowellengeeignet“ (Alu-Verbund nicht)",
+   "src_mw": [],
+   "type": "Pouch/Retort",
+   "dataset_label": "Beutel ungekühlt (Retort-Pouch)",
+   "stats": {
+    "n_products": 5,
+    "n_rankable": 0,
+    "median_protein_100": null,
+    "median_salt_100": null,
+    "median_kcal_100": null,
+    "median_price_per_kg": 14.78,
+    "median_price_per_10g_protein": null,
+    "median_health_score": null
+   },
+   "label_evidence": null
+  }
+ ],
+ "unclassified_label_evidence": {
+  "Unklar (keine Lagerangabe)": {
+   "n_with_statement": 43,
+   "storage_temps": [
+    [
+     "-18°C",
+     21
+    ],
+    [
+     "-12°C",
+     11
+    ],
+    [
+     "+2°Cbis+6°C",
+     9
+    ],
+    [
+     "-6°C",
+     9
+    ],
+    [
+     "+4°C",
+     5
+    ],
+    [
+     "+0°Cbis+4°C",
+     2
+    ],
+    [
+     "7°C",
+     2
+    ],
+    [
+     "+2°Cbis+4°C",
+     1
+    ]
+   ],
+   "after_opening": [
+    [
+     "Nach dem Öffnen zum unmittelbaren Verzehr bestimmt",
+     8
+    ],
+    [
+     "Nach dem Öffnen innerhalb von 3 Tagen verbrauchen",
+     5
+    ],
+    [
+     "Nach dem Öffnen sofort verbrauchen",
+     2
+    ],
+    [
+     "Nach dem Öffnen im Kühlschrank aufbewahren und innerhalb von 3 Tagen verbrauchen",
+     1
+    ],
+    [
+     "Nach dem Öffnen wiederverschließen, bei -18°C lagern und bis zum Ende des Mindesthaltbarkeitsdatums aufbrauchen",
+     1
+    ],
+    [
+     "Nach dem Öffnen innerhalb 1 Tag verarbeiten",
+     1
+    ]
+   ],
+   "duration_mentions": [
+    {
+     "sku": "00-879063",
+     "name": "BILLA Bio Tortellini Gemüse",
+     "text": "Nach dem Öffnen im Kühlschrank aufbewahren und innerhalb von 3 Tagen verbrauchen"
+    },
+    {
+     "sku": "00-255609",
+     "name": "BILLA Erdbeerknödel",
+     "text": "** Fach (-12 °C): 2 Wochen haltbar"
+    },
+    {
+     "sku": "00-697013",
+     "name": "BILLA Gemüse Lasagne",
+     "text": "** Fach (-12 °C): 3 Wochen haltbar"
+    },
+    {
+     "sku": "00-697013",
+     "name": "BILLA Gemüse Lasagne",
+     "text": "* Fach oder Eiswürfelfach (-6 °C): 4 Tage haltbar"
+    },
+    {
+     "sku": "00-697013",
+     "name": "BILLA Gemüse Lasagne",
+     "text": "Kühlschrank (7°C): 1 Tag haltbar"
+    },
+    {
+     "sku": "00-744302",
+     "name": "BILLA Genusswelt Kalbsgulasch",
+     "text": "Nach dem Öffnen innerhalb 1 Tag verarbeiten"
+    },
+    {
+     "sku": "00-883544",
+     "name": "BILLA Huhn Curry Salat",
+     "text": "Nach dem Öffnen innerhalb von 3 Tagen aufbrauchen"
+    },
+    {
+     "sku": "00-697017",
+     "name": "BILLA Lasagne Bolognese",
+     "text": "** Fach (-12 °C): 1 Monat haltbar"
+    },
+    {
+     "sku": "00-697017",
+     "name": "BILLA Lasagne Bolognese",
+     "text": "* Fach oder Eiswürfelfach (-6 °C): 1 Woche haltbar"
+    },
+    {
+     "sku": "00-723491",
+     "name": "Ben's Original Express Curryreis Indien",
+     "text": "Geöffnet 3 Tage im Kühlschrank haltbar"
+    },
+    {
+     "sku": "00-756128",
+     "name": "Ben's Original Express Sticky Bowl Reis",
+     "text": "Geöffnet 3 Tage im Kühlschrank haltbar"
+    },
+    {
+     "sku": "00-324956",
+     "name": "Cecchin Ravioli Grüner Spargel und Rohschinken",
+     "text": "Nach dem Öffnen innerhalb von 3 Tagen verbrauchen"
+    },
+    {
+     "sku": "00-749591",
+     "name": "Cecchin Ravioli Tomate Burrata",
+     "text": "Nach dem Öffnen innerhalb von 3 Tagen verbrauchen"
+    },
+    {
+     "sku": "00-698707",
+     "name": "Cecchin Ravioli Tomate, Mozarella & Basilikum",
+     "text": "Nach dem Öffnen innerhalb von 3 Tagen verbrauchen"
+    },
+    {
+     "sku": "00-515919",
+     "name": "Cecchin Ravioli mit Carbonara",
+     "text": "Nach dem Öffnen innerhalb von 3 Tagen verbrauchen"
+    }
+   ],
+   "examples": [
+    {
+     "sku": "00-730647",
+     "name": "Ager Hirschgulasch geschnitten",
+     "text": "Gekühlt lagern bei + 0 °C bis + 4 °C\nNach dem Öffnen sofort verbrauchen."
+    },
+    {
+     "sku": "00-730656",
+     "name": "Ager Rehragout geschnitten",
+     "text": "Gekühlt lagern bei + 0 °C bis + 4 °C\nNach dem Öffnen sofort verbrauchen."
+    },
+    {
+     "sku": "00-666418",
+     "name": "Alnatura Lasagne Hartweizen",
+     "text": "Bitte trocken lagern."
+    }
+   ]
+  },
+  "nicht zugeordnet": {
+   "n_with_statement": 76,
+   "storage_temps": [
+    [
+     "+2°Cbis+6°C",
+     3
+    ],
+    [
+     "-12°C",
+     2
+    ],
+    [
+     "-18°C",
+     2
+    ],
+    [
+     "-8°C",
+     2
+    ],
+    [
+     "+6°C",
+     1
+    ],
+    [
+     "+10°C",
+     1
+    ],
+    [
+     "18°C",
+     1
+    ],
+    [
+     "50°C",
+     1
+    ]
+   ],
+   "after_opening": [
+    [
+     "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen",
+     11
+    ],
+    [
+     "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren",
+     4
+    ],
+    [
+     "Nach dem Öffnen 2 - 3 Tage im Kühlschrank haltbar",
+     4
+    ],
+    [
+     "Nach dem Öffnen alsbald verzehren",
+     3
+    ],
+    [
+     "Nach dem Öffnen zum ehebaldigen Verzehr bestimmt",
+     1
+    ],
+    [
+     "Nach dem Öffnen im Kühlschrank aufbewahren und innerhalb von 2 - 3 Tagen verbrauchen",
+     1
+    ]
+   ],
+   "duration_mentions": [
+    {
+     "sku": "00-11369",
+     "name": "Inzersdorfer Rindsgulasch",
+     "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen"
+    },
+    {
+     "sku": "00-16395",
+     "name": "Knorr Meisterkessel Südtiroler Bauernsuppe",
+     "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren"
+    },
+    {
+     "sku": "00-19836",
+     "name": "Inzersdorfer Bohnengulasch",
+     "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen"
+    },
+    {
+     "sku": "00-2154",
+     "name": "Inzersdorfer Rindsgulasch",
+     "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen"
+    },
+    {
+     "sku": "00-2558",
+     "name": "Inzersdorfer Erdäpfelgulasch",
+     "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen"
+    },
+    {
+     "sku": "00-3459",
+     "name": "Knorr Meisterkessel Gulaschsuppe",
+     "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren"
+    },
+    {
+     "sku": "00-3496",
+     "name": "Knorr Meisterkessel Leberknödelsuppe",
+     "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren"
+    },
+    {
+     "sku": "00-3881",
+     "name": "Knorr Meisterkessel Serbische Bohnensuppe",
+     "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren"
+    },
+    {
+     "sku": "00-407831",
+     "name": "Inzersdorfer Chili Con Carne",
+     "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen"
+    },
+    {
+     "sku": "00-44618",
+     "name": "Inzersdorfer Bohnen mit Speck",
+     "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen"
+    },
+    {
+     "sku": "00-44620",
+     "name": "Inzersdorfer Gefüllte Paprika",
+     "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen"
+    },
+    {
+     "sku": "00-44711",
+     "name": "Inzersdorfer Ravioli",
+     "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen"
+    },
+    {
+     "sku": "00-44750",
+     "name": "Inzersdorfer Linsen mit Speck",
+     "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen"
+    },
+    {
+     "sku": "00-44757",
+     "name": "Inzersdorfer Weinbeuschel",
+     "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen"
+    },
+    {
+     "sku": "00-44763",
+     "name": "Inzersdorfer Reisfleisch",
+     "text": "Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen"
+    }
+   ],
+   "examples": [
+    {
+     "sku": "00-98015",
+     "name": "Radatz Leberknödel",
+     "text": "Lagerung bei +2°C bis +6°C\nUngeöffnet mindestens haltbar bis: siehe Aufdruck\nNach dem Öffnen zum ehebaldigen Verzehr bestimmt."
+    },
+    {
+     "sku": "00-11369",
+     "name": "Inzersdorfer Rindsgulasch",
+     "text": "Trocken, vor Frost und Hitze geschützt lagern. Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen."
+    },
+    {
+     "sku": "00-16395",
+     "name": "Knorr Meisterkessel Südtiroler Bauernsuppe",
+     "text": "Nach dem Öffnen im Kühlschrank lagern und innerhalb von 2 Tagen verzehren."
+    }
+   ]
+  }
+ },
+ "chart": {
+  "labels": [
+   "Dose",
+   "Kühlschale/MAP",
+   "Tiefkühl",
+   "Sous-vide/Vakuum",
+   "Glas",
+   "Trocken/Instant-Beutel",
+   "Pouch/Retort"
+  ],
+  "n_products": [
+   160,
+   241,
+   136,
+   10,
+   13,
+   214,
+   5
+  ],
+  "median_protein_100": [
+   3.8,
+   6.5,
+   7.8,
+   13.5,
+   0.7,
+   null,
+   null
+  ],
+  "median_salt_100": [
+   1.1,
+   1.1,
+   1.1,
+   1.4,
+   0.86,
+   null,
+   null
+  ],
+  "median_price_per_10g_protein": [
+   1.93,
+   1.99,
+   1.68,
+   2.2,
+   14.96,
+   null,
+   null
+  ],
+  "median_health_score": [
+   33.3,
+   34.2,
+   40.3,
+   57.85,
+   32.15,
+   null,
+   null
+  ]
+ }
+}

@@ -25,8 +25,14 @@ export function Multipot(){
     <Card className="p-3 overflow-x-auto"><table className="text-sm w-full"><thead><tr className="text-left border-b dark:border-slate-700">{['Produktgruppe','Modus','Wasser','Zeit','Druckablass'].map(h=><th key={h} className="p-1.5">{h}</th>)}</tr></thead><tbody>{GUIDE.map(g=><tr key={g[0]} className="border-b dark:border-slate-800">{g.map((c,i)=><td key={i} className="p-1.5">{c}</td>)}</tr>)}</tbody></table></Card>
     <Card className="p-3 text-sm"><h4 className="font-semibold mb-1">Kombi-Garen in einem Durchgang</h4><p>Unten Reis mit Wasser (Pressure Cook), darüber auf dem hohen Trivet die Menüschale oder den Fisch in einer Edelstahlschale, das TK-Gemüse obenauf. Garzeit nach dem längsten Teil (Reis 5 Min.), danach 10 Min. Natural Release. Das ist ein Richtwert; am besten zuerst mit einer Portion testen.</p></Card></div>
 }
+function DataQuality(){
+  const {R,D}=useApp(); const qa=D.qaStats
+  const k=[[R.length,'Produkte gesamt'],[R.filter(r=>r.rankable).length,'vollständig bewertet (in Rankings)'],[R.filter(r=>r.incomplete&&!r.dry).length,'Score unvollständig'],[R.filter(r=>r.dry).length,'Trockenprodukte (ausgeschlossen)'],[R.filter(r=>r.priceOnly).length,'nur Preis, keine Nährwerte'],[R.filter(r=>r.pstat==='live 2026').length,'Preise 2026'],[R.filter(r=>r.pstat==='Preis 2025').length,'Altpreise 2025'],[R.filter(r=>r.flags?.some(f=>f.startsWith('Packgröße'))).length,'Packgrößen korrigiert'],[qa?.applied??0,'QA-Korrekturen angewendet']]
+  return <section><h3 className="font-semibold text-base mb-2">Datenqualität</h3><div className="grid grid-cols-2 sm:grid-cols-3 gap-2">{k.map(([v,l])=><div key={l as string} className="rounded-lg border p-2 dark:border-slate-700"><div className="text-lg font-bold text-brand">{v}</div><div className="text-[11px] text-slate-500">{l}</div></div>)}</div>
+    {qa&&qa.files>0&&<div className="mt-2 text-xs text-slate-600 dark:text-slate-400"><div>QA-Dateien: {Object.entries(qa.by_file).map(([f,v]:any)=>`${f}: ${v.applied}/${v.fixes}`).join(' · ')}</div><div>Korrigierte Felder: {Object.entries(qa.by_field).map(([f,v])=>`${f} (${v})`).join(', ')}</div></div>}</section>
+}
 export function Methodik(){
-  return <Card className="p-4 space-y-3 text-sm leading-relaxed max-w-3xl">
+  return <div className="space-y-3 max-w-3xl"><Card className="p-4"><DataQuality/></Card><Card className="p-4 space-y-3 text-sm leading-relaxed">
     <h3 className="font-semibold text-base">Health-Score (0–100)</h3>
     <ul className="list-disc pl-5"><li>Basis 30 Punkte</li><li>+ Proteindichte bis 40: min(Protein g/100 kcal ÷ 10, 1) × 40</li><li>− Salz bis 20: ab 0,6 g/100 g, volle Strafe ab 2,0 g</li><li>− gesättigte Fettsäuren bis 15: ab 1,5 g, volle Strafe ab 6 g</li><li>+ Ballaststoffe bis 15 (bei 6 g/100 g) + 5 bei Gemüse/Hülsenfrüchten</li><li>− Verarbeitungsgrad bis 10 (NOVA-Schätzung: Dose/Instant 4, Kühl/TK 3,5, Sous-vide/rohe Fleischstücke 3)</li></ul>
     <h3 className="font-semibold text-base">Datenqualität &amp; Ausschlüsse</h3>
@@ -38,5 +44,5 @@ export function Methodik(){
       <li>VO (EU) 2024/3190, BPA-Verbot – <a className="text-brand underline" href="https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=OJ%3AL_202403190">EUR-Lex</a></li>
       <li>Monteiro et al. (2019), NOVA – <a className="text-brand underline" href="https://doi.org/10.1017/S1368980018003762">doi</a> · Lane et al. (2024), BMJ – <a className="text-brand underline" href="https://doi.org/10.1136/bmj-2023-077310">doi</a></li>
       <li>Identitätskennzeichen: Statistik Austria – <a className="text-brand underline" href="https://vis.statistik.at/fileadmin/ovis/pdf/index.html">vis.statistik.at</a></li></ul>
-    <p className="text-xs text-slate-500">Keine Ernährungsberatung. Alle Angaben ohne Gewähr; maßgeblich ist die Packung.</p></Card>
+    <p className="text-xs text-slate-500">Keine Ernährungsberatung. Alle Angaben ohne Gewähr; maßgeblich ist die Packung.</p></Card></div>
 }
