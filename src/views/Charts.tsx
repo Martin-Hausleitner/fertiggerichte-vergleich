@@ -1,3 +1,4 @@
+import { RowSummary } from '../components/product'
 import { useMemo, useState } from 'react'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, ScatterChart, Scatter, ZAxis, Legend, Cell } from 'recharts'
 import { Card, Select } from '../components/ui'
@@ -14,10 +15,10 @@ export function PackCompare(){
     <p className="text-xs text-slate-500 mt-2">Mediane über alle Produkte. Trocken/Instant ist pro 100 g Pulver angegeben und deshalb aus allen Rankings ausgeschlossen. Kategorien mit n &lt; 20 fehlen in den Diagrammen.</p></Card></div>
 }
 export function ScatterView(){
-  const {R,open}=useApp()
+  const {R,D,open}=useApp()
   const [mode,setMode]=useState<'price'|'kcal'>('price')
   const groups=useMemo(()=>{const g:Record<string,any[]>={};R.filter(r=>r.rankable&&r.protpack!=null&&(mode==='price'?r.price&&r.pstat==='live 2026':r.kcalpack)).forEach(r=>{(g[r.store]??=[]).push({x:mode==='price'?r.price:r.kcalpack,y:r.protpack,z:r.score??20,id:r.id,name:r.name,score:r.score})});return g},[R,mode])
-  const Tip=({active,payload}:any)=>active&&payload?.[0]?<Card className="p-2 text-xs max-w-[220px]"><b>{payload[0].payload.name}</b><div>{mode==='price'?'Preis':'kcal/Pkg'}: {fmt(payload[0].payload.x,2)} · Protein: {fmt(payload[0].payload.y)} g</div><div>Score: {fmt(payload[0].payload.score,0)}</div><div className="text-slate-400">Klicken für Details</div></Card>:null
+  const Tip=({active,payload}:any)=>{const id=payload?.[0]?.payload?.id;const rr=id!=null?D.rows.find((x:any)=>x.id===id):null;return active&&rr?<Card className="p-3 shadow-2xl"><RowSummary r={rr}/></Card>:null}
   return <Card className="p-3"><div className="flex flex-wrap items-center justify-between gap-2 mb-2"><h4 className="font-semibold">{mode==='price'?'Preis vs. Protein pro Packung':'kcal vs. Protein pro Packung'}</h4>
     <Select value={mode} onChange={e=>setMode(e.target.value as any)}><option value="price">Preis vs. Protein</option><option value="kcal">kcal vs. Protein</option></Select></div>
     <p className="text-xs text-slate-500 mb-2">Ein Punkt ist ein Produkt; je größer der Punkt, desto höher der Health-Score. Oben links liegt das beste Verhältnis. Nur vollständige Daten, ohne Trocken- und Großpackungen{mode==='price'?', nur Preise 2026':''}.</p>

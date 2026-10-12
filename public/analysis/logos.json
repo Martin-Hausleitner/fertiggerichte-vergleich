@@ -31,8 +31,9 @@
  },
  "knorr": {
   "file": "logos/knorr.png",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/0/01/Knorr_logo_old.png",
-  "wiki": "commons:File:Knorr logo old.png"
+  "source": "https://commons.wikimedia.org/wiki/File:Knorr_Logo_2020.svg",
+  "wiki": "commons:File:Knorr Logo 2020.svg",
+  "note": "aktuelles Knorr-Logo 2020, als PNG gerendert; ersetzt altes Logo (QA)"
  },
  "maggi": {
   "file": "logos/maggi.png",
@@ -51,9 +52,9 @@
  },
  "hofer": {
   "file": "logos/hofer.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Aldi_S%C3%BCd_2017_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
-  "wiki": "commons:File:Aldi Süd 2017 logo.svg",
-  "note": "Aldi-Süd-Logo 2017 (Hofer = Aldi Süd Österreich; eigenes HOFER-Logo nicht auf Commons gefunden)"
+  "source": "https://commons.wikimedia.org/wiki/File:Hofer_Logo_2017.svg",
+  "wiki": "commons:File:Hofer Logo 2017.svg",
+  "note": "Aktuelles HOFER-Logo (AT, seit 2017); ersetzt Aldi-Süd-Logo (QA 2026-10-12)"
  },
  "lidl": {
   "file": "logos/lidl.svg",
@@ -79,5 +80,105 @@
   "file": "logos/alnatura.svg",
   "source": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Alnatura_Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
   "wiki": "commons:File:Alnatura Logo.svg"
+ },
+ "clever": {
+  "file": "logos/clever.png",
+  "source": "https://assets-eu-01.kc-usercontent.com:443/d5bbd8c1-f776-012f-71ae-f309933a3006/3aafeb92-d2d7-4ff5-b505-9134d124d09f/clever_Logo.svg"
+ },
+ "omis-schmankerl": {
+  "file": "logos/omis-schmankerl.png",
+  "source": "https://assets-eu-01.kc-usercontent.com:443/d5bbd8c1-f776-012f-71ae-f309933a3006/53bdd437-60ae-481d-8970-a6a217116af7/Omis_Logo_new.svg"
+ },
+ "simply-good": {
+  "file": "logos/simply-good.png",
+  "source": "https://assets-eu-01.kc-usercontent.com:443/d5bbd8c1-f776-012f-71ae-f309933a3006/fd5aeaef-6eb3-4fda-89b6-b206d42d6467/simply_good_logo_new.svg"
+ },
+ "vegavita": {
+  "file": "logos/vegavita.png",
+  "source": "https://assets-eu-01.kc-usercontent.com:443/d5bbd8c1-f776-012f-71ae-f309933a3006/b961241e-7b3d-4e9f-b155-5217795a7bc4/Vegavita_Logo.svg"
+ },
+ "immer-gut": {
+  "file": "logos/immer-gut.png",
+  "source": "https://assets-eu-01.kc-usercontent.com:443/d5bbd8c1-f776-012f-71ae-f309933a3006/183361d9-fcba-46f6-b8c3-2fad9bc1e6b9/Billa_immer_gut_new_logo.svg"
+ },
+ "billa-genusswelt": {
+  "file": "logos/billa-genusswelt.png",
+  "source": "https://assets-eu-01.kc-usercontent.com:443/d5bbd8c1-f776-012f-71ae-f309933a3006/74adb426-e268-4e4c-9f65-b45039d1e04c/billa_genusswelt_logo_new.svg"
+ },
+ "gms-gourmet": {
+  "file": "logos/gms-gourmet.png",
+  "source": "https://www.gourmet.at/typo3temp/assets/_processed_/2/0/csm_Gourmet-Dachmarke-Logo-x2_6143c033c9.webp"
+ },
+ "graninger": {
+  "file": "logos/graninger.png",
+  "source": "https://cdn.prod.website-files.com/68595bdb8caa50a08c871bc9/68595e102cb95527432fafb5_GR-Logo-ohneZusatz-V2.png"
+ },
+ "hochreiter": {
+  "file": "logos/hochreiter.svg",
+  "source": "https://www.hochreiter-gruppe.at/wp-content/uploads/2026/03/Logo-Hochreiter-Unternehmensgruppe-1.svg"
+ },
+ "karnerta": {
+  "file": "logos/karnerta.svg",
+  "source": "https://www.karnerta.at/wp-content/uploads/2025/02/Logo_Karnerta_4c_mSlogan.svg"
+ },
+ "wiesbauer": {
+  "file": "logos/wiesbauer.png",
+  "source": "https://www.wiesbauer.at/app/uploads/2025/11/logogogo.png"
+ },
+ "wiesbauer-gourmet": {
+  "file": "logos/wiesbauer-gourmet.png",
+  "source": "https://www.wiesbauer.at/app/uploads/2025/11/logogogo.png"
+ },
+ "heiploeg": {
+  "file": "logos/heiploeg.png",
+  "source": "https://www.heiploeg.com/Portals/10/logoHeiploeg%EF%B9%96ver=gFp07v-mytjmgebzGFz9oQ==.png"
+ },
+ "inzersdorfer": {
+  "file": "logos/inzersdorfer.png",
+  "source": "https://www.inzersdorfer.at/wp-content/uploads/2023/12/logo-300x0-c-default.png"
+ },
+ "hink": {
+  "file": "logos/hink.svg",
+  "source": "https://hink.wien/cdn/shop/files/Hink_logo.svg"
+ },
+ "hubers-landhendl": {
+  "file": "logos/hubers-landhendl.png",
+  "source": "https://huberslandhendl.at/wp-content/uploads/2023/01/logo-hubers-r.png"
+ },
+ "rana": {
+  "file": "logos/rana.png",
+  "source": "https://www.giovanniranausa.com/images/layout/logo.png"
+ },
+ "fit-to-go": {
+  "file": "logos/fit-to-go.png",
+  "source": "https://cdn.shopify.com/oxygen-v2/60491/177587/362866/4677112/assets/logo-DJtqYc5u.png"
+ },
+ "rewe-austria-fleischwaren": {
+  "file": "logos/rewe-austria-fleischwaren.svg",
+  "source": "https://rewe-group.at/wp-content/uploads/2026/09/98_2609_Logo_BILLA.png"
+ },
+ "blasko": {
+  "file": "logos/blasko.png",
+  "source": "https://www.blasko.at/assets/at-blasko/images/favicons/apple-touch-icon.png"
+ },
+ "landena": {
+  "file": "logos/landena.png",
+  "source": "https://www.landena.at/fileadmin/template/Resources/Public/img/plainicon.png"
+ },
+ "rewe-genusskueche": {
+  "file": "logos/rewe-genusskueche.svg",
+  "source": "https://rewe-group.at/wp-content/uploads/2026/09/98_2609_Logo_BILLA.png"
+ },
+ "radatz": {
+  "file": "logos/radatz.png",
+  "source": "https://www.radatz.at/apple-icon-180x180.png"
+ },
+ "wech": {
+  "file": "logos/wech.svg",
+  "source": "https://www.wech.at/visuals/logo.svg"
+ },
+ "planted": {
+  "file": "logos/planted.svg",
+  "source": "https://eatplanted.com/cdn/shop/t/72/assets/planted-logo-top.svg"
  }
 }

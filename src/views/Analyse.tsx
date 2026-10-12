@@ -1,3 +1,5 @@
+import { RowSummary } from '../components/product'
+import AnalyseExt from './AnalyseExt'
 import { useEffect, useMemo, useState } from 'react'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, ScatterChart, Scatter, ZAxis, Line, ComposedChart, Legend } from 'recharts'
 import { Card } from '../components/ui'
@@ -10,12 +12,12 @@ function Box({title,groups,unit}:{title:string;groups:Record<string,number[]>;un
   return <Card className="p-3"><h4 className="font-semibold text-sm mb-2">{title}</h4><div className="space-y-1.5">{data.map(d=><div key={d.k} className="flex items-center gap-2 text-xs"><span className="w-28 truncate">{d.k} <span className="text-slate-400">({d.n})</span></span><div className="relative h-5 flex-1"><div className="absolute top-1/2 h-px bg-slate-400" style={{left:`${d.min/mx*100}%`,width:`${(d.max-d.min)/mx*100}%`}}/><div className="absolute top-0.5 h-4 rounded bg-emerald-500/30 border border-emerald-600" style={{left:`${d.q1/mx*100}%`,width:`${Math.max((d.q3-d.q1)/mx*100,.5)}%`}}/><div className="absolute top-0 h-5 w-0.5 bg-emerald-800" style={{left:`${d.med/mx*100}%`}}/></div><span className="w-16 text-right tabular-nums">{fmt(d.med,2)} {unit}</span></div>)}</div><p className="text-[10px] text-slate-500 mt-2">Box = 25.–75. Perzentil, Strich = Median, Linie = 5.–95. Perzentil. Gruppen mit weniger als 5 Produkten fehlen.</p></Card>
 }
 function Pareto({R}:{R:Row[]}){
-  const {open}=useApp()
+  const {open,D}=useApp()
   const pts=R.filter(r=>r.rankable&&r.eur10p!=null&&r.pstat==='live 2026'&&r.score!=null&&r.eur10p<5).map(r=>({x:r.eur10p!,y:r.score!,id:r.id,name:r.name,store:r.store}))
   const front=[...pts].sort((a,b)=>a.x-b.x).reduce<any[]>((acc,p)=>{if(!acc.length||p.y>acc[acc.length-1].y)acc.push(p);return acc},[])
   return <Card className="p-3"><h4 className="font-semibold text-sm">Pareto-Front: Health-Score vs. € pro 10 g Protein</h4><p className="text-xs text-slate-500 mb-2">Grüne Linie = Produkte, die von keinem anderen gleichzeitig billiger <i>und</i> gesünder geschlagen werden. Punkt anklicken öffnet die Details.</p>
     <ResponsiveContainer width="100%" height={380}><ComposedChart margin={{left:-10}}><CartesianGrid strokeDasharray="3 3" opacity={.3}/><XAxis type="number" dataKey="x" name="€/10 g Protein" unit=" €" domain={[0,'auto']} tick={{fontSize:11}}/><YAxis type="number" dataKey="y" name="Score" domain={[0,100]} tick={{fontSize:11}}/><ZAxis range={[30,30]}/>
-      <Tooltip formatter={(v:any)=>fmt(v,2)} labelFormatter={()=>''} content={({payload}:any)=>payload?.[0]?<Card className="p-2 text-xs"><b>{payload[0].payload.name}</b><div>{payload[0].payload.store} · {fmt(payload[0].payload.x,2)} €/10 g · Score {fmt(payload[0].payload.y,0)}</div></Card>:null}/>
+      <Tooltip formatter={(v:any)=>fmt(v,2)} labelFormatter={()=>''} content={({payload}:any)=>{const id=payload?.[0]?.payload?.id;const rr=id!=null?D.rows.find((x:any)=>x.id===id):null;return rr?<Card className="p-3 shadow-2xl"><RowSummary r={rr}/></Card>:null}}/>
       <Scatter data={pts} fill="#94a3b8" fillOpacity={.6} onClick={(p:any)=>open(p.id??p.payload?.id)} cursor="pointer"/>
       <Line data={front} dataKey="y" type="stepAfter" stroke="#16a34a" strokeWidth={2} dot={{r:4,fill:'#16a34a'}} isAnimationActive={false}/></ComposedChart></ResponsiveContainer>
     <div className="flex flex-wrap gap-1 mt-2">{front.map(p=><button key={p.id} onClick={()=>open(p.id)} className="rounded-full bg-emerald-100 text-emerald-800 px-2 py-0.5 text-[11px] hover:bg-emerald-200">{p.name.slice(0,30)} · {fmt(p.x,2)} €</button>)}</div></Card>
@@ -50,6 +52,6 @@ export default function Analyse(){
     <div className="grid gap-3 lg:grid-cols-2"><Box title="€ pro 10 g Protein je Laden" groups={byStore('eur10p')} unit="€"/><Box title="Health-Score je Verpackung" groups={byPack('score')} unit=""/><Box title="Salz g/100 g je Verpackung" groups={byPack('salt')} unit="g"/><Box title="Health-Score je Laden" groups={byStore('score')} unit=""/></div>
     <Card className="p-3"><h4 className="font-semibold text-sm mb-2">Proteinquelle: Median € pro 10 g Protein und Health-Score</h4><ResponsiveContainer width="100%" height={300}><BarChart data={catBar} margin={{left:-10}}><CartesianGrid strokeDasharray="3 3" opacity={.3}/><XAxis dataKey="c" tick={{fontSize:10}} angle={-25} textAnchor="end" height={70} interval={0}/><YAxis yAxisId="a" tick={{fontSize:10}}/><YAxis yAxisId="b" orientation="right" domain={[0,100]} tick={{fontSize:10}}/><Tooltip/><Legend/><Bar yAxisId="a" dataKey="eur" name="€/10 g Protein" fill="#059669" radius={[4,4,0,0]}/><Bar yAxisId="b" dataKey="score" name="Health-Score" fill="#6366f1" radius={[4,4,0,0]}/></BarChart></ResponsiveContainer></Card>
     <div className="grid gap-3 xl:grid-cols-2"><Heat R={R} cats={D.catProt} keyF="cprot" title="Heatmap: Laden × Proteinquelle (Median Health-Score)"/><Heat R={R} cats={D.catDish} keyF="cdish" title="Heatmap: Laden × Gericht"/></div>
-    <External/>
+    <AnalyseExt/>
   </div>
 }

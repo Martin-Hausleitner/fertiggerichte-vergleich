@@ -5,13 +5,13 @@ import { Gallery } from '../components/product'
 import { useApp, useHashState, cn } from '../lib'
 const Grid=lazy(()=>import('./Grid'))
 export default function Explorer(){
-  const {R,D,favs,nearest}=useApp()
+  const {R,D,favs,nearest,stageSel}=useApp()
   const STORES=useMemo(()=>[...new Set(R.map(r=>r.store))].sort(),[R]),PACKS=useMemo(()=>[...new Set(R.map(r=>r.pack))].sort(),[R])
   const [q,setQ]=useHashState<string>('q',''),[st,setSt]=useHashState<string>('st',''),[pk,setPk]=useHashState<string>('pk',''),[mp,setMp]=useHashState<string>('mp','0'),[fav,setFav]=useHashState<string>('fav',''),[dry,setDry]=useHashState<string>('dry','')
   const [view,setView]=useHashState<'grid'|'cards'>('view',innerWidth<768?'cards':'grid'),[sort,setSort]=useHashState<string>('sort','eur10p'),[cat,setCat]=useHashState<string>('cat',''),[po,setPo]=useHashState<string>('po','')
   const cats=cat?cat.split('|'):[];const togCat=(c:string)=>setCat((cats.includes(c)?cats.filter(x=>x!==c):[...cats,c]).join('|'))
   const dist=(r:any)=>{const s=nearest(r.store);return s?(s.walk_m??s.dist):null}
-  const rows=useMemo(()=>{const qq=q.toLowerCase();return R.filter(r=>(!st||r.store===st)&&(!pk||r.pack===pk)&&((r.protpack??0)>=+mp)&&(!fav||favs.includes(r.id))&&(dry||!r.dry)&&(po||!r.priceOnly)&&(!cats.length||cats.every(c=>r.cprot?.includes(c)||r.cdish?.includes(c)))&&(!qq||(r.name+' '+r.brand+' '+r.herst).toLowerCase().includes(qq))).sort((a,b)=>{const lo=['eur10p','price','ppk','eur100k','dist'].includes(sort);const x=sort==='dist'?dist(a):(a as any)[sort],y=sort==='dist'?dist(b):(b as any)[sort];if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;return lo?x-y:y-x})},[R,q,st,pk,mp,fav,favs,dry,sort,cat,po,nearest])
+  const rows=useMemo(()=>{const qq=q.toLowerCase();return R.filter(r=>stageSel.includes(r.stage)&&(!st||r.store===st)&&(!pk||r.pack===pk)&&((r.protpack??0)>=+mp)&&(!fav||favs.includes(r.id))&&(dry||!r.dry)&&(po||!r.priceOnly)&&(!cats.length||cats.every(c=>r.cprot?.includes(c)||r.cdish?.includes(c)))&&(!qq||(r.name+' '+r.brand+' '+r.herst).toLowerCase().includes(qq))).sort((a,b)=>{const lo=['eur10p','price','ppk','eur100k','dist'].includes(sort);const x=sort==='dist'?dist(a):(a as any)[sort],y=sort==='dist'?dist(b):(b as any)[sort];if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;return lo?x-y:y-x})},[R,q,st,pk,mp,fav,favs,dry,sort,cat,po,nearest])
   return <div className="space-y-3">
     <Card className="sticky top-[96px] z-30 p-2.5 flex flex-wrap items-center gap-2 backdrop-blur bg-white/90 dark:bg-slate-900/90">
       <div className="relative flex-1 min-w-[180px]"><Search size={15} className="absolute left-2.5 top-2.5 text-slate-400"/><Input placeholder="Suche: Name, Marke, Hersteller…" value={q} onChange={e=>setQ(e.target.value)} className="w-full pl-8"/></div>
