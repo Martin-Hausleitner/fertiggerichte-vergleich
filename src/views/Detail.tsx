@@ -1,5 +1,5 @@
 import { ExternalLink, MapPin, Factory, CookingPot, AlertTriangle, Info } from 'lucide-react'
-import { Img, Chips, Price, ScoreBar, Actions } from '../components/product'
+import { Img, Chips, Price, ScoreBar, Actions, StoreLogo, BrandLogo, Nearest, CatChips } from '../components/product'
 import { Badge } from '../components/ui'
 import { fmt, useApp } from '../lib'
 export default function Detail({id}:{id:number}){
@@ -8,7 +8,8 @@ export default function Detail({id}:{id:number}){
   const sim=R.filter(x=>x.id!==id&&x.rankable&&x.pack===r.pack&&x.score!=null&&(x.score??0)>(r.score??0)).sort((a,b)=>(b.score??0)-(a.score??0)).slice(0,4)
   const Row=({l,v}:{l:string;v:any})=><div className="flex justify-between border-b py-1.5 text-sm dark:border-slate-800"><span className="text-slate-500">{l}</span><span className="font-medium text-right tabular-nums">{v??'–'}</span></div>
   return <div className="space-y-4">
-    <div className="flex gap-4"><Img src={r.img} className="h-32 w-32 shrink-0"/><div className="space-y-1 min-w-0"><h2 className="text-lg font-bold leading-tight">{r.name}</h2><div className="text-sm text-slate-500">{r.brand} · {r.store}</div><Badge className="bg-slate-100 dark:bg-slate-800">{r.pack}</Badge><div className="text-lg"><Price r={r}/></div><Actions r={r}/></div></div>
+    <div className="flex gap-4"><Img src={r.img} className="h-32 w-32 shrink-0"/><div className="space-y-1 min-w-0"><h2 className="text-lg font-bold leading-tight">{r.name}</h2><div className="text-sm text-slate-500">{r.brand} · {r.store}</div><Badge className="bg-slate-100 dark:bg-slate-800">{r.pack}</Badge><div className="text-lg"><Price r={r}/></div><div className="flex items-center gap-2"><StoreLogo store={r.store} size={34}/><BrandLogo r={r} size={26}/></div><Actions r={r}/></div></div>
+    <Nearest store={r.store}/><CatChips r={r}/>
     <Chips r={r}/><div><div className="text-xs text-slate-500 mb-1">Health-Score</div><ScoreBar r={r}/></div>
     {r.flags?.length>0&&<div className="rounded-lg bg-amber-50 dark:bg-amber-900/20 p-2 text-xs text-amber-800 dark:text-amber-300 space-y-1">{r.flags.map(f=><div key={f} className="flex gap-1"><AlertTriangle size={13} className="shrink-0"/>{f}</div>)}</div>}
     <section><h3 className="font-semibold mb-1">Nährwerte pro 100 g</h3>

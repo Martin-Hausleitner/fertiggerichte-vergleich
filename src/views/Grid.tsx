@@ -4,19 +4,20 @@ import type { ColDef } from 'ag-grid-community'
 import 'ag-grid-community/styles/ag-grid.css'
 import 'ag-grid-community/styles/ag-theme-quartz.css'
 import { ExternalLink } from 'lucide-react'
-import { Img, Chips, Price, ScoreBar, Actions, BrandLogo, PliBadge } from '../components/product'
+import { Img, Chips, Price, ScoreBar, Actions, BrandLogo, PliBadge, StoreLogo, CatChips } from '../components/product'
 import { fmt, useApp, type Row } from '../lib'
 export default function Grid({rows,sort='eur10p'}:{rows:Row[];sort?:string}){
-  const {open,compare,setCompare,dark,wide}=useApp()
+  const {open,compare,setCompare,dark,wide,nearest}=useApp()
   const ref=useRef<AgGridReact<Row>>(null)
   const nf=(d:number)=>(p:any)=>fmt(p.value,d)
   const num=(h:string,f:keyof Row,w:number,d=1):ColDef<Row>=>({headerName:h,field:f,width:w,filter:'agNumberColumnFilter',type:'numericColumn',valueFormatter:nf(d)})
   const cols=useMemo<ColDef<Row>[]>(()=>[
     {headerName:'',width:44,checkboxSelection:true,headerCheckboxSelection:false,sortable:false,filter:false,pinned:'left'},
     {headerName:'Foto',field:'img',width:72,pinned:'left',sortable:false,filter:false,cellRenderer:(p:any)=><div className="py-1.5"><Img src={p.value}/></div>},
-    {headerName:'Produkt',field:'name',minWidth:240,flex:2,filter:'agTextColumnFilter',wrapText:true,autoHeight:true,cellRenderer:(p:any)=><div className="leading-tight py-1.5 space-y-1"><button className="font-medium text-left hover:text-brand hover:underline" onClick={()=>open(p.data.id)}>{p.value}</button><div className="text-xs text-slate-500">{p.data.brand}</div><Chips r={p.data} compact/></div>},
+    {headerName:'Produkt',field:'name',minWidth:240,flex:2,filter:'agTextColumnFilter',wrapText:true,autoHeight:true,cellRenderer:(p:any)=><div className="leading-tight py-1.5 space-y-1"><button className="font-medium text-left hover:text-brand hover:underline" onClick={()=>open(p.data.id)}>{p.value}</button><div className="text-xs text-slate-500">{p.data.brand}</div><Chips r={p.data} compact/><CatChips r={p.data}/></div>},
     {headerName:'Marke',field:'brandN',width:120,filter:'agTextColumnFilter',cellRenderer:(p:any)=><div className="flex items-center gap-1.5 h-full"><BrandLogo r={p.data} size={24}/></div>},
-    {headerName:'Laden',field:'store',width:95,filter:'agTextColumnFilter'},
+    {headerName:'Laden',field:'store',width:110,filter:'agTextColumnFilter',cellRenderer:(p:any)=><div className="flex items-center h-full"><StoreLogo store={p.value} size={30}/></div>},
+    {headerName:'Filiale',colId:'dist',width:120,filter:'agNumberColumnFilter',valueGetter:(p:any)=>{const s=nearest(p.data.store);return s?(s.walk_m??s.dist):null},cellRenderer:(p:any)=>{const s=nearest(p.data.store);return s?<a href={s.gmaps} target="_blank" rel="noreferrer" className="text-xs text-sky-700 hover:underline leading-tight block py-1.5" title={s.addr??''}>{p.value<1000?Math.round(p.value/10)*10+' m':(p.value/1000).toFixed(1)+' km'}<br/><span className="text-slate-500">{(s.addr??'').split(',')[0]}</span></a>:'–'}},
     {headerName:'Verpackung',field:'pack',width:140,filter:'agTextColumnFilter',wrapText:true,cellClass:'text-xs leading-tight'},
     {headerName:'Preis',field:'price',width:125,pinned:'left',filter:'agNumberColumnFilter',cellRenderer:(p:any)=><div className="text-[15px]"><Price r={p.data}/></div>},
     {headerName:'€ / 10 g Protein',field:'eur10p',width:120,pinned:'left',filter:'agNumberColumnFilter',cellRenderer:(p:any)=>p.value==null?<span className="text-slate-400">–</span>:<span className="rounded-md bg-emerald-600 px-2 py-0.5 font-bold text-white tabular-nums">{fmt(p.value,2)} €</span>},
@@ -26,7 +27,7 @@ export default function Grid({rows,sort='eur10p'}:{rows:Row[];sort?:string}){
     num('Protein/€','ppe',95),
     {headerName:'Hersteller',field:'herst',minWidth:170,flex:1,filter:'agTextColumnFilter',wrapText:true,cellRenderer:(p:any)=><div className="text-xs leading-tight py-1.5">{p.value}{p.data.ort&&<div className="text-slate-500">{p.data.ort}</div>}</div>},
     {headerName:'',width:90,sortable:false,filter:false,cellRenderer:(p:any)=><div className="flex items-center h-full"><Actions r={p.data}/>{p.data.url&&<a href={p.data.url} target="_blank" rel="noreferrer" className="p-1.5 text-slate-400 hover:text-brand"><ExternalLink size={15}/></a>}</div>},
-  ],[open])
+  ],[open,nearest])
   useEffect(()=>{const api=ref.current?.api;if(!api)return;api.forEachNode(n=>n.setSelected(compare.includes(n.data!.id),false,'api'))},[compare,rows])
   return <div className={(dark?'ag-theme-quartz-dark':'ag-theme-quartz')+' w-full'} style={{height:'calc(100vh - 230px)',minHeight:480}}>
     <AgGridReact<Row> key={sort} ref={ref} rowData={rows} columnDefs={cols} getRowId={p=>String(p.data.id)} defaultColDef={{sortable:true,resizable:true,filter:true,comparator:(a:any,b:any,_n:any,_m:any,desc:boolean)=>{if(a==null&&b==null)return 0;if(a==null)return desc?-1:1;if(b==null)return desc?1:-1;return typeof a==='number'?a-b:String(a).localeCompare(String(b))}}} rowHeight={wide?64:84} rowSelection="multiple" suppressRowClickSelection
