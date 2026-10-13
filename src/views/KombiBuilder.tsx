@@ -17,8 +17,8 @@ export default function KombiBuilder(){
   const pick=(k:'prot'|'side'|'veg')=>pool[k].find(x=>x.key===sel[k])??pool[k][0]
   const items=(['prot','side','veg'] as const).map(pick).filter(Boolean) as It[]
   const T=items.reduce((a,x)=>({price:a.price+x.price,prot:a.prot+x.prot,kcal:a.kcal+x.kcal,salt:a.salt+x.salt,fib:a.fib+x.fib}),{price:0,prot:0,kcal:0,salt:0,fib:0})
-  const pd=T.kcal?T.prot/T.kcal*100:0
-  const score=Math.max(0,Math.min(100,30+Math.min(pd/10,1)*40+Math.min(T.fib/(T.kcal/100||1)/6,1)*15+5-Math.min(Math.max(T.salt/(T.kcal/100||1)-0.6,0)/1.4,1)*20))
+  const pd=T.kcal>0?T.prot/T.kcal*100:0
+  const score=Math.max(0,Math.min(100,30+Math.min(pd/10,1)*40+Math.min(T.fib/(T.kcal>0?T.kcal/100:1)/6,1)*15+5-Math.min(Math.max(T.salt/(T.kcal>0?T.kcal/100:1)-0.6,0)/1.4,1)*20))
   const L:{[k:string]:[string,string]}={prot:['🍖','Protein-Komponente'],side:['🥔','Beilage'],veg:['🥦','Gemüse/Salat']}
   return <Card className="p-4 space-y-3"><h3 className="text-lg font-bold flex items-center gap-2">🧩 Kombi-Baukasten <InfoTip text="Kombiniert eine Protein-Komponente mit einer Beilage und Gemüse zu einer vollständigen Mahlzeit. Bei Beilagen und Gemüse aus der Billa-Datenbank zählt eine Portion, sonst die ganze Packung. Der Score ist eine Näherung auf Basis von Proteindichte, Ballaststoffen und Salz pro 100 kcal plus 5 Punkte Gemüse-Bonus."/></h3>
     <div className="grid gap-3 md:grid-cols-3">{(['prot','side','veg'] as const).map(k=>{const cur=pick(k);return <div key={k} className="space-y-1"><div className="text-sm font-semibold">{L[k][0]} {L[k][1]} <span className="text-xs text-slate-400">({pool[k].length})</span></div>
