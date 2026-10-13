@@ -22,7 +22,13 @@ export const isComponentOnly = (r: Row) => r.component != null && r.component !=
 const isFrozen = (r: Row) => /tiefk|\bTK\b/i.test(r.pack ?? '')
 /** Trockenware: Server-Flag ODER ≥ 300 kcal/100 g, wenig Fett und nicht tiefgekühlt. */
 export const isDryish = (r: Row) => !!r.dry || r.meal_class === 'dry' || (r.kcal != null && r.kcal >= 300 && (r.fat == null || r.fat < 10) && !isFrozen(r))
-export const isNonMeal = (r: Row) => r.gang === 'dessert' || NONMEAL.test(r.name)
+/** Trockenprodukte/Würzmischungen und Babynahrung – immer raus, unabhängig von meal_class (Sense-Check 3). */
+const SEASONING = /\bfix\b|basis[- ]?fix|knorr basis|maggi (fix|idee|basis)|bouillon|w[üu]rfel|suppenw[üu]rze|w[üu]rzmischung|gew[üu]rzmischung|sauce ?(pulver|binder)|so[ßs]enbinder|instant ?suppe|tassen ?suppe|packerlsuppe|fixbeutel/i
+const BABY = /\bhipp\b|ab dem \d+\. ?(lebens)?(jahr|monat)|nach dem \d+\. monat|babynahrung|kindermen[üu]|\bbaby\b|beikost|alete|bebivita/i
+/** Bistro-Baguettes: Snack, auch wenn die Daten sie als Mahlzeit führen. */
+const BAGUETTE = /\bbistro\b|baguette/i
+export const isBabyFood = (r: Row) => r.segment === 'baby' || BABY.test(r.name)
+export const isNonMeal = (r: Row) => r.gang === 'dessert' || r.meal_class === 'dessert' || r.meal_class === 'dry' || NONMEAL.test(r.name) || SEASONING.test(r.name) || isBabyFood(r) || BAGUETTE.test(r.name)
 /** Datenseitige Klassifikation (HCB) hat Vorrang; Namens-Guard nur, wenn meal_class fehlt/unknown. */
 const hasDataClass = (r: Row) => !!r.meal_class && r.meal_class !== 'unknown'
 export const isSnackLike = (r: Row) => !hasDataClass(r) && SNACK.test(r.name)
@@ -68,4 +74,18 @@ export function valueOf(r: Row, c: ValueCfg = {}) {
   return w * s + (1 - w) * Math.min(ppe / cap, 1) * 100
 }
 /** Gilt für Preis-Leistungs- und €/Protein-Rankings: rankable + Mindest-Score + Mindest-kcal. */
-export const passesRankMin = (r: Row, c: ValueCfg = {}) => isRankable(r) && (scoreOf(r, c) ?? 0) >= (c.minScore ?? VALUE_DEFAULTS.minScore) && (kcalPerPortion(r) ?? 0) >= Math.max(MEAL_RULES.kcalMin, c.minKcal ?? VALUE_DEFAULTS.minKcal)
+export const isLightMeal = (r: Row) => r.meal_class === 'light_meal'
+/** Haupt-Rankings: vollwertige Gerichte, leichte Mahlzeiten haben ein eigenes Ranking (passesLightRank). */
+export const passesRankMin = (r: Row, c: ValueCfg = {}) => !isLightMeal(r) && isRankable(r) && (scoreOf(r, c) ?? 0) >= (c.minScore ?? VALUE_DEFAULTS.minScore) && (kcalPerPortion(r) ?? 0) >= Math.max(MEAL_RULES.kcalMin, c.minKcal ?? VALUE_DEFAULTS.minKcal)
+
+/** Separates Ranking „Leichte Mahlzeiten“ (meal_class light_meal): Fertiggericht, Preis + Score, Mindest-Score – ohne 400-kcal/20-g-Prüfung. */
+export const passesLightRank = (r: Row, c: ValueCfg = {}) => isLightMeal(r) && isReadyMeal(r) && r.price != null && r.score != null && (scoreOf(r, c) ?? 0) >= (c.minScore ?? VALUE_DEFAULTS.minScore) && pricePerPortion(r) != null
+/** GTIN aus psrc (z. B. „GTIN 4260237451068“). */
+export const gtinOf = (r: { psrc?: string | null }) => (r.psrc ?? '').match(/\b(\d{13}|\d{8})\b/)?.[1] ?? null
+const completeness = (r: object) => Object.values(r).filter(v => v != null && v !== '' && !(Array.isArray(v) && !v.length)).length
+/** Dedupliziert Zeilen mit gleicher GTIN im selben Laden; behält die vollständigste. */
+export function dedupeGtin<T extends { store: string; psrc?: string | null }>(rows: T[]): T[] {
+  const best = new Map<string, T>()
+  for (const r of rows) { const g = gtinOf(r); if (!g) continue; const k = g + '|' + r.store, o = best.get(k); if (!o || completeness(r) > completeness(o)) best.set(k, r) }
+  return rows.filter(r => { const g = gtinOf(r); return !g || best.get(g + '|' + r.store) === r })
+}
