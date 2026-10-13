@@ -3555,5 +3555,35 @@
   "size": "png",
   "note": "Vision gate 2026-10-13T15 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Header-Logo feinkost-englert.de (Englert Feinkostspezialitäten GmbH & Co. KG, Lohr a. Main – Impressum geprüft); einfarbig weiß im Original → Füllfarbe auf #1f1f1f umgefärbt (Form unverändert) für helles UI",
   "hq": true
+ },
+ "subway": {
+  "slug": "subway",
+  "name": "Subway",
+  "brands": [
+   "Subway",
+   "SUBWAY",
+   "Subway®"
+  ],
+  "logo_category": "Handelskette",
+  "file": "logos/subway.svg",
+  "source": "https://commons.wikimedia.org/wiki/File:Subway_2016_logo.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T18 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Wikimedia Commons File:Subway 2016 logo.svg (Public domain – Textlogo/Schwelle der Schöpfungshöhe; Hinweis 'trademarked'; Urheber Subway IP LLC; Original https://upload.wikimedia.org/wikipedia/commons/5/5c/Subway_2016_logo.svg, 1702 B, unverändert)",
+  "hq": true
+ },
+ "alpenhain": {
+  "slug": "alpenhain",
+  "name": "Alpenhain",
+  "brands": [
+   "Alpenhain",
+   "ALPENHAIN",
+   "Alpenhain Back"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/alpenhain.png",
+  "source": "https://commons.wikimedia.org/wiki/File:Alpenhain_Logo.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T18 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Wikimedia Commons File:Alpenhain Logo.png (CC BY-SA 4.0, Robert Winkelmann; Quelle alpenhain.de) – Alpenhain Käsespezialitäten GmbH (Brand-Tree-Konzern); 2016×1142 RGBA auf 512×290 verkleinert, sonst unverändert",
+  "hq": true
  }
 }
