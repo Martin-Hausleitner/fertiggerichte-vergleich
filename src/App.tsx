@@ -1,3 +1,4 @@
+import { SearchPalette } from './components/SemanticSearch'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { STAGES, InfoTip } from './components/info'
 import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react'
@@ -25,8 +26,9 @@ const ProducerPages=lazy(()=>import('./views/Producers'))
 const Matrix=lazy(()=>import('./views/Matrix'))
 const Logos=lazy(()=>import('./views/Logos'))
 const Netz3D=lazy(()=>import('./views/Netz3D'))
+const Gerichte=lazy(()=>import('./views/Gerichte'))
 const Methodik=lazy(()=>import('./views/Misc').then(m=>({default:m.Methodik})))
-const TABS:[string,string,any][]=[['alle','Alle Gerichte',Explorer],['top','Top-Listen',Top],['kategorien','Kategorien',Categories],['marken','Marken',Brands],['filialen','Filialen in der Nähe',Stores],['analyse','Analyse',Analyse],['scatter','Preis vs. Protein',Scatter],['pack','Verpackungen',Packaging],['hersteller-seiten','Hersteller',ProducerPages],['matrix','Marken-Matrix',Matrix],['logos','Logos',Logos],['netz','🕸️ Netz 3D',Netz3D],['hersteller','Läden & Werke',Producers],['planer','Wochenplaner',Planner],['kombi','Kombi-Ideen',Kombi],['ftg','Fit to Go vs. Supermarkt',Ftg],['multipot','Multipot-Pro Garzeiten',Multipot],['methodik','Methodik & Quellen',Methodik]]
+const TABS:[string,string,any][]=[['alle','Alle Gerichte',Explorer],['gerichte','🍲 Gericht vergleichen',Gerichte],['top','Top-Listen',Top],['kategorien','Kategorien',Categories],['marken','Marken',Brands],['filialen','Filialen in der Nähe',Stores],['analyse','Analyse',Analyse],['scatter','Preis vs. Protein',Scatter],['pack','Verpackungen',Packaging],['hersteller-seiten','Hersteller',ProducerPages],['matrix','Marken-Matrix',Matrix],['logos','Logos',Logos],['netz','🕸️ Netz 3D',Netz3D],['hersteller','Läden & Werke',Producers],['planer','Wochenplaner',Planner],['kombi','Kombi-Ideen',Kombi],['ftg','Fit to Go vs. Supermarkt',Ftg],['multipot','Multipot-Pro Garzeiten',Multipot],['methodik','Methodik & Quellen',Methodik]]
 const Loading=()=><Card className="p-10 text-center text-slate-500 animate-pulse">Lädt…</Card>
 export default function App(){
   const [D,setD]=useState<Data|null>(null)
@@ -62,6 +64,7 @@ export default function App(){
       </header>
       <section className="py-4 space-y-3">
         <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">Welches Fertiggericht lohnt sich wirklich?</h1>
+        <SearchPalette/>
         <p className="text-sm text-slate-600 dark:text-slate-400 max-w-3xl">Preise, Protein, Salz und Health-Score von Fertig- und Schnellgerichten bei Billa, Spar, Hofer, Lidl, Penny, dm und Fit to Go, dazu die Hersteller hinter den Eigenmarken und Tipps für den Instant Pot Pro.</p>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">{[[R.length,'Gerichte'],[live,'aktuelle Preise 2026'],[R.filter(r=>r.rankable).length,'vollständig bewertet'],[new Set(R.map(r=>r.brandN)).size,'Marken'],[D.same.length,'Werke mit mehreren Marken'],[R.filter(r=>r.ooe).length,'aus OÖ']].map(([v,l])=><Card key={l as string} className="px-3 py-2"><div className="text-xl font-bold text-brand">{v}</div><div className="text-[11px] text-slate-500">{l}</div></Card>)}</div>
         <Card className="p-3 bg-gradient-to-br from-emerald-50 to-white dark:from-emerald-950/40 dark:to-slate-900 border-emerald-200 dark:border-emerald-900">
