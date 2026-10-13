@@ -15,6 +15,7 @@ import { Hero } from '@/app/Hero'
 import { findTab } from '@/app/tabs'
 import { LocationControl } from '@/app/location'
 import { ApiBridge } from '@/app/ApiBridge'
+import { GenUIBridge } from '@/app/genuiHost'
 
 
 const Compare = lazy(() => import('@/views/Compare'))
@@ -50,6 +51,7 @@ export default function App() {
   const View = cur.view
   return <AppCtx.Provider value={{ D, R, stageSel, compare, toggleCompare, setCompare, favs, toggleFav, open, dark, wide, stores, nearest }}>
     <ApiBridge />
+    <GenUIBridge getRows={() => R} tab={cur.key} setTab={setTab} />
     <SidebarProvider>
       <AppSidebar tab={cur.key} onSelect={setTab} />
       <SidebarInset className="min-w-0 overflow-x-clip">

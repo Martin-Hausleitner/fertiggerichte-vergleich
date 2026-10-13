@@ -4,6 +4,7 @@
  * Datenschutz: Ziele/Planwerte werden NIE in URL, Server oder Analytics geschrieben – nur localStorage.
  */
 import type { Row } from '@/lib'
+import { TAB_ALIAS } from './tabs'
 import type { F } from '@/components/FilterPanel'
 import { makePred } from '@/components/FilterPanel'
 import { isReadyMeal, isRankable, pricePerPortion } from './meal'
@@ -19,7 +20,9 @@ export type ViewParams = Record<string, string>
 /** JSON-View-Spec; Struktur definiert der genui-Worker. */
 export type ViewSpec = unknown
 export type CustomUIRenderer = (spec: ViewSpec, target?: HTMLElement) => void | (() => void)
-export type AppState = { view: string; hash: Record<string, string>; myShops: string[]; location: { addr: string; lat: number; lon: number; radius: number }; scoreCfg: ScoreCfg; rows: number }
+export type AppState = { view: string; hash: Record<string, string>; myShopsCount: number;
+  /** nur Umkreis – Adresse/Koordinaten werden NIE über die API/Bridge herausgegeben */
+  location: { radius: number }; scoreCfg: ScoreCfg; rows: number }
 export interface GoodChoiceAPI {
   version: '1'
   search(q: string, opts?: SearchOpts): ProductSummary[]
@@ -36,14 +39,14 @@ export interface GoodChoiceAPI {
 declare global { interface Window { goodChoice?: GoodChoiceAPI } }
 
 // ---------- Implementierung ----------
-type Deps = { rows: () => Row[]; myChains: () => Set<string>; myShops: () => string[]; loc: () => AppState['location']; distOf: (r: Row) => number | null }
+type Deps = { rows: () => Row[]; myChains: () => Set<string>; myShops: () => string[]; loc: () => { radius: number }; distOf: (r: Row) => number | null }
 let renderer: CustomUIRenderer | null = null
 const summary = (r: Row): ProductSummary => ({ id: r.id, name: r.name, brand: r.brandN, store: r.store, price: r.price, pricePerPortion: pricePerPortion(r), score: clientScore(r), value: valueScore(r), stage: r.stage, readyMeal: isReadyMeal(r), img: r.img, url: r.url })
 const hashObj = () => Object.fromEntries(new URLSearchParams(location.hash.slice(1)))
 
 export function installApi(d: Deps): GoodChoiceAPI {
   const base = (inc?: boolean) => d.rows().filter(r => !r.nonfood && (inc || isReadyMeal(r)))
-  const state = (): AppState => ({ view: hashObj().tab ?? 'heute', hash: hashObj(), myShops: d.myShops(), location: d.loc(), scoreCfg: getCfg(), rows: d.rows().length })
+  const state = (): AppState => ({ view: hashObj().tab ?? 'heute', hash: hashObj(), myShopsCount: d.myShops().length, location: { radius: d.loc().radius }, scoreCfg: getCfg(), rows: d.rows().length })
   const api: GoodChoiceAPI = {
     version: '1',
     search: (q, o = {}) => { const qq = q.toLowerCase(); return base(o.includeGroceries).filter(r => `${r.name} ${r.brandN} ${r.store} ${r.herst}`.toLowerCase().includes(qq)).slice(0, o.limit ?? 50).map(summary) },
@@ -56,7 +59,7 @@ export function installApi(d: Deps): GoodChoiceAPI {
       return base(o.includeGroceries).filter(r => isRankable(r) && (!ch || ch.has(r.store)) && p(r) && k(r) != null).sort((a, b) => k(b)! - k(a)!).slice(0, o.limit ?? 30).map(summary)
     },
     buildMealPlan: (t, o = {}) => plan(d.rows(), o.chains ? new Set(o.chains) : o.onlyMyShops === false ? null : d.myChains(), t),
-    setView: (view, params = {}) => { const h = new URLSearchParams({ ...params, tab: view }); location.hash = h.toString() },
+    setView: (view, params = {}) => { view = TAB_ALIAS[view] ?? view; const h = new URLSearchParams({ ...params, tab: view }); location.hash = h.toString() },
     renderCustomUI: (spec, target) => { if (!renderer) throw new Error('goodChoice: kein Custom-UI-Renderer registriert (src/app/genui)'); return renderer(spec, target) },
     registerCustomUIRenderer: fn => { renderer = fn },
     getState: state,

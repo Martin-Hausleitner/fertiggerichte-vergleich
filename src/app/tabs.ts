@@ -1,5 +1,5 @@
 import { lazy, type ComponentType, type LazyExoticComponent } from 'react'
-import { MessageSquareText, Images, Columns3, LayoutDashboard, BadgeCheck, Store as StoreIcon, LayoutGrid, Soup, ListOrdered, Shapes, Tag, Users, Store, HeartPulse, BarChart3, ScatterChart, Package, Factory, SearchCheck, Building2, ShieldCheck, Truck, Grid3x3, Image, Network, Warehouse, CalendarDays, Puzzle, Scale, Timer, BookOpen, Database, Table2, Columns2, MapPinned, Trophy, Sun, Salad, type LucideIcon } from 'lucide-react'
+import { MessageSquareText, Images, Columns3, LayoutDashboard, BadgeCheck, Store as StoreIcon, LayoutGrid, Soup, ListOrdered, Shapes, Tag, Users, Store, HeartPulse, BarChart3, ScatterChart, Package, Factory, SearchCheck, Building2, ShieldCheck, Truck, Grid3x3, Image, Network, Warehouse, CalendarDays, Puzzle, Scale, Timer, BookOpen, Database, Table2, Columns2, MapPinned, Trophy, Sun, Salad, Sparkles, type LucideIcon } from 'lucide-react'
 
 const Misc = () => import('@/views/Misc')
 const Charts = () => import('@/views/Charts')
@@ -16,6 +16,7 @@ export const TAB_GROUPS: TabGroup[] = [
     t('vergleich', 'Vergleichstabelle', Columns2, lazy(() => import('@/views/VergleichTabelle'))),
     t('meine-shops', 'Meine Shops & Ranking', MapPinned, lazy(() => import('@/views/MeineShops'))),
     t('plan', 'Ernährungsplan', Salad, lazy(() => import('@/views/Ernaehrungsplan'))),
+    t('ki', 'KI-Ansicht', Sparkles, lazy(() => import('@/app/genuiHost'))),
     t('hofer-top30', 'Hofer Top 30', Trophy, lazy(() => import('@/views/HoferTop30'))),
   ] },
   { label: 'Explorer · Entdecken', tabs: [
@@ -59,4 +60,6 @@ export const TAB_GROUPS: TabGroup[] = [
   { label: 'Explorer · Info', tabs: [t('methodik', 'Methodik & Quellen', BookOpen, lazy(() => Misc().then(m => ({ default: m.Methodik })))), t('abdeckung', 'Datenabdeckung', Database, lazy(() => import('@/views/Abdeckung')))] },
 ]
 export const ALL_TABS = TAB_GROUPS.flatMap(g => g.tabs.map(tab => ({ ...tab, group: g.label })))
-export const findTab = (key: string) => ALL_TABS.find(x => x.key === key) ?? ALL_TABS[0]
+/** Aliase für API/GenUI-View-IDs */
+export const TAB_ALIAS: Record<string, string> = { ranking: 'meine-shops', start: 'heute', filter: 'tabelle' }
+export const findTab = (key: string) => ALL_TABS.find(x => x.key === (TAB_ALIAS[key] ?? key)) ?? ALL_TABS[0]

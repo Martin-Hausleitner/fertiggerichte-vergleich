@@ -1,15 +1,22 @@
-import type { Row } from '@/lib'
+/** Gemeinsame Fertiggericht-Regeln für App UND GenUI (src/app/genui/query.ts importiert von hier).
+ *  Strukturell typisiert, damit sowohl Row als auch genui RowLike passen. */
+export type MealRow = {
+  name: string; store: string; stage: string; price: number | null; size: number | null; score: number | null; kcal: number | null; p100: number | null
+  portion?: number | null; fat?: number | null; pack?: string; gang?: string; dry?: boolean; nonfood?: boolean; incomplete?: boolean; psrc?: string | null
+  portion_g?: number | null; kcal_meal?: number | null; meal_class?: string | null; price_status?: string | null; shop_status?: string | null
+}
+type Row = MealRow
 // Client-seitige Schutzregeln (Sense-Check 2026-10-13). Ersetzt nicht die Korrektur in score.py (HCB).
 const NONMEAL = /^\S+ lasagne$|lasagne (hartweizen)?$|lasagneblätter|lasagne ?teig|suppe-(abc|gerstl|sternderl|hörnchen)|suppennudeln|suppeneinlage|backerbsen|suppenpulver|pesto|\bsugo\b|topfencreme|mousse|pudding|cheesecake|strudel|dessert|kaiserschmarrn|milchreis|götterspeise|jogurella|joghurt|grie(ß|ss)brei|panna cotta|tiramisu|kompott|\bcreme\b/i
 const isFrozen = (r: Row) => /tiefk|\bTK\b/i.test(r.pack ?? '')
 /** Trockenware: Server-Flag ODER ≥ 300 kcal/100 g, wenig Fett und nicht tiefgekühlt. */
 export const isDryish = (r: Row) => r.dry || (r.kcal != null && r.kcal >= 300 && (r.fat == null || r.fat < 10) && !isFrozen(r))
-export const isNonMeal = (r: Row) => (r as any).gang === 'dessert' || NONMEAL.test(r.name)
+export const isNonMeal = (r: Row) => r.gang === 'dessert' || NONMEAL.test(r.name)
 /** Fertiggericht = Stufe meal/stew, nicht Trockenware, keine Nicht-Mahlzeit, kein Nonfood. */
 export const isReadyMeal = (r: Row) => {
   if (r.nonfood || isNonMeal(r)) return false
   // Score v2 (HCB): meal_class hat Vorrang, client-Guard bleibt als Sicherheitsnetz
-  if (r.meal_class && r.meal_class !== 'unknown') return ['meal', 'light_meal', 'multi_portion'].includes(r.meal_class) && !r.dry
+  if (r.meal_class && r.meal_class !== 'unknown') return ['meal', 'light_meal', 'multi_portion'].includes(r.meal_class as string) && !r.dry
   return (r.stage === 'meal' || r.stage === 'stew') && !isDryish(r)
 }
 

@@ -1,7 +1,7 @@
 /**
  * Pure product query engine for GenUI ProductQuery – works on data.json rows.
  * Shared by the browser renderer and the MCP server (no React, no '@/' imports).
- * Ready-meal guard mirrors src/app/meal.ts (sense-check 2026-10-13); keep in sync.
+ * Ready-meal rules are imported from src/app/meal.ts (single source).
  */
 import type { ProductQuery } from './schema'
 
@@ -11,20 +11,9 @@ export type RowLike = {
   fat?: number | null; score: number | null; ns?: string | null; nova?: number | null; stage: string; vegan?: boolean; bio?: boolean
   dry?: boolean; nonfood?: boolean; incomplete?: boolean; pack?: string; psrc?: string | null; gang?: string; cprot?: string[]
 }
-const NONMEAL = /^\S+ lasagne$|lasagne (hartweizen)?$|lasagneblätter|lasagne ?teig|suppe-(abc|gerstl|sternderl|hörnchen)|suppennudeln|suppeneinlage|backerbsen|suppenpulver|pesto|\bsugo\b|topfencreme|mousse|pudding|cheesecake|strudel|dessert|kaiserschmarrn|milchreis/i
-const frozen = (r: RowLike) => /tiefk|\bTK\b/i.test(r.pack ?? '')
-export const isDryish = (r: RowLike) => !!r.dry || (r.kcal != null && r.kcal >= 300 && (r.fat == null || r.fat < 10) && !frozen(r))
-export const isReadyMeal = (r: RowLike) => !r.nonfood && (r.stage === 'meal' || r.stage === 'stew') && !isDryish(r) && r.gang !== 'dessert' && !NONMEAL.test(r.name)
-export function portionG(r: RowLike): number | null {
-  const m = r.name.match(/(\d)\s*(portionen|port\.|er\b|x\b)/i)
-  if (m && r.size) return r.size / +m[1]
-  if (r.portion != null && r.portion !== 100 && r.portion > 0) return r.size ? Math.min(r.portion, r.size) : r.portion
-  return null
-}
-export const pricePerPortion = (r: RowLike) => { const p = portionG(r); return r.price != null && r.size && p ? r.price * p / r.size : null }
-export const protPerPortion = (r: RowLike) => { const p = portionG(r); return r.p100 != null && p ? r.p100 * p / 100 : null }
-export const kcalPerPortion = (r: RowLike) => { const p = portionG(r); return r.kcal != null && p ? r.kcal * p / 100 : null }
-export const isRankable = (r: RowLike) => r.score != null && !r.incomplete && r.price != null && r.price > 0 && !!r.store && !r.store.startsWith('unbekannt') && pricePerPortion(r) != null && (kcalPerPortion(r) ?? 0) >= 250
+// Fertiggericht-Regeln: EINE Quelle → src/app/meal.ts (dedupliziert)
+import { isDryish, isReadyMeal, portionG, pricePerPortion, protPerPortion, kcalPerPortion, isRankable } from '../meal.js'
+export { isDryish, isReadyMeal, portionG, pricePerPortion, protPerPortion, kcalPerPortion, isRankable }
 
 /** Configurable value score (no hard-coded 50/50): w·score + (1-w)·min(protein per €, cap)/cap·100 */
 export type ValueCfg = { healthWeight?: number; protPerEurCap?: number }
