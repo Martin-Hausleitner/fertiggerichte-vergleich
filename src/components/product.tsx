@@ -95,21 +95,21 @@ export function HealthBadge({s}:{s:number|null}){if(s==null)return null;const c=
 export function ProductCard({r}:{r:Row}){
   const {open,compare}=useApp()
   const st=STAGES.find(x=>x[0]===r.stage)
-  return <RowHover r={r}><Card onClick={()=>open(r.id)} className={cn('group overflow-hidden flex flex-col cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:border-brand/40',compare.includes(r.id)&&'ring-2 ring-brand')}>
-    <div className="relative bg-gradient-to-b from-white to-slate-50 dark:from-slate-100 dark:to-slate-200 h-48 flex items-center justify-center">
-      <Img src={r.img} className="h-44 w-full object-contain p-2 transition-transform duration-300 group-hover:scale-[1.03] bg-transparent"/>
-      <div className="absolute left-2 top-2 rounded-xl bg-white/95 ring-1 ring-black/5 shadow-md px-2 py-1.5 backdrop-blur"><StoreLogo store={r.store} size={34}/></div>
-      <div className="absolute right-2 top-2 flex flex-col items-end gap-1"><PliBadge v={r.pli}/><HealthBadge s={r.score}/></div>
-      {st&&<div className="absolute left-2 bottom-2"><Badge className="bg-white/95 text-slate-800 shadow-sm text-xs">{st[1]} {st[2]}</Badge></div>}
-      <div className="absolute right-1 bottom-1 rounded-lg bg-white/90 shadow-sm"><Actions r={r}/></div>
+  return <RowHover r={r}><Card onClick={()=>open(r.id)} className={cn('group overflow-hidden flex flex-col cursor-pointer transition-colors hover:bg-secondary/50',compare.includes(r.id)&&'ring-2 ring-brand')}>
+    <div className="relative m-2 mb-0 rounded-xl bg-white aspect-[4/3] flex items-center justify-center">
+      <Img src={r.img} className="h-full w-full object-contain p-4 transition-transform duration-300 group-hover:scale-[1.03] bg-transparent"/>
+      <div className="absolute left-2 top-2 rounded-full bg-white ring-1 ring-black/5 px-2 py-1"><StoreLogo store={r.store} size={22}/></div>
+      <div className="absolute right-2 top-2"><HealthBadge s={r.score}/></div>
+      {st&&<div className="absolute left-2 bottom-2"><Badge className="bg-white text-neutral-800 ring-1 ring-black/5 text-xs">{st[1]} {st[2]}</Badge></div>}
+      <div className="absolute right-1 bottom-1 rounded-full bg-white ring-1 ring-black/5"><Actions r={r}/></div>
     </div>
-    <CardHeader className="pt-3"><div className="flex items-center gap-2 min-w-0"><span className="inline-flex items-center rounded-lg bg-white ring-1 ring-slate-200 px-1.5 py-1 dark:ring-slate-700"><BrandLogo r={r} size={30}/></span><span className="text-xs font-medium text-slate-500 truncate">{r.brandN}</span><span className="ml-auto text-[11px] text-slate-400 whitespace-nowrap"><InfoTip k="pack">{packEmo(r.pack)}</InfoTip></span></div>
-      <CardTitle className="text-[15px] line-clamp-2 min-h-[2.5em]">{r.name}</CardTitle></CardHeader>
+    <CardHeader className="pt-3"><div className="flex items-center gap-2 min-w-0"><span className="inline-flex items-center rounded-md bg-white px-1 py-0.5"><BrandLogo r={r} size={20}/></span><span className="text-[13px] text-muted-foreground truncate">{r.brandN}</span><span className="ml-auto text-[11px] text-slate-400 whitespace-nowrap"><InfoTip k="pack">{packEmo(r.pack)}</InfoTip></span></div>
+      <CardTitle className="text-[15px] font-bold line-clamp-2 min-h-[2.5em]">{r.name}</CardTitle></CardHeader>
     <CardContent className="space-y-3 flex-1">
       <div className="flex items-end justify-between gap-2"><div className="text-2xl"><Price r={r}/></div>
-        <div className="rounded-xl bg-emerald-600 text-white px-3 py-1 text-center shadow-sm"><div className="text-lg font-extrabold leading-tight tabular-nums">{r.eur10p==null?'–':fmt(r.eur10p,2)+' €'}</div><div className="text-[10px] opacity-90 flex justify-center"><InfoTip k="eur10p">pro 10 g Protein</InfoTip></div></div></div>
+        <div className="text-right"><div className="text-lg font-extrabold leading-tight tabular-nums text-brand dark:text-emerald-300">{r.eur10p==null?'–':fmt(r.eur10p,2)+' €'}</div><div className="text-[11px] text-muted-foreground flex justify-end"><InfoTip k="eur10p">pro 10 g Protein</InfoTip></div></div></div>
       <ScoreBar r={r}/>
-      <Tabs defaultValue="preis" onClick={e=>e.stopPropagation()}><TabsList><TabsTrigger value="preis">💶 Preis</TabsTrigger><TabsTrigger value="naehr">🥩 Nährwerte</TabsTrigger><TabsTrigger value="herk">🏭 Herkunft</TabsTrigger></TabsList>
+      <Tabs defaultValue="preis" onClick={e=>e.stopPropagation()}><TabsList><TabsTrigger value="preis">Preis</TabsTrigger><TabsTrigger value="naehr">Nährwerte</TabsTrigger><TabsTrigger value="herk">Herkunft</TabsTrigger></TabsList>
         <TabsContent value="preis"><PriceKpis r={r}/></TabsContent>
         <TabsContent value="naehr" className="space-y-1.5"><Chips r={r}/><CatChips r={r}/>{r.priceOnly&&<span className="text-[11px] text-slate-500">nur Preis, keine Nährwerte</span>}</TabsContent>
         <TabsContent value="herk" className="space-y-1.5 text-xs">{(r.p2?.producer||r.herst)?<ProdLine r={r}/>:<span className="text-slate-400">Hersteller unbekannt</span>}{r.origin&&<div>🌍 {r.origin}</div>}</TabsContent></Tabs>
@@ -122,6 +122,6 @@ export function Gallery({rows,step=48}:{rows:Row[];step?:number}){
   const [n,setN]=useState(step)
   if(!rows.length) return <Card className="p-8 text-center text-slate-500">Keine Produkte</Card>
   return <div><div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 min-[1900px]:grid-cols-5 min-[2400px]:grid-cols-6">{rows.slice(0,n).map(r=><ProductCard key={r.id} r={r}/>)}</div>
-    {n<rows.length&&<div className="text-center mt-4"><button className="rounded-lg border px-4 py-2 text-sm dark:border-slate-700" onClick={()=>setN(n+step)}>Mehr laden ({rows.length-n} weitere)</button></div>}</div>
+    {n<rows.length&&<div className="text-center mt-4"><button className="rounded-full border px-5 h-10 text-sm font-semibold hover:bg-secondary" onClick={()=>setN(n+step)}>Mehr laden ({rows.length-n} weitere)</button></div>}</div>
 }
 export const Img=ZoomImage
