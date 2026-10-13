@@ -2,7 +2,8 @@ import { useState } from 'react'
 import type React from 'react'
 import { createPortal } from 'react-dom'
 import { Beef, Flame, Droplets, Candy, Wheat, Leaf, Sprout, MapPin, UtensilsCrossed, Heart, GitCompare, AlertTriangle } from 'lucide-react'
-import { Badge, Card } from './ui'
+import { Badge, Card, CardHeader, CardTitle, CardContent, CardFooter } from './ui'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from './ui/tabs'
 import { fmt, scoreColor, useApp, cn, fmtDist, STORE_LOGO, type Row } from '../lib'
 import { Navigation } from 'lucide-react'
 import * as HC from '@radix-ui/react-hover-card'
@@ -90,16 +91,31 @@ export function Actions({r}:{r:Row}){
     <button onClick={e=>{e.stopPropagation();toggleCompare(r.id)}} className={cn('rounded-md p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800',c?'text-brand bg-brand/10':'text-slate-400')} title="Vergleichen" aria-label="Vergleichen"><GitCompare size={16}/></button>
   </div>
 }
+export function HealthBadge({s}:{s:number|null}){if(s==null)return null;const c=s>=55?'bg-emerald-600':s>=40?'bg-lime-600':s>=25?'bg-amber-500':'bg-red-600';return <InfoTip k="score"><Badge className={c+' text-white text-xs px-2.5 py-1 shadow-sm'}>💚 {Math.round(s)}</Badge></InfoTip>}
 export function ProductCard({r}:{r:Row}){
   const {open,compare}=useApp()
-  return <RowHover r={r}><Card onClick={()=>open(r.id)} className={cn('p-3 flex flex-col gap-2 cursor-pointer hover:shadow-md transition',compare.includes(r.id)&&'ring-2 ring-brand')}>
-    <div className="flex gap-3"><Img src={r.img} className="h-20 w-20 shrink-0"/><div className="min-w-0 flex-1">
-      <div className="font-semibold leading-tight line-clamp-2">{r.name}</div><div className="text-xs text-slate-500 truncate">{r.brand} · {r.store}</div>
-      <div className="text-[11px] text-slate-500 truncate"><InfoTip k="pack">{packEmo(r.pack)} {r.pack}</InfoTip></div><div className="mt-1 flex flex-wrap items-center gap-1.5 text-base"><Price r={r}/><PliBadge v={r.pli}/></div><div className="mt-1"><StageBadge r={r}/></div></div><div className="flex flex-col items-end gap-1.5"><StoreLogo store={r.store} size={48}/><BrandLogo r={r} size={32}/><Actions r={r}/></div></div>
-    <div className="flex items-stretch gap-2"><div className="rounded-xl bg-emerald-600 text-white px-3 py-1.5 text-center shrink-0"><div className="text-lg font-bold leading-tight tabular-nums">{r.eur10p==null?'–':fmt(r.eur10p,2)+' €'}</div><div className="text-[10px] opacity-90 flex justify-center"><InfoTip k="eur10p">pro 10 g Protein</InfoTip></div></div>
-      <div className="flex-1 rounded-xl border px-2 py-1 dark:border-slate-700"><div className="text-[10px] text-slate-500"><InfoTip k="score">💚 Health-Score</InfoTip></div><ScoreBar r={r}/></div></div>
-    <PriceKpis r={r}/><Chips r={r} compact/><CatChips r={r}/><ProdLine r={r}/>{r.priceOnly&&<span className="text-[11px] text-slate-500">nur Preis, keine Nährwerte</span>}<NearestBox store={r.store}/>
-    {r.flags?.some(f=>f.startsWith('Packgröße')||f.startsWith('Großpackung'))&&<div className="text-[11px] text-amber-700 flex gap-1"><AlertTriangle size={12}/>{r.flags.find(f=>f.startsWith('Packgröße')||f.startsWith('Großpackung'))}</div>}
+  const st=STAGES.find(x=>x[0]===r.stage)
+  return <RowHover r={r}><Card onClick={()=>open(r.id)} className={cn('group overflow-hidden flex flex-col cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:border-brand/40',compare.includes(r.id)&&'ring-2 ring-brand')}>
+    <div className="relative bg-gradient-to-b from-white to-slate-50 dark:from-slate-100 dark:to-slate-200 h-48 flex items-center justify-center">
+      <Img src={r.img} className="h-44 w-full object-contain p-2 transition-transform duration-300 group-hover:scale-[1.03] bg-transparent"/>
+      <div className="absolute left-2 top-2 rounded-xl bg-white/95 shadow-md px-1.5 py-1"><StoreLogo store={r.store} size={44}/></div>
+      <div className="absolute right-2 top-2 flex flex-col items-end gap-1"><PliBadge v={r.pli}/><HealthBadge s={r.score}/></div>
+      {st&&<div className="absolute left-2 bottom-2"><Badge className="bg-white/95 text-slate-800 shadow-sm text-xs">{st[1]} {st[2]}</Badge></div>}
+      <div className="absolute right-1 bottom-1 rounded-lg bg-white/90 shadow-sm"><Actions r={r}/></div>
+    </div>
+    <CardHeader className="pt-3"><div className="flex items-center gap-2 min-w-0"><BrandLogo r={r} size={36}/><span className="text-xs font-medium text-slate-500 truncate">{r.brandN}</span><span className="ml-auto text-[11px] text-slate-400 whitespace-nowrap"><InfoTip k="pack">{packEmo(r.pack)}</InfoTip></span></div>
+      <CardTitle className="text-[15px] line-clamp-2 min-h-[2.5em]">{r.name}</CardTitle></CardHeader>
+    <CardContent className="space-y-3 flex-1">
+      <div className="flex items-end justify-between gap-2"><div className="text-2xl"><Price r={r}/></div>
+        <div className="rounded-xl bg-emerald-600 text-white px-3 py-1 text-center shadow-sm"><div className="text-lg font-extrabold leading-tight tabular-nums">{r.eur10p==null?'–':fmt(r.eur10p,2)+' €'}</div><div className="text-[10px] opacity-90 flex justify-center"><InfoTip k="eur10p">pro 10 g Protein</InfoTip></div></div></div>
+      <ScoreBar r={r}/>
+      <Tabs defaultValue="preis" onClick={e=>e.stopPropagation()}><TabsList><TabsTrigger value="preis">💶 Preis</TabsTrigger><TabsTrigger value="naehr">🥩 Nährwerte</TabsTrigger><TabsTrigger value="herk">🏭 Herkunft</TabsTrigger></TabsList>
+        <TabsContent value="preis"><PriceKpis r={r}/></TabsContent>
+        <TabsContent value="naehr" className="space-y-1.5"><Chips r={r}/><CatChips r={r}/>{r.priceOnly&&<span className="text-[11px] text-slate-500">nur Preis, keine Nährwerte</span>}</TabsContent>
+        <TabsContent value="herk" className="space-y-1.5 text-xs">{(r.p2?.producer||r.herst)?<ProdLine r={r}/>:<span className="text-slate-400">Hersteller unbekannt</span>}{r.origin&&<div>🌍 {r.origin}</div>}</TabsContent></Tabs>
+      {r.flags?.some(f=>/Packgröße|Großpackung|Kilopreis|€\/kg/.test(f))&&<div className="text-[11px] text-amber-700 flex gap-1"><AlertTriangle size={12}/>{r.flags.find(f=>/Packgröße|Großpackung|Kilopreis|€\/kg/.test(f))}</div>}
+    </CardContent>
+    <CardFooter className="p-2"><div className="w-full"><NearestBox store={r.store}/></div></CardFooter>
   </Card></RowHover>
 }
 export function Gallery({rows,step=48}:{rows:Row[];step?:number}){

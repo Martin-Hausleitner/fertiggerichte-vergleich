@@ -12,3 +12,7 @@ export function Sheet({open,onClose,side='right',title,children}:{open:boolean;o
       <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-4 py-3"><div className="font-semibold">{title}</div><button onClick={onClose} className="rounded-md px-2 py-1 text-xl leading-none hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Schließen">×</button></div>
       <div className="overflow-y-auto p-4 flex-1">{children}</div></div></div>
 }
+export const CardHeader=({className,...p}:React.HTMLAttributes<HTMLDivElement>)=><div className={cn('flex flex-col gap-1 p-4 pb-2',className)} {...p}/>
+export const CardTitle=({className,...p}:React.HTMLAttributes<HTMLHeadingElement>)=><h3 className={cn('font-semibold leading-tight tracking-tight',className)} {...p}/>
+export const CardContent=({className,...p}:React.HTMLAttributes<HTMLDivElement>)=><div className={cn('px-4 pb-3',className)} {...p}/>
+export const CardFooter=({className,...p}:React.HTMLAttributes<HTMLDivElement>)=><div className={cn('flex items-center border-t border-slate-100 dark:border-slate-800 px-4 py-2.5',className)} {...p}/>

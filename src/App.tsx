@@ -23,8 +23,9 @@ const Analyse=lazy(()=>import('./views/Analyse'))
 const Packaging=lazy(()=>import('./views/Packaging'))
 const ProducerPages=lazy(()=>import('./views/Producers'))
 const Matrix=lazy(()=>import('./views/Matrix'))
+const Logos=lazy(()=>import('./views/Logos'))
 const Methodik=lazy(()=>import('./views/Misc').then(m=>({default:m.Methodik})))
-const TABS:[string,string,any][]=[['alle','Alle Gerichte',Explorer],['top','Top-Listen',Top],['kategorien','Kategorien',Categories],['marken','Marken',Brands],['filialen','Filialen in der Nähe',Stores],['analyse','Analyse',Analyse],['scatter','Preis vs. Protein',Scatter],['pack','Verpackungen',Packaging],['hersteller-seiten','Hersteller',ProducerPages],['matrix','Marken-Matrix',Matrix],['hersteller','Läden & Werke',Producers],['planer','Wochenplaner',Planner],['kombi','Kombi-Ideen',Kombi],['ftg','Fit to Go vs. Supermarkt',Ftg],['multipot','Multipot-Pro Garzeiten',Multipot],['methodik','Methodik & Quellen',Methodik]]
+const TABS:[string,string,any][]=[['alle','Alle Gerichte',Explorer],['top','Top-Listen',Top],['kategorien','Kategorien',Categories],['marken','Marken',Brands],['filialen','Filialen in der Nähe',Stores],['analyse','Analyse',Analyse],['scatter','Preis vs. Protein',Scatter],['pack','Verpackungen',Packaging],['hersteller-seiten','Hersteller',ProducerPages],['matrix','Marken-Matrix',Matrix],['logos','Logos',Logos],['hersteller','Läden & Werke',Producers],['planer','Wochenplaner',Planner],['kombi','Kombi-Ideen',Kombi],['ftg','Fit to Go vs. Supermarkt',Ftg],['multipot','Multipot-Pro Garzeiten',Multipot],['methodik','Methodik & Quellen',Methodik]]
 const Loading=()=><Card className="p-10 text-center text-slate-500 animate-pulse">Lädt…</Card>
 export default function App(){
   const [D,setD]=useState<Data|null>(null)
