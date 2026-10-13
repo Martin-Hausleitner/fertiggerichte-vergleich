@@ -30,7 +30,7 @@ const COLS: C[] = [
 ]
 type SavedView = { f: F; cols: string[]; sort: SortModelItem[]; so?: string }
 const SORTS: [string, string, (r: any) => number | null, 1 | -1][] = [['value', 'Preis-Leistung (je Portion)', r => r.value, -1], ['score', 'Health-Score', r => r.score, -1], ['pPor', 'Preis pro Portion', r => r.pPor, 1], ['price', 'Preis', r => r.price, 1], ['p100g', 'Preis pro 100 g', r => r.p100g, 1]]
-export const availOf = (store: string) => ONLINE.includes(store) ? 'Online / Lieferung' : 'Kette führt es'
+export const availOf = (store: string) => store === 'Gurkerl' ? 'nicht lieferbar nach Linz' : ONLINE.includes(store) ? 'Online / Lieferung' : 'Kette führt es'
 const veg = (r: Row) => r.vegan || r.cprot?.includes('vegan') ? 'vegan' : r.cprot?.includes('vegetarisch') ? 'vegetarisch' : ''
 
 export default function Tabelle() {
@@ -51,7 +51,7 @@ export default function Tabelle() {
   const colDefs = useMemo<ColDef[]>(() => [
     { headerName: '', width: 44, pinned: 'left', sortable: false, cellRenderer: (p: any) => <input type="checkbox" aria-label="vergleichen" checked={compare.includes(p.data.id)} onChange={() => setCompare(compare.includes(p.data.id) ? compare.filter(x => x !== p.data.id) : [...compare, p.data.id])} /> },
     ...COLS.map(c => ({ field: c.k, headerName: c.h, width: c.w, hide: !cols.includes(c.k), pinned: c.k === 'name' && innerWidth > 640 ? 'left' as const : undefined, type: c.num ? 'numericColumn' : undefined,
-      valueFormatter: c.k === 'dist' ? (p: any) => p.value == null ? '–' : `${walkMin(p.value)} min · ${fmtDist(p.value)}` : c.d != null ? (p: any) => fmt(p.value, c.d) : undefined,
+      valueFormatter: c.k === 'dist' ? (p: any) => p.value == null ? '–' : `~${walkMin(p.value)} min · ${fmtDist(p.value)}` : c.d != null ? (p: any) => fmt(p.value, c.d) : undefined,
       cellRenderer: c.k === 'store' ? (p: any) => <span className="flex items-center gap-1.5"><StoreLogo store={p.value} size={16} />{p.value}</span>
         : c.k === 'score' ? (p: any) => p.value == null ? '–' : <b style={{ color: scoreColor(p.value) }}>{fmt(p.value, 0)}</b>
         : c.k === 'name' ? (p: any) => <button className="truncate text-left hover:underline" onClick={() => open(p.data.id)}>{p.value}</button> : undefined,

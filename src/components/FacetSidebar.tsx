@@ -59,7 +59,7 @@ export function FacetSidebar({ base, f, set, ctx }: { base: Row[]; f: F; set: (f
   return <div className="text-sm">
     <Group title="Gehzeit zur nächsten Filiale" n={f.dist != null ? 1 : 0} open>
       <div className="space-y-0.5">{[null, ...WALK].map(w => { const m = w == null ? null : Math.round(w * 80 / 1.3); const act = (f.dist ?? null) === m
-        return <label key={w ?? 0} className="flex cursor-pointer items-center gap-2 rounded px-1 py-1 hover:bg-muted"><input type="radio" name="walk" className="accent-emerald-700" checked={act} onChange={() => set({ ...f, dist: m })} /><span className="flex-1">{w == null ? 'egal' : `≤ ${w} min zu Fuß`}</span>{m != null && <span className="text-xs text-muted-foreground">({distN(m)})</span>}</label> })}</div>
+        return <label key={w ?? 0} className="flex cursor-pointer items-center gap-2 rounded px-1 py-1 hover:bg-muted"><input type="radio" name="walk" className="accent-emerald-700" checked={act} onChange={() => set({ ...f, dist: m })} /><span className="flex-1">{w == null ? 'egal' : `≤ ~${w} min zu Fuß`}</span>{m != null && <span className="text-xs text-muted-foreground">({distN(m)})</span>}</label> })}</div>
       <p className="mt-1 text-[11px] text-muted-foreground">Geschätzt aus Luftlinie ab deiner Adresse (×1,3, 4,8 km/h). Lieferdienste ohne Filiale fallen dabei heraus.</p></Group>
     {FACETS.map(fc => { const sel = (f[fc.k] as string[] | undefined) ?? []; const c = counts[fc.k] as Record<string, number>
       const all = new Set([...Object.keys(c), ...sel]); const vals = fc.order ? fc.order.filter(x => all.has(x)) : [...all].sort((a, b) => (c[b] ?? 0) - (c[a] ?? 0))
@@ -76,7 +76,7 @@ export function ActiveChips({ f, set }: { f: F; set: (f: F) => void }) {
   FACETS.forEach(fc => ((f[fc.k] as string[] | undefined) ?? []).forEach(v => chips.push([`${fc.l}: ${fc.k === 'gang' ? GANG.find(g => g[0] === v)?.[2] ?? v : v}`, () => set({ ...f, [fc.k]: (f[fc.k] as string[]).filter(x => x !== v) })])))
   ;(['stage', 'herst', 'konz', 'land', 'bl'] as const).forEach(k => (f[k] ?? []).forEach(v => chips.push([v, () => set({ ...f, [k]: f[k]!.filter(x => x !== v) })])))
   Object.entries(f.r || {}).forEach(([k, [lo, hi]]) => { if (lo != null || hi != null) { const L = RANGES.find(x => x[0] === k); chips.push([`${L?.[1] ?? k}: ${lo ?? '…'}–${hi ?? '…'} ${L?.[2] ?? ''}`, () => { const r = { ...f.r }; delete r[k]; set({ ...f, r }) }]) } })
-  if (f.dist != null) chips.push([`≤ ${walkMin(f.dist)} min zu Fuß`, () => set({ ...f, dist: null })])
+  if (f.dist != null) chips.push([`≤ ~${walkMin(f.dist)} min zu Fuß`, () => set({ ...f, dist: null })])
   if (!chips.length) return null
   return <div className="flex flex-wrap items-center gap-1.5">{chips.map(([l, rm], i) => <span key={i} className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-primary/10 px-2.5 py-0.5 text-xs">{l}<button onClick={rm} aria-label={`${l} entfernen`}><X className="size-3" /></button></span>)}
     <button onClick={() => set({})} className="text-xs text-muted-foreground underline">alle entfernen</button></div>

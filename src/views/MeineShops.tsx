@@ -6,7 +6,7 @@ import { Card, Badge, Button, Select } from '@/components/ui'
 import { StoreLogo, Img, ScoreBar } from '@/components/product'
 import { useApp, fmt, fmtDist, cn, STORE_LOGO, scoreColor, type Row } from '@/lib'
 import { toggleMyShop, fmtR, setLoc, RADII } from '@/app/location'
-import { useNearShops, ONLINE, onlineId } from '@/app/shops'
+import { useNearShops, ONLINE, onlineId, typeLabel } from '@/app/shops'
 import { isReadyMeal, isRankable, pricePerPortion } from '@/app/meal'
 
 const COL: Record<string, string> = { Billa: '#facc15', Spar: '#16a34a', Hofer: '#1d4ed8', Lidl: '#0050aa', Penny: '#dc2626', dm: '#e11d48' }
@@ -26,11 +26,11 @@ function ShopMap() {
     L.circle([loc.lat, loc.lon], { radius: loc.radius, color: '#059669', weight: 1, fillOpacity: 0.06 }).addTo(g)
     L.marker([loc.lat, loc.lon], { icon: L.divIcon({ className: '', html: '<div style="font-size:24px;line-height:24px">📍</div>', iconSize: [24, 24], iconAnchor: [12, 22] }) }).addTo(g).bindPopup(`<b>Deine Adresse</b><br>${loc.addr}`)
     inR.forEach(s => {
-      const on = my.includes(s.id), logo = STORE_LOGO[s.chain]
-      const html = `<div style="background:#fff;border:${on ? 3 : 2}px solid ${on ? '#059669' : COL[s.chain] ?? '#64748b'};border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.3);width:46px;height:26px;display:flex;align-items:center;justify-content:center;position:relative">${logo ? `<img src="${logo}" style="width:38px;height:16px;object-fit:contain"/>` : `<b style="font-size:9px">${s.chain}</b>`}${on ? '<span style="position:absolute;top:-9px;right:-9px;font-size:14px">⭐</span>' : ''}</div>`
+      const on = my.includes(s.id), logo = s.hasProducts ? STORE_LOGO[s.chain] : undefined
+      const html = `<div style="background:#fff;border:${on ? 3 : 2}px solid ${on ? '#059669' : COL[s.chain] ?? '#64748b'};border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.3);width:46px;height:26px;display:flex;align-items:center;justify-content:center;position:relative">${logo ? `<img src="${logo}" style="width:38px;height:16px;object-fit:contain"/>` : `<b style="font-size:8px;overflow:hidden;white-space:nowrap;max-width:42px">${s.name.slice(0, 9)}</b>`}${on ? '<span style="position:absolute;top:-9px;right:-9px;font-size:14px">⭐</span>' : ''}</div>`
       const mk = L.marker([s.lat, s.lon], { icon: L.divIcon({ className: '', html, iconSize: [46, 26], iconAnchor: [23, 13] }) }).addTo(g)
       const div = document.createElement('div')
-      div.innerHTML = `<b>${s.name}</b><br>${s.addr ?? ''}<br>${fmtDist(s.d)} Luftlinie${s.hours ? `<br><small>${s.hours}</small>` : ''}<br>`
+      div.innerHTML = `<b>${s.name}</b><br>${s.addr ?? ''}<br>${s.hasProducts ? '' : typeLabel(s.type) + ' · keine Produktdaten<br>'}~${s.walkMin} min zu Fuß (${fmtDist(s.d)})${s.hours ? `<br><small>${s.hours}</small>` : ''}<br>`
       const b = document.createElement('button'); b.textContent = on ? '★ aus Meine Shops entfernen' : '☆ zu Meine Shops'; b.style.cssText = 'margin-top:4px;color:#047857;font-weight:600'
       b.onclick = () => { toggleMyShop(s.id); m.closePopup() }; div.appendChild(b); mk.bindPopup(div)
     })
@@ -41,7 +41,7 @@ function ShopMap() {
 
 export default function MeineShops() {
   const { R, open } = useApp()
-  const { inR, all, my, myChains, loc } = useNearShops()
+  const { inR, all, my, myChains, loc, deliversHere } = useNearShops()
   const [allFood, setAllFood] = useState(false), [minScore, setMinScore] = useState(0), [gang, setGang] = useState('haupt'), [chain, setChain] = useState('')
   const counts = useMemo(() => { const c: Record<string, number> = {}; R.forEach(r => { if (r.score != null) c[r.store] = (c[r.store] ?? 0) + 1 }); return c }, [R])
   const ranking = useMemo(() => R.filter(r => (allFood ? !r.nonfood : isReadyMeal(r)) && isRankable(r) && myChains.has(r.store) && (!gang || (r as any).gang === gang) && (r.score ?? 0) >= minScore && (!chain || r.store === chain))
@@ -61,11 +61,11 @@ export default function MeineShops() {
         <div className="flex-1 overflow-y-auto">
           {inR.length === 0 && <p className="p-4 text-sm text-muted-foreground">Keine Filialen im Umkreis. Vergrößere den Umkreis.{outside > 0 && ` (${outside} bekannte Filialen liegen weiter weg.)`}</p>}
           {inR.map(s => { const on = my.includes(s.id); return <button key={s.id} onClick={() => toggleMyShop(s.id)} aria-pressed={on} className={cn('flex w-full items-center gap-2 border-b px-3 py-2 text-left text-sm hover:bg-muted/60', on && 'bg-emerald-50 dark:bg-emerald-950/40')}>
-            <StoreLogo store={s.chain} size={24} /><span className="min-w-0 flex-1"><span className="block truncate font-medium">{s.name}</span><span className="block truncate text-xs text-muted-foreground">{s.addr} · {fmtDist(s.d)}</span></span>
+            <StoreLogo store={s.chain} size={24} /><span className="min-w-0 flex-1"><span className="block truncate font-medium">{s.name}</span><span className="block truncate text-xs text-muted-foreground">{s.type !== 'chain' && `${typeLabel(s.type)} · `}{s.addr ? `${s.addr} · ` : ''}~{s.walkMin} min ({fmtDist(s.d)}){!s.hasProducts && ' · keine Produktdaten'}</span></span>
             <Star className={cn('size-5 shrink-0', on ? 'fill-amber-400 text-amber-500' : 'text-muted-foreground')} /></button> })}
           <div className="border-b bg-muted/40 px-3 py-1.5 text-xs font-semibold"><Truck className="mr-1 inline size-3.5" />Online & Lieferdienste</div>
           {ONLINE.map(p => { const id = onlineId(p), on = my.includes(id); return <button key={p} onClick={() => toggleMyShop(id)} aria-pressed={on} className={cn('flex w-full items-center gap-2 border-b px-3 py-2 text-left text-sm hover:bg-muted/60', on && 'bg-emerald-50 dark:bg-emerald-950/40')}>
-            <StoreLogo store={p} size={24} /><span className="flex-1">{p} <span className="text-xs text-muted-foreground">({counts[p] ?? 0} bewertet)</span></span><Star className={cn('size-5', on ? 'fill-amber-400 text-amber-500' : 'text-muted-foreground')} /></button> })}
+            <StoreLogo store={p} size={24} /><span className="flex-1">{p} <span className="text-xs text-muted-foreground">({counts[p] ?? 0} bewertet){deliversHere(p) === false && <b className="ml-1 text-red-600">nicht lieferbar nach Linz</b>}</span></span><Star className={cn('size-5', on ? 'fill-amber-400 text-amber-500' : 'text-muted-foreground')} /></button> })}
         </div>
       </Card>
     </div>
