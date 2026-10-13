@@ -17,7 +17,8 @@
   "name": "Spar",
   "brands": [
    "Spar",
-   "SPAR"
+   "SPAR",
+   "Spar Linguine"
   ],
   "logo_category": "Handelskette",
   "file": "logos/spar.svg",
@@ -114,7 +115,8 @@
   "slug": "omis-schmankerl",
   "name": "Omis Schmankerl",
   "brands": [
-   "Omis Schmankerl"
+   "Omis Schmankerl",
+   "Omis"
   ],
   "logo_category": "Eigenmarke",
   "file": "logos/omis-schmankerl.png",
@@ -2476,7 +2478,8 @@
   "name": "Danone",
   "brands": [
    "Danone",
-   "Danone Belux nv"
+   "Danone Belux nv",
+   "Danny"
   ],
   "logo_category": "Markenhersteller",
   "file": "logos/danone.png",
@@ -3463,6 +3466,94 @@
   "source": "https://www.zum-dorfkrug.de/assets/zum-dorfkrug-logo.svg",
   "size": "svg",
   "note": "Vision gate 2026-10-13T14 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Header-Logo zum-dorfkrug.de (Waldgrün #005e39 auf transparent – helles UI ok)",
+  "hq": true
+ },
+ "podravka": {
+  "slug": "podravka",
+  "name": "Podravka",
+  "brands": [
+   "Podravka",
+   "PODRAVKA"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/podravka.svg",
+  "source": "https://commons.wikimedia.org/wiki/File:Podravka_logo_2024.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T15 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Wikimedia Commons File:Podravka logo 2024.svg (Public domain; Podravka d.d., Koprivnica – Hersteller lt. Brand-Tree)",
+  "hq": true
+ },
+ "heura": {
+  "slug": "heura",
+  "name": "Heura",
+  "brands": [
+   "Heura",
+   "HEURA",
+   "Heura Foods",
+   "Foods for Tomorrow"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/heura.png",
+  "source": "https://commons.wikimedia.org/wiki/File:Logo_Heura_by_Foods_for_Tomorrow.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T15 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Wikimedia Commons File:Logo Heura by Foods for Tomorrow.png (Public domain); weißer BG freigestellt (Schwarz auf transparent)",
+  "hq": true
+ },
+ "nordsee": {
+  "slug": "nordsee",
+  "name": "Nordsee",
+  "brands": [
+   "Nordsee",
+   "NORDSEE"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/nordsee.svg",
+  "source": "https://commons.wikimedia.org/wiki/File:Nordsee_Logo_2024.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T15 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Wikimedia Commons File:Nordsee Logo 2024.svg (Public domain); LEH-Lizenzmarke von HOMANN Feinkost (Produzent lt. BILLA)",
+  "hq": true
+ },
+ "mama": {
+  "slug": "mama",
+  "name": "Mama",
+  "brands": [
+   "Mama",
+   "MAMA"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/mama.png",
+  "source": "https://www.mama.co.th/en/images/logo-mama.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T15 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles rotes MAMA-Wortmarken-Logo von mama.co.th (Thai President Foods PCL; robots.txt erlaubt /en/images); transparentes PNG 270×97 – NICHT das TF-Konzernlogo",
+  "hq": true
+ },
+ "maza": {
+  "slug": "maza",
+  "name": "Maza",
+  "brands": [
+   "Maza",
+   "MAZA",
+   "Maza Mediterranean Delicacies"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/maza.svg",
+  "source": "https://maza.at/wp-content/uploads/2024/07/logo.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T15 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo maza.at (Maza Mediterranean Delicacies, Sluispolderweg 46, Zaandam NL – Kontakt/Impressum geprüft); petrol auf weißem Badge",
+  "hq": true
+ },
+ "englert": {
+  "slug": "englert",
+  "name": "Englert",
+  "brands": [
+   "Englert",
+   "Feinkost Englert",
+   "Englert Feinkost"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/englert.png",
+  "source": "https://feinkost-englert.de/_astro/responsive-logo-header.DtxL4qem_Z2mh27R.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T15 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Header-Logo feinkost-englert.de (Englert Feinkostspezialitäten GmbH & Co. KG, Lohr a. Main – Impressum geprüft); einfarbig weiß im Original → Füllfarbe auf #1f1f1f umgefärbt (Form unverändert) für helles UI",
   "hq": true
  }
 }
