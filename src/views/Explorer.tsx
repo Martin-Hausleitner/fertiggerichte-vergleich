@@ -2,6 +2,7 @@ import { lazy, Suspense, useMemo } from 'react'
 import { LayoutGrid, Table2, Search, Heart } from 'lucide-react'
 import { Button, Input, Select, Card } from '../components/ui'
 import { Gallery } from '../components/product'
+import { FilterPanel, useFilter, makePred } from '../components/FilterPanel'
 import { useApp, useHashState, cn } from '../lib'
 const Grid=lazy(()=>import('./Grid'))
 export default function Explorer(){
@@ -11,7 +12,10 @@ export default function Explorer(){
   const [view,setView]=useHashState<'grid'|'cards'>('view',innerWidth<768?'cards':'grid'),[sort,setSort]=useHashState<string>('sort','eur10p'),[cat,setCat]=useHashState<string>('cat',''),[po,setPo]=useHashState<string>('po','')
   const cats=cat?cat.split('|'):[];const togCat=(c:string)=>setCat((cats.includes(c)?cats.filter(x=>x!==c):[...cats,c]).join('|'))
   const dist=(r:any)=>{const s=nearest(r.store);return s?(s.walk_m??s.dist):null}
-  const rows=useMemo(()=>{const qq=q.toLowerCase();return R.filter(r=>!r.nonfood&&!r.store.startsWith('unbekannt')&&stageSel.includes(r.stage)&&(!st||r.store===st)&&(!pk||r.pack===pk)&&((r.protpack??0)>=+mp)&&(!fav||favs.includes(r.id))&&(dry||!r.dry)&&(po||!r.priceOnly)&&(!cats.length||cats.every(c=>r.cprot?.includes(c)||r.cdish?.includes(c)))&&(!qq||(r.name+' '+r.brand+' '+r.herst).toLowerCase().includes(qq))).sort((a,b)=>{const lo=['eur10p','price','ppk','eur100k','dist'].includes(sort);const x=sort==='dist'?dist(a):(a as any)[sort],y=sort==='dist'?dist(b):(b as any)[sort];if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;return lo?x-y:y-x})},[R,q,st,pk,mp,fav,favs,dry,sort,cat,po,nearest])
+  const [fx,setFx]=useFilter()
+  const konzOf=useMemo(()=>{const m:Record<string,string>={};(D.producers||[]).forEach((p:any)=>{if(p.group&&!/unverified/i.test(p.group))m[p.slug]=String(p.group).replace(/\(.*?\)/g,'').trim()});return (r:any)=>r.prodSlug?m[r.prodSlug]??null:null},[D])
+  const pred=useMemo(()=>makePred(fx,{konzOf,dist}),[fx,konzOf,nearest])
+  const rows=useMemo(()=>{const qq=q.toLowerCase();return R.filter(r=>pred(r)&&!r.nonfood&&!r.store.startsWith('unbekannt')&&(fx.stage?.length?true:stageSel.includes(r.stage))&&(!st||r.store===st)&&(!pk||r.pack===pk)&&((r.protpack??0)>=+mp)&&(!fav||favs.includes(r.id))&&(dry||!r.dry)&&(po||!r.priceOnly)&&(!cats.length||cats.every(c=>r.cprot?.includes(c)||r.cdish?.includes(c)))&&(!qq||(r.name+' '+r.brand+' '+r.herst).toLowerCase().includes(qq))).sort((a,b)=>{const lo=['eur10p','price','ppk','eur100k','dist'].includes(sort);const x=sort==='dist'?dist(a):(a as any)[sort],y=sort==='dist'?dist(b):(b as any)[sort];if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;return lo?x-y:y-x})},[pred,fx,R,q,st,pk,mp,fav,favs,dry,sort,cat,po,nearest])
   return <div className="space-y-3">
     <Card className="sticky top-[96px] z-30 p-2.5 flex flex-wrap items-center gap-2 backdrop-blur bg-white/90 dark:bg-slate-900/90">
       <div className="relative flex-1 min-w-[180px]"><Search size={15} className="absolute left-2.5 top-2.5 text-slate-400"/><Input placeholder="Suche: Name, Marke, Hersteller…" value={q} onChange={e=>setQ(e.target.value)} className="w-full pl-8"/></div>
@@ -24,6 +28,7 @@ export default function Explorer(){
       <label className="text-xs flex items-center gap-1 text-slate-500"><input type="checkbox" checked={!!dry} onChange={e=>setDry(e.target.checked?'1':'')}/>Trockenprodukte zeigen</label>
       <div className="flex gap-1 ml-auto items-center"><span className="text-xs text-slate-500 mr-1">{rows.length} Treffer</span>
         <Button size="sm" active={view==='grid'} onClick={()=>setView('grid')} aria-label="Tabelle"><Table2 size={15}/></Button><Button size="sm" active={view==='cards'} onClick={()=>setView('cards')} aria-label="Karten"><LayoutGrid size={15}/></Button></div>
+      <div className="w-full"><FilterPanel f={fx} set={setFx} konzOf={konzOf} count={rows.length}/></div>
       <div className="w-full flex gap-1 overflow-x-auto scroll-x pb-0.5">{[...D.catProt,...D.catDish].map(c=><button key={c} onClick={()=>togCat(c)} className={cn('shrink-0 rounded-full border px-2 py-0.5 text-xs transition',cats.includes(c)?'bg-sky-600 text-white border-sky-600':'border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800')}>{D.catIcon[c]} {c}</button>)}</div>
     </Card>
     <div className={cn(view!=='grid'&&'hidden')}>{view==='grid'&&<Suspense fallback={<Card className="p-10 text-center text-slate-500">Tabelle wird geladen…</Card>}><Grid rows={rows} sort={sort}/></Suspense>}</div>

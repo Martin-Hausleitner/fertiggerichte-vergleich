@@ -88,7 +88,7 @@ export function QualityBadges({r,off}:{r:Row;off?:Off|null}){
   ]
   const on=b.filter(x=>x[0]); return on.length?<div className="flex flex-wrap gap-1">{on.map(x=><Badge key={x[1]} className={x[2]+' shadow-sm'}>{x[1]}</Badge>)}</div>:<span className="text-xs text-slate-400">Keine Gütesiegel in den Daten</span>
 }
-export function OffPanel({r,off}:{r:Row;off:Off|null}){
+export function OffPanel({off}:{r?:Row;off:Off|null}){
   if(!off) return <Missing text="Zusatzstoffe & NOVA: Produkt nicht mit EAN auf Open Food Facts erfasst, keine Daten."/>
   return <div className="space-y-1.5 text-xs">
    <div className="flex flex-wrap items-center gap-2"><InfoTip text={HK.nova}><span className="font-semibold flex items-center gap-1"><FlaskConical size={13}/>NOVA</span></InfoTip>{off.nova?<span className={cn('rounded-md px-2 py-0.5 text-white font-bold',NOVA_C[off.nova])}>{off.nova}</span>:<span className="text-slate-400">k. A.</span>}

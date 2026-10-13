@@ -6,10 +6,11 @@ import { STAGES } from './info'
 import { Img, BrandLogo, StoreLogo, PliBadge } from './product'
 
 // local embedding engine (transformers.js, quantized q8, lazy-loaded, browser-cached)
+const TJS:string='https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.3.1' // CDN (not bundled: bundle trips GitHub secret scanning)
 type Emb={model:string;dim:number;ids:number[];scales:number[];E:Int8Array}
 let embP:Promise<Emb>|null=null, extP:Promise<any>|null=null
 const loadEmb=()=>embP??=Promise.all([fetch('./embeddings.json?v='+__BUILD__).then(r=>r.json()),fetch('./embeddings.bin?v='+__BUILD__).then(r=>r.arrayBuffer())]).then(([m,b])=>({...m,E:new Int8Array(b)}))
-const loadExt=(model:string)=>extP??=import('@huggingface/transformers').then(t=>{t.env.allowLocalModels=false;t.env.useBrowserCache=true;return t.pipeline('feature-extraction',model,{dtype:'q8'})})
+const loadExt=(model:string)=>extP??=import(/* @vite-ignore */ TJS).then((t:any)=>{t.env.allowLocalModels=false;t.env.useBrowserCache=true;return t.pipeline('feature-extraction',model,{dtype:'q8'})})
 const norm=(s:string)=>s.toLowerCase().replace(/ß/g,'ss').normalize('NFD').replace(/[\u0300-\u036f]/g,'')
 function fuzzy(q:string,r:Row){const hay=norm([r.name,r.brandN,r.store,r.herst,...(r.cprot||[]),...(r.cdish||[])].join(' '));const ws=norm(q).split(/\s+/).filter(w=>w.length>2);if(!ws.length)return 0
   let h=0;for(const w of ws){if(hay.includes(w))h+=1;else if(w.length>4&&hay.includes(w.slice(0,w.length-2)))h+=.6};return h/ws.length}

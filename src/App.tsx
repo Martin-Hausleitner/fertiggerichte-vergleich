@@ -27,8 +27,9 @@ const Matrix=lazy(()=>import('./views/Matrix'))
 const Logos=lazy(()=>import('./views/Logos'))
 const Netz3D=lazy(()=>import('./views/Netz3D'))
 const Gerichte=lazy(()=>import('./views/Gerichte'))
+const Health=lazy(()=>import('./views/Health'))
 const Methodik=lazy(()=>import('./views/Misc').then(m=>({default:m.Methodik})))
-const TABS:[string,string,any][]=[['alle','Alle Gerichte',Explorer],['gerichte','🍲 Gericht vergleichen',Gerichte],['top','Top-Listen',Top],['kategorien','Kategorien',Categories],['marken','Marken',Brands],['filialen','Filialen in der Nähe',Stores],['analyse','Analyse',Analyse],['scatter','Preis vs. Protein',Scatter],['pack','Verpackungen',Packaging],['hersteller-seiten','Hersteller',ProducerPages],['matrix','Marken-Matrix',Matrix],['logos','Logos',Logos],['netz','🕸️ Netz 3D',Netz3D],['hersteller','Läden & Werke',Producers],['planer','Wochenplaner',Planner],['kombi','Kombi-Ideen',Kombi],['ftg','Fit to Go vs. Supermarkt',Ftg],['multipot','Multipot-Pro Garzeiten',Multipot],['methodik','Methodik & Quellen',Methodik]]
+const TABS:[string,string,any][]=[['alle','Alle Gerichte',Explorer],['gerichte','🍲 Gericht vergleichen',Gerichte],['top','Top-Listen',Top],['kategorien','Kategorien',Categories],['marken','Marken',Brands],['filialen','Filialen in der Nähe',Stores],['gesundheit','🩺 Gesundheit & Qualität',Health],['analyse','Analyse',Analyse],['scatter','Preis vs. Protein',Scatter],['pack','Verpackungen',Packaging],['hersteller-seiten','Hersteller',ProducerPages],['matrix','Marken-Matrix',Matrix],['logos','Logos',Logos],['netz','🕸️ Netz 3D',Netz3D],['hersteller','Läden & Werke',Producers],['planer','Wochenplaner',Planner],['kombi','Kombi-Ideen',Kombi],['ftg','Fit to Go vs. Supermarkt',Ftg],['multipot','Multipot-Pro Garzeiten',Multipot],['methodik','Methodik & Quellen',Methodik]]
 const Loading=()=><Card className="p-10 text-center text-slate-500 animate-pulse">Lädt…</Card>
 export default function App(){
   const [D,setD]=useState<Data|null>(null)
