@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-12",
- "note": "Typische Werte nur mit Quelle; \"etiketten\" = echte Lagerhinweise aus BILLA-Produktdaten (det.json/det2.json, Feld storageAndUsageStatements); \"datensatz\" = scored.json. Echte MHD-Daten (Tage/Monate unopened) sind in den Shopdaten NICHT enthalten.",
+ "generated": "2026-10-13",
+ "note": "Typische Werte nur mit Quelle; \"etiketten\" = echte Lagerhinweise aus BILLA-Produktdaten (det.json/det2.json, Feld storageAndUsageStatements); \"datensatz\" = scored.json. Echte MHD-Daten (Tage/Monate unopened) sind in den Shopdaten NICHT enthalten. MHD-Spannen im Dashboard = typische Branchenrichtwerte (gekennzeichnet). Zusatzstoffe = Anzahl Zusatzstoff-Klassen/E-Nummern in BILLA-Zutatenlisten. MHD-Spannen im Dashboard = typische Branchenrichtwerte (gekennzeichnet). Zusatzstoffe = Anzahl Zusatzstoff-Klassen/E-Nummern in BILLA-Zutatenlisten.",
  "sources": {
   "ara": "https://www.ara.at/news/sammelumstellung-2025-alle-details-im-ueberblick",
   "oegv": "https://www.oesterreich.gv.at/de/themen/bauen_und_wohnen/abfall/metallverpackungen",
@@ -74,16 +74,6 @@
    "src_mw": [],
    "type": "Dose",
    "dataset_label": "Dose/Konserve",
-   "stats": {
-    "n_products": 160,
-    "n_rankable": 57,
-    "median_protein_100": 3.8,
-    "median_salt_100": 1.1,
-    "median_kcal_100": 99.0,
-    "median_price_per_kg": 8.11,
-    "median_price_per_10g_protein": 1.93,
-    "median_health_score": 33.3
-   },
    "label_evidence": {
     "n_with_statement": 34,
     "storage_temps": [
@@ -224,6 +214,148 @@
       "text": "Trocken, vor Frost und Hitze geschützt lagern. Nach dem Öffnen gekühlt lagern und innerhalb von 3 Tagen verbrauchen."
      }
     ]
+   },
+   "icon": "🥫",
+   "box": {
+    "eur10p": [
+     0.4,
+     1.51,
+     2.01,
+     2.66,
+     8.31
+    ],
+    "score": [
+     9.8,
+     26.18,
+     33.5,
+     39.12,
+     57.0
+    ],
+    "salt": [
+     0.04,
+     1.0,
+     1.1,
+     1.3,
+     7.0
+    ]
+   },
+   "stores": [
+    "Billa",
+    "Hofer",
+    "Lidl",
+    "Spar",
+    "dm",
+    "unbekannt (OFF)"
+   ],
+   "mhd_typical": [
+    730,
+    1460,
+    "2–4 Jahre",
+    "vzk"
+   ],
+   "after_opening_labels": [
+    [
+     "nach dem öffnen im kühlschrank lagern und innerhalb von 2 tagen verzehren",
+     14
+    ],
+    [
+     "nach dem öffnen gekühlt lagern und innerhalb von 3 tagen verbrauchen",
+     10
+    ],
+    [
+     "nach dem öffnen 2 - 3 tage im kühlschrank haltbar",
+     6
+    ],
+    [
+     "nach dem öffnen in ein geeignetes gefäß umfüllen, gekühlt lagern und innerhalb einiger tage verarbeiten",
+     2
+    ],
+    [
+     "nach dem öffnen gekühlt lagern und innerhalb eines tages verbrauchen",
+     2
+    ]
+   ],
+   "top": [
+    {
+     "id": 693,
+     "name": "Knorr Meisterkessel Bohnen-Speck Suppe",
+     "brand": "Knorr",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-414166-740697866-X9yy4KNP.jpg",
+     "logo": "analysis/logos/knorr.svg",
+     "price": 2.99,
+     "eur10p": 0.96,
+     "score": 51.1,
+     "pli": 51.5,
+     "url": "https://shop.billa.at/produkte/knorr-meisterkessel-bohnenspeck-suppe-00414166"
+    },
+    {
+     "id": 181,
+     "name": "S-BUDGET Gulaschsuppe",
+     "brand": "S-Budget",
+     "store": "Spar",
+     "img": "https://www.interspar.at/media/74/da/55/1789090557/A_7442131_HB.jpg",
+     "logo": "analysis/logos/s-budget.png",
+     "price": 1.59,
+     "eur10p": 1.05,
+     "score": 34.6,
+     "pli": 41.3,
+     "url": "https://www.interspar.at/p/7442131"
+    },
+    {
+     "id": 792,
+     "name": "Njami Chicken Bowl Mexicana",
+     "brand": "Njami",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-885825-438096192-9NY20Ilx.jpg",
+     "logo": null,
+     "price": 3.49,
+     "eur10p": 1.93,
+     "score": 55.1,
+     "pli": 40.5,
+     "url": "https://shop.billa.at/produkte/njami-chicken-bowl-mexicana-00885825"
+    },
+    {
+     "id": 759,
+     "name": "BILLA Bio Linseneintopf",
+     "brand": "BILLA Bio",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-747939-0196269619-KjnnLvKL.jpg",
+     "logo": "analysis/logos/billa-bio.png",
+     "price": 2.39,
+     "eur10p": 1.61,
+     "score": 46.1,
+     "pli": 38.5,
+     "url": "https://shop.billa.at/produkte/billa-bio-linseneintopf-00747939"
+    },
+    {
+     "id": 69,
+     "name": "Felix Chili con Carne",
+     "brand": "Felix",
+     "store": "Spar",
+     "img": "https://images.openfoodfacts.org/images/products/900/029/583/3094/front_en.4.400.jpg",
+     "logo": "analysis/logos/felix.svg",
+     "price": 6.49,
+     "eur10p": 1.35,
+     "score": 39.8,
+     "pli": 38.4,
+     "url": "https://www.interspar.at/p/5246021"
+    }
+   ],
+   "stats": {
+    "n_products": 178,
+    "n_rankable": 82,
+    "median_price": 3.49,
+    "median_price_per_kg": 8.11,
+    "median_price_per_10g_protein": 2.02,
+    "median_health_score": 33.5,
+    "median_pli": 29.95,
+    "median_protein_100": 3.8,
+    "median_salt_100": 1.1,
+    "median_kcal_100": 92.5,
+    "median_additives": null,
+    "n_additives": 0,
+    "share_bio": 19
    }
   },
   {
@@ -273,16 +405,6 @@
    ],
    "type": "Kühlschale/MAP",
    "dataset_label": "Kühlregal (Menüschale/frisch)",
-   "stats": {
-    "n_products": 241,
-    "n_rankable": 201,
-    "median_protein_100": 6.5,
-    "median_salt_100": 1.1,
-    "median_kcal_100": 157.0,
-    "median_price_per_kg": 11.88,
-    "median_price_per_10g_protein": 1.99,
-    "median_health_score": 34.2
-   },
    "label_evidence": {
     "n_with_statement": 143,
     "storage_temps": [
@@ -439,6 +561,149 @@
       "text": "Aufbewahren bei 0°C bis +7 °C"
      }
     ]
+   },
+   "icon": "🍱",
+   "box": {
+    "eur10p": [
+     0.36,
+     1.36,
+     1.94,
+     2.59,
+     12.47
+    ],
+    "score": [
+     0,
+     26.5,
+     34.2,
+     39.4,
+     68.3
+    ],
+    "salt": [
+     0.0,
+     0.89,
+     1.1,
+     1.4,
+     9.4
+    ]
+   },
+   "stores": [
+    "Billa",
+    "Fit to Go",
+    "Hofer",
+    "Lidl",
+    "Spar",
+    "dm",
+    "unbekannt (OFF)"
+   ],
+   "mhd_typical": [
+    5,
+    21,
+    "5–21 Tage",
+    "vz"
+   ],
+   "after_opening_labels": [
+    [
+     "nach dem öffnen zum unmittelbaren verzehr bestimmt",
+     53
+    ],
+    [
+     "nach dem öffnen innerhalb von 3 tagen verbrauchen",
+     15
+    ],
+    [
+     "nach dem öffnen zum baldigen verzehr bestimmt",
+     8
+    ],
+    [
+     "nach dem öffnen zur sofortigen zubereitung und anschließendem verzehr bestimmt",
+     5
+    ],
+    [
+     "nach dem öffnen fest verschließen, gekühlt lagern und ehebaldigst verzehren",
+     5
+    ]
+   ],
+   "top": [
+    {
+     "id": 549,
+     "name": "Clever Lasagne Bolognese",
+     "brand": "Clever",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-465349-1370200877-bO-OV3Mx.jpg",
+     "logo": "analysis/logos/clever.png",
+     "price": 3.99,
+     "eur10p": 0.71,
+     "score": 30.9,
+     "pli": 50.5,
+     "url": "https://shop.billa.at/produkte/clever-lasagne-bolognese-00465349"
+    },
+    {
+     "id": 633,
+     "name": "BILLA Pork Cheeseburger",
+     "brand": "BILLA Immer Gut",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-880799-0892695527-UL8Wdop_.jpg",
+     "logo": "analysis/logos/immer-gut.png",
+     "price": 1.99,
+     "eur10p": 0.61,
+     "score": 12.0,
+     "pli": 46.8,
+     "url": "https://shop.billa.at/produkte/billa-pork-cheeseburger-00880799"
+    },
+    {
+     "id": 603,
+     "name": "Omis Schmankerl Kärntner Kasnudeln",
+     "brand": "Omis Schmankerl",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-780260-078598910-C0c4AENS.jpg",
+     "logo": "analysis/logos/omis-schmankerl.png",
+     "price": 2.39,
+     "eur10p": 0.97,
+     "score": 37.7,
+     "pli": 44.6,
+     "url": "https://shop.billa.at/produkte/omis-schmankerl-kaerntner-kasnudeln-00780260"
+    },
+    {
+     "id": 564,
+     "name": "Clever Spaghetti Bolognese",
+     "brand": "Clever",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-739904-47253423-2MGSCxsk.jpg",
+     "logo": "analysis/logos/clever.png",
+     "price": 1.89,
+     "eur10p": 1.15,
+     "score": 45.5,
+     "pli": 44.5,
+     "url": "https://shop.billa.at/produkte/clever-spaghetti-bolognese-00739904"
+    },
+    {
+     "id": 579,
+     "name": "BILLA Chili Con Carne XXL",
+     "brand": "BILLA Immer Gut",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-771705-0209654692-ewI4LKmL.jpg",
+     "logo": "analysis/logos/immer-gut.png",
+     "price": 3.99,
+     "eur10p": 1.23,
+     "score": 48.3,
+     "pli": 44.4,
+     "url": "https://shop.billa.at/produkte/billa-chili-con-carne-xxl-00771705"
+    }
+   ],
+   "stats": {
+    "n_products": 364,
+    "n_rankable": 191,
+    "median_price": 3.79,
+    "median_price_per_kg": 11.48,
+    "median_price_per_10g_protein": 1.94,
+    "median_health_score": 34.2,
+    "median_pli": 30.4,
+    "median_protein_100": 7.3,
+    "median_salt_100": 1.1,
+    "median_kcal_100": 157.0,
+    "median_additives": null,
+    "n_additives": 0,
+    "share_bio": 8
    }
   },
   {
@@ -491,16 +756,6 @@
    ],
    "type": "Tiefkühl",
    "dataset_label": "Tiefkühl (TK)",
-   "stats": {
-    "n_products": 136,
-    "n_rankable": 65,
-    "median_protein_100": 7.8,
-    "median_salt_100": 1.1,
-    "median_kcal_100": 189.0,
-    "median_price_per_kg": 14.37,
-    "median_price_per_10g_protein": 1.68,
-    "median_health_score": 40.3
-   },
    "label_evidence": {
     "n_with_statement": 16,
     "storage_temps": [
@@ -541,6 +796,447 @@
       "text": "Gekühlt bei +2°C bis +6°C lagern.\nNach dem Öffnen innerhalb eines Tages verzehren."
      }
     ]
+   },
+   "icon": "❄️",
+   "box": {
+    "eur10p": [
+     0.44,
+     1.3,
+     1.79,
+     2.39,
+     5.94
+    ],
+    "score": [
+     1.6,
+     30.37,
+     40.7,
+     48.12,
+     80.2
+    ],
+    "salt": [
+     0.01,
+     0.7,
+     0.89,
+     1.3,
+     2.4
+    ]
+   },
+   "stores": [
+    "Billa",
+    "Fit to Go",
+    "Hofer",
+    "Lidl",
+    "Spar",
+    "unbekannt (OFF)"
+   ],
+   "mhd_typical": [
+    180,
+    730,
+    "6–24 Monate",
+    "vzk"
+   ],
+   "after_opening_labels": [
+    [
+     "nach dem öffnen sorgfältig wiederverschließen, bei ¿18 °c lagern und bis zum ende des mindesthaltbarkeitsdatums aufbrauchen",
+     2
+    ],
+    [
+     "nach dem öffnen wiederverschließen, bei -18°c lagern und bis zum ende des mindesthaltbarkeitsdatums aufbrauchen",
+     1
+    ],
+    [
+     "nach dem öffnen ordnungsgemäß wiederverschließen und bis zum ende des mindesthaltbarkeitsdatums aufbrauchen",
+     1
+    ],
+    [
+     "nach dem öffnen ehebaldigst verzehren und restliche menge umgehend wieder einfrieren",
+     1
+    ],
+    [
+     "nach dem öffnen",
+     1
+    ]
+   ],
+   "top": [
+    {
+     "id": 1290,
+     "name": "Frosta High Protein Hähnchen mit Reis und Brokkoli",
+     "brand": "Frosta",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-905081-0167193118-0T7NqZ3c.jpg",
+     "logo": "analysis/logos/frosta.svg",
+     "price": 6.99,
+     "eur10p": 1.14,
+     "score": 61.2,
+     "pli": 52.6,
+     "url": "https://shop.billa.at/produkte/frosta-high-protein-haehnchen-mit-reis-und-brokkoli-00905081"
+    },
+    {
+     "id": 1291,
+     "name": "Frosta High Protein Hähnchen mediterraner Art mit Penne",
+     "brand": "Frosta",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-905082-0158647977-kNwDLWAO.jpg",
+     "logo": "analysis/logos/frosta.svg",
+     "price": 6.99,
+     "eur10p": 1.33,
+     "score": 63.6,
+     "pli": 50.5,
+     "url": "https://shop.billa.at/produkte/frosta-high-protein-haehnchen-mediterraner-art-mit-penne-00905082"
+    },
+    {
+     "id": 1118,
+     "name": "Iglo Schlemmerfilet Rotes Curry",
+     "brand": "iglo",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-732067-0128673435-nf26lJ9U.jpg",
+     "logo": "analysis/logos/iglo.png",
+     "price": 6.99,
+     "eur10p": 1.89,
+     "score": 72.9,
+     "pli": 49.7,
+     "url": "https://shop.billa.at/produkte/iglo-schlemmerfilet-rotes-curry-00732067"
+    },
+    {
+     "id": 1278,
+     "name": "BILLA Bami Goreng",
+     "brand": "BILLA Immer Gut",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-728757-0228391193-oiSUijyE.jpg",
+     "logo": "analysis/logos/immer-gut.png",
+     "price": 4.89,
+     "eur10p": 1.27,
+     "score": 48.1,
+     "pli": 43.8,
+     "url": "https://shop.billa.at/produkte/billa-bami-goreng-00728757"
+    },
+    {
+     "id": 1284,
+     "name": "BILLA Paella",
+     "brand": "BILLA Immer Gut",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-775290-983902227-70YbJE8T.jpg",
+     "logo": "analysis/logos/immer-gut.png",
+     "price": 4.99,
+     "eur10p": 1.33,
+     "score": 45.8,
+     "pli": 41.6,
+     "url": "https://shop.billa.at/produkte/billa-paella-00775290"
+    }
+   ],
+   "stats": {
+    "n_products": 211,
+    "n_rankable": 102,
+    "median_price": 5.29,
+    "median_price_per_kg": 11.98,
+    "median_price_per_10g_protein": 1.79,
+    "median_health_score": 40.7,
+    "median_pli": 34.35,
+    "median_protein_100": 6.9,
+    "median_salt_100": 0.89,
+    "median_kcal_100": 147.5,
+    "median_additives": null,
+    "n_additives": 0,
+    "share_bio": 3
+   }
+  },
+  {
+   "process": "Im flachen Beutel sterilisiert (wie Dose); dünnes Profil → 32–75 % kürzere Prozesszeit als Dose",
+   "src_p": [
+    "pouch_ham",
+    "pouch_fish"
+   ],
+   "storage_temp": "ungekühlt",
+   "src_t": [],
+   "mhd_unopened": "lang; abhängig von Sauerstoff-/Wasserdampfbarriere; keine Zahl belegt",
+   "src_m": [],
+   "after_opening": "wie Konserve: kühlen, rasch verbrauchen (keine Etikettdaten im Datensatz)",
+   "src_a": [],
+   "nutrients": "Mehr Vitamin B1 erhalten als in Dose: Schinken +16–26 %, Fisch +9–17 %",
+   "src_n": [
+    "pouch_ham",
+    "pouch_fish"
+   ],
+   "additives": "keine Quelle erhoben",
+   "src_ad": [],
+   "recycling_at": "Kunststoff-/Alu-Verbundbeutel → Gelbe Tonne",
+   "src_r": [
+    "ara",
+    "tirol"
+   ],
+   "bpa": "VO 2024/3190 (Kunststoffe/Klebstoffe)",
+   "src_b": [
+    "bpa2"
+   ],
+   "risk": "",
+   "src_risk": [],
+   "instantpot": "Beutel nicht ins Gerät; Inhalt umfüllen",
+   "src_ip": [
+    "ip_duo"
+   ],
+   "microwave": "nur wenn Packung „mikrowellengeeignet“ (Alu-Verbund nicht)",
+   "src_mw": [],
+   "type": "Pouch/Retort",
+   "dataset_label": "Beutel ungekühlt (Retort-Pouch)",
+   "label_evidence": null,
+   "icon": "🛍️",
+   "box": {
+    "eur10p": null,
+    "score": null,
+    "salt": null
+   },
+   "stores": [
+    "Billa",
+    "Spar"
+   ],
+   "mhd_typical": [
+    270,
+    540,
+    "9–18 Monate",
+    "vz"
+   ],
+   "after_opening_labels": [],
+   "top": [],
+   "stats": {
+    "n_products": 15,
+    "n_rankable": 2,
+    "median_price": 2.69,
+    "median_price_per_kg": 12.23,
+    "median_price_per_10g_protein": 3.21,
+    "median_health_score": 37.5,
+    "median_pli": 26.75,
+    "median_protein_100": 3.25,
+    "median_salt_100": 0.44,
+    "median_kcal_100": 174.0,
+    "median_additives": null,
+    "n_additives": 0,
+    "share_bio": 0
+   }
+  },
+  {
+   "process": "Heißabfüllung/Erhitzen im verschlossenen Glas (analog Konserve)",
+   "src_p": [
+    "vz"
+   ],
+   "storage_temp": "ungekühlt",
+   "src_t": [
+    "vz"
+   ],
+   "mhd_unopened": "lang (wie Konserve); keine Zahl belegt",
+   "src_m": [
+    "vz"
+   ],
+   "after_opening": "Etiketten: Kühlschrank, innerhalb ~2 Tagen bzw. „rasch“",
+   "src_a": [
+    "etiketten"
+   ],
+   "nutrients": "wie Dose (thermische Haltbarmachung)",
+   "src_n": [
+    "rick1"
+   ],
+   "additives": "keine Quelle erhoben",
+   "src_ad": [],
+   "recycling_at": "Glas → Altglas (Weiß-/Buntglas, unverändert); Metalldeckel → Gelbe Tonne",
+   "src_r": [
+    "ara",
+    "oegv"
+   ],
+   "bpa": "Deckel-Innenbeschichtung fällt unter VO 2024/3190 (Lacke/Beschichtungen)",
+   "src_b": [
+    "bpa2"
+   ],
+   "risk": "",
+   "src_risk": [],
+   "instantpot": "Inhalt umfüllen",
+   "src_ip": [
+    "ip_duo"
+   ],
+   "microwave": "Glas ohne Metalldeckel meist geeignet (keine Quelle erhoben)",
+   "src_mw": [],
+   "type": "Glas",
+   "dataset_label": "Glas",
+   "label_evidence": {
+    "n_with_statement": 6,
+    "storage_temps": [],
+    "after_opening": [
+     [
+      "Nach dem Öffnen: im Kühlschrank lagern und rasch konsumieren",
+      2
+     ],
+     [
+      "Nach dem Öffnen im Kühlschrank aufbewahren und innerhalb von 2 Tagen verzehren",
+      1
+     ],
+     [
+      "Nach dem Öffnen gekühlt lagern und bald verbrauchen",
+      1
+     ]
+    ],
+    "duration_mentions": [
+     {
+      "sku": "00-665193",
+      "name": "Steirerkraft Steirische Käferbohnensuppe g.U.",
+      "text": "Nach dem Öffnen im Kühlschrank aufbewahren und innerhalb von 2 Tagen verzehren"
+     }
+    ],
+    "examples": [
+     {
+      "sku": "00-890306",
+      "name": "BILLA Bio Gemüsebrühe im Glas",
+      "text": "Trocken und vor Wärme geschützt lagern."
+     },
+     {
+      "sku": "00-452802",
+      "name": "Little Lunch Karotten Orange Suppe",
+      "text": "Nach dem Öffnen: im Kühlschrank lagern und rasch konsumieren"
+     },
+     {
+      "sku": "00-545362",
+      "name": "Little Lunch Little Italy Suppe",
+      "text": "Nach dem Öffnen: im Kühlschrank lagern und rasch konsumieren"
+     }
+    ]
+   },
+   "icon": "🫙",
+   "box": {
+    "eur10p": [
+     2.3,
+     3.58,
+     4.23,
+     6.95,
+     12.82
+    ],
+    "score": [
+     7.6,
+     26.65,
+     41.35,
+     47.38,
+     66.9
+    ],
+    "salt": [
+     0.7,
+     0.86,
+     0.9,
+     1.35,
+     2.6
+    ]
+   },
+   "stores": [
+    "Billa",
+    "Hofer",
+    "Spar",
+    "dm",
+    "unbekannt (OFF)"
+   ],
+   "mhd_typical": [
+    365,
+    730,
+    "1–2 Jahre",
+    "vz"
+   ],
+   "after_opening_labels": [
+    [
+     "nach dem öffnen im kühlschrank lagern und innerhalb von 3 tagen verbrauchen",
+     4
+    ],
+    [
+     "nach dem öffnen und zubereiten unmittelbar verzehren",
+     3
+    ],
+    [
+     "nach dem öffnen gekühlt lagern und rasch verbrauchen",
+     3
+    ],
+    [
+     "nach dem öffnen: im kühlschrank lagern und rasch konsumieren",
+     2
+    ],
+    [
+     "nach dem öffnen im kühlschrank aufbewahren und innerhalb von 2-3 tagen verbrauchen",
+     1
+    ]
+   ],
+   "top": [
+    {
+     "id": 801,
+     "name": "Hink Wien Wiener Kalbsrahmgulasch",
+     "brand": "Hink Wien",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-949710-1606748794-sWVIgPAs.jpg",
+     "logo": "analysis/logos/hink.svg",
+     "price": 11.49,
+     "eur10p": 4.22,
+     "score": 54.0,
+     "pli": 33.0,
+     "url": "https://shop.billa.at/produkte/hink-wien-wiener-kalbsrahmgulasch-00949710"
+    },
+    {
+     "id": 625,
+     "name": "BILLA Chicken Kung Pao",
+     "brand": "BILLA Immer Gut",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-876063-0226095158-v7DZzU5g.jpg",
+     "logo": "analysis/logos/immer-gut.png",
+     "price": 5.99,
+     "eur10p": 2.3,
+     "score": 39.8,
+     "pli": 30.6,
+     "url": "https://shop.billa.at/produkte/billa-chicken-kung-pao-00876063"
+    },
+    {
+     "id": 802,
+     "name": "Hink Wien Wiener Paprika Henderl",
+     "brand": "Hink Wien",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-949725-1216996145-Vqcz0HB5.jpg",
+     "logo": "analysis/logos/hink.svg",
+     "price": 10.49,
+     "eur10p": 4.23,
+     "score": 43.7,
+     "pli": 27.9,
+     "url": "https://shop.billa.at/produkte/hink-wien-wiener-paprika-henderl-00949725"
+    },
+    {
+     "id": 737,
+     "name": "Hink Wien Wiener Rindersaftgulasch",
+     "brand": "Hink Wien",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-599004-1216798278-eZNEe4tu.jpg",
+     "logo": "analysis/logos/hink.svg",
+     "price": 11.49,
+     "eur10p": 3.99,
+     "score": 34.3,
+     "pli": 23.4,
+     "url": "https://shop.billa.at/produkte/hink-wien-wiener-rindersaftgulasch-00599004"
+    },
+    {
+     "id": 641,
+     "name": "BILLA Genusswelt Erdäpfel Gulasch mit Chorizo",
+     "brand": "BILLA Genusswelt",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-892374-0161566104-creWfv-u.jpg",
+     "logo": "analysis/logos/billa-genusswelt.png",
+     "price": 12.99,
+     "eur10p": 7.92,
+     "score": 35.2,
+     "pli": 20.9,
+     "url": "https://shop.billa.at/produkte/billa-genusswelt-erdaepfel-gulasch-mit-chorizo-00892374"
+    }
+   ],
+   "stats": {
+    "n_products": 26,
+    "n_rankable": 16,
+    "median_price": 3.99,
+    "median_price_per_kg": 11.74,
+    "median_price_per_10g_protein": 10.37,
+    "median_health_score": 41.35,
+    "median_pli": 22.9,
+    "median_protein_100": 1.5,
+    "median_salt_100": 0.9,
+    "median_kcal_100": 71.0,
+    "median_additives": null,
+    "n_additives": 0,
+    "share_bio": 38
    }
   },
   {
@@ -589,16 +1285,6 @@
    "src_mw": [],
    "type": "Sous-vide/Vakuum",
    "dataset_label": "Sous-vide (vakuum)",
-   "stats": {
-    "n_products": 10,
-    "n_rankable": 6,
-    "median_protein_100": 13.5,
-    "median_salt_100": 1.4,
-    "median_kcal_100": 123.0,
-    "median_price_per_kg": 26.75,
-    "median_price_per_10g_protein": 2.2,
-    "median_health_score": 57.85
-   },
    "label_evidence": {
     "n_with_statement": 7,
     "storage_temps": [
@@ -647,101 +1333,128 @@
       "text": "Gekühlt lagern bei +2°C bis +6°C.\nNach dem Öffnen direkt zubereiten und verzehren."
      }
     ]
-   }
-  },
-  {
-   "process": "Heißabfüllung/Erhitzen im verschlossenen Glas (analog Konserve)",
-   "src_p": [
-    "vz"
-   ],
-   "storage_temp": "ungekühlt",
-   "src_t": [
-    "vz"
-   ],
-   "mhd_unopened": "lang (wie Konserve); keine Zahl belegt",
-   "src_m": [
-    "vz"
-   ],
-   "after_opening": "Etiketten: Kühlschrank, innerhalb ~2 Tagen bzw. „rasch“",
-   "src_a": [
-    "etiketten"
-   ],
-   "nutrients": "wie Dose (thermische Haltbarmachung)",
-   "src_n": [
-    "rick1"
-   ],
-   "additives": "keine Quelle erhoben",
-   "src_ad": [],
-   "recycling_at": "Glas → Altglas (Weiß-/Buntglas, unverändert); Metalldeckel → Gelbe Tonne",
-   "src_r": [
-    "ara",
-    "oegv"
-   ],
-   "bpa": "Deckel-Innenbeschichtung fällt unter VO 2024/3190 (Lacke/Beschichtungen)",
-   "src_b": [
-    "bpa2"
-   ],
-   "risk": "",
-   "src_risk": [],
-   "instantpot": "Inhalt umfüllen",
-   "src_ip": [
-    "ip_duo"
-   ],
-   "microwave": "Glas ohne Metalldeckel meist geeignet (keine Quelle erhoben)",
-   "src_mw": [],
-   "type": "Glas",
-   "dataset_label": "Glas",
-   "stats": {
-    "n_products": 13,
-    "n_rankable": 6,
-    "median_protein_100": 0.7,
-    "median_salt_100": 0.86,
-    "median_kcal_100": 49.5,
-    "median_price_per_kg": 10.2,
-    "median_price_per_10g_protein": 14.96,
-    "median_health_score": 32.15
    },
-   "label_evidence": {
-    "n_with_statement": 6,
-    "storage_temps": [],
-    "after_opening": [
-     [
-      "Nach dem Öffnen: im Kühlschrank lagern und rasch konsumieren",
-      2
-     ],
-     [
-      "Nach dem Öffnen im Kühlschrank aufbewahren und innerhalb von 2 Tagen verzehren",
-      1
-     ],
-     [
-      "Nach dem Öffnen gekühlt lagern und bald verbrauchen",
-      1
-     ]
+   "icon": "🥩",
+   "box": {
+    "eur10p": [
+     1.37,
+     1.5,
+     2.2,
+     2.53,
+     2.56
     ],
-    "duration_mentions": [
-     {
-      "sku": "00-665193",
-      "name": "Steirerkraft Steirische Käferbohnensuppe g.U.",
-      "text": "Nach dem Öffnen im Kühlschrank aufbewahren und innerhalb von 2 Tagen verzehren"
-     }
+    "score": [
+     53.9,
+     55.32,
+     57.85,
+     58.97,
+     59.5
     ],
-    "examples": [
-     {
-      "sku": "00-890306",
-      "name": "BILLA Bio Gemüsebrühe im Glas",
-      "text": "Trocken und vor Wärme geschützt lagern."
-     },
-     {
-      "sku": "00-452802",
-      "name": "Little Lunch Karotten Orange Suppe",
-      "text": "Nach dem Öffnen: im Kühlschrank lagern und rasch konsumieren"
-     },
-     {
-      "sku": "00-545362",
-      "name": "Little Lunch Little Italy Suppe",
-      "text": "Nach dem Öffnen: im Kühlschrank lagern und rasch konsumieren"
-     }
+    "salt": [
+     0.57,
+     0.85,
+     1.4,
+     1.48,
+     1.5
     ]
+   },
+   "stores": [
+    "Billa",
+    "Hofer",
+    "Spar"
+   ],
+   "mhd_typical": [
+    14,
+    42,
+    "2–6 Wochen",
+    "vz"
+   ],
+   "after_opening_labels": [
+    [
+     "nach dem öffnen zum unmittelbaren verzehr bestimmt",
+     4
+    ],
+    [
+     "nach dem öffnen zur unmittelbaren verarbeitung bestimmt",
+     1
+    ],
+    [
+     "nach dem öffnen direkt zubereiten und verzehren",
+     1
+    ],
+    [
+     "nach dem öffnen ehebaldigst verzehren",
+     1
+    ]
+   ],
+   "top": [
+    {
+     "id": 559,
+     "name": "Hofstädter Die Grillerei Pulled Beef Sous Vide mit BBQ",
+     "brand": "Hofstädter",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-730190-0769027252-Cmu6f7Eg.jpg",
+     "logo": "analysis/logos/hofstaedter.png",
+     "price": 10.99,
+     "eur10p": 1.37,
+     "score": 57.1,
+     "pli": 46.8,
+     "url": "https://shop.billa.at/produkte/hofstaedter-die-grillerei-pulled-beef-sous-vide-mit-bbq-00730190"
+    },
+    {
+     "id": 556,
+     "name": "BILLA Genusswelt Kalbsrahmgulasch Sous Vide",
+     "brand": "BILLA Genusswelt",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-718376-642343416-UgIUu9Bh.jpg",
+     "logo": "analysis/logos/billa-genusswelt.png",
+     "price": 7.99,
+     "eur10p": 1.63,
+     "score": 53.9,
+     "pli": 42.2,
+     "url": "https://shop.billa.at/produkte/billa-genusswelt-kalbsrahmgulasch-sous-vide-00718376"
+    },
+    {
+     "id": 545,
+     "name": "BILLA Genusswelt Rindsbackerl Sous Vide",
+     "brand": "BILLA Genusswelt",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-346357-0194496744-E5xeANM-.jpg",
+     "logo": "analysis/logos/billa-genusswelt.png",
+     "price": 6.99,
+     "eur10p": 2.5,
+     "score": 59.5,
+     "pli": 39.8,
+     "url": "https://shop.billa.at/produkte/billa-genusswelt-rindsbackerl-sous-vide-00346357"
+    },
+    {
+     "id": 562,
+     "name": "Hofstädter Rindsgulasch Sous Vide",
+     "brand": "Hofstädter",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-739286-1791425859-P0psxUK0.jpg",
+     "logo": "analysis/logos/hofstaedter.png",
+     "price": 7.99,
+     "eur10p": 2.2,
+     "score": 55.8,
+     "pli": 39.4,
+     "url": "https://shop.billa.at/produkte/hofstaedter-rindsgulasch-sous-vide-00739286"
+    }
+   ],
+   "stats": {
+    "n_products": 10,
+    "n_rankable": 6,
+    "median_price": 10.99,
+    "median_price_per_kg": 24.96,
+    "median_price_per_10g_protein": 2.2,
+    "median_health_score": 57.85,
+    "median_pli": 39.8,
+    "median_protein_100": 14.5,
+    "median_salt_100": 1.4,
+    "median_kcal_100": 123.0,
+    "median_additives": null,
+    "n_additives": 0,
+    "share_bio": 10
    }
   },
   {
@@ -781,16 +1494,6 @@
    "src_mw": [],
    "type": "Trocken/Instant-Beutel",
    "dataset_label": "Trocken/Instant",
-   "stats": {
-    "n_products": 214,
-    "n_rankable": 0,
-    "median_protein_100": null,
-    "median_salt_100": null,
-    "median_kcal_100": null,
-    "median_price_per_kg": 10.98,
-    "median_price_per_10g_protein": null,
-    "median_health_score": null
-   },
    "label_evidence": {
     "n_with_statement": 65,
     "storage_temps": [
@@ -910,57 +1613,132 @@
       "text": "Trocken lagern und vor Wärme schützen.\nEinfach einstreuen und unterrühren."
      }
     ]
-   }
-  },
-  {
-   "process": "Im flachen Beutel sterilisiert (wie Dose); dünnes Profil → 32–75 % kürzere Prozesszeit als Dose",
-   "src_p": [
-    "pouch_ham",
-    "pouch_fish"
-   ],
-   "storage_temp": "ungekühlt",
-   "src_t": [],
-   "mhd_unopened": "lang; abhängig von Sauerstoff-/Wasserdampfbarriere; keine Zahl belegt",
-   "src_m": [],
-   "after_opening": "wie Konserve: kühlen, rasch verbrauchen (keine Etikettdaten im Datensatz)",
-   "src_a": [],
-   "nutrients": "Mehr Vitamin B1 erhalten als in Dose: Schinken +16–26 %, Fisch +9–17 %",
-   "src_n": [
-    "pouch_ham",
-    "pouch_fish"
-   ],
-   "additives": "keine Quelle erhoben",
-   "src_ad": [],
-   "recycling_at": "Kunststoff-/Alu-Verbundbeutel → Gelbe Tonne",
-   "src_r": [
-    "ara",
-    "tirol"
-   ],
-   "bpa": "VO 2024/3190 (Kunststoffe/Klebstoffe)",
-   "src_b": [
-    "bpa2"
-   ],
-   "risk": "",
-   "src_risk": [],
-   "instantpot": "Beutel nicht ins Gerät; Inhalt umfüllen",
-   "src_ip": [
-    "ip_duo"
-   ],
-   "microwave": "nur wenn Packung „mikrowellengeeignet“ (Alu-Verbund nicht)",
-   "src_mw": [],
-   "type": "Pouch/Retort",
-   "dataset_label": "Beutel ungekühlt (Retort-Pouch)",
-   "stats": {
-    "n_products": 5,
-    "n_rankable": 0,
-    "median_protein_100": null,
-    "median_salt_100": null,
-    "median_kcal_100": null,
-    "median_price_per_kg": 14.78,
-    "median_price_per_10g_protein": null,
-    "median_health_score": null
    },
-   "label_evidence": null
+   "icon": "🍜",
+   "box": {
+    "eur10p": [
+     0.61,
+     1.72,
+     2.62,
+     7.76,
+     9.43
+    ],
+    "score": [
+     12.0,
+     26.75,
+     30.6,
+     35.0,
+     52.9
+    ],
+    "salt": [
+     0.22,
+     0.68,
+     0.89,
+     1.2,
+     18.1
+    ]
+   },
+   "stores": [
+    "Billa",
+    "Hofer",
+    "Penny",
+    "Spar",
+    "unbekannt (OFF)"
+   ],
+   "mhd_typical": [
+    270,
+    730,
+    "9–24 Monate",
+    "vz"
+   ],
+   "after_opening_labels": [
+    [
+     "nach dem öffnen im kühlschrank zugedeckt aufbewahren und innerhalb von zwei tagen verzehren",
+     3
+    ]
+   ],
+   "top": [
+    {
+     "id": 677,
+     "name": "Knorr Meisterkessel Serbische Bohnensuppe",
+     "brand": "Knorr",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-3881-0866387831-dzs03kvW.jpg",
+     "logo": "analysis/logos/knorr.svg",
+     "price": 2.99,
+     "eur10p": 1.53,
+     "score": 35.8,
+     "pli": 34.1,
+     "url": "https://shop.billa.at/produkte/knorr-meisterkessel-serbische-bohnensuppe-003881"
+    },
+    {
+     "id": 665,
+     "name": "Knorr Meisterkessel Gulaschsuppe",
+     "brand": "Knorr",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-3459-0305047711-3vr4ua7e.jpg",
+     "logo": "analysis/logos/knorr.svg",
+     "price": 2.99,
+     "eur10p": 1.53,
+     "score": 34.2,
+     "pli": 33.4,
+     "url": "https://shop.billa.at/produkte/knorr-meisterkessel-gulaschsuppe-003459"
+    },
+    {
+     "id": 649,
+     "name": "Knorr Meisterkessel Südtiroler Bauernsuppe",
+     "brand": "Knorr",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-16395-01274607301-9HSgXz2o.jpg",
+     "logo": "analysis/logos/knorr.svg",
+     "price": 2.99,
+     "eur10p": 1.33,
+     "score": 23.3,
+     "pli": 30.4,
+     "url": "https://shop.billa.at/produkte/knorr-meisterkessel-suedtiroler-bauernsuppe-0016395"
+    },
+    {
+     "id": 803,
+     "name": "Inzersdorfer Wellness Hühnerbruststreifen mit Gemüsereis",
+     "brand": "Inzersdorfer",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-963089-0478831115-eZSRwhMg.jpg",
+     "logo": "analysis/logos/inzersdorfer.png",
+     "price": 5.99,
+     "eur10p": 2.77,
+     "score": 41.4,
+     "pli": 29.7,
+     "url": "https://shop.billa.at/produkte/inzersdorfer-wellness-huehnerbruststreifen-mit-gemuesereis-00963089"
+    },
+    {
+     "id": 679,
+     "name": "Inzersdorfer Rindsroulade mit Spiralen",
+     "brand": "Inzersdorfer",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-402692-288163225-hTpY_sHT.jpg",
+     "logo": "analysis/logos/inzersdorfer.png",
+     "price": 5.99,
+     "eur10p": 2.39,
+     "score": 37.0,
+     "pli": 29.0,
+     "url": "https://shop.billa.at/produkte/inzersdorfer-rindsroulade-mit-spiralen-00402692"
+    }
+   ],
+   "stats": {
+    "n_products": 192,
+    "n_rankable": 24,
+    "median_price": 1.99,
+    "median_price_per_kg": 12.64,
+    "median_price_per_10g_protein": 2.62,
+    "median_health_score": 30.6,
+    "median_pli": 24.75,
+    "median_protein_100": 2.9,
+    "median_salt_100": 0.89,
+    "median_kcal_100": 104.0,
+    "median_additives": null,
+    "n_additives": 0,
+    "share_bio": 3
+   }
   }
  ],
  "unclassified_label_evidence": {
@@ -1284,55 +2062,4135 @@
    "Dose",
    "Kühlschale/MAP",
    "Tiefkühl",
-   "Sous-vide/Vakuum",
+   "Pouch/Retort",
    "Glas",
-   "Trocken/Instant-Beutel",
-   "Pouch/Retort"
+   "Sous-vide/Vakuum",
+   "Trocken/Instant-Beutel"
   ],
   "n_products": [
-   160,
-   241,
-   136,
+   178,
+   364,
+   211,
+   15,
+   26,
    10,
-   13,
-   214,
-   5
+   192
   ],
   "median_protein_100": [
    3.8,
-   6.5,
-   7.8,
-   13.5,
-   0.7,
-   null,
-   null
+   7.3,
+   6.9,
+   3.25,
+   1.5,
+   14.5,
+   2.9
   ],
   "median_salt_100": [
    1.1,
    1.1,
-   1.1,
+   0.89,
+   0.44,
+   0.9,
    1.4,
-   0.86,
-   null,
-   null
+   0.89
   ],
   "median_price_per_10g_protein": [
-   1.93,
-   1.99,
-   1.68,
+   2.02,
+   1.94,
+   1.79,
+   3.21,
+   10.37,
    2.2,
-   14.96,
-   null,
-   null
+   2.62
   ],
   "median_health_score": [
-   33.3,
+   33.5,
    34.2,
-   40.3,
+   40.7,
+   37.5,
+   41.35,
    57.85,
-   32.15,
-   null,
-   null
+   30.6
+  ]
+ },
+ "version": 3,
+ "classification": {
+  "rules": [
+   "1 Etikett-Lagerhinweis/Verpackungsangabe (BILLA-Produktdaten)",
+   "2 BILLA-Shopkategorie",
+   "3 Name/Marke (z. B. FRoSTA/Iglo → TK, Inzersdorfer → Dose, Express → Pouch)",
+   "4 bisherige Shop-Rubrik"
+  ],
+  "by_reason": [
+   [
+    "bisherige Einstufung (Shop-Rubrik)",
+    329
+   ],
+   [
+    "keine belastbaren Hinweise",
+    293
+   ],
+   [
+    "Name/Marke: Kühlregal",
+    172
+   ],
+   [
+    "Etikett: gekühlt +2…+6 °C",
+    114
+   ],
+   [
+    "Name/Marke: TK",
+    79
+   ],
+   [
+    "BILLA-Kategorie: Beutel",
+    66
+   ],
+   [
+    "Name/Marke: Dose",
+    43
+   ],
+   [
+    "Etikett: Verpackung Dose",
+    38
+   ],
+   [
+    "Name: Instant/Trocken",
+    29
+   ],
+   [
+    "Etikett: −18 °C",
+    26
+   ],
+   [
+    "Name: typ. TK-Ware (schwach)",
+    24
+   ],
+   [
+    "BILLA-Kategorie: Frische Pasta & Beilagen",
+    20
+   ],
+   [
+    "Etikett: Verpackung Glas",
+    16
+   ],
+   [
+    "Name: Express/Pouch",
+    10
+   ],
+   [
+    "BILLA-Kategorie: Menüschalen",
+    10
+   ],
+   [
+    "Etikett gekühlt + Name Sous-vide",
+    7
+   ],
+   [
+    "BILLA-Kategorie: Dose",
+    6
+   ],
+   [
+    "Name: Glas",
+    3
+   ],
+   [
+    "Name: Sous-vide",
+    3
+   ],
+   [
+    "BILLA-Kategorie: Frischer Teig & Pasta",
+    1
+   ]
+  ],
+  "moved": 228,
+  "unclassified": 293,
+  "total": 1299
+ },
+ "assign": {
+  "0": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "1": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "3": [
+   "Glas",
+   "Etikett: Verpackung Glas"
+  ],
+  "4": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frischer Teig & Pasta"
+  ],
+  "5": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "6": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "7": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "9": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "10": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "11": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "14": [
+   "Pouch/Retort",
+   "Name: Express/Pouch"
+  ],
+  "15": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "16": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "17": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "18": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "19": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "20": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "21": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "23": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "24": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "25": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "26": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "27": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "28": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "29": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "30": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "31": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "32": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "33": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "34": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "35": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "36": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "37": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "38": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "40": [
+   "Pouch/Retort",
+   "Name: Express/Pouch"
+  ],
+  "41": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "42": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "43": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "44": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "45": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "46": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "47": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "48": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "49": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "50": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "51": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "52": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "53": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "54": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "55": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "56": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "57": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "58": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "59": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "60": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "61": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "62": [
+   "Pouch/Retort",
+   "Name: Express/Pouch"
+  ],
+  "63": [
+   "Pouch/Retort",
+   "Name: Express/Pouch"
+  ],
+  "64": [
+   "Pouch/Retort",
+   "Name: Express/Pouch"
+  ],
+  "65": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "66": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "69": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "70": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "71": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "72": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "73": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "74": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "75": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "76": [
+   "Glas",
+   "Name: Glas"
+  ],
+  "79": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "80": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "81": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "82": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "85": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "86": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "87": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "88": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "89": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "90": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "91": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "92": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "93": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "94": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "95": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "96": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "97": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "98": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "99": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "100": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "101": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "102": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "103": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "104": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "105": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "106": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "107": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "108": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "109": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "110": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "111": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "112": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "113": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "114": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "115": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "116": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "117": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "118": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "119": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "122": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "123": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "124": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "125": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "126": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "127": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "128": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "129": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "130": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "131": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "132": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "133": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "134": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "135": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "136": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "137": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "138": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "139": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "140": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "141": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "142": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "143": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "144": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "145": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "146": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "147": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "148": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "149": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "150": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "151": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "152": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "153": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "154": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "155": [
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "156": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "157": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "158": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "159": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "160": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "161": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "165": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "167": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "168": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "169": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "171": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "172": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "174": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "175": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "176": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "177": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "178": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "179": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "180": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "181": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "182": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "184": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "185": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "186": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "187": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "188": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "189": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "190": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "191": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "194": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "195": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "196": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "197": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "198": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "199": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "200": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "201": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "202": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "203": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "204": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "205": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "206": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "207": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "208": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "209": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "210": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "211": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "212": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "213": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "214": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "216": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "221": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "222": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "223": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "224": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "225": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "226": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "229": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "230": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "232": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "234": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "235": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "236": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "237": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "238": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "239": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "240": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "241": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "242": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "243": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "245": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "246": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "247": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "248": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "249": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "250": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "251": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "252": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "253": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "255": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "258": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "259": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "260": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "261": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "262": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "264": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "266": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "269": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "270": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "271": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "274": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "275": [
+   "Glas",
+   "Name: Glas"
+  ],
+  "276": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "277": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "278": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "279": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "280": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "286": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "287": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "288": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "292": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "293": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "294": [
+   "Pouch/Retort",
+   "Name: Express/Pouch"
+  ],
+  "295": [
+   "Pouch/Retort",
+   "Name: Express/Pouch"
+  ],
+  "296": [
+   "Pouch/Retort",
+   "Name: Express/Pouch"
+  ],
+  "297": [
+   "Pouch/Retort",
+   "Name: Express/Pouch"
+  ],
+  "298": [
+   "Pouch/Retort",
+   "Name: Express/Pouch"
+  ],
+  "299": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "300": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "304": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "308": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "312": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "315": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "316": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "317": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "318": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "319": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "320": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "321": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "322": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "323": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "324": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "325": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "326": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "327": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "328": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "329": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "330": [
+   "Pouch/Retort",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "331": [
+   "Pouch/Retort",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "332": [
+   "Pouch/Retort",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "334": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "339": [
+   "Pouch/Retort",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "340": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "341": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "346": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "348": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "353": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "359": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "360": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "361": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "367": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "368": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "377": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "381": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "384": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "386": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "390": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "391": [
+   "Sous-vide/Vakuum",
+   "Name: Sous-vide"
+  ],
+  "403": [
+   "Pouch/Retort",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "404": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "414": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "415": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "416": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "417": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "418": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "419": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "420": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "421": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "422": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "428": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "429": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "436": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "437": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "438": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "439": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "440": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "441": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "442": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "443": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "444": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "445": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "446": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "447": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "449": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "450": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "451": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "452": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "453": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "454": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "455": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "456": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "457": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "458": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "465": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "468": [
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "469": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "470": [
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "471": [
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "476": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "481": [
+   "Sous-vide/Vakuum",
+   "Name: Sous-vide"
+  ],
+  "483": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "484": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "485": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "486": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "487": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "488": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "493": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "494": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "496": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "503": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "506": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "507": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "508": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "509": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "510": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "511": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "512": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "513": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "514": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "515": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "516": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "517": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "518": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "528": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "529": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "530": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "531": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "532": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "537": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "538": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "542": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "543": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "544": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "545": [
+   "Sous-vide/Vakuum",
+   "Etikett gekühlt + Name Sous-vide"
+  ],
+  "546": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "547": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "548": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "549": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "550": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "551": [
+   "Sous-vide/Vakuum",
+   "Etikett gekühlt + Name Sous-vide"
+  ],
+  "552": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Menüschalen"
+  ],
+  "553": [
+   "Sous-vide/Vakuum",
+   "Etikett gekühlt + Name Sous-vide"
+  ],
+  "554": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "555": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "556": [
+   "Sous-vide/Vakuum",
+   "Etikett gekühlt + Name Sous-vide"
+  ],
+  "557": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "558": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "559": [
+   "Sous-vide/Vakuum",
+   "Etikett gekühlt + Name Sous-vide"
+  ],
+  "560": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "561": [
+   "Sous-vide/Vakuum",
+   "Etikett gekühlt + Name Sous-vide"
+  ],
+  "562": [
+   "Sous-vide/Vakuum",
+   "Etikett gekühlt + Name Sous-vide"
+  ],
+  "563": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "564": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "565": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "566": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "567": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Menüschalen"
+  ],
+  "568": [
+   "Glas",
+   "Etikett: Verpackung Glas"
+  ],
+  "569": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "570": [
+   "Glas",
+   "Etikett: Verpackung Glas"
+  ],
+  "571": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "572": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "573": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Menüschalen"
+  ],
+  "574": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "575": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "576": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Menüschalen"
+  ],
+  "577": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Menüschalen"
+  ],
+  "578": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "579": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "580": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "581": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "582": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Menüschalen"
+  ],
+  "583": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Menüschalen"
+  ],
+  "584": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Menüschalen"
+  ],
+  "585": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Menüschalen"
+  ],
+  "586": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "587": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "588": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "589": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "590": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "591": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "592": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "593": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "594": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "595": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "596": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "597": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "598": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "599": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "600": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "601": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "602": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "603": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "604": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "605": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "606": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "607": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "608": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "609": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "610": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "611": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "612": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "613": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "614": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "615": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "616": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "617": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "618": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "619": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "620": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "621": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "622": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "623": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "624": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "625": [
+   "Glas",
+   "Etikett: Verpackung Glas"
+  ],
+  "626": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "627": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "628": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "629": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "630": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "631": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "632": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "633": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Menüschalen"
+  ],
+  "634": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "635": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "636": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "637": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "638": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "639": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "640": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "641": [
+   "Glas",
+   "Etikett: Verpackung Glas"
+  ],
+  "642": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "643": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "644": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "645": [
+   "Tiefkühl",
+   "Etikett: −18 °C"
+  ],
+  "646": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "647": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "648": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "649": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "650": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "651": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "652": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "653": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "654": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "655": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "656": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "657": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "658": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "659": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "660": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "661": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "662": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "663": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "664": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "665": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "666": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "667": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "668": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "669": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "670": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "671": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "672": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "673": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "674": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "675": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "676": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "677": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "678": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "679": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "680": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "681": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "682": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "683": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "684": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "685": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "686": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "687": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "688": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "689": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "690": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "691": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "692": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "693": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "694": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "695": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "696": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "697": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "698": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "699": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "700": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "701": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "702": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "703": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "704": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "705": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "706": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "707": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "708": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "709": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "710": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "711": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "712": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "713": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "714": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "715": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "716": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "717": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "718": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "719": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "720": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "721": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "722": [
+   "Dose",
+   "BILLA-Kategorie: Dose"
+  ],
+  "723": [
+   "Dose",
+   "BILLA-Kategorie: Dose"
+  ],
+  "724": [
+   "Dose",
+   "BILLA-Kategorie: Dose"
+  ],
+  "725": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "726": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "727": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "728": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "729": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "730": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "731": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "732": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "733": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "734": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "735": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "736": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "737": [
+   "Glas",
+   "Etikett: Verpackung Glas"
+  ],
+  "738": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "739": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "740": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "741": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "742": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "743": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "744": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "745": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "746": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "747": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "748": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "749": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "750": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "751": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "752": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "753": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "754": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "755": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "756": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "757": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "758": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "759": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "760": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "761": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "762": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "763": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "764": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "765": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "766": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "767": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "768": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "769": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "770": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "771": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "772": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "773": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "774": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "775": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "776": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "777": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "778": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "779": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "780": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "781": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "782": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "783": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "784": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "785": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "786": [
+   "Glas",
+   "Etikett: Verpackung Glas"
+  ],
+  "787": [
+   "Glas",
+   "Etikett: Verpackung Glas"
+  ],
+  "788": [
+   "Glas",
+   "Etikett: Verpackung Glas"
+  ],
+  "789": [
+   "Glas",
+   "Etikett: Verpackung Glas"
+  ],
+  "790": [
+   "Dose",
+   "BILLA-Kategorie: Dose"
+  ],
+  "791": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "792": [
+   "Dose",
+   "BILLA-Kategorie: Dose"
+  ],
+  "793": [
+   "Dose",
+   "BILLA-Kategorie: Dose"
+  ],
+  "794": [
+   "Glas",
+   "Etikett: Verpackung Glas"
+  ],
+  "795": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "796": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "797": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "798": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "799": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "800": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "801": [
+   "Glas",
+   "Etikett: Verpackung Glas"
+  ],
+  "802": [
+   "Glas",
+   "Etikett: Verpackung Glas"
+  ],
+  "803": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "804": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "805": [
+   "Trocken/Instant-Beutel",
+   "BILLA-Kategorie: Beutel"
+  ],
+  "806": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "807": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "808": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frische Pasta & Beilagen"
+  ],
+  "809": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frische Pasta & Beilagen"
+  ],
+  "810": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frische Pasta & Beilagen"
+  ],
+  "811": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frische Pasta & Beilagen"
+  ],
+  "812": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frische Pasta & Beilagen"
+  ],
+  "813": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frische Pasta & Beilagen"
+  ],
+  "814": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "815": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "816": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frische Pasta & Beilagen"
+  ],
+  "817": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frische Pasta & Beilagen"
+  ],
+  "818": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frische Pasta & Beilagen"
+  ],
+  "819": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frische Pasta & Beilagen"
+  ],
+  "820": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frische Pasta & Beilagen"
+  ],
+  "821": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frische Pasta & Beilagen"
+  ],
+  "822": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frische Pasta & Beilagen"
+  ],
+  "823": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frische Pasta & Beilagen"
+  ],
+  "824": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frische Pasta & Beilagen"
+  ],
+  "825": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frische Pasta & Beilagen"
+  ],
+  "826": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frische Pasta & Beilagen"
+  ],
+  "827": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frische Pasta & Beilagen"
+  ],
+  "828": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frische Pasta & Beilagen"
+  ],
+  "829": [
+   "Kühlschale/MAP",
+   "BILLA-Kategorie: Frische Pasta & Beilagen"
+  ],
+  "830": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "831": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "832": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "833": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "834": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "835": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "836": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "837": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "838": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "839": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "840": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "841": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "842": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "843": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "844": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "845": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "846": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "847": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "848": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "849": [
+   "Glas",
+   "Etikett: Verpackung Glas"
+  ],
+  "850": [
+   "Glas",
+   "Etikett: Verpackung Glas"
+  ],
+  "851": [
+   "Dose",
+   "Etikett: Verpackung Dose"
+  ],
+  "852": [
+   "Glas",
+   "Etikett: Verpackung Glas"
+  ],
+  "854": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "857": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "859": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "860": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "861": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "862": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "868": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "869": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "870": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "872": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "874": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "876": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "879": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "880": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "881": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "883": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "884": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "885": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "886": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "887": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "888": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "891": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "893": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "895": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "897": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "898": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "900": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "902": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "905": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "907": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "909": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "910": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "913": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "914": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "915": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "917": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "918": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "919": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "920": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "921": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "922": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "923": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "924": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "925": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "927": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "928": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "929": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "930": [
+   "Trocken/Instant-Beutel",
+   "Name: Instant/Trocken"
+  ],
+  "931": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "933": [
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "934": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "937": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "941": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "942": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "945": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "948": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "949": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "951": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "953": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "954": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "956": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "957": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "958": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "959": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "960": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "961": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "965": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "969": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "970": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "977": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "978": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "979": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "980": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "981": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "982": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "983": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "984": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "985": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "989": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "990": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "992": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "995": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "996": [
+   "Glas",
+   "Name: Glas"
+  ],
+  "997": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "998": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "999": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1005": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1006": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1008": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1009": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1010": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1011": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1012": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1013": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1014": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1015": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1016": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1017": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1018": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1019": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1020": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1021": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1022": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1023": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1024": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1025": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1026": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1027": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1028": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1029": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1030": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1031": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1032": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1033": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1034": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1035": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1036": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1037": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1038": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1039": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1040": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1041": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1042": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1043": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1044": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1045": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1046": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1047": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1048": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1049": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1050": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1051": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1055": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1057": [
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1059": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1060": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1061": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1062": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1063": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1064": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1065": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1066": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1067": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1068": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1069": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1070": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1071": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1072": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1073": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1074": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1075": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1076": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1077": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1078": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1079": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1080": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1081": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1082": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1083": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1084": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1085": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1086": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1087": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1088": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1089": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1090": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1091": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1092": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1093": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1094": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1095": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1096": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1097": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1098": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1099": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1100": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1101": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1102": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1103": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1104": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1105": [
+   "Sous-vide/Vakuum",
+   "Name: Sous-vide"
+  ],
+  "1106": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1107": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1108": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1109": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1110": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1111": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1112": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1113": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1114": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1115": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1116": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1117": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1118": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1119": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1120": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1121": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1122": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1123": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1124": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1125": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1126": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1127": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1128": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1129": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1130": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1131": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1132": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1133": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "1134": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1135": [
+   "Kühlschale/MAP",
+   "Etikett: gekühlt +2…+6 °C"
+  ],
+  "1136": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1137": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1138": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1139": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1140": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1141": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1142": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1143": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1144": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1147": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "1151": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1152": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1155": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1156": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1157": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1161": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1163": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1165": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1167": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1169": [
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1170": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1171": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "1173": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1174": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1175": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1176": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1177": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1179": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1183": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1189": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1190": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1192": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1194": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1203": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "1204": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1205": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1208": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1213": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1220": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1223": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "1224": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1226": [
+   "Kühlschale/MAP",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1228": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1229": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1230": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1231": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1232": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1233": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1234": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1235": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1236": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1237": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1238": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1239": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1240": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1241": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1242": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1243": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1244": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1245": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1246": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1247": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1248": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1249": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1250": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1251": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1252": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1253": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1254": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "1255": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "1256": [
+   "Dose",
+   "Name/Marke: Dose"
+  ],
+  "1257": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1258": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1260": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1261": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1262": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1263": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1264": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1265": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1266": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1267": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1268": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1269": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1270": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1271": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1272": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1273": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1274": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1275": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1276": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1277": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1278": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1279": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1280": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1281": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1282": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1283": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1284": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1285": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1286": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1287": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1288": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1289": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1290": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1291": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1292": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1293": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1294": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1295": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1296": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1297": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1298": [
+   "Tiefkühl",
+   "bisherige Einstufung (Shop-Rubrik)"
   ]
  }
 }
