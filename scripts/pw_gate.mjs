@@ -20,7 +20,7 @@ const base = `http://127.0.0.1:${port}/`
 const TABS = ['alle','feed','galerie','board','gerichte','top','kategorien','markenprofil','ladenprofil','marken','familien','dashboard','gesundheit','analyse','scatter','pack','matrix','hersteller-seiten','wer','firmen','qualitaet','logos','netz','hersteller','filialen','online','planer','kombi','ftg','multipot','methodik','abdeckung']
 const VIEWPORTS = [{ w: 1920, h: 1080, name: 'desktop' }, { w: 390, h: 844, name: 'mobile' }]
 
-const browser = await chromium.launch({ headless: true })
+const browser = await chromium.launch({ headless: true, args: ['--no-sandbox'] })
 const summary = { ok: true, errors: [], blank: [], overflow: [], brokenImg: 0, totalImg: 0, tabs: {} }
 
 for (const vp of VIEWPORTS) {

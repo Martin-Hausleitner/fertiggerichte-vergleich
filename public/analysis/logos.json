@@ -146,7 +146,8 @@
   "slug": "vegavita",
   "name": "Vegavita",
   "brands": [
-   "Vegavita"
+   "Vegavita",
+   "VEGA VITA VON BILLA"
   ],
   "logo_category": "Eigenmarke",
   "file": "logos/vegavita.png",
@@ -178,7 +179,8 @@
   "slug": "billa-bio",
   "name": "BILLA Bio",
   "brands": [
-   "BILLA Bio"
+   "BILLA Bio",
+   "Billabio"
   ],
   "logo_category": "Bio",
   "file": "logos/billa-bio.png",
@@ -287,7 +289,8 @@
   "slug": "spar-natur-pur",
   "name": "SPAR Natur*pur",
   "brands": [
-   "SPAR Natur*pur"
+   "SPAR Natur*pur",
+   "Spar Natur Pur"
   ],
   "logo_category": "Bio",
   "file": "logos/spar-natur-pur.png",
@@ -349,7 +352,8 @@
   "name": "Cucina",
   "brands": [
    "Cucina",
-   "Cucina Nobile"
+   "Cucina Nobile",
+   "Cucina, Girone & Sohn Nahrungsmittel"
   ],
   "logo_category": "Eigenmarke",
   "file": "logos/cucina.png",
@@ -684,7 +688,8 @@
   "slug": "food-for-future",
   "name": "Food for Future",
   "brands": [
-   "Food for Future"
+   "Food for Future",
+   "Food for Future, Penny"
   ],
   "logo_category": "Eigenmarke",
   "file": "logos/food-for-future.svg",
@@ -723,7 +728,9 @@
   "slug": "knorr",
   "name": "Knorr",
   "brands": [
-   "Knorr"
+   "Knorr",
+   "Knorr, Kaiser Teller",
+   "Knorr Kaiser Teller"
   ],
   "logo_category": "Markenhersteller",
   "file": "logos/knorr.svg",
@@ -736,7 +743,8 @@
   "slug": "maggi",
   "name": "Maggi",
   "brands": [
-   "Maggi"
+   "Maggi",
+   "Maggi, Nestlé"
   ],
   "logo_category": "Markenhersteller",
   "file": "logos/maggi.svg",
@@ -829,7 +837,8 @@
   "slug": "planted",
   "name": "Planted",
   "brands": [
-   "Planted"
+   "Planted",
+   "Planted."
   ],
   "logo_category": "Markenhersteller",
   "file": "logos/planted.svg",
@@ -985,7 +994,8 @@
   "slug": "little-lunch",
   "name": "Little Lunch",
   "brands": [
-   "Little Lunch"
+   "Little Lunch",
+   "Little"
   ],
   "logo_category": "Bio",
   "file": "logos/little-lunch.svg",
@@ -1101,7 +1111,8 @@
   "slug": "fit-taste",
   "name": "Fit Taste",
   "brands": [
-   "Fit Taste"
+   "Fit Taste",
+   "FitTaste"
   ],
   "logo_category": "Markenhersteller",
   "file": "logos/fit-taste.png",
@@ -1194,7 +1205,8 @@
   "slug": "hut-und-stiel",
   "name": "Hut&Stiel",
   "brands": [
-   "Hut&Stiel"
+   "Hut&Stiel",
+   "Hut & Stiel"
   ],
   "logo_category": "Markenhersteller",
   "file": "logos/hut-und-stiel.png",
@@ -1210,7 +1222,8 @@
   "slug": "tress-brueder",
   "name": "Tress Brüder",
   "brands": [
-   "Tress Brüder"
+   "Tress Brüder",
+   "Tressbrüder"
   ],
   "logo_category": "Bio",
   "file": "logos/tress-brueder.svg",
@@ -1838,7 +1851,10 @@
  "hubers-landhendl": {
   "slug": "hubers-landhendl",
   "name": "Hubers Landhendl GmbH",
-  "brands": [],
+  "brands": [
+   "Hubers Landhendl",
+   "Hubers"
+  ],
   "logo_category": "Produzent/Werk",
   "file": "logos/hubers-landhendl.png",
   "source": "https://huberslandhendl.at/wp-content/uploads/2023/01/logo-hubers-r.png",
@@ -1908,7 +1924,8 @@
   "name": "Dr. Oetker",
   "brands": [
    "Dr. Oetker",
-   "Paula"
+   "Paula",
+   "DR.OETKER RISTORANTE"
   ],
   "logo_category": "Marke",
   "file": "logos/dr-oetker.svg",
@@ -1983,7 +2000,10 @@
   "slug": "samyang-buldak",
   "name": "Buldak (Samyang)",
   "brands": [
-   "Buldak"
+   "Buldak",
+   "Samyang",
+   "Samyang Foods",
+   "SAMYANG"
   ],
   "logo_category": "Marke",
   "file": "logos/samyang-buldak.svg",
@@ -2363,6 +2383,460 @@
   "source": "https://a.storyblok.com/f/291086118523370/86x28/c9f09c61bc/every_logo_black-1.svg",
   "size": "svg",
   "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · offizielles Wortlogo aus dem Header von every-foods.com (Every Foods, pflanzliche TK-Gerichte; Gurkerl)",
+  "hq": true
+ },
+ "gustavo-gusto": {
+  "slug": "gustavo-gusto",
+  "name": "Gustavo Gusto",
+  "brands": [
+   "Gustavo Gusto",
+   "GUSTAVO GUSTO"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/gustavo-gusto.png",
+  "source": "https://gustavo-gusto.de/wp-content/uploads/2024/02/Gustavo_Gusto_Logo.png",
+  "size": [
+   155,
+   237
+  ],
+  "note": "Vision gate 2026-10-13T11: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · offizielles Logo aus dem Header von gustavo-gusto.de (Gustavo Gusto GmbH & Co. KG, Geretsried; TK-Pizza, Gurkerl/MPreis)",
+  "hq": true
+ },
+ "morgentau": {
+  "slug": "morgentau",
+  "name": "Morgentau",
+  "brands": [
+   "Morgentau",
+   "MORGENTAU",
+   "Morgentau Biogemüse"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/morgentau.svg",
+  "source": "https://morgentau.at/media/vector/f3/17/9e/morgentau_logo_claimK4TEwfny90tQV.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T11: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · offizielles Logo (og:image) von morgentau.at (MORGENTAU Biogemüse GmbH, Hofkirchen OÖ; Gurkerl)",
+  "hq": true
+ },
+ "noem": {
+  "slug": "noem",
+  "name": "NÖM",
+  "brands": [
+   "NÖM",
+   "Nöm",
+   "nöm",
+   "nöm PRO",
+   "Nöm PRO",
+   "nöm Cremix",
+   "NÖM PRO"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/noem.png",
+  "source": "https://www.noem.at/logo_512x512.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · offizielles Logo von noem.at (NÖM AG, Baden)",
+  "hq": true
+ },
+ "zurueck-zum-ursprung": {
+  "slug": "zurueck-zum-ursprung",
+  "name": "Zurück zum Ursprung",
+  "brands": [
+   "Zurück zum Ursprung",
+   "ZURÜCK",
+   "ZURÜCK ZUM URSPRUNG"
+  ],
+  "logo_category": "Eigenmarke",
+  "file": "logos/zurueck-zum-ursprung.svg",
+  "source": "https://www.zurueckzumursprung.at/_assets/4b8eedeac75dabf6c5c55a34303952fc/Images/Logo-2026.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · offizielles Header-Logo zurueckzumursprung.at (Hofer-Bio-Eigenmarke)",
+  "hq": true
+ },
+ "danone": {
+  "slug": "danone",
+  "name": "Danone",
+  "brands": [
+   "Danone",
+   "Danone Belux nv"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/danone.png",
+  "source": "https://commons.wikimedia.org/wiki/File%3ADanone_Logo.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · Wikimedia Commons (Public domain)",
+  "hq": true
+ },
+ "bibigo": {
+  "slug": "bibigo",
+  "name": "Bibigo",
+  "brands": [
+   "Bibigo",
+   "bibigo"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/bibigo.svg",
+  "source": "https://cdn.sanity.io/images/mf5qmsk4/production/7f117672123d4ebf0ddf23531397fc7129dac375-159x117.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · offizielles Header-Logo bibigo.com (CJ CheilJedang)",
+  "hq": true
+ },
+ "berger-schinken": {
+  "slug": "berger-schinken",
+  "name": "Berger Schinken",
+  "brands": [
+   "Berger Schinken"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/berger-schinken.svg",
+  "source": "https://www.berger-schinken.at/wp-content/uploads/2021/08/bergerschinken-logo-2.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · offizielles Header-Logo berger-schinken.at",
+  "hq": true
+ },
+ "buerger": {
+  "slug": "buerger",
+  "name": "Bürger",
+  "brands": [
+   "Bürger",
+   "BÜRGER"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/buerger.svg",
+  "source": "https://www.buerger.de/buerger-logo.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · offizielles Header-Logo buerger.de (Bürger GmbH, Crailsheim; GTIN-Präfix 4075600)",
+  "hq": true
+ },
+ "delamaris": {
+  "slug": "delamaris",
+  "name": "Delamaris",
+  "brands": [
+   "Delamaris"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/delamaris.svg",
+  "source": "https://www.delamaris.si/wp-content/uploads/2021/01/Group-161.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · offizielles Header-Logo delamaris.si",
+  "hq": true
+ },
+ "dimmidisi": {
+  "slug": "dimmidisi",
+  "name": "DimmidiSì",
+  "brands": [
+   "DimmidiSì",
+   "DimmidiSi",
+   "Dimmidisì"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/dimmidisi.png",
+  "source": "https://www.dimmidisi.it/wp-content/uploads/2022/04/logo-dimmidisi.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · offizielles Logo dimmidisi.it",
+  "hq": true
+ },
+ "eismann": {
+  "slug": "eismann",
+  "name": "eismann",
+  "brands": [
+   "Eismann",
+   "eismann"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/eismann.svg",
+  "source": "https://commons.wikimedia.org/wiki/File%3AEismann-logo-2019.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · Wikimedia Commons (Public domain)",
+  "hq": true
+ },
+ "golfera": {
+  "slug": "golfera",
+  "name": "Golfera",
+  "brands": [
+   "Golfera",
+   "GOLFERA"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/golfera.png",
+  "source": "https://golfera.com/wp-content/uploads/2025/08/LOGO-GOLFERA_2025-2.webp",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · offizielles Header-Logo golfera.com (Golfera in Lavezzola S.p.A.; Ben-Fatto-Gerichte bei Gurkerl)",
+  "hq": true
+ },
+ "greenforce": {
+  "slug": "greenforce",
+  "name": "GREENFORCE",
+  "brands": [
+   "GREENFORCE",
+   "Greenforce"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/greenforce.png",
+  "source": "https://cdn.shopify.com/s/files/1/0417/0242/4737/files/GREENFORCE_Logo.png?v=1732182654&width=300",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · offizielles Header-Logo greenforce.com",
+  "hq": true
+ },
+ "gue": {
+  "slug": "gue",
+  "name": "Gü",
+  "brands": [
+   "GÜ",
+   "Gü",
+   "Gü Puds"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/gue.png",
+  "source": "https://cdn.shopify.com/s/files/1/1025/1252/5644/files/SEO_c6330974-1949-4c1d-996c-e874295aa199.png?v=1769701720",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · Wortmarke ausgeschnitten aus offiziellem og:image (gupuds.com → gudesserts.us)",
+  "hq": true
+ },
+ "heinz": {
+  "slug": "heinz",
+  "name": "Heinz",
+  "brands": [
+   "Heinz",
+   "HEINZ"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/heinz.svg",
+  "source": "https://commons.wikimedia.org/wiki/File%3AHeinz-logo.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · Wikimedia Commons (Public domain)",
+  "hq": true
+ },
+ "hengstenberg": {
+  "slug": "hengstenberg",
+  "name": "Hengstenberg",
+  "brands": [
+   "Hengstenberg"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/hengstenberg.png",
+  "source": "https://commons.wikimedia.org/wiki/File%3AHengstenberg_Logo_aktuell.tif",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · Wikimedia Commons (CC BY-SA 4.0)",
+  "hq": true
+ },
+ "hilcona": {
+  "slug": "hilcona",
+  "name": "Hilcona",
+  "brands": [
+   "Hilcona"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/hilcona.svg",
+  "source": "https://commons.wikimedia.org/wiki/File%3AHilcona_Logo_2015.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · Wikimedia Commons (CC BY-SA 3.0 de)",
+  "hq": true
+ },
+ "jeden-tag": {
+  "slug": "jeden-tag",
+  "name": "Jeden Tag",
+  "brands": [
+   "Jeden Tag"
+  ],
+  "logo_category": "Eigenmarke",
+  "file": "logos/jeden-tag.svg",
+  "source": "https://www.jeden-tag.de/_assets/e6bf15f02616d4b86dc74f33fda97e9c/Images/logo.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · offizielles Header-Logo jeden-tag.de (ZEV-Markant-Handelsmarke, bei MPreis/Unimarkt)",
+  "hq": true
+ },
+ "kotanyi": {
+  "slug": "kotanyi",
+  "name": "Kotányi",
+  "brands": [
+   "Kotányi",
+   "KOTÁNYI",
+   "Kotanyi"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/kotanyi.svg",
+  "source": "https://commons.wikimedia.org/wiki/File%3AKotanyi-logo-color.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · Wikimedia Commons (Public domain)",
+  "hq": true
+ },
+ "meica": {
+  "slug": "meica",
+  "name": "Meica",
+  "brands": [
+   "Meica",
+   "MEICA"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/meica.png",
+  "source": "https://www.meica.de/_assets/2463467ec568880360cfe0d0f1852732/Images/Logo.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · offizielles Header-Logo meica.de",
+  "hq": true
+ },
+ "neni": {
+  "slug": "neni",
+  "name": "NENI",
+  "brands": [
+   "Neni",
+   "NENI"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/neni.png",
+  "source": "https://nenifood.com/application/images/NENI_Logo_Familymade_RGB_Falafel.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · offizielles Logo nenifood.com (NENI-Handelsprodukte)",
+  "hq": true
+ },
+ "nongshim": {
+  "slug": "nongshim",
+  "name": "Nongshim",
+  "brands": [
+   "Nongshim",
+   "NONGSHIM"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/nongshim.svg",
+  "source": "https://commons.wikimedia.org/wiki/File%3ANongshim_Logo.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · Wikimedia Commons (Public domain)",
+  "hq": true
+ },
+ "perutnina": {
+  "slug": "perutnina",
+  "name": "Perutnina Ptuj",
+  "brands": [
+   "Perutnina",
+   "Perutnina Ptuj"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/perutnina.svg",
+  "source": "https://commons.wikimedia.org/wiki/File%3APerutnina_Ptuj_Logo.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · Wikimedia Commons (Public domain)",
+  "hq": true
+ },
+ "riso-scotti": {
+  "slug": "riso-scotti",
+  "name": "Riso Scotti",
+  "brands": [
+   "Riso Scotti"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/riso-scotti.png",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALogo_Riso_Scotti_S.p.a..jpg",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · Wikimedia Commons (Public domain)",
+  "hq": true
+ },
+ "salzburgmilch": {
+  "slug": "salzburgmilch",
+  "name": "SalzburgMilch",
+  "brands": [
+   "SalzburgMilch",
+   "Salzburg Milch"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/salzburgmilch.png",
+  "source": "https://commons.wikimedia.org/wiki/File%3ASalzburgMilch.jpeg",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · Wikimedia Commons (Public domain)",
+  "hq": true
+ },
+ "stadtkueche": {
+  "slug": "stadtkueche",
+  "name": "Stadtküche",
+  "brands": [
+   "Stadtküche"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/stadtkueche.png",
+  "source": "https://www.kasnudl.com/wp-content/uploads/2024/01/cropped-Design-ohne-Titel3.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · offizielles Header-Logo kasnudl.com (Kasnudl GmbH, Marke Stadtküche bei Billa)",
+  "hq": true
+ },
+ "uncle-bens": {
+  "slug": "uncle-bens",
+  "name": "Uncle Ben's",
+  "brands": [
+   "Uncle Ben's",
+   "Uncle Bens"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/uncle-bens.svg",
+  "source": "https://commons.wikimedia.org/wiki/File%3AUnclebens-logo.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · Wikimedia Commons (Public domain)",
+  "hq": true
+ },
+ "weight-watchers": {
+  "slug": "weight-watchers",
+  "name": "Weight Watchers",
+  "brands": [
+   "Weight Watchers",
+   "weight watchers",
+   "Weight"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/weight-watchers.svg",
+  "source": "https://commons.wikimedia.org/wiki/File%3AWeightWatchers2026.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · Wikimedia Commons (Public domain)",
+  "hq": true
+ },
+ "wiegert": {
+  "slug": "wiegert",
+  "name": "Wiegert",
+  "brands": [
+   "Wiegert"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/wiegert.png",
+  "source": "https://www.wiegert.at/wp-content/uploads/2022/01/cropped-WIE-logo-11-claim-1024x553.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · offizielles Header-Logo wiegert.at",
+  "hq": true
+ },
+ "andechser-natur": {
+  "slug": "andechser-natur",
+  "name": "Andechser Natur",
+  "brands": [
+   "Andechser Natur",
+   "Andechser"
+  ],
+  "logo_category": "Bio",
+  "file": "logos/andechser-natur.svg",
+  "source": "https://commons.wikimedia.org/wiki/File%3AAndechser_Molkerei_Logo.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · Wikimedia Commons (Public domain)",
+  "hq": true
+ },
+ "bauernland": {
+  "slug": "bauernland",
+  "name": "Bauernland",
+  "brands": [
+   "Bauernland"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/bauernland.png",
+  "source": "https://www.weinbergmaier.at/images/Logo_BL.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · offizielles Logo weinbergmaier.at (Weinbergmaier GmbH, Marke Bauernland)",
+  "hq": true
+ },
+ "brajlovic": {
+  "slug": "brajlovic",
+  "name": "Brajlović",
+  "brands": [
+   "Brajlovic",
+   "Brajlović",
+   "BRAJLOVIC"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/brajlovic.png",
+  "source": "https://www.brajlovic.at/",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · offizielles Site-Icon brajlovic.at (192 px, Wix-CDN)",
   "hq": true
  }
 }
