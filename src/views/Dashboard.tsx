@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { Euro, Beef, Grid3x3, LayoutDashboard, Layers, Activity, PieChart, Network, Clock } from 'lucide-react'
+import { Euro, Beef, Grid3x3, LayoutDashboard, Layers, Activity, PieChart, Network, Clock, ImageIcon } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { StoreLogo } from '@/components/product'
@@ -33,7 +33,16 @@ export default function Dashboard() {
     const fresh = stores.map(s => { const o: Record<string, string | number> = { name: s }; FRESH.forEach(k => { o[k] = 0 }); by.get(s)!.forEach(r => { const b = bucket(r); o[b] = (o[b] as number) + 1 }); return o })
     const freshTot = FRESH.map(k => rows.filter(r => bucket(r) === k).length)
     const refDate = Number.isFinite(ref) ? new Date(ref).toLocaleDateString('de-AT') : '–'
-    return { by, stores, stages, stack, cats, heat, brands, ns, nsTot, FRESH, fresh, freshTot, refDate }
+    // Foto-Abdeckung je Laden
+    const PHOTO = ['mit Foto', 'ohne Foto']
+    const photo = stores.map(s => {
+      const rs = by.get(s)!
+      const withImg = rs.filter(r => !!r.img).length
+      return { name: s, 'mit Foto': withImg, 'ohne Foto': rs.length - withImg }
+    })
+    const photoTot = [rows.filter(r => !!r.img).length, rows.filter(r => !r.img).length]
+    const photoPct = rows.length ? Math.round(photoTot[0] / rows.length * 100) : 0
+    return { by, stores, stages, stack, cats, heat, brands, ns, nsTot, FRESH, fresh, freshTot, refDate, PHOTO, photo, photoTot, photoPct }
   }, [rows])
   return <div className="space-y-4">
     <h2 className="flex items-center gap-2 text-xl font-bold"><LayoutDashboard className="size-5" />Dashboard</h2>
@@ -42,6 +51,7 @@ export default function Dashboard() {
       <Panel icon={Beef} title="€ pro 10 g Protein" desc="niedriger = günstigeres Protein"><AreaDist data={histogram(nums(rows, r => r.eur10p), 30, 3)} label="Gerichte" unit="€" color={CHART_COLORS[1]} /></Panel>
     </div>
     <Panel icon={Clock} title="Preis-Aktualität je Laden" desc={`Alter des Preises laut Quelle, Stichtag ${d.refDate} · ${d.FRESH.map((k, i) => `${k}: ${d.freshTot[i]}`).join(' · ')}`}><StackedBars data={d.fresh} keys={d.FRESH} /></Panel>
+    <Panel icon={ImageIcon} title="Foto-Abdeckung je Laden" desc={`${d.photoPct} % der Gerichte haben ein Produktfoto · mit Foto: ${d.photoTot[0]} · ohne: ${d.photoTot[1]}`}><StackedBars data={d.photo} keys={d.PHOTO} /></Panel>
     <Panel icon={Layers} title="Gänge je Laden" desc="gestapelt nach Fertigstufe"><StackedBars data={d.stack} keys={d.stages} /></Panel>
     <div className="grid gap-4 lg:grid-cols-[1fr_340px]">
       <Panel icon={Grid3x3} title="Heatmap: Median € / 10 g Protein" desc="Laden × Proteinquelle · dunkler = günstiger"><HeatGrid rows={d.stores} cols={d.cats} get={d.heat} fmtV={v => fmt(v, 2)} lowGood /></Panel>
