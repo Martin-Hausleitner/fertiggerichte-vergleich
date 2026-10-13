@@ -3585,5 +3585,20 @@
   "size": "png",
   "note": "Vision gate 2026-10-13T18 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Wikimedia Commons File:Alpenhain Logo.png (CC BY-SA 4.0, Robert Winkelmann; Quelle alpenhain.de) – Alpenhain Käsespezialitäten GmbH (Brand-Tree-Konzern); 2016×1142 RGBA auf 512×290 verkleinert, sonst unverändert",
   "hq": true
+ },
+ "hellofresh": {
+  "slug": "hellofresh",
+  "name": "HelloFresh",
+  "brands": [
+   "HelloFresh",
+   "Hello Fresh",
+   "HelloFresh SE"
+  ],
+  "logo_category": "Online-Mealprep",
+  "file": "logos/hellofresh.svg",
+  "source": "https://cdn.hellofresh.com/logo/HelloFresh_Logo_Horizontal_V2.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T22 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles CDN-Asset HelloFresh_Logo_Horizontal_V2.svg (cdn.hellofresh.com/logo/; robots.txt hellofresh.de/.com erlauben CDN-Logo; kein Commons-Logo vorhanden; Wikipedia-Datei nur fair-use/Bild-LogoSH → nicht verwendet; 13746 B SVG unverändert, title HelloFresh_RGB_2C_Horizontal, fill #91C11E)",
+  "hq": true
  }
 }
