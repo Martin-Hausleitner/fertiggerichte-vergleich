@@ -104,7 +104,7 @@ export function ProductCard({r}:{r:Row}){
       <div className="absolute right-1 bottom-1 rounded-full bg-white ring-1 ring-black/5"><Actions r={r}/></div>
     </div>
     <CardHeader className="pt-3"><div className="flex items-center gap-2 min-w-0"><span className="inline-flex items-center rounded-md bg-white px-1 py-0.5"><BrandLogo r={r} size={20}/></span><span className="text-[13px] text-muted-foreground truncate">{r.brandN}</span><span className="ml-auto text-[11px] text-slate-400 whitespace-nowrap"><InfoTip k="pack">{packEmo(r.pack)}</InfoTip></span></div>
-      <CardTitle className="text-[15px] font-bold line-clamp-2 min-h-[2.5em]">{r.name}</CardTitle></CardHeader>
+      <CardTitle className="text-[15px] font-bold line-clamp-2 min-h-[2.5em]">{r.name}</CardTitle>{r.alsoAt&&r.alsoAt.length>0&&<div className="text-[11px] text-muted-foreground mt-0.5">auch bei {r.alsoAt.join(", ")}</div>}</CardHeader>
     <CardContent className="space-y-3 flex-1">
       <div className="flex items-end justify-between gap-2"><div className="text-2xl"><Price r={r}/></div>
         <div className="text-right"><div className="text-lg font-extrabold leading-tight tabular-nums text-brand dark:text-emerald-300">{r.eur10p==null?'–':fmt(r.eur10p,2)+' €'}</div><div className="text-[11px] text-muted-foreground flex justify-end"><InfoTip k="eur10p">pro 10 g Protein</InfoTip></div></div></div>
