@@ -1,6 +1,6 @@
 {
  "generated": "2026-10-13",
- "note": "Typische Werte nur mit Quelle; \"etiketten\" = echte Lagerhinweise aus BILLA-Produktdaten (det.json/det2.json, Feld storageAndUsageStatements); \"datensatz\" = scored.json. Echte MHD-Daten (Tage/Monate unopened) sind in den Shopdaten NICHT enthalten. MHD-Spannen im Dashboard = typische Branchenrichtwerte (gekennzeichnet). Zusatzstoffe = Anzahl Zusatzstoff-Klassen/E-Nummern in BILLA-Zutatenlisten. MHD-Spannen im Dashboard = typische Branchenrichtwerte (gekennzeichnet). Zusatzstoffe = Anzahl Zusatzstoff-Klassen/E-Nummern in BILLA-Zutatenlisten.",
+ "note": "Typische Werte nur mit Quelle; \"etiketten\" = echte Lagerhinweise aus BILLA-Produktdaten (det.json/det2.json, Feld storageAndUsageStatements); \"datensatz\" = scored.json. Echte MHD-Daten (Tage/Monate unopened) sind in den Shopdaten NICHT enthalten. MHD-Spannen im Dashboard = typische Branchenrichtwerte (gekennzeichnet). Zusatzstoffe = Anzahl Zusatzstoff-Klassen/E-Nummern in BILLA-Zutatenlisten. MHD-Spannen im Dashboard = typische Branchenrichtwerte (gekennzeichnet). Zusatzstoffe = Anzahl Zusatzstoff-Klassen/E-Nummern in BILLA-Zutatenlisten. MHD-Spannen im Dashboard = typische Branchenrichtwerte (gekennzeichnet). Zusatzstoffe = Anzahl Zusatzstoff-Klassen/E-Nummern in BILLA-Zutatenlisten. MHD-Spannen im Dashboard = typische Branchenrichtwerte (gekennzeichnet). Zusatzstoffe = Anzahl Zusatzstoff-Klassen/E-Nummern in BILLA-Zutatenlisten.",
  "sources": {
   "ara": "https://www.ara.at/news/sammelumstellung-2025-alle-details-im-ueberblick",
   "oegv": "https://www.oesterreich.gv.at/de/themen/bauen_und_wohnen/abfall/metallverpackungen",
@@ -220,15 +220,15 @@
     "eur10p": [
      0.4,
      1.51,
-     2.01,
-     2.66,
+     2.0,
+     2.63,
      8.31
     ],
     "score": [
      9.8,
      26.18,
-     33.5,
-     39.12,
+     33.8,
+     38.5,
      57.0
     ],
     "salt": [
@@ -343,19 +343,19 @@
     }
    ],
    "stats": {
-    "n_products": 178,
-    "n_rankable": 82,
+    "n_products": 184,
+    "n_rankable": 86,
     "median_price": 3.49,
     "median_price_per_kg": 8.11,
-    "median_price_per_10g_protein": 2.02,
-    "median_health_score": 33.5,
-    "median_pli": 29.95,
+    "median_price_per_10g_protein": 2.01,
+    "median_health_score": 33.8,
+    "median_pli": 30.05,
     "median_protein_100": 3.8,
     "median_salt_100": 1.1,
-    "median_kcal_100": 92.5,
-    "median_additives": null,
-    "n_additives": 0,
-    "share_bio": 19
+    "median_kcal_100": 92.0,
+    "median_additives": 1.0,
+    "n_additives": 44,
+    "share_bio": 18
    }
   },
   {
@@ -701,8 +701,8 @@
     "median_protein_100": 7.3,
     "median_salt_100": 1.1,
     "median_kcal_100": 157.0,
-    "median_additives": null,
-    "n_additives": 0,
+    "median_additives": 1,
+    "n_additives": 81,
     "share_bio": 8
    }
   },
@@ -935,8 +935,8 @@
     "median_protein_100": 6.9,
     "median_salt_100": 0.89,
     "median_kcal_100": 147.5,
-    "median_additives": null,
-    "n_additives": 0,
+    "median_additives": 0,
+    "n_additives": 7,
     "share_bio": 3
    }
   },
@@ -981,9 +981,27 @@
    "label_evidence": null,
    "icon": "🛍️",
    "box": {
-    "eur10p": null,
-    "score": null,
-    "salt": null
+    "eur10p": [
+     0.61,
+     1.37,
+     2.48,
+     2.76,
+     3.68
+    ],
+    "score": [
+     12.0,
+     28.23,
+     33.35,
+     41.55,
+     52.9
+    ],
+    "salt": [
+     0.32,
+     1.02,
+     1.2,
+     1.35,
+     1.9
+    ]
    },
    "stores": [
     "Billa",
@@ -995,21 +1013,92 @@
     "9–18 Monate",
     "vz"
    ],
-   "after_opening_labels": [],
-   "top": [],
+   "after_opening_labels": [
+    [
+     "nach dem öffnen im kühlschrank zugedeckt aufbewahren und innerhalb von zwei tagen verzehren",
+     3
+    ]
+   ],
+   "top": [
+    {
+     "id": 803,
+     "name": "Inzersdorfer Wellness Hühnerbruststreifen mit Gemüsereis",
+     "brand": "Inzersdorfer",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-963089-0478831115-eZSRwhMg.jpg",
+     "logo": "analysis/logos/inzersdorfer.png",
+     "price": 5.99,
+     "eur10p": 2.77,
+     "score": 41.4,
+     "pli": 29.7,
+     "url": "https://shop.billa.at/produkte/inzersdorfer-wellness-huehnerbruststreifen-mit-gemuesereis-00963089"
+    },
+    {
+     "id": 679,
+     "name": "Inzersdorfer Rindsroulade mit Spiralen",
+     "brand": "Inzersdorfer",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-402692-288163225-hTpY_sHT.jpg",
+     "logo": "analysis/logos/inzersdorfer.png",
+     "price": 5.99,
+     "eur10p": 2.39,
+     "score": 37.0,
+     "pli": 29.0,
+     "url": "https://shop.billa.at/produkte/inzersdorfer-rindsroulade-mit-spiralen-00402692"
+    },
+    {
+     "id": 696,
+     "name": "Inzersdorfer Zwiebelrindsbraten",
+     "brand": "Inzersdorfer",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-415439-0830246355-VkSQK8oW.jpg",
+     "logo": "analysis/logos/inzersdorfer.png",
+     "price": 5.99,
+     "eur10p": 2.43,
+     "score": 33.3,
+     "pli": 26.9,
+     "url": "https://shop.billa.at/produkte/inzersdorfer-zwiebelrindsbraten-00415439"
+    },
+    {
+     "id": 678,
+     "name": "Inzersdorfer Rahmschnitzel mit Spiralen",
+     "brand": "Inzersdorfer",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-402691-0193919511-H9XOtl-0.jpg",
+     "logo": "analysis/logos/inzersdorfer.png",
+     "price": 5.99,
+     "eur10p": 2.63,
+     "score": 32.0,
+     "pli": 25.5,
+     "url": "https://shop.billa.at/produkte/inzersdorfer-rahmschnitzel-mit-spiralen-00402691"
+    },
+    {
+     "id": 791,
+     "name": "Inzersdorfer Feine Klassiker Schweinsgeschnetzeltes mit Risi Pisi",
+     "brand": "Inzersdorfer",
+     "store": "Billa",
+     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-883201-0201021016-_TnqzwyD.jpg",
+     "logo": "analysis/logos/inzersdorfer.png",
+     "price": 5.99,
+     "eur10p": 2.3,
+     "score": 27.5,
+     "pli": 24.8,
+     "url": "https://shop.billa.at/produkte/inzersdorfer-feine-klassiker-schweinsgeschnetzeltes-mit-risi-pisi-00883201"
+    }
+   ],
    "stats": {
-    "n_products": 15,
-    "n_rankable": 2,
-    "median_price": 2.69,
+    "n_products": 25,
+    "n_rankable": 12,
+    "median_price": 2.99,
     "median_price_per_kg": 12.23,
-    "median_price_per_10g_protein": 3.21,
-    "median_health_score": 37.5,
-    "median_pli": 26.75,
-    "median_protein_100": 3.25,
-    "median_salt_100": 0.44,
-    "median_kcal_100": 174.0,
-    "median_additives": null,
-    "n_additives": 0,
+    "median_price_per_10g_protein": 2.48,
+    "median_health_score": 33.35,
+    "median_pli": 27.25,
+    "median_protein_100": 6.6,
+    "median_salt_100": 1.2,
+    "median_kcal_100": 140.0,
+    "median_additives": 3,
+    "n_additives": 9,
     "share_bio": 0
    }
   },
@@ -1234,8 +1323,8 @@
     "median_protein_100": 1.5,
     "median_salt_100": 0.9,
     "median_kcal_100": 71.0,
-    "median_additives": null,
-    "n_additives": 0,
+    "median_additives": 1,
+    "n_additives": 9,
     "share_bio": 38
    }
   },
@@ -1452,8 +1541,8 @@
     "median_protein_100": 14.5,
     "median_salt_100": 1.4,
     "median_kcal_100": 123.0,
-    "median_additives": null,
-    "n_additives": 0,
+    "median_additives": 2.5,
+    "n_additives": 6,
     "share_bio": 10
    }
   },
@@ -1617,24 +1706,24 @@
    "icon": "🍜",
    "box": {
     "eur10p": [
-     0.61,
-     1.72,
-     2.62,
-     7.76,
+     2.52,
+     3.13,
+     8.0,
+     9.43,
      9.43
     ],
     "score": [
-     12.0,
-     26.75,
-     30.6,
-     35.0,
-     52.9
+     23.9,
+     26.35,
+     27.1,
+     32.3,
+     34.7
     ],
     "salt": [
      0.22,
-     0.68,
-     0.89,
-     1.2,
+     0.66,
+     0.85,
+     1.1,
      18.1
     ]
    },
@@ -1651,92 +1740,21 @@
     "9–24 Monate",
     "vz"
    ],
-   "after_opening_labels": [
-    [
-     "nach dem öffnen im kühlschrank zugedeckt aufbewahren und innerhalb von zwei tagen verzehren",
-     3
-    ]
-   ],
-   "top": [
-    {
-     "id": 677,
-     "name": "Knorr Meisterkessel Serbische Bohnensuppe",
-     "brand": "Knorr",
-     "store": "Billa",
-     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-3881-0866387831-dzs03kvW.jpg",
-     "logo": "analysis/logos/knorr.svg",
-     "price": 2.99,
-     "eur10p": 1.53,
-     "score": 35.8,
-     "pli": 34.1,
-     "url": "https://shop.billa.at/produkte/knorr-meisterkessel-serbische-bohnensuppe-003881"
-    },
-    {
-     "id": 665,
-     "name": "Knorr Meisterkessel Gulaschsuppe",
-     "brand": "Knorr",
-     "store": "Billa",
-     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-3459-0305047711-3vr4ua7e.jpg",
-     "logo": "analysis/logos/knorr.svg",
-     "price": 2.99,
-     "eur10p": 1.53,
-     "score": 34.2,
-     "pli": 33.4,
-     "url": "https://shop.billa.at/produkte/knorr-meisterkessel-gulaschsuppe-003459"
-    },
-    {
-     "id": 649,
-     "name": "Knorr Meisterkessel Südtiroler Bauernsuppe",
-     "brand": "Knorr",
-     "store": "Billa",
-     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-16395-01274607301-9HSgXz2o.jpg",
-     "logo": "analysis/logos/knorr.svg",
-     "price": 2.99,
-     "eur10p": 1.33,
-     "score": 23.3,
-     "pli": 30.4,
-     "url": "https://shop.billa.at/produkte/knorr-meisterkessel-suedtiroler-bauernsuppe-0016395"
-    },
-    {
-     "id": 803,
-     "name": "Inzersdorfer Wellness Hühnerbruststreifen mit Gemüsereis",
-     "brand": "Inzersdorfer",
-     "store": "Billa",
-     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-963089-0478831115-eZSRwhMg.jpg",
-     "logo": "analysis/logos/inzersdorfer.png",
-     "price": 5.99,
-     "eur10p": 2.77,
-     "score": 41.4,
-     "pli": 29.7,
-     "url": "https://shop.billa.at/produkte/inzersdorfer-wellness-huehnerbruststreifen-mit-gemuesereis-00963089"
-    },
-    {
-     "id": 679,
-     "name": "Inzersdorfer Rindsroulade mit Spiralen",
-     "brand": "Inzersdorfer",
-     "store": "Billa",
-     "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-402692-288163225-hTpY_sHT.jpg",
-     "logo": "analysis/logos/inzersdorfer.png",
-     "price": 5.99,
-     "eur10p": 2.39,
-     "score": 37.0,
-     "pli": 29.0,
-     "url": "https://shop.billa.at/produkte/inzersdorfer-rindsroulade-mit-spiralen-00402692"
-    }
-   ],
+   "after_opening_labels": [],
+   "top": [],
    "stats": {
-    "n_products": 192,
-    "n_rankable": 24,
-    "median_price": 1.99,
-    "median_price_per_kg": 12.64,
-    "median_price_per_10g_protein": 2.62,
-    "median_health_score": 30.6,
-    "median_pli": 24.75,
-    "median_protein_100": 2.9,
-    "median_salt_100": 0.89,
-    "median_kcal_100": 104.0,
-    "median_additives": null,
-    "n_additives": 0,
+    "n_products": 176,
+    "n_rankable": 10,
+    "median_price": 1.59,
+    "median_price_per_kg": 13.54,
+    "median_price_per_10g_protein": 8.0,
+    "median_health_score": 27.1,
+    "median_pli": 19.3,
+    "median_protein_100": 2.7,
+    "median_salt_100": 0.85,
+    "median_kcal_100": 103.0,
+    "median_additives": 1.0,
+    "n_additives": 82,
     "share_bio": 3
    }
   }
@@ -2068,49 +2086,49 @@
    "Trocken/Instant-Beutel"
   ],
   "n_products": [
-   178,
+   184,
    364,
    211,
-   15,
+   25,
    26,
    10,
-   192
+   176
   ],
   "median_protein_100": [
    3.8,
    7.3,
    6.9,
-   3.25,
+   6.6,
    1.5,
    14.5,
-   2.9
+   2.7
   ],
   "median_salt_100": [
    1.1,
    1.1,
    0.89,
-   0.44,
+   1.2,
    0.9,
    1.4,
-   0.89
+   0.85
   ],
   "median_price_per_10g_protein": [
-   2.02,
+   2.01,
    1.94,
    1.79,
-   3.21,
+   2.48,
    10.37,
    2.2,
-   2.62
+   8.0
   ],
   "median_health_score": [
-   33.5,
+   33.8,
    34.2,
    40.7,
-   37.5,
+   33.35,
    41.35,
    57.85,
-   30.6
+   27.1
   ]
  },
  "version": 3,
@@ -2124,7 +2142,7 @@
   "by_reason": [
    [
     "bisherige Einstufung (Shop-Rubrik)",
-    329
+    323
    ],
    [
     "keine belastbaren Hinweise",
@@ -2143,8 +2161,8 @@
     79
    ],
    [
-    "BILLA-Kategorie: Beutel",
-    66
+    "BILLA-Kategorie Beutel + Trockenware",
+    56
    ],
    [
     "Name/Marke: Dose",
@@ -2183,8 +2201,16 @@
     10
    ],
    [
+    "BILLA-Kategorie: Beutel",
+    10
+   ],
+   [
     "Etikett gekühlt + Name Sous-vide",
     7
+   ],
+   [
+    "Marke: Knorr Meisterkessel (Dose)",
+    6
    ],
    [
     "BILLA-Kategorie: Dose",
@@ -2203,7 +2229,7 @@
     1
    ]
   ],
-  "moved": 228,
+  "moved": 244,
   "unclassified": 293,
   "total": 1299
  },
@@ -2745,12 +2771,12 @@
    "Etikett: Verpackung Dose"
   ],
   "148": [
-   "Trocken/Instant-Beutel",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Dose",
+   "Marke: Knorr Meisterkessel (Dose)"
   ],
   "149": [
-   "Trocken/Instant-Beutel",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Dose",
+   "Marke: Knorr Meisterkessel (Dose)"
   ],
   "150": [
    "Trocken/Instant-Beutel",
@@ -4085,8 +4111,8 @@
    "Name/Marke: Kühlregal"
   ],
   "649": [
-   "Trocken/Instant-Beutel",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Dose",
+   "Marke: Knorr Meisterkessel (Dose)"
   ],
   "650": [
    "Dose",
@@ -4094,19 +4120,19 @@
   ],
   "651": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "652": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "653": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "654": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "655": [
    "Trocken/Instant-Beutel",
@@ -4114,11 +4140,11 @@
   ],
   "656": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "657": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "658": [
    "Trocken/Instant-Beutel",
@@ -4149,12 +4175,12 @@
    "bisherige Einstufung (Shop-Rubrik)"
   ],
   "665": [
-   "Trocken/Instant-Beutel",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Dose",
+   "Marke: Knorr Meisterkessel (Dose)"
   ],
   "666": [
-   "Trocken/Instant-Beutel",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Dose",
+   "Marke: Knorr Meisterkessel (Dose)"
   ],
   "667": [
    "Dose",
@@ -4197,15 +4223,15 @@
    "Etikett: Verpackung Dose"
   ],
   "677": [
-   "Trocken/Instant-Beutel",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Dose",
+   "Marke: Knorr Meisterkessel (Dose)"
   ],
   "678": [
-   "Trocken/Instant-Beutel",
+   "Pouch/Retort",
    "BILLA-Kategorie: Beutel"
   ],
   "679": [
-   "Trocken/Instant-Beutel",
+   "Pouch/Retort",
    "BILLA-Kategorie: Beutel"
   ],
   "680": [
@@ -4213,7 +4239,7 @@
    "Etikett: Verpackung Dose"
   ],
   "681": [
-   "Trocken/Instant-Beutel",
+   "Pouch/Retort",
    "BILLA-Kategorie: Beutel"
   ],
   "682": [
@@ -4222,35 +4248,35 @@
   ],
   "683": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "684": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "685": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "686": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "687": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "688": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "689": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "690": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "691": [
    "Trocken/Instant-Beutel",
@@ -4258,7 +4284,7 @@
   ],
   "692": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "693": [
    "Dose",
@@ -4273,36 +4299,36 @@
    "bisherige Einstufung (Shop-Rubrik)"
   ],
   "696": [
-   "Trocken/Instant-Beutel",
+   "Pouch/Retort",
    "BILLA-Kategorie: Beutel"
   ],
   "697": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "698": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "699": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "700": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "701": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "702": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "703": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "704": [
    "Dose",
@@ -4310,15 +4336,15 @@
   ],
   "705": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "706": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "707": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "708": [
    "Trocken/Instant-Beutel",
@@ -4326,26 +4352,26 @@
   ],
   "709": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "710": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "711": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "712": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "713": [
    "Dose",
    "Etikett: Verpackung Dose"
   ],
   "714": [
-   "Trocken/Instant-Beutel",
+   "Pouch/Retort",
    "BILLA-Kategorie: Beutel"
   ],
   "715": [
@@ -4366,15 +4392,15 @@
   ],
   "719": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "720": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "721": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "722": [
    "Dose",
@@ -4394,11 +4420,11 @@
   ],
   "726": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "727": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "728": [
    "Dose",
@@ -4466,11 +4492,11 @@
   ],
   "744": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "745": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "746": [
    "Trocken/Instant-Beutel",
@@ -4478,27 +4504,27 @@
   ],
   "747": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "748": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "749": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "750": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "751": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "752": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "753": [
    "Trocken/Instant-Beutel",
@@ -4506,7 +4532,7 @@
   ],
   "754": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "755": [
    "Trocken/Instant-Beutel",
@@ -4538,7 +4564,7 @@
   ],
   "762": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "763": [
    "Dose",
@@ -4546,15 +4572,15 @@
   ],
   "764": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "765": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "766": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "767": [
    "Dose",
@@ -4562,11 +4588,11 @@
   ],
   "768": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "769": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "770": [
    "Dose",
@@ -4586,11 +4612,11 @@
   ],
   "774": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "775": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "776": [
    "Dose",
@@ -4610,22 +4636,22 @@
   ],
   "780": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "781": [
    "Dose",
    "Etikett: Verpackung Dose"
   ],
   "782": [
-   "Trocken/Instant-Beutel",
+   "Pouch/Retort",
    "BILLA-Kategorie: Beutel"
   ],
   "783": [
-   "Trocken/Instant-Beutel",
+   "Pouch/Retort",
    "BILLA-Kategorie: Beutel"
   ],
   "784": [
-   "Trocken/Instant-Beutel",
+   "Pouch/Retort",
    "BILLA-Kategorie: Beutel"
   ],
   "785": [
@@ -4653,7 +4679,7 @@
    "BILLA-Kategorie: Dose"
   ],
   "791": [
-   "Trocken/Instant-Beutel",
+   "Pouch/Retort",
    "BILLA-Kategorie: Beutel"
   ],
   "792": [
@@ -4674,7 +4700,7 @@
   ],
   "796": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "797": [
    "Dose",
@@ -4686,11 +4712,11 @@
   ],
   "799": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "800": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "801": [
    "Glas",
@@ -4701,7 +4727,7 @@
    "Etikett: Verpackung Glas"
   ],
   "803": [
-   "Trocken/Instant-Beutel",
+   "Pouch/Retort",
    "BILLA-Kategorie: Beutel"
   ],
   "804": [
@@ -4710,7 +4736,7 @@
   ],
   "805": [
    "Trocken/Instant-Beutel",
-   "BILLA-Kategorie: Beutel"
+   "BILLA-Kategorie Beutel + Trockenware"
   ],
   "806": [
    "Dose",
