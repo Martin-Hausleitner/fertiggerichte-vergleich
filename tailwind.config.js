@@ -1,6 +1,6 @@
 import animate from 'tailwindcss-animate'
-/** Theme: Too-Good-To-Go-inspiriert – Creme-Hintergrund, ein starkes Grün, warme Neutrals */
-const warm={50:'#faf8f4',100:'#f3efe7',200:'#e7e1d6',300:'#d4ccbe',400:'#a39a8b',500:'#787063',600:'#5b544a',700:'#433e37',800:'#2b2824',900:'#1c1a17',950:'#12110f'}
+/** Theme: Too-Good-To-Go-inspiriert – X-artig minimal, monochrom, ein starkes Grün, warme Neutrals */
+const warm={50:'#f7f9f9',100:'#eff3f4',200:'#e1e8ed',300:'#cfd9de',400:'#8b98a5',500:'#71767b',600:'#536471',700:'#3e4144',800:'#2f3336',900:'#16181c',950:'#000000'}
 const green={50:'#e9f5f1',100:'#cfeae1',200:'#a2d5c5',300:'#6dbba4',400:'#3c9c84',500:'#1a806b',600:'#00695c',700:'#005a4f',800:'#044a42',900:'#063d37',950:'#03231f'}
 const v=n=>`hsl(var(--${n}) / <alpha-value>)`
 export default { darkMode:'class', content:['./index.html','./src/**/*.{ts,tsx}'],

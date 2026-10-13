@@ -1,4 +1,4 @@
-import * as React from 'react'; import { cn } from '../../lib'
+import * as React from 'react'; import { createPortal } from 'react-dom'; import { cn } from '../../lib'
 import { X } from 'lucide-react'
 import { buttonVariants } from './button'
 export { buttonVariants } from './button'; export { Separator } from './separator'
@@ -10,10 +10,10 @@ export const Input=({className,...p}:React.InputHTMLAttributes<HTMLInputElement>
 export function Sheet({open,onClose,side='right',title,children}:{open:boolean;onClose:()=>void;side?:'right'|'bottom';title?:React.ReactNode;children:React.ReactNode}){
   React.useEffect(()=>{const k=(e:KeyboardEvent)=>e.key==='Escape'&&onClose();addEventListener('keydown',k);return()=>removeEventListener('keydown',k)},[onClose])
   if(!open) return null
-  return <div className="fixed inset-0 z-50"><div className="absolute inset-0 bg-black/40 backdrop-blur-sm animate-in fade-in-0" onClick={onClose}/>
+  return createPortal(<div className="fixed inset-0 z-50"><div className="absolute inset-0 bg-black/40 backdrop-blur-sm animate-in fade-in-0" onClick={onClose}/>
     <div className={cn('absolute bg-background shadow-2xl flex flex-col animate-in duration-200',side==='right'?'right-0 top-0 h-full w-full sm:w-[560px] lg:w-[680px] sm:rounded-l-3xl slide-in-from-right':'bottom-0 left-0 right-0 max-h-[88vh] rounded-t-3xl slide-in-from-bottom')}>
       <div className="flex items-center justify-between border-b px-5 py-3.5"><div className="font-semibold text-lg">{title}</div><button onClick={onClose} className="rounded-full p-2 hover:bg-muted" aria-label="Schließen"><X size={18}/></button></div>
-      <div className="overflow-y-auto p-5 flex-1">{children}</div></div></div>
+      <div className="overflow-y-auto p-5 flex-1">{children}</div></div></div>,document.body)
 }
 export const CardHeader=({className,...p}:React.HTMLAttributes<HTMLDivElement>)=><div className={cn('flex flex-col gap-1 p-5 pb-2',className)} {...p}/>
 export const CardTitle=({className,...p}:React.HTMLAttributes<HTMLHeadingElement>)=><h3 className={cn('font-semibold leading-tight tracking-tight',className)} {...p}/>
