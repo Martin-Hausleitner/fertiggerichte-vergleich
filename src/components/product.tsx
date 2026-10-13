@@ -13,12 +13,12 @@ export function KpiBox({k,label,v,unit='',d=2,hi}:{k:string;label:string;v:numbe
   return <div className={cn('rounded-lg px-1 py-1 text-center',hi?'bg-emerald-600 text-white':'bg-slate-50 dark:bg-slate-800')}><div className="text-[13px] font-semibold tabular-nums leading-tight">{v==null?'–':fmt(v,d)+unit}</div><div className={cn('text-[9.5px] leading-none flex justify-center',hi?'text-white/90':'text-slate-500')}><InfoTip k={k}>{label}</InfoTip></div></div>
 }
 const isTouch=typeof window!=='undefined'&&matchMedia('(hover: none)').matches
-export function ZoomImage({src,className='h-12 w-12',zoom=true,onErr}:{src:string|null;className?:string;zoom?:boolean;onErr?:()=>void}){
+export function ZoomImage({src,className='h-12 w-12',zoom=true,onErr,logo=false}:{src:string|null;className?:string;zoom?:boolean;onErr?:()=>void;logo?:boolean}){
   const [err,setErr]=useState(false),[pos,setPos]=useState<{x:number;y:number}|null>(null),[full,setFull]=useState(false)
   if(!src||err) return <div className={cn(className,'flex items-center justify-center rounded-lg bg-slate-100 text-slate-400 dark:bg-slate-800')}><UtensilsCrossed size={18}/></div>
   const S=400,place=(e:React.MouseEvent)=>{const x=e.clientX+24+S>innerWidth?e.clientX-24-S:e.clientX+24;const y=Math.min(Math.max(8,e.clientY-S/2),innerHeight-S-8);setPos({x,y})}
   return <>
-    <img src={src} loading="lazy" decoding="async" referrerPolicy="no-referrer" onError={()=>{setErr(true);onErr?.()}} className={cn('rounded-lg object-contain bg-white',className,zoom&&'cursor-zoom-in')} alt=""
+    <img src={src} loading="lazy" decoding="async" referrerPolicy="no-referrer" onError={()=>{setErr(true);onErr?.()}} className={cn(logo?'object-contain object-center bg-transparent select-none':'rounded-lg object-contain bg-white',className,zoom&&'cursor-zoom-in')} alt=""
       onMouseEnter={zoom&&!isTouch?place:undefined} onMouseMove={zoom&&!isTouch?place:undefined} onMouseLeave={()=>setPos(null)}
       onClick={zoom&&isTouch?(e=>{e.stopPropagation();setFull(true)}):undefined}/>
     {pos&&createPortal(<div className="pointer-events-none fixed z-[70] rounded-2xl border bg-white p-2 shadow-2xl zoom-in" style={{left:pos.x,top:pos.y,width:S,height:S}}><img src={src} referrerPolicy="no-referrer" className="h-full w-full object-contain" alt=""/></div>,document.body)}
@@ -49,13 +49,13 @@ export const isLive=(p:string|null)=>!!p&&/live|aktuell/i.test(p)
 export const Price=({r}:{r:Row})=> r.price==null?<span className="text-slate-400">–</span>:<span className="inline-flex items-center gap-1.5 whitespace-nowrap"><span className={cn('font-bold tabular-nums text-[1.05em]',isLive(r.pstat)?'text-slate-900 dark:text-white':'text-slate-500')}>{fmt(r.price,2)} €</span>{isLive(r.pstat)?<Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300 text-[10px]">✓ aktuell</Badge>:<Badge className="bg-amber-100 text-amber-800 text-[10px]">{r.pstat}</Badge>}</span>
 export function BrandLogo({r,size=28}:{r:Pick<Row,'brandN'|'logo'>;size?:number}){
   const [err,setErr]=useState(false)
-  if(r.logo&&!err) return <span title={r.brandN} style={{height:size,width:size*2.2}} className="inline-flex"><ZoomImage src={r.logo} className="h-full w-full p-0.5" onErr={()=>setErr(true)}/></span>
+  if(r.logo&&!err) return <span title={r.brandN} style={{height:size,width:size*2.6}} className="inline-flex shrink-0 items-center justify-center"><ZoomImage logo src={r.logo} className="h-full w-full" onErr={()=>setErr(true)}/></span>
   const h=[...r.brandN].reduce((a,c)=>a*31+c.charCodeAt(0)|0,7),hue=Math.abs(h)%360
   return <span title={r.brandN} style={{height:size,minWidth:size,background:`hsl(${hue} 55% 42%)`,fontSize:size*.38}} className="inline-flex items-center justify-center rounded-md px-1 font-bold text-white">{r.brandN.replace(/[^A-Za-zÄÖÜäöü ]/g,'').split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join('').toUpperCase()||'?'}</span>
 }
 export function StoreLogo({store,size=28}:{store:string;size?:number}){
   const l=STORE_LOGO[store]
-  return l?<span title={store} style={{height:size,width:size*2.4}} className="inline-flex"><ZoomImage src={l} className="h-full w-full p-0.5"/></span>:<BrandLogo r={{brandN:store,logo:null}} size={size}/>
+  return l?<span title={store} style={{height:size,width:size*2.6}} className="inline-flex shrink-0 items-center justify-center"><ZoomImage logo src={l} className="h-full w-full"/></span>:<BrandLogo r={{brandN:store,logo:null}} size={size}/>
 }
 export function Nearest({store,compact}:{store:string;compact?:boolean}){
   const {nearest}=useApp(); const s=nearest(store); if(!s) return null
@@ -98,12 +98,12 @@ export function ProductCard({r}:{r:Row}){
   return <RowHover r={r}><Card onClick={()=>open(r.id)} className={cn('group overflow-hidden flex flex-col cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:border-brand/40',compare.includes(r.id)&&'ring-2 ring-brand')}>
     <div className="relative bg-gradient-to-b from-white to-slate-50 dark:from-slate-100 dark:to-slate-200 h-48 flex items-center justify-center">
       <Img src={r.img} className="h-44 w-full object-contain p-2 transition-transform duration-300 group-hover:scale-[1.03] bg-transparent"/>
-      <div className="absolute left-2 top-2 rounded-xl bg-white/95 shadow-md px-1.5 py-1"><StoreLogo store={r.store} size={44}/></div>
+      <div className="absolute left-2 top-2 rounded-xl bg-white/95 ring-1 ring-black/5 shadow-md px-2 py-1.5 backdrop-blur"><StoreLogo store={r.store} size={34}/></div>
       <div className="absolute right-2 top-2 flex flex-col items-end gap-1"><PliBadge v={r.pli}/><HealthBadge s={r.score}/></div>
       {st&&<div className="absolute left-2 bottom-2"><Badge className="bg-white/95 text-slate-800 shadow-sm text-xs">{st[1]} {st[2]}</Badge></div>}
       <div className="absolute right-1 bottom-1 rounded-lg bg-white/90 shadow-sm"><Actions r={r}/></div>
     </div>
-    <CardHeader className="pt-3"><div className="flex items-center gap-2 min-w-0"><BrandLogo r={r} size={36}/><span className="text-xs font-medium text-slate-500 truncate">{r.brandN}</span><span className="ml-auto text-[11px] text-slate-400 whitespace-nowrap"><InfoTip k="pack">{packEmo(r.pack)}</InfoTip></span></div>
+    <CardHeader className="pt-3"><div className="flex items-center gap-2 min-w-0"><span className="inline-flex items-center rounded-lg bg-white ring-1 ring-slate-200 px-1.5 py-1 dark:ring-slate-700"><BrandLogo r={r} size={30}/></span><span className="text-xs font-medium text-slate-500 truncate">{r.brandN}</span><span className="ml-auto text-[11px] text-slate-400 whitespace-nowrap"><InfoTip k="pack">{packEmo(r.pack)}</InfoTip></span></div>
       <CardTitle className="text-[15px] line-clamp-2 min-h-[2.5em]">{r.name}</CardTitle></CardHeader>
     <CardContent className="space-y-3 flex-1">
       <div className="flex items-end justify-between gap-2"><div className="text-2xl"><Price r={r}/></div>

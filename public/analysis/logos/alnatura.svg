@@ -5,10 +5,10 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    version="1.1"
-   width="400"
-   height="240"
+  
+  
    id="svg7740"
-   xml:space="preserve"><defs
+   xml:space="preserve" viewBox="-5.200 -5.800 410.400 251.600" width="410.400" height="251.600" preserveAspectRatio="xMidYMid meet"><defs
      id="defs7744"><linearGradient
        x1="-128"
        y1="0"
