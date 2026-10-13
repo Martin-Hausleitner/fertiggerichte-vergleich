@@ -13,6 +13,8 @@ import { AppSidebar } from '@/app/AppSidebar'
 import { StageBar } from '@/app/StageBar'
 import { Hero } from '@/app/Hero'
 import { findTab } from '@/app/tabs'
+import { LocationControl } from '@/app/location'
+import { ApiBridge } from '@/app/ApiBridge'
 
 
 const Compare = lazy(() => import('@/views/Compare'))
@@ -28,7 +30,7 @@ function AppSkeleton() {
 
 export default function App() {
   const { data: D, stores, nearest } = useAppData()
-  const [tab, setTab] = useHashState<string>('tab', 'alle')
+  const [tab, setTab] = useHashState<string>('tab', 'heute')
   const [cmpS, setCmpS] = useHashState<string>('cmp', ''), [det, setDet] = useHashState<string>('p', '')
   const [favs, setFavs] = useLocal<number[]>('fg-favs', [])
   const [dark, setDark] = useLocal('fg-dark', matchMedia('(prefers-color-scheme: dark)').matches)
@@ -47,6 +49,7 @@ export default function App() {
   const cur = findTab(tab)
   const View = cur.view
   return <AppCtx.Provider value={{ D, R, stageSel, compare, toggleCompare, setCompare, favs, toggleFav, open, dark, wide, stores, nearest }}>
+    <ApiBridge />
     <SidebarProvider>
       <AppSidebar tab={cur.key} onSelect={setTab} />
       <SidebarInset className="min-w-0 overflow-x-clip">
@@ -59,6 +62,7 @@ export default function App() {
               <BreadcrumbItem><BreadcrumbPage className="truncate">{cur.label}</BreadcrumbPage></BreadcrumbItem>
             </BreadcrumbList></Breadcrumb>
             <div className="mx-auto min-w-0 max-w-xl flex-1"><SearchPalette /></div>
+            <LocationControl onOpenMap={() => setTab('meine-shops')} />
             <Button variant="ghost" size="icon" onClick={() => setWide(!wide)} className="hidden lg:inline-flex" title="Breitbild">{wide ? <Minimize2 /> : <Maximize2 />}</Button>
             <Button variant="ghost" size="icon" onClick={() => setDark(!dark)} aria-label="Dark Mode">{dark ? <Sun /> : <Moon />}</Button>
           </div>
