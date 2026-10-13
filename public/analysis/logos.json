@@ -1771,12 +1771,15 @@
  "karnerta": {
   "slug": "karnerta",
   "name": "KARNERTA GmbH",
-  "brands": [],
+  "brands": [
+   "KARNERTA",
+   "Karnerta"
+  ],
   "logo_category": "Produzent/Werk",
   "file": "logos/karnerta.svg",
   "source": "https://www.karnerta.at/wp-content/uploads/2025/02/Logo_Karnerta_4c_mSlogan.svg",
   "size": "svg",
-  "note": null,
+  "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · offizielles Logo karnerta.at; jetzt auch Marke Karnerta (MPreis-Produkte) zugeordnet",
   "hq": true
  },
  "landena": {
@@ -2205,6 +2208,161 @@
    349
   ],
   "note": "Vision gate 2026-10-13: visuell geprüft (Wortmarke „lotao“ weiß auf Schwarz, scharf, kein Platzhalter) · offizielles og:image lotao.com (Lotao GmbH, Berlin)",
+  "hq": true
+ },
+ "bertagni": {
+  "slug": "bertagni",
+  "name": "Bertagni",
+  "brands": [
+   "Bertagni"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/bertagni.png",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Bertagni-logo.png",
+  "size": [
+   364,
+   140
+  ],
+  "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · Wikimedia Commons (CC BY-SA 3.0) · Pastificio Bertagni (Bologna, gegr. 1882); MPreis-Ravioli",
+  "hq": true
+ },
+ "bonduelle": {
+  "slug": "bonduelle",
+  "name": "Bonduelle",
+  "brands": [
+   "Bonduelle"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/bonduelle.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Bonduelle_Logo_Vector_2017_col.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · Wikimedia Commons (Public domain) · Bonduelle SA; Gurkerl-Linsencurry u. a.",
+  "hq": true
+ },
+ "hofmanns": {
+  "slug": "hofmanns",
+  "name": "HOFMANNs",
+  "brands": [
+   "HOFMANNs",
+   "HOFMANNS",
+   "Hofmanns"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/hofmanns.png",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/e/ee/HOFMANNS_Logo_sRGB.jpg",
+  "size": [
+   2363,
+   435
+  ],
+  "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · Wikimedia Commons (CC BY-SA 4.0) · Marke der Hofmann Menü-Manufaktur GmbH (Compass Group); Gurkerl TK",
+  "hq": true
+ },
+ "landliebe": {
+  "slug": "landliebe",
+  "name": "Landliebe",
+  "brands": [
+   "Landliebe"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/landliebe.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/0/03/Landliebe_Logo.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · Wikimedia Commons (Public domain) · Landliebe (FrieslandCampina); Puddings",
+  "hq": true
+ },
+ "alpro": {
+  "slug": "alpro",
+  "name": "Alpro",
+  "brands": [
+   "Alpro",
+   "alpro",
+   "ALPRO"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/alpro.png",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Logo_Alpro.webp",
+  "size": [
+   255,
+   125
+  ],
+  "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · Wikimedia Commons (CC BY-SA 4.0) · Alpro (Danone); Soja-Desserts",
+  "hq": true
+ },
+ "mueller": {
+  "slug": "mueller",
+  "name": "Müller",
+  "brands": [
+   "Müller",
+   "Mueller",
+   "Müllermilch"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/mueller.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Mueller-logo.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · Wikimedia Commons (Public domain) · Molkerei Alois Müller GmbH & Co. KG (Unternehmensgruppe Theo Müller); High-Protein-Puddings",
+  "hq": true
+ },
+ "picard": {
+  "slug": "picard",
+  "name": "Picard",
+  "brands": [
+   "PICARD",
+   "Picard"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/picard.png",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Picard_Surgel%C3%A9s_Logo26.png",
+  "size": [
+   997,
+   1181
+  ],
+  "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · Wikimedia Commons (CC0) · Picard Surgelés (FR), Logo 2026; Gurkerl TK",
+  "hq": true
+ },
+ "schaerdinger": {
+  "slug": "schaerdinger",
+  "name": "Schärdinger",
+  "brands": [
+   "Schärdinger",
+   "Schaerdinger"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/schaerdinger.png",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Schaerdinger_Logo.jpg",
+  "size": [
+   724,
+   732
+  ],
+  "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · Wikimedia Commons (CC BY-SA 4.0) · Schärdinger (Berglandmilch eGen, OÖ); Dessertcremes",
+  "hq": true
+ },
+ "freshery": {
+  "slug": "freshery",
+  "name": "Freshery",
+  "brands": [
+   "Freshery",
+   "FRESHERY"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/freshery.svg",
+  "source": "https://cdn.myshoptet.com/usr/www.freshery.sk/user/logos/freshery_logo.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · offizielles Shop-Logo (og:image) freshery.sk; Suppen/Tom Yum + Gyoza, Gurkerl",
+  "hq": true
+ },
+ "every-foods": {
+  "slug": "every-foods",
+  "name": "Every.",
+  "brands": [
+   "Every.",
+   "EVERY."
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/every-foods.svg",
+  "source": "https://a.storyblok.com/f/291086118523370/86x28/c9f09c61bc/every_logo_black-1.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · offizielles Wortlogo aus dem Header von every-foods.com (Every Foods, pflanzliche TK-Gerichte; Gurkerl)",
   "hq": true
  }
 }
