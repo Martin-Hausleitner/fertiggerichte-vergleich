@@ -21,9 +21,9 @@ export default function Logos(){
   const items=useMemo(()=>{const m=new Map<string,{key:string;name:string;logo:string|null;cat:string;n:number;q:string;src?:string}>()
     const cnt=(b:string)=>R.filter(r=>r.brandN===b||r.store===b).length
     Object.entries(STORE_LOGO).forEach(([k,v])=>m.set(k.toLowerCase(),{key:k,name:k,logo:v,cat:'Handelskette',n:cnt(k),q:k}))
-    Object.entries(L).forEach(([k,v]:any)=>{const nm=v.name||k.replace(/-/g,' ').replace(/\b\w/g,(c:string)=>c.toUpperCase());const ex=m.get(nm.toLowerCase());const file=v.file?('./analysis/'+v.file):null
+    Object.entries(L).forEach(([k,v]:any)=>{const nm=String(v.name||k).replace(/-/g,' ').replace(/\b\w/g,(c:string)=>c.toUpperCase());const ex=m.get(nm.toLowerCase());const file=v.file?('./analysis/'+v.file):null
       m.set(nm.toLowerCase(),{key:k,name:ex?.name??nm,logo:ex?.logo??file,cat:guess(nm,v.logo_category,false),n:ex?.n??R.filter(r=>r.brandN.toLowerCase()===nm.toLowerCase()).length,q:nm,src:v.source})})
-    ;(D.producers||[]).forEach((p:any)=>{if(!m.has((p.legal||p.name).toLowerCase()))m.set((p.legal||p.name).toLowerCase(),{key:p.slug,name:p.legal||p.name,logo:p.logo,cat:'Produzent/Werk',n:p.ids.length,q:'',src:p.website})})
+    ;(D.producers||[]).forEach((p:any)=>{if(!m.has((p.legal||p.name||p.slug||"").toLowerCase()))m.set((p.legal||p.name||p.slug||"").toLowerCase(),{key:p.slug,name:p.legal||p.name||p.slug,logo:p.logo,cat:'Produzent/Werk',n:p.ids.length,q:'',src:p.website})})
     const bc:Record<string,{n:number;logo:string|null}>={};R.forEach(r=>{if(r.noBrand||r.nonfood)return;const b=bc[r.brandN]??={n:0,logo:null};b.n++;if(r.logo)b.logo=r.logo})
     Object.entries(bc).filter(([,v])=>v.n>=2).forEach(([b,v])=>{if(!m.has(b.toLowerCase()))m.set(b.toLowerCase(),{key:b,name:b,logo:v.logo,cat:guess(b),n:v.n,q:b})})
     return [...m.values()].sort((a,b)=>(b.logo?1:0)-(a.logo?1:0)||b.n-a.n)},[L,R,D])
