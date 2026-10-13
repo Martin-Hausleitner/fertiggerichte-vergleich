@@ -1991,5 +1991,89 @@
   "note": "Wikidata P154 / Wikimedia Commons",
   "hq": true,
   "vision_gate": "pass 2026-10-13 (Kontaktbogen qa/logos_new_sheet.png)"
+ },
+ "mpreis": {
+  "slug": "mpreis",
+  "name": "MPreis",
+  "brands": [
+   "MPreis",
+   "MPREIS"
+  ],
+  "logo_category": "Handelskette",
+  "file": "logos/mpreis.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/8/89/MPreis_Logo_2024.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13: rendered + visually checked (correct mark, legible, not cropped) · Wikimedia Commons, public domain",
+  "hq": true
+ },
+ "unimarkt": {
+  "slug": "unimarkt",
+  "name": "Unimarkt",
+  "brands": [
+   "Unimarkt"
+  ],
+  "logo_category": "Handelskette",
+  "file": "logos/unimarkt.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/4/43/Unimarkt_logo.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13: rendered + visually checked (correct mark, legible, not cropped) · Wikimedia Commons, public domain",
+  "hq": true
+ },
+ "denns": {
+  "slug": "denns",
+  "name": "denn's BioMarkt",
+  "brands": [
+   "denn's",
+   "denns BioMarkt",
+   "denn's BioMarkt"
+  ],
+  "logo_category": "Handelskette",
+  "file": "logos/denns.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Denns_Biomarkt_logo.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13: rendered + visually checked (correct mark, legible, not cropped) · Wikimedia Commons, public domain",
+  "hq": true
+ },
+ "adeg": {
+  "slug": "adeg",
+  "name": "ADEG",
+  "brands": [
+   "ADEG",
+   "Adeg"
+  ],
+  "logo_category": "Handelskette",
+  "file": "logos/adeg.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Adeg.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13: rendered + visually checked (correct mark, legible, not cropped) · Wikimedia Commons, public domain",
+  "hq": true
+ },
+ "billa-plus": {
+  "slug": "billa-plus",
+  "name": "Billa Plus",
+  "brands": [
+   "Billa Plus",
+   "BILLA PLUS"
+  ],
+  "logo_category": "Handelskette",
+  "file": "logos/billa-plus.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Logo_BILLA-Plus.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13: rendered + visually checked (correct mark, legible, not cropped) · Wikimedia Commons, public domain",
+  "hq": true
+ },
+ "nah-frisch": {
+  "slug": "nah-frisch",
+  "name": "Nah&Frisch",
+  "brands": [
+   "Nah&Frisch",
+   "Nah & Frisch"
+  ],
+  "logo_category": "Handelskette",
+  "file": "logos/nah-frisch.svg",
+  "source": "https://www.nahundfrisch.at/storage//Master/nah-und-frisch-logo-solo.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13: rendered + visually checked (correct mark, legible, not cropped) · official site navbar logo",
+  "hq": true
  }
 }
