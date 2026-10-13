@@ -42,7 +42,7 @@ export default function Firmenvergleich(){
     {...H('€/10 g Protein','e10'),field:'median_eur_per_10g_protein',width:125,filter:'agNumberColumnFilter',cellRenderer:(p:any)=>p.value==null?<span className="text-slate-400">–</span>:<span className="rounded-md bg-emerald-600 px-2 py-0.5 font-bold text-white tabular-nums">{fmt(p.value,2)} €</span>},
     {...H('FN / Register','fn'),colId:'fn',width:130,valueGetter:(p:any)=>p.data.fn||p.data.register_id||'',cellRenderer:(p:any)=>p.value?<span className="font-mono text-xs">{p.value}</span>:<Missing/>},
     {...H('LEI','lei'),field:'lei',width:120,cellRenderer:(p:any)=>p.value?<a href={'https://search.gleif.org/#/record/'+p.value} target="_blank" rel="noreferrer" className="font-mono text-[10px] text-emerald-700 hover:underline">{p.value.slice(0,10)}…</a>:<span className="text-[11px] text-slate-400">kein Treffer</span>},
-    {headerName:'Marken',field:'brands',minWidth:200,flex:1,wrapText:true,autoHeight:true,cellRenderer:(p:any)=><div className="flex flex-wrap gap-1 py-2">{(p.value||[]).slice(0,8).map((b:string)=><Badge key={b} className="bg-muted">{b}</Badge>)}</div>},
+    {headerName:'Marken',field:'brands',minWidth:220,flex:1,tooltipValueGetter:(p:any)=>(p.value||[]).join(', '),cellRenderer:(p:any)=><div className="flex gap-1 py-2 overflow-hidden">{(p.value||[]).slice(0,4).map((b:string)=><Badge key={b} className="bg-muted">{b}</Badge>)}</div>},
     {headerName:'Adresse',field:'address',minWidth:200,wrapText:true,autoHeight:true,cellClass:'text-xs leading-tight py-2'},
   ],[])
   const withRev=rows.filter(c=>c.revenue_eur_m!=null).sort((a,b)=>b.revenue_eur_m!-a.revenue_eur_m!).slice(0,15)

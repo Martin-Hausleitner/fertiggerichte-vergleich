@@ -42,7 +42,7 @@ export function Chips({r,compact}:{r:Row;compact?:boolean}){
     {!compact&&r.fib!=null&&<Badge className="bg-amber-100 text-amber-800" title="Ballaststoffe g/100 g">🌾 {fmt(r.fib)}</Badge>}
     {r.bio&&<Badge className="bg-lime-200 text-lime-900">🌱 Bio</Badge>}
     {r.vegan&&<Badge className="bg-green-200 text-green-900">🌿 vegan</Badge>}
-    {(r as any).ns&&<InfoTip k="ns"><Badge className={'text-white '+({A:'bg-green-700',B:'bg-lime-600',C:'bg-yellow-500',D:'bg-orange-500',E:'bg-red-600'} as any)[String((r as any).ns).toUpperCase()]}>Nutri {String((r as any).ns).toUpperCase()}</Badge></InfoTip>}{r.ooe&&<Badge className="bg-red-600 text-white">🦁 OÖ</Badge>}
+    {(r as any).ns&&<InfoTip k="ns"><Badge className={'text-white '+({A:'bg-green-700',B:'bg-lime-600',C:'bg-yellow-500',D:'bg-orange-500',E:'bg-red-600'} as any)[String((r as any).ns).toUpperCase()]}>Nutri {String((r as any).ns).toUpperCase()}{(r as any).ns_st==='berechnet'&&<span className="ml-1 font-normal opacity-90">(berechnet)</span>}</Badge></InfoTip>}{r.ooe&&<Badge className="bg-red-600 text-white">🦁 OÖ</Badge>}
   </div>
 }
 export const isLive=(p:string|null)=>!!p&&/live|aktuell/i.test(p)
