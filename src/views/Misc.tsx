@@ -1,5 +1,6 @@
+import { ChartContainer } from '../components/ui/chart'
 import { useMemo } from 'react'
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend } from 'recharts'
+import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from 'recharts'
 import { Factory, AlertTriangle } from 'lucide-react'
 import { Card, Badge } from '../components/ui'
 import { Img, Price, Gallery } from '../components/product'
@@ -16,7 +17,7 @@ export function Producers(){
 }
 export function Ftg(){
   const {R,D}=useApp(); const ftg=useMemo(()=>R.filter(r=>r.store==='Fit to Go').sort((a,b)=>(b.ppe??0)-(a.ppe??0)),[R])
-  return <div className="space-y-3"><Card className="p-3"><ResponsiveContainer width="100%" height={260}><BarChart data={D.ftg} margin={{left:-20}}><CartesianGrid strokeDasharray="3 3" opacity={.3}/><XAxis dataKey="name" tick={{fontSize:10}}/><YAxis/><Tooltip/><Legend/><Bar dataKey="price" name="Preis € (Median)" fill="#6366f1" radius={[6,6,0,0]}/><Bar dataKey="prot" name="Protein/Pkg g" fill="#059669" radius={[6,6,0,0]}/><Bar dataKey="ppe" name="Protein/€" fill="#1b6e3a" radius={[6,6,0,0]}/></BarChart></ResponsiveContainer>
+  return <div className="space-y-3"><Card className="p-3"><ChartContainer config={{}} className="aspect-auto w-full" style={{height:260}}><BarChart data={D.ftg} margin={{left:-20}}><CartesianGrid strokeDasharray="3 3" opacity={.3}/><XAxis dataKey="name" tick={{fontSize:10}}/><YAxis/><Tooltip/><Legend/><Bar dataKey="price" name="Preis € (Median)" fill="#6366f1" radius={[6,6,0,0]}/><Bar dataKey="prot" name="Protein/Pkg g" fill="#059669" radius={[6,6,0,0]}/><Bar dataKey="ppe" name="Protein/€" fill="#1b6e3a" radius={[6,6,0,0]}/></BarChart></ChartContainer>
     <p className="text-xs text-slate-500">Fit to Go: Einzelpreise aus dem Online-Shop (Boxen ggf. günstiger). Salz und gesättigte Fette fehlen dort, daher sind die Scores „unvollständig“. Verglichen wird mit Supermarkt-Gerichten ab 300 g mit aktuellem Preis 2026.</p></Card><Gallery rows={ftg}/></div>
 }
 const GUIDE=[['Kühl-Menüschale (Good Choice, Omis, Clever)','Steam High','250 ml unter Trivet','5–8 Min.','Quick Release'],['TK-Fertiggericht','Steam High','250 ml','12–15 Min.','Quick Release, umrühren'],['Ripperl / Spareribs','Pressure Cook High','250 ml','25 Min.','10 Min. Natural Release, dann 5 Min. grillen'],['Hühnerspieße','Steam High','250 ml','8–10 Min.','Quick Release, kurz anbraten (Sauté)'],['TK-Fisch / Schlemmerfilet','Steam High','250 ml','8–10 Min.','Quick Release'],['TK-Gemüse','Steam High','250 ml','0–2 Min.','Quick Release sofort'],['Basmati-Reis (75 g roh/Portion)','Pressure Cook High','1 : 1,25 Wasser','4–6 Min.','10 Min. Natural Release'],['Sous-vide-Fleisch','Sous Vide 60–70 °C','Wasserbad','20–30 Min.','–'],['Dosengericht','Sauté Low / Steam im Einsatz','– / 250 ml','5–7 Min.','–'],['Knödel (kühl / TK)','Steam High','250 ml','6 / 10 Min.','Quick Release']]

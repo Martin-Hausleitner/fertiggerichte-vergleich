@@ -1,6 +1,7 @@
+import { ChartContainer } from './ui/chart'
 import { useEffect, useState } from 'react'
 import { Beef, Wheat, Carrot, Droplets, Factory, Leaf, Info, FlaskConical, ShieldCheck, Sprout, MapPin } from 'lucide-react'
-import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar, Legend, Tooltip } from 'recharts'
+import { RadarChart, PolarGrid, PolarAngleAxis, Radar, Legend, Tooltip } from 'recharts'
 import { InfoTip, Flag } from './info'
 import { Badge } from './ui'
 import { cn, fmt, type Row } from '../lib'
@@ -66,7 +67,7 @@ export function RadarVsMedian({r,R}:{r:Row;R:Row[]}){
   const data=AX.map(([l,,f])=>({a:l,dish:f(r),median:med(peers.map(f).filter((v):v is number=>v!=null))}))
   if(data.filter(d=>d.dish!=null).length<3) return <Missing text="Zu wenige Nährwerte für ein Netzdiagramm."/>
   return <div><InfoTip text={HK.radar}><span className="text-xs font-semibold">🕸️ Profil vs. Median ({peers.length} Gerichte gleicher Fertigstufe)</span></InfoTip>
-   <div className="h-60"><ResponsiveContainer><RadarChart data={data.map(d=>({...d,dish:d.dish??0}))} outerRadius="70%"><PolarGrid/><PolarAngleAxis dataKey="a" tick={{fontSize:10}}/><Radar name="Median" dataKey="median" stroke="#94a3b8" fill="#94a3b8" fillOpacity={0.25}/><Radar name="Dieses Gericht" dataKey="dish" stroke="#059669" fill="#10b981" fillOpacity={0.45}/><Legend wrapperStyle={{fontSize:11}}/><Tooltip formatter={(v:any)=>fmt(v,0)}/></RadarChart></ResponsiveContainer></div>
+   <div className="h-60"><ChartContainer config={{}} className="aspect-auto h-full w-full"><RadarChart data={data.map(d=>({...d,dish:d.dish??0}))} outerRadius="70%"><PolarGrid/><PolarAngleAxis dataKey="a" tick={{fontSize:10}}/><Radar name="Median" dataKey="median" stroke="#94a3b8" fill="#94a3b8" fillOpacity={0.25}/><Radar name="Dieses Gericht" dataKey="dish" stroke="#059669" fill="#10b981" fillOpacity={0.45}/><Legend wrapperStyle={{fontSize:11}}/><Tooltip formatter={(v:any)=>fmt(v,0)}/></RadarChart></ChartContainer></div>
    {data.some(d=>d.dish==null)&&<div className="text-[11px] text-amber-700">⚠️ Fehlende Achsen (0 gezeichnet): {data.filter(d=>d.dish==null).map(d=>d.a).join(', ')}</div>}</div>
 }
 export type Off={name:string;store:string|null;ean:string;additives:string[];nova:number|null;ns:string|null;labels:string[];analysis:string[];origins:string|null;mplace:string|null;ingr:string;url:string}

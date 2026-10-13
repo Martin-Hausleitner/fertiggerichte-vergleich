@@ -12,7 +12,8 @@ export default { darkMode:'class', content:['./index.html','./src/**/*.{ts,tsx}'
       primary:{DEFAULT:v('primary'),foreground:v('primary-foreground')},secondary:{DEFAULT:v('secondary'),foreground:v('secondary-foreground')},
       muted:{DEFAULT:v('muted'),foreground:v('muted-foreground')},accent:{DEFAULT:v('accent'),foreground:v('accent-foreground')},
       destructive:{DEFAULT:v('destructive'),foreground:v('destructive-foreground')},card:{DEFAULT:v('card'),foreground:v('card-foreground')},
-      popover:{DEFAULT:v('popover'),foreground:v('popover-foreground')} },
+      popover:{DEFAULT:v('popover'),foreground:v('popover-foreground')},
+      sidebar:{DEFAULT:'hsl(var(--sidebar-background))',foreground:'hsl(var(--sidebar-foreground))',primary:'hsl(var(--sidebar-primary))','primary-foreground':'hsl(var(--sidebar-primary-foreground))',accent:'hsl(var(--sidebar-accent))','accent-foreground':'hsl(var(--sidebar-accent-foreground))',border:'hsl(var(--sidebar-border))',ring:'hsl(var(--sidebar-ring))'} },
     borderRadius:{lg:'var(--radius)',md:'calc(var(--radius) - 2px)',sm:'calc(var(--radius) - 4px)'},
     boxShadow:{card:'0 1px 2px rgba(28,26,23,.04), 0 4px 16px -6px rgba(28,26,23,.08)',lift:'0 2px 4px rgba(28,26,23,.05), 0 16px 32px -12px rgba(28,26,23,.18)'},
   }}, plugins:[animate] }

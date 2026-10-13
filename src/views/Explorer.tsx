@@ -17,8 +17,8 @@ export default function Explorer(){
   const pred=useMemo(()=>makePred(fx,{konzOf,dist}),[fx,konzOf,nearest])
   const rows=useMemo(()=>{const qq=q.toLowerCase();return R.filter(r=>pred(r)&&!r.nonfood&&!r.store.startsWith('unbekannt')&&(fx.stage?.length?true:stageSel.includes(r.stage))&&(!st||r.store===st)&&(!pk||r.pack===pk)&&((r.protpack??0)>=+mp)&&(!fav||favs.includes(r.id))&&(dry||!r.dry)&&(po||!r.priceOnly)&&(!cats.length||cats.every(c=>r.cprot?.includes(c)||r.cdish?.includes(c)))&&(!qq||(r.name+' '+r.brand+' '+r.herst).toLowerCase().includes(qq))).sort((a,b)=>{const lo=['eur10p','price','ppk','eur100k','dist'].includes(sort);const x=sort==='dist'?dist(a):(a as any)[sort],y=sort==='dist'?dist(b):(b as any)[sort];if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;return lo?x-y:y-x})},[pred,fx,R,q,st,pk,mp,fav,favs,dry,sort,cat,po,nearest])
   return <div className="space-y-3">
-    <Card className="sticky top-[96px] z-30 p-2.5 flex flex-wrap items-center gap-2 backdrop-blur bg-white/90 dark:bg-slate-900/90">
-      <div className="relative flex-1 min-w-[180px]"><Search size={15} className="absolute left-2.5 top-2.5 text-slate-400"/><Input placeholder="Suche: Name, Marke, Hersteller…" value={q} onChange={e=>setQ(e.target.value)} className="w-full pl-8"/></div>
+    <Card className="p-2.5 flex flex-wrap items-center gap-2 shadow-none">
+      <div className="relative flex-1 min-w-[180px]"><Search size={15} className="absolute left-2.5 top-2.5 text-muted-foreground"/><Input placeholder="Suche: Name, Marke, Hersteller…" value={q} onChange={e=>setQ(e.target.value)} className="w-full pl-8"/></div>
       <Select value={st} onChange={e=>setSt(e.target.value)}><option value="">Alle Läden</option>{STORES.map(s=><option key={s}>{s}</option>)}</Select>
       <Select value={pk} onChange={e=>setPk(e.target.value)} className="max-w-[170px]"><option value="">Alle Verpackungen</option>{PACKS.map(s=><option key={s}>{s}</option>)}</Select>
       <Select value={mp} onChange={e=>setMp(e.target.value)}>{[0,10,20,30,40].map(v=><option key={v} value={v}>{v?`≥ ${v} g Protein/Pkg`:'jedes Protein'}</option>)}</Select>

@@ -1,5 +1,6 @@
+import { ChartContainer } from '../components/ui/chart'
 import { useEffect, useMemo, useState } from 'react'
-import { ResponsiveContainer, Treemap, Tooltip } from 'recharts'
+import { Treemap, Tooltip } from 'recharts'
 import { Card, Badge } from '../components/ui'
 import { ZoomImage, StoreLogo, BrandLogo } from '../components/product'
 import { prodColor, InfoTip } from '../components/info'
@@ -16,7 +17,7 @@ export default function WerDahinter(){
   return <div className="space-y-5">
     <Card className="p-4"><h2 className="text-2xl font-bold">🕵️ Wer steckt dahinter?</h2>
       <p className="text-sm text-slate-600 dark:text-slate-300">Konzern → Hersteller/Werk → Marken & Eigenmarken → Produkte. Belegt über Identitätskennzeichen (amtliche ÖVIS-Liste), Etikett-Adressen und Firmenprofile. {d.coverage.products_with_producer} Produkte zugeordnet, davon {d.coverage.confirmed_code} per Werkscode bestätigt. <InfoTip text="Bei vielen Eigenmarken steht nur der Händler (z. B. BILLA AG) als Inverkehrbringer am Etikett – das echte Werk ist dann unbekannt und wird nicht geraten."/></p>
-      <div className="h-64 mt-3"><ResponsiveContainer><Treemap data={tm} dataKey="size" stroke="#fff" onClick={(n:any)=>setK(k===n.name.slice(n.name.indexOf(' ')+1)?'':n.name.slice(n.name.indexOf(' ')+1))} content={<TmCell/> as any}><Tooltip formatter={(v:any)=>v+' Produkte'}/></Treemap></ResponsiveContainer></div>
+      <div className="h-64 mt-3"><ChartContainer config={{}} className="aspect-auto h-full w-full"><Treemap data={tm} dataKey="size" stroke="#fff" onClick={(n:any)=>setK(k===n.name.slice(n.name.indexOf(' ')+1)?'':n.name.slice(n.name.indexOf(' ')+1))} content={<TmCell/> as any}><Tooltip formatter={(v:any)=>v+' Produkte'}/></Treemap></ChartContainer></div>
       <div className="flex gap-2 mt-2 items-center"><input className="border rounded-lg px-3 py-1.5 text-sm w-64 dark:bg-slate-900" placeholder="🔎 Hersteller, Marke …" value={q} onChange={e=>setQ(e.target.value)}/>{k&&<Badge className="cursor-pointer" onClick={()=>setK('')}>✕ {k}</Badge>}</div>
     </Card>
     <section><h3 className="text-xl font-bold mb-2">🔁 Gleiches Produkt, anderes Etikett</h3>

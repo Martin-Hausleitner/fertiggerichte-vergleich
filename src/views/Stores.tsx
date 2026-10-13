@@ -1,7 +1,8 @@
+import { ChartContainer } from '../components/ui/chart'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Cell } from 'recharts'
+import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Cell } from 'recharts'
 import { Card, Badge } from '../components/ui'
 import { StoreLogo, Gallery } from '../components/product'
 import { InfoTip } from '../components/info'
@@ -32,7 +33,7 @@ export default function Stores(){
         <StoreLogo store={s.chain} size={48}/><div className="flex-1 min-w-0"><div className="font-semibold text-sm truncate">{s.name}</div><div className="text-xs text-slate-500 truncate">{s.addr}</div>{s.hours&&<div className="text-[10px] text-slate-400 truncate">🕒 {s.hours}</div>}<div className="text-xs mt-0.5"><InfoTip text="Sortiment auf Kettenebene: welche Produkte genau in dieser Filiale stehen, ist nicht bekannt. Gezählt sind die vergleichbaren Fertiggerichte der Kette."><Badge className="bg-slate-100 dark:bg-slate-800">🛒 {rs.length} Gerichte (Kette)</Badge></InfoTip></div></div>
         <div className="text-right"><div className="text-lg font-bold text-sky-700 dark:text-sky-300 tabular-nums">{Math.round(s.walk_m??s.dist)} m</div><div className="text-[11px] text-slate-500">🚶 {s.walk_min??Math.round((s.walk_m??s.dist)/80)} min</div><a href={s.gmaps} target="_blank" rel="noreferrer" onClick={e=>e.stopPropagation()} className="text-[11px] text-brand underline">Route</a></div></Card>})}
         {n<shops.length&&<button onClick={()=>setN(n+20)} className="w-full text-sm text-brand py-2">Mehr Filialen ({shops.length-n})</button>}</div></div>
-    <div className="grid gap-3 md:grid-cols-3">{[['n','🛒 Vergleichbare Gerichte je Kette','Anzahl'],['pli','⭐ Median PLI je Kette','PLI'],['e','⚖️ Median €/10 g Protein','€']].map(([k,t,u])=><Card key={k} className="p-3"><h4 className="text-sm font-semibold mb-1">{t}</h4><ResponsiveContainer width="100%" height={200}><BarChart data={chart} margin={{left:-20}}><CartesianGrid strokeDasharray="3 3" opacity={.3}/><XAxis dataKey="c" tick={{fontSize:10}}/><YAxis tick={{fontSize:10}}/><Tooltip formatter={(v:any)=>[fmt(v,2),u]}/><Bar dataKey={k}>{chart.map(x=><Cell key={x.c} fill={COL[x.c]??'#64748b'}/>)}</Bar></BarChart></ResponsiveContainer></Card>)}</div>
+    <div className="grid gap-3 md:grid-cols-3">{[['n','🛒 Vergleichbare Gerichte je Kette','Anzahl'],['pli','⭐ Median PLI je Kette','PLI'],['e','⚖️ Median €/10 g Protein','€']].map(([k,t,u])=><Card key={k} className="p-3"><h4 className="text-sm font-semibold mb-1">{t}</h4><ChartContainer config={{}} className="aspect-auto w-full" style={{height:200}}><BarChart data={chart} margin={{left:-20}}><CartesianGrid strokeDasharray="3 3" opacity={.3}/><XAxis dataKey="c" tick={{fontSize:10}}/><YAxis tick={{fontSize:10}}/><Tooltip formatter={(v:any)=>[fmt(v,2),u]}/><Bar dataKey={k}>{chart.map(x=><Cell key={x.c} fill={COL[x.c]??'#64748b'}/>)}</Bar></BarChart></ChartContainer></Card>)}</div>
     {cur&&<Card className="p-4 space-y-2"><div className="flex items-center gap-3"><StoreLogo store={cur.chain} size={56}/><div><div className="text-lg font-bold">{cur.name}</div><div className="text-sm text-slate-500">{cur.addr} · 🚶 {fmtDist(cur.walk_m??cur.dist)}</div></div><Badge className="ml-auto bg-amber-100 text-amber-800">Verfügbarkeit auf Kettenebene</Badge><button onClick={()=>setSel(null)} className="text-slate-400">✕</button></div>
       <Gallery rows={curRows} step={12}/></Card>}
   </div>

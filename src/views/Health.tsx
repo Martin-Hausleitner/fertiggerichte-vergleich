@@ -1,7 +1,8 @@
+import { ChartContainer } from '../components/ui/chart'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import { ResponsiveContainer, ScatterChart, Scatter, XAxis, YAxis, ZAxis, Tooltip, CartesianGrid, BarChart, Bar, Legend, ReferenceLine, Cell } from 'recharts'
+import { ScatterChart, Scatter, XAxis, YAxis, ZAxis, Tooltip, CartesianGrid, BarChart, Bar, Legend, ReferenceLine, Cell } from 'recharts'
 import { HeartPulse, Trophy, AlertOctagon, FlaskConical, Globe2, Award, Activity, Search } from 'lucide-react'
 import { Card, Badge, Select, Input } from '../components/ui'
 import { InfoTip, Flag, STAGES, packEmo } from '../components/info'
@@ -73,17 +74,17 @@ export default function Health(){
 
    <Sec icon={Activity} title="💪 Protein vs. 🧂 Salz" info="Jeder Punkt ist ein Gericht. Oben links ist ideal: viel Protein pro 100 kcal, wenig Salz. Farbe = Health-Score. Drüberfahren zeigt das Produktfoto." grad="from-teal-600 to-cyan-500">
     <div className="flex flex-wrap gap-1 mb-2">{[['all','Alle'] as const,...STAGES.filter(s=>s[0]!=='base').map(s=>[s[0],s[1]+' '+s[2]] as const)].map(([k,l])=><button key={k} onClick={()=>setStg(k)} className={cn('rounded-full px-3 py-1 text-xs',stg===k?'bg-teal-600 text-white':'bg-slate-100 dark:bg-slate-800')}>{l}</button>)}<Badge className="ml-auto bg-slate-100 dark:bg-slate-800">{sc.length} Gerichte</Badge></div>
-    <div className="h-96"><ResponsiveContainer><ScatterChart margin={{top:10,right:10,bottom:20,left:0}}><CartesianGrid stroke={grid}/><XAxis type="number" dataKey="x" name="Salz" unit=" g" domain={[0,'auto']} label={{value:'🧂 Salz g/100 g',position:'bottom',fontSize:11}} tick={{fontSize:11}}/><YAxis type="number" dataKey="y" name="Protein" tick={{fontSize:11}} label={{value:'💪 g Protein/100 kcal',angle:-90,position:'insideLeft',fontSize:11}}/><ZAxis range={[40,40]}/><ReferenceLine x={1.5} stroke="#dc2626" strokeDasharray="4 4" label={{value:'Salz rot',fontSize:10,fill:'#dc2626'}}/><ReferenceLine y={10} stroke="#059669" strokeDasharray="4 4"/><Tooltip content={<ScatterTip/>}/><Scatter data={sc}>{sc.map((d,i)=><Cell key={i} fill={scoreColor(d.z)}/>)}</Scatter></ScatterChart></ResponsiveContainer></div>
+    <div className="h-96"><ChartContainer config={{}} className="aspect-auto h-full w-full"><ScatterChart margin={{top:10,right:10,bottom:20,left:0}}><CartesianGrid stroke={grid}/><XAxis type="number" dataKey="x" name="Salz" unit=" g" domain={[0,'auto']} label={{value:'🧂 Salz g/100 g',position:'bottom',fontSize:11}} tick={{fontSize:11}}/><YAxis type="number" dataKey="y" name="Protein" tick={{fontSize:11}} label={{value:'💪 g Protein/100 kcal',angle:-90,position:'insideLeft',fontSize:11}}/><ZAxis range={[40,40]}/><ReferenceLine x={1.5} stroke="#dc2626" strokeDasharray="4 4" label={{value:'Salz rot',fontSize:10,fill:'#dc2626'}}/><ReferenceLine y={10} stroke="#059669" strokeDasharray="4 4"/><Tooltip content={<ScatterTip/>}/><Scatter data={sc}>{sc.map((d,i)=><Cell key={i} fill={scoreColor(d.z)}/>)}</Scatter></ScatterChart></ChartContainer></div>
    </Sec>
 
    <div className="grid lg:grid-cols-2 gap-4">
     <Sec icon={HeartPulse} title="🧮 Ø Score-Bausteine je Verpackung" info={'Durchschnittliche Bonus- und Abzugspunkte je Verpackungsart. '+HK.proc} grad="from-emerald-600 to-teal-500">
-     <div className="h-80"><ResponsiveContainer><BarChart data={packBD} layout="vertical" stackOffset="sign" margin={{left:10}}><CartesianGrid stroke={grid}/><XAxis type="number" tick={{fontSize:11}}/><YAxis type="category" dataKey="k" width={130} tick={{fontSize:10}}/><Tooltip/><Legend wrapperStyle={{fontSize:11}}/><ReferenceLine x={0} stroke="#64748b"/>{PARTS.map(p=><Bar key={p[0]} dataKey={p[0]} name={p[1]} stackId="a" fill={p[3]}/>)}</BarChart></ResponsiveContainer></div>
+     <div className="h-80"><ChartContainer config={{}} className="aspect-auto h-full w-full"><BarChart data={packBD} layout="vertical" stackOffset="sign" margin={{left:10}}><CartesianGrid stroke={grid}/><XAxis type="number" tick={{fontSize:11}}/><YAxis type="category" dataKey="k" width={130} tick={{fontSize:10}}/><Tooltip/><Legend wrapperStyle={{fontSize:11}}/><ReferenceLine x={0} stroke="#64748b"/>{PARTS.map(p=><Bar key={p[0]} dataKey={p[0]} name={p[1]} stackId="a" fill={p[3]}/>)}</BarChart></ChartContainer></div>
      <div className="flex flex-wrap gap-1 mt-1">{packBD.map((p:any)=><Badge key={p.k} className="bg-slate-100 dark:bg-slate-800">{p.k}: Ø {p.tot} ({p.n})</Badge>)}</div>
     </Sec>
     <Sec icon={Award} title="🔤 Nutri-Score-Verteilung" info={HK.ns+' Wo kein Nutri-Score angegeben ist, fehlt das Produkt hier.'} grad="from-lime-600 to-green-600">
      <div className="flex gap-1 mb-2">{([['store','🏪 Kette'],['brandN','🏷️ Marke'],['pack','📦 Verpackung']] as const).map(([k,l])=><button key={k} onClick={()=>setGrp(k)} className={cn('rounded-full px-3 py-1 text-xs',grp===k?'bg-green-600 text-white':'bg-slate-100 dark:bg-slate-800')}>{l}</button>)}</div>
-     <div className="h-72"><ResponsiveContainer><BarChart data={nsData} layout="vertical"><CartesianGrid stroke={grid}/><XAxis type="number" tick={{fontSize:11}}/><YAxis type="category" dataKey="k" width={120} tick={{fontSize:10}}/><Tooltip/><Legend wrapperStyle={{fontSize:11}}/>{'ABCDE'.split('').map(l=><Bar key={l} dataKey={l} stackId="n" fill={NS_C[l]}/>)}</BarChart></ResponsiveContainer></div>
+     <div className="h-72"><ChartContainer config={{}} className="aspect-auto h-full w-full"><BarChart data={nsData} layout="vertical"><CartesianGrid stroke={grid}/><XAxis type="number" tick={{fontSize:11}}/><YAxis type="category" dataKey="k" width={120} tick={{fontSize:10}}/><Tooltip/><Legend wrapperStyle={{fontSize:11}}/>{'ABCDE'.split('').map(l=><Bar key={l} dataKey={l} stackId="n" fill={NS_C[l]}/>)}</BarChart></ChartContainer></div>
      <Missing text={`Nur ${nsRows.length} von ${R.length} Produkten haben einen Nutri-Score in den Quellen. Die österreichischen Shops zeigen ihn meist nicht an.`}/>
     </Sec>
    </div>

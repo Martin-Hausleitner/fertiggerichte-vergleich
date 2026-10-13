@@ -2,11 +2,11 @@
 @tailwind base;@tailwind components;@tailwind utilities;
 @layer base{
   :root{--background:0 0% 100%;--foreground:210 11% 7%;--card:0 0% 100%;--card-foreground:30 10% 10%;--popover:0 0% 100%;--popover-foreground:30 10% 10%;
-    --primary:172 100% 21%;--primary-foreground:0 0% 100%;--secondary:200 14% 95%;--secondary-foreground:30 10% 15%;--muted:200 14% 95%;--muted-foreground:206 13% 38%;
-    --accent:160 45% 93%;--accent-foreground:172 100% 18%;--destructive:0 72% 50%;--destructive-foreground:0 0% 100%;--border:204 22% 91%;--input:203 16% 84%;--ring:172 100% 25%;--radius:1rem}
+    --primary:172 100% 21%;--primary-foreground:0 0% 100%;--secondary:200 14% 95%;--secondary-foreground:30 10% 15%;--muted:200 14% 95%;--muted-foreground:206 15% 30%;
+    --accent:160 45% 93%;--accent-foreground:172 100% 18%;--destructive:0 72% 50%;--destructive-foreground:0 0% 100%;--border:204 16% 82%;--input:203 14% 70%;--ring:172 100% 25%;--radius:1rem;--sidebar-background:0 0% 100%;--sidebar-foreground:210 11% 7%;--sidebar-primary:210 11% 7%;--sidebar-primary-foreground:0 0% 100%;--sidebar-accent:200 14% 95%;--sidebar-accent-foreground:210 11% 7%;--sidebar-border:204 16% 82%;--sidebar-ring:172 100% 25%}
   .dark{--background:0 0% 0%;--foreground:40 20% 95%;--card:220 9% 5%;--card-foreground:40 20% 95%;--popover:0 0% 0%;--popover-foreground:40 20% 95%;
-    --primary:160 55% 52%;--primary-foreground:172 80% 8%;--secondary:210 7% 11%;--secondary-foreground:40 20% 95%;--muted:210 7% 11%;--muted-foreground:204 5% 47%;
-    --accent:170 40% 16%;--accent-foreground:160 55% 75%;--destructive:0 62% 45%;--destructive-foreground:0 0% 100%;--border:204 7% 20%;--input:204 7% 22%;--ring:160 55% 52%}
+    --primary:160 55% 52%;--primary-foreground:172 80% 8%;--secondary:210 7% 11%;--secondary-foreground:40 20% 95%;--muted:210 7% 11%;--muted-foreground:204 8% 68%;
+    --accent:170 40% 16%;--accent-foreground:160 55% 75%;--destructive:0 62% 45%;--destructive-foreground:0 0% 100%;--border:204 7% 28%;--input:204 7% 34%;--ring:160 55% 52%;--sidebar-background:0 0% 0%;--sidebar-foreground:40 20% 95%;--sidebar-primary:40 20% 95%;--sidebar-primary-foreground:0 0% 0%;--sidebar-accent:210 7% 11%;--sidebar-accent-foreground:40 20% 95%;--sidebar-border:204 7% 28%;--sidebar-ring:160 55% 52%}
   *{@apply border-border}
   html{-webkit-tap-highlight-color:transparent;font-feature-settings:"cv11","ss01"}
   body{@apply bg-background text-foreground antialiased font-sans}
@@ -14,7 +14,8 @@
   ::selection{background:hsl(var(--accent))}
   .dark .bg-white{background-color:hsl(var(--card))}
 }
-.ag-theme-quartz,.ag-theme-quartz-dark{--ag-font-family:"Inter Variable",Inter,system-ui,sans-serif;--ag-header-background-color:hsl(var(--secondary));--ag-header-foreground-color:hsl(var(--foreground));--ag-font-size:13px;--ag-border-radius:16px;--ag-wrapper-border-radius:16px;--ag-border-color:hsl(var(--border));--ag-row-hover-color:hsl(var(--accent)/.6);--ag-selected-row-background-color:hsl(var(--accent));--ag-active-color:#00695c;--ag-header-font-weight:600}
+.ag-theme-quartz,.ag-theme-quartz,.ag-theme-quartz-dark{--ag-font-family:inherit;--ag-font-size:13px;--ag-border-color:hsl(var(--border));--ag-row-border-color:hsl(var(--border));--ag-header-background-color:hsl(var(--background));--ag-header-foreground-color:hsl(var(--muted-foreground));--ag-wrapper-border-radius:var(--radius);--ag-row-hover-color:hsl(var(--muted)/.5);--ag-selected-row-background-color:hsl(var(--muted))}
+.ag-theme-quartz-dark{--ag-font-family:"Inter Variable",Inter,system-ui,sans-serif;--ag-header-background-color:hsl(var(--secondary));--ag-header-foreground-color:hsl(var(--foreground));--ag-font-size:13px;--ag-border-radius:16px;--ag-wrapper-border-radius:16px;--ag-border-color:hsl(var(--border));--ag-row-hover-color:hsl(var(--accent)/.6);--ag-selected-row-background-color:hsl(var(--accent));--ag-active-color:#00695c;--ag-header-font-weight:600}
 .ag-theme-quartz-dark{--ag-background-color:hsl(var(--card));--ag-header-background-color:hsl(var(--secondary));--ag-active-color:#4fd1a5}
 .scroll-x{scrollbar-width:none}.scroll-x::-webkit-scrollbar{display:none}
 @keyframes zin{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}.zoom-in{animation:zin .16s ease-out}

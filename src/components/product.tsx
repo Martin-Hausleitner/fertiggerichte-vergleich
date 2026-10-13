@@ -109,7 +109,7 @@ export function ProductCard({r}:{r:Row}){
       <div className="flex items-end justify-between gap-2"><div className="text-2xl"><Price r={r}/></div>
         <div className="text-right"><div className="text-lg font-extrabold leading-tight tabular-nums text-brand dark:text-emerald-300">{r.eur10p==null?'–':fmt(r.eur10p,2)+' €'}</div><div className="text-[11px] text-muted-foreground flex justify-end"><InfoTip k="eur10p">pro 10 g Protein</InfoTip></div></div></div>
       <ScoreBar r={r}/>
-      <Tabs defaultValue="preis" onClick={e=>e.stopPropagation()}><TabsList><TabsTrigger value="preis">Preis</TabsTrigger><TabsTrigger value="naehr">Nährwerte</TabsTrigger><TabsTrigger value="herk">Herkunft</TabsTrigger></TabsList>
+      <Tabs defaultValue="preis" onClick={e=>e.stopPropagation()}><TabsList className="w-full h-8"><TabsTrigger className="flex-1 text-xs" value="preis">Preis</TabsTrigger><TabsTrigger className="flex-1 text-xs" value="naehr">Nährwerte</TabsTrigger><TabsTrigger className="flex-1 text-xs" value="herk">Herkunft</TabsTrigger></TabsList>
         <TabsContent value="preis"><PriceKpis r={r}/></TabsContent>
         <TabsContent value="naehr" className="space-y-1.5"><Chips r={r}/><CatChips r={r}/>{r.priceOnly&&<span className="text-[11px] text-slate-500">nur Preis, keine Nährwerte</span>}</TabsContent>
         <TabsContent value="herk" className="space-y-1.5 text-xs">{(r.p2?.producer||r.herst)?<ProdLine r={r}/>:<span className="text-slate-400">Hersteller unbekannt</span>}{r.origin&&<div>🌍 {r.origin}</div>}</TabsContent></Tabs>

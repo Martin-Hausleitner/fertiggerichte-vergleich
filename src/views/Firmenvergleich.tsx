@@ -1,9 +1,10 @@
+import { ChartContainer } from '../components/ui/chart'
 import { useEffect, useMemo, useState } from 'react'
 import { AgGridReact } from 'ag-grid-react'
 import type { ColDef } from 'ag-grid-community'
 import 'ag-grid-community/styles/ag-grid.css'
 import 'ag-grid-community/styles/ag-theme-quartz.css'
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Cell } from 'recharts'
+import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Cell } from 'recharts'
 import { Building2, Users, Euro, Factory, ExternalLink, Database } from 'lucide-react'
 import { Card, CardHeader, CardTitle, CardContent, Badge, Input } from '../components/ui'
 import { InfoTip, Flag, prodColor } from '../components/info'
@@ -50,7 +51,7 @@ export default function Firmenvergleich(){
   const byPli=rows.filter(c=>c.median_eur_per_10g_protein!=null&&c.product_count>=2).sort((a,b)=>a.median_eur_per_10g_protein!-b.median_eur_per_10g_protein!).slice(0,15)
   const short=(c:C)=>(c.legal_name||c.name).replace(/\s+(GmbH|AG|KG|OG|S\.p\.A\.|B\.V\.).*$/i,'').slice(0,22)
   const kpi:[string,number|string,any][]= [['Firmen',all.length,Building2],['mit LEI (GLEIF)',all.filter(c=>c.lei).length,Database],['mit Umsatz',all.filter(c=>c.revenue).length,Euro],['Werke',all.reduce((a,c)=>a+c.plants.length,0),Factory],['mit Mitarbeiterzahl',all.filter(c=>c.employees).length,Users]]
-  const chart=(title:string,tip:string,data:C[],key:keyof C,unit:string)=><Card><CardHeader><CardTitle className="text-sm flex items-center gap-1">{title}<InfoTip text={tip}/></CardTitle></CardHeader><CardContent><div style={{height:Math.max(160,data.length*26)}}><ResponsiveContainer><BarChart data={data.map(c=>({n:short(c),v:c[key],c}))} layout="vertical" margin={{left:10,right:30}}><CartesianGrid horizontal={false} strokeOpacity={.15}/><XAxis type="number" fontSize={11}/><YAxis type="category" dataKey="n" width={150} fontSize={11}/><Tooltip formatter={(v:any)=>fmt(v,2)+' '+unit}/><Bar dataKey="v" radius={[0,6,6,0]}>{data.map(c=><Cell key={c.slug} fill={prodColor(c.slug)}/>)}</Bar></BarChart></ResponsiveContainer></div>{!data.length&&<div className="text-sm text-muted-foreground">Keine verifizierten Werte.</div>}</CardContent></Card>
+  const chart=(title:string,tip:string,data:C[],key:keyof C,unit:string)=><Card><CardHeader><CardTitle className="text-sm flex items-center gap-1">{title}<InfoTip text={tip}/></CardTitle></CardHeader><CardContent><div style={{height:Math.max(160,data.length*26)}}><ChartContainer config={{}} className="aspect-auto h-full w-full"><BarChart data={data.map(c=>({n:short(c),v:c[key],c}))} layout="vertical" margin={{left:10,right:30}}><CartesianGrid horizontal={false} strokeOpacity={.15}/><XAxis type="number" fontSize={11}/><YAxis type="category" dataKey="n" width={150} fontSize={11}/><Tooltip formatter={(v:any)=>fmt(v,2)+' '+unit}/><Bar dataKey="v" radius={[0,6,6,0]}>{data.map(c=><Cell key={c.slug} fill={prodColor(c.slug)}/>)}</Bar></BarChart></ChartContainer></div>{!data.length&&<div className="text-sm text-muted-foreground">Keine verifizierten Werte.</div>}</CardContent></Card>
   return <div className="space-y-4">
     <div className="flex flex-wrap items-end justify-between gap-3"><div><h2 className="text-2xl font-extrabold tracking-tight">Firmenvergleich</h2><p className="text-sm text-muted-foreground">Hersteller, Markeninhaber und Handel: Registerdaten (GLEIF/Firmenbuch), Umsatz, Mitarbeiter, Werke und Preis-Leistung ihrer Produkte. Fehlende Werte sind markiert, nichts ist geschätzt.</p></div>
       <div className="flex gap-2"><Input placeholder="Firma, Marke, Konzern…" value={q} onChange={e=>setQ(e.target.value)} className="w-56"/>{['alle','producer','retailer','brand_owner'].map(r=><button key={r} onClick={()=>setRole(r)} className={cn('rounded-full px-3 h-9 text-xs font-semibold border',role===r?'bg-foreground text-background':'bg-card')}>{r==='alle'?'Alle':ROLE[r]}</button>)}</div></div>

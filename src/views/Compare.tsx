@@ -1,4 +1,5 @@
-import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer, Legend, Tooltip } from 'recharts'
+import { ChartContainer } from '../components/ui/chart'
+import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend, Tooltip } from 'recharts'
 import { Trophy, X, Share2 } from 'lucide-react'
 import { Img, Price, ScoreBar, StoreLogo } from '../components/product'
 import { Button } from '../components/ui'
@@ -21,7 +22,7 @@ export default function Compare(){
       <button className="absolute right-1 top-1 text-slate-400 hover:text-red-500" onClick={()=>toggleCompare(r.id)} aria-label="Entfernen"><X size={14}/></button>
       <Img src={r.img} className="h-16 w-16 mx-auto"/><button onClick={()=>open(r.id)} className="mt-1 text-xs font-semibold leading-tight line-clamp-3 hover:underline">{r.name}</button><div className="flex justify-center"><StoreLogo store={r.store} size={22}/></div><div className="text-xs mt-1"><Price r={r}/></div>
       {wins[i]===Math.max(...wins)&&<div className="mt-1 inline-flex items-center gap-1 text-[10px] font-semibold text-amber-600"><Trophy size={11}/>{wins[i]} Siege</div>}</div>)}</div>
-    <div className="h-[300px]"><ResponsiveContainer><RadarChart data={radar} outerRadius="72%"><PolarGrid/><PolarAngleAxis dataKey="m" tick={{fontSize:10}}/><PolarRadiusAxis domain={[0,100]} tick={false} axisLine={false}/>{items.map((r,i)=><Radar key={r.id} name={r.name.slice(0,22)} dataKey={`p${i}`} stroke={PAL[i]} fill={PAL[i]} fillOpacity={.15}/>)}<Legend wrapperStyle={{fontSize:10}}/><Tooltip/></RadarChart></ResponsiveContainer></div>
+    <div className="h-[300px]"><ChartContainer config={{}} className="aspect-auto h-full w-full"><RadarChart data={radar} outerRadius="72%"><PolarGrid/><PolarAngleAxis dataKey="m" tick={{fontSize:10}}/><PolarRadiusAxis domain={[0,100]} tick={false} axisLine={false}/>{items.map((r,i)=><Radar key={r.id} name={r.name.slice(0,22)} dataKey={`p${i}`} stroke={PAL[i]} fill={PAL[i]} fillOpacity={.15}/>)}<Legend wrapperStyle={{fontSize:10}}/><Tooltip/></RadarChart></ChartContainer></div>
     <p className="text-[11px] text-slate-500 -mt-2">Radar zeigt das Perzentil im Gesamtsortiment, 100 = am besten (bei Salz, Fett und kcal heißt das: am niedrigsten).</p>
     <div className="space-y-3">{METRICS.map(m=>{const w=win(m);const vals=items.map(r=>r[m.k] as number|null);const mx=Math.max(...vals.map(v=>v??0),0.0001)
       return <div key={m.k as string}><div className="flex justify-between text-xs font-medium mb-1"><span>{m.l}</span><span className="text-slate-400">{m.better==='hi'?'höher = besser':'niedriger = besser'}</span></div>
