@@ -3,7 +3,7 @@
  * Shared by the browser renderer and the MCP server (no React, no '@/' imports).
  * Ready-meal rules are imported from src/app/meal.ts (single source).
  */
-import type { ProductQuery } from './schema'
+import type { ProductQuery } from './schema.js'
 
 export type RowLike = {
   id: number; name: string; brand?: string; brandN?: string; store: string; herst?: string; img?: string | null; url?: string | null

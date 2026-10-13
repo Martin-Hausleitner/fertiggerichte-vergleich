@@ -30,21 +30,21 @@ const COLS: C[] = [
 ]
 type SavedView = { f: F; cols: string[]; sort: SortModelItem[]; so?: string }
 const SORTS: [string, string, (r: any) => number | null, 1 | -1][] = [['value', 'Preis-Leistung (je Portion)', r => r.value, -1], ['score', 'Health-Score', r => r.score, -1], ['pPor', 'Preis pro Portion', r => r.pPor, 1], ['price', 'Preis', r => r.price, 1], ['p100g', 'Preis pro 100 g', r => r.p100g, 1]]
-export const availOf = (store: string) => store === 'Gurkerl' ? 'nicht lieferbar nach Linz' : ONLINE.includes(store) ? 'Online / Lieferung' : 'Kette führt es'
+export const availOf = (store: string, r?: any) => r?.delivers_4020 === true ? 'Liefert nach 4020' : store === 'Gurkerl' ? 'nicht lieferbar nach Linz' : ONLINE.includes(store) ? 'Online / Lieferung' : 'Kette führt es'
 const veg = (r: Row) => r.vegan || r.cprot?.includes('vegan') ? 'vegan' : r.cprot?.includes('vegetarisch') ? 'vegetarisch' : ''
 
 export default function Tabelle() {
   const { R, D, open, dark, compare, setCompare } = useApp()
   const { distOf } = useNearShops()
-  const cfg = useCfg(); const [f, setF] = useFilter(); const [q, setQ] = useHashState<string>('q', ''); const [so, setSo] = useHashState<string>('so', 'value'); const [allFood, setAllFood] = useHashState<string>('lm', ''); const [side, setSide] = useState(false)
+  const cfg = useCfg(); const [f, setF] = useFilter(); const [q, setQ] = useHashState<string>('q', ''); const [so, setSo] = useHashState<string>('so', 'value'); const [allFood, setAllFood] = useHashState<string>('lm', ''); const [lf, setLf] = useHashState<string>('lf', ''); const [side, setSide] = useState(false)
   const [cols, setCols] = useLocal<string[]>('fg-tab-cols', COLS.filter(c => c.def).map(c => c.k))
   const [views, setViews] = useLocal<Record<string, SavedView>>('fg-tab-views', {}); const [vn, setVn] = useState('')
   const grid = useRef<AgGridReact<any>>(null)
   const konzOf = useMemo(() => { const m: Record<string, string> = {}; (D.producers || []).forEach((p: any) => { if (p.group && !/unverified/i.test(p.group)) m[p.slug] = String(p.group).replace(/\(.*?\)/g, '').trim() }); return (r: Row) => r.prodSlug ? m[r.prodSlug] ?? null : null }, [D])
   const pred = useMemo(() => makePred(f, { konzOf, dist: distOf }), [f, konzOf, distOf])
-  const base = useMemo(() => R.filter(r => !r.nonfood && !r.store.startsWith('unbekannt') && (allFood ? true : isReadyMeal(r))).map(r => { const pp = pricePerPortion(r); return { ...r, pPor: pp } }), [R, allFood])
+  const base = useMemo(() => R.filter(r => !r.nonfood && !r.store.startsWith('unbekannt') && (allFood ? true : isReadyMeal(r)) && (!lf || (r as any).delivers_4020 === true)).map(r => { const pp = pricePerPortion(r); return { ...r, pPor: pp } }), [R, allFood, lf])
   const rows = useMemo(() => { const qq = q.toLowerCase(); const sd = SORTS.find(x => x[0] === so) ?? SORTS[0]; return base.filter(r => pred(r) && (!qq || `${r.name} ${r.brandN} ${r.herst}`.toLowerCase().includes(qq)))
-    .map(r => ({ ...r, cat: [...(r.cprot || []), ...(r.cdish || [])].join(', '), diet: veg(r), dist: distOf(r), ns: r.ns && r.ns !== 'unknown' ? r.ns.toUpperCase() : null, value: valueScore(r), avail: availOf(r.store) }))
+    .map(r => ({ ...r, cat: [...(r.cprot || []), ...(r.cdish || [])].join(', '), diet: veg(r), dist: distOf(r), ns: r.ns && r.ns !== 'unknown' ? r.ns.toUpperCase() : null, value: valueScore(r), avail: availOf(r.store, r) }))
     .sort((a, b) => { const x = sd[2](a), y = sd[2](b); return x == null ? (y == null ? 0 : 1) : y == null ? -1 : (x - y) * sd[3] }) }, [base, pred, q, distOf, so, cfg])
   const updated = useMemo(() => lastPriceDate(R), [R])
   const ctx = useMemo(() => ({ konzOf, dist: distOf }), [konzOf, distOf])
@@ -78,7 +78,8 @@ export default function Tabelle() {
               {Object.entries(views).map(([k, v]) => <div key={k} className="flex items-center justify-between rounded border px-2 py-1 text-sm"><button className="hover:underline" onClick={() => loadView(v)}>{k}</button><button aria-label="löschen" onClick={() => { const c = { ...views }; delete c[k]; setViews(c) }}><X className="size-3.5" /></button></div>)}</PopoverContent></Popover>
         </div>
         <div className="flex flex-wrap items-center gap-3 text-xs"><span className="font-semibold">{rows.length} Fertiggerichte{allFood && ' & Lebensmittel'}</span>
-          <label className="flex items-center gap-1.5 text-muted-foreground"><input type="checkbox" checked={!!allFood} onChange={e => setAllFood(e.target.checked ? '1' : '')} />auch normale Lebensmittel zeigen</label></div>
+          <label className="flex items-center gap-1.5 text-muted-foreground"><input type="checkbox" checked={!!allFood} onChange={e => setAllFood(e.target.checked ? '1' : '')} />auch normale Lebensmittel zeigen</label>
+          <label className="flex items-center gap-1.5 text-muted-foreground"><input type="checkbox" checked={!!lf} onChange={e => setLf(e.target.checked ? '1' : '')} />🚚 nur „Liefert nach 4020“</label></div>
         <ActiveChips f={f} set={setF} />
         <div className={dark ? 'ag-theme-quartz-dark' : 'ag-theme-quartz'} style={{ height: 'min(72vh, 900px)', width: '100%' }}>
           <AgGridReact ref={grid} rowData={rows} columnDefs={colDefs} getRowId={p => String(p.data.id)} rowHeight={36} animateRows={false} defaultColDef={{ sortable: true, resizable: true }} rowBuffer={20} />
