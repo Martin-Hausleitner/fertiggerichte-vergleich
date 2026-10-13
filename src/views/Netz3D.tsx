@@ -18,7 +18,7 @@ export default function Netz3D(){
   useEffect(()=>{const f=()=>setW(box.current?.clientWidth??1000);f();addEventListener('resize',f);return()=>removeEventListener('resize',f)},[])
   const g=useMemo(()=>{
     const nodes=new Map<string,N>(),edges=new Map<string,E>()
-    const ok=(r:Row)=>stages.includes(r.stage)&&!r.nonfood&&(!chain||r.store===chain)
+    const ok=(r:Row)=>stages.includes(r.stage)&&!r.nonfood&&!r.store.startsWith('unbekannt')&&(!chain||r.store===chain)
     const brandLogo=(b:string)=>R.find(r=>r.brandN===b&&r.logo)?.logo??null
     const node=(id:string,o:Omit<N,'id'|'rows'|'n'|'val'>)=>{if(!nodes.has(id))nodes.set(id,{id,rows:[],n:0,val:1,...o});return nodes.get(id)!}
     const edge=(a:string,b:string,dashed:boolean,inc=1,note?:string)=>{const k=a+'>'+b;const e=edges.get(k);if(e){e.n+=inc;if(!dashed)e.dashed=false}else edges.set(k,{source:a,target:b,n:inc,dashed,note})}
@@ -62,7 +62,7 @@ export default function Netz3D(){
         linkWidth={(l:any)=>l.dashed?0.4:Math.min(4,0.6+Math.sqrt(l.n))} linkOpacity={0.6} linkColor={(l:any)=>l.dashed?'#94a3b8':(typeof l.source==='object'?l.source.color:'#64748b')}
         linkDirectionalParticles={(l:any)=>l.dashed?0:Math.min(4,l.n)} linkDirectionalParticleWidth={1.5} linkLabel={(l:any)=>`${l.n} Produkte${l.note?' · '+l.note:''}${l.dashed?' (unsicher)':''}`}
         linkMaterial={(l:any)=>l.dashed?new THREE.LineDashedMaterial({color:0x94a3b8,dashSize:2,gapSize:2}):undefined as any}
-        onNodeClick={focus} enableNodeDrag={true} cooldownTicks={120} onEngineStop={()=>fg.current?.zoomToFit(600,40)}/></div>
+        onNodeClick={focus} enableNodeDrag={true} cooldownTicks={120} onEngineStop={()=>fg.current?.zoomToFit(600,10)}/></div>
     {sel&&<Card className="p-4 space-y-2"><div className="flex items-center gap-3">{sel.type==='kette'?<StoreLogo store={sel.label} size={48}/>:sel.logo&&<img src={sel.logo} className="h-12 max-w-32 object-contain"/>}<div><div className="text-xs text-slate-500">{TL[sel.type]}</div><div className="text-lg font-bold" style={{color:sel.color}}>{sel.label}</div>{sel.sub&&<div className="text-sm">📍 {sel.sub}</div>}</div>
       <div className="ml-auto flex gap-2"><Badge className="bg-slate-100 dark:bg-slate-800">{sel.n} Produkte</Badge>{med(sel.rows.map(r=>r.pli!))!=null&&<Badge className="bg-emerald-600 text-white">⭐ ø PLI {Math.round(med(sel.rows.map(r=>r.pli!))!)}</Badge>}{sel.type==='hersteller'&&<a className="text-sm text-brand underline" href={'#tab=hersteller-seiten&h='+sel.id.slice(2)}>Profil →</a>}<button onClick={()=>setSel(null)} className="text-slate-400">✕</button></div></div>
       <Gallery rows={[...sel.rows].sort((a,b)=>(a.eur10p??99)-(b.eur10p??99))} step={12}/></Card>}
