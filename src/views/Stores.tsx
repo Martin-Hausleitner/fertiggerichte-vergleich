@@ -6,7 +6,7 @@ import { Card, Badge } from '../components/ui'
 import { StoreLogo, Gallery } from '../components/product'
 import { InfoTip } from '../components/info'
 import { useApp, fmtDist, fmt, STORE_LOGO } from '../lib'
-const COL:Record<string,string>={Billa:'#eab308',Spar:'#16a34a',Hofer:'#2563eb',Lidl:'#0ea5e9',dm:'#db2777',Penny:'#dc2626','Fit to Go':'#f97316'}
+const COL:Record<string,string>={Billa:'#eab308',Spar:'#16a34a',Hofer:'#2563eb',Lidl:'#0ea5e9',dm:'#db2777',Penny:'#dc2626','Fit to Go':'#f97316',Gurkerl:'#7c3aed',PrepMyMeal:'#0f766e',LiveFresh:'#16a34a',FitTaste:'#ea580c'}
 const med=(a:(number|null)[])=>{const s=a.filter((x):x is number=>x!=null).sort((x,y)=>x-y);return s.length?s[Math.floor(s.length/2)]:null}
 export default function Stores(){
   const {stores,R}=useApp(); const ref=useRef<HTMLDivElement>(null); const map=useRef<L.Map|null>(null)

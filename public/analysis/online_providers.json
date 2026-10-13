@@ -36,9 +36,9 @@
    "storage": "schockgefrostet, 12 Monate haltbar",
    "packaging": "plastikfreie Bio-Pap-Schalen",
    "price_from": "9,49 €/Meal (18er) – 10,49 € (6er), bis 65 g Protein",
-   "products_in_app": false,
-   "products_note": "Hydrogen-Shop ohne öffentliche Produkt-API; Einzelnährwerte noch nicht erfasst (Marke fit-to-go teils schon über Handel in der App)",
-   "store": "Online: fit2go",
+   "products_in_app": true,
+   "products_note": "Produkte aus früherer Erfassung (other.json); Hydrogen-Shop ohne öffentliche Produkt-API",
+   "store": "Online: Fit to Go",
    "sources": [
     "https://fittogo.at/",
     "https://fittogo.at/pages/impressum"

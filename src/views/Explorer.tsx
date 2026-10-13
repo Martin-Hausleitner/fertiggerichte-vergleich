@@ -2,7 +2,7 @@ import { lazy, Suspense, useMemo } from 'react'
 import { LayoutGrid, Table2, Search, Heart } from 'lucide-react'
 import { Button, Input, Select, Card } from '../components/ui'
 import { Gallery } from '../components/product'
-import { FilterPanel, useFilter, makePred } from '../components/FilterPanel'
+import { FilterPanel, useFilter, makePred, GANG } from '../components/FilterPanel'
 import { useApp, useHashState, cn } from '../lib'
 const Grid=lazy(()=>import('./Grid'))
 export default function Explorer(){
@@ -29,6 +29,10 @@ export default function Explorer(){
       <div className="flex gap-1 ml-auto items-center"><span className="text-xs text-slate-500 mr-1">{rows.length} Treffer</span>
         <Button size="sm" active={view==='grid'} onClick={()=>setView('grid')} aria-label="Tabelle"><Table2 size={15}/></Button><Button size="sm" active={view==='cards'} onClick={()=>setView('cards')} aria-label="Karten"><LayoutGrid size={15}/></Button></div>
       <div className="w-full"><FilterPanel f={fx} set={setFx} konzOf={konzOf} count={rows.length}/></div>
+      <div className="w-full flex gap-1.5 overflow-x-auto scroll-x pb-0.5 items-center">
+        <span className="text-[11px] font-semibold text-muted-foreground shrink-0 mr-0.5">Gang</span>
+        {GANG.map(([k,e,l])=>{const on=!!fx.gang?.includes(k);const n=R.filter(r=>!r.nonfood&&(r as any).gang===k).length;return <button key={k} onClick={()=>{const cur=fx.gang||[];setFx({...fx,gang:on?cur.filter(x=>x!==k):[...cur,k]})} } className={cn('shrink-0 rounded-full border px-2.5 py-1 text-xs font-medium transition flex items-center gap-1',on?'bg-foreground text-background border-foreground':'border-border bg-card hover:bg-muted')}>{e} {l}<span className={cn('tabular-nums text-[10px] rounded-full px-1.5',on?'bg-background/20':'bg-muted')}>{n}</span></button>})}
+      </div>
       <div className="w-full flex gap-1 overflow-x-auto scroll-x pb-0.5">{[...D.catProt,...D.catDish].map(c=><button key={c} onClick={()=>togCat(c)} className={cn('shrink-0 rounded-full border px-2 py-0.5 text-xs transition',cats.includes(c)?'bg-sky-600 text-white border-sky-600':'border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800')}>{D.catIcon[c]} {c}</button>)}</div>
     </Card>
     <div className={cn(view!=='grid'&&'hidden')}>{view==='grid'&&<Suspense fallback={<Card className="p-10 text-center text-slate-500">Tabelle wird geladen…</Card>}><Grid rows={rows} sort={sort}/></Suspense>}</div>
