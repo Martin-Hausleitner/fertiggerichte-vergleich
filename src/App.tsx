@@ -2,8 +2,8 @@ import { SearchPalette } from './components/SemanticSearch'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { STAGES, InfoTip } from './components/info'
 import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react'
-import { Moon, Sun, GitCompare, Maximize2, Minimize2, Salad, MapPin, Leaf, UtensilsCrossed, BadgeCheck, Tag, Trophy, ChevronRight, Heart, LayoutGrid, Soup, ListOrdered, Shapes, Store, HeartPulse, BarChart3, ScatterChart, Package, Factory, SearchCheck, Grid3x3, Image, Network, Building2, CalendarDays, Puzzle, Scale, Timer, BookOpen } from 'lucide-react'
-const TAB_ICON:Record<string,any>={alle:LayoutGrid,gerichte:Soup,top:ListOrdered,kategorien:Shapes,marken:Tag,filialen:Store,gesundheit:HeartPulse,analyse:BarChart3,scatter:ScatterChart,pack:Package,'hersteller-seiten':Factory,wer:SearchCheck,firmen:Building2,matrix:Grid3x3,logos:Image,netz:Network,hersteller:Building2,planer:CalendarDays,kombi:Puzzle,ftg:Scale,multipot:Timer,methodik:BookOpen}
+import { Moon, Sun, GitCompare, Maximize2, Minimize2, Salad, MapPin, Leaf, UtensilsCrossed, BadgeCheck, Tag, Trophy, ChevronRight, Heart, LayoutGrid, Soup, ListOrdered, Shapes, Store, HeartPulse, BarChart3, ScatterChart, Package, Factory, SearchCheck, Grid3x3, Image, Network, Building2, CalendarDays, Puzzle, Scale, Timer, BookOpen, ShieldCheck, Truck } from 'lucide-react'
+const TAB_ICON:Record<string,any>={alle:LayoutGrid,gerichte:Soup,top:ListOrdered,kategorien:Shapes,marken:Tag,filialen:Store,gesundheit:HeartPulse,analyse:BarChart3,scatter:ScatterChart,pack:Package,'hersteller-seiten':Factory,wer:SearchCheck,firmen:Building2,qualitaet:ShieldCheck,online:Truck,matrix:Grid3x3,logos:Image,netz:Network,hersteller:Building2,planer:CalendarDays,kombi:Puzzle,ftg:Scale,multipot:Timer,methodik:BookOpen}
 import { Sheet, Button, Card } from './components/ui'
 import { Img } from './components/product'
 import { AppCtx, useHashState, useLocal, cn, healthyCheap, fmt, scoreColor, type Data, type Stores as StoresT, type Shop } from './lib'
@@ -31,8 +31,11 @@ const Gerichte=lazy(()=>import('./views/Gerichte'))
 const Health=lazy(()=>import('./views/Health'))
 const WerDahinter=lazy(()=>import('./views/WerDahinter'))
 const Firmenvergleich=lazy(()=>import('./views/Firmenvergleich'))
+const Markenfamilien=lazy(()=>import('./views/Markenfamilien'))
+const Qualitaet=lazy(()=>import('./views/Qualitaet'))
+const Online=lazy(()=>import('./views/Online'))
 const Methodik=lazy(()=>import('./views/Misc').then(m=>({default:m.Methodik})))
-const TABS:[string,string,any][]=[['alle','Alle Gerichte',Explorer],['gerichte','🍲 Gericht vergleichen',Gerichte],['top','Top-Listen',Top],['kategorien','Kategorien',Categories],['marken','Marken',Brands],['filialen','Filialen in der Nähe',Stores],['gesundheit','🩺 Gesundheit & Qualität',Health],['analyse','Analyse',Analyse],['scatter','Preis vs. Protein',Scatter],['pack','Verpackungen',Packaging],['hersteller-seiten','Hersteller',ProducerPages],['wer','🕵️ Wer steckt dahinter?',WerDahinter],['firmen','🏢 Firmenvergleich',Firmenvergleich],['matrix','Marken-Matrix',Matrix],['logos','Logos',Logos],['netz','🕸️ Netz 3D',Netz3D],['hersteller','Läden & Werke',Producers],['planer','Wochenplaner',Planner],['kombi','Kombi-Ideen',Kombi],['ftg','Fit to Go vs. Supermarkt',Ftg],['multipot','Multipot-Pro Garzeiten',Multipot],['methodik','Methodik & Quellen',Methodik]]
+const TABS:[string,string,any][]=[['alle','Alle Gerichte',Explorer],['gerichte','🍲 Gericht vergleichen',Gerichte],['top','Top-Listen',Top],['kategorien','Kategorien',Categories],['marken','Marken',Brands],['familien','👪 Markenfamilien',Markenfamilien],['filialen','Filialen in der Nähe',Stores],['gesundheit','🩺 Gesundheit & Qualität',Health],['analyse','Analyse',Analyse],['scatter','Preis vs. Protein',Scatter],['pack','Verpackungen',Packaging],['hersteller-seiten','Hersteller',ProducerPages],['wer','🕵️ Wer steckt dahinter?',WerDahinter],['firmen','🏢 Firmenvergleich',Firmenvergleich],['qualitaet','Hersteller-Qualität',Qualitaet],['online','Online-Anbieter',Online],['matrix','Marken-Matrix',Matrix],['logos','Logos',Logos],['netz','🕸️ Netz 3D',Netz3D],['hersteller','Läden & Werke',Producers],['planer','Wochenplaner',Planner],['kombi','Kombi-Ideen',Kombi],['ftg','Fit to Go vs. Supermarkt',Ftg],['multipot','Multipot-Pro Garzeiten',Multipot],['methodik','Methodik & Quellen',Methodik]]
 const Loading=()=><Card className="p-10 text-center text-muted-foreground animate-pulse">Lädt…</Card>
 export default function App(){
   const [D,setD]=useState<Data|null>(null)
@@ -65,6 +68,7 @@ export default function App(){
           <button onClick={()=>setTab('alle')} className="flex items-center gap-2.5 min-w-0 shrink-0"><div className="h-9 w-9 rounded-full bg-foreground text-background flex items-center justify-center"><Salad size={19}/></div><div className="min-w-0 text-left"><div className="font-extrabold tracking-tight leading-none text-[15px]">Fertig<span className="text-brand dark:text-emerald-300">vergleich</span></div><div className="text-[11px] text-muted-foreground leading-tight hidden sm:flex items-center gap-1 mt-0.5"><MapPin size={11}/>Linz · Gruberstraße 19</div></div></button>
           <div className="flex-1 min-w-0 max-w-xl mx-auto hidden md:block"><SearchPalette/></div>
           <div className="ml-auto flex items-center gap-1.5">
+            <a href="https://servas-ai.github.io/einkaufsanalyse/" className="hidden sm:inline-flex items-center h-8 rounded-full border border-border px-3 text-[13px] font-medium text-muted-foreground hover:text-foreground hover:bg-muted whitespace-nowrap" title="Einkaufsanalyse – deine Bons auswerten">Einkaufsanalyse ↗</a>
             <Button size="sm" onClick={()=>setWide(!wide)} className="hidden lg:inline-flex w-9 px-0" title="Breitbild">{wide?<Minimize2 size={15}/>:<Maximize2 size={15}/>}</Button>
             <Button size="sm" onClick={()=>setDark(!dark)} className="w-9 px-0" aria-label="Dark Mode">{dark?<Sun size={15}/>:<Moon size={15}/>}</Button></div>
         </div>

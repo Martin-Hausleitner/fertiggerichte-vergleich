@@ -1,0 +1,145 @@
+{
+ "generated": "2026-10-13",
+ "providers": [
+  {
+   "name": "PrepMyMeal",
+   "company": "prepmymeal GmbH",
+   "seat": "Unterlindau 28, 60323 Frankfurt am Main (DE), HRB 113466",
+   "producer": "eigene Fertigung lt. Unternehmensgegenstand; Produktionsstätte nicht veröffentlicht",
+   "delivers_linz": true,
+   "shipping": "5,99 € (DPD, Wunschtag, 9–17 Uhr)",
+   "storage": "gekühlt/tiefgefroren; 3–4 Tage Kühlschrank bzw. ≥3 Monate TK",
+   "price_from": "ab 5,22 €/Portion (Boxen)",
+   "products_in_app": true,
+   "store": "Online: PrepMyMeal",
+   "sources": [
+    "https://prepmymeal.at/policies/shipping-policy",
+    "https://prepmymeal.com/policies/legal-notice",
+    "https://www.northdata.de/?id=4910967125",
+    "https://prepmymeal.at/products.json"
+   ],
+   "stats": {
+    "n_products": 86,
+    "median_price_eur": 10.49,
+    "median_eur_per_10g_protein": 2.34,
+    "best_eur_per_10g_protein": 0.96,
+    "median_protein_pack_g": 45.0
+   }
+  },
+  {
+   "name": "fit2go.meals",
+   "company": "Fit2go GmbH (FN 615822 x)",
+   "seat": "Piccoloweg 4, 4055 Pucking (OÖ); Büro Langgasse 11, 4020 Linz",
+   "producer": "eigene Manufaktur in Österreich, Fleisch aus AT",
+   "delivers_linz": true,
+   "shipping": "4,99 € österreichweit (Express, Versand Di–Do)",
+   "storage": "schockgefrostet, 12 Monate haltbar",
+   "packaging": "plastikfreie Bio-Pap-Schalen",
+   "price_from": "9,49 €/Meal (18er) – 10,49 € (6er), bis 65 g Protein",
+   "products_in_app": false,
+   "products_note": "Hydrogen-Shop ohne öffentliche Produkt-API; Einzelnährwerte noch nicht erfasst (Marke fit-to-go teils schon über Handel in der App)",
+   "store": "Online: fit2go",
+   "sources": [
+    "https://fittogo.at/",
+    "https://fittogo.at/pages/impressum"
+   ],
+   "stats": null
+  },
+  {
+   "name": "LiveFresh",
+   "company": "LiveFresh GmbH",
+   "seat": "Take-Off Gewerbepark 27c, 78579 Neuhausen ob Eck (DE)",
+   "producer": "nicht veröffentlicht",
+   "delivers_linz": true,
+   "shipping": "Fertiggerichte nach AT: 9,95 € bis 100 €; 100–150 € frei + 3,50 € Trockeneis; ab 150 € frei",
+   "storage": "TK (−18 °C)",
+   "price_from": "5,99 € / 400 g Bowl",
+   "products_in_app": true,
+   "store": "Online: LiveFresh",
+   "sources": [
+    "https://livefresh.at/policies/legal-notice",
+    "https://livefresh.at/pages/versand",
+    "https://livefresh.at/products.json"
+   ],
+   "stats": {
+    "n_products": 10,
+    "median_price_eur": 5.99,
+    "median_eur_per_10g_protein": 2.0,
+    "best_eur_per_10g_protein": 1.5,
+    "median_protein_pack_g": 30.0
+   }
+  },
+  {
+   "name": "Marley Spoon (Ready-to-heat)",
+   "company": "Marley Spoon SE",
+   "seat": "Berlin (DE)",
+   "delivers_linz": null,
+   "shipping": "PLZ-Prüfung nötig",
+   "price_from": null,
+   "products_in_app": false,
+   "products_note": "Ready-to-heat-Menü öffentlich ohne Preise/Nährwerte (Login nötig)",
+   "store": "Online: Marley Spoon",
+   "sources": [
+    "https://marleyspoon.at/menu/ready-to-heat"
+   ],
+   "stats": null
+  },
+  {
+   "name": "HelloFresh / Factor",
+   "company": "HelloFresh SE",
+   "seat": "Berlin (DE)",
+   "delivers_linz": false,
+   "shipping": null,
+   "products_in_app": false,
+   "products_note": "HelloFresh AT = nur Kochboxen; Factor (Fertiggerichte) liefert nicht nach Österreich",
+   "store": "Online: Factor",
+   "sources": [
+    "https://www.factormeals.de/about/liefergebiete",
+    "https://www.hellofresh.at/"
+   ],
+   "stats": null
+  },
+  {
+   "name": "Gurkerl.at",
+   "company": "Gurkerl (Rohlik Group)",
+   "seat": "Wien",
+   "delivers_linz": false,
+   "shipping": "0,90–6,90 €, ab 79 € frei, Mindestbestellwert 39 €",
+   "products_in_app": "teilweise (Gurkerl-Connector)",
+   "products_note": "Liefergebiet Wien + Umland/NÖ/Eisenstadt – nicht Linz",
+   "store": "Gurkerl",
+   "sources": [
+    "https://www.gurkerl.at/thema/liefergebiet"
+   ],
+   "stats": null
+  },
+  {
+   "name": "Gourmetfein",
+   "company": "Gourmetfein GmbH",
+   "delivers_linz": true,
+   "shipping": "Lieferung meist in 5 Werktagen",
+   "products_in_app": false,
+   "products_note": "nur Fleisch-/Grillboxen, keine Fertiggerichte",
+   "store": "Online: Gourmetfein",
+   "sources": [
+    "https://shop.gourmetfein.com/collections/genussboxen"
+   ],
+   "stats": null
+  },
+  {
+   "name": "Marianne's Mealprep",
+   "company": "M-Mealprep",
+   "seat": "Aspach (OÖ)",
+   "delivers_linz": false,
+   "shipping": "gratis im Umkreis 5 km, ab 4 Gerichten",
+   "price_from": "10,30 €/Gericht",
+   "products_in_app": false,
+   "store": "Online: M-Mealprep",
+   "sources": [
+    "https://www.m-mealprep.at/bestellung/"
+   ],
+   "stats": null
+  }
+ ],
+ "not_found_de": "Foodist, Kochzauber, Mealprep.at, Frischepost, Alnatura: in dieser Runde kein lieferbares Fertiggericht-Angebot für Linz verifiziert (nicht geprüft = nicht ausgeschlossen)."
+}
