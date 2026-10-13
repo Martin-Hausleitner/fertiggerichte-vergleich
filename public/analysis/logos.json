@@ -1374,24 +1374,25 @@
    "Greisinger"
   ],
   "logo_category": "Produzent/Werk",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no official site/logo",
-  "hq": false
+  "file": "logos/greisinger.png",
+  "source": "https://www.greisinger.com/wp-content/uploads/2022/01/logo_greisinger-200x200-c-default.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12:44 (Daten-Squad, Firmenlogos): visuell geprüft (korrekte Firma/Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Header-Logo greisinger.com (Impressum: Greisinger GmbH – Fleisch-, Wurst- und Selchwaren)",
+  "hq": true
  },
  "cecchin": {
   "slug": "cecchin",
   "name": "Cecchin",
   "brands": [
-   "Cecchin"
+   "Cecchin",
+   "Fratelli Cecchin"
   ],
   "logo_category": "Markenhersteller",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
-  "hq": false
+  "file": "logos/cecchin.png",
+  "source": "http://static1.squarespace.com/static/623868eb996f462e58173d32/t/688b72769fbc474bff2a48c2/1753969270328/ESEC++LOGO+CECCHIN+2025-009-OK-OK.png?format=1500w",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12:44 (Daten-Squad, Firmenlogos): visuell geprüft (korrekte Firma/Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles og:image pastacecchin.it (Laboratorio Alimentare Cecchin Andrea e Carlo srl, Pastafresca)",
+  "hq": true
  },
  "stangl": {
   "slug": "stangl",
@@ -3031,6 +3032,138 @@
   "source": "https://commons.wikimedia.org/wiki/File%3ALogoGalbani-06122021.png",
   "size": "png",
   "note": "Vision gate 2026-10-13T12 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Wikimedia Commons (CC BY-SA 4.0) File:LogoGalbani-06122021.png",
+  "hq": true
+ },
+ "alimentastic": {
+  "slug": "alimentastic",
+  "name": "Alimentastic",
+  "brands": [],
+  "logo_category": "Markenhersteller",
+  "file": "logos/alimentastic.png",
+  "source": "https://framerusercontent.com/assets/czFB8kgQwMxPBsOnXC5KcjBpo.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12:44 (Daten-Squad, Firmenlogos): visuell geprüft (korrekte Firma/Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles og:image alimentastic.com (Alimentastic GmbH, 'House of Brands'; Feelfood-Vertrieb) – Firmenlogo, nicht Feelfood-Markenlogo",
+  "hq": true
+ },
+ "bauck": {
+  "slug": "bauck",
+  "name": "Bauck Mühle",
+  "brands": [
+   "Bauck Mühle",
+   "Bauck",
+   "Bauckhof"
+  ],
+  "logo_category": "Bio",
+  "file": "logos/bauck.png",
+  "source": "https://www.bauck.de/favicons/favicon.svg",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12:44 (Daten-Squad, Firmenlogos): visuell geprüft (korrekte Firma/Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo bauck.de (Bauck GmbH, 'Bauck Mühle seit 1969')",
+  "hq": true
+ },
+ "ehrenwort": {
+  "slug": "ehrenwort",
+  "name": "ehrenwort",
+  "brands": [
+   "ehrenwort",
+   "Ehrenwort"
+  ],
+  "logo_category": "Bio",
+  "file": "logos/ehrenwort.png",
+  "source": "https://cdn.shopify.com/s/files/1/0555/8013/1667/files/logo_ehrenwort_schwarz_b9609e13-f80c-469b-aeb0-b4afdb259bef.png?height=628&pad_color=fff&v=1678561683&width=1200",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12:44 (Daten-Squad, Firmenlogos): visuell geprüft (korrekte Firma/Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles og:image ehrenwort.at (Ehrenwort GmbH, Bio-Gewürze; Website laut companies.csv)",
+  "hq": true
+ },
+ "hamker": {
+  "slug": "hamker",
+  "name": "Hamker",
+  "brands": [],
+  "logo_category": "Markenhersteller",
+  "file": "logos/hamker.png",
+  "source": "https://www.hamker.de/_assets/c10be5dfbeeb651361b989cc8e511cff/Frontend/Images/logo.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12:44 (Daten-Squad, Firmenlogos): visuell geprüft (korrekte Firma/Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Header-Logo hamker.de (Impressum: Hamker Vertriebsgesellschaft mbH) – Firmenlogo, nicht Marinus-Markenlogo",
+  "hq": true
+ },
+ "heiderbeck": {
+  "slug": "heiderbeck",
+  "name": "Heiderbeck",
+  "brands": [],
+  "logo_category": "Markenhersteller",
+  "file": "logos/heiderbeck.png",
+  "source": "https://www.heiderbeck.com/wp-content/themes/heiderbeck/images/Heiderbeck_Logo.svg",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12:44 (Daten-Squad, Firmenlogos): visuell geprüft (korrekte Firma/Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Header-Logo heiderbeck.de (Impressum: Heiderbeck GmbH) – Firmenlogo, nicht Casa-di-Pietro-Markenlogo",
+  "hq": true
+ },
+ "hiel": {
+  "slug": "hiel",
+  "name": "Hiel",
+  "brands": [
+   "Hiel"
+  ],
+  "logo_category": "Bio",
+  "file": "logos/hiel.png",
+  "source": "https://www.hiel.at/web/image/11300-1044edc8/900%20ppi%20Logo%20Gru%CC%88n%20mit%20Rand%20%236ba20a.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12:44 (Daten-Squad, Firmenlogos): visuell geprüft (korrekte Firma/Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles og:image hiel.at (Hiel & Co GmbH / Peter Hiel, vegetarische Bio-Genussmanufaktur seit 1988)",
+  "hq": true
+ },
+ "mochi": {
+  "slug": "mochi",
+  "name": "Mochi",
+  "brands": [
+   "Mochi"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/mochi.png",
+  "source": "https://www.mochi.at/bf_2020/mochi/wp-content/themes/mochi/images/logo_mochi_black.svg",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12:44 (Daten-Squad, Firmenlogos): visuell geprüft (korrekte Firma/Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Wortmarken-Logo mochi.at (Mochi Wien; Produkte 'Mochi Production GmbH, 1020 Wien' bei Gurkerl)",
+  "hq": true
+ },
+ "rila": {
+  "slug": "rila",
+  "name": "Rila",
+  "brands": [],
+  "logo_category": "Markenhersteller",
+  "file": "logos/rila.png",
+  "source": "https://rila.de/bundles/rilatheme/storefront/img/logo.svg?1790331437",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12:44 (Daten-Squad, Firmenlogos): visuell geprüft (korrekte Firma/Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Header-Logo rila.de (Impressum: RILA Feinkost-Importe GmbH & Co. KG) – Firmenlogo, nicht Jürgen-Langbein-Markenlogo",
+  "hq": true
+ },
+ "tops-foods": {
+  "slug": "tops-foods",
+  "name": "Tops Foods",
+  "brands": [],
+  "logo_category": "Markenhersteller",
+  "file": "logos/tops-foods.png",
+  "source": "https://www.topsfoods.com/bundles/webcreator/Themes/tops-foods/images/favicons/apple-icon-120x120.png?v4.0.6",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12:44 (Daten-Squad, Firmenlogos): visuell geprüft (korrekte Firma/Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Site-Icon topsfoods.com (TOPS FOODS NV, Olen BE, VAT BE0451.053.4) – Firmenlogo, nicht Pure-Markenlogo",
+  "hq": true
+ },
+ "rewe-group": {
+  "slug": "rewe-group",
+  "name": "REWE Group",
+  "brands": [],
+  "logo_category": "Handelskette",
+  "file": "logos/rewe-group.png",
+  "source": "https://commons.wikimedia.org/wiki/File%3AREWE_GROUP_Logo_10-2026%E2%80%93.svg",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12:44 (Daten-Squad, Firmenlogos): visuell geprüft (korrekte Firma/Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Wikimedia Commons (Public domain) File:REWE GROUP Logo 10-2026–.svg – Konzernlogo für REWE International AG",
+  "hq": true
+ },
+ "mars": {
+  "slug": "mars",
+  "name": "Mars",
+  "brands": [],
+  "logo_category": "Markenhersteller",
+  "file": "logos/mars.png",
+  "source": "https://commons.wikimedia.org/wiki/File%3AMars_Incorporated_2019_logo.svg",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12:44 (Daten-Squad, Firmenlogos): visuell geprüft (korrekte Firma/Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Wikimedia Commons (Public domain) File:Mars Incorporated 2019 logo.svg – Konzernlogo für Mars Austria OG (nicht Ben's-Original-Markenlogo)",
   "hq": true
  }
 }
