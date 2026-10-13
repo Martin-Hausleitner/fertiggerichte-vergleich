@@ -15,6 +15,8 @@ Data tools read the app's `public/data.json` (or `GOODCHOICE_DATA=<path|https UR
 UI tools go through a **local WebSocket bridge** on `ws://127.0.0.1:8765` (`GOODCHOICE_BRIDGE_PORT`). The app connects only when opened with
 `?mcp=ws://localhost:8765` (localhost only) – off by default, also on the public site.
 
+**⚠ Gesundheitsdaten / Art. 9 DSGVO:** Plan-Ziele (kcal, Protein, Salz, Zucker …), die ein KI-Client an `build_meal_plan` oder andere Tools übergibt, sind Tool-Argumente und landen damit beim jeweiligen KI-Anbieter (bei Cloud-LLMs außerhalb deines Geräts). Das ist eine bewusste Entscheidung der Nutzerin/des Nutzers; die Web-App sendet standardmäßig nichts, und ohne Ziele rechnet das Tool mit Standardwerten. Für sensible Ziele ein lokales Modell verwenden oder nur gerundete Werte nennen.
+
 **Privacy:** nothing is stored or logged. The app never sends localStorage, address, plan targets or other health data over the bridge – only `{ok, errors}` acks.
 `build_meal_plan` targets come from your local AI client as tool arguments and stay in this local, stateless process. HTTP binds 127.0.0.1 with a Host check; the bridge only accepts the GitHub-Pages and localhost origins.
 

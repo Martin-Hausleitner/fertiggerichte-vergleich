@@ -1,6 +1,6 @@
 import type { Row } from '@/lib'
 import { isReadyMeal, isRankable, pricePerPortion, kcalPerPortion, protPerPortion } from './meal'
-import { clientScore } from './scoring'
+import { clientScore, rankOk, valueScore } from './scoring'
 
 /** Persönliche Ziele gemäß score_v2.md §8 – NUR localStorage (Art. 9 DSGVO), nie URL/Server. */
 export type PlanTargets = { days: number; meals_per_day: number; kcal_target: number; protein_target_g: number; salt_max_g: number; satfat_max_g: number; sugar_max_g: number; fiber_target_g: number; budgetPerDay: number; vegan?: boolean; vegetarian?: boolean; bio?: boolean; allergens?: string[] }
@@ -17,8 +17,8 @@ export const DEFAULT_TARGETS: PlanTargets = { days: 1, meals_per_day: 3, kcal_ta
 
 /** Greedy-Planer: wählt je Mahlzeit das Gericht, das Ziel-kcal/Protein/Budget je Slot am besten trifft (Score als Tiebreaker), max. 2× dasselbe Gericht pro Woche. */
 export function buildMealPlan(rows: Row[], chains: Set<string> | null, t: PlanTargets): MealPlan {
-  const cand = rows.filter(r => isReadyMeal(r) && isRankable(r) && (!chains || chains.has(r.store)) && (!t.vegan || r.vegan || r.cprot?.includes('vegan')) && (!t.vegetarian || r.vegan || r.cprot?.includes('vegan') || r.cprot?.includes('vegetarisch')) && (!t.bio || r.bio))
-    .map(r => ({ r, price: pricePerPortion(r)!, kcal: kcalPerPortion(r)!, protein: protPerPortion(r) ?? 0, score: clientScore(r) ?? 0 }))
+  const cand = rows.filter(r => isReadyMeal(r) && isRankable(r) && rankOk(r) && (!chains || chains.has(r.store)) && (!t.vegan || r.vegan || r.cprot?.includes('vegan')) && (!t.vegetarian || r.vegan || r.cprot?.includes('vegan') || r.cprot?.includes('vegetarisch')) && (!t.bio || r.bio))
+    .map(r => ({ r, price: pricePerPortion(r)!, kcal: kcalPerPortion(r)!, protein: protPerPortion(r) ?? 0, score: clientScore(r) ?? 0, value: valueScore(r) ?? 0 }))
   const used: Record<number, number> = {}; const days: PlanDay[] = []
   const slot = { kcal: t.kcal_target / t.meals_per_day, protein: t.protein_target_g / t.meals_per_day, cost: t.budgetPerDay / t.meals_per_day, salt: t.salt_max_g / t.meals_per_day }
   for (let d = 0; d < t.days; d++) {
@@ -26,8 +26,8 @@ export function buildMealPlan(rows: Row[], chains: Set<string> | null, t: PlanTa
     for (let m = 0; m < t.meals_per_day; m++) {
       let best: typeof cand[0] | null = null, bv = Infinity
       for (const c of cand) {
-        if ((used[c.r.id] ?? 0) >= 2 || meals.some(x => x.id === c.r.id)) continue
-        const v = Math.abs(c.kcal - slot.kcal) / slot.kcal + Math.max(0, slot.protein - c.protein) / slot.protein * 1.5 + Math.max(0, c.price - slot.cost) / slot.cost * 2 + Math.max(0, (portionNutr(c.r)?.salt ?? 0) - slot.salt) / slot.salt - c.score / 100
+        if ((used[c.r.id] ?? 0) >= 2 || meals.some(x => x.id === c.r.id || (Math.round(x.kcal) === Math.round(c.kcal) && Math.round(x.protein) === Math.round(c.protein)))) continue
+        const v = Math.abs(c.kcal - slot.kcal) / slot.kcal + Math.max(0, slot.protein - c.protein) / slot.protein * 1.5 + Math.max(0, c.price - slot.cost) / slot.cost * 2 + Math.max(0, (portionNutr(c.r)?.salt ?? 0) - slot.salt) / slot.salt - c.value / 100
         if (v < bv) { bv = v; best = c }
       }
       if (!best) break

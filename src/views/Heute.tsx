@@ -5,8 +5,8 @@ import { Img, StoreLogo, ScoreBar } from '@/components/product'
 import { useApp, fmt, fmtDist } from '@/lib'
 import { useNearShops, ONLINE, type NearShop } from '@/app/shops'
 import { openNow } from '@/app/hours'
-import { isReadyMeal, isRankable, pricePerPortion, lastPriceDate } from '@/app/meal'
-import { valueScore } from '@/app/scoring'
+import { pricePerPortion, lastPriceDate } from '@/app/meal'
+import { valueScore, rankOk } from '@/app/scoring'
 
 export default function Heute() {
   const { R, open } = useApp(); const { all, loc, deliversHere } = useNearShops(); const [maxMin, setMaxMin] = useState(10)
@@ -14,7 +14,7 @@ export default function Heute() {
   const shops = useMemo(() => all.filter(s => s.walkMin <= maxMin).map(s => ({ ...s, open: openNow(s.hours, now) })), [all, maxMin])
   const openShops = shops.filter(s => s.open && s.hasProducts)
   const best: Record<string, NearShop> = {}; openShops.forEach(s => { if (!best[s.chain] || s.d < best[s.chain].d) best[s.chain] = s })
-  const top = useMemo(() => R.filter(r => isReadyMeal(r) && isRankable(r) && best[r.store] && pricePerPortion(r))
+  const top = useMemo(() => R.filter(r => rankOk(r) && best[r.store])
     .map(r => ({ r, pp: pricePerPortion(r)!, shop: best[r.store] })).sort((a, b) => (valueScore(b.r) ?? 0) - (valueScore(a.r) ?? 0)).slice(0, 10), [R, openShops.length, maxMin])
   const updated = lastPriceDate(R)
   return <div className="space-y-4">
@@ -32,7 +32,7 @@ export default function Heute() {
           <span className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground"><StoreLogo store={r.store} size={14} />{shop.name}{shop.addr ? `, ${shop.addr}` : ''} · ~{shop.walkMin} min ({fmtDist(shop.d)}) · {fmt(pp, 2)} €/Portion
             <span className="rounded border px-1 text-[10px]" title="Sortiment der Kette; nicht für diese Filiale bestätigt">Kette führt es</span></span></span>
         <span className="w-24 shrink-0 sm:w-32"><ScoreBar r={r} /></span></button></li>)}</ol>
-      <p className="mt-2 text-[11px] text-muted-foreground">Sortiert nach Preis-Leistung je Portion (Standard: 50 % Health-Score, 50 % Protein pro €; im Ernährungsplan einstellbar). Nur Fertiggerichte mit echtem Preis, Laden und vollständigem Score. „Kette führt es“ = im Online-Sortiment der Kette; ob die konkrete Filiale es vorrätig hat, ist nicht bestätigt.</p></Card>}
+      <p className="mt-2 text-[11px] text-muted-foreground">Sortiert nach Preis-Leistung je Portion (Standard: 50 % Health-Score, 50 % Protein pro €; im Ernährungsplan einstellbar). Nur vollwertige Fertiggerichte (400–900 kcal, ≥ 20 g Protein pro Portion, Score ≥ Mindestwert) mit echtem Preis und Laden. „Kette führt es“ = im Online-Sortiment der Kette; ob die konkrete Filiale es vorrätig hat, ist nicht bestätigt.</p></Card>}
     <Card className="flex items-center justify-between gap-2 p-3 text-sm shadow-none"><span><Truck className="mr-1 inline size-4" />Mehr Auswahl: alle Fertiggerichte filtern oder eigene Shops festlegen.</span>
       <span className="flex gap-2"><Button size="sm" onClick={() => { location.hash = 'tab=tabelle' }}>Alle filtern <ArrowRight className="size-4" /></Button><Button size="sm" onClick={() => { location.hash = 'tab=meine-shops' }}>Meine Shops</Button></span></Card>
   </div>

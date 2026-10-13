@@ -12,17 +12,12 @@ export type RowLike = {
   dry?: boolean; nonfood?: boolean; incomplete?: boolean; pack?: string; psrc?: string | null; gang?: string; cprot?: string[]
 }
 // Fertiggericht-Regeln: EINE Quelle → src/app/meal.ts (dedupliziert)
-import { isDryish, isReadyMeal, portionG, pricePerPortion, protPerPortion, kcalPerPortion, isRankable } from '../meal.js'
+import { isDryish, isReadyMeal, portionG, pricePerPortion, protPerPortion, kcalPerPortion, isRankable, valueOf, passesRankMin, type ValueCfg } from '../meal.js'
 export { isDryish, isReadyMeal, portionG, pricePerPortion, protPerPortion, kcalPerPortion, isRankable }
 
-/** Configurable value score (no hard-coded 50/50): w·score + (1-w)·min(protein per €, cap)/cap·100 */
-export type ValueCfg = { healthWeight?: number; protPerEurCap?: number }
-export function valueScore(r: RowLike, c: ValueCfg = {}) {
-  const w = c.healthWeight ?? 0.5, cap = c.protPerEurCap ?? 10
-  const pp = pricePerPortion(r), pr = protPerPortion(r)
-  if (r.score == null || pp == null || pr == null || pp <= 0) return null
-  return w * r.score + (1 - w) * Math.min(pr / pp, cap) / cap * 100
-}
+/** Preis-Leistung: dieselbe Formel wie die App (src/app/meal.ts → valueOf), inkl. Mindest-Score/-kcal. */
+export type { ValueCfg }
+export const valueScore = (r: RowLike, c: ValueCfg = {}) => valueOf(r, c)
 
 const MEATY = /fleisch|rind|schwein|huhn|hähn|pute|speck|schinken|wurst|fisch|lachs|thunfisch|garnele|kalb|lamm|ente|chicken|beef|pork|tuna|salami|gulasch|kebab|döner/i
 export const isVegetarianGuess = (r: RowLike) => !!r.vegan || !MEATY.test(`${r.name} ${(r.cprot ?? []).join(' ')}`)
@@ -56,7 +51,7 @@ export function runQuery<T extends RowLike>(rows: T[], q: ProductQuery, cfg: Val
     }
     const k = key[q.sort]
     const desc = (q.order ?? (['score', 'protein', 'value'].includes(q.sort) ? 'desc' : 'asc')) === 'desc'
-    if (q.sort === 'value') out = out.filter(isRankable)
+    if (q.sort === 'value' || q.sort === 'protein') out = out.filter(r => passesRankMin(r, cfg))
     out = out.filter(r => k(r) != null).sort((a, b) => desc ? k(b)! - k(a)! : k(a)! - k(b)!)
   }
   return out.slice(0, q.limit ?? 24)

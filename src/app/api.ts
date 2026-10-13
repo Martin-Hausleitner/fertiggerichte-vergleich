@@ -8,13 +8,14 @@ import { TAB_ALIAS } from './tabs'
 import type { F } from '@/components/FilterPanel'
 import { makePred } from '@/components/FilterPanel'
 import { isReadyMeal, isRankable, pricePerPortion } from './meal'
-import { clientScore, valueScore, getCfg, setCfg, type ScoreCfg } from './scoring'
+import { clientScore, valueScore, getCfg, setCfg, toValueCfg, type ScoreCfg } from './scoring'
+import { passesRankMin, protPerEuro } from './meal'
 import { buildMealPlan as plan, type PlanTargets, type MealPlan } from './plan'
 
 // ---------- Typen (stabil) ----------
 export type ProductSummary = { id: number; name: string; brand: string; store: string; price: number | null; pricePerPortion: number | null; score: number | null; value: number | null; stage: string; readyMeal: boolean; img: string | null; url: string | null }
 export type SearchOpts = { limit?: number; includeGroceries?: boolean }
-export type RankBy = 'value' | 'score' | 'pricePerPortion' | 'price'
+export type RankBy = 'value' | 'proteinPerEuro' | 'score' | 'pricePerPortion' | 'price'
 export type RankOpts = { by?: RankBy; limit?: number; onlyMyShops?: boolean; chains?: string[]; includeGroceries?: boolean; filter?: F }
 export type ViewParams = Record<string, string>
 /** JSON-View-Spec; Struktur definiert der genui-Worker. */
@@ -54,7 +55,7 @@ export function installApi(d: Deps): GoodChoiceAPI {
     rank: (o = {}) => {
       const ch = o.chains ? new Set(o.chains) : o.onlyMyShops ? d.myChains() : null
       const p = o.filter ? makePred(o.filter, { konzOf: () => null, dist: d.distOf }) : () => true
-      const key: Record<RankBy, (r: Row) => number | null> = { value: r => valueScore(r), score: r => clientScore(r), pricePerPortion: r => { const v = pricePerPortion(r); return v == null ? null : -v }, price: r => r.price == null ? null : -r.price }
+      const key: Record<RankBy, (r: Row) => number | null> = { value: r => passesRankMin(r, toValueCfg()) ? valueScore(r) : null, proteinPerEuro: r => passesRankMin(r, toValueCfg()) ? protPerEuro(r) : null, score: r => clientScore(r), pricePerPortion: r => { const v = pricePerPortion(r); return v == null ? null : -v }, price: r => r.price == null ? null : -r.price }
       const k = key[o.by ?? 'value']
       return base(o.includeGroceries).filter(r => isRankable(r) && (!ch || ch.has(r.store)) && p(r) && k(r) != null).sort((a, b) => k(b)! - k(a)!).slice(0, o.limit ?? 30).map(summary)
     },

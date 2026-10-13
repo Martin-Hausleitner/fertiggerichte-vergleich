@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Sparkles } from 'lucide-react'
 import { installGenUI, GenUIHost, useCustomSpec, type Action, type ProductQuery } from './genui'
-import { getCfg } from './scoring'
+import { toValueCfg } from './scoring'
 import type { F } from '@/components/FilterPanel'
 import type { Row } from '@/lib'
 
@@ -45,7 +45,7 @@ export function GenUIBridge({ getRows, tab, setTab }: { getRows: () => Row[]; ta
   const spec = useCustomSpec()
   useEffect(() => {
     let stop: (() => void) | undefined
-    const go = () => { if (!stop && window.goodChoice) stop = installGenUI({ getRows, onAction: onGenUIAction, getValueCfg: () => { const c = getCfg(); return { healthWeight: c.wHealth, protPerEurCap: c.ppeCap } } }) }
+    const go = () => { if (!stop && window.goodChoice) stop = installGenUI({ getRows, onAction: onGenUIAction, getValueCfg: () => toValueCfg() }) }
     go(); addEventListener('goodchoice:ready', go)
     return () => { removeEventListener('goodchoice:ready', go); stop?.() }
   }, [])
@@ -57,6 +57,7 @@ export default function KiAnsicht() {
   const spec = useCustomSpec()
   return <div className="space-y-3">
     <h1 className="flex items-center gap-2 text-xl font-bold tracking-tight"><Sparkles className="size-5" />KI-Ansicht</h1>
+    <p className="rounded-lg border border-amber-300 bg-amber-50 p-3 text-xs dark:bg-amber-950/30"><b>Datenschutz:</b> Wenn du einem KI-Assistenten (z. B. über den MCP-Server) Ernährungsziele oder Planwerte nennst, werden sie zu Tool-Argumenten und können an den Cloud-KI-Anbieter gelangen – das sind Gesundheitsdaten (Art. 9 DSGVO). Das ist deine Entscheidung; diese Seite sendet standardmäßig nichts.</p>
     {spec == null ? <p className="rounded-lg border border-dashed p-8 text-center text-sm text-muted-foreground">Noch keine KI-Ansicht. Ein Assistent kann über <code>window.goodChoice.renderCustomUI(spec)</code> oder den lokalen MCP-Server eine Ansicht senden.</p> : <GenUIHost />}
   </div>
 }

@@ -20,11 +20,17 @@ export const GENUI_VERSION = 1
 export const LIMITS = { maxDepth: 8, maxNodes: 300, maxRows: 200, maxCols: 12, maxText: 2000, maxLimit: 100 } as const
 
 const text = (max: number = LIMITS.maxText) => z.string().max(max)
-/** https URLs or relative app paths only – blocks javascript:, data:, http: */
-export const safeUrl = z.string().max(2048).refine(
-  u => /^https:\/\/[^\s]+$/i.test(u) || /^(?!\/\/)(?![a-z][a-z0-9+.-]*:)[\w./#?=&%-]+$/i.test(u),
-  { message: 'only https:// or relative URLs allowed' },
-)
+/** Allowlists (Sense-Check 2): KI-Specs dürfen nur auf eigene Seiten, bekannte Shops und Bild-CDNs verweisen. */
+const OWN_HOSTS = ['servas-ai.github.io', 'martin-hausleitner.github.io']
+export const IMG_HOSTS = [...OWN_HOSTS, 'images.cdn.europe-west1.gcp.commercetools.com', 'cdn1.interspar.at', 'www.interspar.at', 'cdn.gurkerl.at', 'images.openfoodfacts.org', 'res.cloudinary.com', 'cdn.shopify.com', 'd3hvwccx09j84u.cloudfront.net', 'www.nordsee.com', 'products.dm-static.com', 'dm.emea.cms.aldi.cx', 'imgproxy-retcat.assets.schwarz', 'www.nahundfrisch.at', 'images.dennree.de']
+export const LINK_HOSTS = [...OWN_HOSTS, 'shop.billa.at', 'www.interspar.at', 'www.spar.at', 'www.gurkerl.at', 'www.hofer.at', 'www.mpreis.at', 'www.dm.at', 'www.penny.at', 'www.lidl.at', 'www.nahundfrisch.at', 'www.denns-biomarkt.at', 'fittogo.at', 'www.fittogo.at', 'fittaste.com', 'livefresh.at', 'prepmymeal.at', 'www.hellofresh.at', 'www.nordsee.com', 'www.subway.com', 'world.openfoodfacts.org', 'www.openstreetmap.org']
+const RELATIVE = /^(?!\/\/)(?![a-z][a-z0-9+.-]*:)[\w./#?=&%-]+$/i
+const hostOk = (u: string, hosts: string[]) => { try { const x = new URL(u); return x.protocol === 'https:' && !x.username && !x.password && hosts.includes(x.hostname.toLowerCase()) } catch { return false } }
+const allowUrl = (hosts: string[], what: string) => z.string().max(2048).refine(u => RELATIVE.test(u) || hostOk(u, hosts), { message: `only relative URLs or https://${what} allowlisted hosts` })
+/** Links (openUrl): relative oder https auf LINK_HOSTS */
+export const safeUrl = allowUrl(LINK_HOSTS, 'link')
+/** Bilder: relative oder https auf IMG_HOSTS */
+export const safeImgUrl = allowUrl(IMG_HOSTS, 'image')
 const tone = z.enum(['default', 'secondary', 'outline', 'destructive', 'success', 'warning'])
 
 /** Product query – resolved by the host via window.goodChoice.search/filter/rank (no data inline needed). */
@@ -88,7 +94,7 @@ export const COMPONENTS = {
   Stat: { group: 'Content', children: false, description: 'KPI tile: label + value (+hint).',
     props: z.object({ label: text(80), value: z.union([text(80), z.number()]), unit: text(20).optional(), hint: text(200).optional() }).strict() },
   Image: { group: 'Content', children: false, description: 'Image (https or app asset only).',
-    props: z.object({ src: safeUrl, alt: text(200), height: z.number().int().min(16).max(480).optional() }).strict() },
+    props: z.object({ src: safeImgUrl, alt: text(200), height: z.number().int().min(16).max(480).optional() }).strict() },
   Button: { group: 'Actions', children: false, description: 'shadcn Button that triggers a whitelisted action.',
     props: z.object({ label: text(80), action: Action, variant: z.enum(['default', 'secondary', 'outline', 'ghost']).optional() }).strict() },
   Table: { group: 'Data', children: false, description: 'Static shadcn Table with explicit columns and rows.',

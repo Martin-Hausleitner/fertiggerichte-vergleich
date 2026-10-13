@@ -44,7 +44,7 @@ export default function MeineShops() {
   const { inR, all, my, myChains, loc, deliversHere } = useNearShops()
   const [allFood, setAllFood] = useState(false), [minScore, setMinScore] = useState(0), [gang, setGang] = useState('haupt'), [chain, setChain] = useState('')
   const counts = useMemo(() => { const c: Record<string, number> = {}; R.forEach(r => { if (r.score != null) c[r.store] = (c[r.store] ?? 0) + 1 }); return c }, [R])
-  const ranking = useMemo(() => R.filter(r => (allFood ? !r.nonfood : isReadyMeal(r)) && isRankable(r) && myChains.has(r.store) && (!gang || (r as any).gang === gang) && (r.score ?? 0) >= minScore && (!chain || r.store === chain))
+  const ranking = useMemo(() => R.filter(r => (allFood ? !r.nonfood : isReadyMeal(r)) && (allFood ? r.score != null && r.price != null : isRankable(r)) && myChains.has(r.store) && (!gang || (r as any).gang === gang) && (r.score ?? 0) >= minScore && (!chain || r.store === chain))
     .sort((a, b) => (b.score! - a.score!) || ((a.p100g ?? 1e9) - (b.p100g ?? 1e9))).slice(0, 200), [R, myChains, gang, minScore, chain, allFood])
   const perChain = useMemo(() => [...myChains].map(c => { const xs = R.filter(r => r.store === c && isRankable(r) && (allFood ? !r.nonfood : isReadyMeal(r)) && (!gang || (r as any).gang === gang)); const sc = xs.map(r => r.score!).sort((a, b) => a - b); return { c, n: xs.length, med: sc.length ? sc[Math.floor(sc.length / 2)] : null, best: sc.length ? sc[sc.length - 1] : null } }).sort((a, b) => (b.med ?? -1) - (a.med ?? -1)), [R, myChains, gang, allFood])
   const outside = all.length - inR.length

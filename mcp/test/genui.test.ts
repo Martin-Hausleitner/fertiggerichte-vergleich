@@ -20,7 +20,12 @@ test('invalid nodes are dropped, siblings survive', () => {
 test('unsafe urls and actions rejected', () => {
   for (const src of ['javascript:alert(1)', 'data:image/png;base64,AA', 'http://evil.example/x.png', '//evil.example/x'])
     assert.equal(validateSpec({ version: 1, root: { type: 'Image', props: { src, alt: '' } } }).ok, false, src)
-  assert.equal(validateSpec({ version: 1, root: { type: 'Image', props: { src: 'https://ok.example/a.png', alt: '' } } }).ok, true)
+  // Allowlist: unbekannte https-Hosts abgelehnt, bekannte CDNs/eigene Seiten und relative Pfade erlaubt
+  assert.equal(validateSpec({ version: 1, root: { type: 'Image', props: { src: 'https://ok.example/a.png', alt: '' } } }).ok, false)
+  assert.equal(validateSpec({ version: 1, root: { type: 'Image', props: { src: 'https://cdn.gurkerl.at/a.png', alt: '' } } }).ok, true)
+  assert.equal(validateSpec({ version: 1, root: { type: 'Image', props: { src: 'logos/billa.png', alt: '' } } }).ok, true)
+  assert.equal(validateSpec({ version: 1, root: { type: 'Button', props: { label: 'x', action: { type: 'openUrl', url: 'https://evil.example/' } } } }).ok, false)
+  assert.equal(validateSpec({ version: 1, root: { type: 'Button', props: { label: 'x', action: { type: 'openUrl', url: 'https://shop.billa.at/produkte/x' } } } }).ok, true)
   assert.equal(validateSpec({ version: 1, root: { type: 'Button', props: { label: 'x', action: { type: 'eval', code: '1' } } } }).ok, false)
 })
 test('non-Stack root gets wrapped, limits enforced', () => {
