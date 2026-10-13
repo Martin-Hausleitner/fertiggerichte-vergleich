@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useState } from 'react'
+import { dedupeGtin } from '@/app/meal'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import type { Data, Stores, Shop } from '@/lib'
 
 function useJson<T>(url: string, optional = false): T | null {
@@ -16,7 +17,8 @@ function useJson<T>(url: string, optional = false): T | null {
 
 /** Loads the product dataset and the store list; exposes a nearest-branch lookup. */
 export function useAppData() {
-  const data = useJson<Data>('./data.json')
+  const raw = useJson<Data>('./data.json')
+  const data = useMemo(() => raw ? { ...raw, rows: dedupeGtin(raw.rows) as typeof raw.rows } : raw, [raw])
   const stores = useJson<Stores>('./stores.json', true)
   useEffect(() => { const t = setTimeout(() => sessionStorage.removeItem('fg-reloaded'), 10000); return () => clearTimeout(t) }, [])
   const nearest = useCallback((chain: string): Shop | null => {

@@ -1,0 +1,1080 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://servas-ai.github.io/fertiggerichte-vergleich/genui.schema.json",
+  "title": "Good Choice GenUI v1 spec",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "number",
+      "const": 1
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "root": {
+      "$ref": "#/$defs/__schema0"
+    }
+  },
+  "required": [
+    "version",
+    "root"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "__schema0": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Stack",
+            "Grid",
+            "Card",
+            "Tabs",
+            "Tab",
+            "Separator",
+            "Heading",
+            "Text",
+            "Badge",
+            "Alert",
+            "Stat",
+            "Image",
+            "Button",
+            "Table",
+            "BarChart",
+            "ProductCard",
+            "ProductList",
+            "FilterBar"
+          ]
+        },
+        "key": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "props": {
+          "default": {},
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {}
+        },
+        "children": {
+          "maxItems": 100,
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/__schema0"
+          }
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "components": {
+      "Stack": {
+        "description": "Vertical (or horizontal) flex container. Root component.",
+        "group": "Layout",
+        "children": true,
+        "props": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "direction": {
+              "type": "string",
+              "enum": [
+                "vertical",
+                "horizontal"
+              ]
+            },
+            "gap": {
+              "type": "string",
+              "enum": [
+                "sm",
+                "md",
+                "lg"
+              ]
+            },
+            "wrap": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "Grid": {
+        "description": "Responsive grid with 1–4 columns.",
+        "group": "Layout",
+        "children": true,
+        "props": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "columns": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "Card": {
+        "description": "shadcn Card with optional title/description/footer text.",
+        "group": "Layout",
+        "children": true,
+        "props": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "description": {
+              "type": "string",
+              "maxLength": 500
+            },
+            "footer": {
+              "type": "string",
+              "maxLength": 300
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "Tabs": {
+        "description": "Tabs; each child must be a Tab.",
+        "group": "Layout",
+        "children": true,
+        "props": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "defaultTab": {
+              "type": "string",
+              "maxLength": 60
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "Tab": {
+        "description": "One tab panel inside Tabs.",
+        "group": "Layout",
+        "children": true,
+        "props": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "label": {
+              "type": "string",
+              "maxLength": 80
+            }
+          },
+          "required": [
+            "id",
+            "label"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "Separator": {
+        "description": "Horizontal rule.",
+        "group": "Layout",
+        "children": false,
+        "props": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        }
+      },
+      "Heading": {
+        "description": "Heading text (level 1–4).",
+        "group": "Content",
+        "children": false,
+        "props": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "maxLength": 300
+            },
+            "level": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "text"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "Text": {
+        "description": "Plain paragraph (no markdown/HTML).",
+        "group": "Content",
+        "children": false,
+        "props": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "maxLength": 2000
+            },
+            "muted": {
+              "type": "boolean"
+            },
+            "size": {
+              "type": "string",
+              "enum": [
+                "sm",
+                "md"
+              ]
+            }
+          },
+          "required": [
+            "text"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "Badge": {
+        "description": "shadcn Badge.",
+        "group": "Content",
+        "children": false,
+        "props": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "maxLength": 80
+            },
+            "tone": {
+              "type": "string",
+              "enum": [
+                "default",
+                "secondary",
+                "outline",
+                "destructive",
+                "success",
+                "warning"
+              ]
+            }
+          },
+          "required": [
+            "text"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "Alert": {
+        "description": "Notice box, e.g. disclaimers.",
+        "group": "Content",
+        "children": false,
+        "props": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "text": {
+              "type": "string",
+              "maxLength": 2000
+            },
+            "tone": {
+              "type": "string",
+              "enum": [
+                "info",
+                "warning",
+                "destructive"
+              ]
+            }
+          },
+          "required": [
+            "text"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "Stat": {
+        "description": "KPI tile: label + value (+hint).",
+        "group": "Content",
+        "children": false,
+        "props": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "maxLength": 80
+            },
+            "value": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "unit": {
+              "type": "string",
+              "maxLength": 20
+            },
+            "hint": {
+              "type": "string",
+              "maxLength": 200
+            }
+          },
+          "required": [
+            "label",
+            "value"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "Image": {
+        "description": "Image (https or app asset only).",
+        "group": "Content",
+        "children": false,
+        "props": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "src": {
+              "type": "string",
+              "maxLength": 2048
+            },
+            "alt": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "height": {
+              "type": "integer",
+              "minimum": 16,
+              "maximum": 480
+            }
+          },
+          "required": [
+            "src",
+            "alt"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "Button": {
+        "description": "shadcn Button that triggers a whitelisted action.",
+        "group": "Actions",
+        "children": false,
+        "props": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "maxLength": 80
+            },
+            "action": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "setView"
+                    },
+                    "view": {
+                      "type": "string",
+                      "maxLength": 60
+                    },
+                    "params": {
+                      "type": "object",
+                      "propertyNames": {
+                        "type": "string"
+                      },
+                      "additionalProperties": {
+                        "type": "string",
+                        "maxLength": 200
+                      }
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "view"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "applyFilter"
+                    },
+                    "query": {
+                      "type": "object",
+                      "properties": {
+                        "q": {
+                          "type": "string",
+                          "maxLength": 200
+                        },
+                        "ids": {
+                          "maxItems": 100,
+                          "type": "array",
+                          "items": {
+                            "type": "integer",
+                            "minimum": -9007199254740991,
+                            "maximum": 9007199254740991
+                          }
+                        },
+                        "stores": {
+                          "maxItems": 30,
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "maxLength": 60
+                          }
+                        },
+                        "stage": {
+                          "maxItems": 6,
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "meal",
+                              "stew",
+                              "side",
+                              "prot",
+                              "base",
+                              "veg"
+                            ]
+                          }
+                        },
+                        "readyMealsOnly": {
+                          "type": "boolean"
+                        },
+                        "vegan": {
+                          "type": "boolean"
+                        },
+                        "vegetarian": {
+                          "type": "boolean"
+                        },
+                        "bio": {
+                          "type": "boolean"
+                        },
+                        "minScore": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 100
+                        },
+                        "maxPrice": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "maxPricePerPortion": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "minProtein100": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "maxKcal100": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "maxSugar100": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "maxSalt100": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "sort": {
+                          "type": "string",
+                          "enum": [
+                            "score",
+                            "price",
+                            "pricePerPortion",
+                            "ppk",
+                            "protein",
+                            "value",
+                            "kcal"
+                          ]
+                        },
+                        "order": {
+                          "type": "string",
+                          "enum": [
+                            "asc",
+                            "desc"
+                          ]
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 100
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "query"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "openProduct"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "id"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "compare"
+                    },
+                    "ids": {
+                      "maxItems": 10,
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": -9007199254740991,
+                        "maximum": 9007199254740991
+                      }
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "ids"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "openUrl"
+                    },
+                    "url": {
+                      "type": "string",
+                      "maxLength": 2048
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "url"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "variant": {
+              "type": "string",
+              "enum": [
+                "default",
+                "secondary",
+                "outline",
+                "ghost"
+              ]
+            }
+          },
+          "required": [
+            "label",
+            "action"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "Table": {
+        "description": "Static shadcn Table with explicit columns and rows.",
+        "group": "Data",
+        "children": false,
+        "props": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "columns": {
+              "minItems": 1,
+              "maxItems": 12,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "label": {
+                    "type": "string",
+                    "maxLength": 80
+                  },
+                  "format": {
+                    "type": "string",
+                    "enum": [
+                      "text",
+                      "number",
+                      "eur",
+                      "g",
+                      "kcal",
+                      "score",
+                      "badge"
+                    ]
+                  }
+                },
+                "required": [
+                  "key",
+                  "label"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "rows": {
+              "maxItems": 200,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "maxLength": 500
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            },
+            "caption": {
+              "type": "string",
+              "maxLength": 300
+            }
+          },
+          "required": [
+            "columns",
+            "rows"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "BarChart": {
+        "description": "Recharts bar chart via shadcn ChartContainer.",
+        "group": "Data",
+        "children": false,
+        "props": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "data": {
+              "maxItems": 200,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "maxLength": 120
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ]
+                }
+              }
+            },
+            "x": {
+              "type": "string",
+              "maxLength": 40
+            },
+            "bars": {
+              "minItems": 1,
+              "maxItems": 4,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "label": {
+                    "type": "string",
+                    "maxLength": 80
+                  }
+                },
+                "required": [
+                  "key",
+                  "label"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "height": {
+              "type": "integer",
+              "minimum": 120,
+              "maximum": 600
+            }
+          },
+          "required": [
+            "data",
+            "x",
+            "bars"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "ProductCard": {
+        "description": "Product card for one product id from data.json.",
+        "group": "Products",
+        "children": false,
+        "props": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "note": {
+              "type": "string",
+              "maxLength": 300
+            }
+          },
+          "required": [
+            "id"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "ProductList": {
+        "description": "Products resolved by query, as cards or table.",
+        "group": "Products",
+        "children": false,
+        "props": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "object",
+              "properties": {
+                "q": {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                "ids": {
+                  "maxItems": 100,
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": -9007199254740991,
+                    "maximum": 9007199254740991
+                  }
+                },
+                "stores": {
+                  "maxItems": 30,
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 60
+                  }
+                },
+                "stage": {
+                  "maxItems": 6,
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "meal",
+                      "stew",
+                      "side",
+                      "prot",
+                      "base",
+                      "veg"
+                    ]
+                  }
+                },
+                "readyMealsOnly": {
+                  "type": "boolean"
+                },
+                "vegan": {
+                  "type": "boolean"
+                },
+                "vegetarian": {
+                  "type": "boolean"
+                },
+                "bio": {
+                  "type": "boolean"
+                },
+                "minScore": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 100
+                },
+                "maxPrice": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "maxPricePerPortion": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "minProtein100": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "maxKcal100": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "maxSugar100": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "maxSalt100": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "sort": {
+                  "type": "string",
+                  "enum": [
+                    "score",
+                    "price",
+                    "pricePerPortion",
+                    "ppk",
+                    "protein",
+                    "value",
+                    "kcal"
+                  ]
+                },
+                "order": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "limit": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 100
+                }
+              },
+              "additionalProperties": false
+            },
+            "display": {
+              "type": "string",
+              "enum": [
+                "cards",
+                "table"
+              ]
+            },
+            "columns": {
+              "maxItems": 12,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "name",
+                  "store",
+                  "brand",
+                  "price",
+                  "pricePerPortion",
+                  "kcal",
+                  "protein",
+                  "sugar",
+                  "salt",
+                  "score",
+                  "ns"
+                ]
+              }
+            },
+            "title": {
+              "type": "string",
+              "maxLength": 200
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "FilterBar": {
+        "description": "Read-only chips showing a query plus \"apply in app\" button.",
+        "group": "Products",
+        "children": false,
+        "props": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "object",
+              "properties": {
+                "q": {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                "ids": {
+                  "maxItems": 100,
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": -9007199254740991,
+                    "maximum": 9007199254740991
+                  }
+                },
+                "stores": {
+                  "maxItems": 30,
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 60
+                  }
+                },
+                "stage": {
+                  "maxItems": 6,
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "meal",
+                      "stew",
+                      "side",
+                      "prot",
+                      "base",
+                      "veg"
+                    ]
+                  }
+                },
+                "readyMealsOnly": {
+                  "type": "boolean"
+                },
+                "vegan": {
+                  "type": "boolean"
+                },
+                "vegetarian": {
+                  "type": "boolean"
+                },
+                "bio": {
+                  "type": "boolean"
+                },
+                "minScore": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 100
+                },
+                "maxPrice": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "maxPricePerPortion": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "minProtein100": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "maxKcal100": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "maxSugar100": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "maxSalt100": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "sort": {
+                  "type": "string",
+                  "enum": [
+                    "score",
+                    "price",
+                    "pricePerPortion",
+                    "ppk",
+                    "protein",
+                    "value",
+                    "kcal"
+                  ]
+                },
+                "order": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "limit": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 100
+                }
+              },
+              "additionalProperties": false
+            },
+            "label": {
+              "type": "string",
+              "maxLength": 80
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  }
+}
