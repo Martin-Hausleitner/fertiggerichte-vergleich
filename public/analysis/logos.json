@@ -1225,7 +1225,10 @@
   "name": "Tress Brüder",
   "brands": [
    "Tress Brüder",
-   "Tressbrüder"
+   "Tressbrüder",
+   "Küchenbrüder",
+   "Kuechenbrueder",
+   "Küchenbrueder"
   ],
   "logo_category": "Bio",
   "file": "logos/tress-brueder.svg",
@@ -1342,7 +1345,8 @@
   "slug": "hink",
   "name": "Hink Wien",
   "brands": [
-   "Hink Wien"
+   "Hink Wien",
+   "Hink"
   ],
   "logo_category": "Produzent/Werk",
   "file": "logos/hink.svg",
@@ -1591,11 +1595,11 @@
    "Ablinger"
   ],
   "logo_category": "Markenhersteller",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
-  "hq": false
+  "file": "logos/ablinger.png",
+  "source": "https://www.ablinger.co.at/wp-content/uploads/2025/06/ABL_Logo.svg",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T14 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo ablinger.co.at (Franz Ablinger & Co Fleischhauereibetrieb GmbH, Oberndorf – Impressum geprüft); aus SVG-eingebettetem PNG übernommen",
+  "hq": true
  },
  "indomie": {
   "slug": "indomie",
@@ -1782,7 +1786,10 @@
  "blasko": {
   "slug": "blasko",
   "name": "Wilhelm Blasko CONVENIENCE-Fertiggerichte GmbH",
-  "brands": [],
+  "brands": [
+   "Blasko",
+   "BLASKO"
+  ],
   "logo_category": "Produzent/Werk",
   "file": "logos/blasko.png",
   "source": "https://www.blasko.at/assets/at-blasko/images/favicons/apple-touch-icon.png",
@@ -2388,7 +2395,8 @@
   "name": "Every.",
   "brands": [
    "Every.",
-   "EVERY."
+   "EVERY.",
+   "Every"
   ],
   "logo_category": "Markenhersteller",
   "file": "logos/every-foods.svg",
@@ -3401,5 +3409,60 @@
   "size": "png",
   "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo john-west.co.uk; 320px",
   "hq": false
+ },
+ "delidip": {
+  "slug": "delidip",
+  "name": "deli dip",
+  "brands": [
+   "Deli Dip",
+   "deli dip",
+   "DeliDip"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/delidip.png",
+  "source": "https://cdn.prod.website-files.com/67390534eec8342a659fdf85/6746d27b797228be2c2a4363_delidip-webclip.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T14 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Webclip/Logo delidip.com (Webflow CDN; deli gourmet GmbH, Nußdorferplatz 5/9, 1190 Wien – Impressum geprüft); Kreis-Badge freigestellt",
+  "hq": true
+ },
+ "farniente": {
+  "slug": "farniente",
+  "name": "Farniente",
+  "brands": [
+   "Farniente"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/farniente.png",
+  "source": "https://static.wixstatic.com/media/90a877_cde4c3f864a84b8499b47a47b73bce94~mv2.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T14 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo farniente.be (Farniente S.A., Seilles/Andenne, Belgien = Hersteller lt. Gurkerl); schwarzer BG freigestellt",
+  "hq": true
+ },
+ "biogourmet": {
+  "slug": "biogourmet",
+  "name": "BioGourmet",
+  "brands": [
+   "BioGourmet",
+   "Bio Gourmet"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/biogourmet.png",
+  "source": "https://bio-gourmet.com/wp-content/uploads/2018/01/bigo_logo_rgb-1.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T14 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo bio-gourmet.com (BioGourmet GmbH, Erdmannhausen – Impressum geprüft)",
+  "hq": true
+ },
+ "zum-dorfkrug": {
+  "slug": "zum-dorfkrug",
+  "name": "Zum Dorfkrug",
+  "brands": [
+   "Zum Dorfkrug"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/zum-dorfkrug.svg",
+  "source": "https://www.zum-dorfkrug.de/assets/zum-dorfkrug-logo.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13T14 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Header-Logo zum-dorfkrug.de (Waldgrün #005e39 auf transparent – helles UI ok)",
+  "hq": true
  }
 }
