@@ -1,21 +1,20 @@
 # Hofer ready meals: value-for-money Top 30 per category (2026-10-13)
 
-Ready meals only (grocery excluded, see hofer_grocery_2026-10-13.json). hofer.at crawl: 1276 products in sitemap/categories, of which 18 classified ready_meal, 1258 grocery. App Hofer rows before → after: 222 → 224.
+Ready meals only (grocery excluded, see hofer_grocery_2026-10-13.json). hofer.at crawl: 1276 products in sitemap/categories, of which 18 classified ready_meal, 1258 grocery. App Hofer rows before → after: 222 → 223.
 
 ## Formula
-- value = protein g per pack ÷ price € × (0.5 + health_score/200)  → health score 0 halves, 100 keeps full value.
-- fallback when protein per pack is missing: kcal per pack ÷ price € ÷ 10 × same factor (marked K).
-- rows without price or score are not ranked (listed under "Not rankable").
+- value = 0.5 × health_score + 0.5 × min((protein g per portion ÷ € per portion) / 20, 1) × 100 (same as app pli).
+- rankable only with 400–900 kcal and ≥20 g protein per portion, score ≥30, price and shop; no dessert, snack or meal kit.
 - prices from heisse-preise.io older than 12 months are marked (alt).
 
 ## Completeness of Hofer rows in the app (before → after)
 
 - price: 161 → 164
 - size: 188 → 192
-- kcal: 105 → 107
-- score: 95 → 97
+- kcal: 105 → 106
+- score: 95 → 96
 - img: 125 → 127
-- ns: 111 → 113
+- ns: 111 → 112
 - price+score+size complete: 37 → 40
 
 ## App Hofer rows per category (pack) before → after
@@ -25,7 +24,7 @@ Ready meals only (grocery excluded, see hofer_grocery_2026-10-13.json). hofer.at
 - Kühlregal (Menüschale/frisch): 81 → 82
 - Sous-vide (vakuum): 1 → 1
 - Tiefkühl (TK): 16 → 16
-- Trocken/Instant: 5 → 5
+- Trocken/Instant: 5 → 4
 - Unklar (keine Lagerangabe): 110 → 111
 
 ## App Hofer rows per brand (top 30) before → after
@@ -35,9 +34,9 @@ Ready meals only (grocery excluded, see hofer_grocery_2026-10-13.json). hofer.at
 - Cucina: 22 → 22
 - : 22 → 22
 - Le Gusto: 17 → 17
-- Asia Green Garden: 11 → 11
 - Cucina Nobile: 11 → 11
 - PRIMANA: 10 → 10
+- Asia Green Garden: 11 → 10
 - GOOD: 5 → 5
 - Nature's Gold: 4 → 5
 - Zurück zum Ursprung: 4 → 4
@@ -61,67 +60,26 @@ Ready meals only (grocery excluded, see hofer_grocery_2026-10-13.json). hofer.at
 - Leibspeis: 1 → 1
 - Cucina, Girone & Sohn Nahrungsmittel: 1 → 1
 
-## Dose/Konserve
-
-| # | Product | Brand | € | g | score | value |
-|---|---|---|---|---|---|---|
-| 1 | Serbische Bohnensuppe | Primana | 1.35 (alt) | 400.0 | 18.0 | 8.6P |
-| 2 | Chili con carne | Primana | 1.99 (alt) | 400.0 | 26.5 | 6.7P |
-| 3 | PRIMANA Chili Con Carne 400g | Primana | 1.99 (alt) | 400.0 | 8.9 | 5.1P |
-
 ## Kühlregal (Menüschale/frisch)
 
 | # | Product | Brand | € | g | score | value |
 |---|---|---|---|---|---|---|
-| 1 | Tortelloni Carne | Good Choice | 2.29 | 400.0 | 29.6 | 11.3P |
-| 2 | Käse-Tortelloni | Good Choice | 1.99 (alt) | 400.0 | 12.9 | 10.8P |
-| 3 | Lasagne Bolognese | Good Choice | 3.99 (alt) | 1000.0 | 22.6 | 10.4P |
-| 4 | Wurstknödel | Primana | 3.99 | 1000.0 | 0 | 9.4P |
-| 5 | Tortelloni mit Käsefüllung | Good Choice | 2.29 | 400.0 | 12.9 | 9.4P |
-| 6 | Tomaten-Mozzarella-Nudeln | Leibspeis' | 2.69 | 370.0 | 26.5 | 7.7P |
-| 7 | Tortelloni Käse-Sahne | Primana | 2.99 | 750.0 | 35.9 | 6.6P |
-| 8 | Kärntner Kasnudeln | Good Choice | 2.78 (alt) | 370.0 | 35.9 | 6.0P |
-| 9 | Schupfnudeln | Good Choice | 1.99 (alt) | 500.0 | 16.5 | 5.7P |
-| 10 | Faschierte Laibchen mit Kartoffelpüree | Good Choice | 2.75 | 400.0 | 19.2 | 5.0P |
-| 11 | Faschierte Laibchen mit Kartoffelpüree | Good Choice | 3.06 | 430.0 | 18.7 | 4.8P |
-| 12 | Kürbis-Nudeln | Leibspeis' | 2.78 | 370.0 | 25.7 | 4.8P |
-| 13 | Linguini mit Hühnerpolpetti und Paprikasauce | Good Choice | 3.19 | 400.0 | 36.2 | 4.4P |
-| 14 | Kärntner Kasnudeln | Leibspeis | 3.09 | 370.0 | 10.2 | 4.4P |
-| 15 | Wrap Thunfisch | Good Choice | 2.49 (alt) | 170.0 | 23.0 | 3.9P |
-| 16 | Schwammerlsauce mit Serviettenknödel | Good Choice | 3.06 | 380.0 | 21.9 | 3.4P |
-| 17 | Schwammerlsauce | Good Choice (Hofer Eigenmarke) | 3.06 | 380.0 | 21.9 | 3.4P |
-| 18 | Topfenknödel mit Erdbeersauce | Good Choice | 3.49 (alt) | 330.0 | 25.3 | 3.2P |
-| 19 | Kartoffel Gnocchi | Good Choice | 1.99 | 500.0 | 20.6 | 3.2P |
-| 20 | Gelbes Gemüsecurry mit Basmatireis | Good Choice | 3.39 | 400.0 | 11.8 | 1.5P |
-| 21 | Gelbes Gemüse Curry Mit Reis | Good Choice (Hofer Eigenmarke) | 3.39 | 400.0 | 11.8 | 1.5P |
+| 1 | Kärntner Kasnudeln | Good Choice | 2.78 (alt) | 370.0 | 35.9 | 39.9U |
 
 ## Tiefkühl (TK)
 
 | # | Product | Brand | € | g | score | value |
 |---|---|---|---|---|---|---|
-| 1 | Lasagne Bolognese | Cucina Nobile | 2.99 | 400.0 | 37.2 | 5.1P |
-| 2 | IGLO Lasagne 700g | IGLO | 5.99 (alt) | 700.0 | 44.0 | 4.5P |
+| 1 | IGLO Lasagne 700g | IGLO | 5.99 (alt) | 700.0 | 44.0 | 37.8U |
+| 2 | Lasagne Bolognese | Cucina Nobile | 2.99 | 400.0 | 37.2 | 37.3U |
 
 ## Unklar (keine Lagerangabe)
 
 | # | Product | Brand | € | g | score | value |
 |---|---|---|---|---|---|---|
-| 1 | Cevapcici Pikant | Primana | 9.49 (alt) | 1000.0 | 35.6 | 12.0P |
-| 2 | Maishendl Ministeaks | FairHOF | 4.99 | 280.0 | 80.0 | 11.6P |
-| 3 | PRIMANA Serbische Bohnensuppe 400g | Primana | 1.35 (alt) | 400.0 | 18.0 | 8.6P |
-| 4 | Speck Knödel | Primana | 4.49 (alt) | 700.0 | 9.3 | 6.8P |
-| 5 | Sauerkraut | Nature's Gold | 0.73 (alt) | 500.0 | 32.6 | 6.8P |
-| 6 | Pfannengemüse | Nature's Gold | 1.99 (alt) | 750.0 | 32.7 | 6.5P |
-| 7 | BIO Tortellini Steinpilz 250g |  | 2.45 (alt) | 250.0 | 37.9 | 6.1P |
-| 8 | Pinsa gegrilltes Gemüse | PIZZ'AH | 3.69 (alt) | 445.0 | 18.5 | 5.8P |
-| 9 | CUCINA NOBILE Lasagne Bolognese 400g | Cucina | 2.99 (alt) | 400.0 | 37.2 | 5.1P |
-| 10 | Spaghetti Carbonara | Cucina | 2.59 (alt) | 400.0 | 30.0 | 4.8P |
-| 11 | Kartoffeltaschen mit Spinat und Mozzarella | Nature's Gold | 2.49 (alt) | 600.0 | 14.6 | 4.6P |
-| 12 | Samosas | Green Garden | 2.99 (alt) | 360.0 | 30.4 | 3.4P |
-| 13 | Klare Gemüsesuppe | Le Gusto | 0.75 (alt) | 140.0 | 53.4 | 0.7P |
-| 14 | Klare Suppe | Le Gusto | 0.75 | 120.0 | 33.4 | 0.5P |
+| 1 | CUCINA NOBILE Lasagne Bolognese 400g | Cucina | 2.99 (alt) | 400.0 | 37.2 | 37.3U |
 
-Not rankable (missing price or score): 184 of 224
+Not rankable (missing price or score): 204 of 208
 
 ## hofer.at crawl: products per category > subcategory (all segments)
 
