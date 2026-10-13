@@ -4,7 +4,7 @@ import { BrandLogo } from '../components/product'
 import { InfoTip } from '../components/info'
 import { useApp, STORE_LOGO } from '../lib'
 const CATS:[string,string][]=[['Handelskette','🏪'],['Eigenmarke','🏷️'],['Markenhersteller','⭐'],['Produzent/Werk','🏭'],['Bio','🌱'],['Budget','💸']]
-const CHAINS=/^(billa|spar|interspar|hofer|aldi|lidl|penny|dm|fit ?to ?go|merkur|eurospar|rewe)/i
+const CHAINS=/^(billa|spar|interspar|hofer|aldi|lidl|penny|dm|fit ?to ?go|merkur|eurospar|rewe)$/i
 const PRIV=/billa|clever|ja!? ?nat|vegavita|omis|simply good|spar|s-budget|despar|good choice|primana|cucina nobile|le gusto|hofer|chef select|vemondo|combino|kania|dmbio|^dm|milbona|back to nature|natur aktiv|zurück zum ursprung|gourmet|genusswelt|immer gut|feine küche|pure\b/i
 function guess(name:string,cat?:string|null,isProd?:boolean):string{
   if(cat) return cat
