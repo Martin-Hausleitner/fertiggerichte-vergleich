@@ -324,14 +324,16 @@
   "slug": "spar-enjoy",
   "name": "SPAR enjoy",
   "brands": [
-   "SPAR enjoy"
+   "SPAR enjoy",
+   "Spar enjoy",
+   "Spar Enjoy"
   ],
   "logo_category": "Eigenmarke",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "only white-on-transparent logo on spar.at; not used",
-  "hq": false
+  "file": "logos/spar-enjoy.png",
+  "source": "OFF packshot GTIN 9100000702797 front_de.6 (SPAR enjoy Mediterraner Nudel-Kräuter-Salat) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T23 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt SPAR enjoy. Wordmark + SPAR-Baum (weißer Druck auf Karton-Sleeve); spar.at weisses-auf-transparent vorher abgelehnt (T12) — dieser Crop ist auf braunem Karton lesbar; Spar enjoy + SPAR enjoy als Alias gemerged",
+  "hq": true
  },
  "le-gusto": {
   "slug": "le-gusto",
@@ -435,14 +437,18 @@
   "slug": "good-choice",
   "name": "Good Choice",
   "brands": [
-   "Good Choice"
+   "Good Choice",
+   "GOOD CHOICE",
+   "good choice",
+   "Good Choice (Hofer Eigenmarke)",
+   "GOOD"
   ],
   "logo_category": "Eigenmarke",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "Hofer private label: no logo published on hofer.at brand pages · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
-  "hq": false
+  "file": "logos/good-choice.png",
+  "source": "OFF packshot GTIN 4099200146256 front_de.15 (GOOD CHOICE Faschierte Laibchen) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T23 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt offizielles Hofer/OFF-Produktfoto (GOOD Choice Wordmark im handgezeichneten Oval); Aldi-CDN Brandpage-Logo_* bewusst nicht erneut geprobt (T09 alle 403); Commons kein Treffer",
+  "hq": true
  },
  "primana": {
   "slug": "primana",
@@ -573,14 +579,15 @@
   "slug": "chef-select",
   "name": "Chef Select",
   "brands": [
-   "Chef Select"
+   "Chef Select",
+   "CHEF SELECT"
   ],
   "logo_category": "Eigenmarke",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "Lidl private label: no official logo asset found · Probe 2026-10-13: Wikimedia Commons ohne Treffer; lidl.at hat keine Markenseite (nur /c/deluxe mit Foto-Banner, kein freigestelltes Logo)",
-  "hq": false
+  "file": "logos/chef-select.png",
+  "source": "OFF packshot GTIN 4056489009214 front_en.94 (Chef Select Smoked Ham Tortellini) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T23 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt Lidl Eigenmarke CHEF SELECT (weiße Kapitälchen auf rosa Header); Commons nur Lidl-Hauptlogo / Produktfotos, kein freigestelltes Chef-Select-Asset",
+  "hq": true
  },
  "vemondo": {
   "slug": "vemondo",
@@ -717,14 +724,16 @@
   "slug": "chef-menue",
   "name": "Chef Menü",
   "brands": [
-   "Chef Menü"
+   "Chef Menü",
+   "Chef Menu",
+   "chef menü"
   ],
   "logo_category": "Eigenmarke",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no logo found · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
-  "hq": false
+  "file": "logos/chef-menue.png",
+  "source": "OFF packshot GTIN 9010158009856 front_en.4 (Chef Menü Schweinsbraten) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T23 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt REWE-AT Eigenmarke Chef Menü (weißes Wordmark auf grünem Blatt + Wirt z'Haus); kein Commons-/CDN-Freisteller",
+  "hq": true
  },
  "knorr": {
   "slug": "knorr",
@@ -3599,6 +3608,46 @@
   "source": "https://cdn.hellofresh.com/logo/HelloFresh_Logo_Horizontal_V2.svg",
   "size": "svg",
   "note": "Vision gate 2026-10-13T22 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles CDN-Asset HelloFresh_Logo_Horizontal_V2.svg (cdn.hellofresh.com/logo/; robots.txt hellofresh.de/.com erlauben CDN-Logo; kein Commons-Logo vorhanden; Wikipedia-Datei nur fair-use/Bild-LogoSH → nicht verwendet; 13746 B SVG unverändert, title HelloFresh_RGB_2C_Horizontal, fill #91C11E)",
+  "hq": true
+ },
+ "dmbio": {
+  "slug": "dmbio",
+  "name": "dmBio",
+  "brands": [
+   "dmBio"
+  ],
+  "logo_category": "Eigenmarke",
+  "file": "logos/dmbio.png",
+  "source": "dm-static packshot dmBio Gulasch vegan (products.dm-static.com …/dmbio-gulasch-vegan) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T23 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt offizielles dm-Produktfoto (grünes dmBio-Siegel mit dm-Untermarke); Commons nur dm-Hauptlogo, kein dmBio; dm.de/marken/dmbio JS-only ohne freigestelltes Asset",
+  "hq": true
+ },
+ "namdong": {
+  "slug": "namdong",
+  "name": "Namdong",
+  "brands": [
+   "Namdong"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/namdong.png",
+  "source": "Gurkerl CDN packshot Namdong Beef Instant Noodle Pot (cdn.gurkerl.at …/44153-…) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T23 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt Unilever-Marke namdong + Hangul-Badge; namdong.com / unilever.co.uk Akamai 403 (nicht umgangen); Commons nur Namdong-gu Geo, kein Noodle-Logo",
+  "hq": true
+ },
+ "pappudia": {
+  "slug": "pappudia",
+  "name": "Pappudia",
+  "brands": [
+   "Pappudia",
+   "Pappudia Handgemacht"
+  ],
+  "logo_category": "Eigenmarke",
+  "file": "logos/pappudia.png",
+  "source": "OFF packshot GTIN 8595643805690 front_cs.12 (Pappudia Hummus) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T23 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt Lidl Eigenmarke PAPPUDIA (gestapeltes Wordmark + Check-Pin auf Senf-Kreis); Gurkerl-Fertiggericht-Fotos ohne Verpackungslogo; Commons kein Treffer",
   "hq": true
  }
 }
