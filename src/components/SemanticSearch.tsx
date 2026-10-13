@@ -8,6 +8,7 @@ import { Img, BrandLogo, StoreLogo, PliBadge } from './product'
 // local embedding engine (transformers.js, quantized q8, lazy-loaded, browser-cached)
 const TJS:string='https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.3.1' // CDN (not bundled: bundle trips GitHub secret scanning)
 type Emb={model:string;dim:number;ids:number[];scales:number[];E:Int8Array}
+let owner=0, nextId=0
 let embP:Promise<Emb>|null=null, extP:Promise<any>|null=null
 const loadEmb=()=>embP??=Promise.all([fetch('./embeddings.json?v='+__BUILD__).then(r=>r.json()),fetch('./embeddings.bin?v='+__BUILD__).then(r=>r.arrayBuffer())]).then(([m,b])=>({...m,E:new Int8Array(b)}))
 const loadExt=(model:string)=>extP??=import(/* @vite-ignore */ TJS).then((t:any)=>{t.env.allowLocalModels=false;t.env.useBrowserCache=true;return t.pipeline('feature-extraction',model,{dtype:'q8'})})
@@ -20,7 +21,7 @@ export function SearchPalette(){const {R,open}=useApp()
   const [stage,setStage]=useState<string[]>([]),[chain,setChain]=useState<string[]>([]),[hp,setHp]=useState(false)
   const [st,setSt]=useState<'idle'|'loading'|'ready'|'error'>('idle'), seq=useRef(0)
   const chains=useMemo(()=>[...new Set(R.map(r=>r.store))].filter(Boolean).sort(),[R])
-  useEffect(()=>{const k=(e:KeyboardEvent)=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();setShow(s=>!s)}};addEventListener('keydown',k);return()=>removeEventListener('keydown',k)},[])
+  useEffect(()=>{const me=++nextId;if(!owner)owner=me;const k=(e:KeyboardEvent)=>{if(owner!==me)return;if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();setShow(s=>!s)}};addEventListener('keydown',k);return()=>{removeEventListener('keydown',k);if(owner===me)owner=0}},[])
   useEffect(()=>{if(show&&st==='idle'){setSt('loading');loadEmb().then(m=>loadExt(m.model)).then(()=>setSt('ready')).catch(e=>{console.error(e);setSt('error')})}},[show])
   useEffect(()=>{const my=++seq.current;const t=setTimeout(async()=>{
     const pass=(r:Row)=>(stage.length?stage.includes(r.stage):r.stage!=='base')&&(!chain.length||chain.includes(r.store))&&(!hp||(r.p100??0)>=10)&&!r.nonfood

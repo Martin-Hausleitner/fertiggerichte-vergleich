@@ -1,5 +1,8 @@
 #!/bin/bash
 set -e
+exec 9>/tmp/fertig_deploy.lock; flock 9
+L=/tmp/fertig_deploy.last; if [ -f $L ]; then d=$(( $(date +%s) - $(cat $L) )); [ $d -lt 240 ] && sleep $((240-d)); fi
+trap 'date +%s > /tmp/fertig_deploy.last' EXIT
 cd /workspace/fertig-app
 (cd /workspace/fertig && python3 score.py >/dev/null && python3 build.py >/dev/null && python3 export_app.py >/dev/null && (python3 brand_tree.py >/dev/null || true) && (python3 packaging_v2.py >/dev/null || true)) || exit 1
 [ -d /workspace/fertig/analysis ] && mkdir -p public/analysis && (cd /workspace/fertig/analysis && for f in *.json *.md; do case $f in _*|brand_rows.json) ;; *) cp "$f" /workspace/fertig-app/public/analysis/ 2>/dev/null;; esac; done; [ -d logos ] && cp -r logos /workspace/fertig-app/public/analysis/) || true

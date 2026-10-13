@@ -1,6 +1,6 @@
 {
  "generated": "2026-10-13",
- "note": "Typische Werte nur mit Quelle; \"etiketten\" = echte Lagerhinweise aus BILLA-Produktdaten (det.json/det2.json, Feld storageAndUsageStatements); \"datensatz\" = scored.json. Echte MHD-Daten (Tage/Monate unopened) sind in den Shopdaten NICHT enthalten. MHD-Spannen im Dashboard = typische Branchenrichtwerte (gekennzeichnet). Zusatzstoffe = Anzahl Zusatzstoff-Klassen/E-Nummern in BILLA-Zutatenlisten. MHD-Spannen im Dashboard = typische Branchenrichtwerte (gekennzeichnet). Zusatzstoffe = Anzahl Zusatzstoff-Klassen/E-Nummern in BILLA-Zutatenlisten. MHD-Spannen im Dashboard = typische Branchenrichtwerte (gekennzeichnet). Zusatzstoffe = Anzahl Zusatzstoff-Klassen/E-Nummern in BILLA-Zutatenlisten. MHD-Spannen im Dashboard = typische Branchenrichtwerte (gekennzeichnet). Zusatzstoffe = Anzahl Zusatzstoff-Klassen/E-Nummern in BILLA-Zutatenlisten.",
+ "note": "Typische Werte nur mit Quelle; \"etiketten\" = echte Lagerhinweise aus BILLA-Produktdaten (det.json/det2.json, Feld storageAndUsageStatements); \"datensatz\" = scored.json. Echte MHD-Daten (Tage/Monate unopened) sind in den Shopdaten NICHT enthalten. MHD-Spannen im Dashboard = typische Branchenrichtwerte (gekennzeichnet). Zusatzstoffe = Anzahl Zusatzstoff-Klassen/E-Nummern in BILLA-Zutatenlisten. MHD-Spannen im Dashboard = typische Branchenrichtwerte (gekennzeichnet). Zusatzstoffe = Anzahl Zusatzstoff-Klassen/E-Nummern in BILLA-Zutatenlisten. MHD-Spannen im Dashboard = typische Branchenrichtwerte (gekennzeichnet). Zusatzstoffe = Anzahl Zusatzstoff-Klassen/E-Nummern in BILLA-Zutatenlisten. MHD-Spannen im Dashboard = typische Branchenrichtwerte (gekennzeichnet). Zusatzstoffe = Anzahl Zusatzstoff-Klassen/E-Nummern in BILLA-Zutatenlisten. MHD-Spannen im Dashboard = typische Branchenrichtwerte (gekennzeichnet). Zusatzstoffe = Anzahl Zusatzstoff-Klassen/E-Nummern in BILLA-Zutatenlisten. MHD-Spannen im Dashboard = typische Branchenrichtwerte (gekennzeichnet). Zusatzstoffe = Anzahl Zusatzstoff-Klassen/E-Nummern in BILLA-Zutatenlisten.",
  "sources": {
   "ara": "https://www.ara.at/news/sammelumstellung-2025-alle-details-im-ueberblick",
   "oegv": "https://www.oesterreich.gv.at/de/themen/bauen_und_wohnen/abfall/metallverpackungen",
@@ -343,7 +343,7 @@
     }
    ],
    "stats": {
-    "n_products": 184,
+    "n_products": 192,
     "n_rankable": 86,
     "median_price": 3.49,
     "median_price_per_kg": 8.11,
@@ -352,10 +352,10 @@
     "median_pli": 30.05,
     "median_protein_100": 3.8,
     "median_salt_100": 1.1,
-    "median_kcal_100": 92.0,
+    "median_kcal_100": 91.8,
     "median_additives": 1.0,
     "n_additives": 44,
-    "share_bio": 18
+    "share_bio": 20
    }
   },
   {
@@ -691,16 +691,16 @@
     }
    ],
    "stats": {
-    "n_products": 364,
+    "n_products": 381,
     "n_rankable": 191,
     "median_price": 3.79,
-    "median_price_per_kg": 11.48,
+    "median_price_per_kg": 11.75,
     "median_price_per_10g_protein": 1.94,
     "median_health_score": 34.2,
     "median_pli": 30.4,
-    "median_protein_100": 7.3,
+    "median_protein_100": 7.2,
     "median_salt_100": 1.1,
-    "median_kcal_100": 157.0,
+    "median_kcal_100": 156.0,
     "median_additives": 1,
     "n_additives": 81,
     "share_bio": 8
@@ -815,10 +815,10 @@
     ],
     "salt": [
      0.01,
-     0.7,
-     0.89,
-     1.3,
-     2.4
+     0.71,
+     0.9,
+     1.2,
+     4.5
     ]
    },
    "stores": [
@@ -925,16 +925,16 @@
     }
    ],
    "stats": {
-    "n_products": 211,
+    "n_products": 249,
     "n_rankable": 102,
-    "median_price": 5.29,
-    "median_price_per_kg": 11.98,
+    "median_price": 5.99,
+    "median_price_per_kg": 12.68,
     "median_price_per_10g_protein": 1.79,
     "median_health_score": 40.7,
     "median_pli": 34.35,
-    "median_protein_100": 6.9,
-    "median_salt_100": 0.89,
-    "median_kcal_100": 147.5,
+    "median_protein_100": 6.7,
+    "median_salt_100": 0.9,
+    "median_kcal_100": 137.0,
     "median_additives": 0,
     "n_additives": 7,
     "share_bio": 3
@@ -1743,10 +1743,10 @@
    "after_opening_labels": [],
    "top": [],
    "stats": {
-    "n_products": 176,
+    "n_products": 177,
     "n_rankable": 10,
     "median_price": 1.59,
-    "median_price_per_kg": 13.54,
+    "median_price_per_kg": 13.75,
     "median_price_per_10g_protein": 8.0,
     "median_health_score": 27.1,
     "median_pli": 19.3,
@@ -2086,18 +2086,18 @@
    "Trocken/Instant-Beutel"
   ],
   "n_products": [
-   184,
-   364,
-   211,
+   192,
+   381,
+   249,
    25,
    26,
    10,
-   176
+   177
   ],
   "median_protein_100": [
    3.8,
-   7.3,
-   6.9,
+   7.2,
+   6.7,
    6.6,
    1.5,
    14.5,
@@ -2106,7 +2106,7 @@
   "median_salt_100": [
    1.1,
    1.1,
-   0.89,
+   0.9,
    1.2,
    0.9,
    1.4,
@@ -2142,15 +2142,15 @@
   "by_reason": [
    [
     "bisherige Einstufung (Shop-Rubrik)",
-    323
+    331
    ],
    [
     "keine belastbaren Hinweise",
-    293
+    330
    ],
    [
     "Name/Marke: Kühlregal",
-    172
+    189
    ],
    [
     "Etikett: gekühlt +2…+6 °C",
@@ -2158,7 +2158,7 @@
    ],
    [
     "Name/Marke: TK",
-    79
+    113
    ],
    [
     "BILLA-Kategorie Beutel + Trockenware",
@@ -2177,12 +2177,12 @@
     29
    ],
    [
-    "Etikett: −18 °C",
-    26
+    "Name: typ. TK-Ware (schwach)",
+    28
    ],
    [
-    "Name: typ. TK-Ware (schwach)",
-    24
+    "Etikett: −18 °C",
+    26
    ],
    [
     "BILLA-Kategorie: Frische Pasta & Beilagen",
@@ -2205,12 +2205,12 @@
     10
    ],
    [
-    "Etikett gekühlt + Name Sous-vide",
+    "Marke: Knorr Meisterkessel (Dose)",
     7
    ],
    [
-    "Marke: Knorr Meisterkessel (Dose)",
-    6
+    "Etikett gekühlt + Name Sous-vide",
+    7
    ],
    [
     "BILLA-Kategorie: Dose",
@@ -2229,9 +2229,9 @@
     1
    ]
   ],
-  "moved": 244,
-  "unclassified": 293,
-  "total": 1299
+  "moved": 266,
+  "unclassified": 330,
+  "total": 1400
  },
  "assign": {
   "0": [
@@ -6217,6 +6217,262 @@
   "1298": [
    "Tiefkühl",
    "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1300": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1304": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1307": [
+   "Trocken/Instant-Beutel",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1313": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1314": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1315": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1317": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1318": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1319": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1321": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1322": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1324": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1325": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "1328": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "1329": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1330": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1334": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1337": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1338": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "1340": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1342": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1344": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1349": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1350": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1351": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1352": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1353": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1355": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1356": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1357": [
+   "Dose",
+   "Marke: Knorr Meisterkessel (Dose)"
+  ],
+  "1358": [
+   "Dose",
+   "bisherige Einstufung (Shop-Rubrik)"
+  ],
+  "1360": [
+   "Tiefkühl",
+   "Name: typ. TK-Ware (schwach)"
+  ],
+  "1361": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1362": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1365": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1366": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1368": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1373": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1374": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1375": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1376": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1377": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1378": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1379": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1380": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1381": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1382": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1383": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1384": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1385": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1386": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1387": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1388": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1389": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1390": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1391": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1392": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1393": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1394": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1395": [
+   "Tiefkühl",
+   "Name/Marke: TK"
+  ],
+  "1396": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1397": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1398": [
+   "Kühlschale/MAP",
+   "Name/Marke: Kühlregal"
+  ],
+  "1399": [
+   "Tiefkühl",
+   "Name/Marke: TK"
   ]
  }
 }
