@@ -1371,7 +1371,8 @@
   "slug": "greisinger",
   "name": "Greisinger",
   "brands": [
-   "Greisinger"
+   "Greisinger",
+   "Original Greisinger"
   ],
   "logo_category": "Produzent/Werk",
   "file": "logos/greisinger.png",
@@ -1396,42 +1397,47 @@
  },
  "stangl": {
   "slug": "stangl",
-  "name": "Stangl",
+  "name": "Stangl Nudeln",
   "brands": [
-   "Stangl"
+   "Stangl",
+   "Stangl Nudeln",
+   "Stangl Teigwaren"
   ],
   "logo_category": "Markenhersteller",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "file": "logos/stangl.png",
+  "source": "https://stanglnudeln.at/cdn/shop/files/StanglnudelnLogo.png?v=1692648650",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Header-Logo stanglnudeln.at (Stangl Teigwaren GmbH, Lebring = Hersteller lt. Billa); 212px",
   "hq": false
  },
  "amlacher": {
   "slug": "amlacher",
-  "name": "Amlacher",
+  "name": "Amlacher Nudel",
   "brands": [
-   "Amlacher"
+   "Amlacher",
+   "Amlacher Nudeln",
+   "Amlacher Nudel"
   ],
   "logo_category": "Markenhersteller",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "file": "logos/amlacher.png",
+  "source": "https://amlachernudel.com/wp-content/uploads/amlacher-nudel-logo.jpg.jpeg",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo amlachernudel.com (Amlacher Nudel GmbH, Äußere Einöde); auf Wortmarke 'NUDELN Amlacher' zugeschnitten (Hausgrafik + Adresszeile entfernt), 480px-Quelle",
   "hq": false
  },
  "ackerl": {
   "slug": "ackerl",
   "name": "Ackerl",
   "brands": [
-   "Ackerl"
+   "Ackerl",
+   "ACKERL"
   ],
   "logo_category": "Markenhersteller",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
-  "hq": false
+  "file": "logos/ackerl.png",
+  "source": "https://www.weinbergmaier.at/images/ackerl.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Markenlogo weinbergmaier.at (Weinbergmaier GmbH, Wolfern – Marke ACKERL, = Hersteller lt. Billa-Produktdaten)",
+  "hq": true
  },
  "pure": {
   "slug": "pure",
@@ -1611,10 +1617,10 @@
    "Blue Elephant"
   ],
   "logo_category": "Markenhersteller",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "file": "logos/blue-elephant.png",
+  "source": "https://blueelephant.com/wp-content/uploads/2024/12/BE-logo-beaten-gold-1.webp",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo blueelephant.com ('beaten gold'-Variante; Gold auf hellem BG lesbar, mittlerer Kontrast); 339px",
   "hq": false
  },
  "juergen-langbein": {
@@ -1658,15 +1664,16 @@
  },
  "dovgan": {
   "slug": "dovgan",
-  "name": "DOVGAN",
+  "name": "Dovgan",
   "brands": [
-   "DOVGAN"
+   "DOVGAN",
+   "Dovgan"
   ],
   "logo_category": "Markenhersteller",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "file": "logos/dovgan.png",
+  "source": "https://www.dovgan.de/assets/templates/redesign18/images/logo.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Header-Logo dovgan.de (Dovgan GmbH, Hamburg); 215px",
   "hq": false
  },
  "every": {
@@ -2848,7 +2855,8 @@
   "slug": "andros",
   "name": "Andros",
   "brands": [
-   "Andros"
+   "Andros",
+   "Gourmand&Vegetal"
   ],
   "logo_category": "Markenhersteller",
   "file": "logos/andros.png",
@@ -3037,7 +3045,11 @@
  "alimentastic": {
   "slug": "alimentastic",
   "name": "Alimentastic",
-  "brands": [],
+  "brands": [
+   "feelfood",
+   "Feelfood",
+   "Feel Food"
+  ],
   "logo_category": "Markenhersteller",
   "file": "logos/alimentastic.png",
   "source": "https://framerusercontent.com/assets/czFB8kgQwMxPBsOnXC5KcjBpo.png",
@@ -3077,7 +3089,9 @@
  "hamker": {
   "slug": "hamker",
   "name": "Hamker",
-  "brands": [],
+  "brands": [
+   "Marinus"
+  ],
   "logo_category": "Markenhersteller",
   "file": "logos/hamker.png",
   "source": "https://www.hamker.de/_assets/c10be5dfbeeb651361b989cc8e511cff/Frontend/Images/logo.png",
@@ -3088,7 +3102,9 @@
  "heiderbeck": {
   "slug": "heiderbeck",
   "name": "Heiderbeck",
-  "brands": [],
+  "brands": [
+   "Casa di Pietro"
+  ],
   "logo_category": "Markenhersteller",
   "file": "logos/heiderbeck.png",
   "source": "https://www.heiderbeck.com/wp-content/themes/heiderbeck/images/Heiderbeck_Logo.svg",
@@ -3125,7 +3141,9 @@
  "rila": {
   "slug": "rila",
   "name": "Rila",
-  "brands": [],
+  "brands": [
+   "Jürgen Langbein"
+  ],
   "logo_category": "Markenhersteller",
   "file": "logos/rila.png",
   "source": "https://rila.de/bundles/rilatheme/storefront/img/logo.svg?1790331437",
@@ -3136,7 +3154,10 @@
  "tops-foods": {
   "slug": "tops-foods",
   "name": "Tops Foods",
-  "brands": [],
+  "brands": [
+   "Pure",
+   "PURE"
+  ],
   "logo_category": "Markenhersteller",
   "file": "logos/tops-foods.png",
   "source": "https://www.topsfoods.com/bundles/webcreator/Themes/tops-foods/images/favicons/apple-icon-120x120.png?v4.0.6",
@@ -3165,5 +3186,220 @@
   "size": "png",
   "note": "Vision gate 2026-10-13T12:44 (Daten-Squad, Firmenlogos): visuell geprüft (korrekte Firma/Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Wikimedia Commons (Public domain) File:Mars Incorporated 2019 logo.svg – Konzernlogo für Mars Austria OG (nicht Ben's-Original-Markenlogo)",
   "hq": true
+ },
+ "wagner": {
+  "slug": "wagner",
+  "name": "Original Wagner",
+  "brands": [
+   "Wagner",
+   "Original Wagner",
+   "Nestlé Wagner"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/wagner.png",
+  "source": "https://www.original-wagner.de/",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Header-Logo original-wagner.de (Inline-SVG; Farben aus Site-CSS für hellen Header: --color--navy #004876, Peel/Swoosh; Original Wagner Pizza GmbH, Nonnweiler)",
+  "hq": true
+ },
+ "frank-juice": {
+  "slug": "frank-juice",
+  "name": "frank.",
+  "brands": [
+   "Frank Soup",
+   "frank",
+   "frank juice"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/frank.png",
+  "source": "https://thefrankjuice.com/cdn/shop/files/frank_logo_schwarz_-_frankjuice_png.png?v=1668438293",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo thefrankjuice.com (frank. – Säfte & 'frank soups' im Glas)",
+  "hq": true
+ },
+ "volante": {
+  "slug": "volante",
+  "name": "Volante PIZZZA! per casa",
+  "brands": [
+   "Volante PIZZZA per casa",
+   "Volante",
+   "Pizzza Volante"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/volante.png",
+  "source": "https://static.wixstatic.com/media/406b0d_a7d548fa932046d88068a72fd344612a~mv2.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo 'Volante PIZZZA! per casa' pizzza-volante.com (Bake-at-home-Linie, Wien)",
+  "hq": true
+ },
+ "coppenrath-wiese": {
+  "slug": "coppenrath-wiese",
+  "name": "Coppenrath & Wiese",
+  "brands": [
+   "Coppenrath & Wiese",
+   "Conditorei Coppenrath & Wiese",
+   "Coppenrath und Wiese"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/coppenrath-wiese.png",
+  "source": "https://commons.wikimedia.org/wiki/File:Logo_Conditorei_Coppenrath_%26_Wiese.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Wikimedia Commons (CC BY 4.0) File:Logo Conditorei Coppenrath & Wiese.png",
+  "hq": true
+ },
+ "gaon": {
+  "slug": "gaon",
+  "name": "GAON",
+  "brands": [
+   "GAON - Koreanisches Restaurant",
+   "GAON",
+   "Gaon"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/gaon.png",
+  "source": "https://www.gaon-vienna.com/xstorage/1/_cache/20240423/GAON_Logo_black_281_1_5159b4ae78ffa4424552b77e0a315a5e.svg",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo gaon-vienna.com (GAON Koreanisches Restaurant, Apollogasse 20, 1070 Wien = Kontakt auf Gurkerl-Produktseiten)",
+  "hq": true
+ },
+ "freda": {
+  "slug": "freda",
+  "name": "Freda",
+  "brands": [
+   "Freda",
+   "FREDA"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/freda.png",
+  "source": "https://www.eatfreda.com/",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Header-Logo eatfreda.com (Inline-SVG, currentColor = Site-Textfarbe rgb(199,17,17); siu foods GmbH, Passau = Hersteller lt. Billa)",
+  "hq": true
+ },
+ "wojnars": {
+  "slug": "wojnars",
+  "name": "Wojnar's",
+  "brands": [
+   "Wojnar's",
+   "Wojnar",
+   "WOJNAR'S"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/wojnars.png",
+  "source": "https://www.wojnar.at/wp-content/uploads/2023/11/Logowojnarclaim-rgb.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo wojnar.at (WOJNAR'S Wiener Leckerbissen)",
+  "hq": true
+ },
+ "kozy-shack": {
+  "slug": "kozy-shack",
+  "name": "Kozy Shack",
+  "brands": [
+   "Kozyshack",
+   "Kozy Shack"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/kozy-shack.png",
+  "source": "https://www.kozyshack.com/getmedia/6ffb8a26-e94a-4681-8059-b9d3a9226acb/top-logo.webp?ext=.webp",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Header-Logo kozyshack.com; 230px",
+  "hq": false
+ },
+ "della-mamma": {
+  "slug": "della-mamma",
+  "name": "Della Mamma",
+  "brands": [
+   "Della Mamma",
+   "DELLA MAMMA"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/della-mamma.png",
+  "source": "https://www.della-mamma.de/cdn/shop/files/DOL_DM_Logo_schwarz_1200x1200.png?v=1756479227",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo della-mamma.de (Retail-Marke der Dolce GmbH, Neu-Ulm; Impressum geprüft)",
+  "hq": true
+ },
+ "oekoland": {
+  "slug": "oekoland",
+  "name": "Ökoland",
+  "brands": [
+   "Ökoland",
+   "Oekoland"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/oekoland.png",
+  "source": "https://oekoland.de/wp-content/uploads/2023/08/oekoland-logo-1000x819-1.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo oekoland.de (Ökoland GmbH Nord)",
+  "hq": true
+ },
+ "suedtiroler-kochwerk": {
+  "slug": "suedtiroler-kochwerk",
+  "name": "Südtiroler Kochwerk",
+  "brands": [
+   "Südtiroler Kochwerk",
+   "Kochwerk"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/suedtiroler-kochwerk.png",
+  "source": "https://www.pursuedtirol.com/media/image/f4/b3/b3/Logo_S%C3%BCdtiroler_Kochwerk.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Markenlogo von der Herstellerseite 'WP Fine Food / Südtiroler Kochwerk' im Shop pursuedtirol.com (Pur Südtirol); keine eigene Marken-Website auffindbar – Händler-gehostet, daher hq=false",
+  "hq": false
+ },
+ "rians": {
+  "slug": "rians",
+  "name": "Rians",
+  "brands": [
+   "Rians",
+   "Rians Crémerie"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/rians.png",
+  "source": "https://cremerie.rians.com/app/themes/rians/library/images/logo-rians.svg",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Header-Logo cremerie.rians.com (Rians Crémerie, Groupe Triballat)",
+  "hq": true
+ },
+ "oyakata": {
+  "slug": "oyakata",
+  "name": "Oyakata",
+  "brands": [
+   "Oyakata",
+   "OYAKATA"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/oyakata.png",
+  "source": "https://oyakata.be/wp-content/themes/oyakata/assets/img/logo-round.svg",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Header-Logo oyakata.be (Ajinomoto); weiße Wortmarke auf schwarzer Header-Fläche als Badge zugeschnitten",
+  "hq": true
+ },
+ "basenbox": {
+  "slug": "basenbox",
+  "name": "Basenbox",
+  "brands": [
+   "Basenbox",
+   "BASENBOX"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/basenbox.png",
+  "source": "https://www.basenbox.life/",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Header-Logo basenbox.life (Inline-SVG mit Originalfarben)",
+  "hq": true
+ },
+ "john-west": {
+  "slug": "john-west",
+  "name": "John West",
+  "brands": [
+   "John West"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/john-west.png",
+  "source": "https://www.john-west.co.uk/wp-content/uploads/2024/11/logo_320x230_1_transparent.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T13b (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo john-west.co.uk; 320px",
+  "hq": false
  }
 }
