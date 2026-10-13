@@ -9,15 +9,17 @@ export const DAY_REF = { kcal: 2000, protein: 50, salt: 6, satfat: 20, sugar: 90
 export type Nutr = { kcal: number; protein: number; salt: number; satfat: number; sugar: number; fiber: number }
 /** per_portion = day_pct × Referenz / 100 */
 export const portionNutr = (r: Row): Nutr | null => r.day_pct ? Object.fromEntries(Object.entries(DAY_REF).map(([k, v]) => [k, ((r.day_pct as any)[k] ?? 0) * v / 100])) as Nutr : null
-export type PlanMeal = { id: number; name: string; store: string; brand: string; price: number; kcal: number; protein: number; score: number; n: Nutr | null }
+export type PlanMeal = { id: number; name: string; store: string; brand: string; price: number; price_date: string | null; pstat: string | null; priceRaw: number | null; kcal: number; protein: number; score: number; n: Nutr | null }
 export type PlanDay = { day: number; meals: PlanMeal[]; kcal: number; protein: number; cost: number; salt: number; satfat: number; sugar: number; fiber: number }
 export type ShoppingItem = { id: number; name: string; store: string; qty: number; cost: number }
 export type MealPlan = { days: PlanDay[]; shopping: ShoppingItem[]; totals: { kcal: number; protein: number; cost: number }; candidates: number; note?: string }
+/** EU-/AT-Allergenkennzeichnung (A–R). Planer schließt Gerichte mit diesen Codes aus; ohne Allergen-Angabe wird ein Gericht bei aktiver Auswahl ebenfalls ausgeschlossen. */
+export const ALLERGENS: [string, string][] = [['A', 'Gluten'], ['B', 'Krebstiere'], ['C', 'Ei'], ['D', 'Fisch'], ['E', 'Erdnuss'], ['F', 'Soja'], ['G', 'Milch/Laktose'], ['H', 'Schalenfrüchte'], ['L', 'Sellerie'], ['M', 'Senf'], ['N', 'Sesam'], ['O', 'Sulfite'], ['P', 'Lupinen'], ['R', 'Weichtiere']]
 export const DEFAULT_TARGETS: PlanTargets = { days: 1, meals_per_day: 3, kcal_target: 2000, protein_target_g: 50, salt_max_g: 6, satfat_max_g: 20, sugar_max_g: 90, fiber_target_g: 30, budgetPerDay: 15, allergens: [] }
 
 /** Greedy-Planer: wählt je Mahlzeit das Gericht, das Ziel-kcal/Protein/Budget je Slot am besten trifft (Score als Tiebreaker), max. 2× dasselbe Gericht pro Woche. */
 export function buildMealPlan(rows: Row[], chains: Set<string> | null, t: PlanTargets): MealPlan {
-  const cand = rows.filter(r => isReadyMeal(r) && isRankable(r) && rankOk(r) && (!chains || chains.has(r.store)) && (!t.vegan || r.vegan || r.cprot?.includes('vegan')) && (!t.vegetarian || r.vegan || r.cprot?.includes('vegan') || r.cprot?.includes('vegetarisch')) && (!t.bio || r.bio))
+  const cand = rows.filter(r => isReadyMeal(r) && isRankable(r) && rankOk(r) && (!chains || chains.has(r.store)) && (!t.vegan || r.vegan || r.cprot?.includes('vegan')) && (!t.vegetarian || r.vegan || r.cprot?.includes('vegan') || r.cprot?.includes('vegetarisch')) && (!t.bio || r.bio) && (!t.allergens?.length || (Array.isArray(r.allergens) && !r.allergens.some(a => t.allergens!.some(x => a.toUpperCase().startsWith(x.toUpperCase()))))))
     .map(r => ({ r, price: pricePerPortion(r)!, kcal: kcalPerPortion(r)!, protein: protPerPortion(r) ?? 0, score: clientScore(r) ?? 0, value: valueScore(r) ?? 0 }))
   const used: Record<number, number> = {}; const days: PlanDay[] = []
   const slot = { kcal: t.kcal_target / t.meals_per_day, protein: t.protein_target_g / t.meals_per_day, cost: t.budgetPerDay / t.meals_per_day, salt: t.salt_max_g / t.meals_per_day }
@@ -32,7 +34,7 @@ export function buildMealPlan(rows: Row[], chains: Set<string> | null, t: PlanTa
       }
       if (!best) break
       used[best.r.id] = (used[best.r.id] ?? 0) + 1
-      meals.push({ id: best.r.id, name: best.r.name, store: best.r.store, brand: best.r.brandN, price: best.price, kcal: best.kcal, protein: best.protein, score: best.score, n: portionNutr(best.r) })
+      meals.push({ id: best.r.id, name: best.r.name, store: best.r.store, brand: best.r.brandN, price: best.price, price_date: best.r.price_date ?? null, pstat: best.r.pstat, priceRaw: best.r.price, kcal: best.kcal, protein: best.protein, score: best.score, n: portionNutr(best.r) })
     }
     days.push({ day: d + 1, meals, kcal: meals.reduce((a, x) => a + x.kcal, 0), protein: meals.reduce((a, x) => a + x.protein, 0), cost: meals.reduce((a, x) => a + x.price, 0), ...Object.fromEntries((['salt', 'satfat', 'sugar', 'fiber'] as const).map(k => [k, meals.reduce((a, x) => a + (x.n?.[k] ?? 0), 0)])) as any })
   }

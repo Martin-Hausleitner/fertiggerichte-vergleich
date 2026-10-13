@@ -2,12 +2,13 @@ import { useMemo, useState } from 'react'
 import { X, Search, Trophy } from 'lucide-react'
 import { Card, Input, Button } from '@/components/ui'
 import { Img, StoreLogo } from '@/components/product'
+import { OldPriceBadge } from '@/components/PriceAge'
 import { useApp, fmt, scoreColor, cn, type Row } from '@/lib'
 
 type M = { k: string; l: string; d?: number; u?: string; better?: 'hi' | 'lo'; get?: (r: Row) => any }
 const SECTIONS: [string, M[]][] = [
   ['Überblick', [{ k: 'store', l: 'Anbieter' }, { k: 'brandN', l: 'Marke' }, { k: 'score', l: 'Health-Score', d: 0, better: 'hi' }, { k: 'ns', l: 'Nutri-Score', get: r => r.ns && r.ns !== 'unknown' ? r.ns.toUpperCase() : null }, { k: 'nova', l: 'NOVA', get: r => (r as any).nova }]],
-  ['Preis', [{ k: 'price', l: 'Preis', d: 2, u: '€', better: 'lo' }, { k: 'size', l: 'Packungsgröße', d: 0, u: 'g' }, { k: 'p100g', l: 'Preis/100 g', d: 2, u: '€', better: 'lo' }, { k: 'eur10p', l: '€ pro 10 g Protein', d: 2, u: '€', better: 'lo' }, { k: 'pstat', l: 'Preisstand' }]],
+  ['Preis', [{ k: 'price', l: 'Preis', d: 2, u: '€', better: 'lo' }, { k: 'size', l: 'Packungsgröße', d: 0, u: 'g' }, { k: 'p100g', l: 'Preis/100 g', d: 2, u: '€', better: 'lo' }, { k: 'eur10p', l: '€ pro 10 g Protein', d: 2, u: '€', better: 'lo' }, { k: 'pstat', l: 'Preisstand', get: r => { const d = (r as any).price_date; return d ? `${r.pstat ?? ''} · ${new Date(d).toLocaleDateString('de-AT')}` : r.pstat } }]],
   ['Nährwerte je 100 g', [{ k: 'kcal', l: 'Energie', d: 0, u: 'kcal' }, { k: 'p100', l: 'Protein', d: 1, u: 'g', better: 'hi' }, { k: 'fat', l: 'Fett', d: 1, u: 'g' }, { k: 'sat', l: 'davon ges. Fettsäuren', d: 1, u: 'g', better: 'lo' }, { k: 'carbs', l: 'Kohlenhydrate', d: 1, u: 'g' }, { k: 'sugar', l: 'davon Zucker', d: 1, u: 'g', better: 'lo' }, { k: 'fib', l: 'Ballaststoffe', d: 1, u: 'g', better: 'hi' }, { k: 'salt', l: 'Salz', d: 2, u: 'g', better: 'lo' }]],
   ['Je Portion', [{ k: 'portion', l: 'Portion', d: 0, u: 'g' }, { k: 'kcalPor', l: 'Energie', d: 0, u: 'kcal' }, { k: 'protPor', l: 'Protein', d: 1, u: 'g', better: 'hi' }, { k: 'saltPor', l: 'Salz', d: 2, u: 'g', better: 'lo' }]],
   ['Bestandteile & Herkunft', [{ k: 'comp', l: 'Komponenten', get: r => [...(r.cprot || []), ...(r.cdish || [])].join(', ') || null }, { k: 'diet', l: 'Ernährung', get: r => [r.bio && 'Bio', (r.vegan || r.cprot?.includes('vegan')) && 'vegan', r.cprot?.includes('vegetarisch') && 'vegetarisch'].filter(Boolean).join(', ') || null },
@@ -35,7 +36,7 @@ export default function VergleichTabelle() {
         <tbody>{SECTIONS.map(([t, ms]) => <>{<tr key={t}><td colSpan={items.length + 1} className="bg-muted/30 px-2 py-1 text-xs font-bold uppercase tracking-wide text-muted-foreground">{t}</td></tr>}
           {ms.map(m => { const b = best(m); return <tr key={m.k} className="border-t"><td className="sticky left-0 bg-background p-2 text-xs text-muted-foreground">{m.l}{m.better && <span className="ml-1 text-[10px]">({m.better === 'hi' ? '↑' : '↓'})</span>}</td>
             {items.map(r => { const v = val(m, r); const win = b != null && v === b; return <td key={r.id} className={cn('p-2 text-center', win && 'bg-emerald-50 font-semibold text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300')}>
-              {v == null || v === '' ? <span className="text-muted-foreground">–</span> : m.k === 'score' ? <b style={{ color: scoreColor(v) }}>{fmt(v, 0)}</b> : m.k === 'store' ? <span className="inline-flex items-center gap-1"><StoreLogo store={v} size={16} />{v}</span> : typeof v === 'number' ? `${fmt(v, m.d ?? 1)}${m.u ? ' ' + m.u : ''}` : <span className="text-xs">{String(v)}</span>}
+              {v == null || v === '' ? <span className="text-muted-foreground">–</span> : m.k === 'score' ? <b style={{ color: scoreColor(v) }}>{fmt(v, 0)}</b> : m.k === 'price' ? <span className="inline-flex flex-wrap items-center justify-center gap-1">{fmt(v, 2)} €<OldPriceBadge r={r} /></span> : m.k === 'store' ? <span className="inline-flex items-center gap-1"><StoreLogo store={v} size={16} />{v}</span> : typeof v === 'number' ? `${fmt(v, m.d ?? 1)}${m.u ? ' ' + m.u : ''}` : <span className="text-xs">{String(v)}</span>}
               {win && <Trophy className="ml-1 inline size-3" />}</td> })}</tr> })}</>)}</tbody>
       </table></div>}
     <p className="text-[11px] text-muted-foreground">Zutatenlisten sind in den aktuellen Daten noch nicht enthalten („–“). Komponenten stammen aus der Kategorisierung (Protein-/Gerichtsart).</p>

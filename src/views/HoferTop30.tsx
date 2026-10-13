@@ -5,6 +5,7 @@ import { Img } from '@/components/product'
 import { useApp, fmt, scoreColor, type Row } from '@/lib'
 import { isReadyMeal, pricePerPortion, portionEstimated } from '@/app/meal'
 import { valueScore, rankOk } from '@/app/scoring'
+import { OldPriceBadge, priceAge } from '@/components/PriceAge'
 
 const MIN = 5 // Mindestanzahl bewertbarer Produkte, damit eine Kategorie angezeigt wird
 const catOf = (r: Row) => r.cdish?.[0] ?? r.cprot?.[0] ?? 'Sonstige'
@@ -17,7 +18,8 @@ export default function HoferTop30() {
   const cats = useMemo(() => { const m: Record<string, { r: Row; v: number }[]> = {}; ok.forEach(x => (m[catOf(x.r)] ??= []).push(x)); return Object.entries(m).map(([c, xs]) => [c, xs.sort((a, b) => b.v - a.v).slice(0, 30)] as const).sort((a, b) => b[1].length - a[1].length) }, [ok])
   const shown = cats.filter(([, xs]) => xs.length >= MIN), thin = cats.filter(([, xs]) => xs.length < MIN)
   const allH = D.rows.filter(r => r.store === 'Hofer' && !r.nonfood), noPrice = allH.filter(r => r.price == null).length
-  const old = ok.filter(x => x.r.pstat !== 'live 2026').length
+  const old = ok.filter(x => priceAge(x.r).old).length
+  const oldAll = allH.filter(r => priceAge(r).old).length, withPrice = allH.filter(r => r.price != null).length
   return <div className="space-y-4">
     <div><h1 className="text-xl font-bold tracking-tight">Hofer Top 30</h1><p className="text-sm text-muted-foreground">Die besten Hofer-Fertiggerichte je Kategorie nach Gesundheit pro Euro und Portion.</p></div>
     <Card className="space-y-2 p-4 text-sm shadow-none">
@@ -32,13 +34,13 @@ export default function HoferTop30() {
     </Card>
     <Card className="flex gap-2 border-amber-300 bg-amber-50 p-4 text-sm shadow-none dark:bg-amber-950/30">
       <AlertTriangle className="size-5 shrink-0 text-amber-600" />
-      <div><b>Hofer: unvollständig.</b> Insgesamt {allH.length} Hofer-Produkte, davon {noPrice} ohne Preis. {hofer.length} Hofer-{allFood ? 'Produkte' : 'Fertiggerichte'} erfasst, davon nur <b>{ok.length}</b> mit vollständigem Score, Preis und Portion{old > 0 && <> ({old} davon mit Preisstand 2025)</>}. {shown.length === 0 ? 'Für keine Kategorie reichen die Daten für ein faires Ranking – daher wird keine Rangliste angezeigt.' : `${shown.length} Kategorien erfüllen die Mindestanzahl.`} Die Hofer-Daten werden gerade ergänzt.</div>
+      <div><b>Hofer: unvollständig.</b> Insgesamt {allH.length} Hofer-Produkte, davon {noPrice} ohne Preis. <b>{withPrice ? Math.round(oldAll / withPrice * 100) : 0} % der Hofer-Preise sind älter als 2026</b> ({oldAll} von {withPrice}); im Ranking {ok.length ? Math.round(old / ok.length * 100) : 0} % ({old} von {ok.length}). {hofer.length} Hofer-{allFood ? 'Produkte' : 'Fertiggerichte'} erfasst, davon nur <b>{ok.length}</b> mit vollständigem Score, Preis und Portion. {shown.length === 0 ? 'Für keine Kategorie reichen die Daten für ein faires Ranking – daher wird keine Rangliste angezeigt.' : `${shown.length} Kategorien erfüllen die Mindestanzahl.`} Die Hofer-Daten werden gerade ergänzt.</div>
     </Card>
     <label className="flex items-center gap-1.5 text-xs text-muted-foreground"><input type="checkbox" checked={allFood} onChange={e => setAllFood(e.target.checked)} />auch normale Lebensmittel zeigen</label>
     {shown.map(([c, xs]) => <Card key={c} className="p-3 shadow-none"><h2 className="mb-2 font-semibold">{D.catIcon[c] ?? ''} {c} <Badge>{xs.length}</Badge></h2>
       <ol className="divide-y">{xs.map(({ r, v }, i) => <li key={r.id}><button onClick={() => open(r.id)} className="flex w-full items-center gap-3 py-2 text-left hover:bg-muted/50">
         <span className="w-6 text-right font-bold text-muted-foreground">{i + 1}</span><Img src={r.img} className="size-11 rounded" />
-        <span className="min-w-0 flex-1"><span className="line-clamp-1 text-sm font-medium">{r.name}</span><span className="text-xs text-muted-foreground">Score <b style={{ color: scoreColor(r.score) }}>{fmt(r.score, 0)}</b> · {fmt(pricePerPortion(r), 2)} €/Portion · {r.pstat ?? 'Preisstand unbekannt'}{portionEstimated(r) && ' · Portion geschätzt'}</span></span>
+        <span className="min-w-0 flex-1"><span className="line-clamp-1 text-sm font-medium">{r.name}</span><span className="text-xs text-muted-foreground">Score <b style={{ color: scoreColor(r.score) }}>{fmt(r.score, 0)}</b> · {fmt(pricePerPortion(r), 2)} €/Portion <OldPriceBadge r={r} className="ml-1" />{!priceAge(r).old && ` · ${r.pstat ?? 'Preisstand unbekannt'}`}{portionEstimated(r) && ' · Portion geschätzt'}</span></span>
         <span className="text-right text-sm font-bold">{fmt(v, 0)}<span className="block text-[10px] font-normal text-muted-foreground">Wert</span></span></button></li>)}</ol></Card>)}
     {thin.length > 0 && <p className="text-xs text-muted-foreground">Zu wenig Daten (nicht gerankt): {thin.map(([c, xs]) => `${c} (${xs.length})`).join(', ')}</p>}
   </div>

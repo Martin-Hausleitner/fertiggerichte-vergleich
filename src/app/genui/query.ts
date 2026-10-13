@@ -9,7 +9,7 @@ export type RowLike = {
   id: number; name: string; brand?: string; brandN?: string; store: string; herst?: string; img?: string | null; url?: string | null
   price: number | null; size: number | null; portion?: number | null; kcal: number | null; p100: number | null; sugar: number | null; salt: number | null
   fat?: number | null; score: number | null; ns?: string | null; nova?: number | null; stage: string; vegan?: boolean; bio?: boolean
-  dry?: boolean; nonfood?: boolean; incomplete?: boolean; pack?: string; psrc?: string | null; gang?: string; cprot?: string[]
+  dry?: boolean; nonfood?: boolean; incomplete?: boolean; pack?: string; psrc?: string | null; gang?: string | null; cprot?: string[]
 }
 // Fertiggericht-Regeln: EINE Quelle → src/app/meal.ts (dedupliziert)
 import { isDryish, isReadyMeal, portionG, pricePerPortion, protPerPortion, kcalPerPortion, isRankable, valueOf, passesRankMin, type ValueCfg } from '../meal.js'

@@ -14,6 +14,7 @@ import { valueScore, useCfg, rankOk } from '@/app/scoring'
 import { protPerEuro } from '@/app/meal'
 import { ONLINE } from '@/app/shops'
 import { StoreLogo } from '@/components/product'
+import { OldPriceBadge } from '@/components/PriceAge'
 import { useApp, useLocal, useHashState, fmt, fmtDist, scoreColor, type Row } from '@/lib'
 import { useNearShops } from '@/app/shops'
 
@@ -54,6 +55,7 @@ export default function Tabelle() {
     ...COLS.map(c => ({ field: c.k, headerName: c.h, width: c.w, hide: !cols.includes(c.k), pinned: c.k === 'name' && innerWidth > 640 ? 'left' as const : undefined, type: c.num ? 'numericColumn' : undefined,
       valueFormatter: c.k === 'dist' ? (p: any) => p.value == null ? '–' : `~${walkMin(p.value)} min · ${fmtDist(p.value)}` : c.d != null ? (p: any) => fmt(p.value, c.d) : undefined,
       cellRenderer: c.k === 'store' ? (p: any) => <span className="flex items-center gap-1.5"><StoreLogo store={p.value} size={16} />{p.value}</span>
+        : c.k === 'price' ? (p: any) => p.value == null ? '–' : <span className="inline-flex items-center gap-1">{fmt(p.value, 2)}<OldPriceBadge r={p.data} /></span>
         : c.k === 'score' ? (p: any) => p.value == null ? '–' : <b style={{ color: scoreColor(p.value) }}>{fmt(p.value, 0)}</b>
         : c.k === 'name' ? (p: any) => <button className="truncate text-left hover:underline" onClick={() => open(p.data.id)}>{p.value}</button> : undefined,
       comparator: c.num ? (a: any, b: any, _x: any, _y: any, desc: boolean) => a == null && b == null ? 0 : a == null ? (desc ? -1 : 1) : b == null ? (desc ? 1 : -1) : a - b : undefined })),

@@ -3,9 +3,9 @@
  *  Strukturell typisiert, damit sowohl Row als auch genui RowLike passen. Keine Imports → auch im MCP-Server nutzbar. */
 export type MealRow = {
   name: string; store: string; stage: string; price: number | null; size: number | null; score: number | null; kcal: number | null; p100: number | null
-  portion?: number | null; fat?: number | null; pack?: string; gang?: string; dry?: boolean; nonfood?: boolean; incomplete?: boolean; psrc?: string | null
+  portion?: number | null; fat?: number | null; pack?: string; gang?: string | null; dry?: boolean; nonfood?: boolean; incomplete?: boolean; psrc?: string | null
   portion_g?: number | null; kcal_meal?: number | null; meal_class?: string | null; price_status?: string | null; shop_status?: string | null
-  segment?: string | null; cprot?: string[]; cdish?: string[]; sugar?: number | null; score_parts?: Record<string, number> | null
+  segment?: string | null; component?: string | boolean | null; allergens?: string[] | null; cprot?: string[]; cdish?: string[]; sugar?: number | null; score_parts?: Record<string, number> | null
 }
 type Row = MealRow
 
@@ -18,12 +18,14 @@ const NONMEAL = /^\S+ lasagne$|lasagne (hartweizen)?$|lasagneblätter|lasagne ?t
 const SNACK = /toastk[äa]se|toast ?scheiben|toastbrot|wurstsalat|burger|baguette|sandwich|\bsub\b|wrap\b|(protein|vollkorn|) ?brote?\b|br[öo]tchen|semmel|weckerl|ramyun|ramen|noodle ?cup|cup ?noodle|nudelsnack|instant ?nudel|chapagetti|\bbistro\b|aufschnitt|k[äa]sescheiben/i
 /** Reine Protein-Komponenten ohne Beilage (TK-Fisch, Nuggets, Schnitzel) – nur wenn kein „mit …“ im Namen. */
 const COMPONENT = /fischst[äa]bchen|nuggets|knusperfilet|schlemmerfilet|backfisch|filetschnitzel|cordon bleu|chicken wings|\bwings\b|frikadellen|fleischlaberl|cevapcici|leberk[äa]se/i
-export const isComponentOnly = (r: Row) => r.meal_class !== 'light_meal' && COMPONENT.test(r.name) && !/\bmit\b|\bund\b.*(reis|p[üu]ree|kartoffel|gem[üu]se|nudel|pommes)/i.test(r.name)
+export const isComponentOnly = (r: Row) => r.component != null && r.component !== '' ? r.component !== false && r.component !== 'none' : !hasDataClass(r) && COMPONENT.test(r.name) && !/\bmit\b|\bund\b.*(reis|p[üu]ree|kartoffel|gem[üu]se|nudel|pommes)/i.test(r.name)
 const isFrozen = (r: Row) => /tiefk|\bTK\b/i.test(r.pack ?? '')
 /** Trockenware: Server-Flag ODER ≥ 300 kcal/100 g, wenig Fett und nicht tiefgekühlt. */
 export const isDryish = (r: Row) => !!r.dry || r.meal_class === 'dry' || (r.kcal != null && r.kcal >= 300 && (r.fat == null || r.fat < 10) && !isFrozen(r))
 export const isNonMeal = (r: Row) => r.gang === 'dessert' || NONMEAL.test(r.name)
-export const isSnackLike = (r: Row) => r.meal_class !== 'light_meal' && r.meal_class !== 'snack_side' && SNACK.test(r.name)
+/** Datenseitige Klassifikation (HCB) hat Vorrang; Namens-Guard nur, wenn meal_class fehlt/unknown. */
+const hasDataClass = (r: Row) => !!r.meal_class && r.meal_class !== 'unknown'
+export const isSnackLike = (r: Row) => !hasDataClass(r) && SNACK.test(r.name)
 /** Fertiggericht = meal/stew bzw. meal_class meal/light_meal/multi_portion; kein Dessert, Snack, Trockenprodukt, Meal-Kit. */
 export const isReadyMeal = (r: Row) => {
   if (r.nonfood || r.segment === 'meal_kit' || isNonMeal(r) || isSnackLike(r) || isComponentOnly(r)) return false

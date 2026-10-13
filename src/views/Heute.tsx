@@ -7,6 +7,7 @@ import { useNearShops, ONLINE, type NearShop } from '@/app/shops'
 import { openNow } from '@/app/hours'
 import { pricePerPortion, lastPriceDate } from '@/app/meal'
 import { valueScore, rankOk } from '@/app/scoring'
+import { OldPriceBadge } from '@/components/PriceAge'
 
 export default function Heute() {
   const { R, open } = useApp(); const { all, loc, deliversHere } = useNearShops(); const [maxMin, setMaxMin] = useState(10)
@@ -29,7 +30,7 @@ export default function Heute() {
       <ol className="divide-y">{top.map(({ r, pp, shop }, i) => <li key={r.id}><button onClick={() => open(r.id)} className="flex w-full items-center gap-3 py-2 text-left hover:bg-muted/50">
         <span className="w-6 text-right font-bold text-muted-foreground">{i + 1}</span><Img src={r.img} className="size-12 shrink-0 rounded" />
         <span className="min-w-0 flex-1"><span className="line-clamp-2 text-sm font-medium">{r.name}</span>
-          <span className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground"><StoreLogo store={r.store} size={14} />{shop.name}{shop.addr ? `, ${shop.addr}` : ''} · ~{shop.walkMin} min ({fmtDist(shop.d)}) · {fmt(pp, 2)} €/Portion
+          <span className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground"><StoreLogo store={r.store} size={14} />{shop.name}{shop.addr ? `, ${shop.addr}` : ''} · ~{shop.walkMin} min ({fmtDist(shop.d)}) · {fmt(pp, 2)} €/Portion <OldPriceBadge r={r} />
             <span className="rounded border px-1 text-[10px]" title="Sortiment der Kette; nicht für diese Filiale bestätigt">Kette führt es</span></span></span>
         <span className="w-24 shrink-0 sm:w-32"><ScoreBar r={r} /></span></button></li>)}</ol>
       <p className="mt-2 text-[11px] text-muted-foreground">Sortiert nach Preis-Leistung je Portion (Standard: 50 % Health-Score, 50 % Protein pro €; im Ernährungsplan einstellbar). Nur vollwertige Fertiggerichte (400–900 kcal, ≥ 20 g Protein pro Portion, Score ≥ Mindestwert) mit echtem Preis und Laden. „Kette führt es“ = im Online-Sortiment der Kette; ob die konkrete Filiale es vorrätig hat, ist nicht bestätigt.</p></Card>}
