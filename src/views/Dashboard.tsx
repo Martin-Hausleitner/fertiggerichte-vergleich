@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { Euro, Beef, Grid3x3, LayoutDashboard, Layers, Activity, PieChart, Network } from 'lucide-react'
+import { Euro, Beef, Grid3x3, LayoutDashboard, Layers, Activity, PieChart, Network, Clock } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { StoreLogo } from '@/components/product'
@@ -25,7 +25,15 @@ export default function Dashboard() {
     const brands = (() => { const m = new Map<string, number>(); rows.forEach(r => m.set(r.brandN, (m.get(r.brandN) ?? 0) + 1)); return [...m].map(([name, size]) => ({ name, size })).sort((a, b) => b.size - a.size).slice(0, 40) })()
     const ns = ['A', 'B', 'C', 'D', 'E'].map(g => rows.filter(r => String(r.ns ?? '').toUpperCase() === g).length)
     const nsTot = ns.reduce((a, b) => a + b, 0)
-    return { by, stores, stages, stack, cats, heat, brands, ns, nsTot }
+    // Preis-Aktualität: Datum aus der Preisquelle (psrc), relativ zum jüngsten Datum im Datensatz
+    const FRESH = ['≤ 1 Tag', '≤ 7 Tage', '≤ 90 Tage', 'älter', 'ohne Datum']
+    const dOf = (r: Row) => { const m = /20\d\d-\d\d-\d\d/.exec(r.psrc ?? ''); return m ? Date.parse(m[0]) : null }
+    const ref = Math.max(...rows.map(dOf).filter((x): x is number => x != null))
+    const bucket = (r: Row) => { const t = dOf(r); if (t == null) return FRESH[4]; const age = (ref - t) / 864e5; return age <= 1 ? FRESH[0] : age <= 7 ? FRESH[1] : age <= 90 ? FRESH[2] : FRESH[3] }
+    const fresh = stores.map(s => { const o: Record<string, string | number> = { name: s }; FRESH.forEach(k => { o[k] = 0 }); by.get(s)!.forEach(r => { const b = bucket(r); o[b] = (o[b] as number) + 1 }); return o })
+    const freshTot = FRESH.map(k => rows.filter(r => bucket(r) === k).length)
+    const refDate = Number.isFinite(ref) ? new Date(ref).toLocaleDateString('de-AT') : '–'
+    return { by, stores, stages, stack, cats, heat, brands, ns, nsTot, FRESH, fresh, freshTot, refDate }
   }, [rows])
   return <div className="space-y-4">
     <h2 className="flex items-center gap-2 text-xl font-bold"><LayoutDashboard className="size-5" />Dashboard</h2>
@@ -33,6 +41,7 @@ export default function Dashboard() {
       <Panel icon={Euro} title="Preisverteilung" desc="Anzahl Gerichte je Preisstufe"><AreaDist data={histogram(nums(rows, r => r.price), 30, 15)} label="Gerichte" unit="€" /></Panel>
       <Panel icon={Beef} title="€ pro 10 g Protein" desc="niedriger = günstigeres Protein"><AreaDist data={histogram(nums(rows, r => r.eur10p), 30, 3)} label="Gerichte" unit="€" color={CHART_COLORS[1]} /></Panel>
     </div>
+    <Panel icon={Clock} title="Preis-Aktualität je Laden" desc={`Alter des Preises laut Quelle, Stichtag ${d.refDate} · ${d.FRESH.map((k, i) => `${k}: ${d.freshTot[i]}`).join(' · ')}`}><StackedBars data={d.fresh} keys={d.FRESH} /></Panel>
     <Panel icon={Layers} title="Gänge je Laden" desc="gestapelt nach Fertigstufe"><StackedBars data={d.stack} keys={d.stages} /></Panel>
     <div className="grid gap-4 lg:grid-cols-[1fr_340px]">
       <Panel icon={Grid3x3} title="Heatmap: Median € / 10 g Protein" desc="Laden × Proteinquelle · dunkler = günstiger"><HeatGrid rows={d.stores} cols={d.cats} get={d.heat} fmtV={v => fmt(v, 2)} lowGood /></Panel>
