@@ -5,7 +5,7 @@ export type MealRow = {
   name: string; store: string; stage: string; price: number | null; size: number | null; score: number | null; kcal: number | null; p100: number | null
   portion?: number | null; fat?: number | null; pack?: string; gang?: string | null; dry?: boolean; nonfood?: boolean; incomplete?: boolean; psrc?: string | null
   portion_g?: number | null; kcal_meal?: number | null; meal_class?: string | null; price_status?: string | null; shop_status?: string | null
-  segment?: string | null; component?: string | boolean | null; allergens?: string[] | null; cprot?: string[]; cdish?: string[]; sugar?: number | null; score_parts?: Record<string, number> | null
+  segment?: string | null; dupOf?: number; component?: string | boolean | null; allergens?: string[] | null; cprot?: string[]; cdish?: string[]; sugar?: number | null; score_parts?: Record<string, number> | null
 }
 type Row = MealRow
 
@@ -18,7 +18,12 @@ const NONMEAL = /^\S+ lasagne$|lasagne (hartweizen)?$|lasagneblätter|lasagne ?t
 const SNACK = /toastk[äa]se|toast ?scheiben|toastbrot|wurstsalat|burger|baguette|sandwich|\bsub\b|wrap\b|(protein|vollkorn|) ?brote?\b|br[öo]tchen|semmel|weckerl|ramyun|ramen|noodle ?cup|cup ?noodle|nudelsnack|instant ?nudel|chapagetti|\bbistro\b|aufschnitt|k[äa]sescheiben/i
 /** Reine Protein-Komponenten ohne Beilage (TK-Fisch, Nuggets, Schnitzel) – nur wenn kein „mit …“ im Namen. */
 const COMPONENT = /fischst[äa]bchen|nuggets|knusperfilet|schlemmerfilet|backfisch|filetschnitzel|cordon bleu|chicken wings|\bwings\b|frikadellen|fleischlaberl|cevapcici|leberk[äa]se/i
-export const isComponentOnly = (r: Row) => r.component != null && r.component !== '' ? r.component !== false && r.component !== 'none' : !hasDataClass(r) && COMPONENT.test(r.name) && !/\bmit\b|\bund\b.*(reis|p[üu]ree|kartoffel|gem[üu]se|nudel|pommes)/i.test(r.name)
+/** Fleisch-/Ersatzprodukt-Komponenten (Sense-Check 4): Planted, Sous-vide, pures Fleisch – Komponente, solange kein Beilagenwort vorkommt. Gilt auch bei meal_class, nur ein explizites component-Feld hat Vorrang. */
+const PROTEIN_ONLY = /\bplanted\b|sous[- ]?vide|pulled (pork|chicken|beef)|h[äa]hn(chen|chen)?brust|h[üu]hnerbrust|putenbrust|hendlbrust|\bsteaks?\b|kotelett|spare ?ribs|\bribs\b|schweinsbraten$|beef jerky/i
+const SIDE_WORD = /reis|p[üu]ree|kartoffel|erd[äa]pfel|gem[üu]se|nudel|pasta|spaghetti|penne|pommes|kn[öo]del|sp[äa]tzle|bulgur|couscous|quinoa|polenta|salat|bowl|curry|wok|risotto|gnocchi|tortilla|wrap|pfanne|eintopf|suppe|sauce|so[ßs]e|bohnen|linsen|kraut|rösti|nockerl/i
+const SIDE_MIT = /\bmit\b|\bund\b.*(reis|p[üu]ree|kartoffel|gem[üu]se|nudel|pommes)/i
+export const isComponentOnly = (r: Row) => r.component != null && r.component !== '' ? r.component !== false && r.component !== 'none'
+  : (PROTEIN_ONLY.test(r.name) && !SIDE_WORD.test(r.name)) || (!hasDataClass(r) && COMPONENT.test(r.name) && !SIDE_MIT.test(r.name))
 const isFrozen = (r: Row) => /tiefk|\bTK\b/i.test(r.pack ?? '')
 /** Trockenware: Server-Flag ODER ≥ 300 kcal/100 g, wenig Fett und nicht tiefgekühlt. */
 export const isDryish = (r: Row) => !!r.dry || r.meal_class === 'dry' || (r.kcal != null && r.kcal >= 300 && (r.fat == null || r.fat < 10) && !isFrozen(r))
@@ -34,7 +39,7 @@ const hasDataClass = (r: Row) => !!r.meal_class && r.meal_class !== 'unknown'
 export const isSnackLike = (r: Row) => !hasDataClass(r) && SNACK.test(r.name)
 /** Fertiggericht = meal/stew bzw. meal_class meal/light_meal/multi_portion; kein Dessert, Snack, Trockenprodukt, Meal-Kit. */
 export const isReadyMeal = (r: Row) => {
-  if (r.nonfood || r.segment === 'meal_kit' || isNonMeal(r) || isSnackLike(r) || isComponentOnly(r)) return false
+  if (r.dupOf != null || r.nonfood || r.segment === 'meal_kit' || isNonMeal(r) || isSnackLike(r) || isComponentOnly(r)) return false
   if (r.meal_class && r.meal_class !== 'unknown') return ['meal', 'light_meal', 'multi_portion'].includes(r.meal_class) && !isDryish(r)
   return (r.stage === 'meal' || r.stage === 'stew') && !isDryish(r)
 }
@@ -83,9 +88,9 @@ export const passesLightRank = (r: Row, c: ValueCfg = {}) => isLightMeal(r) && i
 /** GTIN aus psrc (z. B. „GTIN 4260237451068“). */
 export const gtinOf = (r: { psrc?: string | null }) => (r.psrc ?? '').match(/\b(\d{13}|\d{8})\b/)?.[1] ?? null
 const completeness = (r: object) => Object.values(r).filter(v => v != null && v !== '' && !(Array.isArray(v) && !v.length)).length
-/** Dedupliziert Zeilen mit gleicher GTIN im selben Laden; behält die vollständigste. */
-export function dedupeGtin<T extends { store: string; psrc?: string | null }>(rows: T[]): T[] {
+/** Markiert Zeilen mit gleicher GTIN im selben Laden: die vollständigste bleibt, die anderen bekommen dupOf (Index bleibt stabil für topPLI/topLight). */
+export function dedupeGtin<T extends { id?: number; store: string; psrc?: string | null }>(rows: T[]): (T & { dupOf?: number })[] {
   const best = new Map<string, T>()
   for (const r of rows) { const g = gtinOf(r); if (!g) continue; const k = g + '|' + r.store, o = best.get(k); if (!o || completeness(r) > completeness(o)) best.set(k, r) }
-  return rows.filter(r => { const g = gtinOf(r); return !g || best.get(g + '|' + r.store) === r })
+  return rows.map(r => { const g = gtinOf(r), b = g ? best.get(g + '|' + r.store) : undefined; return b && b !== r ? { ...r, dupOf: b.id } : r })
 }

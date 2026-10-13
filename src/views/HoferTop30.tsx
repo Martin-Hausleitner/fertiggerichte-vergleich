@@ -20,8 +20,9 @@ export default function HoferTop30() {
   const allH = D.rows.filter(r => r.store === 'Hofer' && !r.nonfood), noPrice = allH.filter(r => r.price == null).length
   const old = ok.filter(x => priceAge(x.r).old).length
   const oldAll = allH.filter(r => priceAge(r).old).length, withPrice = allH.filter(r => r.price != null).length
+  const oldShare = oldAll, oldYear = (() => { const ys = allH.map(r => priceAge(r)).filter(a => a.old && a.year).map(a => +a.year!); return ys.length ? Math.max(...ys) : 2025 })()
   return <div className="space-y-4">
-    <div><h1 className="text-xl font-bold tracking-tight">Hofer Top 30</h1><p className="text-sm text-muted-foreground">Die besten Hofer-Fertiggerichte je Kategorie nach Gesundheit pro Euro und Portion.</p></div>
+    <div><h1 className="flex items-center gap-2 text-xl font-bold tracking-tight">Hofer Top 30 {oldShare > 0 && <span className="rounded border border-amber-400 bg-amber-50 px-1.5 py-0.5 text-xs font-medium text-amber-800 dark:bg-amber-950/40 dark:text-amber-300" data-testid="hofer-old-badge">Preise {oldYear}</span>}</h1><p className="text-sm text-muted-foreground">Die besten Hofer-Fertiggerichte je Kategorie nach Gesundheit pro Euro und Portion.</p></div>
     <Card className="space-y-2 p-4 text-sm shadow-none">
       <h2 className="flex items-center gap-1.5 font-semibold"><Info className="size-4" />Methode</h2>
       <p><b>Preis-Leistung = 50 % × Health-Score + 50 % × min(Protein pro € ÷ 20 g/€, 1) × 100</b> – dieselbe Formel wie überall in der App (Ranking, Heute, Ernährungsplan, KI-Ansicht). Protein pro € = Protein je Portion ÷ Preis je Portion. Gewichtung und Deckel sind im Ernährungsplan lokal einstellbar.</p>
