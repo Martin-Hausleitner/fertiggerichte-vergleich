@@ -46,7 +46,7 @@ export const TAB_GROUPS: TabGroup[] = [
     t('firmen', 'Firmenvergleich', Building2, lazy(() => import('@/views/Firmenvergleich'))),
     t('qualitaet', 'Hersteller-Qualität', ShieldCheck, lazy(() => import('@/views/Qualitaet'))),
     t('logos', 'Logos', Image, lazy(() => import('@/views/Logos'))),
-    t('netz', 'Netz 3D', Network, lazy(() => import('@/views/Netz3D'))),
+    t('netz', 'Netz 3D', Network, lazy(() => import('@/views/Netz3DGate'))),
     t('hersteller', 'Läden & Werke', Warehouse, lazy(() => Misc().then(m => ({ default: m.Producers })))),
   ] },
   { label: 'Explorer · Einkaufen', tabs: [
