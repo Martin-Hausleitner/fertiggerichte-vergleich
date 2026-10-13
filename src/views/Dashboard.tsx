@@ -7,6 +7,7 @@ import { AreaDist, HeatGrid, Radial, Sparkline, StackedBars, TreemapChart, histo
 import { colorOf, CHART_COLORS } from '@/components/x/palette'
 import { STAGES } from '@/components/info'
 import { ProteinValuePanel, MacroMixPanel } from '@/components/x/ProteinValue'
+import { PriceComparePanel } from '@/components/x/PriceCompare'
 import { fmt, useApp, type Row } from '@/lib'
 
 function Panel({ icon: I, title, desc, children, className }: { icon: typeof Euro; title: string; desc?: string; children: React.ReactNode; className?: string }) {
@@ -61,6 +62,7 @@ export default function Dashboard() {
       <Panel icon={Beef} title="€ pro 10 g Protein" desc="niedriger = günstigeres Protein"><AreaDist data={histogram(nums(rows, r => r.eur10p), 30, 3)} label="Gerichte" unit="€" color={CHART_COLORS[1]} /></Panel>
     </div>
     <div className="grid gap-4 xl:grid-cols-[1.4fr_1fr] [&>*]:min-w-0"><ProteinValuePanel /><MacroMixPanel /></div>
+    <PriceComparePanel />
     <Panel icon={Clock} title="Preis-Aktualität je Laden" desc={`Alter des Preises laut Quelle, Stichtag ${d.refDate} · ${d.FRESH.map((k, i) => `${k}: ${d.freshTot[i]}`).join(' · ')}`}><StackedBars data={d.fresh} keys={d.FRESH} /></Panel>
     <Panel icon={ImageIcon} title="Foto-Abdeckung je Laden" desc={`${d.photoPct} % der Gerichte haben ein Produktfoto · mit Foto: ${d.photoTot[0]} · ohne: ${d.photoTot[1]}`}><StackedBars data={d.photo} keys={d.PHOTO} /></Panel>
     <Panel icon={BadgeCheck} title="Logo-Abdeckung je Laden" desc={`${d.logoPct} % der Gerichte haben ein Markenlogo · mit Logo: ${d.logoTot[0]} · ohne: ${d.logoTot[1]}`}><StackedBars data={d.logo} keys={d.LOGO} /></Panel>
