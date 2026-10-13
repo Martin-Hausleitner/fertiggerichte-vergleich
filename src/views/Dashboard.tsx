@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { Euro, Beef, Grid3x3, LayoutDashboard, Layers, Activity, PieChart, Network, Clock, ImageIcon } from 'lucide-react'
+import { Euro, Beef, Grid3x3, LayoutDashboard, Layers, Activity, PieChart, Network, Clock, ImageIcon, BadgeCheck } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { StoreLogo } from '@/components/product'
@@ -42,7 +42,16 @@ export default function Dashboard() {
     })
     const photoTot = [rows.filter(r => !!r.img).length, rows.filter(r => !r.img).length]
     const photoPct = rows.length ? Math.round(photoTot[0] / rows.length * 100) : 0
-    return { by, stores, stages, stack, cats, heat, brands, ns, nsTot, FRESH, fresh, freshTot, refDate, PHOTO, photo, photoTot, photoPct }
+    // Logo-Abdeckung je Laden (Markenlogo am Datensatz)
+    const LOGO = ['mit Logo', 'ohne Logo']
+    const logo = stores.map(s => {
+      const rs = by.get(s)!
+      const withLogo = rs.filter(r => !!r.logo).length
+      return { name: s, 'mit Logo': withLogo, 'ohne Logo': rs.length - withLogo }
+    })
+    const logoTot = [rows.filter(r => !!r.logo).length, rows.filter(r => !r.logo).length]
+    const logoPct = rows.length ? Math.round(logoTot[0] / rows.length * 100) : 0
+    return { by, stores, stages, stack, cats, heat, brands, ns, nsTot, FRESH, fresh, freshTot, refDate, PHOTO, photo, photoTot, photoPct, LOGO, logo, logoTot, logoPct }
   }, [rows])
   return <div className="space-y-4">
     <h2 className="flex items-center gap-2 text-xl font-bold"><LayoutDashboard className="size-5" />Dashboard</h2>
@@ -52,6 +61,7 @@ export default function Dashboard() {
     </div>
     <Panel icon={Clock} title="Preis-Aktualität je Laden" desc={`Alter des Preises laut Quelle, Stichtag ${d.refDate} · ${d.FRESH.map((k, i) => `${k}: ${d.freshTot[i]}`).join(' · ')}`}><StackedBars data={d.fresh} keys={d.FRESH} /></Panel>
     <Panel icon={ImageIcon} title="Foto-Abdeckung je Laden" desc={`${d.photoPct} % der Gerichte haben ein Produktfoto · mit Foto: ${d.photoTot[0]} · ohne: ${d.photoTot[1]}`}><StackedBars data={d.photo} keys={d.PHOTO} /></Panel>
+    <Panel icon={BadgeCheck} title="Logo-Abdeckung je Laden" desc={`${d.logoPct} % der Gerichte haben ein Markenlogo · mit Logo: ${d.logoTot[0]} · ohne: ${d.logoTot[1]}`}><StackedBars data={d.logo} keys={d.LOGO} /></Panel>
     <Panel icon={Layers} title="Gänge je Laden" desc="gestapelt nach Fertigstufe"><StackedBars data={d.stack} keys={d.stages} /></Panel>
     <div className="grid gap-4 lg:grid-cols-[1fr_340px]">
       <Panel icon={Grid3x3} title="Heatmap: Median € / 10 g Protein" desc="Laden × Proteinquelle · dunkler = günstiger"><HeatGrid rows={d.stores} cols={d.cats} get={d.heat} fmtV={v => fmt(v, 2)} lowGood /></Panel>
