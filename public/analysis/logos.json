@@ -435,20 +435,24 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "Hofer private label: no logo published on hofer.at brand pages",
+  "note": "Hofer private label: no logo published on hofer.at brand pages · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
   "hq": false
  },
  "primana": {
   "slug": "primana",
   "name": "Primana",
   "brands": [
-   "Primana"
+   "Primana",
+   "PRIMANA"
   ],
   "logo_category": "Eigenmarke",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "Hofer private label: no logo published on hofer.at brand pages",
+  "file": "logos/primana.png",
+  "source": "hofer.at Produktfoto Primana Frühstücksfleisch (Aldi CDN dm.emea.cms.aldi.cx, Ausschnitt)",
+  "size": [
+   196,
+   204
+  ],
+  "note": "Vision gate 2026-10-13: Kontaktbogen geprüft (korrekte Marke, scharf) · Ausschnitt aus Packungsfoto (hofer.at Produktfoto Primana Frühstücksfleisch); Hofer veröffentlicht kein Markenlogo (hofer.at/marken/primana ohne Logo, Aldi-CDN 2026_MA_Brandpage-Logo_* 403 für alle Namensvarianten, Probe 2026-10-13)",
   "hq": false
  },
  "asia": {
@@ -461,20 +465,24 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "Hofer private label: no logo published on hofer.at brand pages",
+  "note": "Hofer private label: no logo published on hofer.at brand pages · 2026-10-13: bewusst nicht auf ASIA-GREEN-GARDEN-Logo gemappt (generischer Markenname „Asia“ würde auch Nicht-Hofer-Zeilen treffen)",
   "hq": false
  },
  "green-garden": {
   "slug": "green-garden",
-  "name": "Green Garden",
+  "name": "Asia Green Garden",
   "brands": [
+   "Asia Green Garden",
    "Green Garden"
   ],
   "logo_category": "Eigenmarke",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "Hofer private label: no logo published on hofer.at brand pages",
+  "file": "logos/asia-green-garden.png",
+  "source": "hofer.at Produktfoto Asia Green Garden Pilztopf (Aldi CDN dm.emea.cms.aldi.cx, Ausschnitt)",
+  "size": [
+   115,
+   125
+  ],
+  "note": "Vision gate 2026-10-13: Kontaktbogen geprüft (korrekte Marke, scharf) · Ausschnitt aus Packungsfoto (hofer.at Produktfoto Asia Green Garden Pilztopf); Hofer veröffentlicht kein Markenlogo (hofer.at/marken/asia-green-garden ohne Logo, Aldi-CDN 2026_MA_Brandpage-Logo_* 403 für alle Namensvarianten, Probe 2026-10-13)",
   "hq": false
  },
  "nature-s-gold": {
@@ -487,7 +495,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "Hofer private label: no logo published on hofer.at brand pages",
+  "note": "Hofer private label: no logo published on hofer.at brand pages · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
   "hq": false
  },
  "pizz-ah": {
@@ -500,7 +508,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "Hofer private label: no logo published on hofer.at brand pages",
+  "note": "Hofer private label: no logo published on hofer.at brand pages · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
   "hq": false
  },
  "leibspeis": {
@@ -513,7 +521,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "Hofer private label: no logo published on hofer.at brand pages",
+  "note": "Hofer private label: no logo published on hofer.at brand pages · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
   "hq": false
  },
  "natur-aktiv": {
@@ -526,7 +534,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "Hofer private label: no logo published on hofer.at brand pages",
+  "note": "Hofer private label: no logo published on hofer.at brand pages · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
   "hq": false
  },
  "rettenswert": {
@@ -539,7 +547,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "Hofer private label: no logo published on hofer.at brand pages",
+  "note": "Hofer private label: no logo published on hofer.at brand pages · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
   "hq": false
  },
  "wonnemeyer": {
@@ -552,7 +560,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "Hofer private label: no logo published on hofer.at brand pages",
+  "note": "Hofer private label: no logo published on hofer.at brand pages · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
   "hq": false
  },
  "chef-select": {
@@ -565,7 +573,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "Lidl private label: no official logo asset found",
+  "note": "Lidl private label: no official logo asset found · Probe 2026-10-13: Wikimedia Commons ohne Treffer; lidl.at hat keine Markenseite (nur /c/deluxe mit Foto-Banner, kein freigestelltes Logo)",
   "hq": false
  },
  "vemondo": {
@@ -578,7 +586,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "Lidl private label: no official logo asset found",
+  "note": "Lidl private label: no official logo asset found · Probe 2026-10-13: Wikimedia Commons ohne Treffer; lidl.at hat keine Markenseite (nur /c/deluxe mit Foto-Banner, kein freigestelltes Logo)",
   "hq": false
  },
  "deluxe": {
@@ -591,7 +599,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "Lidl private label: no official logo asset found",
+  "note": "Lidl private label: no official logo asset found · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
   "hq": false
  },
  "vitasia": {
@@ -604,7 +612,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "Lidl private label: no official logo asset found",
+  "note": "Lidl private label: no official logo asset found · Probe 2026-10-13: Wikimedia Commons ohne Treffer; lidl.at hat keine Markenseite (nur /c/deluxe mit Foto-Banner, kein freigestelltes Logo)",
   "hq": false
  },
  "mcennedy": {
@@ -617,7 +625,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "Lidl private label: no official logo asset found",
+  "note": "Lidl private label: no official logo asset found · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
   "hq": false
  },
  "schwaben-krone": {
@@ -630,7 +638,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "Lidl private label: no official logo asset found",
+  "note": "Lidl private label: no official logo asset found · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
   "hq": false
  },
  "select-go": {
@@ -643,7 +651,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "Lidl private label: no official logo asset found",
+  "note": "Lidl private label: no official logo asset found · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
   "hq": false
  },
  "trattoria-alfredo": {
@@ -656,7 +664,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "Lidl private label: no official logo asset found",
+  "note": "Lidl private label: no official logo asset found · Probe 2026-10-13: Wikimedia Commons ohne Treffer; lidl.at hat keine Markenseite (nur /c/deluxe mit Foto-Banner, kein freigestelltes Logo)",
   "hq": false
  },
  "kania": {
@@ -669,7 +677,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "Lidl private label: no official logo asset found",
+  "note": "Lidl private label: no official logo asset found · Probe 2026-10-13: Wikimedia Commons ohne Treffer; lidl.at hat keine Markenseite (nur /c/deluxe mit Foto-Banner, kein freigestelltes Logo)",
   "hq": false
  },
  "food-for-future": {
@@ -695,7 +703,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "no logo found",
+  "note": "no logo found · Probe 2026-10-13: Wikimedia Commons ohne Treffer; lidl.at hat keine Markenseite (nur /c/deluxe mit Foto-Banner, kein freigestelltes Logo)",
   "hq": false
  },
  "chef-menue": {
@@ -708,7 +716,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "no logo found",
+  "note": "no logo found · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
   "hq": false
  },
  "knorr": {
@@ -1510,7 +1518,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous) · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
   "hq": false
  },
  "sushitime": {
@@ -1614,7 +1622,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous) · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
   "hq": false
  },
  "lorado": {
@@ -1627,7 +1635,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous) · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
   "hq": false
  },
  "dovgan": {
@@ -1653,7 +1661,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous) · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
   "hq": false
  },
  "my-vay": {
@@ -1692,7 +1700,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous) · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
   "hq": false
  },
  "ben-fatto": {
@@ -1705,7 +1713,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous) · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
   "hq": false
  },
  "bio-natura": {
@@ -1718,7 +1726,7 @@
   "file": null,
   "source": null,
   "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous) · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
   "hq": false
  },
  "rewe-austria-fleischwaren": {
@@ -2179,6 +2187,24 @@
   "source": "https://www.zatisigroup.cz/GROUP/img/svg/logo.svg",
   "size": "svg",
   "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · Herstellerlogo Zátiší Catering Group a.s. (Prag), Koch Petr Bureš; Gurkerl/Rohlík Bistro",
+  "hq": true
+ },
+ "lotao": {
+  "slug": "lotao",
+  "name": "Lotao",
+  "brands": [
+   "Lotao",
+   "LOTAO",
+   "Lotao Green"
+  ],
+  "logo_category": "Bio",
+  "file": "logos/lotao.png",
+  "source": "https://www.lotao.com/cdn/shop/files/Lotao_Logo_2021_sw_pfade_neg.jpg?v=1654779768",
+  "size": [
+   500,
+   349
+  ],
+  "note": "Vision gate 2026-10-13: visuell geprüft (Wortmarke „lotao“ weiß auf Schwarz, scharf, kein Platzhalter) · offizielles og:image lotao.com (Lotao GmbH, Berlin)",
   "hq": true
  }
 }
