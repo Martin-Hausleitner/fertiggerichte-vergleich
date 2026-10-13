@@ -802,7 +802,10 @@
   "slug": "fit-to-go",
   "name": "Fit to Go",
   "brands": [
-   "Fit to Go"
+   "Fit to Go",
+   "fit2go.meals (Fit2go GmbH)",
+   "Fit2go",
+   "fit2go.meals"
   ],
   "logo_category": "Markenhersteller",
   "file": "logos/fit-to-go.png",
@@ -1785,7 +1788,10 @@
  "wiesbauer": {
   "slug": "wiesbauer",
   "name": "Wiesbauer österreichische Wurstspezialitäten GmbH",
-  "brands": [],
+  "brands": [
+   "Wiesbauer",
+   "Wiesbauer Gourmet"
+  ],
   "logo_category": "Produzent/Werk",
   "file": "logos/wiesbauer.png",
   "source": "https://www.wiesbauer.at/app/uploads/2025/11/logogogo.png",
@@ -1793,7 +1799,7 @@
    498,
    414
   ],
-  "note": null,
+  "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf)",
   "hq": true
  },
  "rewe-genusskueche": {
@@ -2074,6 +2080,105 @@
   "source": "https://www.nahundfrisch.at/storage//Master/nah-und-frisch-logo-solo.svg",
   "size": "svg",
   "note": "Vision gate 2026-10-13: rendered + visually checked (correct mark, legible, not cropped) · official site navbar logo",
+  "hq": true
+ },
+ "prepmymeal": {
+  "slug": "prepmymeal",
+  "name": "PrepMyMeal",
+  "brands": [
+   "PrepMyMeal",
+   "prepmymeal",
+   "Prep My Meal"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/prepmymeal.png",
+  "source": "https://prepmymeal.at/cdn/shop/files/prepmymeal-logo-schwarz.png?v=1656685360&width=800",
+  "size": [
+   800,
+   210
+  ],
+  "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · offizielles Header-Logo prepmymeal.at (Shopify)",
+  "hq": true
+ },
+ "gurkerl": {
+  "slug": "gurkerl",
+  "name": "Gurkerl",
+  "brands": [
+   "Gurkerl",
+   "gurkerl.at",
+   "Gurkerl.at"
+  ],
+  "logo_category": "Handelskette",
+  "file": "logos/gurkerl.svg",
+  "source": "https://cdn.gurkerl.at/images/company/gurkerl-logo.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · offizielles Logo (og:image gurkerl.at, cdn.gurkerl.at)",
+  "hq": true
+ },
+ "livefresh": {
+  "slug": "livefresh",
+  "name": "LiveFresh",
+  "brands": [
+   "LiveFresh",
+   "livefresh",
+   "Live Fresh"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/livefresh.png",
+  "source": "https://livefresh.at/cdn/shop/files/logo-green.webp?v=1665215065&width=600",
+  "size": [
+   293,
+   192
+  ],
+  "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · offizielles Header-Logo livefresh.at (Shopify, webp→png)",
+  "hq": true
+ },
+ "gissinger": {
+  "slug": "gissinger",
+  "name": "Josef Gissinger Wien",
+  "brands": [
+   "Gissinger",
+   "Josef Gissinger",
+   "Fleischerei Gissinger"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/gissinger.png",
+  "source": "https://gissinger.at/wp-content/uploads/2024/10/logo-ohne-rand.png",
+  "size": [
+   845,
+   1007
+  ],
+  "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · offizielles Logo gissinger.at (Fleischerei Gissinger, Wien-Ottakring)",
+  "hq": true
+ },
+ "suppito": {
+  "slug": "suppito",
+  "name": "Suppito",
+  "brands": [
+   "Suppito",
+   "SUPPITO"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/suppito.svg",
+  "source": "https://www.suppito.at/ (inline-SVG im Header a.brand)",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · offizielles Wortlogo aus dem Header von suppito.at (inline SVG extrahiert)",
+  "hq": true
+ },
+ "zatisi": {
+  "slug": "zatisi",
+  "name": "Zátiší Group",
+  "brands": [
+   "Zatisi",
+   "Zátiší",
+   "Zátiší Group",
+   "Zátiší Catering Group"
+  ],
+  "logo_category": "Produzent/Werk",
+  "file": "logos/zatisi.svg",
+  "source": "https://www.zatisigroup.cz/GROUP/img/svg/logo.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · Herstellerlogo Zátiší Catering Group a.s. (Prag), Koch Petr Bureš; Gurkerl/Rohlík Bistro",
   "hq": true
  }
 }
