@@ -1,5 +1,5 @@
 import { lazy, type ComponentType, type LazyExoticComponent } from 'react'
-import { LayoutGrid, Soup, ListOrdered, Shapes, Tag, Users, Store, HeartPulse, BarChart3, ScatterChart, Package, Factory, SearchCheck, Building2, ShieldCheck, Truck, Grid3x3, Image, Network, Warehouse, CalendarDays, Puzzle, Scale, Timer, BookOpen, type LucideIcon } from 'lucide-react'
+import { LayoutGrid, Soup, ListOrdered, Shapes, Tag, Users, Store, HeartPulse, BarChart3, ScatterChart, Package, Factory, SearchCheck, Building2, ShieldCheck, Truck, Grid3x3, Image, Network, Warehouse, CalendarDays, Puzzle, Scale, Timer, BookOpen, Database, type LucideIcon } from 'lucide-react'
 
 const Misc = () => import('@/views/Misc')
 const Charts = () => import('@/views/Charts')
@@ -42,7 +42,7 @@ export const TAB_GROUPS: TabGroup[] = [
     t('ftg', 'Fit to Go vs. Supermarkt', Scale, lazy(() => Misc().then(m => ({ default: m.Ftg })))),
     t('multipot', 'Multipot-Pro Garzeiten', Timer, lazy(() => Misc().then(m => ({ default: m.Multipot })))),
   ] },
-  { label: 'Info', tabs: [t('methodik', 'Methodik & Quellen', BookOpen, lazy(() => Misc().then(m => ({ default: m.Methodik }))))] },
+  { label: 'Info', tabs: [t('methodik', 'Methodik & Quellen', BookOpen, lazy(() => Misc().then(m => ({ default: m.Methodik })))), t('abdeckung', 'Datenabdeckung', Database, lazy(() => import('@/views/Abdeckung')))] },
 ]
 export const ALL_TABS = TAB_GROUPS.flatMap(g => g.tabs.map(tab => ({ ...tab, group: g.label })))
 export const findTab = (key: string) => ALL_TABS.find(x => x.key === key) ?? ALL_TABS[0]
