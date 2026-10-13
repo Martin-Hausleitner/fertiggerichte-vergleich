@@ -757,7 +757,9 @@
   "slug": "iglo",
   "name": "iglo",
   "brands": [
-   "iglo"
+   "iglo",
+   "Iglo",
+   "IGLO"
   ],
   "logo_category": "Markenhersteller",
   "file": "logos/iglo.png",
@@ -1458,16 +1460,18 @@
  },
  "youcook": {
   "slug": "youcook",
-  "name": "Youcook",
+  "name": "YOUCOOK",
   "brands": [
-   "Youcook"
+   "Youcook",
+   "YOUCOOK",
+   "YouCook"
   ],
   "logo_category": "Markenhersteller",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
-  "hq": false
+  "file": "logos/youcook.png",
+  "source": "https://www.youcook-food.com/wp-content/uploads/2025/11/YOUCOOK_Logo-quer-freigestellt-1.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Header-Logo youcook-food.com (YOUCOOK GmbH, Köln; schwarzer BG entfernt)",
+  "hq": true
  },
  "njami": {
   "slug": "njami",
@@ -1593,11 +1597,11 @@
    "Indomie"
   ],
   "logo_category": "Markenhersteller",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
-  "hq": false
+  "file": "logos/indomie.png",
+  "source": "https://commons.wikimedia.org/wiki/File%3AIndomie_Logo.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Wikimedia Commons (Public domain) File:Indomie Logo.png",
+  "hq": true
  },
  "blue-elephant": {
   "slug": "blue-elephant",
@@ -2837,6 +2841,196 @@
   "source": "https://www.brajlovic.at/",
   "size": "png",
   "note": "Vision gate 2026-10-13T11 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto) · offizielles Site-Icon brajlovic.at (192 px, Wix-CDN)",
+  "hq": true
+ },
+ "andros": {
+  "slug": "andros",
+  "name": "Andros",
+  "brands": [
+   "Andros"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/andros.png",
+  "source": "https://www.andros.fr/wp-content/uploads/2023/04/Andros-new-logo.svg",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo andros.fr (Andros Austria GmbH Produkte)",
+  "hq": true
+ },
+ "deflorian": {
+  "slug": "deflorian",
+  "name": "deFLORiAN",
+  "brands": [
+   "Deflorian",
+   "deFLORiAN",
+   "Deflorian S.r.l."
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/deflorian.png",
+  "source": "https://deflorian.tirol/cdn/shop/files/deFlorian_logo.svg?height=35&v=1776863303",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Header-Logo deflorian.tirol (Deflorian Tiefkühlspezialitäten, Gnadenwald; NICHT deflorian.it Interior)",
+  "hq": true
+ },
+ "aia": {
+  "slug": "aia",
+  "name": "AIA",
+  "brands": [
+   "AIA"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/aia.png",
+  "source": "https://backoffice.aiafood.com/uploads/logo_aia_7afa0707fc.svg",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo aiafood.com (AIA Agricola Italiana Alimentare S.p.A.; Veronesi)",
+  "hq": true
+ },
+ "arla": {
+  "slug": "arla",
+  "name": "Arla",
+  "brands": [
+   "Arla"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/arla.png",
+  "source": "https://www.arlafoods.de/UI/img/arla-logo.a7388293.svg",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Header-Logo arlafoods.de",
+  "hq": true
+ },
+ "thiriet": {
+  "slug": "thiriet",
+  "name": "Maison Thiriet",
+  "brands": [
+   "Thiriet",
+   "Maison Thiriet"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/thiriet.png",
+  "source": "https://static.thiriet.com/source/common_public/theme/theme_front_1/image/header/logo-maison-thiriet.svg",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Header-Logo thiriet.com",
+  "hq": true
+ },
+ "hammermuehle": {
+  "slug": "hammermuehle",
+  "name": "Hammermühle",
+  "brands": [
+   "Hammermühle",
+   "Hammermuehle"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/hammermuehle.png",
+  "source": "https://www.hammermuehle-shop.de/media/54/03/d3/1739868317/Hammermuehle-Logo_(11).svg?ts=1739868318",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo hammermuehle-shop.de (Hammermühle GmbH, glutenfrei seit 1967)",
+  "hq": true
+ },
+ "landtmanns": {
+  "slug": "landtmanns",
+  "name": "Landtmann's Original",
+  "brands": [
+   "Landtmann's",
+   "Landtmanns",
+   "Landtmann's Original"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/landtmanns.png",
+  "source": "https://landtmanns-original.at/cdn/shop/files/LMO_LOGO_RGB_23_63b5bf60-94f7-499a-8528-a685280fd3b5.png?v=1695284467",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo landtmanns-original.at (Landtmann's Feine Patisserie)",
+  "hq": true
+ },
+ "ashoka": {
+  "slug": "ashoka",
+  "name": "Ashoka",
+  "brands": [
+   "Ashoka"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/ashoka.png",
+  "source": "https://ashokafoods.com/cdn/shop/files/Layer_1.png?v=1783063203",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo ashokafoods.com (ADF Foods)",
+  "hq": true
+ },
+ "strauss": {
+  "slug": "strauss",
+  "name": "Strauss",
+  "brands": [
+   "Strauss"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/strauss.png",
+  "source": "https://www.straussjosef.it/themes/custom/whtheme/logo2025.svg",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo straussjosef.it (Strauss Josef GmbH, Südtirol Knödel)",
+  "hq": true
+ },
+ "danke-bauer": {
+  "slug": "danke-bauer",
+  "name": "Danke Bauer",
+  "brands": [
+   "Danke Bauer"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/danke-bauer.png",
+  "source": "https://dankebauer.com/wp-content/themes/danke-bauer/assets/danke-bauer-logo-v6-perf.svg",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo dankebauer.com (Kärntner Spezialitäten)",
+  "hq": true
+ },
+ "shanshi": {
+  "slug": "shanshi",
+  "name": "Shan'shi",
+  "brands": [
+   "Shan'shi",
+   "Shan shi",
+   "Shanshi"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/shanshi.png",
+  "source": "https://shan-shi.com/wp-content/uploads/2020/11/ShanShi-Logo.jpg",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo shan-shi.com",
+  "hq": true
+ },
+ "riso-gallo": {
+  "slug": "riso-gallo",
+  "name": "Riso Gallo",
+  "brands": [
+   "Riso Gallo"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/riso-gallo.png",
+  "source": "https://www.risogallo.it/cdn/shop/files/riso_gallo_logo_it.webp?v=1780040526",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Logo risogallo.it (Riso Gallo S.p.A.)",
+  "hq": true
+ },
+ "esterhazy": {
+  "slug": "esterhazy",
+  "name": "Esterhazy",
+  "brands": [
+   "Esterhazy"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/esterhazy.png",
+  "source": "https://esterhazy.at/assets/img/logo/ezy-logo-x1.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles Wortmarke esterhazy.at (Esterhazy Wild-Gerichte bei Gurkerl)",
+  "hq": true
+ },
+ "galbani": {
+  "slug": "galbani",
+  "name": "Galbani",
+  "brands": [
+   "Galbani"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/galbani.png",
+  "source": "https://commons.wikimedia.org/wiki/File%3ALogoGalbani-06122021.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T12 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Wikimedia Commons (CC BY-SA 4.0) File:LogoGalbani-06122021.png",
   "hq": true
  }
 }
