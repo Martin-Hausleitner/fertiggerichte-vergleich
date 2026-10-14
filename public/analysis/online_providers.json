@@ -1,6 +1,31 @@
 {
- "generated": "2026-10-13",
+ "generated": "2026-10-14",
  "providers": [
+  {
+   "name": "Juit",
+   "company": "Juit GmbH (HRB 42921 AG Bielefeld, USt-ID DE316648632 – VIES gültig 2026-10-14)",
+   "seat": "Lutterstraße 14, 33617 Bielefeld (DE)",
+   "producer": "eigene Küche lt. Website ('von Köchen zubereitet'); Produktionsstätte nicht veröffentlicht",
+   "delivers_linz": true,
+   "shipping": "nach AT 8,99 € (DHL Express Standard, Di/Mi/Fr lt. FAQ)",
+   "storage": "tiefgekühlt (Trockeneis); 3 Tage Kühlschrank ungeöffnet",
+   "price_from": null,
+   "products_in_app": true,
+   "products_note": "50 bestellbare Gerichte mit EAN, Gewicht, Nährwerten/100 g, Zutaten, Packshot aus dem öffentlichen Storefront-Content (cdn.juit.gmbh/content-de.json); Einzelpreise nur eingeloggt (api.juitnow.com 401) → kein Preis",
+   "store": "Online: Juit",
+   "sources": [
+    "https://www.juit.com/de",
+    "https://cdn.juit.gmbh/content-de.json",
+    "https://www.juit.com/de/impressum"
+   ],
+   "stats": {
+    "n_products": 50,
+    "median_price_eur": null,
+    "median_eur_per_10g_protein": null,
+    "best_eur_per_10g_protein": null,
+    "median_protein_pack_g": 33.9
+   }
+  },
   {
    "name": "PrepMyMeal",
    "company": "prepmymeal GmbH",

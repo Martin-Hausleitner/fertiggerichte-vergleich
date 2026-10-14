@@ -614,27 +614,29 @@
   "slug": "deluxe",
   "name": "Deluxe",
   "brands": [
-   "Deluxe"
+   "Deluxe",
+   "DELUXE"
   ],
   "logo_category": "Eigenmarke",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "Lidl private label: no official logo asset found · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
-  "hq": false
+  "file": "logos/deluxe.png",
+  "source": "https://images.openfoodfacts.org/images/products/000/002/015/9689/front_de.14.full.jpg (OFF Medaglioni Mushrooms & Truffle) — Ausschnitt Wordmark-Band",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt schwarzes Band mit weißem Kursiv-Wordmark 'Deluxe' + hellblauem Swoosh (Lidl Premium) · vorher (file-less): Lidl private label: no official logo asset found · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
+  "hq": true
  },
  "vitasia": {
   "slug": "vitasia",
   "name": "Vitasia",
   "brands": [
-   "Vitasia"
+   "Vitasia",
+   "VITASIA"
   ],
   "logo_category": "Eigenmarke",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "Lidl private label: no official logo asset found · Probe 2026-10-13: Wikimedia Commons ohne Treffer; lidl.at hat keine Markenseite (nur /c/deluxe mit Foto-Banner, kein freigestelltes Logo)",
-  "hq": false
+  "file": "logos/vitasia.png",
+  "source": "https://images.openfoodfacts.org/images/products/433/561/912/7579/front_en.11.full.jpg (OFF Lentil and Chickpea Curry) — Ausschnitt Markenbanner",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt lila Lidl-Asia-Banner 'VITASIA' + Pagoden-Icon + 'INDIAN STYLE' vom Dosenetikett · vorher (file-less): Lidl private label: no official logo asset found · Probe 2026-10-13: Wikimedia Commons ohne Treffer; lidl.at hat keine Markenseite (nur /c/deluxe mit Foto-Banner, kein freigestelltes Logo)",
+  "hq": true
  },
  "mcennedy": {
   "slug": "mcennedy",
@@ -655,14 +657,16 @@
   "slug": "schwaben-krone",
   "name": "Schwaben Krone",
   "brands": [
-   "Schwaben Krone"
+   "Schwaben Krone",
+   "SchwabenKrone",
+   "SCHWABEN KRONE"
   ],
-  "logo_category": "Eigenmarke",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "Lidl private label: no official logo asset found · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
-  "hq": false
+  "logo_category": "Markenhersteller",
+  "file": "logos/schwaben-krone.png",
+  "source": "https://images.openfoodfacts.org/images/products/407/560/039/8891/front_de.8.full.jpg (OFF Wildmaultaschen) — Ausschnitt Markenband",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt tealgrünes Band mit Kronen-Icon + weißem Script 'SchwabenKrone'; Produktname darunter entfernt · vorher (file-less): Lidl private label: no official logo asset found · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
+  "hq": true
  },
  "select-go": {
   "slug": "select-go",
@@ -1570,27 +1574,32 @@
   "slug": "muehlen",
   "name": "Mühlen",
   "brands": [
-   "Mühlen"
+   "Mühlen",
+   "Rügenwalder Mühle",
+   "Rügenwalder",
+   "Ruegenwalder Mühle"
   ],
   "logo_category": "Markenhersteller",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous) · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
-  "hq": false
+  "file": "logos/muehlen.png",
+  "source": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-323146-1399185890-gMYl8TcU.jpg (BILLA Vegane Mühlen Cordon Bleu) — Ausschnitt Windmühlen-Icon + Wordmark",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt Rügenwalder-Mühle-Icon (Wurst-Flügel, 1834) + weißes 'MÜHLEN'-Wordmark; Brand in products.csv = 'Mühlen' · vorher (file-less): no verified official logo found (site missing, parked, captcha or ambiguous) · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
+  "hq": true
  },
  "sushitime": {
   "slug": "sushitime",
   "name": "Sushitime",
   "brands": [
-   "Sushitime"
+   "Sushitime",
+   "sushitime",
+   "Sushi Time"
   ],
   "logo_category": "Markenhersteller",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
-  "hq": false
+  "file": "logos/sushitime.png",
+  "source": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-731600-0165537535-Dts1bHw3.jpg (BILLA Lachs Picknick) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt 'sushi'(schwarz)+'time'(rot) mit Chopstick/Sushi-Kreis-Icon auf hellgrünem Muster · vorher (file-less): no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "hq": true
  },
  "pop-up": {
   "slug": "pop-up",
@@ -1609,14 +1618,16 @@
   "slug": "franui",
   "name": "franuí",
   "brands": [
-   "franuí"
+   "franuí",
+   "franui",
+   "Franui"
   ],
   "logo_category": "Markenhersteller",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
-  "hq": false
+  "file": "logos/franui.png",
+  "source": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-895905-0112815057-XPoOinJA.jpg (BILLA franuí Raspberry) — Ausschnitt Deckel-Wordmark",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt Deckel-Wordmark 'franuí' (dunkles Rot auf dusty-rose) + 'RECIPE FROM PATAGONIA' / 'PINK' · vorher (file-less): no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "hq": true
  },
  "ablinger": {
   "slug": "ablinger",
@@ -1687,14 +1698,15 @@
   "slug": "lorado",
   "name": "Lorado",
   "brands": [
-   "Lorado"
+   "Lorado",
+   "LORADO"
   ],
-  "logo_category": "Markenhersteller",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous) · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
-  "hq": false
+  "logo_category": "Eigenmarke",
+  "file": "logos/lorado.png",
+  "source": "https://www.interspar.at/media/a5/37/b5/1789340689/A_2020004338648_HB.jpg (Interspar Lorado Ravioli) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt rotes Blatt-Banner 'Lorado' / 'Qualität' auf grüner Dose; Dose-Rand teilweise sichtbar · vorher (file-less): no verified official logo found (site missing, parked, captcha or ambiguous) · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
+  "hq": true
  },
  "dovgan": {
   "slug": "dovgan",
@@ -1740,27 +1752,29 @@
   "slug": "auinger",
   "name": "Auinger",
   "brands": [
-   "Auinger"
+   "Auinger",
+   "AUINGER"
   ],
   "logo_category": "Markenhersteller",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
-  "hq": false
+  "file": "logos/auinger.png",
+  "source": "https://images.openfoodfacts.org/images/products/912/000/449/0049/front_de.4.full.jpg (OFF Klare Suppe) — Ausschnitt Oval-Badge",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt gelbes Oval 'Auinger' (grüne Schreibschrift, roter Schatten, Weiß/Schwarz-Rand) · vorher (file-less): no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "hq": true
  },
  "flotte-lotte": {
   "slug": "flotte-lotte",
   "name": "Flotte Lotte",
   "brands": [
-   "Flotte Lotte"
+   "Flotte Lotte",
+   "FLOTTE LOTTE"
   ],
   "logo_category": "Markenhersteller",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous) · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
-  "hq": false
+  "file": "logos/flotte-lotte.png",
+  "source": "https://images.openfoodfacts.org/images/products/912/011/349/1784/front_de.8.full.jpg (OFF Fenchel Kartoffel Suppe) — Ausschnitt Wordmark",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt 'FLOTTE LOTTE' (O als Apfel mit Blatt) + Slogan-Zeile vom Glas-Etikett · vorher (file-less): no verified official logo found (site missing, parked, captcha or ambiguous) · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
+  "hq": true
  },
  "ben-fatto": {
   "slug": "ben-fatto",
@@ -3833,5 +3847,295 @@
   "size": "png",
   "note": "Vision gate 2026-10-14T0106 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt 'SCHENKEL'-Wordmark (weiß auf violettem Band mit Goldkanten) vom Glas-Etikett, unverändert bis auf Zuschnitt/Verkleinerung 900 px",
   "hq": true
+ },
+ "henglein": {
+  "slug": "henglein",
+  "name": "Henglein",
+  "brands": [
+   "Henglein",
+   "HENGLEIN"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/henglein.png",
+  "source": "https://www.henglein.de/wp-content/uploads/2024/01/Henglein_Logo_waagrecht.svg (robots Allow /; Disallow only wpo-plugins-tables-list.json)",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Offizielles Logo von henglein.de (SVG→PNG via cairosvg, schwarze Flächen auf Weiß, Slogan 'Schmeckt wie selbstgemacht' belassen); bestätigt gegen MPreis Packshot Schupfnudeln EAN 4001163000599",
+  "hq": true
+ },
+ "rebel-meat": {
+  "slug": "rebel-meat",
+  "name": "Rebel Meat",
+  "brands": [
+   "Rebel Meat",
+   "REBEL MEAT",
+   "Rebel Kids"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/rebel-meat.png",
+  "source": "https://static.wixstatic.com/media/5d34d3_050cf047bf554c238092f01e9eede5a4~mv2.png (rebel-meat.com robots Allow /)",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Offizielles Wordmark von rebel-meat.com (Wix CDN, Voll-PNG ohne Fill-Transform): 'Rebel' Brush-Script + 'MEAT' Block; Weiß-auf-Schwarz → Schwarz-auf-Weiß für UI; bestätigt gegen BILLA Packshot Rebel Kids Bio Hühner-Nuggets",
+  "hq": true
+ },
+ "just-veg": {
+  "slug": "just-veg",
+  "name": "Just Veg!",
+  "brands": [
+   "Just Veg!",
+   "Just Veg",
+   "JUST VEG!"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/just-veg.png",
+  "source": "https://images.openfoodfacts.org/images/products/406/146/301/2364/front_en.4.full.jpg (OFF Pizza Toona, GTIN 4061463012364) — Ausschnitt Marken-Badge",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt limettengrünes Schild 'Just Veg!' (dunkelgrünes Wordmark) auf Blattadern-Hintergrund; unverändert bis auf Zuschnitt",
+  "hq": true
+ },
+ "findus": {
+  "slug": "findus",
+  "name": "Findus",
+  "brands": [
+   "Findus",
+   "FINDUS"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/findus.png",
+  "source": "https://images.openfoodfacts.org/images/products/905/481/822/5323/front_en.3.full.jpg (OFF Zuppa del Casale) — Ausschnitt rotes Findus-Banner",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt klassisches Findus-Flaggenlogo (weiß auf rot) vom TK-Beutel; Quelle niedrigauflösend, ×Lanczos — weich, aber lesbar",
+  "hq": true
+ },
+ "diamond": {
+  "slug": "diamond",
+  "name": "Diamond",
+  "brands": [
+   "Diamond",
+   "DIAMOND"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/diamond.png",
+  "source": "https://cdn.gurkerl.at/images/grocery/products/31821/31821-1704787131028.jpg (Gurkerl Mini-Frühlingsrollen Tsingtao) — Ausschnitt Markenbanner",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt rotes Banner 'Diamond' (weiße Schreibschrift, Goldkante) auf dunkelgrünem Karton",
+  "hq": true
+ },
+ "harvest-moon": {
+  "slug": "harvest-moon",
+  "name": "Harvest Moon",
+  "brands": [
+   "Harvest Moon",
+   "HARVEST MOON",
+   "Harvest"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/harvest-moon.png",
+  "source": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-876568-162362339-AUslsecq.jpg (BILLA Harvest Moon Chocolate & salted Caramel) — Ausschnitt Mond-Badge",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt weißes Mond-Kreis-Badge 'HARVEST MOON' (schwarz gestapelt) auf mahagonifarbenem Sleeve",
+  "hq": true
+ },
+ "yopokki": {
+  "slug": "yopokki",
+  "name": "Yopokki",
+  "brands": [
+   "Yopokki",
+   "YOPOKKI",
+   "요뽀끼"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/yopokki.png",
+  "source": "https://cdn.gurkerl.at/images/grocery/products/38273/38273-1738164067006.jpg (Gurkerl Instant Topokki Kimchi) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt zentrales YOPOKKI-Lockup (roter Topf-Outline + koreanisch + lateinisch); Young-Poong-Parent-Badge nicht als eigener Brand-Eintrag",
+  "hq": true
+ },
+ "pan": {
+  "slug": "pan",
+  "name": "Pan",
+  "brands": [
+   "Pan",
+   "PAN",
+   "Pan Südtiroler"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/pan.png",
+  "source": "https://res.cloudinary.com/dit8huoga/image/upload/v1768841982/api/803545_angle.jpg (MPreis Pan Südtiroler Topfenstrudel, EAN 8000460011174) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt rotes Squircle 'Pan' (weiße Schreibschrift) auf Holzmaserung",
+  "hq": true
+ },
+ "spar-bbq": {
+  "slug": "spar-bbq",
+  "name": "SPAR BBQ",
+  "brands": [
+   "SPAR BBQ",
+   "Spar BBQ",
+   "SPAR BBQ Grill"
+  ],
+  "logo_category": "Eigenmarke",
+  "file": "logos/spar-bbq.png",
+  "source": "https://cdn1.interspar.at/cachableservlets/articleImage.dam/at/2020001842452/dt_zoom.jpg (Interspar Grill-Gemüse-Trilogie) — Ausschnitt Sub-Brand-Lockup",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt eigenständiges Sub-Brand-Lockup 'BBQ' (weißes Sketch-Wordmark) + SPAR-Logo auf schwarzem Beutel — nicht nur Kettenlogo",
+  "hq": true
+ },
+ "thai-delight": {
+  "slug": "thai-delight",
+  "name": "Thai Delight",
+  "brands": [
+   "Thai Delight",
+   "THAI DELIGHT"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/thai-delight.png",
+  "source": "https://cdn.gurkerl.at/images/grocery/products/38498/38498-1738673865144.jpg (Gurkerl Hokkien Noodles) — Ausschnitt Marken-Crest",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt cremefarbener Thai-Delight-Crest (Elefant-Icon + Wordmark) vom Karton",
+  "hq": true
+ },
+ "dozz": {
+  "slug": "dozz",
+  "name": "Dozz",
+  "brands": [
+   "Dozz",
+   "DOZZ"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/dozz.png",
+  "source": "https://res.cloudinary.com/dit8huoga/image/upload/v1783731750/api/585631_angle.png (MPreis Dozz Spinatsuppe, EAN 5941905400814) — Ausschnitt Wordmark",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt weißes 'DOZZ'-Serif-Wordmark auf mintgrünem Dosenband",
+  "hq": true
+ },
+ "hildegard-gruenkraft": {
+  "slug": "hildegard-gruenkraft",
+  "name": "Hildegard Grünkraft",
+  "brands": [
+   "Hildegard Grünkraft",
+   "HILDEGARD GRÜNKRAFT"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/hildegard-gruenkraft.png",
+  "source": "https://products.dm-static.com/images/f_auto,q_auto,c_fit,h_1200,w_1200/v1747539433/assets/pas/images/2575ab79-d644-46e2-8cd4-3bb91c86a091/hildegard-gruenkraft-suppe-bio-fasten (dm Bio Fasten Suppe) — Ausschnitt Marken-Badge",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt dunkelgrünes Badge 'HILDEGARD GRÜNKRAFT' + Hildegard-Profilillustration vom Becher",
+  "hq": true
+ },
+ "deliciosu": {
+  "slug": "deliciosu",
+  "name": "Deliciosu",
+  "brands": [
+   "Deliciosu",
+   "DELICIOSU"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/deliciosu.png",
+  "source": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-763125-0195716755-SCIoaKQJ.jpg (BILLA Deliciosu Poké Bowl Lachs) — Ausschnitt Deckel-Logo",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt rundes Deckel-Logo 'Deliciosu' (weiß serif auf blau, Hummer-Icon)",
+  "hq": true
+ },
+ "alpenstrudel": {
+  "slug": "alpenstrudel",
+  "name": "Alpenstrudel",
+  "brands": [
+   "Alpenstrudel",
+   "Alpen Strudel",
+   "Alpenstrudel delle Alpi"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/alpenstrudel.png",
+  "source": "https://res.cloudinary.com/dit8huoga/image/upload/v1768841976/api/813093_angle.jpg (MPreis Südtiroler Apfelstrudel, EAN 8000460010207) — Ausschnitt Wordmark",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt 'Alpen' + Script 'Strudel' + Berg-Icon + 'delle Alpi' auf Jute-Hintergrund",
+  "hq": true
+ },
+ "ich-bin-oesterreich": {
+  "slug": "ich-bin-oesterreich",
+  "name": "Ich bin Österreich",
+  "brands": [
+   "Ich bin Österreich",
+   "Ich bin ÖSTERREICH"
+  ],
+  "logo_category": "Eigenmarke",
+  "file": "logos/ich-bin-oesterreich.png",
+  "source": "https://images.cdn.europe-west1.gcp.commercetools.com/787b77ab-692c-4e25-91f4-697690dc3c7c/78-790129-2110285495-Yqixh0-3.jpg (Penny Wiener Schnitzel) — Ausschnitt Holzschild-Badge",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt Holzschild 'Ich bin / ÖSTERREICH' mit Österreich-Flaggenband auf orange",
+  "hq": true
+ },
+ "big-snack": {
+  "slug": "big-snack",
+  "name": "Big Snack",
+  "brands": [
+   "Big Snack",
+   "BIG SNACK"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/big-snack.png",
+  "source": "https://res.cloudinary.com/dit8huoga/image/upload/v1779633301/api/80368_angle.jpg (MPreis Cheeseburger 2er, EAN 9002931030737) — Ausschnitt Markenbadge",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt 'Big Snack'-Badge (rote Schreibschrift in weißem Wolken-Oval + Liberty-Emblem)",
+  "hq": true
+ },
+ "ocean-sea": {
+  "slug": "ocean-sea",
+  "name": "Ocean Sea",
+  "brands": [
+   "Ocean Sea",
+   "OCEAN SEA",
+   "ocean sea"
+  ],
+  "logo_category": "Eigenmarke",
+  "file": "logos/ocean-sea.png",
+  "source": "Lidl imgproxy 427×320 Fish & Chips packshot (products.csv image_url; größere /w:1500 Rendition 403 — nicht umgangen) — Ausschnitt rotes Kreislogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt rotes Kreislogo 'ocean sea' + Fisch-Icon; Quelle klein, ×Lanczos — weich, aber lesbar",
+  "hq": true
+ },
+ "arteoliva": {
+  "slug": "arteoliva",
+  "name": "Arteoliva",
+  "brands": [
+   "Arteoliva",
+   "ARTEOLIVA"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/arteoliva.png",
+  "source": "https://res.cloudinary.com/dit8huoga/image/upload/v1779630025/api/186837_angle.jpg (MPreis Arteoliva Gazpacho Andaluz, EAN 8437001133147) — Ausschnitt Markenlockup",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt Kreis-'A' + 'ARTEOLIVA' + Slogan 'arte en la cocina'; arteoliva.com robots Disallow: / für * — daher Pack-Crop",
+  "hq": true
+ },
+ "penny-ready": {
+  "slug": "penny-ready",
+  "name": "Penny Ready",
+  "brands": [
+   "Penny Ready",
+   "PENNY READY",
+   "PennyReady"
+  ],
+  "logo_category": "Eigenmarke",
+  "file": "logos/penny-ready.png",
+  "source": "https://images.openfoodfacts.org/images/products/433/725/637/2008/front_de.6.full.jpg (OFF Lasagne alla Bolognese) — Ausschnitt Wordmark",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0136 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt blaues 'PENNY READY'-Wordmark auf Kartontextur; leicht angeschnitten, aber lesbar",
+  "hq": true
+ },
+ "juit": {
+  "slug": "juit",
+  "name": "Juit",
+  "brands": [
+   "Juit",
+   "JUIT",
+   "Juit GmbH"
+  ],
+  "logo_category": "Online-Mealprep",
+  "file": "logos/juit.svg",
+  "source": "https://www.juit.com/favicon/transparent.svg",
+  "size": "svg",
+  "hq": true,
+  "note": "Vision gate 2026-10-14T0202 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles juit.com Favicon-SVG = JUIT-Wordmark (#1C1C1C), Pfade unverändert, nur viewBox auf die Wortmarke zugeschnitten"
  }
 }
