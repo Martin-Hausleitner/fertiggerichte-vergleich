@@ -10,10 +10,10 @@ L=/tmp/fertig_deploy.last; if [ -f $L ]; then d=$(( $(date +%s) - $(cat $L) )); 
 trap 'date +%s > /tmp/fertig_deploy.last' EXIT
 cd /workspace/fertig-app
 git fetch -q origin; git fetch -q servas || true
-git merge -q --ff-only origin/main
-SHA=$(git rev-parse --short HEAD); echo "target $SHA"
+# Build origin/main directly (the shared checkout may hold others' uncommitted work; never touch it).
+TARGET=$(git rev-parse origin/main); SHA=$(git rev-parse --short $TARGET); echo "target $SHA"
 for i in $(seq 1 $((WAIT_MIN*4))); do LD=$(cut -d' ' -f1 /proc/loadavg); A=$(free -m | awk '/Mem:/{print $7}'); [ ${LD%.*} -lt 50 ] && [ $A -ge $MIN_RAM_MB ] && { echo "resources ok load=$LD avail=${A}MB"; break; }; [ $i = $((WAIT_MIN*4)) ] && { echo "RESOURCES NOT OK load=$LD avail=$A"; exit 3; }; sleep 15; done
-W=/tmp/fertig-publish-$SHA; rm -rf $W; git worktree prune; git worktree add -q --detach $W HEAD
+W=/tmp/fertig-publish-$SHA; rm -rf $W; git worktree prune; git worktree add -q --detach $W $TARGET
 trap 'date +%s > /tmp/fertig_deploy.last; git -C /workspace/fertig-app worktree remove --force '$W' 2>/dev/null || true' EXIT
 ln -s /workspace/fertig-app/node_modules $W/node_modules
 ROWS=$(node -e "console.log(require('$W/public/data.json').rows.length)")
@@ -21,8 +21,7 @@ LIVE=$(curl -s --max-time 30 "https://martin-hausleitner.github.io/fertiggericht
 echo "rows repo=$ROWS live=$LIVE"; [ "$ROWS" -ge "$LIVE" ] || { echo "ROWCOUNT would drop"; exit 4; }
 (cd $W && npm run build >/tmp/build.log 2>&1) || { tail -20 /tmp/build.log; exit 1; }; echo "build ok"
 if [ -n "$RANK_CHECK" ]; then DIST=$W/dist node "$RANK_CHECK" > /tmp/rank_check.log 2>&1 || { tail -20 /tmp/rank_check.log; exit 6; }; echo "rank check ok"; fi
-git push -q origin HEAD:main && echo "origin main ok"
-(git push -q servas HEAD:main && echo "servas main ok") || echo "servas main push failed"
+(git push -q servas $TARGET:refs/heads/main && echo "servas main = $SHA") || echo "servas main push failed (non-ff? not forced)"
 rm -rf /tmp/ghp && git clone -q --depth 1 -b gh-pages https://github.com/Martin-Hausleitner/fertiggerichte-vergleich.git /tmp/ghp 2>/dev/null && cp -n /tmp/ghp/assets/* $W/dist/assets/ 2>/dev/null; cd $W/dist && touch .nojekyll && rm -rf .git && git init -q -b gh-pages && git add -A && git -c user.name="Martin Hausleitner" -c user.email="Martin-Hausleitner@users.noreply.github.com" commit -qm "deploy $SHA" && git push -q -f https://github.com/Martin-Hausleitner/fertiggerichte-vergleich.git gh-pages && echo "martin gh-pages ok"
 ( git push -q -f https://github.com/servas-ai/fertiggerichte-vergleich.git gh-pages && echo 'servas gh-pages ok' ) || echo 'servas gh-pages push failed'
 echo "deployed $SHA gh-pages=$(git rev-parse --short HEAD) bundle=$(grep -o 'index-[A-Za-z0-9_-]*\.js' index.html)"
