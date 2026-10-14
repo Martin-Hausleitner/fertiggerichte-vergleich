@@ -5,7 +5,7 @@ export type MealRow = {
   name: string; store: string; stage: string; price: number | null; size: number | null; score: number | null; kcal: number | null; p100: number | null
   portion?: number | null; fat?: number | null; pack?: string; gang?: string | null; dry?: boolean; nonfood?: boolean; incomplete?: boolean; psrc?: string | null
   portion_g?: number | null; kcal_meal?: number | null; meal_class?: string | null; price_status?: string | null; shop_status?: string | null
-  segment?: string | null; dupOf?: number; component?: string | boolean | null; allergens?: string[] | null; cprot?: string[]; cdish?: string[]; sugar?: number | null; score_parts?: Record<string, number> | null
+  segment?: string | null; brand?: string | null; dupOf?: number; component?: string | boolean | null; allergens?: string[] | null; cprot?: string[]; cdish?: string[]; sugar?: number | null; score_parts?: Record<string, number> | null
 }
 type Row = MealRow
 
@@ -32,7 +32,8 @@ const SEASONING = /\bfix\b|basis[- ]?fix|knorr basis|maggi (fix|idee|basis)|boui
 const BABY = /\bhipp\b|ab dem \d+\. ?(lebens)?(jahr|monat)|nach dem \d+\. monat|babynahrung|kindermen[üu]|\bbaby\b|beikost|alete|bebivita/i
 /** Bistro-Baguettes: Snack, auch wenn die Daten sie als Mahlzeit führen. */
 const BAGUETTE = /\bbistro\b|baguette/i
-export const isBabyFood = (r: Row) => r.segment === 'baby' || BABY.test(r.name)
+const BABY_BRAND = /\b(hipp|alete|bebivita|beba|aptamil|babylove|freche freunde)\b/i
+export const isBabyFood = (r: Row) => r.segment === 'baby' || r.segment === 'baby_food' || r.meal_class === 'baby' || BABY.test(r.name) || BABY_BRAND.test(r.brand ?? '')
 export const isNonMeal = (r: Row) => r.gang === 'dessert' || r.meal_class === 'dessert' || r.meal_class === 'dry' || NONMEAL.test(r.name) || SEASONING.test(r.name) || isBabyFood(r) || BAGUETTE.test(r.name)
 /** Datenseitige Klassifikation (HCB) hat Vorrang; Namens-Guard nur, wenn meal_class fehlt/unknown. */
 const hasDataClass = (r: Row) => !!r.meal_class && r.meal_class !== 'unknown'
