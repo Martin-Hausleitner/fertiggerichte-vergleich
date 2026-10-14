@@ -4234,5 +4234,38 @@
   "size": "svg",
   "note": "Vision gate 2026-10-14T0404 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Beyond-Meat-Wordmark 2022 (schwarz) von Wikimedia Commons, unverändert; Lizenz laut Commons: Public domain (Text-Logo)",
   "hq": true
+ },
+ "loewenanteil": {
+  "slug": "loewenanteil",
+  "name": "Löwenanteil",
+  "brands": [
+   "Löwenanteil",
+   "Loewenanteil",
+   "LÖWENANTEIL",
+   "Online: Löwenanteil",
+   "Löwenanteil GmbH"
+  ],
+  "logo_category": "Online Meal-Prep",
+  "file": "logos/loewenanteil.png",
+  "source": "https://www.loewenanteil.com/cdn/shop/files/LowenanteilLogo1.png?v=1613610178 (Header-Logo des öffentlichen Shops; robots Allow product/CDN assets)",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0441 (Daten-Squad): visuell geprüft (korrekte Marke LÖWENANTEIL + Löwen-Siegel + Slogan 'JETZT BIN ICH SATT', lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Offizielles Rundsiegel-Logo (Löwenkopf + Krone, ESTD 2017, Slogan 'JETZT BIN ICH SATT') vom Shop-CDN, unverändert 1208×1208 RGBA; Betreiber Löwenanteil GmbH Oldenburg HRB 212808",
+  "hq": true
+ },
+ "kernbeisser": {
+  "slug": "kernbeisser",
+  "name": "Kernbeißer",
+  "brands": [
+   "Kernbeißer",
+   "Kernbeisser",
+   "kernbeißer",
+   "Online: Kernbeißer",
+   "Kernbeißer OG"
+  ],
+  "logo_category": "Online Meal-Prep",
+  "file": "logos/kernbeisser.png",
+  "source": "https://kernbeisser.at/wp-content/uploads/2024/04/logo-kernbeisser-2024-schwarz.png (offizielles Logo lt. schema.org Organization.logo der öffentlichen Website; robots erlaubt /wp-content/uploads/)",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0504 (Daten-Squad): visuell geprüft (korrekter Schriftzug 'kernbeißer' in Handschrift-Script, schwarz auf transparent, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar; auf dunklem Hintergrund schwach – Schwarzmarke) · unverändert 1398×286 RGBA; Betreiber Kernbeißer OG Wien FN 622470y"
  }
 }
