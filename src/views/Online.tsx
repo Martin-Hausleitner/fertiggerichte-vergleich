@@ -1,10 +1,11 @@
+import { LOGIN_ONLY_PRICE } from '@/app/shops'
 import { useEffect, useMemo, useState } from 'react'
 import { Truck, Check, X, ExternalLink } from 'lucide-react'
 import { Card, Badge, Button } from '../components/ui'
 import { Img } from '../components/product'
 import { useApp, fmt, cn } from '../lib'
 type Pv={name:string;company:string;seat?:string;producer?:string;delivers_linz:boolean|null;shipping?:string|null;storage?:string;packaging?:string;price_from?:string|null;products_note?:string;store:string;sources:string[];stats:any}
-const ONL=['PrepMyMeal','LiveFresh','Fit to Go','FitTaste']
+const ONL=['PrepMyMeal','LiveFresh','Fit to Go','FitTaste','Juit','bofrost']
 const isOn=(s:string)=>ONL.includes(s)||s?.startsWith('Online')
 const nm=(s:string)=>s.replace('Online: ','')
 export default function Online(){
@@ -30,8 +31,8 @@ export default function Online(){
     <Card className="divide-y divide-border/70">{rows.map(r=><button key={r.id} onClick={()=>open(r.id)} className="w-full text-left flex items-center gap-3 px-3 py-2 hover:bg-muted/40">
       <div className="w-12 h-12 shrink-0 rounded-lg overflow-hidden bg-muted">{r.img&&<Img src={r.img} className="w-full h-full object-cover"/>}</div>
       <div className="flex-1 min-w-0"><div className="font-medium text-sm truncate">{r.name}</div><div className="text-xs text-muted-foreground">{r.store.replace('Online: ','')} · {fmt(r.size,0)} g · {fmt(r.kcalpack,0)} kcal</div></div>
-      <div className="text-right text-sm tabular-nums w-20"><div className="font-bold">{fmt(r.price,2)} €</div><div className="text-[11px] text-muted-foreground">{fmt(r.protpack,0)} g P.</div></div>
-      <Badge className="bg-accent text-accent-foreground tabular-nums w-20 justify-center">{fmt(r.eur10p,2)} €/10g</Badge>
+      <div className="text-right text-sm tabular-nums w-20">{r.price==null&&LOGIN_ONLY_PRICE.includes(r.store)?<div className="text-[11px] text-muted-foreground leading-tight" data-testid="login-only">Preis nur nach Login</div>:<div className="font-bold">{fmt(r.price,2)} €</div>}<div className="text-[11px] text-muted-foreground">{fmt(r.protpack,0)} g P.</div></div>
+      <Badge className="bg-accent text-accent-foreground tabular-nums w-20 justify-center">{r.eur10p==null?'–':`${fmt(r.eur10p,2)} €/10g`}</Badge>
     </button>)}</Card>
     {d&&<p className="text-xs text-muted-foreground">{d.not_found_de}</p>}
   </div>
