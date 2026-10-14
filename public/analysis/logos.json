@@ -554,14 +554,15 @@
   "slug": "rettenswert",
   "name": "Rettenswert",
   "brands": [
-   "Rettenswert"
+   "Rettenswert",
+   "Rettenswert von Unverschwendet"
   ],
   "logo_category": "Eigenmarke",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "Hofer private label: no logo published on hofer.at brand pages · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
-  "hq": false
+  "file": "logos/rettenswert.png",
+  "source": "OFF packshot GTIN 4061463369697 front_de.6.full (Rettenswert Curry Bowl Linsen & Mandeln, 2222x4060) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0006 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt Hofer-Eigenmarke Rettenswert (dunkles Handschrift-Wordmark + 'VON UNVERSCHWENDET' auf hellem Glas-Etikett); Aldi-CDN nicht erneut geprobt (T09 403) · vorher (file-less): Hofer private label: no logo published on hofer.at brand pages · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
+  "hq": true
  },
  "wonnemeyer": {
   "slug": "wonnemeyer",
@@ -714,14 +715,15 @@
   "slug": "delikatessa",
   "name": "Delikatessa",
   "brands": [
-   "Delikatessa"
+   "Delikatessa",
+   "Delikatessa (Penny)"
   ],
   "logo_category": "Eigenmarke",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no logo found · Probe 2026-10-13: Wikimedia Commons ohne Treffer; lidl.at hat keine Markenseite (nur /c/deluxe mit Foto-Banner, kein freigestelltes Logo)",
-  "hq": false
+  "file": "logos/delikatessa.png",
+  "source": "Penny commercetools packshot (images.cdn.europe-west1.gcp.commercetools.com/787b77ab-…/78-107318-1907479627-eMBE3-2y.jpg, penny.at/produkte/knoedel-78107318, Delikatessa Wurstknödel 10 Stück) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0006 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt Penny-Eigenmarke Delikatessa (grünes Wordmark mit Swoosh + 'exklusiv bei PENNY.' auf weißem Badge); Quelle 1400x1400, Crop 276x130 ×1.5 + weißer Rand · vorher (file-less): no logo found · Probe 2026-10-13: Wikimedia Commons ohne Treffer; lidl.at hat keine Markenseite (nur /c/deluxe mit Foto-Banner, kein freigestelltes Logo)",
+  "hq": true
  },
  "chef-menue": {
   "slug": "chef-menue",
@@ -3694,6 +3696,37 @@
   "source": "Gurkerl CDN packshot Leitgeb´s Vegetarischer Nudelteller (cdn.gurkerl.at …/40027-1741767351370.jpg, GTIN 9120071330248) — Ausschnitt Etikett-Sticker",
   "size": "png",
   "note": "Vision gate 2026-10-13T2340 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt gelber Leitgeb's-Sticker (Handgemachte Nudeln + Nudel-Maskottchen + Script-Wordmark); Quelle nur 637px, Crop hochskaliert, Wordmark lesbar; Leitgeb-Website nicht geprobt in diesem Lauf",
+  "hq": true
+ },
+ "wolfensberger-pomella": {
+  "slug": "wolfensberger-pomella",
+  "name": "Wolfensberger & Pomella",
+  "brands": [
+   "Wolfensberger & Pomella",
+   "WP Fine Food",
+   "Wolfensberger&Pomella"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/wolfensberger-pomella.png",
+  "source": "https://www.wp-finefood.com/img/logowp.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0006 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Offizielles Header-Logo der WP Fine Food GmbH (Kurtatsch, Südtirol; Marke Wolfensberger & Pomella), unverändert 235x88 PNG, weißes Wordmark auf grünem Block; robots.txt 404 (keine Einschränkung), Plain-curl ohne Cookies. Hinweis: die Gurkerl-/MPreis-Packshots tragen das Etikett 'Südtiroler Kochwerk' (eigener Logo-Eintrag suedtiroler-kochwerk), daher offizielles Markenlogo statt Pack-Crop",
+  "hq": true
+ },
+ "schulzis-knoedel": {
+  "slug": "schulzis-knoedel",
+  "name": "Schulzi´s Knödel",
+  "brands": [
+   "Schulzi´s Knödel",
+   "Schulzi's Knödel",
+   "Schulzi´s",
+   "Schulzi's"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/schulzis-knoedel.png",
+  "source": "https://www.brok.at/schulzisknoedel/ (BRoK Catering, Hersteller) — Artikelbild image.jimcdn.com/…/iad700e45d140b2aa/version/1730893318/image.jpg (1005x503) — Ausschnitt Marken-Badge",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0006 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Ausschnitt des runden Marken-Badges 'SCHULZI'S KNÖDEL · FRISCH · REGIONAL · BRoK.at' aus dem offiziellen Hersteller-Artikelbild (Video-Still); Kreis+Banner-Maske, Hintergrund weiß, ×2 hochskaliert, Wordmark lesbar; robots.txt erlaubt (Crawl-Delay 5 eingehalten); Gurkerl-Packshots zeigen nur Knödel ohne Etikett",
   "hq": true
  }
 }
