@@ -501,14 +501,15 @@
   "slug": "nature-s-gold",
   "name": "Nature's Gold",
   "brands": [
-   "Nature's Gold"
+   "Nature's Gold",
+   "NATURE'S GOLD"
   ],
   "logo_category": "Eigenmarke",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "Hofer private label: no logo published on hofer.at brand pages · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
-  "hq": false
+  "file": "logos/natures-gold.png",
+  "source": "OFF packshot GTIN 4099200105291 front_de.25 (Nature's Gold Pfannengemüse Feinschmecker Art) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T2340 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt Hofer-Eigenmarke NATURE'S GOLD (weiße Handschrift auf Kreidetafel-Badge); Aldi-CDN Brandpage-Logo bewusst nicht geprobt (T09 403)",
+  "hq": true
  },
  "pizz-ah": {
   "slug": "pizz-ah",
@@ -593,14 +594,15 @@
   "slug": "vemondo",
   "name": "Vemondo",
   "brands": [
-   "Vemondo"
+   "Vemondo",
+   "Vemondo, Grønvang Food ApS, Lidl"
   ],
   "logo_category": "Eigenmarke",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "Lidl private label: no official logo asset found · Probe 2026-10-13: Wikimedia Commons ohne Treffer; lidl.at hat keine Markenseite (nur /c/deluxe mit Foto-Banner, kein freigestelltes Logo)",
-  "hq": false
+  "file": "logos/vemondo.png",
+  "source": "OFF packshot GTIN 4056489848752 front_de.11 (Vemondo veganer Salat nach Art eines Budapester Salates) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T2340 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt Lidl-Eigenmarke VEMONDO (weißes Wordmark mit Blatt-V auf hellgrünem Blatt); 3000x4000 OFF-Foto; Commons kein Treffer",
+  "hq": true
  },
  "deluxe": {
   "slug": "deluxe",
@@ -684,14 +686,15 @@
   "slug": "kania",
   "name": "Kania",
   "brands": [
-   "Kania"
+   "Kania",
+   "Kania (Lidl)"
   ],
   "logo_category": "Eigenmarke",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "Lidl private label: no official logo asset found · Probe 2026-10-13: Wikimedia Commons ohne Treffer; lidl.at hat keine Markenseite (nur /c/deluxe mit Foto-Banner, kein freigestelltes Logo)",
-  "hq": false
+  "file": "logos/kania.png",
+  "source": "OFF packshot GTIN 4335619175334 front_en.3 (Kania India Style Yellow Curry) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T2340 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt Lidl-Eigenmarke Kania (weißes Script-Wordmark mit Smile-Bogen auf rotem Tab); Quelle 1275x1698, Crop auf 300px hochskaliert, lesbar",
+  "hq": true
  },
  "food-for-future": {
   "slug": "food-for-future",
@@ -3648,6 +3651,49 @@
   "source": "OFF packshot GTIN 8595643805690 front_cs.12 (Pappudia Hummus) — Ausschnitt Markenlogo",
   "size": "png",
   "note": "Vision gate 2026-10-13T23 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt Lidl Eigenmarke PAPPUDIA (gestapeltes Wordmark + Check-Pin auf Senf-Kreis); Gurkerl-Fertiggericht-Fotos ohne Verpackungslogo; Commons kein Treffer",
+  "hq": true
+ },
+ "yum-yum": {
+  "slug": "yum-yum",
+  "name": "Yum Yum",
+  "brands": [
+   "Yum Yum",
+   "YumYum"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/yum-yum.png",
+  "source": "MPreis Cloudinary packshot (res.cloudinary.com/dit8huoga, Yum Yum Instantnudeln Huhn, GTIN 8852018101024) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T2340 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt Wan Thai Foods Marke YumYum® (grün/gelbes Wordmark auf gelbem Pack-Header)",
+  "hq": true
+ },
+ "m-mpreis": {
+  "slug": "m-mpreis",
+  "name": "M (MPreis Eigenmarke)",
+  "brands": [
+   "M (MPreis Eigenmarke)",
+   "M"
+  ],
+  "logo_category": "Eigenmarke",
+  "file": "logos/m-mpreis.png",
+  "source": "MPreis Cloudinary packshot (res.cloudinary.com/dit8huoga, M Cevapcici mit Letscho und Reis) — Ausschnitt Eigenmarken-Siegel",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T2340 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt MPreis-Eigenmarke M (weißes M im roten Quadrat, wie auf der Verpackung); eigener Eintrag statt Alias auf mpreis.svg, weil der Pack-Aufdruck das Eigenmarken-Siegel ist",
+  "hq": true
+ },
+ "leitgebs": {
+  "slug": "leitgebs",
+  "name": "Leitgeb's Nudelspezialitäten",
+  "brands": [
+   "Leitgeb's Nudelspezialitäten",
+   "Leitgeb´s",
+   "Leitgeb's"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/leitgebs.png",
+  "source": "Gurkerl CDN packshot Leitgeb´s Vegetarischer Nudelteller (cdn.gurkerl.at …/40027-1741767351370.jpg, GTIN 9120071330248) — Ausschnitt Etikett-Sticker",
+  "size": "png",
+  "note": "Vision gate 2026-10-13T2340 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt gelber Leitgeb's-Sticker (Handgemachte Nudeln + Nudel-Maskottchen + Script-Wordmark); Quelle nur 637px, Crop hochskaliert, Wordmark lesbar; Leitgeb-Website nicht geprobt in diesem Lauf",
   "hq": true
  }
 }
