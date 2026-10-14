@@ -5,7 +5,7 @@ import { Card, Badge, Button } from '../components/ui'
 import { Img } from '../components/product'
 import { useApp, fmt, cn } from '../lib'
 type Pv={name:string;company:string;seat?:string;producer?:string;delivers_linz:boolean|null;shipping?:string|null;storage?:string;packaging?:string;price_from?:string|null;products_note?:string;store:string;sources:string[];stats:any}
-const ONL=['PrepMyMeal','LiveFresh','Fit to Go','FitTaste','Juit','bofrost','every.','Löwenanteil','Kernbeißer','Goldblatt']
+const ONL=['PrepMyMeal','LiveFresh','Fit to Go','FitTaste','Juit','bofrost','every.','Löwenanteil','Kernbeißer','Goldblatt','iss mich!']
 const isOn=(s:string)=>ONL.includes(s)||s?.startsWith('Online')
 const nm=(s:string)=>s.replace('Online: ','')
 export default function Online(){
