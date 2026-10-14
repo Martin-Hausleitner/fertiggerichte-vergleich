@@ -502,7 +502,8 @@
   "name": "Nature's Gold",
   "brands": [
    "Nature's Gold",
-   "NATURE'S GOLD"
+   "NATURE'S GOLD",
+   "Nature‘s Gold"
   ],
   "logo_category": "Eigenmarke",
   "file": "logos/natures-gold.png",
@@ -515,27 +516,31 @@
   "slug": "pizz-ah",
   "name": "PIZZ'AH",
   "brands": [
-   "PIZZ'AH"
+   "PIZZ'AH",
+   "PIZZ’AH",
+   "Pizz'ah"
   ],
   "logo_category": "Eigenmarke",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "Hofer private label: no logo published on hofer.at brand pages · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
-  "hq": false
+  "file": "logos/pizz-ah.png",
+  "source": "OFF packshot GTIN 4061463587275 front_de.17.full (PIZZ'AH Steinofenpizza Diavola, 2560x2544) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0106 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt Hofer-Eigenmarke PIZZ'AH (schwarzes Wordmark mit Pizzastück-A auf cremefarbenem Badge); Badge per Farbmaske freigestellt, Holz/Karo-Hintergrund auf Weiß. Aldi-CDN nicht erneut geprobt (T09 403) · vorher (file-less): Hofer private label: no logo published on hofer.at brand pages · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
+  "hq": true
  },
  "leibspeis": {
   "slug": "leibspeis",
   "name": "Leibspeis'",
   "brands": [
-   "Leibspeis'"
+   "Leibspeis'",
+   "Leibspeis",
+   "Leibspeis’"
   ],
   "logo_category": "Eigenmarke",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "Hofer private label: no logo published on hofer.at brand pages · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
-  "hq": false
+  "file": "logos/leibspeis.png",
+  "source": "OFF packshot GTIN 4099200227771 front_de.3.full (Leibspeis' Tomaten-Mozzarella-Nudeln, 2281x3751) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0106 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt Hofer-Eigenmarke Leibspeis' (schwarzes Schreibschrift-Wordmark + Swoosh + rot-weiß-rote Fahne 'IN ÖSTERREICH G'MACHT'); grauer Holz-Hintergrund per Flat-Field auf Weiß, Karotuch-Ecke entfernt · vorher (file-less): Hofer private label: no logo published on hofer.at brand pages · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
+  "hq": true
  },
  "natur-aktiv": {
   "slug": "natur-aktiv",
@@ -635,14 +640,16 @@
   "slug": "mcennedy",
   "name": "MCENNEDY",
   "brands": [
-   "MCENNEDY"
+   "MCENNEDY",
+   "McEnnedy",
+   "Mcennedy"
   ],
   "logo_category": "Eigenmarke",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "Lidl private label: no official logo asset found · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
-  "hq": false
+  "file": "logos/mcennedy.png",
+  "source": "https://www.lidl.at/p/mcennedy-nudelauflauf-mac-cheese/p10056595 (robots: /p/ erlaubt) — imgproxy-retcat.assets.schwarz …/w:1500/h:1125/… (Packshot Nudelauflauf Mac & Cheese) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0106 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt Lidl-Eigenmarke MCENNEDY 'AMERICAN WAY' (weißes Schild, navy/rote Umrandung, 5 Sterne); rotes Pack-Umfeld per Flood-Fill auf Weiß, ×2 Lanczos. Nur die vom Produktseiten-HTML referenzierte signierte 1500er-Rendition geladen (keine API, kein /q/api) · vorher (file-less): Lidl private label: no official logo asset found · Probe 2026-10-13: Aldi-CDN 2026_MA_/2025_MA_/Brandpage-Logo_* (616 GET-Varianten) → 403; Wikimedia Commons ohne Treffer (fertiggerichte-daten/raw/hofer_lidl_logo_probe_2026-10-13.json)",
+  "hq": true
  },
  "schwaben-krone": {
   "slug": "schwaben-krone",
@@ -1476,14 +1483,16 @@
   "slug": "ager",
   "name": "Ager",
   "brands": [
-   "Ager"
+   "Ager",
+   "AGER",
+   "Qualität Ager"
   ],
   "logo_category": "Markenhersteller",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
-  "hq": false
+  "file": "logos/ager.png",
+  "source": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-730656-0432126918-r8rI-sGc.jpg (BILLA Packshot Ager Rehragout geschnitten, 1200x1309) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0106 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt ovales Markenlogo 'QUALITÄT AGER' (rot/weiß/blau) vom Etikett; Quelle klein (~130 px), 16° gerade gedreht, ×4 Lanczos, Ellipsen-Maske auf Weiß (Bergfoto/Fahnenstreifen entfernt) — weich, aber lesbar. ager.cc Header-Logo ist Icon-Font (T13), daher Pack-Crop · vorher (file-less): no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "hq": true
  },
  "youcook": {
   "slug": "youcook",
@@ -1504,14 +1513,16 @@
   "slug": "njami",
   "name": "Njami",
   "brands": [
-   "Njami"
+   "Njami",
+   "NJAMI",
+   "Njami by Delamaris"
   ],
   "logo_category": "Markenhersteller",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
-  "hq": false
+  "file": "logos/njami.png",
+  "source": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-885825-438096192-9NY20Ilx.jpg (BILLA Packshot Njami Chicken Bowl Mexicana, 3277x3277) — Ausschnitt Marken-Lockup",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0106 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt 'NJAMI' (rotes Wordmark auf rosa) + 'BY Delamaris · 1879'-Badge, unverändert bis auf Zuschnitt/Verkleinerung 800 px; Vertrieb AT Glatz GmbH · vorher (file-less): no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "hq": true
  },
  "feelfood": {
   "slug": "feelfood",
@@ -1543,14 +1554,17 @@
   "slug": "staudinger",
   "name": "Staudinger",
   "brands": [
-   "Staudinger"
+   "Staudinger",
+   "Staudinger's",
+   "STAUDINGER'S",
+   "Staudinger´s"
   ],
   "logo_category": "Markenhersteller",
-  "file": null,
-  "source": null,
-  "size": null,
-  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
-  "hq": false
+  "file": "logos/staudinger.png",
+  "source": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-698017-707306118-J1-9R-AF.jpg (BILLA Packshot Staudinger Holzofen Leberkäs geschnitten, 1600x1600) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0106 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt goldener Bogen 'STAUDINGER'S' + 'HOLZOFEN SPEZIALITÄTEN' auf rotem Etikett; Leberkäse-Foto oberhalb des Bogens per Kreisbogen-Maske auf Weiß, ×2 Lanczos. staudinger-delikatessen.at TLS EOF / holzofen-leberkaes.at Zertifikat-Hostname-Mismatch (nicht umgangen) · vorher (file-less): no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "hq": true
  },
  "muehlen": {
   "slug": "muehlen",
@@ -1917,7 +1931,10 @@
  "wech": {
   "slug": "wech",
   "name": "Wech-Geflügel GmbH",
-  "brands": [],
+  "brands": [
+   "Wech",
+   "WECH"
+  ],
   "logo_category": "Produzent/Werk",
   "file": "logos/wech.svg",
   "source": "https://www.wech.at/visuals/logo.svg",
@@ -3727,6 +3744,94 @@
   "source": "https://www.brok.at/schulzisknoedel/ (BRoK Catering, Hersteller) — Artikelbild image.jimcdn.com/…/iad700e45d140b2aa/version/1730893318/image.jpg (1005x503) — Ausschnitt Marken-Badge",
   "size": "png",
   "note": "Vision gate 2026-10-14T0006 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Ausschnitt des runden Marken-Badges 'SCHULZI'S KNÖDEL · FRISCH · REGIONAL · BRoK.at' aus dem offiziellen Hersteller-Artikelbild (Video-Still); Kreis+Banner-Maske, Hintergrund weiß, ×2 hochskaliert, Wordmark lesbar; robots.txt erlaubt (Crawl-Delay 5 eingehalten); Gurkerl-Packshots zeigen nur Knödel ohne Etikett",
+  "hq": true
+ },
+ "therese-moelk": {
+  "slug": "therese-moelk",
+  "name": "Therese Mölk",
+  "brands": [
+   "Therese Mölk",
+   "Bäckerei Therese Mölk",
+   "THERESE MÖLK"
+  ],
+  "logo_category": "Eigenmarke",
+  "file": "logos/therese-moelk.png",
+  "source": "https://res.cloudinary.com/dit8huoga/image/upload/v1768288563/api/custom/844735_front.jpg (MPreis Packshot Therese Mölk Himbeerknödel 4er, EAN 9005015055459, 2480x2437) — Ausschnitt Marken-Badge",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0106 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt MPreis-Bäckereimarke Therese Mölk (Strichzeichnung Gesicht + 'THERESE MÖLK · Purer Genuss.' aus dem gezackten Badge); Badge-Hintergrund auf Weiß normalisiert, Tinte dunkel, Zackenrand entfernt. Offizielle Seite therese-moelk.at leitet auf mpreis.at/vielfalt/unsere-marken/baeckerei-therese-moelk (robots Allow /) — dort nur Foto-Header-Banner, kein freigestelltes Logo; theresemoelk.at TLS EOF (nicht umgangen)",
+  "hq": true
+ },
+ "tann": {
+  "slug": "tann",
+  "name": "TANN",
+  "brands": [
+   "TANN",
+   "Tann",
+   "TANN (Spar)"
+  ],
+  "logo_category": "Eigenmarke",
+  "file": "logos/tann.png",
+  "source": "https://cdn1.interspar.at/cachableservlets/articleImage.dam/at/2020000772651/dt_zoom.jpg (Interspar Packshot TANN Cevapcici, 1001x1001) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0106 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt SPAR-Eigenmarke TANN (rotes Oval, weißes Wordmark, mintgrüner Swoosh) vom Etikettband 'WENN GENUSS … VON SPAR'; Quelle ~140 px, ×4 Lanczos, Taupe-Band per Flood-Fill auf Weiß — weich, aber lesbar. spar.at/eigenmarken/lebensmittel liefert Cloudflare-Challenge (nicht umgangen)",
+  "hq": true
+ },
+ "exotic-food": {
+  "slug": "exotic-food",
+  "name": "Exotic Food",
+  "brands": [
+   "Exotic Food",
+   "EXOTIC FOOD",
+   "Exotic Food Thailand"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/exotic-food.png",
+  "source": "https://www.exoticfoodthailand.com/wp-content/uploads/2020/08/Exotic-Logo-1.png",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0106 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Offizielles Logo von exoticfoodthailand.com (Exotic Food Thailand; Site-Icon-Original 'cropped-Exotic-Logo-1' als 707x707 PNG mit Transparenz, unverändert): 'Exotic Food'-Schild mit Chili + 'AUTHENTIC THAI'-Banner + 'Thailand On a Plate!'; identisch mit dem Etikett-Badge auf der MPreis-Dose Tom Yum (EAN 8853662002019); robots.txt erlaubt (nur /wp-admin/), Plain-curl",
+  "hq": true
+ },
+ "taste-of-asia": {
+  "slug": "taste-of-asia",
+  "name": "Taste Of Asia",
+  "brands": [
+   "Taste Of Asia",
+   "Taste of Asia",
+   "TASTE OF ASIA"
+  ],
+  "logo_category": "Eigenmarke",
+  "file": "logos/taste-of-asia.png",
+  "source": "https://images.cdn.europe-west1.gcp.commercetools.com/787b77ab-692c-4e25-91f4-697690dc3c7c/78-267102-427881130-amxyBx8i.jpg (Penny Packshot Taste of Asia Mini-Frühlingsrollen, 1400x1400) — Ausschnitt Markenlogo",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0106 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt Penny-Marke 'Taste of ASIA' (weißes Wordmark auf rotem Feld mit orange Asien-Karte), unverändert bis auf Zuschnitt, ×2 Lanczos",
+  "hq": true
+ },
+ "fryzza": {
+  "slug": "fryzza",
+  "name": "Fryzza",
+  "brands": [
+   "Fryzza",
+   "FRYZZA"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/fryzza.png",
+  "source": "https://res.cloudinary.com/dit8huoga/image/upload/v1781744491/api/813756_angle.jpg (MPreis Packshot Fryzza Salami Pizza, EAN 4262548740046, 1333x1333) — Ausschnitt Wordmark",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0106 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt 'FRY/ZZA'-Wordmark (weiß auf rotem Feld) von der Packungsfront, unverändert bis auf Zuschnitt",
+  "hq": true
+ },
+ "schenkel": {
+  "slug": "schenkel",
+  "name": "Schenkel",
+  "brands": [
+   "Schenkel",
+   "SCHENKEL"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/schenkel.png",
+  "source": "https://res.cloudinary.com/dit8huoga/image/upload/v1779619454/api/187011_angle.jpg (MPreis Packshot Schenkel Hummerrahmsuppe, EAN 4003011240522, 10439x11585) — Ausschnitt Wordmark-Band",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0106 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Packshot-Ausschnitt 'SCHENKEL'-Wordmark (weiß auf violettem Band mit Goldkanten) vom Glas-Etikett, unverändert bis auf Zuschnitt/Verkleinerung 900 px",
   "hq": true
  }
 }
