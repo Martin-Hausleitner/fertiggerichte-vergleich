@@ -130,6 +130,32 @@
    }
   },
   {
+   "name": "Goldblatt",
+   "company": "Golden Veggies GmbH (FN 550344f LG Graz, UID ATU76525048 – VIES gültig 2026-10-14, lt. Impressum goldblatt.at/policies/legal-notice)",
+   "seat": "Wagerberg 37, 8271 Bad Waltersdorf (Steiermark, AT)",
+   "producer": "Eigenmarke Goldblatt; High-Protein-Bio-Fertiggerichte im Glas (vegan, AT-BIO-301)",
+   "delivers_linz": true,
+   "shipping": "Österreich: 5,99 € ab 30 € Bestellwert (darunter 9,99 €), gratis ab 90 €; Österreichische Post 1–3 Werktage (lt. goldblatt.at/policies/shipping-policy)",
+   "storage": "ungekühlt (Glas), bis zu 3 Monate",
+   "price_from": "11,99 € / Glas 500 g (2 Portionen; Pakete günstiger)",
+   "products_in_app": true,
+   "products_note": "8 vegane High-Protein-Bio-Fertiggerichte im Glas mit Einzelpreis, Nährwerten/100 g + pro Glas (500 g), Zutaten, Zubereitung und HEAD-200-Packshot aus öffentlichem Shopify-products.json + Produkt-HTML (food-connectors goldblatt); kein GTIN",
+   "store": "Online: Goldblatt",
+   "sources": [
+    "https://goldblatt.at/",
+    "https://goldblatt.at/products.json",
+    "https://goldblatt.at/policies/shipping-policy",
+    "https://goldblatt.at/policies/legal-notice"
+   ],
+   "stats": {
+    "n_products": 8,
+    "median_price_eur": 11.99,
+    "median_eur_per_10g_protein": 4.11,
+    "best_eur_per_10g_protein": 3.11,
+    "median_protein_pack_g": 29.2
+   }
+  },
+  {
    "name": "PrepMyMeal",
    "company": "prepmymeal GmbH",
    "seat": "Unterlindau 28, 60323 Frankfurt am Main (DE), HRB 113466",
