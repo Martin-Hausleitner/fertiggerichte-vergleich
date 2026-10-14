@@ -20,7 +20,9 @@ export function useWalkFile() { const [f, setF] = useState<WalkFile | null>(null
 
 export const shopId = (s: { osm?: string; chain: string | null; name: string; lat: number }) => s.osm ?? `${s.chain}|${s.name}|${s.lat.toFixed(5)}`
 /** Online-/Lieferanbieter ohne Filialen. Lieferbarkeit nach 4020 kommt aus stores_linz_walk.json → delivery. */
-export const ONLINE = ['Gurkerl', 'PrepMyMeal', 'Fit to Go', 'LiveFresh', 'FitTaste', 'Juit', 'bofrost', 'every.', 'Löwenanteil', 'Kernbeißer', 'Goldblatt', 'iss mich!']
+export const ONLINE = ['Gurkerl', 'PrepMyMeal', 'Fit to Go', 'LiveFresh', 'FitTaste', 'Juit', 'bofrost', 'every.', 'Löwenanteil', 'Kernbeißer', 'Goldblatt', 'iss mich!', 'Alfies']
+/** Bekannte Liefergebiete als Fallback, falls stores_linz_walk.json → delivery keinen Eintrag hat (Datenseite hat Vorrang). */
+export const KNOWN_DELIVERY: Delivery[] = [{ name: 'Alfies', type: 'online', delivers_4020: false, checked: '2026-10-14', source: 'alfies.at – liefert nur nach Wien und Graz' }]
 /** Anbieter, deren Preise nur nach Login sichtbar sind → kein Preis, nie in Preis-Rankings. */
 export const LOGIN_ONLY_PRICE = ['Juit']
 export const onlineId = (p: string) => `online|${p}`
@@ -40,8 +42,8 @@ export function useNearShops() {
       .sort((a, b) => a.d - b.d)
     const inR = all.filter(s => s.d <= loc.radius)
     const mine = all.filter(s => my.includes(s.id))
-    const delivery = wf?.delivery ?? []
-    const deliversHere = (p: string) => { const x = delivery.find(d => d.name === p); return x ? x.delivers_4020 : null }
+    const delivery = [...(wf?.delivery ?? []), ...KNOWN_DELIVERY.filter(k => !(wf?.delivery ?? []).some(d => d.name.normalize('NFC') === k.name))]
+    const deliversHere = (p: string) => { const x = delivery.find(d => d.name.normalize('NFC') === p.normalize('NFC')); return x ? x.delivers_4020 : null }
     const myChains = new Set([...mine.filter(s => s.hasProducts).map(s => s.chain), ...ONLINE.filter(p => my.includes(onlineId(p)) && deliversHere(p) !== false)])
     const nearestByChain: Record<string, number> = {}
     all.forEach(s => { if (s.hasProducts && nearestByChain[s.chain] == null) nearestByChain[s.chain] = s.d })

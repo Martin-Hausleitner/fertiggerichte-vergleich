@@ -1,7 +1,7 @@
 /** Tasteful per-store / per-brand accent colours on top of the monochrome base (all ≥ 4.5:1 on white as text). */
 export const STORE_COLOR: Record<string, string> = {
   Billa: '#c8102e', Spar: '#00703c', Hofer: '#00487a', Lidl: '#0050aa', Penny: '#b8001f', dm: '#1f3e8a',
-  Gurkerl: '#3d7a1c', PrepMyMeal: '#b4232c', 'Fit to Go': '#6b21a8', LiveFresh: '#0f766e', FitTaste: '#9a3412', Juit: '#1f2937', bofrost: '#1d4ed8', 'every.': '#3f6212', 'Löwenanteil': '#a16207', 'Kernbeißer': '#4d7c0f', Goldblatt: '#854d0e', 'iss mich!': '#9f1239',
+  Gurkerl: '#3d7a1c', PrepMyMeal: '#b4232c', 'Fit to Go': '#6b21a8', LiveFresh: '#0f766e', FitTaste: '#9a3412', Juit: '#1f2937', bofrost: '#1d4ed8', 'every.': '#3f6212', 'Löwenanteil': '#a16207', 'Kernbeißer': '#4d7c0f', Goldblatt: '#854d0e', 'iss mich!': '#9f1239', Alfies: '#0e7490',
   MPreis: '#b91c1c', Unimarkt: '#c2410c', ADEG: '#15803d', "denn's": '#166534',
 }
 export function hashColor(s: string) {
