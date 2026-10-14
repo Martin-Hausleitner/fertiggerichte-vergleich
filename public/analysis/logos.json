@@ -4137,5 +4137,21 @@
   "size": "svg",
   "hq": true,
   "note": "Vision gate 2026-10-14T0202 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles juit.com Favicon-SVG = JUIT-Wordmark (#1C1C1C), Pfade unverändert, nur viewBox auf die Wortmarke zugeschnitten"
+ },
+ "bofrost": {
+  "slug": "bofrost",
+  "name": "bofrost*",
+  "brands": [
+   "bofrost*",
+   "bofrost",
+   "Bofrost",
+   "bofrost* Austria GmbH"
+  ],
+  "logo_category": "Online-Mealprep",
+  "file": "logos/bofrost.svg",
+  "source": "https://www.bofrost.at/_ui/responsive/theme-main/css/images/bofrost_logo.svg",
+  "size": "svg",
+  "hq": true,
+  "note": "Vision gate 2026-10-14T0238 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles bofrost.at Logo-SVG (aus dem Organization-JSON-LD der Website), Pfade unverändert, Füllfarbe weiß → #1f1f1f für helle UI"
  }
 }
