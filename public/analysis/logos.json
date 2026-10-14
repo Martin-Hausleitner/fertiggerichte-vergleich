@@ -2443,13 +2443,16 @@
   "brands": [
    "Every.",
    "EVERY.",
-   "Every"
+   "Every",
+   "every.",
+   "Every. GmbH",
+   "Online: every."
   ],
   "logo_category": "Markenhersteller",
   "file": "logos/every-foods.svg",
   "source": "https://a.storyblok.com/f/291086118523370/86x28/c9f09c61bc/every_logo_black-1.svg",
   "size": "svg",
-  "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · offizielles Wortlogo aus dem Header von every-foods.com (Every Foods, pflanzliche TK-Gerichte; Gurkerl)",
+  "note": "Vision gate 2026-10-13: visuell geprüft (korrekte Marke, scharf, kein Platzhalter) · offizielles Wortlogo aus dem Header von every-foods.com (Every Foods, pflanzliche TK-Gerichte; Gurkerl) · Vision gate 2026-10-14T0341 (Daten-Squad): erneut visuell geprüft (Wortmarke 'every', scharf, auf hellem Hintergrund nutzbar); identische SVG wird heute weiterhin im Header von every-foods.com ausgeliefert; jetzt auch Online-Anbieter-Logo für 'Online: every.'",
   "hq": true
  },
  "gustavo-gusto": {
@@ -4153,5 +4156,83 @@
   "size": "svg",
   "hq": true,
   "note": "Vision gate 2026-10-14T0238 (Daten-Squad): visuell geprüft (korrekte Marke, scharf, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · offizielles bofrost.at Logo-SVG (aus dem Organization-JSON-LD der Website), Pfade unverändert, Füllfarbe weiß → #1f1f1f für helle UI"
+ },
+ "yuun-mee": {
+  "slug": "yuun-mee",
+  "name": "Yuu'n Mee",
+  "brands": [
+   "Yuu'n Mee",
+   "Yuu'n mee",
+   "Yuu´n Mee",
+   "Yuu’n Mee",
+   "YUU'N MEE",
+   "Yuu'n Mee fine foods Vertriebs-GmbH"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/yuun-mee.svg",
+  "source": "https://www.yuu-n-mee.at/wp-content/themes/ynm-theme/Logo_YNM_0109_V4.svg (yuu-n-mee.at robots: Disallow only /wp-admin/)",
+  "size": "svg",
+  "note": "Vision gate 2026-10-14T0404 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Offizielles Header-Logo-SVG von yuu-n-mee.at, unverändert: rote Karte mit weißem 'YUU'N MEE'-Wordmark (grünes 'n') + Slogan 'finest Seafood – enjoy the Difference'; Betreiber Yuu'n Mee fine foods Vertriebs-GmbH, McDonald's Strasse 4, 2100 Korneuburg = Producer in products.csv",
+  "hq": true
+ },
+ "allgroo": {
+  "slug": "allgroo",
+  "name": "Allgroo",
+  "brands": [
+   "Allgroo",
+   "allgroo",
+   "ALLGROO"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/allgroo.png",
+  "source": "https://static.wixstatic.com/media/447e6e_dc2ee3d31ba94898956a184b37dd622b~mv2.png (allgroo_logo_2.png, Header von allgroo.com; robots Allow /)",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0404 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Offizielles rotes 'allgroo'-Wordmark (Blatt + Smile) von allgroo.com, nur transparenter Rand beschnitten; allgroo.com Kontakt nennt 56-34 Simyo-gil, Namwon-si, Jeollabuk-do = GMF Co., Ltd. (Producer in products.csv)",
+  "hq": true
+ },
+ "bedford": {
+  "slug": "bedford",
+  "name": "Bedford",
+  "brands": [
+   "Bedford",
+   "BEDFORD",
+   "Bedford GmbH + Co. KG"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/bedford.png",
+  "source": "https://bedford.de/wp-content/uploads/2018/06/bf_logo_white.png (Header von bedford.de; robots Disallow nur wc-logs/transients/add-to-cart/wp-admin)",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0404 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Offizielles Bedford-Script-Logo + Swoosh + 'Delikat essen' von bedford.de; Original weiß-auf-transparent → Füllfarbe #1f1f1f für helle UI (Alpha unverändert); Impressum Bedford GmbH + Co. KG, Traiteur-Platz 1, 49090 Osnabrück, HRA 2736 AG Osnabrück = Producer in products.csv",
+  "hq": true
+ },
+ "costa": {
+  "slug": "costa",
+  "name": "Costa",
+  "brands": [
+   "Costa",
+   "COSTA",
+   "COSTA Meeresspezialitäten"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/costa.png",
+  "source": "https://www.costa.de/_assets/639468b5d67b471e16952a11b4231513/Standard/Images/Footer/footer_logo_costa.png (costa.de robots Allow /)",
+  "size": "png",
+  "note": "Vision gate 2026-10-14T0404 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Offizielles 'COSTA'-Wordmark (blau, Garnele im O) auf weißem Pinselstrich aus dem costa.de-Footer, unverändert (304×121, klein aber scharf); Impressum COSTA Meeresspezialitäten GmbH & Co. KG, Stedinger Strasse 25, 26723 Emden, HRA 100513 AG Aurich, USt-ID DE214671468 = Producer in products.csv",
+  "hq": true
+ },
+ "beyond-meat": {
+  "slug": "beyond-meat",
+  "name": "Beyond Meat",
+  "brands": [
+   "Beyond Meat",
+   "BEYOND MEAT",
+   "Beyond Meat EU B.V."
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/beyond-meat.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Beyond_Meat_2022_logo.svg (Wikimedia Commons File:Beyond Meat 2022 logo.svg, Public domain / textlogo)",
+  "size": "svg",
+  "note": "Vision gate 2026-10-14T0404 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Beyond-Meat-Wordmark 2022 (schwarz) von Wikimedia Commons, unverändert; Lizenz laut Commons: Public domain (Text-Logo)",
+  "hq": true
  }
 }

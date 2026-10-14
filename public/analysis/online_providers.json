@@ -53,6 +53,33 @@
    }
   },
   {
+   "name": "every.",
+   "company": "Every. GmbH (HRB 221768 B AG Charlottenburg, USt-ID DE335586517 lt. Impressum; Bio-Kontrolle DE-ÖKO-001)",
+   "seat": "Ritterstraße 9–10, 10969 Berlin (DE)",
+   "producer": "Eigenmarke every.; Produktionsstätte nicht veröffentlicht",
+   "delivers_linz": true,
+   "shipping": "nach AT per DPD lt. eat.every-foods.com/policies/shipping-policy; 5,99 €, ab 8 Gerichten frei, Express 7,99 € (AGB §6 nennt noch nur DE – Konflikt dokumentiert)",
+   "storage": "tiefgekühlt (Trockeneis), bis 12 Monate TK",
+   "price_from": "8,99 € / Gericht einzeln (Bundles/Abo günstiger)",
+   "products_in_app": true,
+   "products_note": "pflanzliche TK-Fertiggerichte (Bowls, Currys, Pasta, Eintöpfe, Salate) mit Einzelpreis, SKU, Gewicht, Nährwerten/100 g, Zutaten, Zubereitung und HEAD-200-Packshot aus öffentlichem Shopify-products.json + Produktseiten; kein GTIN veröffentlicht",
+   "store": "Online: every.",
+   "sources": [
+    "https://every-foods.com/",
+    "https://eat.every-foods.com/products.json",
+    "https://every-foods.com/sitemap-products.xml",
+    "https://eat.every-foods.com/policies/shipping-policy",
+    "https://every-foods.com/impressum"
+   ],
+   "stats": {
+    "n_products": 50,
+    "median_price_eur": 8.99,
+    "median_eur_per_10g_protein": 4.47,
+    "best_eur_per_10g_protein": 2.74,
+    "median_protein_pack_g": 20.2
+   }
+  },
+  {
    "name": "PrepMyMeal",
    "company": "prepmymeal GmbH",
    "seat": "Unterlindau 28, 60323 Frankfurt am Main (DE), HRB 113466",
@@ -88,7 +115,7 @@
    "packaging": "plastikfreie Bio-Pap-Schalen",
    "price_from": "9,49 €/Meal (18er) – 10,49 € (6er), bis 65 g Protein",
    "products_in_app": true,
-   "products_note": "Produkte aus früherer Erfassung (other.json); Hydrogen-Shop ohne öffentliche Produkt-API",
+   "products_note": "30 Fertiggerichte live via food-connectors `fittogo` (public sitemap + product HTML; /products.json 404 on Hydrogen). price_eur = 12er-Box 9,99 €/Meal; Einzel-SKU 0,00 €. Evidence fertiggerichte-daten/raw/fittogo_2026-10-14T0307.json",
    "store": "Online: Fit to Go",
    "sources": [
     "https://fittogo.at/",
@@ -192,5 +219,5 @@
    "stats": null
   }
  ],
- "not_found_de": "Foodist, Kochzauber, Mealprep.at, Frischepost, Alnatura: in dieser Runde kein lieferbares Fertiggericht-Angebot für Linz verifiziert (nicht geprüft = nicht ausgeschlossen)."
+ "not_found_de": "VERIFIED dead ends 2026-10-14T0307: Foodist (foodist.de 301 → morenutrition.de/collections/foodist, snack/Abo-Boxen no ready meals); Kochzauber (kochzauber.de / www DNS fail / NXDOMAIN); Mealprep.at (mealprep.at + www → parked /lander); eismann.at 301 → eismann.de (DE only, not AT); Gourmetfein = Fleisch-/Grillwurst only (75 Shopify products, 0 ready meals). Marianne's Mealprep Aspach = 5 km radius only (not Linz). Marley Spoon Ready-to-heat = login wall for prices/nutrition. Frischepost/Alnatura unchecked."
 }
