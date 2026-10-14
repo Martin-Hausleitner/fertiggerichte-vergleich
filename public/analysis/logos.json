@@ -2446,7 +2446,8 @@
    "Every",
    "every.",
    "Every. GmbH",
-   "Online: every."
+   "Online: every.",
+   "Every Foods"
   ],
   "logo_category": "Markenhersteller",
   "file": "logos/every-foods.svg",
@@ -4267,5 +4268,21 @@
   "source": "https://kernbeisser.at/wp-content/uploads/2024/04/logo-kernbeisser-2024-schwarz.png (offizielles Logo lt. schema.org Organization.logo der öffentlichen Website; robots erlaubt /wp-content/uploads/)",
   "size": "png",
   "note": "Vision gate 2026-10-14T0504 (Daten-Squad): visuell geprüft (korrekter Schriftzug 'kernbeißer' in Handschrift-Script, schwarz auf transparent, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar; auf dunklem Hintergrund schwach – Schwarzmarke) · unverändert 1398×286 RGBA; Betreiber Kernbeißer OG Wien FN 622470y"
+ },
+ "alfies": {
+  "slug": "alfies",
+  "name": "Alfies",
+  "brands": [
+   "Alfies",
+   "Alfie's",
+   "alfies.at",
+   "Alfie's GmbH"
+  ],
+  "logo_category": "Handelskette",
+  "file": "logos/alfies.svg",
+  "source": "https://www.alfies.at/svg/alfies-logo-dark.svg",
+  "size": "svg",
+  "note": "Vision gate 2026-10-14T0740: visuell geprüft (offizielle Wortmarke 'Alfies' dunkelgrau mit grünem i-Punkt, scharf, kein Platzhalter; auf dunklem Grund kontrastarm – dunkle Variante) · offizielles Logo aus dem alfies.at Shop-Header (<img src=/svg/alfies-logo-dark.svg>)",
+  "hq": true
  }
 }

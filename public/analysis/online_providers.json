@@ -156,6 +156,33 @@
    }
   },
   {
+   "name": "iss mich!",
+   "company": "iss mich! GmbH (FN 471722i HG Wien, UID ATU72305301 – VIES gültig 2026-10-14; Sanierungsverfahren 12/2025 mit angenommenem Sanierungsplan, aufgehoben 18.03.2026)",
+   "seat": "Erlafstraße 7, 1020 Wien (AT)",
+   "producer": "eigene Bio-Manufaktur in Wien (Bio-Kontrollstelle AT-BIO-401); Eintöpfe & Suppen im WECK-Pfandglas",
+   "delivers_linz": true,
+   "shipping": "nur Österreich: Post (Bestellung bis So 18:00 → Versand Montag), Wien Fahrrad/Auto; 9,90 €, versandkostenfrei ab 99 €; +2,00 € Pfand je Glas; Selbstabholung Fr 10–13 Uhr (lt. issmich.at/versand-und-bezahlung)",
+   "storage": "WECK-Glas (Lagerhinweis nicht veröffentlicht)",
+   "price_from": "3,90 € / Glas 280–480 g (Aktionen mit Streichpreis)",
+   "products_in_app": true,
+   "products_note": "35 Bio-Eintöpfe & Suppen (vegan/vegetarisch/Fleisch) mit Preis, Streichpreis, Pfand, Inhalt, GTIN-13 (wo veröffentlicht), Zutaten, Allergenen, HEAD-200-Packshot aus Shopware-Produktseiten (food-connectors issmich); Nährwerte aus offiziellem Nährwerttabellen-Bild, vision-verifiziert + strikte OCR",
+   "store": "Online: iss mich!",
+   "sources": [
+    "https://www.issmich.at/bio-shop",
+    "https://www.issmich.at/sitemap.xml",
+    "https://www.issmich.at/versand-und-bezahlung",
+    "https://www.issmich.at/impressum",
+    "https://www.evi.gv.at/f/471722i"
+   ],
+   "stats": {
+    "n_products": 35,
+    "median_price_eur": 8.6,
+    "median_eur_per_10g_protein": 11.04,
+    "best_eur_per_10g_protein": 3.01,
+    "median_protein_pack_g": 7.7
+   }
+  },
+  {
    "name": "PrepMyMeal",
    "company": "prepmymeal GmbH",
    "seat": "Unterlindau 28, 60323 Frankfurt am Main (DE), HRB 113466",
