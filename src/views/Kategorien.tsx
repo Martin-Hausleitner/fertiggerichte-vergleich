@@ -16,7 +16,7 @@ const re = (x: RegExp) => (r: Row) => x.test(txt(r))
 const dish = (d: string) => (r: Row) => !!r.cdish?.includes(d)
 const prot = (p: string) => (r: Row) => !!r.cprot?.includes(p)
 const sub = (label: string, test: (r: Row) => boolean): Sub => ({ key: label.toLowerCase().replace(/\W+/g, '-'), label, test })
-const MEALPREP = ['PrepMyMeal', 'Fit to Go', 'LiveFresh', 'FitTaste', 'Juit', 'bofrost', 'every.', 'Löwenanteil', 'Kernbeißer', 'Goldblatt', 'iss mich!', 'Alfies']
+const MEALPREP = ['PrepMyMeal', 'Fit to Go', 'LiveFresh', 'FitTaste', 'Juit', 'bofrost', 'every.', 'Löwenanteil', 'Kernbeißer', 'Goldblatt', 'iss mich!', 'Alfies', 'myProduct']
 
 export const CATS: Cat[] = [
   { key: 'suppen', label: 'Suppen & Eintöpfe', icon: Soup, test: r => dish('Suppe')(r) || dish('Eintopf')(r) || dish('Gulasch')(r), subs: [sub('Suppe', dish('Suppe')), sub('Eintopf', dish('Eintopf')), sub('Gulasch', dish('Gulasch')), sub('Suppentopf', re(/suppentopf/i)), sub('Linsen & Bohnen', prot('Hülsenfrüchte'))] },
