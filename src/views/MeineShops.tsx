@@ -6,7 +6,7 @@ import { Card, Badge, Button, Select } from '@/components/ui'
 import { StoreLogo, Img, ScoreBar } from '@/components/product'
 import { useApp, fmt, fmtDist, cn, STORE_LOGO, scoreColor, type Row } from '@/lib'
 import { toggleMyShop, fmtR, setLoc, RADII } from '@/app/location'
-import { useNearShops, ONLINE, onlineId, typeLabel, deliveryText, deliveryTitle } from '@/app/shops'
+import { useNearShops, onlineId, typeLabel, deliveryText, deliveryTitle } from '@/app/shops'
 import { isReadyMeal, isRankable, pricePerPortion } from '@/app/meal'
 import { OldPriceBadge } from '@/components/PriceAge'
 
@@ -42,7 +42,7 @@ function ShopMap() {
 
 export default function MeineShops() {
   const { R, open } = useApp()
-  const { inR, all, my, myChains, loc, deliversHere } = useNearShops()
+  const { inR, all, my, myChains, loc, deliversHere, online } = useNearShops()
   const [allFood, setAllFood] = useState(false), [minScore, setMinScore] = useState(0), [gang, setGang] = useState('haupt'), [chain, setChain] = useState('')
   const counts = useMemo(() => { const c: Record<string, number> = {}; R.forEach(r => { if (r.score != null) c[r.store] = (c[r.store] ?? 0) + 1 }); return c }, [R])
   const ranking = useMemo(() => R.filter(r => (allFood ? !r.nonfood : isReadyMeal(r)) && (allFood ? r.score != null && r.price != null : isRankable(r)) && myChains.has(r.store) && (!gang || (r as any).gang === gang) && (r.score ?? 0) >= minScore && (!chain || r.store === chain))
@@ -65,8 +65,8 @@ export default function MeineShops() {
             <StoreLogo store={s.chain} size={24} /><span className="min-w-0 flex-1"><span className="block truncate font-medium">{s.name}</span><span className="block truncate text-xs text-muted-foreground">{s.type !== 'chain' && `${typeLabel(s.type)} · `}{s.addr ? `${s.addr} · ` : ''}~{s.walkMin} min ({fmtDist(s.d)}){!s.hasProducts && ' · keine Produktdaten'}</span></span>
             <Star className={cn('size-5 shrink-0', on ? 'fill-amber-400 text-amber-500' : 'text-muted-foreground')} /></button> })}
           <div className="border-b bg-muted/40 px-3 py-1.5 text-xs font-semibold"><Truck className="mr-1 inline size-3.5" />Online & Lieferdienste</div>
-          {ONLINE.map(p => { const id = onlineId(p), on = my.includes(id); return <button key={p} onClick={() => toggleMyShop(id)} aria-pressed={on} className={cn('flex w-full items-center gap-2 border-b px-3 py-2 text-left text-sm hover:bg-muted/60', on && 'bg-emerald-50 dark:bg-emerald-950/40')}>
-            <StoreLogo store={p} size={24} /><span className="flex-1">{p} <span className="text-xs text-muted-foreground">({counts[p] ?? 0} bewertet){deliversHere(p) === false && <b className="ml-1 text-red-600">nicht lieferbar nach Linz</b>}</span></span><Star className={cn('size-5', on ? 'fill-amber-400 text-amber-500' : 'text-muted-foreground')} /></button> })}
+          {online.map(p => { const id = onlineId(p), on = my.includes(id); return <button key={p} onClick={() => toggleMyShop(id)} aria-pressed={on} className={cn('flex w-full items-center gap-2 border-b px-3 py-2 text-left text-sm hover:bg-muted/60', on && 'bg-emerald-50 dark:bg-emerald-950/40')}>
+            <StoreLogo store={p} size={24} /><span className="flex-1">{p} <span className="text-xs text-muted-foreground">({counts[p] ?? 0} bewertet){deliversHere(p) === false ? <b className="ml-1 text-red-600">nicht lieferbar nach Linz</b> : deliversHere(p) == null && <span className="ml-1 text-amber-700" title="Keine offizielle Quelle für Lieferung nach 4020 Linz">Lieferung nach Linz unbestätigt</span>}</span></span><Star className={cn('size-5', on ? 'fill-amber-400 text-amber-500' : 'text-muted-foreground')} /></button> })}
         </div>
       </Card>
     </div>

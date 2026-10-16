@@ -38,7 +38,7 @@ export const ProductQuery = z.object({
   q: text(200).optional(),
   ids: z.array(z.number().int()).max(LIMITS.maxLimit).optional(),
   stores: z.array(text(60)).max(30).optional(),
-  stage: z.array(z.enum(['meal', 'stew', 'side', 'prot', 'base', 'veg'])).max(6).optional(),
+  stage: z.array(z.enum(['meal', 'stew', 'side', 'prot', 'sauce', 'base', 'veg'])).max(7).optional(),
   readyMealsOnly: z.boolean().optional(),
   vegan: z.boolean().optional(),
   vegetarian: z.boolean().optional(),

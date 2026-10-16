@@ -4,14 +4,14 @@ import { Card, Badge, Button } from '@/components/ui'
 import { Img, StoreLogo, ScoreBar } from '@/components/product'
 import { useApp, fmt, fmtDist, useHashState } from '@/lib'
 import { VariantNote, PriceCondition, PriceWinnerBadge } from '@/components/RowNotes'
-import { useNearShops, ONLINE, type NearShop } from '@/app/shops'
+import { useNearShops, type NearShop } from '@/app/shops'
 import { openNow } from '@/app/hours'
 import { pricePerPortion, lastPriceDate, passesLightRank } from '@/app/meal'
 import { valueScore, rankOk } from '@/app/scoring'
 import { OldPriceBadge } from '@/components/PriceAge'
 
 export default function Heute() {
-  const { R, open, D } = useApp(); const { all, loc, deliversHere } = useNearShops(); const [maxMin, setMaxMin] = useState(10)
+  const { R, open, D } = useApp(); const { all, loc, deliversHere, online } = useNearShops(); const [maxMin, setMaxMin] = useState(10)
   const now = new Date(); const sunday = now.getDay() === 0
   const shops = useMemo(() => all.filter(s => s.walkMin <= maxMin).map(s => ({ ...s, open: openNow(s.hours, now) })), [all, maxMin])
   const openShops = shops.filter(s => s.open && s.hasProducts)
@@ -29,7 +29,7 @@ export default function Heute() {
       <p className="text-sm text-muted-foreground"><MapPin className="inline size-4" /> ab {loc.addr} · {now.toLocaleString('de-AT', { weekday: 'long', hour: '2-digit', minute: '2-digit' })}{updated && <> · Preise zuletzt aktualisiert {new Date(updated).toLocaleDateString('de-AT')}</>}</p></div>
     <div className="flex flex-wrap items-center gap-2 text-sm">Gehzeit bis {[5, 10, 15, 20].map(m => <Button key={m} size="sm" active={maxMin === m} onClick={() => setMaxMin(m)}>≤ {m} min</Button>)}</div>
     {(sunday || openShops.length === 0) && <Card className="flex gap-2 border-amber-300 bg-amber-50 p-3 text-sm shadow-none dark:bg-amber-950/30"><AlertTriangle className="size-5 shrink-0 text-amber-600" />
-      <div><b>{sunday ? 'Sonntag: Supermärkte haben in Österreich geschlossen.' : `Gerade hat keine Filiale in ≤ ${maxMin} Gehminuten offen.`}</b> Ausnahmen (Bahnhof, Tankstelle, Feiertage) sind nicht erfasst. Online-Anbieter: {ONLINE.map(p => `${p}${deliversHere(p) === false ? ' (nicht lieferbar nach Linz)' : ''}`).join(', ')}. Liefergebiet nur für Gurkerl geprüft.</div></Card>}
+      <div><b>{sunday ? 'Sonntag: Supermärkte haben in Österreich geschlossen.' : `Gerade hat keine Filiale in ≤ ${maxMin} Gehminuten offen.`}</b> Ausnahmen (Bahnhof, Tankstelle, Feiertage) sind nicht erfasst. Online-Anbieter: {online.map(p => `${p}${deliversHere(p) === false ? ' (nicht lieferbar nach Linz)' : deliversHere(p) == null ? ' (Lieferung nach Linz unbestätigt)' : ''}`).join(', ')}. Liefergebiet laut offizieller Versand-/Liefergebietsseite des Anbieters.</div></Card>}
     <div className="flex flex-wrap gap-2">{shops.filter(s => s.hasProducts).map(s => <Badge key={s.id} className="gap-1.5 py-1"><StoreLogo store={s.chain} size={14} />{s.name} · ~{s.walkMin} min · <span className={s.open ? 'text-emerald-600' : s.open === false ? 'text-red-600' : 'text-muted-foreground'}>{s.open ? 'offen' : s.open === false ? 'geschlossen' : 'Zeiten unbekannt'}</span></Badge>)}</div>
     <p className="text-xs text-muted-foreground">{shops.filter(s => !s.hasProducts).length} weitere Geschäfte in ≤ {maxMin} min (Bäckereien, Nahversorger …) – ohne Produktdaten. Gehzeiten geschätzt (Luftlinie × 1,3).</p>
     {top.length > 0 && <Card className="p-3 shadow-none"><h2 className="mb-1 flex items-center gap-1.5 font-semibold"><Clock className="size-4" />Top 10 jetzt erhältlich{cap && <label className="ml-auto flex items-center gap-1.5 text-xs font-normal text-muted-foreground" data-testid="nolimit" title={`Standard: höchstens ${cap.perProvider} Gerichte je Anbieter`}><input type="checkbox" checked={unl} onChange={e => setNl(e.target.checked ? '1' : '')} />ohne Limit</label>}</h2>
