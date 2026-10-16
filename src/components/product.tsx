@@ -2,6 +2,7 @@ import { LOGIN_ONLY_PRICE } from '@/app/shops'
 import { useState } from 'react'
 import { OldPriceBadge } from './PriceAge'
 import { NutritionSourceBadge } from './NutritionSource'
+import { VariantNote, PriceCondition, PriceWinnerBadge } from './RowNotes'
 import type React from 'react'
 import { createPortal } from 'react-dom'
 import { Beef, Flame, Droplets, Candy, Wheat, Leaf, Sprout, MapPin, UtensilsCrossed, Heart, GitCompare, AlertTriangle } from 'lucide-react'
@@ -49,7 +50,8 @@ export function Chips({r,compact}:{r:Row;compact?:boolean}){
   </div>
 }
 export const isLive=(p:string|null)=>!!p&&/live|aktuell/i.test(p)
-export const Price=({r}:{r:Row})=> r.price==null?(LOGIN_ONLY_PRICE.includes(r.store)?<span className="text-xs text-slate-500" title="Der Anbieter zeigt Preise erst nach Anmeldung">Preis nur nach Login</span>:<span className="text-slate-400">–</span>):<span className="inline-flex items-center gap-1.5 whitespace-nowrap"><span className={cn('font-bold tabular-nums text-[1.05em]',isLive(r.pstat)?'text-slate-900 dark:text-white':'text-slate-500')}>{fmt(r.price,2)} €</span><OldPriceBadge r={r}/>{isLive(r.pstat)?<Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300 text-[10px]">✓ aktuell</Badge>:<Badge className="bg-amber-100 text-amber-800 text-[10px]">{r.pstat}</Badge>}</span>
+export const Price=({r}:{r:Row})=><span className="inline-flex flex-wrap items-center gap-1">{PriceInner({r})}<PriceCondition r={r}/></span>
+const PriceInner=({r}:{r:Row})=> r.price==null?(LOGIN_ONLY_PRICE.includes(r.store)?<span className="text-xs text-slate-500" title="Der Anbieter zeigt Preise erst nach Anmeldung">Preis nur nach Login</span>:<span className="text-slate-400">–</span>):<span className="inline-flex items-center gap-1.5 whitespace-nowrap"><span className={cn('font-bold tabular-nums text-[1.05em]',isLive(r.pstat)?'text-slate-900 dark:text-white':'text-slate-500')}>{fmt(r.price,2)} €</span><OldPriceBadge r={r}/>{isLive(r.pstat)?<Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300 text-[10px]">✓ aktuell</Badge>:<Badge className="bg-amber-100 text-amber-800 text-[10px]">{r.pstat}</Badge>}</span>
 export function BrandLogo({r,size=28}:{r:Pick<Row,'brandN'|'logo'>;size?:number}){
   const [err,setErr]=useState(false)
   if(r.logo&&!err) return <span title={r.brandN} style={{height:size,width:size*2.6}} className="inline-flex shrink-0 items-center justify-center"><ZoomImage logo src={r.logo} className="h-full w-full" onErr={()=>setErr(true)}/></span>
@@ -95,7 +97,7 @@ export function Actions({r}:{r:Row}){
   </div>
 }
 export function HealthBadge({s}:{s:number|null}){if(s==null)return null;const c=s>=55?'bg-emerald-600':s>=40?'bg-lime-600':s>=25?'bg-amber-500':'bg-red-600';return <InfoTip k="score"><Badge className={c+' text-white text-xs px-2.5 py-1 shadow-sm'}>💚 {Math.round(s)}</Badge></InfoTip>}
-export function ProductCard({r}:{r:Row}){
+export function ProductCard({r,winner}:{r:Row;winner?:boolean}){
   const {open,compare}=useApp()
   const st=STAGES.find(x=>x[0]===r.stage)
   return <RowHover r={r}><Card onClick={()=>open(r.id)} className={cn('group overflow-hidden flex flex-col cursor-pointer transition-colors hover:bg-secondary/50',compare.includes(r.id)&&'ring-2 ring-brand')}>
@@ -107,11 +109,11 @@ export function ProductCard({r}:{r:Row}){
       <div className="absolute right-1 bottom-1 rounded-full bg-white ring-1 ring-black/5"><Actions r={r}/></div>
     </div>
     <CardHeader className="pt-3"><div className="flex items-center gap-2 min-w-0"><span className="inline-flex items-center rounded-md bg-white px-1 py-0.5"><BrandLogo r={r} size={20}/></span><span className="text-[13px] text-muted-foreground truncate">{r.brandN}</span><span className="ml-auto text-[11px] text-slate-400 whitespace-nowrap"><InfoTip k="pack">{packEmo(r.pack)}</InfoTip></span></div>
-      <CardTitle className="text-[15px] font-bold line-clamp-2 min-h-[2.5em]">{r.name}</CardTitle>{r.alsoAt&&r.alsoAt.length>0&&<div className="text-[11px] text-muted-foreground mt-0.5">auch bei {r.alsoAt.join(", ")}</div>}</CardHeader>
+      <CardTitle className="text-[15px] font-bold line-clamp-2 min-h-[2.5em]">{r.name}</CardTitle><VariantNote r={r} className="mt-0.5"/>{r.alsoAt&&r.alsoAt.length>0&&<div className="text-[11px] text-muted-foreground mt-0.5">auch bei {r.alsoAt.join(", ")}</div>}</CardHeader>
     <CardContent className="space-y-3 flex-1">
       <div className="flex items-end justify-between gap-2"><div className="text-2xl"><Price r={r}/></div>
         <div className="text-right"><div className="text-lg font-extrabold leading-tight tabular-nums text-brand dark:text-emerald-300">{r.eur10p==null?'–':fmt(r.eur10p,2)+' €'}</div><div className="text-[11px] text-muted-foreground flex justify-end"><InfoTip k="eur10p">pro 10 g Protein</InfoTip></div></div></div>
-      <ScoreBar r={r}/><NutritionSourceBadge r={r} className="mt-1"/>
+      <ScoreBar r={r}/>{winner&&<PriceWinnerBadge r={r} className="mt-1"/>}<NutritionSourceBadge r={r} className="mt-1"/>
       <Tabs defaultValue="preis" onClick={e=>e.stopPropagation()}><TabsList className="w-full h-8"><TabsTrigger className="flex-1 text-xs" value="preis">Preis</TabsTrigger><TabsTrigger className="flex-1 text-xs" value="naehr">Nährwerte</TabsTrigger><TabsTrigger className="flex-1 text-xs" value="herk">Herkunft</TabsTrigger></TabsList>
         <TabsContent value="preis"><PriceKpis r={r}/></TabsContent>
         <TabsContent value="naehr" className="space-y-1.5"><Chips r={r}/><CatChips r={r}/>{r.priceOnly&&<span className="text-[11px] text-slate-500">nur Preis, keine Nährwerte</span>}</TabsContent>
@@ -121,10 +123,10 @@ export function ProductCard({r}:{r:Row}){
     <CardFooter className="p-2"><div className="w-full"><NearestBox store={r.store}/></div></CardFooter>
   </Card></RowHover>
 }
-export function Gallery({rows,step=48}:{rows:Row[];step?:number}){
+export function Gallery({rows,step=48,winner}:{rows:Row[];step?:number;winner?:boolean}){
   const [n,setN]=useState(step)
   if(!rows.length) return <Card className="p-8 text-center text-slate-500">Keine Produkte</Card>
-  return <div><div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 min-[1900px]:grid-cols-5 min-[2400px]:grid-cols-6">{rows.slice(0,n).map(r=><ProductCard key={r.id} r={r}/>)}</div>
+  return <div><div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 min-[1900px]:grid-cols-5 min-[2400px]:grid-cols-6">{rows.slice(0,n).map(r=><ProductCard winner={winner} key={r.id} r={r}/>)}</div>
     {n<rows.length&&<div className="text-center mt-4"><button className="rounded-full border px-5 h-10 text-sm font-semibold hover:bg-secondary" onClick={()=>setN(n+step)}>Mehr laden ({rows.length-n} weitere)</button></div>}</div>
 }
 export const Img=ZoomImage

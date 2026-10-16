@@ -1,3 +1,4 @@
+import { PriceCondition } from '@/components/RowNotes'
 import { useMemo, useRef, useState } from 'react'
 import { AgGridReact } from 'ag-grid-react'
 import type { ColDef, SortModelItem } from 'ag-grid-community'
@@ -55,9 +56,9 @@ export default function Tabelle() {
     ...COLS.map(c => ({ field: c.k, headerName: c.h, width: c.w, hide: !cols.includes(c.k), pinned: c.k === 'name' && innerWidth > 640 ? 'left' as const : undefined, type: c.num ? 'numericColumn' : undefined,
       valueFormatter: c.k === 'dist' ? (p: any) => p.value == null ? '–' : `~${walkMin(p.value)} min · ${fmtDist(p.value)}` : c.d != null ? (p: any) => fmt(p.value, c.d) : undefined,
       cellRenderer: c.k === 'store' ? (p: any) => <span className="flex items-center gap-1.5"><StoreLogo store={p.value} size={16} />{p.value}</span>
-        : c.k === 'price' ? (p: any) => p.value == null ? '–' : <span className="inline-flex items-center gap-1">{fmt(p.value, 2)}<OldPriceBadge r={p.data} /></span>
+        : c.k === 'price' ? (p: any) => p.value == null ? '–' : <span className="inline-flex items-center gap-1">{fmt(p.value, 2)}<OldPriceBadge r={p.data} /><PriceCondition r={p.data} /></span>
         : c.k === 'score' ? (p: any) => p.value == null ? '–' : <b style={{ color: scoreColor(p.value) }}>{fmt(p.value, 0)}</b>
-        : c.k === 'name' ? (p: any) => <button className="truncate text-left hover:underline" onClick={() => open(p.data.id)}>{p.value}</button> : undefined,
+        : c.k === 'name' ? (p: any) => <span className="flex min-w-0 flex-col justify-center leading-tight"><button className="truncate text-left hover:underline" onClick={() => open(p.data.id)}>{p.value}</button>{p.data.variant_note && <span className="truncate text-[10px] text-muted-foreground" data-testid="variant-note">{p.data.variant_note}</span>}</span> : undefined,
       comparator: c.num ? (a: any, b: any, _x: any, _y: any, desc: boolean) => a == null && b == null ? 0 : a == null ? (desc ? -1 : 1) : b == null ? (desc ? 1 : -1) : a - b : undefined })),
   ], [cols, compare, setCompare, open])
   const saveView = () => { if (!vn.trim()) return; setViews({ ...views, [vn.trim()]: { f, cols, sort: (grid.current?.api.getColumnState() ?? []).filter(s => s.sort).map(s => ({ colId: s.colId, sort: s.sort! })), so } }); setVn('') }

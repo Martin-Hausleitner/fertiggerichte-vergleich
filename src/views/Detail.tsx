@@ -2,6 +2,7 @@ import { ExternalLink, MapPin, Factory, CookingPot, AlertTriangle, Info } from '
 import { Img, Chips, Price, ScoreBar, Actions, StoreLogo, BrandLogo, Nearest, NearestBox, CatChips, PriceKpis, StageBadge, ProdLine, PliBadge } from '../components/product'
 import { Badge } from '../components/ui'
 import { NutritionSourceBadge } from '../components/NutritionSource'
+import { VariantNote } from '../components/RowNotes'
 import { fmt, useApp } from '../lib'
 import { HealthSection } from '../components/health'
 export default function Detail({id}:{id:number}){
@@ -10,7 +11,7 @@ export default function Detail({id}:{id:number}){
   const sim=R.filter(x=>x.id!==id&&x.rankable&&x.pack===r.pack&&x.score!=null&&(x.score??0)>(r.score??0)).sort((a,b)=>(b.score??0)-(a.score??0)).slice(0,4)
   const Row=({l,v}:{l:string;v:any})=><div className="flex justify-between border-b py-1.5 text-sm dark:border-slate-800"><span className="text-slate-500">{l}</span><span className="font-medium text-right tabular-nums">{v??'–'}</span></div>
   return <div className="space-y-4">
-    <div className="flex gap-4"><Img src={r.img} className="h-32 w-32 shrink-0"/><div className="space-y-1 min-w-0"><h2 className="text-lg font-bold leading-tight">{r.name}</h2><div className="text-sm text-slate-500">{r.brand} · {r.store}</div><Badge className="bg-slate-100 dark:bg-slate-800">{r.pack}</Badge><div className="text-lg"><Price r={r}/></div><div className="flex items-center gap-2"><StoreLogo store={r.store} size={56}/><BrandLogo r={r} size={44}/></div><Actions r={r}/></div></div>
+    <div className="flex gap-4"><Img src={r.img} className="h-32 w-32 shrink-0"/><div className="space-y-1 min-w-0"><h2 className="text-lg font-bold leading-tight">{r.name}</h2><VariantNote r={r}/><div className="text-sm text-slate-500">{r.brand} · {r.store}</div><Badge className="bg-slate-100 dark:bg-slate-800">{r.pack}</Badge><div className="text-lg"><Price r={r}/></div><div className="flex items-center gap-2"><StoreLogo store={r.store} size={56}/><BrandLogo r={r} size={44}/></div><Actions r={r}/></div></div>
     <NearestBox store={r.store}/><div className="flex flex-wrap gap-2 items-center"><StageBadge r={r}/><PliBadge v={r.pli}/></div><PriceKpis r={r}/><ProdLine r={r} size="md"/><CatChips r={r}/>
     <Chips r={r}/><div><div className="text-xs text-slate-500 mb-1">Health-Score</div><ScoreBar r={r}/></div>
     <HealthSection r={r} R={R}/>
