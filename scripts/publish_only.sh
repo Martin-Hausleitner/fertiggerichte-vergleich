@@ -13,6 +13,10 @@ git fetch -q origin; git fetch -q servas || true
 # Build origin/main directly (the shared checkout may hold others' uncommitted work; never touch it).
 TARGET=$(git rev-parse origin/main); SHA=$(git rev-parse --short $TARGET); echo "target $SHA"
 for i in $(seq 1 $((WAIT_MIN*4))); do LD=$(cut -d' ' -f1 /proc/loadavg); A=$(free -m | awk '/Mem:/{print $7}'); [ ${LD%.*} -lt 50 ] && [ $A -ge $MIN_RAM_MB ] && { echo "resources ok load=$LD avail=${A}MB"; break; }; [ $i = $((WAIT_MIN*4)) ] && { echo "RESOURCES NOT OK load=$LD avail=$A"; exit 3; }; sleep 15; done
+# Disk gate: abort before worktree/build if / or the worktree filesystem (/tmp) has < MIN_DISK_GB free.
+MIN_DISK_GB=${MIN_DISK_GB:-3}
+for fs in / /tmp; do FREE_KB=$(df -Pk "$fs" | awk 'NR==2{print $4}'); if [ "$FREE_KB" -lt $((MIN_DISK_GB*1024*1024)) ]; then echo "DISK GATE: only $((FREE_KB/1024)) MB free on $fs (need >= ${MIN_DISK_GB} GB) - aborting before build, nothing published"; exit 7; fi; done
+echo "disk ok: $(df -Ph / | awk 'NR==2{print $4}') free on /"
 W=/tmp/fertig-publish-$SHA; rm -rf $W; git worktree prune; git worktree add -q --detach $W $TARGET
 trap 'date +%s > /tmp/fertig_deploy.last; git -C /workspace/fertig-app worktree remove --force '$W' 2>/dev/null || true' EXIT
 ln -s /workspace/fertig-app/node_modules $W/node_modules
