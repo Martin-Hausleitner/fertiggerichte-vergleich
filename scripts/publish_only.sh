@@ -22,6 +22,7 @@ echo "rows repo=$ROWS live=$LIVE"; [ "$ROWS" -ge "$LIVE" ] || { echo "ROWCOUNT w
 (cd $W && npm run build >/tmp/build.log 2>&1) || { tail -20 /tmp/build.log; exit 1; }; echo "build ok"
 if [ -n "$RANK_CHECK" ]; then DIST=$W/dist node "$RANK_CHECK" > /tmp/rank_check.log 2>&1 || { tail -20 /tmp/rank_check.log; exit 6; }; echo "rank check ok"; fi
 (git push -q servas $TARGET:refs/heads/main && echo "servas main = $SHA") || echo "servas main push failed (non-ff? not forced)"
-rm -rf /tmp/ghp && git clone -q --depth 1 -b gh-pages https://github.com/Martin-Hausleitner/fertiggerichte-vergleich.git /tmp/ghp 2>/dev/null && cp -n /tmp/ghp/assets/* $W/dist/assets/ 2>/dev/null; cd $W/dist && touch .nojekyll && rm -rf .git && git init -q -b gh-pages && git add -A && git -c user.name="Martin Hausleitner" -c user.email="Martin-Hausleitner@users.noreply.github.com" commit -qm "deploy $SHA" && git push -q -f https://github.com/Martin-Hausleitner/fertiggerichte-vergleich.git gh-pages && echo "martin gh-pages ok"
+# gh-pages = exakt der aktuelle dist-Build (keine alten Assets mehr übernehmen)
+cd $W/dist && touch .nojekyll && rm -rf .git && git init -q -b gh-pages && git add -A && git -c user.name="Martin Hausleitner" -c user.email="Martin-Hausleitner@users.noreply.github.com" commit -qm "deploy $SHA" && git push -q -f https://github.com/Martin-Hausleitner/fertiggerichte-vergleich.git gh-pages && echo "martin gh-pages ok"
 ( git push -q -f https://github.com/servas-ai/fertiggerichte-vergleich.git gh-pages && echo 'servas gh-pages ok' ) || echo 'servas gh-pages push failed'
 echo "deployed $SHA gh-pages=$(git rev-parse --short HEAD) bundle=$(grep -o 'index-[A-Za-z0-9_-]*\.js' index.html)"

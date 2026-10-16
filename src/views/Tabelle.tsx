@@ -1,3 +1,4 @@
+import { DeliveryHint } from '@/components/DeliveryHint'
 import { PriceCondition } from '@/components/RowNotes'
 import { useMemo, useRef, useState } from 'react'
 import { AgGridReact } from 'ag-grid-react'
@@ -16,7 +17,7 @@ import { protPerEuro } from '@/app/meal'
 import { deliveryText, deliveryTitle, delivers4020 } from '@/app/shops'
 import { StoreLogo } from '@/components/product'
 import { OldPriceBadge } from '@/components/PriceAge'
-import { useApp, useLocal, useHashState, fmt, fmtDist, scoreColor, type Row } from '@/lib'
+import { useApp, useLocal, useHashState, fmt, fmtDist, scoreColor, type Row, cn } from '@/lib'
 import { useNearShops } from '@/app/shops'
 
 type C = { k: string; h: string; w?: number; d?: number; def?: boolean; num?: boolean }
@@ -57,7 +58,7 @@ export default function Tabelle() {
       valueFormatter: c.k === 'dist' ? (p: any) => p.value == null ? '–' : `~${walkMin(p.value)} min · ${fmtDist(p.value)}` : c.d != null ? (p: any) => fmt(p.value, c.d) : undefined,
       cellRenderer: c.k === 'store' ? (p: any) => <span className="flex items-center gap-1.5"><StoreLogo store={p.value} size={16} />{p.value}</span>
         : c.k === 'price' ? (p: any) => p.value == null ? '–' : <span className="inline-flex items-center gap-1">{fmt(p.value, 2)}<OldPriceBadge r={p.data} /><PriceCondition r={p.data} /></span>
-        : c.k === 'avail' ? (p: any) => <span title={deliveryTitle(p.data)} data-testid="avail" className={p.data?.delivers_4020 === false ? 'text-red-700' : undefined}>{p.value}</span>
+        : c.k === 'avail' ? (p: any) => <span title={deliveryTitle(p.data)} data-testid="avail" className={cn('flex flex-col justify-center leading-tight', p.data?.delivers_4020 === false && 'text-red-700')}><span>{p.value}</span><DeliveryHint r={p.data} /></span>
         : c.k === 'score' ? (p: any) => p.value == null ? '–' : <b style={{ color: scoreColor(p.value) }}>{fmt(p.value, 0)}</b>
         : c.k === 'name' ? (p: any) => <span className="flex min-w-0 flex-col justify-center leading-tight"><button className="truncate text-left hover:underline" onClick={() => open(p.data.id)}>{p.value}</button>{p.data.variant_note && <span className="truncate text-[10px] text-muted-foreground" data-testid="variant-note">{p.data.variant_note}</span>}</span> : undefined,
       comparator: c.num ? (a: any, b: any, _x: any, _y: any, desc: boolean) => a == null && b == null ? 0 : a == null ? (desc ? -1 : 1) : b == null ? (desc ? 1 : -1) : a - b : undefined })),

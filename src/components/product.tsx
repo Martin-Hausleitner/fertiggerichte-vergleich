@@ -2,6 +2,7 @@ import { LOGIN_ONLY_PRICE } from '@/app/shops'
 import { useState } from 'react'
 import { OldPriceBadge } from './PriceAge'
 import { NutritionSourceBadge } from './NutritionSource'
+import { DeliveryHint } from './DeliveryHint'
 import { VariantNote, PriceCondition, PriceWinnerBadge } from './RowNotes'
 import type React from 'react'
 import { createPortal } from 'react-dom'
@@ -113,7 +114,7 @@ export function ProductCard({r,winner}:{r:Row;winner?:boolean}){
     <CardContent className="space-y-3 flex-1">
       <div className="flex items-end justify-between gap-2"><div className="text-2xl"><Price r={r}/></div>
         <div className="text-right"><div className="text-lg font-extrabold leading-tight tabular-nums text-brand dark:text-emerald-300">{r.eur10p==null?'–':fmt(r.eur10p,2)+' €'}</div><div className="text-[11px] text-muted-foreground flex justify-end"><InfoTip k="eur10p">pro 10 g Protein</InfoTip></div></div></div>
-      <ScoreBar r={r}/>{winner&&<PriceWinnerBadge r={r} className="mt-1"/>}<NutritionSourceBadge r={r} className="mt-1"/>
+      <ScoreBar r={r}/><DeliveryHint r={r as any} className="block mt-1"/>{winner&&<PriceWinnerBadge r={r} className="mt-1"/>}<NutritionSourceBadge r={r} className="mt-1"/>
       <Tabs defaultValue="preis" onClick={e=>e.stopPropagation()}><TabsList className="w-full h-8"><TabsTrigger className="flex-1 text-xs" value="preis">Preis</TabsTrigger><TabsTrigger className="flex-1 text-xs" value="naehr">Nährwerte</TabsTrigger><TabsTrigger className="flex-1 text-xs" value="herk">Herkunft</TabsTrigger></TabsList>
         <TabsContent value="preis"><PriceKpis r={r}/></TabsContent>
         <TabsContent value="naehr" className="space-y-1.5"><Chips r={r}/><CatChips r={r}/>{r.priceOnly&&<span className="text-[11px] text-slate-500">nur Preis, keine Nährwerte</span>}</TabsContent>
