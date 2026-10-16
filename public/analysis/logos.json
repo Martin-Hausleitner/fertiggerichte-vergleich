@@ -1173,7 +1173,10 @@
   "slug": "knoedelwerkstatt",
   "name": "Knödelwerkstatt",
   "brands": [
-   "Knödelwerkstatt"
+   "Knödelwerkstatt",
+   "Die Knödelwerkstatt",
+   "Knödelwerkstatt Ges.m.b.H.",
+   "Knödelwerkstatt GmbH"
   ],
   "logo_category": "Markenhersteller",
   "file": "logos/knoedelwerkstatt.png",
@@ -2051,7 +2054,9 @@
   "slug": "followfood",
   "name": "followfood",
   "brands": [
-   "followfood"
+   "followfood",
+   "Followfood",
+   "followfood GmbH"
   ],
   "logo_category": "Marke",
   "file": "logos/followfood.svg",
@@ -3268,7 +3273,9 @@
   "brands": [
    "Frank Soup",
    "frank",
-   "frank juice"
+   "frank juice",
+   "Frank Juice",
+   "FrankJuice GmbH"
   ],
   "logo_category": "Markenhersteller",
   "file": "logos/frank.png",
@@ -4283,6 +4290,82 @@
   "source": "https://www.alfies.at/svg/alfies-logo-dark.svg",
   "size": "svg",
   "note": "Vision gate 2026-10-14T0740: visuell geprüft (offizielle Wortmarke 'Alfies' dunkelgrau mit grünem i-Punkt, scharf, kein Platzhalter; auf dunklem Grund kontrastarm – dunkle Variante) · offizielles Logo aus dem alfies.at Shop-Header (<img src=/svg/alfies-logo-dark.svg>)",
+  "hq": true
+ },
+ "elfer": {
+  "slug": "elfer",
+  "name": "11er (elfer)",
+  "brands": [
+   "11er",
+   "elfer"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/elfer-11er.svg",
+  "source": "https://www.11er.at/fileadmin/files/images/user_upload/01_Startseite/logo-11er-2.svg (11er.at robots: Allow /, Disallow only /typo3/)",
+  "size": "svg",
+  "note": "Vision gate 2026-10-16T1736 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Offizielles Oval-Logo '11er elfer AUSTRIA' von 11er.at, unverändert; Betreiber laut Website Galinastraße 34, 6820 Frastanz (Kartoffelprodukte/Rösti = Alfies/MPreis 11er-Rösti-Zeilen)",
+  "hq": true
+ },
+ "ajinomoto": {
+  "slug": "ajinomoto",
+  "name": "Ajinomoto",
+  "brands": [
+   "Ajinomoto",
+   "AJINOMOTO",
+   "Ajinomoto Oyakata"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/ajinomoto.svg",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Ajinomoto_logo.svg (Wikimedia Commons File:Ajinomoto logo.svg, Public domain / textlogo)",
+  "size": "svg",
+  "note": "Vision gate 2026-10-16T1736 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Rotes AJINOMOTO-Wordmark (Konzernmarke) von Wikimedia Commons, unverändert; auch für 'Ajinomoto Oyakata'-Zeilen, deren Markenname die Konzernmarke enthält (Oyakata = Ajinomoto-Untermarke; kein eigenes Oyakata-Logo verwendet)",
+  "hq": true
+ },
+ "getvoila": {
+  "slug": "getvoila",
+  "name": "getvoila",
+  "brands": [
+   "Getvoila",
+   "getvoila",
+   "GETVOILA"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/getvoila.svg",
+  "source": "https://cdn.shopify.com/s/files/1/0568/3173/8034/files/Logo.svg?v=1713430514 (Header von getvoila.com; robots Disallow nur cart/checkout/search)",
+  "size": "svg",
+  "note": "Vision gate 2026-10-16T1736 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Offizielles 'getvoila'-Wordmark von getvoila.com; Original #FAF7F4 (hell auf dunkel) → Füllfarbe #1f1f1f für helle UI, Pfade unverändert; Marke bestätigt über getvoila.com Produkt-Sitemap (neapolitanische-pizza-bufalina/diavola/quattro-formaggi = Alfies 'getvoila … Neapolitanisches Kochkollektiv')",
+  "hq": true
+ },
+ "mamma-emma": {
+  "slug": "mamma-emma",
+  "name": "Mamma Emma",
+  "brands": [
+   "Mamma Emma",
+   "mamma emma",
+   "MAMMA EMMA"
+  ],
+  "logo_category": "Markenhersteller",
+  "file": "logos/mamma-emma.svg",
+  "source": "https://www.mammaemma.it/wp-content/uploads/2019/11/logo-brown.svg (mammaemma.it robots: Disallow only cfdb7_uploads)",
+  "size": "svg",
+  "note": "Vision gate 2026-10-16T1736 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Offizielles braunes 'mamma emma'-Wordmark von mammaemma.it (Gnocchi di patate), unverändert; = Alfies 'Mamma Emma Kartoffel Gnocchi'-Zeilen",
+  "hq": true
+ },
+ "myproduct": {
+  "slug": "myproduct",
+  "name": "myProduct",
+  "brands": [
+   "myProduct",
+   "myProduct.at",
+   "myproduct.at",
+   "myProduct GmbH",
+   "Online: myProduct"
+  ],
+  "logo_category": "Handelskette",
+  "file": "logos/myproduct.png",
+  "source": "https://myproduct.at/media/logo/default/myproductatlogo.png (myproduct.at header/cookie-banner <img alt='Logo myProduct.at'>; robots allow /media/)",
+  "size": "png",
+  "note": "Vision gate 2026-10-16T2139 (Daten-Squad): visuell geprüft (korrekte Marke, lesbar, kein Platzhalter/Produktfoto, auf hellem Hintergrund nutzbar) · Offizielles 'myProduct.at'-Logo (grün-pinkes Blatt-Signet, graues 'my' + pinkes 'Product' + '.at' in pinkem Rahmen) von myproduct.at, unverändert 520x162 RGBA; Betreiber myProduct GmbH, Zwettl, FN 431059k",
   "hq": true
  }
 }
