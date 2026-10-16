@@ -13,7 +13,7 @@ import { Sheet } from '@/components/ui'
 import { isReadyMeal, pricePerPortion, lastPriceDate } from '@/app/meal'
 import { valueScore, useCfg, rankOk } from '@/app/scoring'
 import { protPerEuro } from '@/app/meal'
-import { ONLINE } from '@/app/shops'
+import { ONLINE, deliveryText } from '@/app/shops'
 import { StoreLogo } from '@/components/product'
 import { OldPriceBadge } from '@/components/PriceAge'
 import { useApp, useLocal, useHashState, fmt, fmtDist, scoreColor, type Row } from '@/lib'
@@ -33,7 +33,7 @@ const COLS: C[] = [
 ]
 type SavedView = { f: F; cols: string[]; sort: SortModelItem[]; so?: string }
 const SORTS: [string, string, (r: any) => number | null, 1 | -1][] = [['value', 'Preis-Leistung (je Portion)', r => r.value, -1], ['ppe', 'Protein pro € (je Portion)', r => r.ppeP, -1], ['score', 'Health-Score', r => r.score, -1], ['pPor', 'Preis pro Portion', r => r.pPor, 1], ['price', 'Preis', r => r.price, 1], ['p100g', 'Preis pro 100 g', r => r.p100g, 1]]
-export const availOf = (store: string, r?: any) => r?.delivers_4020 === true ? 'Liefert nach 4020' : store === 'Gurkerl' ? 'nicht lieferbar nach Linz' : ONLINE.includes(store) ? 'Online / Lieferung' : 'Kette führt es'
+export const availOf = (store: string, r?: any) => deliveryText({ ...(r ?? {}), store })
 const veg = (r: Row) => r.vegan || r.cprot?.includes('vegan') ? 'vegan' : r.cprot?.includes('vegetarisch') ? 'vegetarisch' : ''
 
 export default function Tabelle() {

@@ -25,6 +25,12 @@ export const ONLINE = ['Gurkerl', 'PrepMyMeal', 'Fit to Go', 'LiveFresh', 'FitTa
 export const KNOWN_DELIVERY: Delivery[] = [{ name: 'Alfies', type: 'online', delivers_4020: false, checked: '2026-10-14', source: 'alfies.at – liefert nur nach Wien und Graz' }]
 /** Anbieter, deren Preise nur nach Login sichtbar sind → kein Preis, nie in Preis-Rankings. */
 export const LOGIN_ONLY_PRICE = ['Juit']
+/** Liefer-/Kanaltext aus den Zeilendaten (delivers_4020 / delivery_note) statt hartkodiert je Anbieter.
+ *  false → delivery_note oder „Liefert nicht nach 4020 Linz – nicht in Rankings“; true → „Online / Lieferung“; null → bisheriger Standard. */
+export const deliveryText = (r: { store: string; delivers_4020?: boolean | null; delivery_note?: string | null }) =>
+  r.delivers_4020 === false ? (r.delivery_note?.trim() || 'Liefert nicht nach 4020 Linz – nicht in Rankings')
+    : r.delivers_4020 === true ? 'Online / Lieferung'
+      : r.store === 'Gurkerl' ? 'nicht lieferbar nach Linz' : ONLINE.includes(r.store) ? 'Online / Lieferung' : 'Kette führt es'
 export const onlineId = (p: string) => `online|${p}`
 export type NearShop = Shop & { id: string; d: number; walkMin: number; type: string | null; hasProducts: boolean; osm?: string }
 const TYPE_DE: Record<string, string> = { chain: 'Supermarkt', 'ethnic/local': 'Nahversorger', bakery: 'Bäckerei', deli: 'Feinkost', butcher: 'Fleischerei', kiosk: 'Kiosk', greengrocer: 'Obst & Gemüse', chemist: 'Drogerie', 'petrol-station shop': 'Tankstellenshop', 'to-go chain': 'To-go-Kette', 'meal-prep': 'Meal-Prep', shop: 'Geschäft' }
