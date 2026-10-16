@@ -6,7 +6,7 @@ import { Card, Badge, Button, Select } from '@/components/ui'
 import { StoreLogo, Img, ScoreBar } from '@/components/product'
 import { useApp, fmt, fmtDist, cn, STORE_LOGO, scoreColor, type Row } from '@/lib'
 import { toggleMyShop, fmtR, setLoc, RADII } from '@/app/location'
-import { useNearShops, ONLINE, onlineId, typeLabel, deliveryText } from '@/app/shops'
+import { useNearShops, ONLINE, onlineId, typeLabel, deliveryText, deliveryTitle } from '@/app/shops'
 import { isReadyMeal, isRankable, pricePerPortion } from '@/app/meal'
 import { OldPriceBadge } from '@/components/PriceAge'
 
@@ -83,7 +83,7 @@ export default function MeineShops() {
         <div className="flex flex-wrap gap-2">{perChain.map(x => <Badge key={x.c} className="gap-1.5 py-1"><StoreLogo store={x.c} size={16} />{x.c}: {x.n} Gerichte · Median-Score {fmt(x.med, 0)} · Bester {fmt(x.best, 0)}</Badge>)}</div>
         <ol className="divide-y">{ranking.map((r: Row, i) => <li key={r.id}><button onClick={() => open(r.id)} className="flex w-full items-center gap-3 py-2 text-left hover:bg-muted/50">
           <span className="w-7 text-right text-sm font-bold text-muted-foreground">{i + 1}</span><Img src={r.img} className="size-12 shrink-0 rounded" />
-          <span className="min-w-0 flex-1"><span className="line-clamp-2 text-sm font-medium">{r.name}</span><span className="flex items-center gap-1.5 text-xs text-muted-foreground"><StoreLogo store={r.store} size={14} />{r.store} · {r.brandN}{r.price != null && ` · ${fmt(r.price, 2)} €`}{pricePerPortion(r) != null && ` · ${fmt(pricePerPortion(r), 2)} €/Portion`} <OldPriceBadge r={r} /></span><span className="mt-0.5 inline-block rounded border px-1 text-[10px] text-muted-foreground" title="Sortiment der Kette, nicht für die Filiale bestätigt">{deliveryText(r as any)}</span></span>
+          <span className="min-w-0 flex-1"><span className="line-clamp-2 text-sm font-medium">{r.name}</span><span className="flex items-center gap-1.5 text-xs text-muted-foreground"><StoreLogo store={r.store} size={14} />{r.store} · {r.brandN}{r.price != null && ` · ${fmt(r.price, 2)} €`}{pricePerPortion(r) != null && ` · ${fmt(pricePerPortion(r), 2)} €/Portion`} <OldPriceBadge r={r} /></span><span className="mt-0.5 inline-block rounded border px-1 text-[10px] text-muted-foreground" title={deliveryTitle(r)}>{deliveryText(r)}</span></span>
           <span className="w-24 shrink-0 sm:w-36"><ScoreBar r={r} /></span></button></li>)}</ol>
         {ranking.length === 0 && <p className="text-sm text-muted-foreground">Keine bewerteten Gerichte für diese Auswahl.</p>}
         <p className="flex gap-1 text-[11px] text-muted-foreground"><Info className="size-3.5 shrink-0" />Nur Fertiggerichte mit echtem Preis, Laden und vollständigem Score. „Kette führt es“ = Sortiment der Kette; nicht für die einzelne Filiale bestätigt. Sortiert nach Health-Score, bei Gleichstand nach Preis/100 g. Score-Farbe: <span style={{ color: scoreColor(60) }}>≥60 sehr gut</span>.</p>
