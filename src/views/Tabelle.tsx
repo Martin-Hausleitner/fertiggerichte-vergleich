@@ -13,7 +13,7 @@ import { Sheet } from '@/components/ui'
 import { isReadyMeal, pricePerPortion, lastPriceDate } from '@/app/meal'
 import { valueScore, useCfg, rankOk } from '@/app/scoring'
 import { protPerEuro } from '@/app/meal'
-import { ONLINE } from '@/app/shops'
+import { deliveryText, deliveryTitle } from '@/app/shops'
 import { StoreLogo } from '@/components/product'
 import { OldPriceBadge } from '@/components/PriceAge'
 import { useApp, useLocal, useHashState, fmt, fmtDist, scoreColor, type Row } from '@/lib'
@@ -33,7 +33,7 @@ const COLS: C[] = [
 ]
 type SavedView = { f: F; cols: string[]; sort: SortModelItem[]; so?: string }
 const SORTS: [string, string, (r: any) => number | null, 1 | -1][] = [['value', 'Preis-Leistung (je Portion)', r => r.value, -1], ['ppe', 'Protein pro € (je Portion)', r => r.ppeP, -1], ['score', 'Health-Score', r => r.score, -1], ['pPor', 'Preis pro Portion', r => r.pPor, 1], ['price', 'Preis', r => r.price, 1], ['p100g', 'Preis pro 100 g', r => r.p100g, 1]]
-export const availOf = (store: string, r?: any) => r?.delivers_4020 === true ? 'Liefert nach 4020' : store === 'Gurkerl' ? 'nicht lieferbar nach Linz' : ONLINE.includes(store) ? 'Online / Lieferung' : 'Kette führt es'
+export const availOf = (store: string, r?: any) => deliveryText({ ...(r ?? {}), store })  // sensecheck 17 (3): generisch aus delivers_4020
 const veg = (r: Row) => r.vegan || r.cprot?.includes('vegan') ? 'vegan' : r.cprot?.includes('vegetarisch') ? 'vegetarisch' : ''
 
 export default function Tabelle() {
@@ -45,7 +45,7 @@ export default function Tabelle() {
   const grid = useRef<AgGridReact<any>>(null)
   const konzOf = useMemo(() => { const m: Record<string, string> = {}; (D.producers || []).forEach((p: any) => { if (p.group && !/unverified/i.test(p.group)) m[p.slug] = String(p.group).replace(/\(.*?\)/g, '').trim() }); return (r: Row) => r.prodSlug ? m[r.prodSlug] ?? null : null }, [D])
   const pred = useMemo(() => makePred(f, { konzOf, dist: distOf }), [f, konzOf, distOf])
-  const base = useMemo(() => R.filter(r => !r.nonfood && !r.store.startsWith('unbekannt') && (allFood ? true : isReadyMeal(r)) && (!lf || (r as any).delivers_4020 === true)).map(r => { const pp = pricePerPortion(r); return { ...r, pPor: pp } }), [R, allFood, lf])
+  const base = useMemo(() => R.filter(r => !r.nonfood && !r.store.startsWith('unbekannt') && (allFood ? true : isReadyMeal(r)) && (!lf || deliveryText(r) === 'Liefert nach 4020')).map(r => { const pp = pricePerPortion(r); return { ...r, pPor: pp } }), [R, allFood, lf])
   const rows = useMemo(() => { const qq = q.toLowerCase(); const sd = SORTS.find(x => x[0] === so) ?? SORTS[0]; return base.filter(r => pred(r) && (so !== 'value' && so !== 'ppe' || allFood || rankOk(r)) && (!qq || `${r.name} ${r.brandN} ${r.herst}`.toLowerCase().includes(qq)))
     .map(r => ({ ...r, cat: [...(r.cprot || []), ...(r.cdish || [])].join(', '), diet: veg(r), dist: distOf(r), ns: r.ns && r.ns !== 'unknown' ? r.ns.toUpperCase() : null, value: valueScore(r), ppeP: protPerEuro(r), avail: availOf(r.store, r) }))
     .sort((a, b) => { const x = sd[2](a), y = sd[2](b); return x == null ? (y == null ? 0 : 1) : y == null ? -1 : (x - y) * sd[3] }) }, [base, pred, q, distOf, so, cfg])
@@ -57,6 +57,7 @@ export default function Tabelle() {
       valueFormatter: c.k === 'dist' ? (p: any) => p.value == null ? '–' : `~${walkMin(p.value)} min · ${fmtDist(p.value)}` : c.d != null ? (p: any) => fmt(p.value, c.d) : undefined,
       cellRenderer: c.k === 'store' ? (p: any) => <span className="flex items-center gap-1.5"><StoreLogo store={p.value} size={16} />{p.value}</span>
         : c.k === 'price' ? (p: any) => p.value == null ? '–' : <span className="inline-flex items-center gap-1">{fmt(p.value, 2)}<OldPriceBadge r={p.data} /><PriceCondition r={p.data} /></span>
+        : c.k === 'avail' ? (p: any) => <span title={deliveryTitle(p.data)} data-testid="avail" className={p.data?.delivers_4020 === false ? 'text-red-700' : undefined}>{p.value}</span>
         : c.k === 'score' ? (p: any) => p.value == null ? '–' : <b style={{ color: scoreColor(p.value) }}>{fmt(p.value, 0)}</b>
         : c.k === 'name' ? (p: any) => <span className="flex min-w-0 flex-col justify-center leading-tight"><button className="truncate text-left hover:underline" onClick={() => open(p.data.id)}>{p.value}</button>{p.data.variant_note && <span className="truncate text-[10px] text-muted-foreground" data-testid="variant-note">{p.data.variant_note}</span>}</span> : undefined,
       comparator: c.num ? (a: any, b: any, _x: any, _y: any, desc: boolean) => a == null && b == null ? 0 : a == null ? (desc ? -1 : 1) : b == null ? (desc ? 1 : -1) : a - b : undefined })),

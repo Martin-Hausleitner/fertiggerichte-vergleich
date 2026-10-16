@@ -22,9 +22,24 @@ export const shopId = (s: { osm?: string; chain: string | null; name: string; la
 /** Online-/Lieferanbieter ohne Filialen. Lieferbarkeit nach 4020 kommt aus stores_linz_walk.json → delivery. */
 export const ONLINE = ['Gurkerl', 'PrepMyMeal', 'Fit to Go', 'LiveFresh', 'FitTaste', 'Juit', 'bofrost', 'every.', 'Löwenanteil', 'Kernbeißer', 'Goldblatt', 'iss mich!', 'Alfies']
 /** Bekannte Liefergebiete als Fallback, falls stores_linz_walk.json → delivery keinen Eintrag hat (Datenseite hat Vorrang). */
-export const KNOWN_DELIVERY: Delivery[] = [{ name: 'Alfies', type: 'online', delivers_4020: false, checked: '2026-10-14', source: 'alfies.at – liefert nur nach Wien und Graz' }]
+export const KNOWN_DELIVERY: Delivery[] = [{ name: 'Alfies', type: 'online', delivers_4020: false, checked: '2026-10-16', source: 'https://alfies.shop/de/at/faq (FAQ „Wohin wird zugestellt?“: ganz Wien, große Teile NÖ, Graz + Umgebung; Linz nicht enthalten)' }]
 /** Anbieter, deren Preise nur nach Login sichtbar sind → kein Preis, nie in Preis-Rankings. */
 export const LOGIN_ONLY_PRICE = ['Juit']
+/** sensecheck 17 (3): Verfügbarkeitstext generisch aus den Zeilendaten statt hartkodiert je Anbieter.
+ *  delivers_4020 === false (Alfies, Gurkerl, künftig jeder weitere) → „nicht lieferbar nach 4020 Linz“ (Begründung + Quelle im Tooltip);
+ *  true + Beleg Filiale in Linz (OSM) → „Kette führt es“; true sonst (Versand/Lieferung belegt) → „Liefert nach 4020“;
+ *  unbekannt → Online-Anbieter „Online / Lieferung“, Kette „Kette führt es“. */
+export type DeliveryRow = { store: string; delivers_4020?: boolean | string | null; delivery_note?: string | null; delivery_source?: string | null; rank_excluded_reason?: string | null }
+export const NO_4020_TEXT = 'nicht lieferbar nach 4020 Linz'
+const linzStore = (r: DeliveryRow) => r.delivers_4020 === true && !ONLINE.includes(r.store) && /openstreetmap|overpass|\bosm\b/i.test(r.delivery_source ?? '')
+export const deliveryText = (r: DeliveryRow) =>
+  r.delivers_4020 === false ? NO_4020_TEXT : linzStore(r) ? 'Kette führt es' : r.delivers_4020 === true ? 'Liefert nach 4020' : ONLINE.includes(r.store) ? 'Online / Lieferung' : 'Kette führt es'
+/** Tooltip: Begründung + Quelle (z. B. Alfies-FAQ, gurkerl.at/thema/liefergebiet, Versandseite) bzw. Hinweis „Sortiment der Kette“. */
+export const deliveryTitle = (r: DeliveryRow) =>
+  r.delivers_4020 === false ? [r.rank_excluded_reason || `${r.store} liefert nicht nach 4020 Linz – nicht in Rankings`, r.delivery_source && `Quelle: ${r.delivery_source}`].filter(Boolean).join(' · ')
+    : linzStore(r) ? 'Sortiment der Kette (Filialen in Linz laut OpenStreetMap), nicht für die einzelne Filiale bestätigt'
+      : r.delivers_4020 === true ? ['Lieferung nach 4020 Linz belegt', r.delivery_source && `Quelle: ${r.delivery_source}`].filter(Boolean).join(' · ')
+        : ONLINE.includes(r.store) ? 'Online-/Lieferanbieter' : 'Sortiment der Kette, nicht für die Filiale bestätigt'
 export const onlineId = (p: string) => `online|${p}`
 export type NearShop = Shop & { id: string; d: number; walkMin: number; type: string | null; hasProducts: boolean; osm?: string }
 const TYPE_DE: Record<string, string> = { chain: 'Supermarkt', 'ethnic/local': 'Nahversorger', bakery: 'Bäckerei', deli: 'Feinkost', butcher: 'Fleischerei', kiosk: 'Kiosk', greengrocer: 'Obst & Gemüse', chemist: 'Drogerie', 'petrol-station shop': 'Tankstellenshop', 'to-go chain': 'To-go-Kette', 'meal-prep': 'Meal-Prep', shop: 'Geschäft' }
