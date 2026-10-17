@@ -7,7 +7,7 @@ import { ExternalLink } from 'lucide-react'
 import { KPI, STAGES } from '../components/info'
 import { RowHover, Img, Price, ScoreBar, Actions, BrandLogo, PliBadge, StoreLogo } from '../components/product'
 import { fmt, useApp, type Row } from '../lib'
-import { linkLabel, isGenericLink } from '../app/linkKind'
+import { rowLinkLabel, isGenericLink } from '../app/linkKind'
 export default function Grid({rows,sort='eur10p'}:{rows:Row[];sort?:string}){
   const {open,compare,setCompare,dark,wide,nearest}=useApp()
   const ref=useRef<AgGridReact<Row>>(null)
@@ -29,7 +29,7 @@ export default function Grid({rows,sort='eur10p'}:{rows:Row[];sort?:string}){
     num('€/Portion','pPor',95,2),num('€/100 g','p100g',85,2),num('Protein/Portion','protPor',110),num('kcal/Portion','kcalPor',100,0),num('Salz/Portion','saltPor',100,2),num('Salz % Tag','saltPct',95,0),num('€/kg','ppk',85,2),num('€/100 kcal','eur100k',100,2),num('Protein/Pkg','protpack',105),num('Prot./100kcal','p100k',110),num('kcal/100g','kcal',95,0),num('Salz','salt',80,2),num('ges. Fett','sat',85),num('Zucker','sugar',85),num('Ballastst.','fib',90),
     num('Protein/€','ppe',95),
     {headerName:'Hersteller',field:'herst',minWidth:170,flex:1,filter:'agTextColumnFilter',wrapText:true,cellRenderer:(p:any)=><div className="text-xs leading-tight py-1.5">{p.value}{p.data.ort&&<div className="text-muted-foreground">{p.data.ort}</div>}</div>},
-    {headerName:'',width:90,sortable:false,filter:false,cellRenderer:(p:any)=><div className="flex items-center h-full"><Actions r={p.data}/>{p.data.url&&<a href={p.data.url} target="_blank" rel="noreferrer" title={linkLabel(p.data.url)??"Im Shop öffnen"} className={"p-1.5 hover:text-brand "+(isGenericLink(p.data.url)?"text-amber-500":"text-slate-400")}><ExternalLink size={15}/></a>}</div>},
+    {headerName:'',width:90,sortable:false,filter:false,cellRenderer:(p:any)=><div className="flex items-center h-full"><Actions r={p.data}/>{p.data.url&&<a href={p.data.url} target="_blank" rel="noreferrer" title={rowLinkLabel(p.data)??"Im Shop öffnen"} className={"p-1.5 hover:text-brand "+(isGenericLink(p.data.url)||p.data.linkPack?"text-amber-500":"text-slate-400")}><ExternalLink size={15}/></a>}</div>},
   ],[open,nearest])
   useEffect(()=>{const api=ref.current?.api;if(!api)return;api.forEachNode(n=>n.setSelected(compare.includes(n.data!.id),false,'api'))},[compare,rows])
   return <div className={(dark?'ag-theme-quartz-dark':'ag-theme-quartz')+' w-full'} style={{height:'calc(100vh - 230px)',minHeight:480}}>

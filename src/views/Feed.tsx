@@ -7,7 +7,7 @@ import { NutrientRow, PriceLine } from '@/components/x/Nutrients'
 import { ProducerLogo, ColorChip } from '@/components/x/Logos'
 import { colorOf } from '@/components/x/palette'
 import { useApp, type Row } from '@/lib'
-import { linkLabel } from '../app/linkKind'
+import { rowLinkLabel } from '../app/linkKind'
 
 function Post({ r }: { r: Row }) {
   const { open, nearest } = useApp(); const s = nearest(r.store)
@@ -19,7 +19,7 @@ function Post({ r }: { r: Row }) {
       <button onClick={() => open(r.id)} className="block w-full overflow-hidden rounded-2xl border bg-white"><Img src={r.img} className="mx-auto h-56 w-full sm:h-72" /></button>
       <NutrientRow r={r} />
       <div className="flex flex-wrap items-center justify-between gap-2"><PriceLine r={r} /><div className="flex items-center gap-2"><ProducerLogo r={r} /><StoreLogo store={r.store} size={20} /></div></div>
-      <div className="flex items-center gap-1 text-muted-foreground"><Actions r={r} />{r.url && <Button asChild variant="ghost" size="icon"><a href={r.url} target="_blank" rel="noreferrer" aria-label={linkLabel(r.url)??"Im Shop öffnen"} title={linkLabel(r.url)??undefined}><ExternalLink /></a></Button>}</div>
+      <div className="flex items-center gap-1 text-muted-foreground"><Actions r={r} />{r.url && <Button asChild variant="ghost" size="icon"><a href={r.url} target="_blank" rel="noreferrer" aria-label={rowLinkLabel(r)??"Im Shop öffnen"} title={rowLinkLabel(r)??undefined}><ExternalLink /></a></Button>}</div>
     </div>
   </article>
 }

@@ -14,7 +14,23 @@ assert.equal(L.linkKind('https://www.subway.com/a/menu.pdf#sub'), 'pdf')
 assert.equal(L.linkKind(null), null)
 assert.equal(L.linkLabel('https://www.hofer.at/suchergebnisse?q=x'), 'Shop-Suche, keine Produktseite')
 assert.equal(L.linkLabel('https://shop.billa.at/produkte/x-1'), null)
+// sensecheck 36 (2): pack-size notice for shop links that may open another pack size
+assert.equal(L.linkPackLabel({ kind: 'otherPack', note: 'Shopseite evtl. andere Packungsgröße' }), 'Shopseite evtl. andere Packungsgröße')
+assert.equal(L.linkPackLabel({ kind: 'weight' }), 'Shopseite zeigt Kilopreis (Gewichtsware)')
+assert.equal(L.linkPackLabel(null), null)
+assert.equal(L.rowLinkLabel({ url: 'https://www.interspar.at/p/5528158', linkPack: { kind: 'otherPack' } }), 'Shopseite evtl. andere Packungsgröße')
+assert.equal(L.rowLinkLabel({ url: 'https://www.hofer.at/suchergebnisse?q=x', linkPack: { kind: 'otherPack' } }), 'Shop-Suche, keine Produktseite')
+assert.equal(L.rowLinkLabel({ url: null, linkPack: { kind: 'otherPack' } }), null)
+assert.equal(L.rowLinkLabel({ url: 'https://shop.billa.at/produkte/x-1' }), null)
 const D = JSON.parse(readFileSync(process.argv[2] || new URL('../public/data.json', import.meta.url), 'utf8'))
 const c = {}; for (const r of D.rows) { const k = L.linkKind(r.url) ?? 'none'; c[k] = (c[k] || 0) + 1 }
 const flagged = (c.search || 0) + (c.category || 0) + (c.pdf || 0)
-console.log(`[linkkind] OK: ${JSON.stringify(c)}, flagged ${flagged} (Shop-Suche/Kategorie ${(c.search || 0) + (c.category || 0)}, PDF ${c.pdf || 0})`)
+const byUid = u => D.rows.find(r => r.uid === u)
+for (const [u, pk] of [['7g0n0evi73', '670 G'], ['rcrm56uxfu', '400 G'], ['ykeyrb04hq', '700 G']]) {   // #420 Efko, #1120 Jackfrucht, #78 Iglo Lasagne 350 g
+  const r = byUid(u); assert.ok(r?.url && r.linkPack?.kind === 'otherPack' && r.linkPack.shopPack === pk && L.rowLinkLabel(r) === L.LINKPACK_NOTE, `linkPack ${u}`)
+}
+assert.equal(byUid('5ruglnj5no')?.linkPack?.kind, 'weight')   // #216 SPAR Natur*pur Bio-Rinds-Gulasch ca. 300 g (Kilopreis)
+assert.ok(!byUid('273fww4rap')?.linkPack && byUid('273fww4rap')?.size === 400, '#1470 Linseneintopf 400 g, no notice')
+const lp = D.rows.filter(r => r.linkPack); assert.equal(lp.length, D.linkPackCheck?.n, 'linkPackCheck.n')
+const lpc = {}; for (const r of lp) lpc[r.linkPack.kind] = (lpc[r.linkPack.kind] || 0) + 1
+console.log(`[linkkind] OK: ${JSON.stringify(c)}, flagged ${flagged} (Shop-Suche/Kategorie ${(c.search || 0) + (c.category || 0)}, PDF ${c.pdf || 0}); pack-size notice ${lp.length} ${JSON.stringify(lpc)} (visible ${lp.filter(r => r.dupOf == null).length})`)

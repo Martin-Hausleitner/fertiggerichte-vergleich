@@ -17,3 +17,15 @@ export function linkLabel(url?: string | null): string | null {
   const k = linkKind(url)
   return k === 'search' || k === 'category' ? 'Shop-Suche, keine Produktseite' : k === 'pdf' ? 'Nährwert-PDF, keine Produktseite' : null
 }
+// Sensecheck 36 (2): the shop link may open ANOTHER pack size (data.json row.linkPack, fertig export_app linkPack check):
+// 'Shopseite evtl. andere Packungsgröße' or, for weight-priced SPAR articles, 'Shopseite zeigt Kilopreis (Gewichtsware)'.
+export type LinkPackLike = { kind?: string; note?: string | null; detail?: string | null; shopPack?: string | null } | null | undefined
+export const LINKPACK_NOTE = 'Shopseite evtl. andere Packungsgröße'
+export function linkPackLabel(p: LinkPackLike): string | null {
+  if (!p || !p.kind) return null
+  return p.note || (p.kind === 'weight' ? 'Shopseite zeigt Kilopreis (Gewichtsware)' : LINKPACK_NOTE)
+}
+/** One label for the shop-link icon/tooltip: generic link first (search/category/PDF), else the pack-size notice. */
+export function rowLinkLabel(r: { url?: string | null; linkPack?: LinkPackLike }): string | null {
+  return linkLabel(r.url) ?? (r.url ? linkPackLabel(r.linkPack) : null)
+}
