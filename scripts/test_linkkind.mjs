@@ -26,11 +26,14 @@ const D = JSON.parse(readFileSync(process.argv[2] || new URL('../public/data.jso
 const c = {}; for (const r of D.rows) { const k = L.linkKind(r.url) ?? 'none'; c[k] = (c[k] || 0) + 1 }
 const flagged = (c.search || 0) + (c.category || 0) + (c.pdf || 0)
 const byUid = u => D.rows.find(r => r.uid === u)
-for (const [u, pk] of [['7g0n0evi73', '670 G'], ['rcrm56uxfu', '400 G'], ['ykeyrb04hq', '700 G']]) {   // #420 Efko, #1120 Jackfrucht, #78 Iglo Lasagne 350 g
+for (const [u, pk] of [['ykeyrb04hq', '700 G']]) {   // #78 Iglo Lasagne 350 g (sensecheck 37 (1): #420 Efko / #1120 Jackfrucht now net size = shop pack, see below)
   const r = byUid(u); assert.ok(r?.url && r.linkPack?.kind === 'otherPack' && r.linkPack.shopPack === pk && L.rowLinkLabel(r) === L.LINKPACK_NOTE, `linkPack ${u}`)
 }
 assert.equal(byUid('5ruglnj5no')?.linkPack?.kind, 'weight')   // #216 SPAR Natur*pur Bio-Rinds-Gulasch ca. 300 g (Kilopreis)
 assert.ok(!byUid('273fww4rap')?.linkPack && byUid('273fww4rap')?.size === 400, '#1470 Linseneintopf 400 g, no notice')
+for (const [u, net, dr] of [['7g0n0evi73', 670, 375], ['rcrm56uxfu', 400, 240]]) {   // sensecheck 37 (1): drained weight separately, no pack-size notice
+  const r = byUid(u); assert.ok(r && r.size === net && r.drainedWeight === dr && !r.linkPack && L.rowLinkLabel(r) === null, `drained ${u}`)
+}
 const lp = D.rows.filter(r => r.linkPack); assert.equal(lp.length, D.linkPackCheck?.n, 'linkPackCheck.n')
 const lpc = {}; for (const r of lp) lpc[r.linkPack.kind] = (lpc[r.linkPack.kind] || 0) + 1
 console.log(`[linkkind] OK: ${JSON.stringify(c)}, flagged ${flagged} (Shop-Suche/Kategorie ${(c.search || 0) + (c.category || 0)}, PDF ${c.pdf || 0}); pack-size notice ${lp.length} ${JSON.stringify(lpc)} (visible ${lp.filter(r => r.dupOf == null).length})`)
