@@ -1,4 +1,4 @@
-import { cn } from '@/lib'
+import { cn, alsoText, type AlsoPack } from '@/lib'
 type R = { variant_note?: string | null; price_condition?: string | null; score?: number | null }
 /** Hinweis auf Varianten (z. B. „auch als Einzelportion“) – klein unter dem Produktnamen. */
 export const VariantNote = ({ r, className }: { r: R; className?: string }) => r.variant_note
@@ -20,3 +20,7 @@ export const PRICE_WINNER_MEDIUM = 'Preis-Sieger, Gesundheit mittel'
 /** Label für Preis-Sieger (Preis-/Protein-pro-€-Listen), deren Health-Score nur mittel ist. */
 export const PriceWinnerBadge = ({ r, className }: { r: R; className?: string }) => isMediumHealth(r)
   ? <span data-testid="price-winner-medium" title="Weit vorne beim Preis, Health-Score aber nur mittel (30–44)" className={cn('inline-flex items-center whitespace-nowrap rounded border border-amber-300 bg-amber-50 px-1.5 text-[10px] font-medium text-amber-800 dark:bg-amber-950/40 dark:text-amber-300', className)}>{PRICE_WINNER_MEDIUM}</span> : null
+/** Sensecheck 32 (1): „auch bei Spar“ (gleiches Produkt, gleiche Packung) · „auch als 6er-Pack bei myProduct“ / „auch einzeln (350 g) bei dm“ (andere Packung). */
+export const AlsoAt = ({ r, className }: { r: { alsoAt?: string[]; alsoPack?: AlsoPack[] }; className?: string }) => {
+  const t = alsoText(r); return t.length ? <div data-also data-testid="also-at" className={cn('text-[11px] leading-tight text-muted-foreground', className)}>{t.join(' · ')}</div> : null
+}
