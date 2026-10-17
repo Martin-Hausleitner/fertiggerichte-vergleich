@@ -104,4 +104,25 @@ if (D.legacyVersions) {
 // parked numbers retried on load: resolvable via legacyUid -> ids, rest stays parked
 { const k = Object.keys(L)[0]; if (k != null && notMapped != null) assert.deepEqual(R.retryParked([+k, notMapped], D, idx), { ids: [idx.get(L[k])], unresolved: [notMapped] }) }
 console.log(`[rowref] legacy: ${Object.keys(L).length} mapped numeric refs, unmapped dropped`)
+// sensecheck 35 (1): hidden duplicates → main row. Same pack size = redirect (links + stored favourites), other size = notice only
+{
+  let red = 0, oth = 0
+  for (const r of rows) {
+    if (r.dupOf == null) { assert.equal(R.dupTarget(r.id, rows, idx), null, 'visible row has no dup target'); continue }
+    const t = R.dupTarget(r.id, rows, idx); assert.ok(t, `hidden #${r.id} resolves to a main row`)
+    assert.equal(rows[t.to].dupOf ?? null, null, `main row of #${r.id} is visible`)
+    if (t.kind === 'redirect') red++; else oth++
+  }
+  const byU = u => rows.find(r => r.uid === u)
+  const r79 = byU('so5g4idn53'), r1114 = byU('854mk0dprs'), r57 = byU('vlnchbkdg6'), r58 = byU('rwh1a3xg0n')
+  if (r79 && r1114) assert.deepEqual(R.dupTarget(r79.id, rows, idx), { from: r79.id, to: r1114.id, kind: 'redirect' }, '#79 700 g → #1114 700 g')
+  if (r57 && r58) assert.deepEqual(R.dupTarget(r57.id, rows, idx), { from: r57.id, to: r58.id, kind: 'otherSize' }, '#57 800 g stays, notice → #58')
+  if (r79 && r1114 && r57) {
+    const c = R.canonIds([r79.id, r1114.id, r57.id, 0], rows, idx)
+    assert.deepEqual(c.ids, [r1114.id, r57.id, 0], 'fav on #79 merges into #1114, other size kept'); assert.equal(c.moved.length, 1)
+  }
+  // broken / cyclic chains never loop
+  assert.equal(R.dupMain(0, [{ id: 0, dupOf: 1 }, { id: 1, dupOf: 0 }]), null)
+  console.log(`[rowref] dup targets: ${red} redirect (same size), ${oth} other size (notice), 0 broken`)
+}
 console.log(`[rowref] OK: ${n} rows, unique uids, uidMap/uidTop/dupOfUid consistent, refs stable across inserted row`)

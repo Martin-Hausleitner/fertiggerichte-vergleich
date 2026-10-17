@@ -16,7 +16,7 @@ import { findTab } from '@/app/tabs'
 import { LocationControl } from '@/app/location'
 import { ApiBridge } from '@/app/ApiBridge'
 import { GenUIBridge } from '@/app/genuiHost'
-import { uidIndex, parseRefs, formatRefs, refToId, idToRef, hasLegacyRefs, parseLegacyRefs, legacyRefToId, migrateLegacyFavs, favMeta, retryParked } from '@/app/rowref'
+import { uidIndex, parseRefs, formatRefs, refToId, idToRef, hasLegacyRefs, parseLegacyRefs, legacyRefToId, migrateLegacyFavs, favMeta, retryParked, dupTarget, canonIds, type DupTarget } from '@/app/rowref'
 
 
 const Compare = lazy(() => import('@/views/Compare'))
@@ -28,6 +28,15 @@ export function ViewSkeleton() {
 
 function AppSkeleton() {
   return <div className="flex min-h-screen"><div className="hidden w-64 space-y-2 border-r p-3 md:block">{Array.from({ length: 12 }, (_, i) => <Skeleton key={i} className="h-7" />)}</div><div className="flex-1 space-y-4 p-6"><Skeleton className="h-10 w-2/3" /><ViewSkeleton /></div></div>
+}
+
+/** sensecheck 35 (1): notice when a link/favourite pointed at a hidden duplicate row */
+function DupNotice({ n, rows, onOpen }: { n: DupTarget; rows: { id: number; name: string; store: string; size: number | null }[]; onOpen: (id: number) => void }) {
+  const f = rows[n.from], t = rows[n.to], lab = (r?: { name: string; store: string; size: number | null }) => r ? `${r.name}${r.size && !new RegExp(`(^|\\D)${Math.round(r.size)}\\s*g\\b`, 'i').test(r.name) ? ` ${Math.round(r.size)} g` : ''} (${r.store})` : ''
+  if (!f || !t) return null
+  return n.kind === 'redirect'
+    ? <div data-testid="dup-redirect-note" role="status" className="mb-3 rounded-md border border-amber-300 bg-amber-50 px-3 py-2 text-xs text-amber-900 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-100">Hinweis: Dieser Link bzw. Favorit zeigte auf eine doppelte Zeile (#{f.id} · {lab(f)}). Sie ist in Listen und Rankings mit diesem Produkt zusammengefasst – gezeigt wird die Hauptzeile.</div>
+    : <div data-testid="dup-other-note" role="status" className="mb-3 rounded-md border border-sky-300 bg-sky-50 px-3 py-2 text-xs text-sky-900 dark:border-sky-700 dark:bg-sky-950 dark:text-sky-100">Diese Packung{f.size ? ` (${Math.round(f.size)} g)` : ''} ist in Listen und Rankings unter der Hauptzeile zusammengefasst: <button type="button" data-testid="dup-other-open" className="font-medium underline" onClick={() => onOpen(t.id)}>#{t.id} · {lab(t)} öffnen</button></div>
 }
 
 export default function App() {
@@ -44,7 +53,8 @@ export default function App() {
   const uidx = useMemo(() => D ? uidIndex(D) : new Map<string, number>(), [D])
   // sensecheck 28 (1): until the first data render, numeric #cmp=/#p= are pre-uid share links (legacy semantics, legacyUid)
   const [atLoad, setAtLoad] = useState(true)
-  const compare = useMemo(() => atLoad && D ? parseLegacyRefs(cmpS, D, uidx) : parseRefs(cmpS, uidx, nRows), [atLoad, D, cmpS, uidx, nRows])
+  // sensecheck 35 (1): compare ids of a hidden same-product duplicate show its main row
+  const compare = useMemo(() => canonIds(atLoad && D ? parseLegacyRefs(cmpS, D, uidx) : parseRefs(cmpS, uidx, nRows), rows0, uidx).ids, [atLoad, D, cmpS, uidx, nRows, rows0])
   const setCompare = useCallback((ids: number[]) => setCmpS(formatRefs(ids.slice(0, 4), rows0)), [setCmpS, rows0])
   const toggleCompare = useCallback((id: number) => setCompare(compare.includes(id) ? compare.filter(x => x !== id) : [...compare, id].slice(-4)), [compare, setCompare])
   const favs = useMemo(() => parseRefs(favRefs.join('.'), uidx, nRows), [favRefs, uidx, nRows])
@@ -55,7 +65,18 @@ export default function App() {
   const restoreLegacyFavs = useCallback((ids: number[], nums: number[]) => { saveFavs([...new Set([...favs, ...ids])]); setLegacyFavs(legacyFavs.filter(n => !nums.includes(n))) }, [saveFavs, favs, legacyFavs, setLegacyFavs])
   const dropLegacyFavs = useCallback(() => { setLegacyFavs([]); try { localStorage.removeItem('fg-favs-legacy') } catch { /* ignore */ } }, [setLegacyFavs])
   const open = useCallback((id: number) => setDet(idToRef(id, rows0)), [setDet, rows0])
-  const detId = det === '' ? null : atLoad && D ? legacyRefToId(det, D, uidx) : refToId(det, uidx, nRows)
+  const detId0 = det === '' ? null : atLoad && D ? legacyRefToId(det, D, uidx) : refToId(det, uidx, nRows)
+  // sensecheck 35 (1): #p= of a hidden duplicate (old favourite/link, e.g. SPAR Iglo Lasagne 700 g #79) → the kept main row, with a notice;
+  // a hidden OTHER pack size (reached via 'auch als 800 g') stays open, with a notice + link to the main row
+  const dupT = useMemo(() => detId0 == null ? null : dupTarget(detId0, rows0, uidx), [detId0, rows0, uidx])
+  const detId = dupT?.kind === 'redirect' ? dupT.to : detId0
+  const [dupNote, setDupNote] = useState<DupTarget | null>(null)
+  useEffect(() => {
+    if (!D || detId0 == null) return
+    if (dupT?.kind === 'redirect') { setDupNote(dupT); setDet(idToRef(dupT.to, D.rows)) }
+    else if (dupT?.kind === 'otherSize') setDupNote(dupT)
+    else if (dupNote && dupNote.to !== detId0) setDupNote(null)
+  }, [D, detId0]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {   // rewrite numeric #cmp=/#p= to uids so copied links stay stable
     if (!D) return
     if (atLoad) {   // old share link: resolve via legacyUid, drop what can't be attributed unambiguously
@@ -83,6 +104,14 @@ export default function App() {
       if (old) localStorage.removeItem('fg-favs')
     } catch { /* ignore */ }
   }, [D]) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {   // sensecheck 35 (1): stored favourites on a hidden same-product duplicate → its main row (once per data version)
+    if (!D || !favs.length) return
+    const c = canonIds(favs, D.rows, uidx)
+    if (c.moved.length) {
+      saveFavs(c.ids)
+      try { localStorage.setItem('fg-favs-dupmoved', JSON.stringify({ dataVersion: D.dataVersion ?? null, moved: c.moved.map(m => ({ from: D.rows[m.from]?.uid, to: D.rows[m.to]?.uid })) })) } catch { /* ignore */ }
+    }
+  }, [D, favRefs]) // eslint-disable-line react-hooks/exhaustive-deps
   const [fs, setFs] = useHashState<string>('fs', 'meal.stew')
   const stageSel = useMemo(() => fs ? fs.split('.') : STAGES.map(x => x[0]), [fs])
   const R = useMemo(() => D ? D.rows.map(r => ({ ...r, rankable: !!r.rankable && r.stage !== 'base' && stageSel.includes(r.stage) })) : [], [D, stageSel])
@@ -119,6 +148,6 @@ export default function App() {
     </SidebarProvider>
     {compare.length > 0 && <div className="fixed bottom-4 left-1/2 z-40 -translate-x-1/2"><Button size="md" className="h-11 rounded-full px-5 shadow-lg" onClick={() => setCmpOpen(true)}><GitCompare />Vergleichen ({compare.length}/4)</Button></div>}
     <Sheet open={cmpOpen} onClose={() => setCmpOpen(false)} side={innerWidth < 768 ? 'bottom' : 'right'} title="Produktvergleich"><Suspense fallback={<ViewSkeleton />}><Compare /></Suspense></Sheet>
-    <Sheet open={det !== ''} onClose={() => setDet('')} title="Produktdetails"><Suspense fallback={<ViewSkeleton />}>{detId != null && <Detail id={detId} />}</Suspense></Sheet>
+    <Sheet open={det !== ''} onClose={() => { setDet(''); setDupNote(null) }} title="Produktdetails"><Suspense fallback={<ViewSkeleton />}>{detId != null && dupNote && (dupNote.kind === 'redirect' ? dupNote.to === detId : dupNote.from === detId) && <DupNotice n={dupNote} rows={D.rows} onOpen={id => { setDupNote(null); open(id) }} />}{detId != null && <Detail id={detId} />}</Suspense></Sheet>
   </AppCtx.Provider>
 }

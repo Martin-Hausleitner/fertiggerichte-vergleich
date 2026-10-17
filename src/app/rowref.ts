@@ -118,3 +118,38 @@ export type FavMeta = { dataVersion: string | null; rows: number; at: string }
 export const favMeta = (D: { rows: unknown[]; dataVersion?: string | null }, now = new Date()): FavMeta => ({ dataVersion: D.dataVersion ?? null, rows: D.rows.length, at: now.toISOString() })
 /** parked numbers (fg-favs-legacy) → those the unanimity map resolves now (e.g. after a map update) + still-parked rest. */
 export const retryParked = (parked: unknown, D: RefData, idx: Map<string, number>) => migrateLegacyFavs(parked, D, idx)
+
+/* Sensecheck 35 (1): rows hidden as duplicates (dupOf / dupOfUid, fertig export_app) keep their uid, so an old favourite or
+ * #p= link still finds them – but it then opened the hidden twin (e.g. SPAR Iglo Lasagne 700 g #79 → kept row #1114) without any
+ * notice. dupTarget() follows the dupOf chain to the visible main row. Same pack size (±3 %) = the same product → links and stored
+ * favourites are redirected to the main row ('redirect'); another pack size (hidden size variant, reachable via 'auch als 800 g')
+ * stays openable but gets a notice + link to the main row ('otherSize'). */
+export type DupRow = RefRow & { dupOf?: number | null; dupOfUid?: string | null; size?: number | null }
+export type DupTarget = { from: number; to: number; kind: 'redirect' | 'otherSize' }
+const sameSize = (a?: number | null, b?: number | null) => (!a && !b) || (!!a && !!b && Math.abs(a - b) <= 0.03 * Math.max(a, b))
+/** main (visible) row of a hidden duplicate, or null when the row is visible / the chain is broken. */
+export function dupMain(id: number, rows: DupRow[], idx?: Map<string, number>): number | null {
+  let cur = rows[id], n = 0
+  if (!cur || (cur.dupOf == null && !cur.dupOfUid)) return null
+  const seen = new Set<number>([id])
+  while (cur && (cur.dupOf != null || cur.dupOfUid) && n++ < 10) {
+    const nx = cur.dupOfUid && idx ? idx.get(cur.dupOfUid) ?? cur.dupOf : cur.dupOf
+    if (nx == null || seen.has(nx) || !rows[nx]) return null
+    seen.add(nx); cur = rows[nx]
+  }
+  return cur && cur.dupOf == null && !cur.dupOfUid ? cur.id : null
+}
+export function dupTarget(id: number, rows: DupRow[], idx?: Map<string, number>): DupTarget | null {
+  const to = dupMain(id, rows, idx); if (to == null) return null
+  return { from: id, to, kind: sameSize(rows[id]?.size, rows[to]?.size) ? 'redirect' : 'otherSize' }
+}
+/** stored favourites / compare ids: same-product duplicates → their main row (deduplicated); other sizes stay. */
+export function canonIds(ids: number[], rows: DupRow[], idx?: Map<string, number>): { ids: number[]; moved: DupTarget[] } {
+  const out: number[] = [], moved: DupTarget[] = []
+  for (const i of ids) {
+    const t = dupTarget(i, rows, idx), j = t?.kind === 'redirect' ? t.to : i
+    if (t?.kind === 'redirect') moved.push(t)
+    if (!out.includes(j)) out.push(j)
+  }
+  return { ids: out, moved }
+}
