@@ -45,5 +45,13 @@ const Dold = { rows: rows.map(r => ({ id: r.id })) }   // pre-uid export: number
 assert.equal(R.legacyRefToId('5', Dold, R.uidIndex(Dold)), 5)
 // in-session numeric refs (GenUI/MCP) keep current-index semantics
 assert.equal(R.refToId('7', idx, n), 7)
+// sensecheck 28 (4): every uid collision group is explained (duplicate via dupOf, or distinct products under a generic URL)
+const CK = (D.uidCollisions || []).filter(c => c.kind !== undefined)
+if (CK.length) {
+  const unexplained = CK.filter(c => c.kind !== 'duplicate' && c.kind !== 'generic_url')
+  assert.equal(unexplained.length, 0, `unexplained uid collision groups: ${unexplained.map(c => c.kind + ' ' + c.key).join(', ')}`)
+  for (const c of CK.filter(c => c.kind === 'duplicate')) assert.equal(c.rows.filter(x => rows[x.legacy_id].dupOf == null).length, 1, `duplicate group ${c.key} has exactly one visible row`)
+  console.log(`[rowref] collisions: ${JSON.stringify(D.uidInfo.collision_kinds)}, 0 unexplained`)
+}
 console.log(`[rowref] legacy: ${Object.keys(L).length} mapped numeric refs, unmapped dropped`)
 console.log(`[rowref] OK: ${n} rows, unique uids, uidMap/uidTop/dupOfUid consistent, refs stable across inserted row`)
