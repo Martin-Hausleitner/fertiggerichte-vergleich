@@ -21,6 +21,7 @@ fi
 # Keine personenbezogenen/Health-Rohdaten in public/ (Art. 9 DSGVO)
 if grep -rIlE '"(whoop|garmin|healthkit|heart_?rate|hrv|weight_kg|user_?email)"' public/ 2>/dev/null; then echo "[gate] FAIL: verdächtige Personen-/Health-Felder in public/"; exit 1; fi
 node scripts/check_gaps_applied.mjs public/data.json   # sensecheck 15: export without gaps_overlay --apply → rot
+node scripts/test_rowref.mjs public/data.json   # sensecheck 27: stable uid refs (favs/#cmp=/#p=)
 node scripts/regress_top50.mjs public/data.json   # Top 50 (pli) nur meal/stew, keine Trockenware/Desserts
 if [ "${GATE_FAST:-0}" = 1 ]; then echo "[gate] OK (fast: data checks only)"; exit 0; fi
 npm run build

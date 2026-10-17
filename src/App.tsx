@@ -16,6 +16,7 @@ import { findTab } from '@/app/tabs'
 import { LocationControl } from '@/app/location'
 import { ApiBridge } from '@/app/ApiBridge'
 import { GenUIBridge } from '@/app/genuiHost'
+import { uidIndex, parseRefs, formatRefs, refToId, idToRef, hasLegacyRefs } from '@/app/rowref'
 
 
 const Compare = lazy(() => import('@/views/Compare'))
@@ -33,16 +34,30 @@ export default function App() {
   const { data: D, stores, nearest } = useAppData()
   const [tab, setTab] = useHashState<string>('tab', 'heute')
   const [cmpS, setCmpS] = useHashState<string>('cmp', ''), [det, setDet] = useHashState<string>('p', '')
-  const [favs, setFavs] = useLocal<number[]>('fg-favs', [])
+  const [favRefs, setFavRefs] = useLocal<string[]>('fg-favs-uid', [])
   const [dark, setDark] = useLocal('fg-dark', matchMedia('(prefers-color-scheme: dark)').matches)
   const [wide, setWide] = useLocal('fg-wide', innerWidth > 1700)
   const [cmpOpen, setCmpOpen] = useState(false)
   useEffect(() => { document.documentElement.classList.toggle('dark', dark) }, [dark])
-  const compare = useMemo(() => cmpS ? cmpS.split('.').map(Number).filter(n => !isNaN(n)) : [], [cmpS])
-  const setCompare = useCallback((ids: number[]) => setCmpS(ids.slice(0, 4).join('.')), [setCmpS])
+  // sensecheck 27: favourites, #cmp= and #p= persist the stable row uid (src/app/rowref.ts); numeric ids stay in memory
+  const rows0 = useMemo(() => D?.rows ?? [], [D]), nRows = rows0.length
+  const uidx = useMemo(() => D ? uidIndex(D) : new Map<string, number>(), [D])
+  const compare = useMemo(() => parseRefs(cmpS, uidx, nRows), [cmpS, uidx, nRows])
+  const setCompare = useCallback((ids: number[]) => setCmpS(formatRefs(ids.slice(0, 4), rows0)), [setCmpS, rows0])
   const toggleCompare = useCallback((id: number) => setCompare(compare.includes(id) ? compare.filter(x => x !== id) : [...compare, id].slice(-4)), [compare, setCompare])
-  const toggleFav = (id: number) => setFavs(favs.includes(id) ? favs.filter(x => x !== id) : [...favs, id])
-  const open = useCallback((id: number) => setDet(String(id)), [setDet])
+  const favs = useMemo(() => parseRefs(favRefs.join('.'), uidx, nRows), [favRefs, uidx, nRows])
+  const toggleFav = (id: number) => setFavRefs(formatRefs(favs.includes(id) ? favs.filter(x => x !== id) : [...favs, id], rows0).split('.').filter(Boolean))
+  const open = useCallback((id: number) => setDet(idToRef(id, rows0)), [setDet, rows0])
+  const detId = det === '' ? null : refToId(det, uidx, nRows)
+  useEffect(() => {   // rewrite numeric #cmp=/#p= (old share links, GenUI/MCP actions) to uids so copied links stay stable
+    if (!D) return
+    if (hasLegacyRefs(cmpS, D.rows)) setCmpS(formatRefs(compare, D.rows))
+    if (det !== '' && /^\d+$/.test(det) && detId != null && D.rows[detId]?.uid) setDet(idToRef(detId, D.rows))
+  }, [D, cmpS, det]) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {   // one-time migration of legacy numeric favourites (fg-favs) to uids
+    if (!D) return
+    try { const old = localStorage.getItem('fg-favs'); if (old) { const ids = (JSON.parse(old) as unknown[]).map(Number).filter(n => Number.isInteger(n) && n >= 0 && n < D.rows.length); const merged = [...new Set([...favs, ...ids])]; setFavRefs(formatRefs(merged, D.rows).split('.').filter(Boolean)); localStorage.removeItem('fg-favs') } } catch { /* ignore */ }
+  }, [D]) // eslint-disable-line react-hooks/exhaustive-deps
   const [fs, setFs] = useHashState<string>('fs', 'meal.stew')
   const stageSel = useMemo(() => fs ? fs.split('.') : STAGES.map(x => x[0]), [fs])
   const R = useMemo(() => D ? D.rows.map(r => ({ ...r, rankable: !!r.rankable && r.stage !== 'base' && stageSel.includes(r.stage) })) : [], [D, stageSel])
@@ -79,6 +94,6 @@ export default function App() {
     </SidebarProvider>
     {compare.length > 0 && <div className="fixed bottom-4 left-1/2 z-40 -translate-x-1/2"><Button size="md" className="h-11 rounded-full px-5 shadow-lg" onClick={() => setCmpOpen(true)}><GitCompare />Vergleichen ({compare.length}/4)</Button></div>}
     <Sheet open={cmpOpen} onClose={() => setCmpOpen(false)} side={innerWidth < 768 ? 'bottom' : 'right'} title="Produktvergleich"><Suspense fallback={<ViewSkeleton />}><Compare /></Suspense></Sheet>
-    <Sheet open={det !== ''} onClose={() => setDet('')} title="Produktdetails"><Suspense fallback={<ViewSkeleton />}>{det !== '' && <Detail id={+det} />}</Suspense></Sheet>
+    <Sheet open={det !== ''} onClose={() => setDet('')} title="Produktdetails"><Suspense fallback={<ViewSkeleton />}>{detId != null && <Detail id={detId} />}</Suspense></Sheet>
   </AppCtx.Provider>
 }

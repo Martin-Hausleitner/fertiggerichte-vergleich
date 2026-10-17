@@ -6,7 +6,7 @@ import type { UiBridge } from './bridge.ts'
 import { loadData } from './data.ts'
 
 export const summary = (r: RowLike, cfg: ValueCfg = {}) => ({
-  id: r.id, name: r.name, brand: r.brandN ?? r.brand ?? '', store: r.store, stage: r.stage, readyMeal: isReadyMeal(r),
+  id: r.id, uid: (r as { uid?: string }).uid ?? null, name: r.name, brand: r.brandN ?? r.brand ?? '', store: r.store, stage: r.stage, readyMeal: isReadyMeal(r),
   price: r.price, pricePerPortion: round(pricePerPortion(r)), kcalPerPortion: round(kcalPerPortion(r), 0), proteinPerPortion: round(protPerPortion(r)),
   kcal100: r.kcal, protein100: r.p100, sugar100: r.sugar, salt100: r.salt, score: r.score, value: round(valueScore(r, cfg)), nutriScore: r.ns ?? null, url: r.url ?? null,
 })
