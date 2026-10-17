@@ -28,5 +28,6 @@ node scripts/regress_top50.mjs public/data.json   # Top 50 (pli) nur meal/stew, 
 if [ "${GATE_FAST:-0}" = 1 ]; then echo "[gate] OK (fast: data checks only)"; exit 0; fi
 npm run build
 node scripts/pw_gate.mjs   # Smoke-Test: alle Tabs, Desktop + Mobil, keine Konsolenfehler/leeren Seiten
+node scripts/e2e_legacy_favs.mjs   # sensecheck 29 (1): alte Favoriten → Stand wählen → genau diese Produkte
 echo "$rows" > "$STATE"
 echo "[gate] OK"

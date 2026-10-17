@@ -1,7 +1,8 @@
 // Sensecheck 27: stable row refs (src/app/rowref.ts) – favourites/#cmp=/#p= survive inserted rows.
 // Run: node scripts/test_rowref.mjs [public/data.json]   (part of prepush_gate.sh, fast section)
 import { build } from 'esbuild'
-import { readFileSync } from 'node:fs'
+import { readFileSync, existsSync } from 'node:fs'
+import { execFileSync } from 'node:child_process'
 import assert from 'node:assert/strict'
 const out = await build({ entryPoints: [new URL('../src/app/rowref.ts', import.meta.url).pathname], bundle: true, write: false, format: 'esm', platform: 'node' })
 const R = await import('data:text/javascript;base64,' + Buffer.from(out.outputFiles[0].text).toString('base64'))
@@ -53,5 +54,54 @@ if (CK.length) {
   for (const c of CK.filter(c => c.kind === 'duplicate')) assert.equal(c.rows.filter(x => rows[x.legacy_id].dupOf == null).length, 1, `duplicate group ${c.key} has exactly one visible row`)
   console.log(`[rowref] collisions: ${JSON.stringify(D.uidInfo.collision_kinds)}, 0 unexplained`)
 }
+// 6) sensecheck 29 (1): per-version legacy maps (public/legacy_uid_maps.json) – synthetic contract first
+{
+  const M0 = { version: 1, uids: [rows[0].uid, rows[1].uid, rows[2].uid, null], versions: [
+    { v: 'aaaa', src: 'main a', commit: 'aaaaaaa', date: '2026-10-16T10:00:00Z', live: [['2026-10-16T10:05:00Z', '2026-10-16T12:00:00Z']], rows: 3, r: [2, 1, 0, 2] },   // 0→uid2, 1→uid0, 2→uid1
+    { v: 'bbbb', src: 'main b', commit: 'bbbbbbb', commits: ['bbbbbbb', 'ccccccc'], date: '2026-10-17T10:00:00Z', live: [], rows: 4, r: [0, 3, -1, 1] },   // 0→uid0 … 3 dropped
+    { v: 'dddd', src: 'main d', commit: 'ddddddd', date: '2026-10-15T10:00:00Z', live: [], rows: 2, r: [3, 1, 1, 1] } ] }   // 0→null(gone uid), 1→uid1
+  assert.deepEqual(R.decodeVersion(M0.versions[0], M0.uids), [rows[2].uid, rows[0].uid, rows[1].uid])
+  assert.deepEqual(R.resolveInVersion([0, 1, 3, 9, -1], M0.versions[1], M0, idx), [0, 1, null, null, null], 'out of range / dropped -> null')
+  assert.equal(R.findVersion(M0, 'ccccccc').v, 'bbbb'); assert.equal(R.findVersion(M0, 'zzz'), null)
+  const o = R.legacyOptions([0, 1], M0, idx)
+  assert.deepEqual(o.map(x => x.ids), [[2, 0], [0, 1], [null, 1]], 'complete+live first, then newest, partial last')
+  assert.ok(o[0].complete && o[0].lastLive === '2026-10-16T12:00:00Z' && o[0].liveFrom === '2026-10-16T10:05:00Z' && o[1].liveFrom === null && !o[2].complete)
+  assert.deepEqual(R.legacyOptions([3], M0, idx), [], 'nothing resolvable -> no option')
+  const fm = R.favMeta({ rows: [1, 2], dataVersion: 'abc' }, new Date('2026-10-17T00:00:00Z'))
+  assert.deepEqual(fm, { dataVersion: 'abc', rows: 2, at: '2026-10-17T00:00:00.000Z' })
+}
+const LM = existsSync(new URL('../public/legacy_uid_maps.json', import.meta.url)) ? JSON.parse(readFileSync(new URL('../public/legacy_uid_maps.json', import.meta.url), 'utf8')) : null
+if (D.legacyVersions) {
+  assert.ok(LM, 'data.json legacyVersions set but public/legacy_uid_maps.json missing')
+  assert.equal(LM.versions.length, D.legacyVersions.versions, 'legacyVersions.versions')
+  for (const u of LM.uids) if (u != null) assert.ok(idx.has(u), `legacy map uid ${u} exists`)
+  assert.ok(typeof D.dataVersion === 'string' && D.dataVersion.length >= 8, 'dataVersion')
+  const dec = new Map(LM.versions.map(V => [V.v, R.decodeVersion(V, LM.uids)]))
+  for (const V of LM.versions) assert.equal(dec.get(V.v).length, V.rows, `version ${V.src} decodes to ${V.rows} indices`)
+  // unanimity map is a subset: wherever legacyUid maps n, every version that has n agrees
+  for (const [k, u] of Object.entries(L)) for (const V of LM.versions) if (+k < V.rows) { const x = dec.get(V.v)[+k]; assert.ok(x == null || x === u, `legacyUid[${k}] vs ${V.src}`) }
+  // the three live versions named in sensecheck 29: every index is either the SAME product (store + name/prefix, EAN or product URL) or dropped
+  const norm = s => String(s ?? '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
+  const ean = r => { const e = String(r.ean ?? '').replace(/\D/g, ''); return e.length >= 8 ? e.replace(/^0+/, '') : '' }
+  const same = (o, c) => norm(o.store) === norm(c.store) && ((norm(o.name) && (norm(o.name).startsWith(norm(c.name)) || norm(c.name).startsWith(norm(o.name)))) || (ean(o) && ean(o) === ean(c)) || (o.url && o.url === c.url))
+  for (const c of ['f10b741', '94e0cd2', 'a905340']) {
+    let old; try { old = JSON.parse(execFileSync('git', ['show', `${c}:public/data.json`], { maxBuffer: 1 << 28, encoding: 'utf8' })).rows } catch { console.log(`[rowref] skip ${c} (not in this clone)`); continue }
+    const V = R.findVersion(LM, execFileSync('git', ['rev-parse', `${c}:public/data.json`], { encoding: 'utf8' }).trim().slice(0, 12)); assert.ok(V, `version for ${c}`); assert.equal(V.rows, old.length, `${c} rows`)
+    const ids = R.resolveInVersion(old.map((_, n) => n), V, LM, idx); let ok = 0
+    ids.forEach((i, n) => { if (i == null) return; assert.ok(same(old[n], rows[i]), `${c} #${n} ${old[n].name} -> ${rows[i].name}: not the same product`); ok++ })
+    assert.ok(ok / old.length > 0.99, `${c}: only ${ok}/${old.length} recoverable`)
+    console.log(`[rowref] legacy version ${c}: ${ok}/${old.length} indices -> same product, ${old.length - ok} dropped, 0 wrong (unanimity map alone: ${old.filter((_, n) => String(n) in L).length})`)
+  }
+  // restore dialog: a favourites set saved under a905340 is offered (with exactly those products) among the options
+  const Va = R.findVersion(LM, 'a905340')   // a905340 changed data.json itself → listed under its commit
+  if (Va) {
+    const nums = [463, 1200, 3960].filter(n => n < Va.rows), want = R.resolveInVersion(nums, Va, LM, idx)
+    const op = R.legacyOptions(nums, LM, idx); assert.ok(op.length >= 1 && op.some(x => x.versions.some(v => v.v === Va.v) && JSON.stringify(x.ids) === JSON.stringify(want)), 'a905340 option offered')
+    assert.equal(R.legacyRefToId('463', D, idx) ?? null, L['463'] ? idx.get(L['463']) : null, 'without a version, 463 still only via legacyUid')
+    console.log(`[rowref] restore options for [${nums}]: ${op.length} (first: ${op[0].versions[0].src}, complete ${op[0].complete})`)
+  }
+}
+// parked numbers retried on load: resolvable via legacyUid -> ids, rest stays parked
+{ const k = Object.keys(L)[0]; if (k != null && notMapped != null) assert.deepEqual(R.retryParked([+k, notMapped], D, idx), { ids: [idx.get(L[k])], unresolved: [notMapped] }) }
 console.log(`[rowref] legacy: ${Object.keys(L).length} mapped numeric refs, unmapped dropped`)
 console.log(`[rowref] OK: ${n} rows, unique uids, uidMap/uidTop/dupOfUid consistent, refs stable across inserted row`)

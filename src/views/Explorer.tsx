@@ -4,6 +4,7 @@ import { Button, Input, Select, Card } from '../components/ui'
 import { Gallery } from '../components/product'
 import { FilterPanel, useFilter, makePred, GANG } from '../components/FilterPanel'
 import { useApp, useHashState, cn } from '../lib'
+import { LegacyFavsRestore } from '../components/LegacyFavsRestore'
 const Grid=lazy(()=>import('./Grid'))
 export default function Explorer(){
   const {R,D,favs,nearest,stageSel}=useApp()
@@ -23,7 +24,7 @@ export default function Explorer(){
       <Select value={pk} onChange={e=>setPk(e.target.value)} className="max-w-[170px]"><option value="">Alle Verpackungen</option>{PACKS.map(s=><option key={s}>{s}</option>)}</Select>
       <Select value={mp} onChange={e=>setMp(e.target.value)}>{[0,10,20,30,40].map(v=><option key={v} value={v}>{v?`≥ ${v} g Protein/Pkg`:'jedes Protein'}</option>)}</Select>
       <Select value={sort} onChange={e=>setSort(e.target.value)} title="Sortierung"><option value="eur10p">↑ € pro 10 g Protein</option><option value="score">↓ Health-Score</option><option value="pli">↓ Preis-Leistung</option><option value="price">↑ Preis</option><option value="ppk">↑ €/kg</option><option value="eur100k">↑ € pro 100 kcal</option><option value="protpack">↓ Protein/Pkg</option><option value="p100k">↓ Protein/100 kcal</option><option value="dist">↑ Entfernung Filiale</option></Select>
-      <Button size="sm" active={!!fav} onClick={()=>setFav(fav?'':'1')}><Heart size={14}/>Favoriten ({favs.length})</Button>
+      <Button size="sm" active={!!fav} onClick={()=>setFav(fav?'':'1')}><Heart size={14}/>Favoriten ({favs.length})</Button><LegacyFavsRestore/>
       <label className="text-xs flex items-center gap-1 text-slate-500"><input type="checkbox" checked={!!po} onChange={e=>setPo(e.target.checked?'1':'')}/>„nur Preis“ zeigen</label>
       <label className="text-xs flex items-center gap-1 text-slate-500"><input type="checkbox" checked={!!dry} onChange={e=>setDry(e.target.checked?'1':'')}/>Trockenprodukte zeigen</label>
       <div className="flex gap-1 ml-auto items-center"><span className="text-xs text-slate-500 mr-1">{rows.length} Treffer</span>

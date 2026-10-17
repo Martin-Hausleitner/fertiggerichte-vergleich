@@ -72,3 +72,49 @@ export function migrateLegacyFavs(old: unknown, D: RefData, idx: Map<string, num
   }
   return { ids, unresolved }
 }
+
+/* Sensecheck 29 (1): per-version legacy maps (public/legacy_uid_maps.json, fertig legacy_uid_map.py --versions). The unanimity map
+ * legacyUid keeps only 22 of 3975 indices; with the map of the version a number was stored under, almost every old favourite is
+ * recoverable. Old clients stored no version, so a number is resolved per version only when the version is KNOWN (favourites meta
+ * written from now on) or the user confirms it in the restore dialog (they see the products each version would give). Never guessed. */
+export type LegacyVersion = { v: string; src: string; commit: string; commits?: string[]; date: string; live: [string, string | null][]; rows: number; r: number[] }
+export type LegacyMaps = { version: number; uids: (string | null)[]; versions: LegacyVersion[] }
+
+/** run-length coded index → uid list of one version (null = product gone or not provably the same → dropped). */
+export function decodeVersion(V: LegacyVersion, uids: (string | null)[]): (string | null)[] {
+  const o: (string | null)[] = []
+  for (let k = 0; k + 1 < V.r.length; k += 2) { const d = V.r[k], n = V.r[k + 1]; for (let j = 0; j < n; j++) o.push(d < 0 ? null : uids[d + j] ?? null) }
+  return o
+}
+/** numbers stored under version V → current ids (null = dropped). */
+export function resolveInVersion(nums: number[], V: LegacyVersion, M: LegacyMaps, idx: Map<string, number>): (number | null)[] {
+  const us = decodeVersion(V, M.uids)
+  return nums.map(n => { const u = Number.isInteger(n) && n >= 0 && n < us.length ? us[n] : null; const i = u ? idx.get(u) : undefined; return i ?? null })
+}
+/** version(s) a stored commit / data blob prefix refers to (exact match only). */
+export const findVersion = (M: LegacyMaps, ref: string | null | undefined) =>
+  !ref ? null : M.versions.find(V => V.v === ref || V.commit === ref || (V.commits ?? []).includes(ref)) ?? null
+export type LegacyOption = { key: string; versions: LegacyVersion[]; ids: (number | null)[]; complete: boolean; lastLive: string | null; liveFrom: string | null }
+const maxStr = (xs: string[]) => xs.length ? xs.reduce((a, b) => (b > a ? b : a)) : null
+const lastLiveOf = (V: LegacyVersion) => maxStr(V.live.map(w => w[1] ?? '9999'))
+/** restore-dialog options: versions grouped by identical outcome for these numbers. Ordered: all numbers exist in the version
+ * (n < rows) first, then most recently live, then newest. The user picks one; nothing is applied automatically. */
+export function legacyOptions(nums: number[], M: LegacyMaps, idx: Map<string, number>): LegacyOption[] {
+  const by = new Map<string, LegacyOption>()
+  for (const V of M.versions) {
+    const ids = resolveInVersion(nums, V, M, idx); if (ids.every(i => i == null)) continue
+    const key = ids.map(i => i ?? '-').join('.'), o = by.get(key)
+    if (o) o.versions.push(V); else by.set(key, { key, versions: [V], ids, complete: nums.every(n => n < V.rows) && ids.every(i => i != null), lastLive: null, liveFrom: null })
+  }
+  const out = [...by.values()]
+  for (const o of out) {
+    o.versions.sort((a, b) => b.date.localeCompare(a.date)); o.lastLive = maxStr(o.versions.map(lastLiveOf).filter((x): x is string => !!x))
+    o.liveFrom = maxStr(o.versions.flatMap(V => V.live.map(w => w[0])))   // start of the most recent live window (shown as „Stand“)
+  }
+  return out.sort((a, b) => Number(b.complete) - Number(a.complete) || (b.lastLive ?? '').localeCompare(a.lastLive ?? '') || b.versions[0].date.localeCompare(a.versions[0].date))
+}
+/** favourites meta written next to fg-favs-uid from now on (sensecheck 29 (1)): data version + row count + time of the last change. */
+export type FavMeta = { dataVersion: string | null; rows: number; at: string }
+export const favMeta = (D: { rows: unknown[]; dataVersion?: string | null }, now = new Date()): FavMeta => ({ dataVersion: D.dataVersion ?? null, rows: D.rows.length, at: now.toISOString() })
+/** parked numbers (fg-favs-legacy) → those the unanimity map resolves now (e.g. after a map update) + still-parked rest. */
+export const retryParked = (parked: unknown, D: RefData, idx: Map<string, number>) => migrateLegacyFavs(parked, D, idx)

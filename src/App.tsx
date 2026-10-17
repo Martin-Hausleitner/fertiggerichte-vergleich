@@ -16,7 +16,7 @@ import { findTab } from '@/app/tabs'
 import { LocationControl } from '@/app/location'
 import { ApiBridge } from '@/app/ApiBridge'
 import { GenUIBridge } from '@/app/genuiHost'
-import { uidIndex, parseRefs, formatRefs, refToId, idToRef, hasLegacyRefs, parseLegacyRefs, legacyRefToId, migrateLegacyFavs } from '@/app/rowref'
+import { uidIndex, parseRefs, formatRefs, refToId, idToRef, hasLegacyRefs, parseLegacyRefs, legacyRefToId, migrateLegacyFavs, favMeta, retryParked } from '@/app/rowref'
 
 
 const Compare = lazy(() => import('@/views/Compare'))
@@ -48,7 +48,12 @@ export default function App() {
   const setCompare = useCallback((ids: number[]) => setCmpS(formatRefs(ids.slice(0, 4), rows0)), [setCmpS, rows0])
   const toggleCompare = useCallback((id: number) => setCompare(compare.includes(id) ? compare.filter(x => x !== id) : [...compare, id].slice(-4)), [compare, setCompare])
   const favs = useMemo(() => parseRefs(favRefs.join('.'), uidx, nRows), [favRefs, uidx, nRows])
-  const toggleFav = (id: number) => setFavRefs(formatRefs(favs.includes(id) ? favs.filter(x => x !== id) : [...favs, id], rows0).split('.').filter(Boolean))
+  // sensecheck 29 (1): store the data version with the favourites (fg-favs-meta), so a stored ref can always be tied to its export
+  const saveFavs = useCallback((ids: number[]) => { setFavRefs(formatRefs(ids, rows0).split('.').filter(Boolean)); if (D) try { localStorage.setItem('fg-favs-meta', JSON.stringify(favMeta(D))) } catch { /* ignore */ } }, [setFavRefs, rows0, D])
+  const toggleFav = (id: number) => saveFavs(favs.includes(id) ? favs.filter(x => x !== id) : [...favs, id])
+  const [legacyFavs, setLegacyFavs] = useLocal<number[]>('fg-favs-legacy', [])
+  const restoreLegacyFavs = useCallback((ids: number[], nums: number[]) => { saveFavs([...new Set([...favs, ...ids])]); setLegacyFavs(legacyFavs.filter(n => !nums.includes(n))) }, [saveFavs, favs, legacyFavs, setLegacyFavs])
+  const dropLegacyFavs = useCallback(() => { setLegacyFavs([]); try { localStorage.removeItem('fg-favs-legacy') } catch { /* ignore */ } }, [setLegacyFavs])
   const open = useCallback((id: number) => setDet(idToRef(id, rows0)), [setDet, rows0])
   const detId = det === '' ? null : atLoad && D ? legacyRefToId(det, D, uidx) : refToId(det, uidx, nRows)
   useEffect(() => {   // rewrite numeric #cmp=/#p= to uids so copied links stay stable
@@ -66,7 +71,17 @@ export default function App() {
   useEffect(() => {   // one-time migration of legacy numeric favourites (fg-favs) to uids
     if (!D) return
     // sensecheck 28 (1): numbers resolve only via legacyUid; unresolved ones are parked in fg-favs-legacy (not guessed)
-    try { const old = localStorage.getItem('fg-favs'); if (old) { const { ids, unresolved } = migrateLegacyFavs(JSON.parse(old), D, uidx); const merged = [...new Set([...favs, ...ids])]; setFavRefs(formatRefs(merged, D.rows).split('.').filter(Boolean)); if (unresolved.length) localStorage.setItem('fg-favs-legacy', JSON.stringify(unresolved)); localStorage.removeItem('fg-favs') } } catch { /* ignore */ }
+    // sensecheck 29 (1): parked numbers from earlier loads are retried on every load (legacyUid may have grown); the rest stays
+    // parked until the user confirms their version in the restore dialog (Explorer → „Alte Favoriten zuordnen“)
+    try {
+      const old = localStorage.getItem('fg-favs'), parked = legacyFavs
+      if (!old && !parked.length) return
+      const a = migrateLegacyFavs(old ? JSON.parse(old) : [], D, uidx), b = retryParked(parked, D, uidx)
+      const ids = [...new Set([...a.ids, ...b.ids])], rest = [...new Set([...b.unresolved, ...a.unresolved])]
+      if (ids.length) saveFavs([...new Set([...favs, ...ids])])
+      if (rest.length !== parked.length || rest.some((n, i) => n !== parked[i])) { if (rest.length) setLegacyFavs(rest); else dropLegacyFavs() }
+      if (old) localStorage.removeItem('fg-favs')
+    } catch { /* ignore */ }
   }, [D]) // eslint-disable-line react-hooks/exhaustive-deps
   const [fs, setFs] = useHashState<string>('fs', 'meal.stew')
   const stageSel = useMemo(() => fs ? fs.split('.') : STAGES.map(x => x[0]), [fs])
@@ -74,7 +89,7 @@ export default function App() {
   if (!D) return <AppSkeleton />
   const cur = findTab(tab)
   const View = cur.view
-  return <AppCtx.Provider value={{ D, R, stageSel, compare, toggleCompare, setCompare, favs, toggleFav, open, dark, wide, stores, nearest }}>
+  return <AppCtx.Provider value={{ D, R, stageSel, compare, toggleCompare, setCompare, favs, toggleFav, legacyFavs, restoreLegacyFavs, dropLegacyFavs, open, dark, wide, stores, nearest }}>
     <ApiBridge />
     <GenUIBridge getRows={() => R} tab={cur.key} setTab={setTab} />
     <SidebarProvider>
