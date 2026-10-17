@@ -27,7 +27,7 @@ node scripts/test_linkkind.mjs public/data.json   # UI follow-up SC28: Shop-Such
 node scripts/regress_top50.mjs public/data.json   # Top 50 (pli) nur meal/stew, keine Trockenware/Desserts
 if [ "${GATE_FAST:-0}" = 1 ]; then echo "[gate] OK (fast: data checks only)"; exit 0; fi
 npm run build
-node scripts/pw_gate.mjs   # Smoke-Test: alle Tabs, Desktop + Mobil, keine Konsolenfehler/leeren Seiten
+node scripts/pw_gate.mjs "${PW_DIST:-$PWD/dist}"   # tests this checkout's own dist (PW_DIST overrides); Smoke-Test: alle Tabs, Desktop + Mobil, keine Konsolenfehler/leeren Seiten
 node scripts/e2e_legacy_favs.mjs   # sensecheck 29 (1): alte Favoriten → Stand wählen → genau diese Produkte
 echo "$rows" > "$STATE"
 echo "[gate] OK"

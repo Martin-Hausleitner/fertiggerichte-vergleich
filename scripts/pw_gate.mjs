@@ -1,9 +1,12 @@
 import { chromium } from 'playwright'
 import { createServer } from 'http'
 import { readFileSync, existsSync, statSync } from 'fs'
-import { join, extname } from 'path'
+import { join, extname, resolve } from 'path'
 
-const ROOT = '/workspace/fertig-app/dist'
+// dist to test: CLI arg > PW_DIST env > default (shared checkout). prepush_gate.sh passes its own worktree dist.
+const ROOT = resolve(process.argv[2] || process.env.PW_DIST || '/workspace/fertig-app/dist')
+if (!existsSync(join(ROOT, 'index.html'))) { console.error(`[pw_gate] FAIL: no index.html in ${ROOT}`); process.exit(1) }
+console.log(`[pw_gate] dist ${ROOT} bundle ${(readFileSync(join(ROOT, 'index.html'), 'utf8').match(/index-[A-Za-z0-9_-]+\.js/) || ['?'])[0]}`)
 const MIME = { '.html':'text/html', '.js':'application/javascript', '.css':'text/css', '.json':'application/json', '.bin':'application/octet-stream', '.svg':'image/svg+xml', '.png':'image/png', '.jpg':'image/jpeg', '.webp':'image/webp', '.woff2':'font/woff2', '.ico':'image/x-icon' }
 const server = createServer((req, res) => {
   let p = decodeURIComponent((req.url || '/').split('?')[0].split('#')[0])
