@@ -23,6 +23,7 @@ if grep -rIlE '"(whoop|garmin|healthkit|heart_?rate|hrv|weight_kg|user_?email)"'
 node scripts/check_gaps_applied.mjs public/data.json   # sensecheck 15: export without gaps_overlay --apply → rot
 node -e 'const s=require("./public/data.json").soldOut||{};console.log(s.stale?"[gate] WARN: online availability snapshot stale/missing (fertig: python3 online_availability.py fetch) "+JSON.stringify(s):`[gate] availability snapshot ${s.file} age ${s.age_h} h (max ${s.max_age_h} h)`)'   # sensecheck 27 (2)
 node scripts/test_rowref.mjs public/data.json   # sensecheck 27: stable uid refs (favs/#cmp=/#p=)
+node scripts/test_linkkind.mjs public/data.json   # UI follow-up SC28: Shop-Suche/Kategorie/PDF-Links gekennzeichnet
 node scripts/regress_top50.mjs public/data.json   # Top 50 (pli) nur meal/stew, keine Trockenware/Desserts
 if [ "${GATE_FAST:-0}" = 1 ]; then echo "[gate] OK (fast: data checks only)"; exit 0; fi
 npm run build

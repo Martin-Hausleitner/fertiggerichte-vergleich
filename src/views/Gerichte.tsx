@@ -4,6 +4,7 @@ import { Card, Input, Badge } from '../components/ui'
 import { ZoomImage, BrandLogo, StoreLogo, PliBadge, HealthBadge, Price, Nearest } from '../components/product'
 import { InfoTip, packEmo } from '../components/info'
 import { useHashState } from '../lib'
+import { LinkNote } from '../components/LinkNote'
 const norm=(s:string)=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
 export default function Gerichte(){
   const {D,open}=useApp()
@@ -44,7 +45,7 @@ export default function Gerichte(){
         </div>
         <div className="mt-2 flex flex-wrap items-center gap-1"><PliBadge v={r.pli}/><HealthBadge s={r.score}/>{r.pli==null&&<span className="text-[10px] text-slate-400">PLI fehlt (Preis/Nährwerte)</span>}</div>
         <div className="mt-1"><Nearest store={r.store} compact/></div>
-        {r.url&&<a href={r.url} target="_blank" rel="noreferrer" onClick={e=>e.stopPropagation()} className="text-[10px] text-sky-600 hover:underline">🔗 Quelle</a>}
+        {r.url&&<a href={r.url} target="_blank" rel="noreferrer" onClick={e=>e.stopPropagation()} className="text-[10px] text-sky-600 hover:underline">🔗 Quelle</a>}{r.url&&<LinkNote url={r.url} className="ml-1"/>}
       </div>)}</div>
     </Card>}
   </div>

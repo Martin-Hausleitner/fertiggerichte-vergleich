@@ -11,9 +11,10 @@ import { isReadyMeal, isRankable, pricePerPortion } from './meal'
 import { clientScore, valueScore, getCfg, setCfg, toValueCfg, type ScoreCfg } from './scoring'
 import { passesRankMin, passesLightRank, protPerEuro } from './meal'
 import { buildMealPlan as plan, type PlanTargets, type MealPlan } from './plan'
+import { linkKind } from './linkKind'
 
 // ---------- Typen (stabil) ----------
-export type ProductSummary = { id: number; name: string; brand: string; store: string; price: number | null; pricePerPortion: number | null; score: number | null; value: number | null; stage: string; readyMeal: boolean; img: string | null; url: string | null }
+export type ProductSummary = { id: number; name: string; brand: string; store: string; price: number | null; pricePerPortion: number | null; score: number | null; value: number | null; stage: string; readyMeal: boolean; img: string | null; url: string | null; urlKind?: string }
 export type SearchOpts = { limit?: number; includeGroceries?: boolean }
 export type RankBy = 'lightMeal' | 'value' | 'proteinPerEuro' | 'score' | 'pricePerPortion' | 'price'
 export type RankOpts = { by?: RankBy; limit?: number; onlyMyShops?: boolean; chains?: string[]; includeGroceries?: boolean; filter?: F }
@@ -42,7 +43,7 @@ declare global { interface Window { goodChoice?: GoodChoiceAPI } }
 // ---------- Implementierung ----------
 type Deps = { rows: () => Row[]; myChains: () => Set<string>; myShops: () => string[]; loc: () => { radius: number }; distOf: (r: Row) => number | null }
 let renderer: CustomUIRenderer | null = null
-const summary = (r: Row): ProductSummary => ({ id: r.id, name: r.name, brand: r.brandN, store: r.store, price: r.price, pricePerPortion: pricePerPortion(r), score: clientScore(r), value: valueScore(r), stage: r.stage, readyMeal: isReadyMeal(r), img: r.img, url: r.url })
+const summary = (r: Row): ProductSummary => ({ id: r.id, name: r.name, brand: r.brandN, store: r.store, price: r.price, pricePerPortion: pricePerPortion(r), score: clientScore(r), value: valueScore(r), stage: r.stage, readyMeal: isReadyMeal(r), img: r.img, url: r.url, urlKind: linkKind(r.url) ?? undefined })
 const hashObj = () => Object.fromEntries(new URLSearchParams(location.hash.slice(1)))
 
 export function installApi(d: Deps): GoodChoiceAPI {
