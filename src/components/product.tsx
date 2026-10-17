@@ -1,6 +1,7 @@
 import { LOGIN_ONLY_PRICE } from '@/app/shops'
 import { useState } from 'react'
-import { OldPriceBadge } from './PriceAge'
+import { OldPriceBadge, priceAge } from './PriceAge'
+import { isLive as _isLive, isPriceCurrent } from '@/app/priceFresh'
 import { NutritionSourceBadge } from './NutritionSource'
 import { DeliveryHint } from './DeliveryHint'
 import { VariantNote, PriceCondition, PriceWinnerBadge, AlsoAt } from './RowNotes'
@@ -50,9 +51,11 @@ export function Chips({r,compact}:{r:Row;compact?:boolean}){
     {(r as any).ns&&<InfoTip k="ns"><Badge className={'text-white '+({A:'bg-green-700',B:'bg-lime-600',C:'bg-yellow-500',D:'bg-orange-500',E:'bg-red-600'} as any)[String((r as any).ns).toUpperCase()]}>Nutri {String((r as any).ns).toUpperCase()}{(r as any).ns_st==='berechnet'&&<span className="ml-1 font-normal opacity-90">(berechnet)</span>}</Badge></InfoTip>}{r.ooe&&<Badge className="bg-red-600 text-white">🦁 OÖ</Badge>}
   </div>
 }
-export const isLive=(p:string|null)=>!!p&&/live|aktuell/i.test(p)
+export const isLive=(p:string|null)=>_isLive(p)
+/** Sensecheck 33 (4): '✓ aktuell' only when the price itself is current (app/priceFresh.ts isPriceCurrent). */
+export { isPriceCurrent }
 export const Price=({r}:{r:Row})=><span className="inline-flex flex-wrap items-center gap-1">{PriceInner({r})}<PriceCondition r={r}/></span>
-const PriceInner=({r}:{r:Row})=> r.price==null?(LOGIN_ONLY_PRICE.includes(r.store)?<span className="text-xs text-slate-500" title="Der Anbieter zeigt Preise erst nach Anmeldung">Preis nur nach Login</span>:<span className="text-slate-400">–</span>):<span className="inline-flex items-center gap-1.5 whitespace-nowrap"><span className={cn('font-bold tabular-nums text-[1.05em]',isLive(r.pstat)?'text-slate-900 dark:text-white':'text-slate-500')}>{fmt(r.price,2)} €</span><OldPriceBadge r={r}/>{isLive(r.pstat)?<Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300 text-[10px]">✓ aktuell</Badge>:<Badge className="bg-amber-100 text-amber-800 text-[10px]">{r.pstat}</Badge>}</span>
+const PriceInner=({r}:{r:Row})=> r.price==null?(LOGIN_ONLY_PRICE.includes(r.store)?<span className="text-xs text-slate-500" title="Der Anbieter zeigt Preise erst nach Anmeldung">Preis nur nach Login</span>:<span className="text-slate-400">–</span>):<span className="inline-flex items-center gap-1.5 whitespace-nowrap"><span className={cn('font-bold tabular-nums text-[1.05em]',isPriceCurrent(r)?'text-slate-900 dark:text-white':'text-slate-500')}>{fmt(r.price,2)} €</span><OldPriceBadge r={r}/>{isPriceCurrent(r)?<Badge data-testid="price-current" className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300 text-[10px]">✓ aktuell</Badge>:isLive(r.pstat)?(priceAge(r).old?null:<Badge data-testid="price-stale" className="bg-amber-100 text-amber-800 text-[10px]">Preis veraltet</Badge>):<Badge className="bg-amber-100 text-amber-800 text-[10px]">{r.pstat}</Badge>}</span>
 export function BrandLogo({r,size=28}:{r:Pick<Row,'brandN'|'logo'>;size?:number}){
   const [err,setErr]=useState(false)
   if(r.logo&&!err) return <span title={r.brandN} style={{height:size,width:size*2.6}} className="inline-flex shrink-0 items-center justify-center"><ZoomImage logo src={r.logo} className="h-full w-full" onErr={()=>setErr(true)}/></span>

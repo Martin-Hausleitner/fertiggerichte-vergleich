@@ -24,6 +24,7 @@ node scripts/check_gaps_applied.mjs public/data.json   # sensecheck 15: export w
 node -e 'const s=require("./public/data.json").soldOut||{};console.log(s.stale?"[gate] WARN: online availability snapshot stale/missing (fertig: python3 online_availability.py fetch) "+JSON.stringify(s):`[gate] availability snapshot ${s.file} age ${s.age_h} h (max ${s.max_age_h} h)`)'   # sensecheck 27 (2)
 node scripts/test_rowref.mjs public/data.json   # sensecheck 27: stable uid refs (favs/#cmp=/#p=)
 node scripts/test_linkkind.mjs public/data.json   # UI follow-up SC28: Shop-Suche/Kategorie/PDF-Links gekennzeichnet
+node scripts/test_sc33_ui.mjs public/data.json   # sensecheck 33: alsoText same-store sizes, ✓ aktuell follows price staleness
 node scripts/regress_top50.mjs public/data.json   # Top 50 (pli) nur meal/stew, keine Trockenware/Desserts
 if [ "${GATE_FAST:-0}" = 1 ]; then echo "[gate] OK (fast: data checks only)"; exit 0; fi
 npm run build

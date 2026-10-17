@@ -1,9 +1,9 @@
 import { cn } from '@/lib'
+import { priceYear, isOldPrice } from '@/app/priceFresh'
 type P = { price_date?: string | null; pstat?: string | null; price?: number | null }
-/** Preisalter: alt = Preisdatum vor 2026 oder Status „Preis 2025“. */
+/** Preisalter: alt = Preisdatum vor 2026 oder Status „Preis 2025“ (Regel in app/priceFresh.ts). */
 export function priceAge(r: P): { old: boolean; year: string | null; date: string | null } {
-  const d = r.price_date ?? null; const y = d?.slice(0, 4) ?? (r.pstat?.match(/20\d\d/)?.[0] ?? null)
-  return { old: r.price != null && y != null && +y < 2026, year: y, date: d }
+  return { old: isOldPrice(r), year: priceYear(r), date: r.price_date ?? null }
 }
 /** Sichtbarer Hinweis „Preis von 2025 (TT.MM.JJJJ)“ bei Preisen vor 2026. */
 export function OldPriceBadge({ r, className }: { r: P; className?: string }) {
