@@ -30,4 +30,20 @@ assert.notDeepEqual(pick.map(i => rows2[i]?.uid), pick.map(i => rows[i].uid), 'n
 assert.deepEqual(R.parseRefs('3.foo.3.' + n, idx, n), [3])
 assert.equal(R.refToId(String(rows[12].uid), idx, n), 12)
 assert.ok(R.hasLegacyRefs('3.' + rows[4].uid, rows)); assert.ok(!R.hasLegacyRefs(rows[4].uid, rows))
+// 5) sensecheck 28 (1): legacy numeric refs (fg-favs, links opened at load) resolve ONLY via legacyUid, never as current index
+const L = D.legacyUid || {}
+for (const [k, u] of Object.entries(L)) assert.ok(idx.has(u), `legacyUid[${k}] -> existing uid`)
+assert.ok(D.legacyUidInfo && D.legacyUidInfo.shipped === Object.keys(L).length, 'legacyUidInfo.shipped')
+const notMapped = [...Array(n).keys()].find(i => !(String(i) in L))
+if (notMapped != null) {
+  assert.equal(R.legacyRefToId(String(notMapped), D, idx), null, 'unmapped legacy number is dropped, not read as current index')
+  assert.deepEqual(R.parseLegacyRefs(`${notMapped}.${rows[3].uid}`, D, idx), [3], 'mixed legacy link keeps uid, drops unknown number')
+  const m = R.migrateLegacyFavs([notMapped, 'x', -1], D, idx); assert.deepEqual(m, { ids: [], unresolved: [notMapped] })
+}
+for (const [k, u] of Object.entries(L).slice(0, 50)) assert.equal(R.legacyRefToId(k, D, idx), idx.get(u), 'mapped legacy number -> its uid row')
+const Dold = { rows: rows.map(r => ({ id: r.id })) }   // pre-uid export: numbers stay indices
+assert.equal(R.legacyRefToId('5', Dold, R.uidIndex(Dold)), 5)
+// in-session numeric refs (GenUI/MCP) keep current-index semantics
+assert.equal(R.refToId('7', idx, n), 7)
+console.log(`[rowref] legacy: ${Object.keys(L).length} mapped numeric refs, unmapped dropped`)
 console.log(`[rowref] OK: ${n} rows, unique uids, uidMap/uidTop/dupOfUid consistent, refs stable across inserted row`)

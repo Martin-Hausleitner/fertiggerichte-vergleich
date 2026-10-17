@@ -16,7 +16,7 @@ import { findTab } from '@/app/tabs'
 import { LocationControl } from '@/app/location'
 import { ApiBridge } from '@/app/ApiBridge'
 import { GenUIBridge } from '@/app/genuiHost'
-import { uidIndex, parseRefs, formatRefs, refToId, idToRef, hasLegacyRefs } from '@/app/rowref'
+import { uidIndex, parseRefs, formatRefs, refToId, idToRef, hasLegacyRefs, parseLegacyRefs, legacyRefToId, migrateLegacyFavs } from '@/app/rowref'
 
 
 const Compare = lazy(() => import('@/views/Compare'))
@@ -42,21 +42,31 @@ export default function App() {
   // sensecheck 27: favourites, #cmp= and #p= persist the stable row uid (src/app/rowref.ts); numeric ids stay in memory
   const rows0 = useMemo(() => D?.rows ?? [], [D]), nRows = rows0.length
   const uidx = useMemo(() => D ? uidIndex(D) : new Map<string, number>(), [D])
-  const compare = useMemo(() => parseRefs(cmpS, uidx, nRows), [cmpS, uidx, nRows])
+  // sensecheck 28 (1): until the first data render, numeric #cmp=/#p= are pre-uid share links (legacy semantics, legacyUid)
+  const [atLoad, setAtLoad] = useState(true)
+  const compare = useMemo(() => atLoad && D ? parseLegacyRefs(cmpS, D, uidx) : parseRefs(cmpS, uidx, nRows), [atLoad, D, cmpS, uidx, nRows])
   const setCompare = useCallback((ids: number[]) => setCmpS(formatRefs(ids.slice(0, 4), rows0)), [setCmpS, rows0])
   const toggleCompare = useCallback((id: number) => setCompare(compare.includes(id) ? compare.filter(x => x !== id) : [...compare, id].slice(-4)), [compare, setCompare])
   const favs = useMemo(() => parseRefs(favRefs.join('.'), uidx, nRows), [favRefs, uidx, nRows])
   const toggleFav = (id: number) => setFavRefs(formatRefs(favs.includes(id) ? favs.filter(x => x !== id) : [...favs, id], rows0).split('.').filter(Boolean))
   const open = useCallback((id: number) => setDet(idToRef(id, rows0)), [setDet, rows0])
-  const detId = det === '' ? null : refToId(det, uidx, nRows)
-  useEffect(() => {   // rewrite numeric #cmp=/#p= (old share links, GenUI/MCP actions) to uids so copied links stay stable
+  const detId = det === '' ? null : atLoad && D ? legacyRefToId(det, D, uidx) : refToId(det, uidx, nRows)
+  useEffect(() => {   // rewrite numeric #cmp=/#p= to uids so copied links stay stable
     if (!D) return
+    if (atLoad) {   // old share link: resolve via legacyUid, drop what can't be attributed unambiguously
+      setAtLoad(false)
+      if (hasLegacyRefs(cmpS, D.rows)) setCmpS(formatRefs(compare, D.rows))
+      if (det !== '' && /^\d+$/.test(det)) setDet(detId == null ? '' : idToRef(detId, D.rows))
+      return
+    }
+    // in-session numeric refs (GenUI/MCP actions) are current indices
     if (hasLegacyRefs(cmpS, D.rows)) setCmpS(formatRefs(compare, D.rows))
     if (det !== '' && /^\d+$/.test(det) && detId != null && D.rows[detId]?.uid) setDet(idToRef(detId, D.rows))
   }, [D, cmpS, det]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {   // one-time migration of legacy numeric favourites (fg-favs) to uids
     if (!D) return
-    try { const old = localStorage.getItem('fg-favs'); if (old) { const ids = (JSON.parse(old) as unknown[]).map(Number).filter(n => Number.isInteger(n) && n >= 0 && n < D.rows.length); const merged = [...new Set([...favs, ...ids])]; setFavRefs(formatRefs(merged, D.rows).split('.').filter(Boolean)); localStorage.removeItem('fg-favs') } } catch { /* ignore */ }
+    // sensecheck 28 (1): numbers resolve only via legacyUid; unresolved ones are parked in fg-favs-legacy (not guessed)
+    try { const old = localStorage.getItem('fg-favs'); if (old) { const { ids, unresolved } = migrateLegacyFavs(JSON.parse(old), D, uidx); const merged = [...new Set([...favs, ...ids])]; setFavRefs(formatRefs(merged, D.rows).split('.').filter(Boolean)); if (unresolved.length) localStorage.setItem('fg-favs-legacy', JSON.stringify(unresolved)); localStorage.removeItem('fg-favs') } } catch { /* ignore */ }
   }, [D]) // eslint-disable-line react-hooks/exhaustive-deps
   const [fs, setFs] = useHashState<string>('fs', 'meal.stew')
   const stageSel = useMemo(() => fs ? fs.split('.') : STAGES.map(x => x[0]), [fs])
