@@ -34,6 +34,9 @@ assert.ok(!byUid('273fww4rap')?.linkPack && byUid('273fww4rap')?.size === 400, '
 for (const [u, net, dr] of [['7g0n0evi73', 670, 375], ['rcrm56uxfu', 400, 240]]) {   // sensecheck 37 (1): drained weight separately, no pack-size notice
   const r = byUid(u); assert.ok(r && r.size === net && r.drainedWeight === dr && !r.linkPack && L.rowLinkLabel(r) === null, `drained ${u}`)
 }
+// sensecheck 38 (4): Billa weight articles (placeholder 1000 g, price = €/kg) carry the weight notice like #216
+for (const u of ['m73tjsoff1', 'oye0l1goid']) { const r = byUid(u); assert.equal(r?.linkPack?.kind, 'weight', u); assert.equal(L.linkPackLabel(r.linkPack), 'Shopseite zeigt Kilopreis (Gewichtsware)'); assert.equal(r.pPor, null) }   // #662 Roastbeef, #867 Beef Ribs
+assert.deepEqual(D.rows.filter(r => r.store === 'Billa' && r.kiloErr && r.size === 1000 && r.dupOf == null && !r.linkPack).map(r => r.id), [], 'every Billa kilo-price row has the weight notice')
 const lp = D.rows.filter(r => r.linkPack); assert.equal(lp.length, D.linkPackCheck?.n, 'linkPackCheck.n')
 const lpc = {}; for (const r of lp) lpc[r.linkPack.kind] = (lpc[r.linkPack.kind] || 0) + 1
 console.log(`[linkkind] OK: ${JSON.stringify(c)}, flagged ${flagged} (Shop-Suche/Kategorie ${(c.search || 0) + (c.category || 0)}, PDF ${c.pdf || 0}); pack-size notice ${lp.length} ${JSON.stringify(lpc)} (visible ${lp.filter(r => r.dupOf == null).length})`)
