@@ -84,3 +84,14 @@ const sip = D.rows.filter(r => r.sauceInPack); assert.equal(sip.length, pc39.sau
 assert.ok(sip.every(r => !r.nonMeal && /sauce|soße/i.test(r.sauceInPack.evidence) && M.isReadyMeal(r)), 'sauceInPack rows are ready meals with evidence')
 const t1182 = D.rows.find(x => x.uid === '9rucxso66t'); assert.ok(t1182?.sauceInPack && t1182.pack === 'Tiefkühl (TK)' && !t1182.nonMeal, '#1182 Käse-Sahne-Sauce, TK, stays a ready meal')
 console.log(`[sc39-pasta] OK: ${pc39.reclass.length} Hilcona Bolognese -> Zutat/Beilage, ${sip.length} 'Sauce im Pack' (${sip.map(r => '#' + r.id).join(', ')})`)
+// sensecheck 39 (5): 'Preis unbestätigt' (price_status from the export's 30-day supermarket rule) wins over pstat 'live 2026':
+//  no '✓ aktuell', Preisstatus text 'Preis unbestätigt (Stand …)'. #334/#349/#766 (SPAR) + #1316 (Billa) became unconfirmed with build date 2026-10-18.
+assert.equal(F.isPriceCurrent({ pstat: 'live 2026', price: 5.99, price_date: '2026-09-17', price_status: 'unbestätigt', price_unconfirmed: true }), false)
+assert.equal(F.isPriceUnconfirmed({ pstat: 'live 2026', price: 5.99, price_date: '2026-09-17', price_status: 'unbestätigt' }), true)
+assert.ok(F.priceStatusLabel({ pstat: 'live 2026', price: 5.99, price_date: '2026-09-17', price_status: 'unbestätigt' }).startsWith('Preis unbestätigt (Stand '))
+assert.equal(F.priceStatusLabel({ pstat: 'live 2026', price: 5.99, price_date: '2026-10-13' }), 'live 2026')
+const unc = D.rows.filter(r => r.price_status === 'unbestätigt' && r.price != null && !/preis veraltet|ausgelistet/i.test(String(r.variant_note || '') + String(r.rank_excluded_reason || '')))
+assert.deepEqual(unc.filter(r => F.isPriceCurrent(r)).map(r => r.id), [], "no '✓ aktuell' on an unconfirmed price")
+assert.ok(unc.every(r => F.priceStatusLabel(r).startsWith('Preis unbestätigt')), 'Preisstatus label = unbestätigt')
+for (const u of ['jkxnf2gpyt', 'yqr9h3qc7z', '5umlvxma07', 'ped5prjjok']) { const r = D.rows.find(x => x.uid === u); assert.ok(r && F.isPriceUnconfirmed(r) && !F.isPriceCurrent(r), `sc39 unconfirmed ${u}`) }
+console.log(`[sc39-unconfirmed] OK: ${unc.length} rows 'Preis unbestätigt' (pstat live 2026 on ${unc.filter(r => r.pstat === 'live 2026').length}), none '✓ aktuell'`)

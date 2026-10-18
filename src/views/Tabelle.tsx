@@ -1,3 +1,4 @@
+import { priceStatusLabel } from '../app/priceFresh'
 import { PriceCondition } from '@/components/RowNotes'
 import { useMemo, useRef, useState } from 'react'
 import { AgGridReact } from 'ag-grid-react'
@@ -47,7 +48,7 @@ export default function Tabelle() {
   const pred = useMemo(() => makePred(f, { konzOf, dist: distOf }), [f, konzOf, distOf])
   const base = useMemo(() => R.filter(r => !r.nonfood && !r.store.startsWith('unbekannt') && (allFood ? true : isReadyMeal(r)) && (!lf || delivers4020(r as any))).map(r => { const pp = pricePerPortion(r); return { ...r, pPor: pp } }), [R, allFood, lf])
   const rows = useMemo(() => { const qq = q.toLowerCase(); const sd = SORTS.find(x => x[0] === so) ?? SORTS[0]; return base.filter(r => pred(r) && (so !== 'value' && so !== 'ppe' || allFood || rankOk(r)) && (!qq || `${r.name} ${r.brandN} ${r.herst}`.toLowerCase().includes(qq)))
-    .map(r => ({ ...r, cat: [...(r.cprot || []), ...(r.cdish || [])].join(', '), diet: veg(r), dist: distOf(r), ns: r.ns && r.ns !== 'unknown' ? r.ns.toUpperCase() : null, value: valueScore(r), ppeP: protPerEuro(r), avail: availOf(r.store, r) }))
+    .map(r => ({ ...r, cat: [...(r.cprot || []), ...(r.cdish || [])].join(', '), diet: veg(r), dist: distOf(r), ns: r.ns && r.ns !== 'unknown' ? r.ns.toUpperCase() : null, value: valueScore(r), ppeP: protPerEuro(r), avail: availOf(r.store, r), pstat: priceStatusLabel(r) }))
     .sort((a, b) => { const x = sd[2](a), y = sd[2](b); return x == null ? (y == null ? 0 : 1) : y == null ? -1 : (x - y) * sd[3] }) }, [base, pred, q, distOf, so, cfg])
   const updated = useMemo(() => lastPriceDate(R), [R])
   const ctx = useMemo(() => ({ konzOf, dist: distOf }), [konzOf, distOf])

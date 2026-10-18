@@ -1,3 +1,4 @@
+import { isPriceUnconfirmed, priceStatusLabel } from '../app/priceFresh'
 import { useMemo, useState } from 'react'
 import { X, Search, Trophy } from 'lucide-react'
 import { Card, Input, Button } from '@/components/ui'
@@ -8,7 +9,7 @@ import { useApp, fmt, scoreColor, cn, type Row } from '@/lib'
 type M = { k: string; l: string; d?: number; u?: string; better?: 'hi' | 'lo'; get?: (r: Row) => any }
 const SECTIONS: [string, M[]][] = [
   ['Überblick', [{ k: 'store', l: 'Anbieter' }, { k: 'brandN', l: 'Marke' }, { k: 'score', l: 'Health-Score', d: 0, better: 'hi' }, { k: 'ns', l: 'Nutri-Score', get: r => r.ns && r.ns !== 'unknown' ? r.ns.toUpperCase() : null }, { k: 'nova', l: 'NOVA', get: r => (r as any).nova }]],
-  ['Preis', [{ k: 'price', l: 'Preis', d: 2, u: '€', better: 'lo' }, { k: 'size', l: 'Packungsgröße', d: 0, u: 'g' }, { k: 'p100g', l: 'Preis/100 g', d: 2, u: '€', better: 'lo' }, { k: 'eur10p', l: '€ pro 10 g Protein', d: 2, u: '€', better: 'lo' }, { k: 'pstat', l: 'Preisstand', get: r => { const d = (r as any).price_date; return d ? `${r.pstat ?? ''} · ${new Date(d).toLocaleDateString('de-AT')}` : r.pstat } }]],
+  ['Preis', [{ k: 'price', l: 'Preis', d: 2, u: '€', better: 'lo' }, { k: 'size', l: 'Packungsgröße', d: 0, u: 'g' }, { k: 'p100g', l: 'Preis/100 g', d: 2, u: '€', better: 'lo' }, { k: 'eur10p', l: '€ pro 10 g Protein', d: 2, u: '€', better: 'lo' }, { k: 'pstat', l: 'Preisstand', get: r => { const d = (r as any).price_date; if (isPriceUnconfirmed(r as any)) return priceStatusLabel(r as any); return d ? `${r.pstat ?? ''} · ${new Date(d).toLocaleDateString('de-AT')}` : r.pstat } }]],
   ['Nährwerte je 100 g', [{ k: 'kcal', l: 'Energie', d: 0, u: 'kcal' }, { k: 'p100', l: 'Protein', d: 1, u: 'g', better: 'hi' }, { k: 'fat', l: 'Fett', d: 1, u: 'g' }, { k: 'sat', l: 'davon ges. Fettsäuren', d: 1, u: 'g', better: 'lo' }, { k: 'carbs', l: 'Kohlenhydrate', d: 1, u: 'g' }, { k: 'sugar', l: 'davon Zucker', d: 1, u: 'g', better: 'lo' }, { k: 'fib', l: 'Ballaststoffe', d: 1, u: 'g', better: 'hi' }, { k: 'salt', l: 'Salz', d: 2, u: 'g', better: 'lo' }]],
   ['Je Portion', [{ k: 'portion', l: 'Portion', d: 0, u: 'g' }, { k: 'kcalPor', l: 'Energie', d: 0, u: 'kcal' }, { k: 'protPor', l: 'Protein', d: 1, u: 'g', better: 'hi' }, { k: 'saltPor', l: 'Salz', d: 2, u: 'g', better: 'lo' }]],
   ['Bestandteile & Herkunft', [{ k: 'comp', l: 'Komponenten', get: r => [...(r.cprot || []), ...(r.cdish || [])].join(', ') || null }, { k: 'diet', l: 'Ernährung', get: r => [r.bio && 'Bio', (r.vegan || r.cprot?.includes('vegan')) && 'vegan', r.cprot?.includes('vegetarisch') && 'vegetarisch'].filter(Boolean).join(', ') || null },

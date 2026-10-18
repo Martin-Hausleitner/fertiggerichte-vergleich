@@ -1,3 +1,4 @@
+import { priceStatusLabel } from '../app/priceFresh'
 import { useMemo, useState } from 'react'
 import { Info, AlertTriangle } from 'lucide-react'
 import { Card, Badge } from '@/components/ui'
@@ -41,7 +42,7 @@ export default function HoferTop30() {
     {shown.map(([c, xs]) => <Card key={c} className="p-3 shadow-none"><h2 className="mb-2 font-semibold">{D.catIcon[c] ?? ''} {c} <Badge>{xs.length}</Badge></h2>
       <ol className="divide-y">{xs.map(({ r, v }, i) => <li key={r.id}><button onClick={() => open(r.id)} className="flex w-full items-center gap-3 py-2 text-left hover:bg-muted/50">
         <span className="w-6 text-right font-bold text-muted-foreground">{i + 1}</span><Img src={r.img} className="size-11 rounded" />
-        <span className="min-w-0 flex-1"><span className="line-clamp-1 text-sm font-medium">{r.name}</span><span className="text-xs text-muted-foreground">Score <b style={{ color: scoreColor(r.score) }}>{fmt(r.score, 0)}</b> · {fmt(pricePerPortion(r), 2)} €/Portion <OldPriceBadge r={r} className="ml-1" />{!priceAge(r).old && ` · ${r.pstat ?? 'Preisstand unbekannt'}`}{portionEstimated(r) && ' · Portion geschätzt'}</span></span>
+        <span className="min-w-0 flex-1"><span className="line-clamp-1 text-sm font-medium">{r.name}</span><span className="text-xs text-muted-foreground">Score <b style={{ color: scoreColor(r.score) }}>{fmt(r.score, 0)}</b> · {fmt(pricePerPortion(r), 2)} €/Portion <OldPriceBadge r={r} className="ml-1" />{!priceAge(r).old && ` · ${priceStatusLabel(r) ?? 'Preisstand unbekannt'}`}{portionEstimated(r) && ' · Portion geschätzt'}</span></span>
         <span className="text-right text-sm font-bold">{fmt(v, 0)}<span className="block text-[10px] font-normal text-muted-foreground">Wert</span></span></button></li>)}</ol></Card>)}
     {thin.length > 0 && <p className="text-xs text-muted-foreground">Zu wenig Daten (nicht gerankt): {thin.map(([c, xs]) => `${c} (${xs.length})`).join(', ')}</p>}
   </div>
