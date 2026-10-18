@@ -35,8 +35,18 @@ for try in 1 2; do
 done
 [ $gate_ok = 1 ] || { echo "GATE RED - nothing published"; exit 8; }
 [ -f $W/dist/index.html ] || { echo "dist missing after gate - nothing published"; exit 8; }
+# Push window: no pushes in UTC minute 42-49 (auto-deploy routine window). Sleep until :50 if inside it.
+# PUSH_WINDOW_TEST_MIN overrides the current minute for tests only.
+push_window_wait() {
+  local m s; m=$((10#${PUSH_WINDOW_TEST_MIN:-$(date -u +%M)})); s=$((10#$(date -u +%S)))
+  [ -n "$PUSH_WINDOW_TEST_MIN" ] && s=0
+  if [ $m -ge 42 ] && [ $m -le 49 ]; then echo "push window: UTC minute $m in 42-49, sleeping $(( (50-m)*60 - s ))s until :50"; sleep $(( (50-m)*60 - s )); fi
+  return 0
+}
+push_window_wait
 (git push -q servas $TARGET:refs/heads/main && echo "servas main = $SHA") || echo "servas main push failed (non-ff? not forced)"
 # gh-pages = exakt der aktuelle dist-Build (keine alten Assets mehr übernehmen)
-cd $W/dist && touch .nojekyll && rm -rf .git && git init -q -b gh-pages && git add -A && git -c user.name="Martin Hausleitner" -c user.email="Martin-Hausleitner@users.noreply.github.com" commit -qm "deploy $SHA" && git push -q -f https://github.com/Martin-Hausleitner/fertiggerichte-vergleich.git gh-pages && echo "martin gh-pages ok"
+cd $W/dist && touch .nojekyll && rm -rf .git && git init -q -b gh-pages && git add -A && git -c user.name="Martin Hausleitner" -c user.email="Martin-Hausleitner@users.noreply.github.com" commit -qm "deploy $SHA" && push_window_wait && git push -q -f https://github.com/Martin-Hausleitner/fertiggerichte-vergleich.git gh-pages && echo "martin gh-pages ok"
+push_window_wait
 ( git push -q -f https://github.com/servas-ai/fertiggerichte-vergleich.git gh-pages && echo 'servas gh-pages ok' ) || echo 'servas gh-pages push failed'
 echo "deployed $SHA gh-pages=$(git rev-parse --short HEAD) bundle=$(grep -o 'index-[A-Za-z0-9_-]*\.js' index.html)"
