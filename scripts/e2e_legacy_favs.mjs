@@ -159,6 +159,17 @@ await page.waitForSelector('[role=dialog] [data-testid=old-price]', { timeout: 3
   assert.equal((await d2.locator('[data-testid=old-price]').first().innerText()).trim(), 'Preis veraltet (Stand 7.11.2025)', '#1183 price header')
   assert.ok(!t2.includes('Preis von 2025'), "#1183: no 'Preis von 2025'") }
 console.log("[e2e sc41 header] OK: #p=9rucxso66t / n2wwb3d3s3 price header 'Preis veraltet (Stand …)'")
+// sensecheck 41 (2): status by price date – #7 BILLA Lasagne (19.7.2026, 91 days) 'Preis veraltet (Stand 19.7.2026)' with its date;
+//  #1216 Hofer Cevapcici (shelf price 12.10.2026, not on hofer.at) 'evtl. ausgelistet', not 'Preis veraltet', no '✓ aktuell'
+await page.goto(base + '#tab=alle&p=d47fjhzimi'); await page.reload()
+await page.waitForSelector('[role=dialog] [data-testid=old-price]', { timeout: 30000 })
+assert.equal((await page.locator('[role=dialog] [data-testid=old-price]').first().innerText()).trim(), 'Preis veraltet (Stand 19.7.2026)', '#7 header')
+await page.goto(base + '#tab=alle&p=jel7h3wg1j'); await page.reload()
+await page.waitForSelector('[role=dialog] [data-testid=price-delisted]', { timeout: 30000 })
+{ const d3 = page.locator('[role=dialog]').first()
+  assert.equal(await d3.locator('[data-testid=old-price]').count(), 0, '#1216 no old-price badge'); assert.equal(await d3.locator('[data-testid=price-current]').count(), 0, '#1216 not ✓ aktuell')
+  assert.equal((await d3.locator('[data-testid=price-status]').first().innerText()).trim(), 'Preis vom 12.10.2026 · evtl. ausgelistet', '#1216 Preisstatus') }
+console.log("[e2e sc41 tiers] OK: #7 'Preis veraltet (Stand 19.7.2026)', #1216 'evtl. ausgelistet' / 'Preis vom 12.10.2026 · evtl. ausgelistet'")
 assert.deepEqual(errs, [], 'no page errors')
 console.log(`[e2e legacy favs] OK: ${nums} (94e0cd2) → ${want.length} uids via restore dialog (${n} options), meta ${ls.meta.dataVersion}, fg-favs → parked ${ls2.parked.length}, 0 page errors`)
 await browser.close(); server.close()

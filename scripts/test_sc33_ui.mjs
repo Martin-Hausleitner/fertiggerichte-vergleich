@@ -8,10 +8,11 @@ const load = async f => { const o = await build({ entryPoints: [new URL(f, impor
 const F = await load('../src/app/priceFresh.ts'), L = await load('../src/lib.ts')
 // (4) badge rule
 assert.equal(F.isPriceCurrent({ pstat: 'live 2026', price: 3.55, price_date: '2026-10-13' }), true)
-assert.equal(F.isPriceCurrent({ pstat: 'live 2026', price: 3.55, price_date: '2024-04-23' }), false)   // #456 before the fix
+assert.equal(F.isPriceCurrent({ pstat: 'live 2026', price: 3.55, price_date: '2024-04-23', price_stale: true }), false)   // #456 before the fix (SC41: stale = export price_stale by date tier)
 assert.equal(F.isPriceCurrent({ pstat: 'live 2026', price: 6.49, price_date: '2026-05-19', variant_note: 'Preis veraltet / evtl. ausgelistet' }), false)
 assert.equal(F.isPriceCurrent({ pstat: 'Preis 2025', price: 4.99, price_date: '2025-05-14' }), false)
-assert.equal(F.isOldPrice({ pstat: 'live 2026', price: 1, price_date: '2023-01-01' }), true)
+assert.equal(F.isOldPrice({ pstat: 'live 2026', price: 1, price_date: '2023-01-01', price_stale: true }), true)
+assert.equal(F.isOldPrice({ pstat: 'live 2026', price: 1, price_date: '2025-12-01' }), false)   // sensecheck 41 (2): no calendar-year rule
 // (1) alsoText
 assert.deepEqual(L.alsoText({ alsoAt: ['MPreis'], alsoPack: [{ store: 'Spar', kind: 'size', label: '800 g', sameStore: true }, { store: 'Billa', kind: 'size', label: '800 g' }] }), ['auch bei MPreis', 'auch als 800 g (auch bei Billa)'])
 assert.deepEqual(L.alsoText({ alsoPack: [{ store: 'Billa', kind: 'size', label: '700 g', sameStore: true }] }), ['auch als 700 g'])
@@ -117,7 +118,7 @@ console.log(`[sc40-hidden-hits] OK: q=Triangoli -> '${tTri} anzeigen'`)
 const t40 = D.rows.find(x => x.uid === '9rucxso66t'); assert.ok(t40?.sauceInPack && t40.pack === 'Tiefkühl (TK)' && !t40.nonMeal && M.isReadyMeal(t40) === M.isReadyMeal({ ...t40 }), '#1182 TK + sauce')
 assert.equal(F.priceStatusLabel(t40), 'Preis veraltet (Stand 31.12.2023)'); assert.equal(F.showPstatBadge(t40), false, "#1182: no 'Preis 2025' badge")
 assert.ok(/erneut geprüft 2026-10-18/.test(t40.price_note) && t40.psrc.startsWith('heisse-preise.io Hofer 2023-12-31') && t40.priceCheck40, '#1182 re-check')
-assert.equal(F.priceStatusLabel({ pstat: 'Preis 2025', price: 1.99, price_date: '2025-02-04' }), 'Preis von 2025 (Stand 4.2.2025)')
+assert.equal(F.priceStatusLabel({ pstat: 'Preis veraltet', price: 1.99, price_date: '2025-02-04', price_stale: true }), 'Preis veraltet (Stand 4.2.2025)')
 assert.equal(F.priceStatusLabel({ pstat: 'live 2026', price: 1.99, price_date: '2026-10-13' }), 'live 2026')
 assert.equal(F.priceStatusLabel({ pstat: 'Preis 2025', price: 14.49, price_date: '2026-10-17' }), 'Preis vom 17.10.2026'); assert.equal(F.showPstatBadge({ pstat: 'Preis 2025', price: 14.49, price_date: '2026-10-17' }), false)
 let contra40 = 0
@@ -135,11 +136,39 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   const txt = r => R.renderToStaticMarkup(R.createElement(R.OldPriceBadge, { r })).replace(/<[^>]+>/g, '')
   const t1183 = D.rows.find(x => x.uid === 'n2wwb3d3s3')
   assert.equal(txt(t40), 'Preis veraltet (Stand 31.12.2023)', '#1182 header'); assert.equal(txt(t1183), 'Preis veraltet (Stand 7.11.2025)', '#1183 header')
-  assert.equal(txt({ pstat: 'Preis 2025', price: 1.99, price_date: '2025-02-04' }), 'Preis von 2025 (Stand 4.2.2025)')
+  assert.equal(txt({ pstat: 'Preis veraltet', price: 4.99, price_date: '2026-07-19', price_stale: true, variant_note: 'Preis veraltet / evtl. ausgelistet' }), 'Preis veraltet (Stand 19.7.2026)')   // #7 BILLA Lasagne
   assert.equal(txt({ pstat: 'live 2026', price: 1.99, price_date: '2026-10-13' }), '')
-  assert.equal(txt({ pstat: 'Preis 2025', price: 1.99 }), 'Preis von 2025')
+  assert.equal(txt({ pstat: 'Preis veraltet', price: 1.99, price_stale: true }), 'Preis veraltet')
   let n41 = 0, bad41 = 0
   for (const r of D.rows) { if (!F.isOldPrice(r) || !r.price_date) continue; n41++; if (txt(r) !== F.priceStatusLabel(r)) bad41++ }
   assert.equal(bad41, 0, 'old-price header text differs from priceStatusLabel')
   console.log(`[sc41-header] OK: #1182 '${txt(t40)}', #1183 '${txt(t1183)}', ${n41} old-price rows: header = priceStatusLabel`)
+}
+// sensecheck 41 (2)+(3): the price status comes ONLY from price_date + the agreed tiers (supermarkets 'unbestätigt' > 30 days, 'veraltet'
+//  > 90 days; online shops 'veraltet' > 6 months) – no calendar-year rule, no 'ausgelistet' mark making a fresh price 'veraltet';
+//  pstat is regenerated from the same tier ('Preis veraltet' / 'live <Jahr>'); delisting stays a separate, non-rankable availability flag
+{
+  const sp = D.stalePrice, SM = new Set(sp.supermarket_stores)
+  const tier = r => { const d = String(r.price_date || '').slice(0, 10); if (d.length < 10) return 'no_date'; if (SM.has(r.store)) return d < sp.cutoff_supermarket ? 'stale' : d < sp.cutoff_supermarket_unconfirmed ? 'unconfirmed' : 'ok'; return d < sp.cutoff_online ? 'stale' : 'ok' }
+  let n = { stale: 0, unconfirmed: 0, ok: 0, no_date: 0 }, bad = []
+  for (const r of D.rows) {
+    if (r.price == null) continue
+    const t = tier(r); n[t]++
+    if (F.isOldPrice(r) !== (t === 'stale')) bad.push(['old', r.id, t])
+    if (!!r.price_stale !== (t === 'stale')) bad.push(['price_stale', r.id, t])
+    if (F.isPriceUnconfirmed(r) !== (t === 'unconfirmed')) bad.push(['unconfirmed', r.id, t])
+    if (t === 'stale' && r.pstat !== 'Preis veraltet') bad.push(['pstat', r.id, r.pstat])
+    if ((t === 'ok' || t === 'unconfirmed') && r.pstat !== 'live ' + r.price_date.slice(0, 4)) bad.push(['pstat', r.id, r.pstat])
+    if (t === 'stale' && !F.priceStatusLabel(r).startsWith('Preis veraltet')) bad.push(['label', r.id])
+    if (M.isRankable(r) && (t === 'stale' || M.isDelisted(r))) bad.push(['rankable', r.id])
+  }
+  assert.deepEqual(bad.slice(0, 10), [], 'price status not derived from price_date tiers')
+  const by = u => D.rows.find(x => x.uid === u)
+  const r7 = by('d47fjhzimi'); assert.equal(F.priceStatusLabel(r7), 'Preis veraltet (Stand 19.7.2026)', '#7 BILLA Lasagne: 91 days, with date')
+  const r465 = by('9fhmofem4h'); assert.equal(r465.pstat, 'live 2026'); assert.ok(F.isPriceCurrent(r465), '#465 FAIRHOF hofer.at 2026-10-17 current')
+  const dl = D.rows.filter(r => r.price != null && M.isDelisted(r) && !F.isOldPrice(r))
+  assert.ok(dl.length >= 20 && dl.every(r => !M.isRankable(r) && !F.isPriceCurrent(r) && !r.rankable && / · evtl\. ausgelistet$/.test(F.priceStatusLabel(r) || '') || !r.price_date), 'delisted rows with a fresh price: not rankable, labelled')
+  assert.equal(F.priceStatusLabel(by('jel7h3wg1j')), 'Preis vom 12.10.2026 · evtl. ausgelistet', '#1216 Hofer Cevapcici')
+  assert.equal(D.pstatFix41?.by?.['live 2026 -> Preis veraltet'] > 0, true)
+  console.log(`[sc41-tiers] OK: priced rows by date tier ${JSON.stringify(n)}, price_stale/old/unconfirmed/pstat all follow price_date, ${dl.length} delisted with a fresh price (not rankable, 'evtl. ausgelistet'), #7 '${F.priceStatusLabel(r7)}'`)
 }

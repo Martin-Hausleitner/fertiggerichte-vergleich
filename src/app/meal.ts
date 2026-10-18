@@ -65,8 +65,14 @@ export const isFullMeal = (r: Row) => { const k = kcalPerPortion(r), p = protPer
 /** Für Rankings: Fertiggericht + echter Preis/Laden + vollständiger Score + harte Mahlzeit-Prüfung. */
 /** Preis veraltet / evtl. ausgelistet (Pipeline: rank_excluded_reason bzw. variant_note) → nie in Rankings. */
 export const STALE_PRICE_TEXT = 'Preis veraltet / evtl. ausgelistet'
-export const isStalePrice = (r: Row) => [(r as any).rank_excluded_reason, (r as any).variant_note].some((t: unknown) => typeof t === 'string' && /preis veraltet|ausgelistet/i.test(t))
-export const isRankable = (r: Row) => isReadyMeal(r) && !isStalePrice(r) && r.price_status !== 'unknown' && r.shop_status !== 'unknown' && r.score != null && !r.incomplete && r.price != null && r.price > 0 && !!r.store && !r.store.startsWith('unbekannt') && pricePerPortion(r) != null && isFullMeal(r)
+/** Sensecheck 41 (2): 'Preis veraltet' comes ONLY from the price date (export price_age_class: supermarkets > 90 days, online shops > 6 months
+ *  → price_stale + note 'Preis veraltet / evtl. ausgelistet'). Delisting ('evtl. ausgelistet', e.g. not on hofer.at) is availability: isDelisted. */
+const _notes = (r: Row) => [(r as any).rank_excluded_reason, (r as any).variant_note].filter((t: unknown) => typeof t === 'string').join(' · ')
+export const isStalePrice = (r: Row) => (r as any).price_stale === true || /preis veraltet/i.test(_notes(r))
+export const isDelisted = (r: Row) => /ausgelistet|nicht mehr auf \S+ gelistet/i.test(_notes(r))
+/** not rankable for price reasons: stale price date or delisted */
+export const isPriceExcluded = (r: Row) => isStalePrice(r) || isDelisted(r)
+export const isRankable = (r: Row) => isReadyMeal(r) && !isPriceExcluded(r) && r.price_status !== 'unknown' && r.shop_status !== 'unknown' && r.score != null && !r.incomplete && r.price != null && r.price > 0 && !!r.store && !r.store.startsWith('unbekannt') && pricePerPortion(r) != null && isFullMeal(r)
 export const lastPriceDate = (rows: Row[]) => { let d = ''; rows.forEach(r => { const m = r.psrc?.match(/\d{4}-\d{2}-\d{2}/); if (m && m[0] > d) d = m[0] }); return d || null }
 
 /** ---- Preis-Leistung: EINE Formel für alle Ansichten ----
@@ -88,7 +94,7 @@ export const isLightMeal = (r: Row) => r.meal_class === 'light_meal'
 export const passesRankMin = (r: Row, c: ValueCfg = {}) => !isLightMeal(r) && isRankable(r) && (scoreOf(r, c) ?? 0) >= (c.minScore ?? VALUE_DEFAULTS.minScore) && (kcalPerPortion(r) ?? 0) >= Math.max(MEAL_RULES.kcalMin, c.minKcal ?? VALUE_DEFAULTS.minKcal)
 
 /** Separates Ranking „Leichte Mahlzeiten“ (meal_class light_meal): Fertiggericht, Preis + Score, Mindest-Score – ohne 400-kcal/20-g-Prüfung. */
-export const passesLightRank = (r: Row, c: ValueCfg = {}) => isLightMeal(r) && !isStalePrice(r) && isReadyMeal(r) && r.price != null && r.score != null && (scoreOf(r, c) ?? 0) >= (c.minScore ?? VALUE_DEFAULTS.minScore) && pricePerPortion(r) != null
+export const passesLightRank = (r: Row, c: ValueCfg = {}) => isLightMeal(r) && !isPriceExcluded(r) && isReadyMeal(r) && r.price != null && r.score != null && (scoreOf(r, c) ?? 0) >= (c.minScore ?? VALUE_DEFAULTS.minScore) && pricePerPortion(r) != null
 /** GTIN aus psrc (z. B. „GTIN 4260237451068“). */
 export const gtinOf = (r: { psrc?: string | null }) => (r.psrc ?? '').match(/\b(\d{13}|\d{8})\b/)?.[1] ?? null
 const completeness = (r: object) => Object.values(r).filter(v => v != null && v !== '' && !(Array.isArray(v) && !v.length)).length
