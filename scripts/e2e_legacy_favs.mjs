@@ -157,7 +157,8 @@ await page.goto(base + '#tab=alle&p=n2wwb3d3s3'); await page.reload()
 await page.waitForSelector('[role=dialog] [data-testid=old-price]', { timeout: 30000 })
 { const d2 = page.locator('[role=dialog]').first(), t2 = await d2.innerText()
   assert.equal((await d2.locator('[data-testid=old-price]').first().innerText()).trim(), 'Preis veraltet (Stand 7.11.2025)', '#1183 price header')
-  assert.ok(!t2.includes('Preis von 2025'), "#1183: no 'Preis von 2025'") }
+  assert.ok(!t2.includes('Preis von 2025'), "#1183: no 'Preis von 2025'")
+  assert.ok(!t2.includes('Zutat/Rohware'), "#1183: sensecheck 41 (4) no 'Zutat/Rohware' badge on a dish with sauce") }
 console.log("[e2e sc41 header] OK: #p=9rucxso66t / n2wwb3d3s3 price header 'Preis veraltet (Stand …)'")
 // sensecheck 41 (2): status by price date – #7 BILLA Lasagne (19.7.2026, 91 days) 'Preis veraltet (Stand 19.7.2026)' with its date;
 //  #1216 Hofer Cevapcici (shelf price 12.10.2026, not on hofer.at) 'evtl. ausgelistet', not 'Preis veraltet', no '✓ aktuell'

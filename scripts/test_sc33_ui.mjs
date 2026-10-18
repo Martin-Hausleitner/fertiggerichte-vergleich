@@ -172,3 +172,5 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   assert.equal(D.pstatFix41?.by?.['live 2026 -> Preis veraltet'] > 0, true)
   console.log(`[sc41-tiers] OK: priced rows by date tier ${JSON.stringify(n)}, price_stale/old/unconfirmed/pstat all follow price_date, ${dl.length} delisted with a fresh price (not rankable, 'evtl. ausgelistet'), #7 '${F.priceStatusLabel(r7)}'`)
 }
+// sensecheck 41 (4): #1183 Linguini mit Hühnerpolpetti und Paprikasauce is a dish (stage meal), not 'Zutat/Rohware'
+{ const r = D.rows.find(x => x.uid === 'n2wwb3d3s3'); assert.equal(r.stage, 'meal'); assert.ok(M.isReadyMeal(r), '#1183 ready meal'); console.log(`[sc41-stage] OK: #${r.id} stage ${r.stage}, ready meal (not rankable: ${r.rank_excluded_reason})`) }
