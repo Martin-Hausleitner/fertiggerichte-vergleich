@@ -95,3 +95,19 @@ assert.deepEqual(unc.filter(r => F.isPriceCurrent(r)).map(r => r.id), [], "no '�
 assert.ok(unc.every(r => F.priceStatusLabel(r).startsWith('Preis unbestätigt')), 'Preisstatus label = unbestätigt')
 for (const u of ['jkxnf2gpyt', 'yqr9h3qc7z', '5umlvxma07', 'ped5prjjok']) { const r = D.rows.find(x => x.uid === u); assert.ok(r && F.isPriceUnconfirmed(r) && !F.isPriceCurrent(r), `sc39 unconfirmed ${u}`) }
 console.log(`[sc39-unconfirmed] OK: ${unc.length} rows 'Preis unbestätigt' (pstat live 2026 on ${unc.filter(r => r.pstat === 'live 2026').length}), none '✓ aktuell'`)
+// sensecheck 40 (6): a search whose matches are only hidden (Beilage stage, „nur Preis“) gets the hint 'X Treffer in ausgeblendeten … – anzeigen'
+const HH = await load('../src/app/hiddenHits.ts')
+const defSel = ['meal', 'stew'], hOpt = { keep: () => true, stageSel: defSel, stageFixed: false, dry: false, po: false }
+const visTri = D.rows.filter(r => !r.nonfood && !r.store.startsWith('unbekannt') && defSel.includes(r.stage) && !r.dry && !r.priceOnly && HH.matchesQuery(r, 'triangoli'))
+assert.equal(visTri.length, 0, "q=Triangoli: 0 visible rows with the default selection")
+const hTri = HH.hiddenHits(D.rows, 'Triangoli', hOpt); assert.ok(hTri && hTri.n >= 3 && hTri.stages.includes('side') && hTri.nonMeal === hTri.n, 'q=Triangoli hidden hits ' + JSON.stringify(hTri))
+const tTri = HH.hiddenHitsText(hTri); assert.ok(tTri.startsWith(`${hTri.n} Treffer in ausgeblendeten Beilagen`) && /kein Fertiggericht/.test(tTri), tTri)
+assert.deepEqual(HH.revealStages(defSel, hTri).slice(0, 2), defSel); assert.ok(HH.revealStages(defSel, hTri).includes('side'))
+// revealing the stages (+ „nur Preis“ when needed) makes every hidden hit visible
+const sel2 = HH.revealStages(defSel, hTri), vis2 = D.rows.filter(r => !r.nonfood && sel2.includes(r.stage) && (!r.dry || hTri.needDry) && (!r.priceOnly || hTri.needPo) && HH.matchesQuery(r, 'triangoli'))
+assert.equal(vis2.length, hTri.n, 'after anzeigen all hidden Triangoli rows visible')
+assert.equal(HH.hiddenHits(D.rows, 'Triangoli', { ...hOpt, stageFixed: true, po: true }), null, 'no hint when nothing hides them')
+assert.equal(HH.hiddenHits(D.rows, '', hOpt), null); assert.equal(HH.hiddenHits(D.rows, 'Triangoli', { ...hOpt, visible: HH.FEW_HITS + 1 }), null, 'no hint for many visible hits')
+const hFew = HH.hiddenHits(D.rows, 'Triangoli', { ...hOpt, visible: 2 }); assert.ok(HH.hiddenHitsText(hFew).startsWith('Außerdem '), 'few visible hits: Außerdem …')
+assert.equal(HH.hiddenHits(D.rows, 'Triangoli', { ...hOpt, keep: r => r.store === 'Gurkerl' }).n, 1, 'user filters (store) stay')
+console.log(`[sc40-hidden-hits] OK: q=Triangoli -> '${tTri} anzeigen'`)

@@ -32,7 +32,7 @@ export function useLocal<T>(key:string,def:T):[T,(v:T)=>void]{
   const [v,setV]=useState<T>(()=>{try{const s=localStorage.getItem(key);return s?JSON.parse(s):def}catch{return def}})
   return [v,(nv:T)=>{setV(nv);try{localStorage.setItem(key,JSON.stringify(nv))}catch{}}]
 }
-export type Ctx={D:Data;R:Row[];stageSel:string[];compare:number[];toggleCompare:(id:number)=>void;setCompare:(ids:number[])=>void;favs:number[];toggleFav:(id:number)=>void;legacyFavs:number[];restoreLegacyFavs:(ids:number[],nums:number[])=>void;dropLegacyFavs:()=>void;open:(id:number)=>void;dark:boolean;wide:boolean;stores:Stores|null;nearest:(store:string)=>Shop|null}
+export type Ctx={D:Data;R:Row[];stageSel:string[];/** sensecheck 39 (4): change the global stage selection (StageBar, hash fs) */setStageSel:(v:string[])=>void;compare:number[];toggleCompare:(id:number)=>void;setCompare:(ids:number[])=>void;favs:number[];toggleFav:(id:number)=>void;legacyFavs:number[];restoreLegacyFavs:(ids:number[],nums:number[])=>void;dropLegacyFavs:()=>void;open:(id:number)=>void;dark:boolean;wide:boolean;stores:Stores|null;nearest:(store:string)=>Shop|null}
 export const AppCtx=createContext<Ctx>(null as any)
 export const useApp=()=>useContext(AppCtx)
 

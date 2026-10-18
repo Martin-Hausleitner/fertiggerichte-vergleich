@@ -118,7 +118,7 @@ export default function App() {
   if (!D) return <AppSkeleton />
   const cur = findTab(tab)
   const View = cur.view
-  return <AppCtx.Provider value={{ D, R, stageSel, compare, toggleCompare, setCompare, favs, toggleFav, legacyFavs, restoreLegacyFavs, dropLegacyFavs, open, dark, wide, stores, nearest }}>
+  return <AppCtx.Provider value={{ D, R, stageSel, setStageSel: (v: string[]) => setFs(v.join('.')), compare, toggleCompare, setCompare, favs, toggleFav, legacyFavs, restoreLegacyFavs, dropLegacyFavs, open, dark, wide, stores, nearest }}>
     <ApiBridge />
     <GenUIBridge getRows={() => R} tab={cur.key} setTab={setTab} />
     <SidebarProvider>
