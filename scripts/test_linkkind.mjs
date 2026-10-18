@@ -37,6 +37,11 @@ for (const [u, net, dr] of [['7g0n0evi73', 670, 375], ['rcrm56uxfu', 400, 240]])
 // sensecheck 38 (4): Billa weight articles (placeholder 1000 g, price = €/kg) carry the weight notice like #216
 for (const u of ['m73tjsoff1', 'oye0l1goid']) { const r = byUid(u); assert.equal(r?.linkPack?.kind, 'weight', u); assert.equal(L.linkPackLabel(r.linkPack), 'Shopseite zeigt Kilopreis (Gewichtsware)'); assert.equal(r.pPor, null) }   // #662 Roastbeef, #867 Beef Ribs
 assert.deepEqual(D.rows.filter(r => r.store === 'Billa' && r.kiloErr && r.size === 1000 && r.dupOf == null && !r.linkPack).map(r => r.id), [], 'every Billa kilo-price row has the weight notice')
+// sensecheck 39 (2): Billa re-check 2026-10-18 – weight notice names the row's own (regular) kilo price, never a second 'Preis im Datensatz';
+//  a running offer is the AKTION price condition (#3541 AMA Suppenmix 15,99 €/kg, Aktion 14,99); #3528 Chili Basis Fix 0,69 € (was 0,79)
+for (const r of D.rows.filter(r => r.store === 'Billa' && r.linkPack?.kind === 'weight' && r.priceCheck39)) assert.ok(r.linkPack.shopPrice === r.price && !/Preis im Datensatz/.test(r.linkPack.detail), `one price #${r.id}`)
+{ const am = byUid('1e64e97j9r'); assert.ok(am.price === 15.99 && am.linkPack.shopPrice === 15.99 && am.price_condition === 'AKTION: 14,99 €/kg (statt 15,99 €/kg)' && am.price_date === '2026-10-18', '#3541 regular price + AKTION')
+  const bf = byUid('hcocmto4fg'); assert.ok(bf.price === 0.69 && bf.price_date === '2026-10-18' && /00-740208/.test(bf.psrc), '#3528 Chili Basis Fix 0,69 €') }
 const lp = D.rows.filter(r => r.linkPack); assert.equal(lp.length, D.linkPackCheck?.n, 'linkPackCheck.n')
 const lpc = {}; for (const r of lp) lpc[r.linkPack.kind] = (lpc[r.linkPack.kind] || 0) + 1
 console.log(`[linkkind] OK: ${JSON.stringify(c)}, flagged ${flagged} (Shop-Suche/Kategorie ${(c.search || 0) + (c.category || 0)}, PDF ${c.pdf || 0}); pack-size notice ${lp.length} ${JSON.stringify(lpc)} (visible ${lp.filter(r => r.dupOf == null).length})`)
