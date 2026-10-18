@@ -169,8 +169,10 @@ await page.goto(base + '#tab=alle&p=jel7h3wg1j'); await page.reload()
 await page.waitForSelector('[role=dialog] [data-testid=price-delisted]', { timeout: 30000 })
 { const d3 = page.locator('[role=dialog]').first()
   assert.equal(await d3.locator('[data-testid=old-price]').count(), 0, '#1216 no old-price badge'); assert.equal(await d3.locator('[data-testid=price-current]').count(), 0, '#1216 not ✓ aktuell')
-  assert.equal((await d3.locator('[data-testid=price-status]').first().innerText()).trim(), 'Preis vom 12.10.2026 · evtl. ausgelistet', '#1216 Preisstatus') }
-console.log("[e2e sc41 tiers] OK: #7 'Preis veraltet (Stand 19.7.2026)', #1216 'evtl. ausgelistet' / 'Preis vom 12.10.2026 · evtl. ausgelistet'")
+  assert.equal((await d3.locator('[data-testid=price-status]').first().innerText()).trim(), 'Preis vom 12.10.2026 · evtl. ausgelistet', '#1216 Preisstatus')
+  // sensecheck 42 (1): the date is visible in the price header itself (was only in the tooltip), like 'Preis veraltet (Stand …)'
+  assert.equal((await d3.locator('[data-testid=price-delisted]').first().innerText()).trim(), 'Preis vom 12.10.2026 · evtl. ausgelistet', '#1216 price header') }
+console.log("[e2e sc41/sc42 tiers] OK: #7 'Preis veraltet (Stand 19.7.2026)', #1216 price header + Preisstatus 'Preis vom 12.10.2026 · evtl. ausgelistet'")
 assert.deepEqual(errs, [], 'no page errors')
 console.log(`[e2e legacy favs] OK: ${nums} (94e0cd2) → ${want.length} uids via restore dialog (${n} options), meta ${ls.meta.dataVersion}, fg-favs → parked ${ls2.parked.length}, 0 page errors`)
 await browser.close(); server.close()
