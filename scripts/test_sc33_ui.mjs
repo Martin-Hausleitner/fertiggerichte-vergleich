@@ -111,3 +111,17 @@ assert.equal(HH.hiddenHits(D.rows, '', hOpt), null); assert.equal(HH.hiddenHits(
 const hFew = HH.hiddenHits(D.rows, 'Triangoli', { ...hOpt, visible: 2 }); assert.ok(HH.hiddenHitsText(hFew).startsWith('Außerdem '), 'few visible hits: Außerdem …')
 assert.equal(HH.hiddenHits(D.rows, 'Triangoli', { ...hOpt, keep: r => r.store === 'Gurkerl' }).n, 1, 'user filters (store) stay')
 console.log(`[sc40-hidden-hits] OK: q=Triangoli -> '${tTri} anzeigen'`)
+// sensecheck 40 (2): #1182 Primana Tortelloni Käse-Sahne – TK + 'Sauce im Pack' in the data; the price status follows the price date
+//  (no 'Preis 2025' next to 'Preis von 2023'), psrc = the real (old) source, re-check note
+const t40 = D.rows.find(x => x.uid === '9rucxso66t'); assert.ok(t40?.sauceInPack && t40.pack === 'Tiefkühl (TK)' && !t40.nonMeal && M.isReadyMeal(t40) === M.isReadyMeal({ ...t40 }), '#1182 TK + sauce')
+assert.equal(F.priceStatusLabel(t40), 'Preis veraltet (Stand 31.12.2023)'); assert.equal(F.showPstatBadge(t40), false, "#1182: no 'Preis 2025' badge")
+assert.ok(/erneut geprüft 2026-10-18/.test(t40.price_note) && t40.psrc.startsWith('heisse-preise.io Hofer 2023-12-31') && t40.priceCheck40, '#1182 re-check')
+assert.equal(F.priceStatusLabel({ pstat: 'Preis 2025', price: 1.99, price_date: '2025-02-04' }), 'Preis von 2025 (Stand 4.2.2025)')
+assert.equal(F.priceStatusLabel({ pstat: 'live 2026', price: 1.99, price_date: '2026-10-13' }), 'live 2026')
+assert.equal(F.priceStatusLabel({ pstat: 'Preis 2025', price: 14.49, price_date: '2026-10-17' }), 'Preis vom 17.10.2026'); assert.equal(F.showPstatBadge({ pstat: 'Preis 2025', price: 14.49, price_date: '2026-10-17' }), false)
+let contra40 = 0
+for (const r of D.rows) { if (r.price == null || !r.price_date) continue; const l = F.priceStatusLabel(r) || '', y = l.match(/20\d\d/g) || []; if (y.some(x => x !== r.price_date.slice(0, 4) && !/Stand/.test(l))) contra40++; if (F.isOldPrice(r) && F.showPstatBadge(r)) contra40++ }
+assert.equal(contra40, 0, 'price status label/badge contradicts the price date')
+assert.deepEqual(D.rows.filter(r => r.store === 'Hofer' && r.price != null && r.psrc === 'kein aktueller 2026-Preis gefunden').map(r => r.id), [], 'Hofer psrc placeholder')
+assert.equal(D.psrcFix40?.n, 8); assert.equal(D.priceCheck40?.applied, 1)
+console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t40.psrc}', ${D.psrcFix40.n} Hofer psrc fixed, 0 label/date contradictions`)

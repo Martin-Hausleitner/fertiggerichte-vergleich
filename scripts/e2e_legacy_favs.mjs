@@ -140,6 +140,16 @@ await page.click('[data-testid=hidden-hits-show]'); await page.waitForSelector('
 await page.getByText(`${hhn} Treffer`, { exact: true }).first().waitFor({ timeout: 30000 })
 assert.ok(/fs=[^&]*side/.test(decodeURIComponent(page.url())), 'stage Beilage added to #fs: ' + page.url())
 console.log(`[e2e hidden hits] OK: #tab=alle&q=Triangoli '${hht} anzeigen' → ${hhn} Treffer`)
+// sensecheck 40 (2): #1182 Primana Tortelloni Käse-Sahne detail: 'Sauce im Pack', pack Tiefkühl (TK), Preisstatus by the price date
+//  ('Preis veraltet (Stand 31.12.2023)', no 'Preis 2025' badge next to 'Preis von 2023'), Preisquelle heisse-preise 2023, re-check note
+await page.goto(base + '#tab=alle&p=' + TS); await page.reload()
+await page.waitForSelector('[role=dialog] [data-testid=price-status]', { timeout: 30000 })
+const dlg = page.locator('[role=dialog]').first(), dtx = await dlg.innerText()
+assert.equal((await dlg.locator('[data-testid=price-status]').first().innerText()).trim(), 'Preis veraltet (Stand 31.12.2023)')
+assert.ok(await dlg.locator('[data-testid=sauce-note]').count() > 0 && dtx.includes('Tiefkühl (TK)'), '#1182 sauce + TK')
+assert.ok(!dtx.includes('Preis 2025'), "#1182: no 'Preis 2025' in the detail"); assert.ok(dtx.includes('Preis von 2023'), 'old price badge')
+assert.ok(dtx.includes('Preisquelle: heisse-preise.io Hofer 2023-12-31'), 'psrc'); assert.ok((await dlg.locator('[data-testid=price-note]').innerText()).includes('erneut geprüft 2026-10-18'), 'price note')
+console.log(`[e2e sc40 price] OK: #p=#${U(TS).id} 'Sauce im Pack', Tiefkühl (TK), 'Preis veraltet (Stand 31.12.2023)', re-check note`)
 assert.deepEqual(errs, [], 'no page errors')
 console.log(`[e2e legacy favs] OK: ${nums} (94e0cd2) → ${want.length} uids via restore dialog (${n} options), meta ${ls.meta.dataVersion}, fg-favs → parked ${ls2.parked.length}, 0 page errors`)
 await browser.close(); server.close()

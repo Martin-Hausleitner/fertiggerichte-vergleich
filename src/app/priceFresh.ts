@@ -13,6 +13,19 @@ export const isPriceUnconfirmed = (r: P) => r.price != null && (r.price_status =
 /** '✓ aktuell' = live status AND price date 2026 AND not marked stale AND not unconfirmed by the export. */
 export const isPriceCurrent = (r: P) => isLive(r.pstat) && !isOldPrice(r) && !isStalePrice(r as any) && !isPriceUnconfirmed(r)
 const _d = (d?: string | null) => d && /^\d{4}-\d{2}-\d{2}/.test(d) ? new Date(d.slice(0, 10)).toLocaleDateString('de-AT') : null
-/** Text for 'Preisstatus' / 'Preisstand' fields: 'Preis unbestätigt (Stand …)' wins over pstat; otherwise pstat. */
-export const priceStatusLabel = (r: P): string | null => isPriceUnconfirmed(r) ? `Preis unbestätigt${_d(r.price_date) ? ` (Stand ${_d(r.price_date)})` : ''}` : (r.pstat ?? null)
+/** Text for 'Preisstatus' / 'Preisstand' fields: 'Preis unbestätigt (Stand …)' wins over pstat; otherwise pstat.
+ *  Sensecheck 40 (2): pstat is a source bucket ('Preis 2025' = any heisse-preise Altpreis, 'live 2026' = still listed by the source) and
+ *  contradicted the price date – #1182 Primana Tortelloni Käse-Sahne showed 'Preis von 2023 (31.12.2023)' next to 'Preis 2025'. A price
+ *  dated before 2026 is labelled by its own date: 'Preis veraltet (Stand …)' when the export marks it stale (veraltet / ausgelistet),
+ *  else 'Preis von <Jahr> (Stand …)'. */
+/** pstat names a year that is not the year of the price date */
+const pstatYearClash = (r: P) => { const py = r.pstat?.match(/20\d\d/)?.[0]; return !!py && !!r.price_date && py !== r.price_date.slice(0, 4) }
+export const priceStatusLabel = (r: P): string | null => {
+  if (isPriceUnconfirmed(r)) return `Preis unbestätigt${_d(r.price_date) ? ` (Stand ${_d(r.price_date)})` : ''}`
+  if (isOldPrice(r) && r.price_date) { const st = _d(r.price_date) ? ` (Stand ${_d(r.price_date)})` : ''; return isStalePrice(r as any) ? `Preis veraltet${st}` : `Preis von ${priceYear(r)}${st}` }
+  if (pstatYearClash(r) && _d(r.price_date)) return `Preis vom ${_d(r.price_date)}`   // e.g. #465 FAIRHOF Spare Ribs: pstat 'Preis 2025', hofer.at 2026-10-17
+  return r.pstat ?? null
+}
+/** Sensecheck 40 (2): the source bucket pstat as a badge only when it does not contradict the price date (old prices show OldPriceBadge). */
+export const showPstatBadge = (r: P) => !!r.pstat && !isOldPrice(r) && !pstatYearClash(r)
 export const UNCONFIRMED_TIP = 'Supermarktpreis älter als 30 Tage und seitdem nicht neu bestätigt – im Shop prüfen'
