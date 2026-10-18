@@ -3,6 +3,7 @@
 import { build } from 'esbuild'
 import { readFileSync } from 'node:fs'
 import assert from 'node:assert/strict'
+import { createRequire } from 'node:module'
 const load = async f => { const o = await build({ entryPoints: [new URL(f, import.meta.url).pathname], bundle: true, write: false, format: 'esm', platform: 'node', logLevel: 'silent' }); return import('data:text/javascript;base64,' + Buffer.from(o.outputFiles[0].text).toString('base64')) }
 const F = await load('../src/app/priceFresh.ts'), L = await load('../src/lib.ts')
 // (4) badge rule
@@ -125,3 +126,20 @@ assert.equal(contra40, 0, 'price status label/badge contradicts the price date')
 assert.deepEqual(D.rows.filter(r => r.store === 'Hofer' && r.price != null && r.psrc === 'kein aktueller 2026-Preis gefunden').map(r => r.id), [], 'Hofer psrc placeholder')
 assert.equal(D.psrcFix40?.n, 8); assert.equal(D.priceCheck40?.applied, 1)
 console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t40.psrc}', ${D.psrcFix40.n} Hofer psrc fixed, 0 label/date contradictions`)
+// sensecheck 41 (1): the product-detail price header (OldPriceBadge in components/PriceAge.tsx) uses the same priceStatusLabel path as
+//  'Preisstatus' – #1182 / #1183 showed 'Preis von 2023 (31.12.2023)' / 'Preis von 2025 (7.11.2025)' instead of 'Preis veraltet (Stand …)'
+{
+  const out = new URL('../node_modules/.cache/sc41_oldprice.cjs', import.meta.url).pathname
+  await build({ stdin: { contents: "export { OldPriceBadge } from './src/components/PriceAge.tsx'; export { createElement } from 'react'; export { renderToStaticMarkup } from 'react-dom/server'", resolveDir: new URL('..', import.meta.url).pathname, loader: 'ts' }, bundle: true, outfile: out, format: 'cjs', platform: 'node', jsx: 'automatic', tsconfig: new URL('../tsconfig.app.json', import.meta.url).pathname, logLevel: 'silent' })
+  const R = createRequire(import.meta.url)(out)
+  const txt = r => R.renderToStaticMarkup(R.createElement(R.OldPriceBadge, { r })).replace(/<[^>]+>/g, '')
+  const t1183 = D.rows.find(x => x.uid === 'n2wwb3d3s3')
+  assert.equal(txt(t40), 'Preis veraltet (Stand 31.12.2023)', '#1182 header'); assert.equal(txt(t1183), 'Preis veraltet (Stand 7.11.2025)', '#1183 header')
+  assert.equal(txt({ pstat: 'Preis 2025', price: 1.99, price_date: '2025-02-04' }), 'Preis von 2025 (Stand 4.2.2025)')
+  assert.equal(txt({ pstat: 'live 2026', price: 1.99, price_date: '2026-10-13' }), '')
+  assert.equal(txt({ pstat: 'Preis 2025', price: 1.99 }), 'Preis von 2025')
+  let n41 = 0, bad41 = 0
+  for (const r of D.rows) { if (!F.isOldPrice(r) || !r.price_date) continue; n41++; if (txt(r) !== F.priceStatusLabel(r)) bad41++ }
+  assert.equal(bad41, 0, 'old-price header text differs from priceStatusLabel')
+  console.log(`[sc41-header] OK: #1182 '${txt(t40)}', #1183 '${txt(t1183)}', ${n41} old-price rows: header = priceStatusLabel`)
+}
