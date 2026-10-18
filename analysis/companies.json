@@ -1,0 +1,683 @@
+[
+ {
+  "slug": "gms-gourmet",
+  "name": "GMS GOURMET GmbH",
+  "type": "producer",
+  "website": "https://www.gourmet.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/gms-gourmet.png",
+  "logo_source": "https://www.gourmet.at/typo3temp/assets/_processed_/2/0/csm_Gourmet-Dachmarke-Logo-x2_6143c033c9.webp",
+  "plant_addresses": [
+   {
+    "address": "Zdarskystraße 3, 3100 St. Pölten",
+    "town": "St. Pölten",
+    "state": "Niederösterreich",
+    "lat": 48.1651115,
+    "lon": 15.6204845,
+    "geocode_precision": "address",
+    "approval_code": "AT 30733 EG",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   }
+  ],
+  "group": "GOURMET (GMS Gourmet GmbH)",
+  "retail_brands": [
+   "Good Choice (Hofer Eigenmarke) @ Hofer",
+   "Omis Schmankerl @ ?",
+   "Omis Schmankerl @ BILLA",
+   "Omis Schmankerl @ Billa"
+  ]
+ },
+ {
+  "slug": "rewe-austria-fleischwaren",
+  "name": "Rewe Austria Fleischwaren GmbH",
+  "type": "producer",
+  "website": "https://rewe-group.at/de/",
+  "logo_path": "/workspace/fertig/analysis/logos/rewe-austria-fleischwaren.svg",
+  "logo_source": "https://rewe-group.at/wp-content/uploads/2026/09/98_2609_Logo_BILLA.png",
+  "plant_addresses": [
+   {
+    "address": "Solarstraße 8, 4653 Eberstalzell",
+    "town": "Eberstalzell",
+    "state": "Oberösterreich",
+    "lat": 48.0380888,
+    "lon": 13.9936392,
+    "geocode_precision": "address",
+    "approval_code": "AT 42152 EG",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/O20.pdf"
+   }
+  ],
+  "group": "REWE Group",
+  "retail_brands": [
+   "CLEVER @ Billa"
+  ],
+  "logo_note": "REWE Group parent logo (no plant-specific logo exists on rewe-group.at)"
+ },
+ {
+  "slug": "wiesbauer-gourmet",
+  "name": "Wiesbauer Gourmet Gastro GmbH",
+  "type": "producer",
+  "website": "https://www.wiesbauer.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/wiesbauer-gourmet.png",
+  "logo_source": "https://www.wiesbauer.at/app/uploads/2025/11/logogogo.png",
+  "plant_addresses": [
+   {
+    "address": "Wiesbauer Straße 1, 3454 Sitzenberg-Reidling",
+    "town": "Sitzenberg-Reidling",
+    "state": "Niederösterreich",
+    "lat": 48.3295836,
+    "lon": 15.8210697,
+    "geocode_precision": "address",
+    "approval_code": "AT 31538 EG",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/O20.pdf"
+   }
+  ],
+  "group": "Wiesbauer",
+  "retail_brands": [
+   "BILLA Genusswelt @ ?",
+   "BILLA Genusswelt @ BILLA",
+   "BILLA Genusswelt @ Billa",
+   "Hofstädter @ ?",
+   "Hofstädter @ BILLA",
+   "Hofstädter @ Billa"
+  ],
+  "logo_note": "parent Wiesbauer logo"
+ },
+ {
+  "slug": "blasko",
+  "name": "Wilhelm Blasko CONVENIENCE-Fertiggerichte GmbH",
+  "type": "producer",
+  "website": "https://www.blasko.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/blasko.png",
+  "logo_source": "https://www.blasko.at/assets/at-blasko/images/favicons/apple-touch-icon.png",
+  "plant_addresses": [
+   {
+    "address": "Fabriksstraße 18, 2522 Oberwaltersdorf",
+    "town": "Oberwaltersdorf",
+    "state": "Niederösterreich",
+    "lat": 47.9839849,
+    "lon": 16.3293013,
+    "geocode_precision": "address",
+    "approval_code": "AT 31353 EG",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/O20.pdf"
+   }
+  ],
+  "group": null,
+  "retail_brands": [
+   "Die Grillerei @ Billa",
+   "Hofstädter @ ?",
+   "Hofstädter @ BILLA"
+  ],
+  "logo_note": "favicon/app icon from official site"
+ },
+ {
+  "slug": "karnerta",
+  "name": "KARNERTA GmbH",
+  "type": "producer",
+  "website": "https://www.karnerta.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/karnerta.svg",
+  "logo_source": "https://www.karnerta.at/wp-content/uploads/2025/02/Logo_Karnerta_4c_mSlogan.svg",
+  "plant_addresses": [
+   {
+    "address": "Südring 334, 9020 Klagenfurt",
+    "town": "Klagenfurt",
+    "state": "Kärnten",
+    "lat": 46.6122836,
+    "lon": 14.3399163,
+    "geocode_precision": "address",
+    "approval_code": "AT 20271 EG",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   }
+  ],
+  "group": null,
+  "retail_brands": [
+   "BILLA Immer Gut @ ?",
+   "BILLA Immer Gut @ BILLA",
+   "Ja! Natürlich @ ?",
+   "Ja! Natürlich @ BILLA"
+  ]
+ },
+ {
+  "slug": "landena",
+  "name": "Landgenossenschaft Ennstal LANDENA KG",
+  "type": "producer",
+  "website": "https://www.landena.at/de/",
+  "logo_path": "/workspace/fertig/analysis/logos/landena.png",
+  "logo_source": "https://www.landena.at/fileadmin/template/Resources/Public/img/plainicon.png",
+  "plant_addresses": [
+   {
+    "address": "Erzherzog-Johann-Straße 303, 8950 Stainach-Pürgg",
+    "town": "Stainach-Pürgg",
+    "state": "Steiermark",
+    "lat": 47.5325786,
+    "lon": 14.1156999,
+    "geocode_precision": "address",
+    "approval_code": "AT 62028 EG",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   }
+  ],
+  "group": "Landgenossenschaft Ennstal",
+  "retail_brands": [
+   "CLEVER @ ?",
+   "CLEVER @ BILLA",
+   "Inzersdorfer @ INTERSPAR/SPAR Online",
+   "PRIMANA @ Hofer",
+   "inzersdorfer @ Billa, tegut..."
+  ],
+  "logo_note": "favicon/app icon from official site"
+ },
+ {
+  "slug": "hink",
+  "name": "Hink GmbH",
+  "type": "producer",
+  "website": "https://hink.wien/",
+  "logo_path": "/workspace/fertig/analysis/logos/hink.svg",
+  "logo_source": "https://hink.wien/cdn/shop/files/Hink_logo.svg",
+  "plant_addresses": [
+   {
+    "address": "Otto-Beyschlag-Gasse 3, 1210 Wien",
+    "town": "Wien",
+    "state": "Wien",
+    "lat": 48.2734645,
+    "lon": 16.4377845,
+    "geocode_precision": "address",
+    "approval_code": "AT 92526 EG",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   }
+  ],
+  "group": null,
+  "retail_brands": [
+   "BILLA Genusswelt @ ?",
+   "BILLA Genusswelt @ BILLA",
+   "BILLA Genusswelt @ Billa"
+  ]
+ },
+ {
+  "slug": "greisinger",
+  "name": "Greisinger GmbH",
+  "type": "producer",
+  "website": null,
+  "logo_path": null,
+  "logo_source": null,
+  "plant_addresses": [
+   {
+    "address": "Klamer Straße 10, 4323 Münzbach",
+    "town": "Münzbach",
+    "state": "Oberösterreich",
+    "lat": 48.2658542,
+    "lon": 14.727176,
+    "geocode_precision": "town-level",
+    "approval_code": "AT 40559 EG",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/O20.pdf"
+   }
+  ],
+  "group": null,
+  "retail_brands": [
+   "Greisinger @ Hofer"
+  ],
+  "website_note": "greisinger.at shows only a placeholder page with invalid TLS cert; no verified official site"
+ },
+ {
+  "slug": "wiesbauer",
+  "name": "Wiesbauer österreichische Wurstspezialitäten GmbH",
+  "type": "producer",
+  "website": "https://www.wiesbauer.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/wiesbauer.png",
+  "logo_source": "https://www.wiesbauer.at/app/uploads/2025/11/logogogo.png",
+  "plant_addresses": [
+   {
+    "address": "Laxenburger Straße 256, 1230 Wien",
+    "town": "Wien",
+    "state": "Wien",
+    "lat": 48.1331019,
+    "lon": 16.3540581,
+    "geocode_precision": "address",
+    "approval_code": "AT 92556 EG",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/V25.pdf"
+   }
+  ],
+  "group": "Wiesbauer",
+  "retail_brands": []
+ },
+ {
+  "slug": "rewe-genusskueche",
+  "name": "Rewe Austria Genussküche GmbH",
+  "type": "producer",
+  "website": "https://rewe-group.at/de/",
+  "logo_path": "/workspace/fertig/analysis/logos/rewe-genusskueche.svg",
+  "logo_source": "https://rewe-group.at/wp-content/uploads/2026/09/98_2609_Logo_BILLA.png",
+  "plant_addresses": [
+   {
+    "address": "Betriebsstraße 2, 2512 Traiskirchen",
+    "town": "Traiskirchen",
+    "state": "Niederösterreich",
+    "lat": 47.9834508,
+    "lon": 16.2817004,
+    "geocode_precision": "address",
+    "approval_code": "AT 32629 EG",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   }
+  ],
+  "group": "REWE Group",
+  "retail_brands": [
+   "BILLA Immer Gut @ BILLA",
+   "CLEVER @ ?",
+   "CLEVER @ BILLA",
+   "Omis Schmankerl @ ?",
+   "Omis Schmankerl @ BILLA",
+   "Simply Good @ ?",
+   "Simply Good @ BILLA"
+  ],
+  "logo_note": "REWE Group parent logo (no plant-specific logo exists on rewe-group.at)"
+ },
+ {
+  "slug": "hochreiter",
+  "name": "Hochreiter Quality Meat Factory GmbH",
+  "type": "producer",
+  "website": "https://www.hochreiter-gruppe.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/hochreiter.svg",
+  "logo_source": "https://www.hochreiter-gruppe.at/wp-content/uploads/2026/03/Logo-Hochreiter-Unternehmensgruppe-1.svg",
+  "plant_addresses": [
+   {
+    "address": "Gewerbepark 1, 4193 Reichenthal",
+    "town": "Reichenthal",
+    "state": "Oberösterreich",
+    "lat": 48.5365115,
+    "lon": 14.3742893,
+    "geocode_precision": "address",
+    "approval_code": "AT 41586 EG",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/O20.pdf"
+   }
+  ],
+  "group": "Hochreiter Gruppe",
+  "retail_brands": [
+   "Good Choice (Hofer Eigenmarke) @ Hofer",
+   "Good Choice @ HOFER",
+   "S-BUDGET @ INTERSPAR/SPAR Online"
+  ]
+ },
+ {
+  "slug": "hubers-landhendl",
+  "name": "Hubers Landhendl GmbH",
+  "type": "producer",
+  "website": "https://huberslandhendl.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/hubers-landhendl.png",
+  "logo_source": "https://huberslandhendl.at/wp-content/uploads/2023/01/logo-hubers-r.png",
+  "plant_addresses": [
+   {
+    "address": "Hauptstraße 80, 5223 Pfaffstätt",
+    "town": "Pfaffstätt",
+    "state": "Oberösterreich",
+    "lat": 48.0746568,
+    "lon": 13.1414824,
+    "geocode_precision": "address",
+    "approval_code": "AT 40840 EG",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/O20.pdf"
+   }
+  ],
+  "group": null,
+  "retail_brands": [
+   "FairHOF @ HOFER"
+  ]
+ },
+ {
+  "slug": "graninger",
+  "name": "Graninger Holding GmbH",
+  "type": "producer",
+  "website": "https://graninger-lebensmittel.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/graninger.png",
+  "logo_source": "https://cdn.prod.website-files.com/68595bdb8caa50a08c871bc9/68595e102cb95527432fafb5_GR-Logo-ohneZusatz-V2.png",
+  "plant_addresses": [
+   {
+    "address": "Unterkrumbach 209, 6942 Krumbach",
+    "town": "Krumbach",
+    "state": "Vorarlberg",
+    "lat": 47.4886884,
+    "lon": 9.9351527,
+    "geocode_precision": "address",
+    "approval_code": "AT 80368 EG",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   }
+  ],
+  "group": "Graninger (unverified link: site is Graninger GmbH, Frastanz)",
+  "retail_brands": [
+   "CLEVER @ Billa"
+  ],
+  "website_note": "Site belongs to Graninger GmbH, Frastanz; link to Graninger Holding (Krumbach plant) not verified"
+ },
+ {
+  "slug": "radatz",
+  "name": "Radatz - Feine Wiener Fleischwaren GmbH",
+  "type": "producer",
+  "website": "https://www.radatz.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/radatz.png",
+  "logo_source": "https://www.radatz.at/apple-icon-180x180.png",
+  "plant_addresses": [
+   {
+    "address": "Erlaaer Straße 187, 1230 Wien",
+    "town": "Wien",
+    "state": "Wien",
+    "lat": 48.1385294,
+    "lon": 16.3235322,
+    "geocode_precision": "address",
+    "approval_code": "AT 92540 EG",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/O20.pdf"
+   }
+  ],
+  "group": null,
+  "retail_brands": [
+   "CLEVER @ Billa"
+  ],
+  "logo_note": "favicon/app icon from official site"
+ },
+ {
+  "slug": "wech",
+  "name": "Wech-Geflügel GmbH",
+  "type": "producer",
+  "website": "https://www.wech.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/wech.svg",
+  "logo_source": "https://www.wech.at/visuals/logo.svg",
+  "plant_addresses": [
+   {
+    "address": "Kollegg 8, 9433 St. Andrä",
+    "town": "St. Andrä",
+    "state": "Kärnten",
+    "lat": 46.7850325,
+    "lon": 14.8091034,
+    "geocode_precision": "address",
+    "approval_code": "AT 20293 EG",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/O20.pdf"
+   }
+  ],
+  "group": null,
+  "retail_brands": [
+   "Ja! Natürlich @ Billa"
+  ],
+  "logo_note": "favicon/app icon from official site"
+ },
+ {
+  "slug": "heiploeg",
+  "name": "Heiploeg International B.V.",
+  "type": "producer",
+  "website": "https://www.heiploeg.com/",
+  "logo_path": "/workspace/fertig/analysis/logos/heiploeg.png",
+  "logo_source": "https://www.heiploeg.com/Portals/10/logoHeiploeg%EF%B9%96ver=gFp07v-mytjmgebzGFz9oQ==.png",
+  "plant_addresses": [
+   {
+    "address": "Zoutkamp",
+    "town": "Zoutkamp",
+    "state": "Niederlande",
+    "lat": 53.3369602,
+    "lon": 6.3011339,
+    "geocode_precision": "address",
+    "approval_code": "NL 6039 EC",
+    "source": "https://www.openbare-inspectieresultaten.nvwa.nl/bedrijfsinspecties/visverwerkende-bedrijven/heiploeg-international-bv-eg-6039"
+   }
+  ],
+  "group": "Heiploeg Group",
+  "retail_brands": [
+   "Die Grillerei @ Billa"
+  ]
+ },
+ {
+  "slug": "billa",
+  "name": "Billa",
+  "type": "chain",
+  "website": "https://www.billa.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/billa.svg",
+  "logo_source": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Billa_logo.svg",
+  "plant_addresses": [],
+  "group": "REWE Group"
+ },
+ {
+  "slug": "spar",
+  "name": "Spar",
+  "type": "chain",
+  "website": "https://www.spar.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/spar.svg",
+  "logo_source": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Spar-logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+  "plant_addresses": [],
+  "group": "SPAR Österreich"
+ },
+ {
+  "slug": "hofer",
+  "name": "Hofer",
+  "type": "chain",
+  "website": "https://www.hofer.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/hofer.svg",
+  "logo_source": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Aldi_S%C3%BCd_2017_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+  "plant_addresses": [],
+  "group": "ALDI Süd"
+ },
+ {
+  "slug": "lidl",
+  "name": "Lidl",
+  "type": "chain",
+  "website": "https://www.lidl.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/lidl.svg",
+  "logo_source": "https://upload.wikimedia.org/wikipedia/commons/9/91/Lidl-Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+  "plant_addresses": [],
+  "group": "Schwarz Gruppe"
+ },
+ {
+  "slug": "penny",
+  "name": "Penny",
+  "type": "chain",
+  "website": "https://www.penny.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/penny.svg",
+  "logo_source": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Penny-Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+  "plant_addresses": [],
+  "group": "REWE Group"
+ },
+ {
+  "slug": "dm",
+  "name": "dm",
+  "type": "chain",
+  "website": "https://www.dm.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/dm.svg",
+  "logo_source": "https://upload.wikimedia.org/wikipedia/commons/5/50/Dm_Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+  "plant_addresses": [],
+  "group": "dm-drogerie markt"
+ },
+ {
+  "slug": "fit-to-go",
+  "name": "Fit to Go",
+  "type": "brand",
+  "website": "https://fittogo.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/fit-to-go.png",
+  "logo_source": "https://cdn.shopify.com/oxygen-v2/60491/177587/362866/4677112/assets/logo-DJtqYc5u.png",
+  "plant_addresses": [],
+  "group": null
+ },
+ {
+  "slug": "knorr",
+  "name": "Knorr",
+  "type": "brand",
+  "website": "https://www.knorr.com/at",
+  "logo_path": "/workspace/fertig/analysis/logos/knorr.png",
+  "logo_source": "https://upload.wikimedia.org/wikipedia/commons/0/01/Knorr_logo_old.png",
+  "plant_addresses": [],
+  "group": "Unilever"
+ },
+ {
+  "slug": "maggi",
+  "name": "Maggi",
+  "type": "brand",
+  "website": "https://www.nestle.at/marken/alle-marken/maggi",
+  "logo_path": "/workspace/fertig/analysis/logos/maggi.png",
+  "logo_source": "https://upload.wikimedia.org/wikipedia/commons/8/89/Maggi_logo_2020_%281%29.png",
+  "plant_addresses": [],
+  "group": "Nestlé"
+ },
+ {
+  "slug": "inzersdorfer",
+  "name": "Inzersdorfer",
+  "type": "brand",
+  "website": "https://www.inzersdorfer.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/inzersdorfer.png",
+  "logo_source": "https://www.inzersdorfer.at/wp-content/uploads/2023/12/logo-300x0-c-default.png",
+  "plant_addresses": [],
+  "group": null,
+  "logo_note": "300px header logo; larger site asset is a claim graphic, not the wordmark"
+ },
+ {
+  "slug": "felix",
+  "name": "Felix",
+  "type": "brand",
+  "website": "https://www.felix.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/felix.svg",
+  "logo_source": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Felix_Austria_%28Unternehmen%29_logo.svg",
+  "plant_addresses": [],
+  "group": null
+ },
+ {
+  "slug": "iglo",
+  "name": "Iglo",
+  "type": "brand",
+  "website": "https://www.iglo.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/iglo.png",
+  "logo_source": "https://upload.wikimedia.org/wikipedia/en/3/3f/Iglo_logo.png",
+  "plant_addresses": [],
+  "group": "Nomad Foods"
+ },
+ {
+  "slug": "planted",
+  "name": "Planted",
+  "type": "brand",
+  "website": "https://eatplanted.com/",
+  "logo_path": "/workspace/fertig/analysis/logos/planted.svg",
+  "logo_source": "https://eatplanted.com/cdn/shop/t/72/assets/planted-logo-top.svg",
+  "plant_addresses": [],
+  "group": "Planted Foods AG"
+ },
+ {
+  "slug": "vegavita",
+  "name": "Vegavita",
+  "type": "brand",
+  "website": "https://shop.billa.at/marken",
+  "logo_path": "/workspace/fertig/analysis/logos/vegavita.png",
+  "logo_source": "https://assets-eu-01.kc-usercontent.com:443/d5bbd8c1-f776-012f-71ae-f309933a3006/b961241e-7b3d-4e9f-b155-5217795a7bc4/Vegavita_Logo.svg",
+  "plant_addresses": [],
+  "group": "Billa (Eigenmarke, per shop.billa.at brand list)",
+  "website_note": "Vegavita listed in Billa shop brand list (not Spar)",
+  "logo_note": "PNG extracted from official Billa shop SVG wrapper (logo layer)"
+ },
+ {
+  "slug": "good-choice",
+  "name": "Good Choice",
+  "type": "brand",
+  "website": "https://www.hofer.at/",
+  "logo_path": null,
+  "logo_source": null,
+  "plant_addresses": [],
+  "group": "Hofer (Eigenmarke)",
+  "website_note": "hofer.at brand pages return 403 to scripted access; no logo found on Wikimedia"
+ },
+ {
+  "slug": "clever",
+  "name": "Clever",
+  "type": "brand",
+  "website": "https://shop.billa.at/marken/clever",
+  "logo_path": "/workspace/fertig/analysis/logos/clever.png",
+  "logo_source": "https://assets-eu-01.kc-usercontent.com:443/d5bbd8c1-f776-012f-71ae-f309933a3006/3aafeb92-d2d7-4ff5-b505-9134d124d09f/clever_Logo.svg",
+  "plant_addresses": [],
+  "group": "Billa (Eigenmarke)",
+  "logo_note": "PNG extracted from official Billa shop SVG wrapper (logo layer)"
+ },
+ {
+  "slug": "s-budget",
+  "name": "S-Budget",
+  "type": "brand",
+  "website": "https://www.spar.at/",
+  "logo_path": null,
+  "logo_source": null,
+  "plant_addresses": [],
+  "group": "SPAR (Eigenmarke)",
+  "website_note": "spar.at brand pages return 403 to scripted access; no logo found on Wikimedia"
+ },
+ {
+  "slug": "ja-natuerlich",
+  "name": "Ja! Natürlich",
+  "type": "brand",
+  "website": "https://www.janatuerlich.at/",
+  "logo_path": "/workspace/fertig/analysis/logos/ja-natuerlich.svg",
+  "logo_source": "https://upload.wikimedia.org/wikipedia/de/3/38/Ja%21-Nat%C3%BCrlich-Logo.svg",
+  "plant_addresses": [],
+  "group": "REWE Group"
+ },
+ {
+  "slug": "omis-schmankerl",
+  "name": "Omis Schmankerl",
+  "type": "brand",
+  "website": "https://shop.billa.at/marken",
+  "logo_path": "/workspace/fertig/analysis/logos/omis-schmankerl.png",
+  "logo_source": "https://assets-eu-01.kc-usercontent.com:443/d5bbd8c1-f776-012f-71ae-f309933a3006/53bdd437-60ae-481d-8970-a6a217116af7/Omis_Logo_new.svg",
+  "plant_addresses": [],
+  "group": "Billa (Eigenmarke)",
+  "logo_note": "PNG extracted from official Billa shop SVG wrapper (logo layer)"
+ },
+ {
+  "slug": "simply-good",
+  "name": "Simply Good",
+  "type": "brand",
+  "website": "https://shop.billa.at/marken",
+  "logo_path": "/workspace/fertig/analysis/logos/simply-good.png",
+  "logo_source": "https://assets-eu-01.kc-usercontent.com:443/d5bbd8c1-f776-012f-71ae-f309933a3006/fd5aeaef-6eb3-4fda-89b6-b206d42d6467/simply_good_logo_new.svg",
+  "plant_addresses": [],
+  "group": "Billa (Eigenmarke)",
+  "logo_note": "PNG extracted from official Billa shop SVG wrapper (logo layer)"
+ },
+ {
+  "slug": "immer-gut",
+  "name": "Billa Immer Gut",
+  "type": "brand",
+  "website": "https://shop.billa.at/marken",
+  "logo_path": "/workspace/fertig/analysis/logos/immer-gut.png",
+  "logo_source": "https://assets-eu-01.kc-usercontent.com:443/d5bbd8c1-f776-012f-71ae-f309933a3006/183361d9-fcba-46f6-b8c3-2fad9bc1e6b9/Billa_immer_gut_new_logo.svg",
+  "plant_addresses": [],
+  "group": "Billa (Eigenmarke)",
+  "logo_note": "PNG extracted from official Billa shop SVG wrapper (logo layer)"
+ },
+ {
+  "slug": "billa-genusswelt",
+  "name": "Billa Genusswelt",
+  "type": "brand",
+  "website": "https://shop.billa.at/marken",
+  "logo_path": "/workspace/fertig/analysis/logos/billa-genusswelt.png",
+  "logo_source": "https://assets-eu-01.kc-usercontent.com:443/d5bbd8c1-f776-012f-71ae-f309933a3006/74adb426-e268-4e4c-9f65-b45039d1e04c/billa_genusswelt_logo_new.svg",
+  "plant_addresses": [],
+  "group": "Billa (Eigenmarke)",
+  "logo_note": "PNG extracted from official Billa shop SVG wrapper (logo layer)"
+ },
+ {
+  "slug": "hofstaedter",
+  "name": "Hofstädter",
+  "type": "brand",
+  "website": null,
+  "logo_path": null,
+  "logo_source": null,
+  "plant_addresses": [],
+  "group": null,
+  "website_note": "hofstaedter.at is the Kirchheuriger Hofstädter restaurant, not the food brand; no verified logo/site"
+ },
+ {
+  "slug": "rana",
+  "name": "Rana (Giovanni Rana)",
+  "type": "brand",
+  "website": "https://www.giovanniranausa.com/",
+  "logo_path": "/workspace/fertig/analysis/logos/rana.png",
+  "logo_source": "https://www.giovanniranausa.com/images/layout/logo.png",
+  "plant_addresses": [],
+  "group": "Pastificio Rana S.p.A.",
+  "website_note": "US site of Giovanni Rana; AT site not reachable"
+ },
+ {
+  "slug": "primana",
+  "name": "Primana",
+  "type": "brand",
+  "website": null,
+  "logo_path": null,
+  "logo_source": null,
+  "plant_addresses": [],
+  "group": "Hofer (Eigenmarke)",
+  "website_note": "hofer.at blocks scripted access (403); logo not found"
+ }
+]

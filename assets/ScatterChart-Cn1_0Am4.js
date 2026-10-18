@@ -1,0 +1,1 @@
+import{cn as a,J as t,Y as i,co as s}from"./index-CkdFU_Zt.js";import{S as e,Z as o}from"./Scatter-DCRv_fuZ.js";var x=a({chartName:"ScatterChart",GraphicalChild:e,defaultTooltipEventType:"item",validateTooltipEventTypes:["item"],axisComponents:[{axisType:"xAxis",AxisComp:t},{axisType:"yAxis",AxisComp:i},{axisType:"zAxis",AxisComp:o}],formatAxisMap:s});export{x as S};
