@@ -66,3 +66,12 @@ const shp = D.shipping?.PrepMyMeal; assert.ok(shp && shp.shipping_eur === 5.99 &
 const pmm = D.rows.filter(r => r.store === 'PrepMyMeal' && r.pPor != null); assert.ok(pmm.length > 0 && pmm.every(r => r.shipPor === Math.round(shp.shipping_eur / shp.box * 100) / 100 && Math.abs(r.pPorEff - r.pPor - r.shipPor) < 0.011), 'PrepMyMeal shipPor = 5,99/6')
 const noSrc = Object.entries(D.shipping || {}).filter(([, v]) => v.shipping_eur != null && !v.source_url); assert.deepEqual(noSrc, [], 'every shipping entry with a number has a source')
 console.log(`[sc37-shipping] OK: PrepMyMeal ${shp.shipping_eur} € / ${shp.box} → shipPor ${pmm[0].shipPor} on ${pmm.length} rows, source ${shp.source_url} (${shp.checked})`)
+// sensecheck 39 (1): MPreis Rana/Bertagni fresh filled pasta (connector: MPreis category 'Konserven, Fertiggerichte & Suppen' → 'Dose/Konserve')
+//  carry the evidence-backed pack 'Kühlregal' (data.packFix39, applied after every other pack step); none of them is a can any more
+const pf = D.packFix39; assert.ok(pf && pf.n >= 11 && pf.applied === pf.n, 'packFix39 applied')
+const rb = D.rows.filter(r => r.store === 'MPreis' && /^(Rana|Bertagni)$/.test(r.brand)); assert.ok(rb.length >= 11, 'MPreis Rana/Bertagni rows')
+assert.deepEqual(rb.filter(r => r.pack === 'Dose/Konserve').map(r => r.id), [], 'no MPreis Rana/Bertagni row labelled Dose/Konserve')
+for (const u of ['n27vgzhzvz', 'a42dogk53r', 'aquv3bozig', '37rqniidbe', 'g7ebaousls', 'div7qf2eic', '4sapptvfy4', '24dzsl5xcx', 'vvxxt4ek10', 'ovleydqigr']) {
+  const r = D.rows.find(x => x.uid === u); assert.ok(r && r.pack === 'Kühlregal (Menüschale/frisch)' && r.packGuess === 'Dose/Konserve' && /Kühlregal/.test(r.packNote), `sc39 pack ${u}`)
+}
+console.log(`[sc39-pack] OK: ${pf.applied} pack labels fixed (${rb.length} MPreis Rana/Bertagni rows, 0 'Dose/Konserve')`)
