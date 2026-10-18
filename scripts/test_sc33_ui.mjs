@@ -75,3 +75,12 @@ for (const u of ['n27vgzhzvz', 'a42dogk53r', 'aquv3bozig', '37rqniidbe', 'g7ebao
   const r = D.rows.find(x => x.uid === u); assert.ok(r && r.pack === 'Kühlregal (Menüschale/frisch)' && r.packGuess === 'Dose/Konserve' && /Kühlregal/.test(r.packNote), `sc39 pack ${u}`)
 }
 console.log(`[sc39-pack] OK: ${pf.applied} pack labels fixed (${rb.length} MPreis Rana/Bertagni rows, 0 'Dose/Konserve')`)
+// sensecheck 39 (3): borderline filled pasta decided on the ingredient list – Hilcona Tortellini/Ravioli Bolognese (#69/#487, Bolognese = filling)
+//  are nonMeal pasta; rows with a sauce in the pack (#1182 Primana Tortelloni Käse-Sahne TK, #3279 Ben Fatto, #1484 Iglo, #2585 getvoila, #561 BILLA) keep
+//  their ready-meal status and carry row.sauceInPack (UI 'Sauce im Pack')
+const pc39 = D.pastaCheck39; assert.ok(pc39 && pc39.reclass.every(x => x.applied) && pc39.sauceInPack === pc39.sauceInPackN, 'pastaCheck39 applied')
+for (const u of ['sq4f0g6yhw', 'ev6j7xodc1']) { const r = D.rows.find(x => x.uid === u); assert.ok(r?.nonMeal?.kind === 'pasta' && !M.isReadyMeal(r), `sc39 Hilcona ${u}`) }
+const sip = D.rows.filter(r => r.sauceInPack); assert.equal(sip.length, pc39.sauceInPack)
+assert.ok(sip.every(r => !r.nonMeal && /sauce|soße/i.test(r.sauceInPack.evidence) && M.isReadyMeal(r)), 'sauceInPack rows are ready meals with evidence')
+const t1182 = D.rows.find(x => x.uid === '9rucxso66t'); assert.ok(t1182?.sauceInPack && t1182.pack === 'Tiefkühl (TK)' && !t1182.nonMeal, '#1182 Käse-Sahne-Sauce, TK, stays a ready meal')
+console.log(`[sc39-pasta] OK: ${pc39.reclass.length} Hilcona Bolognese -> Zutat/Beilage, ${sip.length} 'Sauce im Pack' (${sip.map(r => '#' + r.id).join(', ')})`)

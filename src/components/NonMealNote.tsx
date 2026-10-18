@@ -10,3 +10,8 @@ export function NoSauceNote({ on, className = '' }: { on?: boolean | null; class
   if (!on) return null
   return <span data-testid="nosauce-note" title="Gefüllte Teigtaschen ohne Sauce im Pack – traditionell mit Butter/Zwiebeln bzw. in Brühe als Hauptgericht gegessen" className={'inline-flex items-center rounded bg-slate-100 px-1.5 py-0.5 text-[11px] font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-200 ' + className}>ohne Sauce</span>
 }
+/** Sensecheck 39 (3): filled pasta / cannelloni that bring their own sauce (ingredient list) stay ready meals – row.sauceInPack; tooltip = evidence. */
+export function SauceNote({ s, className = '' }: { s?: { what?: string | null; evidence?: string | null } | null; className?: string }) {
+  if (!s) return null
+  return <span data-testid="sauce-note" title={[s.what, s.evidence].filter(Boolean).join(' – ')} className={'inline-flex items-center rounded bg-emerald-50 px-1.5 py-0.5 text-[11px] font-medium text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-200 ' + className}>Sauce im Pack</span>
+}
