@@ -15,7 +15,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from './ui/tabs'
 import { fmt, scoreColor, useApp, cn, fmtDist, STORE_LOGO, type Row } from '../lib'
 import { Navigation } from 'lucide-react'
 import * as HC from '@radix-ui/react-hover-card'
-import { InfoTip, KPI, STAGES, packEmo, Flag, ProducerChip } from './info'
+import { InfoTip, KPI, stageBadgeOf, packEmo, Flag, ProducerChip } from './info'
 Object.assign(KPI,{pPor:'Preis pro Portion = Packungspreis × Portion ÷ Packungsgewicht; bei Online-Versand zzgl. anteiliger Versand (shipPor). Portion: Komplettmahlzeit = ganze Packung, Eintopf/Suppe max. 400 g, Protein-Komponente 150 g, Beilage 200 g, Gemüse 150 g.',p100g:'Preis pro 100 g = Packungspreis ÷ Gewicht × 100',protPor:'Protein pro Portion (g), Portionsgröße wie beim Preis pro Portion',kcalPor:'kcal pro Portion',saltPor:'Salz pro Portion in g und in % der Tagesobergrenze von 6 g (WHO/DGE: höchstens 5 bis 6 g pro Tag)',dist:'Fußweg zur nächsten Filiale dieser Kette ab Gruberstraße 19 (OSRM-Routing, OpenStreetMap)',pack:'Verpackungsart: Dose, Kühlschale/MAP, Tiefkühl, Glas, Trocken/Instant oder Pouch. Siehe Seite Verpackungen.',ns:'Nutri-Score A–E, offizieller Algorithmus, sofern vom Hersteller oder in OpenFoodFacts angegeben',id:'Identitätskennzeichen (z. B. AT 40148 EG) = Zulassungsnummer des Betriebs, der das tierische Produkt zuletzt verarbeitet hat. Darüber wird der Hersteller ermittelt.',mhd:'Mindesthaltbarkeit ungeöffnet, typischer Wert für diese Verpackungsart'})
 export function KpiBox({k,label,v,unit='',d=2,hi}:{k:string;label:string;v:number|null|undefined;unit?:string;d?:number;hi?:boolean}){
   return <div className={cn('rounded-lg px-1 py-1 text-center',hi?'bg-emerald-600 text-white':'bg-slate-50 dark:bg-slate-800')}><div className="text-[13px] font-semibold tabular-nums leading-tight">{v==null?'–':fmt(v,d)+unit}</div><div className={cn('text-[9.5px] leading-none flex justify-center',hi?'text-white/90':'text-slate-500')}><InfoTip k={k}>{label}</InfoTip></div></div>
@@ -88,7 +88,7 @@ export function PriceKpis({r}:{r:Row}){
     <KpiBox k="pPor" label="€/Portion" v={pPor} unit=" €"/><KpiBox k="p100g" label="€/100 g" v={r.p100g} unit=" €"/><KpiBox k="eur100k" label="€/100 kcal" v={r.eur100k} unit=" €"/><KpiBox k="ppe" label="g P/€" v={r.ppe} d={1}/>
     <KpiBox k="protPor" label="🥩 P/Portion" v={r.protPor} unit=" g" d={0}/><KpiBox k="kcalPor" label="🔥 kcal/Port." v={r.kcalPor} d={0}/><KpiBox k="p100k" label="P/100 kcal" v={r.p100k} unit=" g" d={1}/><KpiBox k="saltPor" label={`🧂 Salz ${r.saltPct??'–'} %`} v={r.saltPor} unit=" g"/></div>
 }
-export function StageBadge({r}:{r:Row}){const s=STAGES.find(x=>x[0]===r.stage);return s?<InfoTip k="stage"><Badge className="bg-violet-100 text-violet-800 dark:bg-violet-900/40 dark:text-violet-200">{s[1]} {s[2]}</Badge></InfoTip>:null}
+export function StageBadge({r}:{r:Row}){const s=stageBadgeOf(r);return s?<InfoTip k="stage"><Badge data-testid="stage-badge" className="bg-violet-100 text-violet-800 dark:bg-violet-900/40 dark:text-violet-200">{s[1]} {s[2]}</Badge></InfoTip>:null}
 export function ProdLine({r,size='sm'}:{r:Row;size?:'sm'|'md'}){const n=r.p2?.producer||r.herst;if(!n)return null;return <div className="flex items-center gap-1 min-w-0 flex-wrap"><ProducerChip slug={r.prodSlug} name={n} size={size}/><Flag text={(r.p2?.town||'')+' '+(r.ort||'')+' '+(r.origin||'')} state={r.ooe?'Oberösterreich':null}/>{r.p2?.confidence&&<InfoTip k="conf"><span className="text-[10px] text-slate-500">{r.p2.confidence}</span></InfoTip>}</div>}
 export function RowSummary({r}:{r:Row}){
   return <div className="w-[360px] space-y-2"><div className="flex gap-3"><img src={r.img??''} referrerPolicy="no-referrer" className="h-36 w-36 object-contain rounded-lg bg-white"/><div className="min-w-0 space-y-1"><div className="font-semibold leading-tight">{r.name}</div><div className="text-xs text-slate-500">{r.brand}</div><StoreLogo store={r.store} size={40}/><div className="text-lg font-bold">{r.price!=null?fmt(r.price,2)+' €':'–'}</div><PliBadge v={r.pli}/></div></div>
@@ -109,7 +109,7 @@ export function Actions({r}:{r:Row}){
 export function HealthBadge({s}:{s:number|null}){if(s==null)return null;const c=s>=55?'bg-emerald-600':s>=40?'bg-lime-600':s>=25?'bg-amber-500':'bg-red-600';return <InfoTip k="score"><Badge className={c+' text-white text-xs px-2.5 py-1 shadow-sm'}>💚 {Math.round(s)}</Badge></InfoTip>}
 export function ProductCard({r,winner}:{r:Row;winner?:boolean}){
   const {open,compare}=useApp()
-  const st=STAGES.find(x=>x[0]===r.stage)
+  const st=stageBadgeOf(r)
   return <RowHover r={r}><Card onClick={()=>open(r.id)} className={cn('group overflow-hidden flex flex-col cursor-pointer transition-colors hover:bg-secondary/50',compare.includes(r.id)&&'ring-2 ring-brand')}>
     <div className="relative m-2 mb-0 rounded-xl bg-white aspect-[4/3] flex items-center justify-center">
       <Img src={r.img} className="h-full w-full object-contain p-4 transition-transform duration-300 group-hover:scale-[1.03] bg-transparent"/>

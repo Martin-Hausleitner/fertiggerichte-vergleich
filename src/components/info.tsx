@@ -14,6 +14,14 @@ export function InfoTip({k,text,children}:{k?:string;text?:string;children?:Reac
   return <T.Provider delayDuration={100}><T.Root><T.Trigger asChild><span tabIndex={0} onClick={e=>e.stopPropagation()} className="inline-flex items-center gap-0.5 cursor-help">{children}<Info size={12} className="text-slate-400 hover:text-brand shrink-0"/></span></T.Trigger><T.Portal><T.Content sideOffset={4} className="z-[100] max-w-xs rounded-lg bg-slate-900 text-white text-xs px-3 py-2 shadow-xl">{t}<T.Arrow className="fill-slate-900"/></T.Content></T.Portal></T.Root></T.Provider>
 }
 export const STAGES:[string,string,string][]=[['meal','🍱','Komplettmahlzeit'],['stew','🥫','Eintopf/Suppe'],['prot','🍖','Protein-Komponente'],['sauce','🍝','Sauce-Komponente'],['side','🥔','Beilage'],['veg','🥦','Gemüse'],['base','🧂','Zutat/Rohware']]
+/** Sensecheck 44 (3): badge for a row's stage. Never '🍱 Komplettmahlzeit' for a snack: row.nonMeal kind 'snack' (spring rolls …) →
+ *  'Snack/Vorspeise'; any other meal_class 'snack_side' row (too small or bread/snack, see meal_check) → 'Snack/kleine Portion'. */
+export function stageBadgeOf(r:{stage?:string|null;meal_class?:string|null;nonMeal?:{kind:string}|null}):[string,string,string]|undefined{
+  if(r.nonMeal?.kind==='snack') return ['snack','🥟','Snack/Vorspeise']
+  const s=STAGES.find(x=>x[0]===r.stage)
+  if(s&&s[0]==='meal'&&r.meal_class==='snack_side') return ['snack','🥨','Snack/kleine Portion']
+  return s
+}
 export const packEmo=(p?:string|null)=>{if(!p)return '📦';const M:[string,string][]=[['Dose','🥫'],['Tiefk','❄️'],['Kühl','🧊'],['Glas','🫙'],['Trocken','🍜'],['Instant','🍜'],['Pouch','🛍️'],['Vakuum','🥩'],['Sous','🥩']];return M.find(([k])=>p.includes(k))?.[1]??'📦'}
 const W='https://upload.wikimedia.org/wikipedia/commons/thumb/'
 const STATE:Record<string,[string,string]>={'Oberösterreich':['OÖ','./flags/OOE.png'],'Niederösterreich':['NÖ','./flags/NOE.png'],'Wien':['W','./flags/W.png'],'Kärnten':['K','./flags/K.png'],'Steiermark':['Stmk','./flags/ST.png'],'Vorarlberg':['Vbg','./flags/V.png'],'Salzburg':['Sbg','./flags/S.png'],'Tirol':['T','./flags/T.png'],'Burgenland':['Bgld','./flags/B.png']}

@@ -96,6 +96,13 @@ await page.waitForSelector('[data-testid=size-note]', { timeout: 30000 })
 assert.ok((await page.locator('[data-testid=size-note]').first().innerText()).includes('Bruttogewicht 74 g'), 'size note in Inhalt')
 assert.ok((await page.locator('[data-testid=nonmeal-note]').first().innerText()).includes('Würzmischung'), 'seasoning notice')
 console.log(`[e2e nonmeal] OK: #p=#${U(HB).id} '${nmnText}', #p=#${U(BF).id} size note + seasoning notice`)
+// sensecheck 44 (3): spring roll #554 (nonMeal snack, meal_class snack_side) – detail sheet badge 'Snack/Vorspeise', never 'Komplettmahlzeit'
+const SR = D.rows.find(r => r.name === 'BILLA Frühlingsrollen Gemüse' && r.store === 'Billa'); assert.equal(SR?.meal_class, 'snack_side')
+await page.goto(base + '#tab=alle&p=' + SR.uid); await page.reload()
+await page.waitForSelector('[data-testid=stage-badge]', { timeout: 30000 })
+const sb = (await page.locator('[data-testid=stage-badge]').first().innerText()).trim()
+assert.ok(sb.includes('Snack/Vorspeise') && !sb.includes('Komplettmahlzeit'), 'spring roll stage badge: ' + sb)
+console.log(`[e2e sc44 snack badge] OK: #p=#${SR.id} stage badge '${sb}'`)
 // sensecheck 38 (3): Rana Ravioli Ricotta&Spinat (no sauce) = 'Kein Fertiggericht · Zutat/Beilage', #621 Omis Kärntner Kasnudeln = 'ohne Sauce'
 const RR = 'mcfk1y9jpp'; assert.equal(U(RR)?.nonMeal?.kind, 'pasta')
 await page.goto(base + '#tab=alle&p=' + RR); await page.reload()
