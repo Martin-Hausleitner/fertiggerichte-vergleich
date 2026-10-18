@@ -1,0 +1,1 @@
+import{cj as a,z as t,Y as i,ck as s}from"./index-BKX-IZpd.js";import{S as e,Z as r}from"./Scatter-CAhAtPvD.js";var x=a({chartName:"ScatterChart",GraphicalChild:e,defaultTooltipEventType:"item",validateTooltipEventTypes:["item"],axisComponents:[{axisType:"xAxis",AxisComp:t},{axisType:"yAxis",AxisComp:i},{axisType:"zAxis",AxisComp:r}],formatAxisMap:s});export{x as S};

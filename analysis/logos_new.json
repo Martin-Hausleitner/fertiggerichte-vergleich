@@ -1,0 +1,115 @@
+{
+ "ehrmann": {
+  "slug": "ehrmann",
+  "name": "Ehrmann",
+  "brands": [
+   "Ehrmann"
+  ],
+  "logo_category": "Marke",
+  "file": "logos/ehrmann.svg",
+  "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Ehrmann_Logo.svg",
+  "wikidata": "Q1300922",
+  "size": "svg",
+  "note": "Wikidata P154 / Wikimedia Commons",
+  "hq": true
+ },
+ "dr-oetker": {
+  "slug": "dr-oetker",
+  "name": "Dr. Oetker",
+  "brands": [
+   "Dr. Oetker",
+   "Paula"
+  ],
+  "logo_category": "Marke",
+  "file": "logos/dr-oetker.svg",
+  "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Dr._Oetker-Logo.svg",
+  "wikidata": "Q688668",
+  "size": "svg",
+  "note": "Wikidata P154 / Wikimedia Commons",
+  "hq": true
+ },
+ "zott": {
+  "slug": "zott",
+  "name": "Zott",
+  "brands": [
+   "Zott"
+  ],
+  "logo_category": "Marke",
+  "file": "logos/zott.svg",
+  "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Zott-Logo.svg",
+  "wikidata": "Q226908",
+  "size": "svg",
+  "note": "Wikidata P154 / Wikimedia Commons",
+  "hq": true
+ },
+ "bonne-maman": {
+  "slug": "bonne-maman",
+  "name": "Bonne Maman",
+  "brands": [
+   "Bonne Maman"
+  ],
+  "logo_category": "Marke",
+  "file": "logos/bonne-maman.png",
+  "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Bonne_Maman_logo.png",
+  "wikidata": "Q54552919",
+  "size": "png",
+  "note": "Wikidata P154 / Wikimedia Commons",
+  "hq": false
+ },
+ "marks-spencer": {
+  "slug": "marks-spencer",
+  "name": "Marks & Spencer",
+  "brands": [
+   "Marks & Spencer"
+  ],
+  "logo_category": "Marke",
+  "file": "logos/marks-spencer.svg",
+  "source": "https://commons.wikimedia.org/wiki/Special:FilePath/M%26S_logo.svg",
+  "wikidata": "Q714491",
+  "size": "svg",
+  "note": "Wikidata P154 / Wikimedia Commons",
+  "hq": true
+ },
+ "followfood": {
+  "slug": "followfood",
+  "name": "followfood",
+  "brands": [
+   "followfood"
+  ],
+  "logo_category": "Marke",
+  "file": "logos/followfood.svg",
+  "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Followfood_Logo.svg",
+  "wikidata": "Q97385180",
+  "size": "svg",
+  "note": "Wikidata P154 / Wikimedia Commons",
+  "hq": true
+ },
+ "samyang-buldak": {
+  "slug": "samyang-buldak",
+  "name": "Buldak (Samyang)",
+  "brands": [
+   "Buldak"
+  ],
+  "logo_category": "Marke",
+  "file": "logos/samyang-buldak.svg",
+  "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Samyang_Foods_Logo.svg",
+  "wikidata": "Q7413176",
+  "size": "svg",
+  "note": "Wikidata P154 / Wikimedia Commons",
+  "hq": true
+ },
+ "darbo": {
+  "slug": "darbo",
+  "name": "Darbo",
+  "brands": [
+   "Darbo"
+  ],
+  "logo_category": "Marke",
+  "file": "logos/darbo.svg",
+  "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Adolf_Darbo_AG_Logo.svg",
+  "wikidata": "Q361203",
+  "size": "svg",
+  "note": "Wikidata P154 / Wikimedia Commons",
+  "hq": true
+ }
+}
