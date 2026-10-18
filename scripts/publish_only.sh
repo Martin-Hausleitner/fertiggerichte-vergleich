@@ -2,7 +2,7 @@
 # Publish-only deploy: builds the COMMITTED main HEAD (no data pipeline, no embed.mjs) in a clean
 # worktree and pushes dist to gh-pages on both remotes, exactly like deploy.sh's publish step.
 # Gates: same flock + 240 s spacing as deploy.sh, RAM >= MIN_RAM_MB, load < 50, rows >= live,
-#        npm run build (tsc -b + vite), optional ranking check (RANK_CHECK=path to node script taking DIST env).
+#        npm run build (tsc -b + vite), full prepush_gate.sh on $W (PW_DIST=$W/dist, 1 retry, exit 8), optional ranking check (RANK_CHECK=path to node script taking DIST env).
 set -e
 MIN_RAM_MB=${MIN_RAM_MB:-1500}; WAIT_MIN=${WAIT_MIN:-20}
 exec 9>/tmp/fertig_deploy.lock; flock 9
@@ -25,6 +25,16 @@ LIVE=$(curl -s --max-time 30 "https://martin-hausleitner.github.io/fertiggericht
 echo "rows repo=$ROWS live=$LIVE"; [ "$ROWS" -ge "$LIVE" ] || { echo "ROWCOUNT would drop"; exit 4; }
 (cd $W && npm run build >/tmp/build.log 2>&1) || { tail -20 /tmp/build.log; exit 1; }; echo "build ok"
 if [ -n "$RANK_CHECK" ]; then DIST=$W/dist node "$RANK_CHECK" > /tmp/rank_check.log 2>&1 || { tail -20 /tmp/rank_check.log; exit 6; }; echo "rank check ok"; fi
+# Full pre-push gate (data checks, build, pw_gate, e2e_legacy_favs) on exactly the worktree that is published.
+# One retry under load (after waiting up to 10 min for >= 3 GB free RAM); never publish without a green gate.
+gate_ok=0
+for try in 1 2; do
+  if (cd $W && PW_DIST=$W/dist nice -n 19 bash scripts/prepush_gate.sh) >/tmp/publish_gate.log 2>&1; then gate_ok=1; echo "gate ok (try $try)"; break; fi
+  echo "GATE FAILED (try $try):"; tail -20 /tmp/publish_gate.log
+  [ $try = 1 ] && for j in $(seq 1 40); do [ $(free -m | awk '/Mem:/{print $7}') -ge 3000 ] && break; sleep 15; done
+done
+[ $gate_ok = 1 ] || { echo "GATE RED - nothing published"; exit 8; }
+[ -f $W/dist/index.html ] || { echo "dist missing after gate - nothing published"; exit 8; }
 (git push -q servas $TARGET:refs/heads/main && echo "servas main = $SHA") || echo "servas main push failed (non-ff? not forced)"
 # gh-pages = exakt der aktuelle dist-Build (keine alten Assets mehr übernehmen)
 cd $W/dist && touch .nojekyll && rm -rf .git && git init -q -b gh-pages && git add -A && git -c user.name="Martin Hausleitner" -c user.email="Martin-Hausleitner@users.noreply.github.com" commit -qm "deploy $SHA" && git push -q -f https://github.com/Martin-Hausleitner/fertiggerichte-vergleich.git gh-pages && echo "martin gh-pages ok"
