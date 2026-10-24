@@ -114,7 +114,7 @@ export default function App() {
   }, [D, favRefs]) // eslint-disable-line react-hooks/exhaustive-deps
   const [fs, setFs] = useHashState<string>('fs', 'meal.stew')
   const stageSel = useMemo(() => fs ? fs.split('.') : STAGES.map(x => x[0]), [fs])
-  const R = useMemo(() => D ? D.rows.map(r => ({ ...r, rankable: !!r.rankable && r.stage !== 'base' && stageSel.includes(r.stage) })) : [], [D, stageSel])
+  const R = useMemo(() => D ? D.rows.filter(r => r.dupOf == null).map(r => ({ ...r, rankable: !!r.rankable && r.stage !== 'base' && stageSel.includes(r.stage) })) : [], [D, stageSel])
   if (!D) return <AppSkeleton />
   const cur = findTab(tab)
   const View = cur.view

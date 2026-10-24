@@ -23,8 +23,9 @@ export default function Netz3D(){
     const node=(id:string,o:Omit<N,'id'|'rows'|'n'|'val'>)=>{if(!nodes.has(id))nodes.set(id,{id,rows:[],n:0,val:1,...o});return nodes.get(id)!}
     const edge=(a:string,b:string,dashed:boolean,inc=1,note?:string)=>{const k=a+'>'+b;const e=edges.get(k);if(e){e.n+=inc;if(!dashed)e.dashed=false}else edges.set(k,{source:a,target:b,n:inc,dashed,note})}
     const brandKey=(b:string)=>{const c=b.replace(/\(.*?\)/g,'').trim();const hit=R.find(r=>r.brandN.toLowerCase()===c.toLowerCase());return hit?hit.brandN:c.replace(/\b\w+/g,(w:string)=>w.length>3&&w===w.toUpperCase()?w[0]+w.slice(1).toLowerCase():w)}
+    const byId=new Map(R.map(r=>[r.id,r]))
     for(const p of (D.producers||[]) as any[]){
-      const rows=(p.ids as number[]).map(i=>R[i]).filter(r=>r&&ok(r)) as Row[]
+      const rows=(p.ids as number[]).map(i=>byId.get(i)).filter(r=>r&&ok(r)) as Row[]
       const claims=(p.brands||[]).map((b:any)=>String(b.brand_at_chain||'').split('@')).filter((x:string[])=>x.length===2)
         .map(([b,c]:string[])=>({b:brandKey(b),c:normChain(c)})).filter((x:any)=>!chain||x.c===chain)
       if(!rows.length&&!claims.length) continue

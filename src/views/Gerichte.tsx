@@ -11,7 +11,7 @@ export default function Gerichte(){
   const [dk,setDk]=useHashState<string>('dish','wiener-suppentopf')
   const [q,setQ]=useState(''); const [focus,setFocus]=useState(false)
   const [sort,setSort]=useState<'pli'|'eur10p'|'price'|'score'>('pli')
-  const dishes=useMemo(()=>{const m=new Map<string,{k:string;l:string;rows:Row[]}>();for(const r of D.rows){if(!r.dishKey||r.nonfood)continue;const e=m.get(r.dishKey)??{k:r.dishKey,l:r.dish||r.dishKey,rows:[]};e.rows.push(r);m.set(r.dishKey,e)}return [...m.values()].sort((a,b)=>b.rows.length-a.rows.length)},[D])
+  const dishes=useMemo(()=>{const m=new Map<string,{k:string;l:string;rows:Row[]}>();for(const r of D.rows){if(!r.dishKey||r.nonfood||r.dupOf!=null)continue;const e=m.get(r.dishKey)??{k:r.dishKey,l:r.dish||r.dishKey,rows:[]};e.rows.push(r);m.set(r.dishKey,e)}return [...m.values()].sort((a,b)=>b.rows.length-a.rows.length)},[D])
   const sugg=useMemo(()=>{const n=norm(q.trim());if(!n)return dishes.slice(0,12);return dishes.filter(d=>norm(d.l).includes(n)||d.rows.some(r=>norm(r.name).includes(n))).slice(0,12)},[q,dishes])
   const cur=dishes.find(d=>d.k===dk)??dishes[0]
   const val=(r:Row)=>sort==='pli'?-(r.pli??-1e9):sort==='score'?-(r.score??-1e9):sort==='price'?(r.price??1e9):(r.eur10p??1e9)

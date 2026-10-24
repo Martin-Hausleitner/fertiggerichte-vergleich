@@ -8,8 +8,8 @@ const PAL=['#1b6e3a','#2563eb','#db2777','#f59e0b']
 type M={k:keyof Row;l:string;better:'hi'|'lo';d:number;u?:string}
 const METRICS:M[]=[{k:'score',l:'Health-Score',better:'hi',d:0},{k:'protpack',l:'Protein/Packung',better:'hi',d:1,u:'g'},{k:'p100k',l:'Protein/100 kcal',better:'hi',d:1,u:'g'},{k:'ppe',l:'Protein pro €',better:'hi',d:1,u:'g'},{k:'price',l:'Preis',better:'lo',d:2,u:'€'},{k:'ppk',l:'€/kg',better:'lo',d:2,u:'€'},{k:'kcal',l:'kcal/100 g',better:'lo',d:0},{k:'salt',l:'Salz/100 g',better:'lo',d:2,u:'g'},{k:'sat',l:'ges. Fett/100 g',better:'lo',d:1,u:'g'},{k:'sugar',l:'Zucker/100 g',better:'lo',d:1,u:'g'},{k:'fib',l:'Ballaststoffe/100 g',better:'hi',d:1,u:'g'}]
 export default function Compare(){
-  const {R,compare,toggleCompare,setCompare,open}=useApp()
-  const items=compare.map(i=>R[i]).filter(Boolean)
+  const {R,D,compare,toggleCompare,setCompare,open}=useApp()
+  const items=compare.map(i=>R.find(r=>r.id===i)??D.rows[i]).filter(Boolean)
   if(items.length<2) return <div className="text-center text-slate-500 py-10">Wähle mindestens 2 Produkte (Vergleichs-Symbol oder Checkbox in der Tabelle).</div>
   const win=(m:M)=>{const v=items.map(r=>r[m.k] as number|null).filter(v=>v!=null) as number[];if(v.length<2)return null;return m.better==='hi'?Math.max(...v):Math.min(...v)}
   const norm=(m:M,v:number|null)=>{if(v==null)return 0;const all=R.map(r=>r[m.k] as number).filter(x=>x!=null).sort((a,b)=>a-b);const i=all.findIndex(x=>x>=v);const pct=(i<0?all.length:i)/all.length*100;return Math.round(m.better==='hi'?pct:100-pct)}

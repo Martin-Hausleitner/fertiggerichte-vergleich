@@ -180,6 +180,17 @@ await page.waitForSelector('[role=dialog] [data-testid=price-delisted]', { timeo
   // sensecheck 42 (1): the date is visible in the price header itself (was only in the tooltip), like 'Preis veraltet (Stand …)'
   assert.equal((await d3.locator('[data-testid=price-delisted]').first().innerText()).trim(), 'Preis vom 12.10.2026 · evtl. ausgelistet', '#1216 price header') }
 console.log("[e2e sc41/sc42 tiers] OK: #7 'Preis veraltet (Stand 19.7.2026)', #1216 price header + Preisstatus 'Preis vom 12.10.2026 · evtl. ausgelistet'")
+// sensecheck 57 P1.1: #2857 (qiwq3vdvmq, dupOf #2845 idj4tje0ei) is hidden in #tab=alle and #tab=online, while #p=qiwq3vdvmq redirects to #p=idj4tje0ei
+await page.goto(base + '#tab=alle&q=Blumenkohlreis'); await page.reload()
+await page.waitForTimeout(500)
+assert.ok(!(await page.locator('body').innerText()).includes('Blumenkohlreis (Copy)'), '#2857 hidden in #tab=alle')
+await page.goto(base + '#tab=online'); await page.reload()
+await page.waitForTimeout(500)
+assert.ok(!(await page.locator('body').innerText()).includes('Blumenkohlreis (Copy)'), '#2857 hidden in #tab=online')
+await page.goto(base + '#tab=alle&p=qiwq3vdvmq'); await page.reload()
+await page.waitForSelector('[data-testid=dup-redirect-note]', { timeout: 30000 })
+await page.waitForFunction(() => location.hash.includes('p=idj4tje0ei'), null, { timeout: 10000 })
+console.log('[e2e sc57 dup filter] OK: #2857 hidden in #tab=alle and #tab=online, #p=qiwq3vdvmq redirects to #p=idj4tje0ei')
 assert.deepEqual(errs, [], 'no page errors')
 console.log(`[e2e legacy favs] OK: ${nums} (94e0cd2) → ${want.length} uids via restore dialog (${n} options), meta ${ls.meta.dataVersion}, fg-favs → parked ${ls2.parked.length}, 0 page errors`)
 await browser.close(); server.close()

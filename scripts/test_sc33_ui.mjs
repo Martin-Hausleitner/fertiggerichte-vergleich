@@ -178,3 +178,18 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
 }
 // sensecheck 41 (4): #1183 Linguini mit Hühnerpolpetti und Paprikasauce is a dish (stage meal), not 'Zutat/Rohware'
 { const r = D.rows.find(x => x.uid === 'n2wwb3d3s3'); assert.equal(r.stage, 'meal'); assert.ok(M.isReadyMeal(r), '#1183 ready meal'); console.log(`[sc41-stage] OK: #${r.id} stage ${r.stage}, ready meal (not rankable: ${r.rank_excluded_reason})`) }
+// sensecheck 57 P1.1: R (App.tsx), Online.tsx, and Gerichte.tsx filter out r.dupOf != null rows so duplicates (e.g. #2857 -> #2845) never appear in lists while D.rows stays intact for dupTarget redirects
+{
+  const appSrc = readFileSync(new URL('../src/App.tsx', import.meta.url), 'utf8')
+  const onlSrc = readFileSync(new URL('../src/views/Online.tsx', import.meta.url), 'utf8')
+  const gerSrc = readFileSync(new URL('../src/views/Gerichte.tsx', import.meta.url), 'utf8')
+  assert.ok(/D\.rows\.filter\(r\s*=>\s*r\.dupOf\s*==\s*null\)\.map\(/.test(appSrc), 'App.tsx R filters r.dupOf == null')
+  assert.ok((onlSrc.match(/r\.dupOf\s*==\s*null/g) || []).length >= 3, 'Online.tsx filters r.dupOf == null in rows, shops, and provider stats')
+  assert.ok(/r\.dupOf\s*!=\s*null/.test(gerSrc), 'Gerichte.tsx skips r.dupOf != null')
+  const dups = D.rows.filter(r => r.dupOf != null), nonPoDups = dups.filter(r => !r.priceOnly)
+  const r2857 = D.rows.find(r => r.uid === 'qiwq3vdvmq'), r2845 = D.rows.find(r => r.uid === 'idj4tje0ei')
+  assert.ok(r2857 && r2845 && r2857.dupOf === r2845.id && r2857.dupOfUid === r2845.uid, '#2857 dupOf #2845 intact in D.rows')
+  const visR = D.rows.filter(r => r.dupOf == null)
+  assert.ok(!visR.some(r => r.uid === 'qiwq3vdvmq') && visR.some(r => r.uid === 'idj4tje0ei'), '#2857 excluded from R, #2845 kept')
+  console.log(`[sc57-dup-filter] OK: ${dups.length} dupOf rows (${nonPoDups.length} non-priceOnly incl. #${r2857.id} -> #${r2845.id}) excluded from R/Online/Gerichte; ${visR.length} visible rows in R`)
+}

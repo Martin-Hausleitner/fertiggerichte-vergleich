@@ -21,7 +21,8 @@ export default function WerDahinter(){
     const top=d.tree.filter(t=>t.n>0&&t.flag!=='🏳️').sort((a,b)=>b.n-a.n).slice(0,8).map(t=>({k:t.konzern,flag:t.flag,n:t.n,brands:t.producers.reduce((a:number,p:any)=>a+p.brands.length,0),pct:Math.round(t.n/known*1000)/10}))
     return {bars,known,unk,at:m.get('🇦🇹')||0,top}},[d])
   if(!d) return <Card className="p-6">Lade Hersteller-Baum …</Card>
-  const row=(id:number)=>R[id] as Row|undefined
+  const byId=new Map(R.map(r=>[r.id,r]))
+  const row=(id:number)=>byId.get(id)
   const tree=d.tree.filter(t=>(!k||t.konzern===k)&&(!fl||t.flag===fl)&&(!q||JSON.stringify(t).toLowerCase().includes(q.toLowerCase())))
   return <div className="space-y-5">
     <Card className="p-4"><h2 className="text-2xl font-bold">🕵️ Wer steckt dahinter?</h2>

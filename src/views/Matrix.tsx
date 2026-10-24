@@ -10,7 +10,8 @@ import HeatMatrix from './HeatMatrix'
 export default function Matrix(){
   const {D,R,stores,nearest}=useApp()
   const P=useMemo(()=>(D.producers||[]).filter((p:any)=>p.ids.length).sort((a:any,b:any)=>b.ids.length-a.ids.length),[D])
-  const rowsOf=(p:any)=>p.ids.map((i:number)=>R[i]).filter(Boolean) as Row[]
+  const byId=new Map(R.map(r=>[r.id,r]))
+  const rowsOf=(p:any)=>p.ids.map((i:number)=>byId.get(i)).filter(Boolean) as Row[]
   const brands=useMemo(()=>{const c:Record<string,number>={};P.forEach((p:any)=>rowsOf(p).forEach(r=>c[r.brandN]=(c[r.brandN]??0)+1));return Object.entries(c).sort((a,b)=>b[1]-a[1]).slice(0,16).map(x=>x[0])},[P,R])
   const chains=useMemo(()=>[...new Set(P.flatMap((p:any)=>rowsOf(p).map(r=>r.store)))] as string[],[P,R])
   const [sel,setSel]=useState<{p:string;k:string;v:string}|null>(null)
