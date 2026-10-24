@@ -13,6 +13,10 @@ assert.equal(F.isPriceCurrent({ pstat: 'live 2026', price: 6.49, price_date: '20
 assert.equal(F.isPriceCurrent({ pstat: 'Preis 2025', price: 4.99, price_date: '2025-05-14' }), false)
 assert.equal(F.isOldPrice({ pstat: 'live 2026', price: 1, price_date: '2023-01-01', price_stale: true }), true)
 assert.equal(F.isOldPrice({ pstat: 'live 2026', price: 1, price_date: '2025-12-01' }), false)   // sensecheck 41 (2): no calendar-year rule
+// sensecheck 54 P3: sold-out rows (#2851 PrepMyMeal) show no '✓ aktuell' and 'ausverkauft (geprüft am …)' instead of 'live 2026'
+assert.equal(F.isPriceCurrent({ pstat: 'live 2026', price: 11.98, price_date: '2026-10-24', sold_out: true }), false)
+assert.equal(F.priceStatusLabel({ pstat: 'live 2026', price: 11.98, price_date: '2026-10-24', sold_out: true, availability_checked: '2026-10-24' }), 'ausverkauft (geprüft am ' + new Date('2026-10-24').toLocaleDateString('de-AT') + ')')
+assert.equal(F.showPstatBadge({ pstat: 'live 2026', price: 11.98, price_date: '2026-10-24', sold_out: true }), false)
 // (1) alsoText
 assert.deepEqual(L.alsoText({ alsoAt: ['MPreis'], alsoPack: [{ store: 'Spar', kind: 'size', label: '800 g', sameStore: true }, { store: 'Billa', kind: 'size', label: '800 g' }] }), ['auch bei MPreis', 'auch als 800 g (auch bei Billa)'])
 assert.deepEqual(L.alsoText({ alsoPack: [{ store: 'Billa', kind: 'size', label: '700 g', sameStore: true }] }), ['auch als 700 g'])
