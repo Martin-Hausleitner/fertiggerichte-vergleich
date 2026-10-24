@@ -72,7 +72,7 @@ export const isStalePrice = (r: Row) => (r as any).price_stale === true || /prei
 export const isDelisted = (r: Row) => /ausgelistet|nicht mehr auf \S+ gelistet/i.test(_notes(r))
 /** not rankable for price reasons: stale price date or delisted */
 export const isPriceExcluded = (r: Row) => isStalePrice(r) || isDelisted(r)
-export const isRankable = (r: Row) => isReadyMeal(r) && !isPriceExcluded(r) && r.price_status !== 'unknown' && r.shop_status !== 'unknown' && r.score != null && !r.incomplete && r.price != null && r.price > 0 && !!r.store && !r.store.startsWith('unbekannt') && pricePerPortion(r) != null && isFullMeal(r)
+export const isRankable = (r: Row) => isReadyMeal(r) && !(r as any).sold_out && !isPriceExcluded(r) && r.price_status !== 'unknown' && r.shop_status !== 'unknown' && r.score != null && !r.incomplete && r.price != null && r.price > 0 && !!r.store && !r.store.startsWith('unbekannt') && pricePerPortion(r) != null && isFullMeal(r)
 export const lastPriceDate = (rows: Row[]) => { let d = ''; rows.forEach(r => { const m = r.psrc?.match(/\d{4}-\d{2}-\d{2}/); if (m && m[0] > d) d = m[0] }); return d || null }
 
 /** ---- Preis-Leistung: EINE Formel für alle Ansichten ----
