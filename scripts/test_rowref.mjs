@@ -123,6 +123,11 @@ console.log(`[rowref] legacy: ${Object.keys(L).length} mapped numeric refs, unma
   }
   // broken / cyclic chains never loop
   assert.equal(R.dupMain(0, [{ id: 0, dupOf: 1 }, { id: 1, dupOf: 0 }]), null)
+  // sensecheck 55 P2.3: dup row without size → redirect to main row (PrepMyMeal #1534–#1536 legacy rows)
+  const syn = [{ id: 0, uid: 'aaaaaaaaaa', size: 450 }, { id: 1, uid: 'bbbbbbbbbb', size: null, dupOf: 0 }, { id: 2, uid: 'cccccccccc', size: 800, dupOf: 0 }]
+  assert.equal(R.dupTarget(1, syn)?.kind, 'redirect', 'size-less duplicate redirects')
+  assert.equal(R.dupTarget(2, syn)?.kind, 'otherSize', '800 g vs 450 g stays other size')
+  for (const u of ['4o2zv99k36', '3oh2e02p0a', '8af78b1pbb']) { const i = idx.get(u); if (i != null && rows[i].dupOf != null && !rows[i].size) assert.equal(R.dupTarget(i, rows, idx)?.kind, 'redirect', `#${i} (${u}) redirects`) }
   console.log(`[rowref] dup targets: ${red} redirect (same size), ${oth} other size (notice), 0 broken`)
 }
 console.log(`[rowref] OK: ${n} rows, unique uids, uidMap/uidTop/dupOfUid consistent, refs stable across inserted row`)

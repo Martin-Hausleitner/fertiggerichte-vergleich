@@ -126,7 +126,9 @@ export const retryParked = (parked: unknown, D: RefData, idx: Map<string, number
  * stays openable but gets a notice + link to the main row ('otherSize'). */
 export type DupRow = RefRow & { dupOf?: number | null; dupOfUid?: string | null; size?: number | null }
 export type DupTarget = { from: number; to: number; kind: 'redirect' | 'otherSize' }
-const sameSize = (a?: number | null, b?: number | null) => (!a && !b) || (!!a && !!b && Math.abs(a - b) <= 0.03 * Math.max(a, b))
+/* Sensecheck 55 P2.3: a duplicate without its own pack size (e.g. PrepMyMeal legacy #1534–#1536, size null) cannot be another
+ * size variant – the pipeline already matched it to the main row – so it redirects instead of showing the 'otherSize' notice. */
+const sameSize = (a?: number | null, b?: number | null) => !a || !b || Math.abs(a - b) <= 0.03 * Math.max(a, b)
 /** main (visible) row of a hidden duplicate, or null when the row is visible / the chain is broken. */
 export function dupMain(id: number, rows: DupRow[], idx?: Map<string, number>): number | null {
   let cur = rows[id], n = 0
