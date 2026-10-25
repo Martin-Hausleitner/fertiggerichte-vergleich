@@ -206,13 +206,37 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   assert.ok(rkl.every(r => r.stage === 'meal' || r.stage === 'stew'), 'all rankableLight rows have stage meal/stew')
   console.log(`[sc62-p1a-ready-meal] OK: #1323 + #3362 + all stage!=meal/stew excluded from isReadyMeal/isRankable; all ${rk.length} rankable + ${rkl.length} rankableLight intact`)
 }
-// SC63 P1a: pipeline rankable/rankableLight wins over name regex; protPor/kcalPor from pipeline; light ranking tightened
+// SC63 P1a: meal.ts synchronized with pipeline (isReadyMeal, protPerPortion/kcalPerPortion, passesRankMin/passesLightRank) + Online.tsx default isReadyMeal filter
 {
   const byId = new Map(D.rows.map(r => [r.id, r]))
-  for (const id of [2825, 2200, 2909, 3085, 2938]) { const r = byId.get(id); if (r && (r.rankable || r.rankableLight)) assert.ok(M.isReadyMeal(r), `#${id} rankable in pipeline but not isReadyMeal`) }
-  const r2938 = byId.get(2938); if (r2938 && r2938.protPor != null) assert.ok(M.protPerPortion(r2938) >= 20, '#2938 protPerPortion < 20')
-  const bad = D.rows.filter(r => M.passesLightRank(r) && ((M.kcalPerPortion(r) ?? 0) < 300 || (M.protPerPortion(r) ?? 0) < 15 || r.incomplete || r.sold_out))
-  assert.equal(bad.length, 0, 'passesLightRank lets through <300 kcal/<15 g/incomplete/sold-out: ' + bad.slice(0, 5).map(r => '#' + r.id).join(','))
-  const light = D.rows.filter(r => M.passesLightRank(r)).length
-  console.log(`[sc63-p1a] OK: #2825/#2200/#2909/#3085/#2938 ready meals, passesLightRank ${light} rows (all >=300 kcal, >=15 g protein)`)
+  for (const id of [2825, 2200, 2909, 3085, 2938]) {
+    const r = byId.get(id)
+    assert.ok(r && M.isReadyMeal(r), `#${id} must be isReadyMeal`)
+    assert.ok(M.isReadyMeal({ ...r, rankable: false, rankableLight: false }), `#${id} must pass isReadyMeal name/condiment/veg regex even without rankable flag`)
+  }
+  const r2938 = byId.get(2938)
+  assert.equal(M.protPerPortion(r2938), 20, "#2938 protPerPortion prefers r.protPor (20.0 vs 19.98)")
+  assert.ok(M.isFullMeal(r2938) && M.passesRankMin(r2938), "#2938 passes isFullMeal and passesRankMin")
+  const rejReady = D.rows.filter(r => (r.rankable || r.rankableLight) && !M.isReadyMeal(r))
+  const rejFull = D.rows.filter(r => r.rankable && !M.isFullMeal(r))
+  assert.deepEqual(rejReady.map(r => r.id), [], "0 rankable/rankableLight rows rejected by isReadyMeal")
+  assert.deepEqual(rejFull.map(r => r.id), [], "0 rankable rows rejected by isFullMeal")
+  for (const id of [530, 170, 877, 1031]) {
+    const r = byId.get(id)
+    assert.ok(r && !M.passesRankMin(r) && !M.passesLightRank(r), `#${id} excluded from passesRankMin/passesLightRank`)
+    assert.ok(!M.passesRankMin({ ...r, rankable: undefined }) && !M.passesLightRank({ ...r, rankableLight: undefined }), `#${id} excluded by structural rules too`)
+  }
+  const rankDiff = D.rows.filter(r => M.passesRankMin(r) !== Boolean(r.rankable))
+  const lightDiff = D.rows.filter(r => M.passesLightRank(r) !== Boolean(r.rankableLight && !r.incomplete && !r.sold_out && !r.price_stale && (M.kcalPerPortion(r) ?? 0) >= 300 && (M.protPerPortion(r) ?? 0) >= 15))
+  assert.deepEqual(rankDiff.map(r => r.id), [], "passesRankMin 100% synced with r.rankable")
+  assert.deepEqual(lightDiff.map(r => r.id), [], "passesLightRank 100% synced with pipeline rankableLight (>=300 kcal, >=15g prot, not incomplete/sold_out/stale)")
+  const onlSrc = readFileSync(new URL("../src/views/Online.tsx", import.meta.url), "utf8")
+  assert.ok(/isReadyMeal\(r\)/.test(onlSrc) && /online-ready-toggle/.test(onlSrc), "Online.tsx filters by isReadyMeal(r) by default with toggle")
+  for (const id of [3941, 3917, 3923, 3960]) {
+    const r = byId.get(id)
+    assert.ok(r && !M.isReadyMeal(r), `#${id} (${r?.name}) excluded by isReadyMeal on Online.tsx`)
+  }
+  const rkCnt = D.rows.filter(r => M.passesRankMin(r)).length
+  const ltCnt = D.rows.filter(r => M.passesLightRank(r)).length
+  console.log(`[sc63-p1a-meal-sync] OK: 0 rejected rankable/rankableLight in isReadyMeal/isFullMeal (#2825,#2200,#2909,#3085,#2938 all true), #530/#170/#877/#1031 excluded, passesRankMin=${rkCnt} & passesLightRank=${ltCnt} synced, Online.tsx excludes #3941/#3917/#3923/#3960`)
 }

@@ -12,8 +12,12 @@ type Row = MealRow
 /** Harte Mahlzeit-Prüfung (spiegelt die Datenregel von HCB): pro Portion 400–900 kcal und ≥ 20 g Protein. */
 export const MEAL_RULES = { kcalMin: 400, kcalMax: 900, proteinMin: 20, multiPortionMinG: 800, splitPortionG: 400 } as const
 
-// Client-seitige Schutzregeln (Sense-Check 1+2, 2026-10-13). Ersetzt nicht die Korrektur in score.py (HCB).
-const NONMEAL = /^\S+ lasagne$|lasagne (hartweizen)?$|lasagneblätter|lasagne ?teig|suppe-(abc|gerstl|sternderl|hörnchen)|suppennudeln|suppeneinlage|backerbsen|suppenpulver|pesto|\bsugo\b|topfencreme|mousse|pudding|cheesecake|strudel|dessert|kaiserschmarrn|milchreis|götterspeise|jogurella|joghurt|grie(ß|ss)brei|panna cotta|tiramisu|kompott|\bcreme\b|cr[eè]me br[uû]l[eé]e|lavakuchen|schokokuchen|brownie|muffin|tarte au/i
+// Client-seitige Schutzregeln (Sense-Check 1+2, 2026-10-13; SC63 P1a Sync). Ersetzt nicht die Korrektur in score.py (HCB).
+const NONMEAL = /^lasagne (hartweizen)?$|lasagneblätter|lasagne ?teig|suppe-(abc|gerstl|sternderl|hörnchen)|suppennudeln|suppeneinlage|backerbsen|suppenpulver|topfencreme|mousse|pudding|cheesecake|strudel|dessert|kaiserschmarrn|milchreis|götterspeise|jogurella|joghurt|grie(ß|ss)brei|panna cotta|tiramisu|kompott|\bcreme\b|cr[eè]me br[uû]l[eé]e|lavakuchen|schokokuchen|brownie|muffin|tarte au|back[- ]?(camembert|emmentaler|gouda)/i
+export const CONDIMENT = /pesto|\bsugo\b|\btahina?\b|sesampaste/i
+export const NOT_CONDIMENT = /intermezzo|baguette|bruschetta|gnocchi|tortellini|tortelloni|ravioli|rigatoni|spaghetti|penne|pasta|lasagne|chicken|huhn|h[äa]hnchen|lachsfilet|salat|bowl|wrap|falafel/i
+export const PLAIN_VEG = /^(bio )?(gem[üu]se|spinat|rotkraut|blaukraut|sauerkraut|erbsen|bohnen|linsen|mais|karotten|brokkoli|blumenkohl|kohlsprossen)\b/i
+export const PLAIN_VEG_MEAL = /lasagne|pizza|risotto|moussaka|cannelloni|flammkuchen|gratin|strudel|bolognese|pfanne|curry|eintopf|suppe|bowl|auflauf|gericht|teller|tascherl|kn[öo]del|nudel|reis|sp[äa]tzle|schupfnudel|gnocchi|tortellini|ravioli/i
 /** Snacks/Beilagen: nur ausgeschlossen, wenn HCB nicht explizit light_meal/snack_side gesetzt hat. */
 const SNACK = /toastk[äa]se|toast ?scheiben|toastbrot|wurstsalat|burger|baguette|sandwich|\bsub\b|wrap\b|(protein|vollkorn|) ?brote?\b|br[öo]tchen|semmel|weckerl|ramyun|ramen|noodle ?cup|cup ?noodle|nudelsnack|instant ?nudel|chapagetti|\bbistro\b|aufschnitt|k[äa]sescheiben/i
 /** Reine Protein-Komponenten ohne Beilage (TK-Fisch, Nuggets, Schnitzel) – nur wenn kein „mit …“ im Namen. */
@@ -34,7 +38,17 @@ const BABY = /\bhipp\b|ab dem \d+\. ?(lebens)?(jahr|monat)|nach dem \d+\. monat|
 const BAGUETTE = /\bbistro\b|baguette/i
 const BABY_BRAND = /\b(hipp|alete|bebivita|beba|aptamil|babylove|freche freunde)\b/i
 export const isBabyFood = (r: Row) => r.segment === 'baby' || r.segment === 'baby_food' || r.meal_class === 'baby' || BABY.test(r.name) || BABY_BRAND.test(r.brand ?? '')
-export const isNonMeal = (r: Row) => !!r.nonMeal || r.gang === 'dessert' || r.meal_class === 'dessert' || r.meal_class === 'dry' || NONMEAL.test(r.name) || SEASONING.test(r.name) || isBabyFood(r) || BAGUETTE.test(r.name)
+export const isNonMeal = (r: Row) =>
+  !!r.nonMeal ||
+  r.gang === 'dessert' ||
+  r.meal_class === 'dessert' ||
+  r.meal_class === 'dry' ||
+  NONMEAL.test(r.name) ||
+  (CONDIMENT.test(r.name) && !NOT_CONDIMENT.test(r.name)) ||
+  (PLAIN_VEG.test(r.name) && !PLAIN_VEG_MEAL.test(r.name) && r.stage === 'veg') ||
+  SEASONING.test(r.name) ||
+  isBabyFood(r) ||
+  BAGUETTE.test(r.name)
 /** row.nonMeal (sensecheck 37/38, evidence-backed list) is always excluded. Datenseitige Klassifikation (HCB) hat Vorrang; Namens-Guard nur, wenn meal_class fehlt/unknown. */
 const hasDataClass = (r: Row) => !!r.meal_class && r.meal_class !== 'unknown'
 export const isSnackLike = (r: Row) => !hasDataClass(r) && SNACK.test(r.name)
@@ -42,7 +56,7 @@ export const isSnackLike = (r: Row) => !hasDataClass(r) && SNACK.test(r.name)
 export const isReadyMeal = (r: Row) => {
   if (r.dupOf != null || r.nonfood || r.segment === 'meal_kit' || !!r.nonMeal || r.gang === 'dessert' || r.meal_class === 'dessert' || isBabyFood(r)) return false
   /** SC63 P1a: Pipeline-rankable/rankableLight hat Vorrang vor Namens-Regex (#2825, #2200, #2909, #3085). */
-  if ((r as any).rankable === true || (r as any).rankableLight === true) return !isDryish(r)
+  if (!r.incomplete && !(r as any).sold_out && ((r as any).rankable === true || (r as any).rankableLight === true)) return !isDryish(r)
   if (isNonMeal(r) || isSnackLike(r) || isComponentOnly(r)) return false
   if (!(r as any).sauceInPack) {
     if (r.stage && r.stage !== 'meal' && r.stage !== 'stew') return false
@@ -63,11 +77,22 @@ export function portionG(r: Row): number | null {
   if (r.portion != null && r.portion !== 100 && r.portion > 0) return r.size ? Math.min(r.portion, r.size) : r.portion
   return null
 }
+const samePortion = (r: Row, p: number | null) =>
+  !portionEstimated(r) && (p == null || (r.portion_g != null ? Math.abs(p - r.portion_g) < 1 : (r.portion == null || r.portion === 100 || Math.abs(p - r.portion) < 1)))
 /** eur_meal = price × portion_g / size */
 export const pricePerPortion = (r: Row) => { const p = portionG(r); return r.price != null && r.size && p ? r.price * p / r.size : null }
-export const kcalPerPortion = (r: Row) => { const p = portionG(r); if ((r as any).kcalPor != null && p != null && r.portion != null && Math.abs(p - r.portion) < 1) return (r as any).kcalPor; if (r.kcal_meal != null && !portionEstimated(r) && (r.portion_g == null || p === r.portion_g)) return r.kcal_meal; return r.kcal != null && p ? r.kcal * p / 100 : null }
+export const kcalPerPortion = (r: Row) => {
+  const p = portionG(r)
+  if (typeof (r as any).kcalPor === 'number' && samePortion(r, p)) return (r as any).kcalPor
+  if (typeof r.kcal_meal === 'number' && samePortion(r, p)) return r.kcal_meal
+  return r.kcal != null && p ? r.kcal * p / 100 : null
+}
 /** SC63 P1a: pipeline protPor (gerundet) hat Vorrang, wenn die Portion übereinstimmt (#2938: 19.98 vs 20.0). */
-export const protPerPortion = (r: Row) => { const p = portionG(r); if ((r as any).protPor != null && p != null && r.portion != null && Math.abs(p - r.portion) < 1) return (r as any).protPor; return r.p100 != null && p ? Math.round(r.p100 * p / 10) / 10 : null }
+export const protPerPortion = (r: Row) => {
+  const p = portionG(r)
+  if (typeof (r as any).protPor === 'number' && samePortion(r, p)) return (r as any).protPor
+  return r.p100 != null && p ? Math.round(r.p100 * p / 10) / 10 : null
+}
 /** Vollwertige Mahlzeit: 400–900 kcal und ≥ 20 g Protein pro Portion. */
 export const isFullMeal = (r: Row) => { const k = kcalPerPortion(r), p = protPerPortion(r); return k != null && p != null && k >= MEAL_RULES.kcalMin && k <= MEAL_RULES.kcalMax && p >= MEAL_RULES.proteinMin }
 /** Für Rankings: Fertiggericht + echter Preis/Laden + vollständiger Score + harte Mahlzeit-Prüfung. */
@@ -99,12 +124,45 @@ export function valueOf(r: Row, c: ValueCfg = {}) {
 /** Gilt für Preis-Leistungs- und €/Protein-Rankings: rankable + Mindest-Score + Mindest-kcal. */
 export const isLightMeal = (r: Row) => r.meal_class === 'light_meal'
 /** Haupt-Rankings: vollwertige Gerichte, leichte Mahlzeiten haben ein eigenes Ranking (passesLightRank). */
+const isRankDup = (r: Row) => (((r as any).flags ?? []) as string[]).some((f: string) => /^Duplikat|nicht in Rankings|kein Fertiggericht-Ranking/i.test(f))
+const isRankExcluded = (r: Row) =>
+  r.dupOf != null ||
+  !!r.incomplete ||
+  !!(r as any).sold_out ||
+  r.price_status === 'unknown' ||
+  r.shop_status === 'unknown' ||
+  isPriceExcluded(r) ||
+  r.meal_class === 'multi_portion' ||
+  (r as any).delivers_4020 === false ||
+  !!(r as any).linz_excluded ||
+  isRankDup(r)
 
-const isRankDup = (r: Row) => (((r as any).flags ?? []) as string[]).some((f: string) => /^Duplikat/i.test(f))
-export const passesRankMin = (r: Row, c: ValueCfg = {}) => !isLightMeal(r) && !isRankDup(r) && isRankable(r) && (scoreOf(r, c) ?? 0) >= (c.minScore ?? VALUE_DEFAULTS.minScore) && (kcalPerPortion(r) ?? 0) >= Math.max(MEAL_RULES.kcalMin, c.minKcal ?? VALUE_DEFAULTS.minKcal)
+export const passesRankMin = (r: Row, c: ValueCfg = {}) =>
+  ((r as any).rankable === undefined || (r as any).rankable === true) &&
+  !isLightMeal(r) &&
+  !isRankExcluded(r) &&
+  isRankable(r) &&
+  (scoreOf(r, c) ?? 0) >= (c.minScore ?? VALUE_DEFAULTS.minScore) &&
+  (kcalPerPortion(r) ?? 0) >= Math.max(MEAL_RULES.kcalMin, c.minKcal ?? VALUE_DEFAULTS.minKcal)
 
 /** Separates Ranking „Leichte Mahlzeiten“ (meal_class light_meal): Fertiggericht, Preis + Score, Mindest-Score – ohne 400-kcal/20-g-Prüfung. */
-export const passesLightRank = (r: Row, c: ValueCfg = {}) => isLightMeal(r) && !isPriceExcluded(r) && !isRankDup(r) && !r.incomplete && !(r as any).sold_out && r.price_status !== 'unknown' && !portionEstimated(r) && (kcalPerPortion(r) ?? 0) >= 300 && (protPerPortion(r) ?? 0) >= 15 && isReadyMeal(r) && r.price != null && r.score != null && (scoreOf(r, c) ?? 0) >= (c.minScore ?? VALUE_DEFAULTS.minScore) && pricePerPortion(r) != null
+export const passesLightRank = (r: Row, c: ValueCfg = {}) =>
+  ((r as any).rankableLight === undefined || (r as any).rankableLight === true) &&
+  isLightMeal(r) &&
+  !isRankExcluded(r) &&
+  r.gang !== 'vorspeise' &&
+  r.gang !== 'frühstück' &&
+  !portionEstimated(r) &&
+  (kcalPerPortion(r) ?? 0) >= 300 &&
+  (protPerPortion(r) ?? 0) >= 15 &&
+  isReadyMeal(r) &&
+  r.price != null &&
+  r.price > 0 &&
+  !!r.store &&
+  !r.store.startsWith('unbekannt') &&
+  r.score != null &&
+  (scoreOf(r, c) ?? 0) >= (c.minScore ?? VALUE_DEFAULTS.minScore) &&
+  pricePerPortion(r) != null
 /** GTIN aus psrc (z. B. „GTIN 4260237451068“). */
 export const gtinOf = (r: { psrc?: string | null }) => (r.psrc ?? '').match(/\b(\d{13}|\d{8})\b/)?.[1] ?? null
 const completeness = (r: object) => Object.values(r).filter(v => v != null && v !== '' && !(Array.isArray(v) && !v.length)).length
