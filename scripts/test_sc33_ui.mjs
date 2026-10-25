@@ -516,3 +516,115 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   assert.equal(dedupedNear.find(s => s.osm === "node/527809213")?.addr, "Blütenstraße 15, 4040 Linz", "deduped Hofer 1223m has 'Blütenstraße 15, 4040 Linz'")
   console.log(`[sc73-ui-fixes] OK: Zeitlhofer excluded, Spar deduplicated (1 chip, ${nearSpars10Min[0].d}m, ${nearSpars10Min[0].addr}), addresses enriched (dm=${dedupedNear.find(s => s.chain === "dm")?.addr}, Lidl=${dedupedNear.find(s => s.chain === "Lidl")?.addr}, Hofer=${nearestHofer.addr})`)
 }
+
+// SC74 P2.1 & P2.2: Walk-time rounding parity (estWalkMin = Math.ceil((m * 1.3) / 80)) across mergeLinzStores & dedupeNearShops, street short-name in Heute chips, and petrol-shop "eingeschränktes Sortiment"
+{
+  const S = await load("../src/app/shops.ts")
+  const L = await load("../src/app/location.tsx")
+  assert.equal(S.estWalkMin(234), 4, "estWalkMin(234) === 4")
+  assert.equal(S.estWalkMin(373), 7, "estWalkMin(373) === 7 (dm Holzstraße 15)")
+  assert.equal(S.estWalkMin(378), 7, "estWalkMin(378) === 7 (Spar Holzstraße 13)")
+  assert.equal(S.estWalkMin(385), 7, "estWalkMin(385) === 7 (Hofer Lederergasse 68-70)")
+  assert.equal(S.estWalkMin(399.84), 7, "estWalkMin(399.84) === 7 (Spar way/37655226)")
+  assert.equal(S.estWalkMin(519), 9, "estWalkMin(519) === 9 (Lidl Lederergasse 33b)")
+  assert.equal(S.estWalkMin(1124), 19, "estWalkMin(1124) === 19 (Penny Hessenplatz 8)")
+
+  const baseStores = JSON.parse(readFileSync(new URL("../public/stores.json", import.meta.url), "utf8"))
+  const walkFile = JSON.parse(readFileSync(new URL("../public/stores_linz_walk.json", import.meta.url), "utf8"))
+  const provFile = JSON.parse(readFileSync(new URL("../public/stores_linz_providers.json", import.meta.url), "utf8"))
+  const osmFile = JSON.parse(readFileSync(new URL("../public/stores_linz_2026-10-13.json", import.meta.url), "utf8"))
+  const merged = S.mergeLinzStores(baseStores, walkFile, provFile, osmFile)
+  const home = walkFile.home
+
+  const seenWalk = new Set((walkFile.stores ?? []).map(s => s.osm))
+  const seenProv = new Set([...seenWalk, ...((provFile.stores ?? []).map(p => p.osm_id))])
+  const rawAll = [
+    ...(walkFile.stores ?? []).filter(s => !S.isTrafikOrFalseHofer(s.chain ?? s.brand, s.name)).map(s => ({
+      chain: S.matchStoreChain(s.chain ?? s.brand ?? s.name, s.name) || s.name,
+      name: s.name,
+      addr: S.cleanStoreAddr(s.addr, s.osm),
+      lat: s.lat,
+      lon: s.lon,
+      dist: s.dist_m,
+      hours: s.hours,
+      gmaps: "",
+      id: S.shopId(s),
+      d: s.dist_m,
+      walkMin: s.walk_min,
+      type: s.type,
+      hasProducts: true,
+      productCount: 1,
+      rankableCount: 1,
+      osm: s.osm,
+    })),
+    ...(provFile.stores ?? []).filter(p => (!p.osm_id || !seenWalk.has(p.osm_id)) && !S.isTrafikOrFalseHofer(p.chain, p.name)).map(p => {
+      const d = L.haversine(home, p)
+      const chain = S.matchStoreChain(p.chain || p.name, p.name) || p.name
+      return {
+        chain,
+        name: p.name || chain,
+        addr: S.cleanStoreAddr(p.address, p.osm_id),
+        lat: p.lat,
+        lon: p.lon,
+        dist: d,
+        hours: p.opening_hours,
+        gmaps: "",
+        id: p.osm_id ?? `prov|${chain}|${p.lat.toFixed(5)}`,
+        d,
+        walkMin: S.estWalkMin(d),
+        type: p.provider_type,
+        hasProducts: true,
+        productCount: 1,
+        rankableCount: 1,
+        osm: p.osm_id,
+      }
+    }),
+    ...(osmFile.stores ?? []).filter(o => !seenProv.has(`${o.osm_type}/${o.osm_id}`) && !S.isTrafikOrFalseHofer(o.chain, o.name)).map(o => {
+      const d = L.haversine(home, o)
+      const chain = S.matchStoreChain(o.chain || o.name, o.name) || o.name
+      const osmKey = `${o.osm_type}/${o.osm_id}`
+      return {
+        chain,
+        name: o.name || chain,
+        addr: S.cleanStoreAddr("", osmKey),
+        lat: o.lat,
+        lon: o.lon,
+        dist: d,
+        hours: o.opening_hours,
+        gmaps: "",
+        id: osmKey,
+        d,
+        walkMin: S.estWalkMin(d),
+        type: "chain",
+        hasProducts: true,
+        productCount: 1,
+        rankableCount: 1,
+        osm: osmKey,
+      }
+    }),
+  ]
+  const deduped = S.dedupeNearShops(rawAll, baseStores.shops)
+
+  for (const [chain, expDist, expMin] of [
+    ["Billa", 234, 4],
+    ["dm", 373, 7],
+    ["Spar", 378, 7],
+    ["Hofer", 385, 7],
+    ["Denn's", 489, 8],
+    ["Lidl", 519, 9],
+    ["Penny", 1124, 19],
+  ]) {
+    const mNearest = S.findNearestStore(merged, chain)
+    const dNearest = deduped.find(s => s.chain === chain)
+    assert.ok(mNearest && dNearest, `Both mergeLinzStores and dedupeNearShops resolve ${chain}`)
+    assert.equal(mNearest.walk_m ?? mNearest.dist, expDist, `mergeLinzStores nearest(${chain}) walk_m/dist === ${expDist}`)
+    assert.equal(mNearest.walk_min, expMin, `mergeLinzStores nearest(${chain}).walk_min === ${expMin}`)
+    assert.equal(Math.round(dNearest.d), expDist, `dedupeNearShops nearest(${chain}).d === ${expDist}`)
+    assert.equal(dNearest.walkMin, expMin, `dedupeNearShops nearest(${chain}).walkMin === ${expMin}`)
+  }
+
+  const heuteSrc = readFileSync(new URL("../src/views/Heute.tsx", import.meta.url), "utf8")
+  assert.ok(heuteSrc.includes("s.addr.split(',')[0]"), "Heute.tsx displays street short-name on store chips")
+  assert.ok(heuteSrc.includes('isPetrolShop(s) ? "eingeschränktes Sortiment"'), "Heute.tsx displays 'eingeschränktes Sortiment' instead of rankableCount on petrol-station shop chips")
+  console.log("[sc74-ui-fixes] OK: walk_min === walkMin parity across mergeLinzStores & dedupeNearShops (Spar=7min, dm=7min, Hofer=7min, Lidl=9min, Penny=19min), Heute chip street short-names & petrol shop badge")
+}
