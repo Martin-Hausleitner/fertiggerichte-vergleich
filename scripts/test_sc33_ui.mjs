@@ -381,3 +381,11 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   assert.equal(dennsRanked.length, 2, "Denn's has 2 rankable dishes in MeineShops ranking")
   console.log(`[sc71-meineshops-rankable] OK: ranking/perChain via isRowRankable (dm=${dmRanked.length}, Hofer=${hoferRanked.length}, Denn's=${dennsRanked.length}), online-rank-badge via countsByChain, Leicht badge present`)
 }
+
+// SC72 P1b: Tabelle default sort (Preis-Leistung) must keep light meals (isRowRankable), not only rankOk
+{
+  const src = readFileSync(new URL('../src/views/Tabelle.tsx', import.meta.url), 'utf8')
+  assert.ok(src.includes('allFood || isRowRankable(r as any)'), 'Tabelle value/ppe sort filters via isRowRankable (light meals visible)')
+  assert.ok(!/\brankOk\(r\)/.test(src), 'Tabelle no longer hides light meals via rankOk')
+  console.log('[sc72-tabelle-rankable] OK: Tabelle default sort uses isRowRankable')
+}
