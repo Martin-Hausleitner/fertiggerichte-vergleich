@@ -8,6 +8,7 @@ import { NutrientRow } from '@/components/x/Nutrients'
 import { median, nums } from '@/components/x/charts'
 import { colorOf } from '@/components/x/palette'
 import { cn, fmt, healthyCheap, useApp, useHashState, type Row } from '@/lib'
+import { isRowRankable, rowPli, rowP100k } from '@/app/meal'
 
 type Sub = { key: string; label: string; test: (r: Row) => boolean }
 type Cat = { key: string; label: string; icon: LucideIcon; test: (r: Row) => boolean; subs: Sub[] }
@@ -16,7 +17,9 @@ const re = (x: RegExp) => (r: Row) => x.test(txt(r))
 const dish = (d: string) => (r: Row) => !!r.cdish?.includes(d)
 const prot = (p: string) => (r: Row) => !!r.cprot?.includes(p)
 const sub = (label: string, test: (r: Row) => boolean): Sub => ({ key: label.toLowerCase().replace(/\W+/g, '-'), label, test })
-const MEALPREP = ['PrepMyMeal', 'Fit to Go', 'LiveFresh', 'FitTaste', 'Juit', 'bofrost', 'every.', 'Löwenanteil', 'Kernbeißer', 'Goldblatt', 'iss mich!', 'Alfies', 'myProduct', 'Biohof Achleitner']
+export const SUPER = ['Billa', 'Spar', 'Hofer', 'Lidl', 'Penny', 'dm']
+export const MEALPREP = ['PrepMyMeal', 'Fit to Go', 'LiveFresh', 'FitTaste', 'Juit', 'bofrost', 'Löwenanteil', 'Kernbeißer', 'Goldblatt', 'iss mich!', 'myProduct', 'Biohof Achleitner']
+export { isRowRankable, rowPli, rowP100k }
 
 export const CATS: Cat[] = [
   { key: 'suppen', label: 'Suppen & Eintöpfe', icon: Soup, test: r => dish('Suppe')(r) || dish('Eintopf')(r) || dish('Gulasch')(r), subs: [sub('Suppe', dish('Suppe')), sub('Eintopf', dish('Eintopf')), sub('Gulasch', dish('Gulasch')), sub('Suppentopf', re(/suppentopf/i)), sub('Linsen & Bohnen', prot('Hülsenfrüchte'))] },
@@ -46,7 +49,7 @@ function CatTile({ c, rows, active, onClick }: { c: Cat; rows: Row[]; active: bo
 /** Category explorer: tree with icons and stats, subcategories, in-category search, facets and a top strip. */
 export default function Kategorien() {
   const { R, open } = useApp()
-  const base = useMemo(() => R.filter(r => !r.nonfood && !r.store.startsWith('unbekannt')), [R])
+  const base = useMemo(() => R.filter(r => !r.nonfood && !r.store.startsWith('unbekannt') && r.delivers_4020 !== false), [R])
   const byCat = useMemo(() => Object.fromEntries(CATS.map(c => [c.key, base.filter(c.test)])), [base])
   const [ck, setCk] = useHashState<string>('kat', 'suppen'), [sk, setSk] = useHashState<string>('sub', ''), [q, setQ] = useState('')
   const cat = CATS.find(c => c.key === ck) ?? CATS[0]
@@ -64,7 +67,7 @@ export default function Kategorien() {
     <div className="min-w-0 space-y-3">
       <ScrollArea className="lg:hidden"><div className="flex gap-2 pb-2">{CATS.map(c => <Button key={c.key} size="sm" variant={c.key === cat.key ? 'default' : 'outline'} onClick={() => { setCk(c.key); setSk('') }}><c.icon />{c.label}<span className="tabular-nums opacity-70">{byCat[c.key].length}</span></Button>)}</div><ScrollBar orientation="horizontal" /></ScrollArea>
       <Card className="overflow-hidden shadow-none"><div className="flex items-center gap-3 p-4"><div className="flex size-12 items-center justify-center rounded-full bg-foreground text-background"><cat.icon className="size-6" /></div>
-        <div className="min-w-0 flex-1"><h2 className="text-xl font-bold">{cat.label}</h2><div className="flex flex-wrap gap-x-4 text-sm text-muted-foreground"><span className="inline-flex items-center gap-1"><Utensils className="size-3.5" />{inCat.length} Gerichte</span><span className="inline-flex items-center gap-1"><Euro className="size-3.5" />Median {fmt(median(nums(inCat, r => r.price)), 2)} €</span><span className="inline-flex items-center gap-1"><Beef className="size-3.5" />{fmt(median(nums(inCat, r => r.eur10p)), 2)} €/10 g Protein</span></div></div></div>
+        <div className="min-w-0 flex-1"><h2 className="text-xl font-bold">{cat.label}</h2><div className="flex flex-wrap gap-x-4 text-sm text-muted-foreground"><span className="inline-flex items-center gap-1"><Utensils className="size-3.5" />{inCat.length} Gerichte ({inCat.filter(r => isRowRankable(r)).length} gerankt)</span><span className="inline-flex items-center gap-1"><Euro className="size-3.5" />Median {fmt(median(nums(inCat, r => r.price)), 2)} €</span><span className="inline-flex items-center gap-1"><Beef className="size-3.5" />{fmt(median(nums(inCat, r => r.eur10p)), 2)} €/10 g Protein · {fmt(median(nums(inCat.filter(r => isRowRankable(r)), r => rowP100k(r))), 1)} g/100 kcal · PLI {fmt(median(nums(inCat.filter(r => isRowRankable(r)), r => rowPli(r))), 0)}</span></div></div></div>
         <ScrollArea><div className="flex gap-1.5 px-4 pb-3"><Button size="sm" variant={!sk ? 'default' : 'outline'} className="h-7 rounded-full" onClick={() => setSk('')}>Alle</Button>{cat.subs.map(s => { const cnt = inCat.filter(s.test).length; return cnt ? <Button key={s.key} size="sm" variant={sk === s.key ? 'default' : 'outline'} className="h-7 rounded-full" onClick={() => setSk(sk === s.key ? '' : s.key)}>{s.label}<span className="tabular-nums opacity-70">{cnt}</span></Button> : null })}</div><ScrollBar orientation="horizontal" /></ScrollArea>
       </Card>
       {top.length > 0 && <div><h3 className="mb-2 flex items-center gap-2 font-semibold"><Trophy className="size-4 text-amber-600" />Top in {cat.subs.find(s => s.key === sk)?.label ?? cat.label}</h3>

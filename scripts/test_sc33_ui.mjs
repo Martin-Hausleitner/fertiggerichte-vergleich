@@ -18,7 +18,7 @@ assert.equal(F.isPriceCurrent({ pstat: 'live 2026', price: 11.98, price_date: '2
 assert.equal(F.priceStatusLabel({ pstat: 'live 2026', price: 11.98, price_date: '2026-10-24', sold_out: true, availability_checked: '2026-10-24' }), 'ausverkauft (geprüft am ' + new Date('2026-10-24').toLocaleDateString('de-AT') + ')')
 assert.equal(F.showPstatBadge({ pstat: 'live 2026', price: 11.98, price_date: '2026-10-24', sold_out: true }), false)
 // (1) alsoText
-assert.deepEqual(L.alsoText({ alsoAt: ['MPreis'], alsoPack: [{ store: 'Spar', kind: 'size', label: '800 g', sameStore: true }, { store: 'Billa', kind: 'size', label: '800 g' }] }), ['auch bei MPreis', 'auch als 800 g (auch bei Billa)'])
+assert.deepEqual(L.alsoText({ alsoAt: ['Hofer', 'MPreis'], alsoPack: [{ store: 'Spar', kind: 'size', label: '800 g', sameStore: true }, { store: 'Billa', kind: 'size', label: '800 g' }] }), ['auch bei Hofer', 'auch als 800 g (auch bei Billa)'])
 assert.deepEqual(L.alsoText({ alsoPack: [{ store: 'Billa', kind: 'size', label: '700 g', sameStore: true }] }), ['auch als 700 g'])
 assert.deepEqual(L.alsoText({ alsoPack: [{ store: 'Spar', kind: 'single', label: 'einzeln (355 g)', sameStore: true }] }), ['auch einzeln (355 g)'])
 assert.deepEqual(L.alsoText({ alsoAt: ['Spar'], alsoPack: [{ store: 'myProduct', kind: 'multipack', label: '6er-Pack' }] }), ['auch bei Spar', 'auch als 6er-Pack bei myProduct'])
@@ -801,4 +801,57 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   assert.ok(detSrc.includes('detail-light-badge') && detSrc.includes('rowP100k(r)'), 'Detail.tsx renders detail-light-badge and uses rowP100k(r)')
   assert.ok(prodSrc.includes('rowsummary-light-badge') && prodSrc.includes('rowP100k(r)'), 'product.tsx renders rowsummary-light-badge and uses rowP100k(r)')
   console.log('[sc77-ui-fixes] OK: P1.1 Stores catalog filter & toggle, P1.2 Gerichte default Lasagne & ready-meal/baby filter, P2.1 PriceCompare/ProteinValue Linz & light meals, P2.2 rowP100k & Leicht badge')
+}
+
+// sensecheck 78 P1.1, P1.2, P2.1: 156 rankableLight meals in 6 views, alsoText Linz defense-in-depth, KombiBuilder portions & Kombi byId
+{
+  const M = await load("../src/app/meal.ts")
+  const L = await load("../src/lib.ts")
+  const active = D.rows.filter(r => r.dupOf == null && r.delivers_4020 !== false)
+
+  // P1.1: 6 views use isRowRankable, rowPli, rowP100k
+  const analyseSrc = readFileSync(new URL("../src/views/Analyse.tsx", import.meta.url), "utf8")
+  assert.ok(!analyseSrc.includes("r.rankable") && analyseSrc.includes("isRowRankable(r)") && analyseSrc.includes("rowPli(r)") && analyseSrc.includes("rowP100k(r)"), "Analyse.tsx uses isRowRankable, rowPli, rowP100k everywhere (SC78 P1.1)")
+  const dmRankable = active.filter(r => r.store === "dm" && M.isRowRankable(r) && r.pstat === "live 2026")
+  assert.ok(dmRankable.length >= 5, "dm has >= 5 rankable (incl. light) live 2026 meals for Analyse heatmaps & boxplots (got " + dmRankable.length + ")")
+
+  const chartsSrc = readFileSync(new URL("../src/views/Charts.tsx", import.meta.url), "utf8")
+  assert.ok(!chartsSrc.includes("r.rankable") && chartsSrc.includes("isRowRankable(r)") && chartsSrc.includes("rowP100k(r)"), "Charts.tsx uses isRowRankable and rowP100k (SC78 P1.1)")
+
+  const brandsSrc = readFileSync(new URL("../src/views/Brands.tsx", import.meta.url), "utf8")
+  assert.ok(!brandsSrc.includes("r.rankable") && brandsSrc.includes("isRowRankable(r)") && brandsSrc.includes("rowPli("), "Brands.tsx uses isRowRankable and rowPli (SC78 P1.1)")
+  for (const bName of ["Löwenanteil", "Little Lunch", "dmBio", "Kernbeißer"]) {
+    const bRows = active.filter(r => !r.dry && !r.nonfood && !r.noBrand && r.brandN === bName && M.isRowRankable(r))
+    assert.ok(bRows.length >= 2 && bRows.some(r => M.rowPli(r) != null), bName + " has >= 2 rankable rows with PLI in Brands (SC78 P1.1)")
+  }
+
+  const hmSrc = readFileSync(new URL("../src/views/HeatMatrix.tsx", import.meta.url), "utf8")
+  assert.ok(!hmSrc.includes("r.rankable") && hmSrc.includes("isRowRankable(r)") && hmSrc.includes("rowPli(r)"), "HeatMatrix.tsx uses isRowRankable and rowPli (SC78 P1.1)")
+
+  const katSrc = readFileSync(new URL("../src/views/Kategorien.tsx", import.meta.url), "utf8")
+  assert.ok(katSrc.includes("isRowRankable") && katSrc.includes("rowPli") && katSrc.includes("rowP100k") && !katSrc.includes("'every.'") && !katSrc.includes("'Alfies'"), "Kategorien.tsx uses isRowRankable/rowPli/rowP100k and removes every./Alfies from MEALPREP (SC78 P1.1)")
+
+  const gridSrc = readFileSync(new URL("../src/views/Grid.tsx", import.meta.url), "utf8")
+  assert.ok(gridSrc.includes("valueGetter:(p:any)=>rowPli(p.data)") && gridSrc.includes("valueGetter:(p:any)=>rowP100k(p.data)") && gridSrc.includes("isLightOnlyRanked(p.data)"), "Grid.tsx uses rowPli, rowP100k, and Leicht badge for rankableLight (SC78 P1.1)")
+
+  // P1.2: alsoText defense-in-depth against non-Linz stores
+  assert.deepEqual(
+    L.alsoText({
+      alsoAt: ["Spar", "Gurkerl", "MPreis", "Alfies", "every.", "HelloFresh"],
+      alsoPack: [
+        { label: "6er-Pack", store: "every.", sameStore: false },
+        { label: "Einzelglas", store: "myProduct", sameStore: false },
+      ],
+    }),
+    ["auch bei Spar", "auch als Einzelglas bei myProduct"],
+    "alsoText filters out Gurkerl, MPreis, Alfies, every., HelloFresh and drops empty alsoPack labels (SC78 P1.2)"
+  )
+
+  // P2.1: KombiBuilder portion math & Kombi byId lookup
+  const kbSrc = readFileSync(new URL("../src/views/KombiBuilder.tsx", import.meta.url), "utf8")
+  assert.ok(kbSrc.includes("r.pPor??r.price") && kbSrc.includes("r.protPor??r.protpack") && kbSrc.includes("r.kcalPor??r.kcalpack") && kbSrc.includes("!isStalePrice(r)") && kbSrc.includes("r.delivers_4020!==false"), "KombiBuilder.tsx uses portion values and filters active Linz fresh rows (SC78 P2.1)")
+  const kombiSrc = readFileSync(new URL("../src/views/Kombi.tsx", import.meta.url), "utf8")
+  assert.ok(kombiSrc.includes("byId.get(c.main)") && !kombiSrc.includes("R[c.main]"), "Kombi.tsx uses byId.get(c.main) instead of R[c.main] (SC78 P2.1)")
+
+  console.log("[sc78-ui-fixes] OK: P1.1 156 rankableLight meals in 6 views (Analyse, Charts, Brands, HeatMatrix, Kategorien, Grid), P1.2 alsoText & Detail Linz defense-in-depth, P2.1 KombiBuilder portions & Kombi byId")
 }

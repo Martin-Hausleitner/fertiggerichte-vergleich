@@ -332,6 +332,27 @@ if (r861e2e?.uid) {
   assert.ok(dlg861.includes("Leicht") && dlg861.includes("2,8 g"), "#861 Detail modal shows Leicht badge and 2,8 g Protein pro 100 kcal")
 }
 console.log("[e2e sc77-ui-fixes] OK: #tab=filialen catalog filter, #tab=gerichte default Lasagne & Leicht badge, #tab=dashboard Linz-only & non-empty stages, #861 Detail Leicht & 2,8 g/100kcal")
+// sensecheck 78 P1.1, P1.2, P2.1: 156 rankableLight meals in Analyse/Brands/Kategorien/Kombi
+await page.goto(base + "#tab=analyse"); await page.reload()
+await page.waitForFunction(() => document.body.innerText.includes("€ pro 10 g Protein je Laden"), null, { timeout: 30000 })
+const analyseTxt = await page.locator("body").innerText()
+assert.ok(analyseTxt.includes("dm (") && analyseTxt.includes("Löwenanteil ("), "#tab=analyse store boxplots include dm and Löwenanteil via isRowRankable")
+
+await page.goto(base + "#tab=marken&q=L%C3%B6wenanteil"); await page.reload()
+await page.waitForFunction(() => document.body.innerText.includes("Löwenanteil"), null, { timeout: 30000 })
+const brandsTxt = await page.locator("body").innerText()
+assert.ok(brandsTxt.includes("⭐ PLI") && !brandsTxt.includes("€/10 g P –"), "#tab=marken shows real PLI & €/10gP median for Löwenanteil")
+
+await page.goto(base + "#tab=kategorien&kat=mealprep"); await page.reload()
+await page.waitForFunction(() => document.body.innerText.includes("Meal-Prep & Bowls"), null, { timeout: 30000 })
+const katTxt = await page.locator("body").innerText()
+assert.ok(!katTxt.includes("every.") && !katTxt.includes("Alfies") && katTxt.includes("gerankt)"), "#tab=kategorien Meal-Prep excludes every./Alfies and shows ranked count")
+
+await page.goto(base + "#tab=kombi"); await page.reload()
+await page.waitForFunction(() => document.body.innerText.includes("Kombi-Baukasten"), null, { timeout: 30000 })
+const kombiTxt = await page.locator("body").innerText()
+assert.ok(!kombiTxt.includes("MPreis") && !kombiTxt.includes("Gurkerl") && !kombiTxt.includes("Alfies"), "#tab=kombi excludes non-Linz stores (MPreis, Gurkerl, Alfies)")
+console.log("[e2e sc78-ui-fixes] OK: #tab=analyse dm/Löwenanteil boxplots, #tab=marken Löwenanteil PLI median, #tab=kategorien Linz Meal-Prep & ranked count, #tab=kombi portion values & Linz-only")
 assert.deepEqual(errs, [], 'no page errors')
 console.log(`[e2e legacy favs] OK: ${nums} (94e0cd2) → ${want.length} uids via restore dialog (${n} options), meta ${ls.meta.dataVersion}, fg-favs → parked ${ls2.parked.length}, 0 page errors`)
 await browser.close(); server.close()

@@ -85,7 +85,7 @@ export function NearestBox({store}:{store:string}){
 }
 export function CatChips({r}:{r:Row}){const {D}=useApp(); const c=[...(r.cprot||[]),...(r.cdish||[])]; if(!c.length) return null
   return <div className="flex flex-wrap gap-1">{c.slice(0,4).map(x=><span key={x} className="rounded-full bg-sky-50 dark:bg-sky-900/40 text-sky-800 dark:text-sky-200 px-1.5 py-0.5 text-[10px]">{D.catIcon[x]??''} {x}</span>)}</div>}
-export function PliBadge({v}:{v:number|null}){ if(v==null) return null; const c=v>=60?'bg-emerald-600':v>=45?'bg-lime-600':v>=30?'bg-amber-500':'bg-orange-600'; return <InfoTip k="pli"><Badge className={c+' text-white text-sm'}>⭐ PLI {Math.round(v)}</Badge></InfoTip>}
+export function PliBadge({v,light}:{v:number|null;light?:boolean}){ if(v==null) return null; const c=v>=60?'bg-emerald-600':v>=45?'bg-lime-600':v>=30?'bg-amber-500':'bg-orange-600'; return <span className="inline-flex items-center gap-1"><InfoTip k="pli"><Badge className={c+' text-white text-sm'}>⭐ PLI {Math.round(v)}</Badge></InfoTip>{light&&<Badge data-testid="pli-light-badge" className="bg-sky-100 text-sky-800 dark:bg-sky-900/50 dark:text-sky-200 text-[10px]" title="Erfüllt den Leicht-Mahlzeit-Check (12–19,9 g Protein/Portion)">Leicht</Badge>}</span>}
 export function PriceKpis({r}:{r:Row}){
   const pPor=(r as any).pPorEff??r.pPor  // sensecheck 34: include shipPor when known (Biohof Einzelglas 6,80+4,50)
   return <div className="grid grid-cols-4 gap-1">

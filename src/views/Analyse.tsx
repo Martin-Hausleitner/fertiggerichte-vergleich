@@ -1,4 +1,4 @@
-import { isRowRankable } from '../app/meal'
+import { isRowRankable, rowP100k, rowPli } from '../app/meal'
 import { ChartContainer } from '../components/ui/chart'
 import { RowSummary } from '../components/product'
 import AnalyseExt from './AnalyseExt'
@@ -46,8 +46,9 @@ function External(){
 }
 export default function Analyse(){
   const {R,D}=useApp()
-  const byStore=(f:keyof Row)=>{const g:Record<string,number[]>={};R.filter(r=>isRowRankable(r)&&r[f]!=null&&r.pstat==='live 2026').forEach(r=>(g[r.store]??=[]).push(r[f] as number));return g}
-  const byPack=(f:keyof Row)=>{const g:Record<string,number[]>={};R.filter(r=>isRowRankable(r)&&r[f]!=null).forEach(r=>(g[r.pack.replace(/ \(.*\)/,'')]??=[]).push(r[f] as number));return g}
+  const valOf=(r:Row,f:keyof Row)=>(f==='p100k'?rowP100k(r):f==='pli'?rowPli(r):r[f]) as number|null
+  const byStore=(f:keyof Row)=>{const g:Record<string,number[]>={};R.filter(r=>isRowRankable(r)&&valOf(r,f)!=null&&r.pstat==='live 2026').forEach(r=>(g[r.store]??=[]).push(valOf(r,f)!));return g}
+  const byPack=(f:keyof Row)=>{const g:Record<string,number[]>={};R.filter(r=>isRowRankable(r)&&valOf(r,f)!=null).forEach(r=>(g[r.pack.replace(/ \(.*\)/,'')]??=[]).push(valOf(r,f)!));return g}
   const catBar=useMemo(()=>[...D.catProt].map(c=>{const rs=R.filter(r=>isRowRankable(r)&&r.cprot?.includes(c)&&r.eur10p!=null&&r.pstat==='live 2026');return {c:`${D.catIcon[c]??''} ${c}`,n:rs.length,eur:rs.length?q(rs.map(r=>r.eur10p!),.5):null,score:rs.length?q(rs.map(r=>r.score!),.5):null}}).filter(x=>x.n>=3).sort((a,b)=>a.eur!-b.eur!),[R,D])
   return <div className="space-y-3">
     <div className="grid gap-3 lg:grid-cols-2"><Pareto R={R}/><BrandRank R={R}/></div>

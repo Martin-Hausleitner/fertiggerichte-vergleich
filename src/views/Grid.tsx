@@ -1,3 +1,4 @@
+import { isLightOnlyRanked, rowP100k, rowPli } from '../app/meal'
 import { useMemo, useRef, useEffect } from 'react'
 import { AgGridReact } from 'ag-grid-react'
 import type { ColDef } from 'ag-grid-community'
@@ -25,8 +26,8 @@ export default function Grid({rows,sort='eur10p'}:{rows:Row[];sort?:string}){
     {headerName:'Preis',field:'price',width:165,pinned:'left',filter:'agNumberColumnFilter',cellRenderer:(p:any)=><div className="text-sm"><Price r={p.data}/></div>},
     {headerName:'€ / 10 g Protein',field:'eur10p',width:120,headerTooltip:'ℹ️ '+KPI.eur10p,pinned:'left',filter:'agNumberColumnFilter',cellRenderer:(p:any)=>p.value==null?<span className="text-muted-foreground">–</span>:<span className="font-semibold tabular-nums">{fmt(p.value,2)} €</span>},
     {headerName:'Health-Score',field:'score',width:175,headerTooltip:'ℹ️ '+KPI.score,pinned:'left',filter:'agNumberColumnFilter',cellRenderer:(p:any)=><div className="h-full flex items-center"><ScoreBar r={p.data}/></div>},
-    {headerName:'PLI',field:'pli',width:90,filter:'agNumberColumnFilter',headerTooltip:'ℹ️ '+KPI.pli,cellRenderer:(p:any)=><PliBadge v={p.value}/>},
-    num('€/Portion','pPor',95,2),num('€/100 g','p100g',85,2),num('Protein/Portion','protPor',110),num('kcal/Portion','kcalPor',100,0),num('Salz/Portion','saltPor',100,2),num('Salz % Tag','saltPct',95,0),num('€/kg','ppk',85,2),num('€/100 kcal','eur100k',100,2),num('Protein/Pkg','protpack',105),num('Prot./100kcal','p100k',110),num('kcal/100g','kcal',95,0),num('Salz','salt',80,2),num('ges. Fett','sat',85),num('Zucker','sugar',85),num('Ballastst.','fib',90),
+    {headerName:'PLI',field:'pli',width:125,filter:'agNumberColumnFilter',headerTooltip:'ℹ️ '+KPI.pli,valueGetter:(p:any)=>rowPli(p.data),cellRenderer:(p:any)=><PliBadge v={p.value} light={Boolean(p.data?.rankableLight)||isLightOnlyRanked(p.data)}/>},
+    num('€/Portion','pPor',95,2),num('€/100 g','p100g',85,2),num('Protein/Portion','protPor',110),num('kcal/Portion','kcalPor',100,0),num('Salz/Portion','saltPor',100,2),num('Salz % Tag','saltPct',95,0),num('€/kg','ppk',85,2),num('€/100 kcal','eur100k',100,2),num('Protein/Pkg','protpack',105),{...num('Prot./100kcal','p100k',110),valueGetter:(p:any)=>rowP100k(p.data)},num('kcal/100g','kcal',95,0),num('Salz','salt',80,2),num('ges. Fett','sat',85),num('Zucker','sugar',85),num('Ballastst.','fib',90),
     num('Protein/€','ppe',95),
     {headerName:'Hersteller',field:'herst',minWidth:170,flex:1,filter:'agTextColumnFilter',wrapText:true,cellRenderer:(p:any)=><div className="text-xs leading-tight py-1.5">{p.value}{p.data.ort&&<div className="text-muted-foreground">{p.data.ort}</div>}</div>},
     {headerName:'',width:90,sortable:false,filter:false,cellRenderer:(p:any)=><div className="flex items-center h-full"><Actions r={p.data}/>{p.data.url&&<a href={p.data.url} target="_blank" rel="noreferrer" title={rowLinkLabel(p.data)??"Im Shop öffnen"} className={"p-1.5 hover:text-brand "+(isGenericLink(p.data.url)||p.data.linkPack?"text-amber-500":"text-slate-400")}><ExternalLink size={15}/></a>}</div>},

@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from 'clsx'; import { twMerge } from 'tailwind-merge'
 import { useEffect, useState, createContext, useContext } from 'react'
+import { isRowRankable } from './app/meal'
 export const cn=(...c:ClassValue[])=>twMerge(clsx(c))
 export const fmt=(v:number|null|undefined,d=1)=>v==null?'–':v.toLocaleString('de-AT',{minimumFractionDigits:d,maximumFractionDigits:d})
 export const scoreColor=(s:number|null)=>s==null?'#94a3b8':s>=60?'#16a34a':s>=45?'#65a30d':s>=30?'#eab308':s>=20?'#f97316':'#dc2626'
@@ -10,12 +11,27 @@ export type LinkPack={kind:'otherPack'|'sharedUrl'|'weight';note:string;detail?:
 export type AlsoPack={store:string;kind:'multipack'|'single'|'size';n?:number|null;size?:number|null;label:string;id?:number;uid?:string|null;sameStore?:boolean}
 /** 'auch bei Spar' · 'auch als 6er-Pack bei myProduct' · 'auch einzeln (350 g) bei dm, Spar'
  *  Sensecheck 33 (1): other size in the SAME store (sameStore) → 'auch als 800 g', plus other stores → 'auch als 800 g (auch bei Billa)'. */
-export function alsoText(r:{alsoAt?:string[];alsoPack?:AlsoPack[]}):string[]{
-  const out:string[]=[];if(r.alsoAt&&r.alsoAt.length)out.push('auch bei '+r.alsoAt.join(', '))
+/** SC78 P1.2: Filtert Nicht-Linzer bzw. Kochbox-Anbieter (Gurkerl, MPreis, Alfies, every., HelloFresh) aus alsoAt/alsoPack. */
+export const NON_LINZ_STORES = new Set(['Gurkerl', 'MPreis', 'Alfies', 'every.', 'HelloFresh'])
+export const isLinzStore = (s?: string | null, delivMap?: Record<string, { delivers?: boolean | null }> | null): boolean =>
+  Boolean(s && !s.startsWith('unbekannt') && !NON_LINZ_STORES.has(s) && delivMap?.[s]?.delivers !== false)
+export function alsoText(r:{alsoAt?:string[];alsoPack?:AlsoPack[]}, delivMap?: Record<string, { delivers?: boolean | null }> | null):string[]{
+  const out:string[]=[]
+  const at=(r.alsoAt||[]).filter(s=>isLinzStore(s,delivMap))
+  if(at.length)out.push('auch bei '+at.join(', '))
   const by=new Map<string,string[]>(),own=new Set<string>()
-  for(const p of r.alsoPack||[]){const a=by.get(p.label)||[];if(p.sameStore)own.add(p.label);else if(!a.includes(p.store))a.push(p.store);by.set(p.label,a)}
-  for(const [lab,sts] of by){const pre=(lab.startsWith('einzeln')?'auch ':'auch als ')+lab
-    out.push(own.has(lab)?pre+(sts.length?` (auch bei ${sts.join(', ')})`:''):pre+' bei '+sts.join(', '))}
+  for(const p of r.alsoPack||[]){
+    if(!p.sameStore&&!isLinzStore(p.store,delivMap))continue
+    const a=by.get(p.label)||[]
+    if(p.sameStore)own.add(p.label)
+    else if(!a.includes(p.store))a.push(p.store)
+    by.set(p.label,a)
+  }
+  for(const [lab,sts] of by){
+    if(!own.has(lab)&&!sts.length)continue
+    const pre=(lab.startsWith('einzeln')?'auch ':'auch als ')+lab
+    out.push(own.has(lab)?pre+(sts.length?` (auch bei ${sts.join(', ')})`:''):pre+' bei '+sts.join(', '))
+  }
   return out}
 export type Side={id:number;name:string;brand:string;role:'veg'|'salad'|'side';img:string|null;url:string;price:number;size:number;portion:number;kcal:number;prot:number;fib:number;salt:number;cost:number;mp:string;cat:string}
 export type Data={producers:any[];companyLogos:Record<string,string>;qaStats:any;catIcon:Record<string,string>;catProt:string[];catDish:string[];topPLI:number[];topLight?:number[];topCap?:{perProvider:number;n:number;shipBox?:number};topPLIUncapped?:number[];topLightUncapped?:number[];topHealthUncapped?:number[];topPEUncapped?:number[];rows:Row[];sides:Side[];topHealth:number[];topPE:number[];stats:Record<string,any>;same:{code:string;herst:string;ort:string;ooe:boolean;ids:number[]}[];ftg:any[];combos:{main:number;veg:number;side:number|null;kcal:number;prot:number;price:number;fib:number}[];uidMap?:Record<string,number>;uidTop?:Record<string,string[]>;legacyUid?:Record<string,string>;dataVersion?:string;legacyVersions?:{file:string;versions:number;live:number}}
@@ -36,7 +52,7 @@ export type Ctx={D:Data;R:Row[];stageSel:string[];/** sensecheck 39 (4): change 
 export const AppCtx=createContext<Ctx>(null as any)
 export const useApp=()=>useContext(AppCtx)
 
-export const healthyCheap=(R:Row[],min=45)=>R.filter(r=>r.rankable&&r.eur10p!=null&&r.pstat==='live 2026'&&(r.score??0)>=min).sort((a,b)=>a.eur10p!-b.eur10p!)
+export const healthyCheap=(R:Row[],min=45)=>R.filter(r=>isRowRankable(r as any)&&r.eur10p!=null&&r.pstat==='live 2026'&&(r.score??0)>=min).sort((a,b)=>a.eur10p!-b.eur10p!)
 export type Shop={chain:string;name:string;addr:string|null;lat:number;lon:number;dist:number;walk_m?:number;walk_min?:number;gmaps:string;hours?:string}
 export type Stores={home:{addr:string;lat:number;lon:number};shops:Shop[]}
 export const STORE_LOGO:Record<string,string>={Billa:'logos/billa.png',Spar:'logos/spar.png',Hofer:'logos/hofer.png',Lidl:'logos/lidl.png',Penny:'logos/penny.png',dm:'logos/dm.png',"Denn's":'logos/denns.png','Fit to Go':'analysis/logos/fit-to-go.png',Gurkerl:'logos/gurkerl.svg',PrepMyMeal:'logos/prepmymeal.png',LiveFresh:'logos/livefresh.png',Juit:'logos/juit.svg',bofrost:'logos/bofrost.svg','every.':'logos/every-foods.svg','Löwenanteil':'logos/loewenanteil.png','Kernbeißer':'logos/kernbeisser.png',Goldblatt:'logos/goldblatt.svg','iss mich!':'logos/iss-mich.png',Alfies:'logos/alfies.svg',myProduct:'analysis/logos/myproduct.png','Biohof Achleitner':'logos/biohof-achleitner.svg',FitTaste:'logos/fittaste.png',Subway:'analysis/logos/subway.svg',NORDSEE:'analysis/logos/nordsee.svg','Nah&Frisch':'analysis/logos/nah-frisch.svg',MPreis:'analysis/logos/mpreis.svg'}

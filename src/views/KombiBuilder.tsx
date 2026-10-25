@@ -3,13 +3,32 @@ import { Card, Badge } from '../components/ui'
 import { Img, StoreLogo } from '../components/product'
 import { InfoTip } from '../components/info'
 import { fmt, useApp } from '../lib'
-type It={key:string;name:string;img:string|null;price:number;prot:number;kcal:number;salt:number;fib:number;store:string;score:number|null}
+import { isStalePrice } from '../app/meal'
+export type It={key:string;name:string;img:string|null;price:number;prot:number;kcal:number;salt:number;fib:number;store:string;score:number|null}
+const nm=(b:string|null,n:string)=>{if(!b)return n;const bl=b.toLowerCase();return n.toLowerCase().startsWith(bl.split(' ')[0])?n:`${b} ${n}`}
+export const fromRow=(r:any):It|null=>{
+  const price=r.pPor??r.price
+  const prot=r.protPor??r.protpack
+  if(!price||prot==null||r.nonfood)return null
+  const porG=r.portion??r.size??0
+  const isMultiPor=Boolean(r.portion&&r.size&&r.portion<r.size)
+  return {
+    key:'r'+r.id,
+    name:nm(r.brand,r.name)+(isMultiPor?` (Portion ${r.portion} g)`:''),
+    img:r.img,
+    price,
+    prot,
+    kcal:r.kcalPor??r.kcalpack??0,
+    salt:r.saltPor??((r.salt??0)*porG/100),
+    fib:(r.fib??0)*porG/100,
+    store:r.store,
+    score:r.score
+  }
+}
 export default function KombiBuilder(){
   const {D}=useApp(); const all=D.rows
-  const nm=(b:string|null,n:string)=>{if(!b)return n;const bl=b.toLowerCase();return n.toLowerCase().startsWith(bl.split(' ')[0])?n:`${b} ${n}`}
-  const fromRow=(r:any):It|null=>r.price&&r.protpack!=null&&!r.nonfood?{key:'r'+r.id,name:nm(r.brand,r.name),img:r.img,price:r.price,prot:r.protpack,kcal:r.kcalpack??0,salt:(r.salt??0)*(r.size??0)/100,fib:(r.fib??0)*(r.size??0)/100,store:r.store,score:r.score}:null
   const fromSide=(s:any):It=>({key:'s'+s.id,name:`${nm(s.brand,s.name)} (${s.portion} g)`,img:s.img,price:s.cost,prot:s.prot,kcal:s.kcal,salt:s.salt,fib:s.fib,store:s.store??'Billa',score:null})
-  const pool=useMemo(()=>{const by=(st:string)=>all.filter((r:any)=>r.stage===st&&!r.priceOnly).map(fromRow).filter(Boolean) as It[]
+  const pool=useMemo(()=>{const by=(st:string)=>all.filter((r:any)=>r.dupOf==null&&r.delivers_4020!==false&&!isStalePrice(r)&&r.stage===st&&!r.priceOnly).map(fromRow).filter(Boolean) as It[]
     const sd=(role:string[])=>D.sides.filter((s:any)=>role.includes(s.role)&&s.cost).map(fromSide)
     const srt=(a:It[],f:(x:It)=>number)=>a.sort((x,y)=>f(x)-f(y))
     return {prot:srt(by('prot'),x=>x.price/Math.max(x.prot,1)),side:srt([...by('side'),...sd(['side'])],x=>x.price),veg:srt([...by('veg'),...sd(['veg','salad'])],x=>x.price)}},[all,D.sides])
@@ -20,7 +39,7 @@ export default function KombiBuilder(){
   const pd=T.kcal>0?T.prot/T.kcal*100:0
   const score=Math.max(0,Math.min(100,30+Math.min(pd/10,1)*40+Math.min(T.fib/(T.kcal>0?T.kcal/100:1)/6,1)*15+5-Math.min(Math.max(T.salt/(T.kcal>0?T.kcal/100:1)-0.6,0)/1.4,1)*20))
   const L:{[k:string]:[string,string]}={prot:['🍖','Protein-Komponente'],side:['🥔','Beilage'],veg:['🥦','Gemüse/Salat']}
-  return <Card className="p-4 space-y-3"><h3 className="text-lg font-bold flex items-center gap-2">🧩 Kombi-Baukasten <InfoTip text="Kombiniert eine Protein-Komponente mit einer Beilage und Gemüse zu einer vollständigen Mahlzeit. Bei Beilagen und Gemüse aus der Billa-Datenbank zählt eine Portion, sonst die ganze Packung. Der Score ist eine Näherung auf Basis von Proteindichte, Ballaststoffen und Salz pro 100 kcal plus 5 Punkte Gemüse-Bonus."/></h3>
+  return <Card className="p-4 space-y-3"><h3 className="text-lg font-bold flex items-center gap-2">🧩 Kombi-Baukasten <InfoTip text="Kombiniert eine Protein-Komponente mit einer Beilage und Gemüse zu einer vollständigen Mahlzeit. Bei Beilagen und Gemüse zählt jeweils eine Portion. Der Score ist eine Näherung auf Basis von Proteindichte, Ballaststoffen und Salz pro 100 kcal plus 5 Punkte Gemüse-Bonus."/></h3>
     <div className="grid gap-3 md:grid-cols-3">{(['prot','side','veg'] as const).map(k=>{const cur=pick(k);return <div key={k} className="space-y-1"><div className="text-sm font-semibold">{L[k][0]} {L[k][1]} <span className="text-xs text-slate-400">({pool[k].length})</span></div>
       <select value={cur?.key} onChange={e=>setSel({...sel,[k]:e.target.value})} className="w-full rounded-lg border px-2 py-1.5 text-sm dark:bg-slate-900 dark:border-slate-700">{pool[k].map(x=><option key={x.key} value={x.key}>{fmt(x.price,2)} € · {fmt(x.prot,0)} g P · {x.name.slice(0,60)}</option>)}</select>
       {cur&&<div className="flex gap-2 items-center"><Img src={cur.img} className="h-16 w-16"/><div className="text-xs"><StoreLogo store={cur.store} size={22}/><div>{fmt(cur.price,2)} € · {fmt(cur.prot,1)} g Protein · {Math.round(cur.kcal)} kcal</div></div></div>}</div>})}</div>

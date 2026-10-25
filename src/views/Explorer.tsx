@@ -4,6 +4,7 @@ import { Button, Input, Select, Card } from '../components/ui'
 import { Gallery } from '../components/product'
 import { FilterPanel, useFilter, makePred, GANG } from '../components/FilterPanel'
 import { useApp, useHashState, cn } from '../lib'
+import { rowP100k, rowPli } from '../app/meal'
 import { LegacyFavsRestore } from '../components/LegacyFavsRestore'
 import { hiddenHits, hiddenHitsText, revealStages, FEW_HITS } from '../app/hiddenHits'
 const Grid=lazy(()=>import('./Grid'))
@@ -17,7 +18,7 @@ export default function Explorer(){
   const [fx,setFx]=useFilter()
   const konzOf=useMemo(()=>{const m:Record<string,string>={};(D.producers||[]).forEach((p:any)=>{if(p.group&&!/unverified/i.test(p.group))m[p.slug]=String(p.group).replace(/\(.*?\)/g,'').trim()});return (r:any)=>r.prodSlug?m[r.prodSlug]??null:null},[D])
   const pred=useMemo(()=>makePred(fx,{konzOf,dist}),[fx,konzOf,nearest])
-  const rows=useMemo(()=>{const qq=q.toLowerCase();return R.filter(r=>pred(r)&&!r.nonfood&&!r.store.startsWith('unbekannt')&&(fx.stage?.length?true:stageSel.includes(r.stage))&&(!st||r.store===st)&&(!pk||r.pack===pk)&&((r.protpack??0)>=+mp)&&(!fav||favs.includes(r.id))&&(dry||!r.dry)&&(po||!r.priceOnly)&&(!cats.length||cats.every(c=>r.cprot?.includes(c)||r.cdish?.includes(c)))&&(!qq||(r.name+' '+r.brand+' '+r.herst).toLowerCase().includes(qq))).sort((a,b)=>{const lo=['eur10p','price','ppk','eur100k','dist'].includes(sort);const x=sort==='dist'?dist(a):(a as any)[sort],y=sort==='dist'?dist(b):(b as any)[sort];if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;return lo?x-y:y-x})},[pred,fx,R,q,st,pk,mp,fav,favs,dry,sort,cat,po,nearest])
+  const rows=useMemo(()=>{const qq=q.toLowerCase();return R.filter(r=>pred(r)&&!r.nonfood&&!r.store.startsWith('unbekannt')&&(fx.stage?.length?true:stageSel.includes(r.stage))&&(!st||r.store===st)&&(!pk||r.pack===pk)&&((r.protpack??0)>=+mp)&&(!fav||favs.includes(r.id))&&(dry||!r.dry)&&(po||!r.priceOnly)&&(!cats.length||cats.every(c=>r.cprot?.includes(c)||r.cdish?.includes(c)))&&(!qq||(r.name+' '+r.brand+' '+r.herst).toLowerCase().includes(qq))).sort((a,b)=>{const lo=['eur10p','price','ppk','eur100k','dist'].includes(sort);const getV=(r:any)=>sort==='dist'?dist(r):sort==='pli'?rowPli(r):sort==='p100k'?rowP100k(r):r[sort];const x=getV(a),y=getV(b);if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;return lo?x-y:y-x})},[pred,fx,R,q,st,pk,mp,fav,favs,dry,sort,cat,po,nearest])
   // sensecheck 39 (4) / 40 (6): a search with 0 or few visible hits whose other matches are only hidden by the stage selection (StageBar default
   //  Komplettmahlzeit + Eintopf: Beilagen/Zutaten/Komponenten off), 'Trockenprodukte' or '„nur Preis“' gets a hint 'X Treffer in ausgeblendeten
   //  Beilagen/… – anzeigen' that lifts exactly those hiding filters (user filters – store, pack, protein, favourites, categories, filter panel – stay)
