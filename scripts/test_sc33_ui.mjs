@@ -221,15 +221,23 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   const rejFull = D.rows.filter(r => r.rankable && !M.isFullMeal(r))
   assert.deepEqual(rejReady.map(r => r.id), [], "0 rankable/rankableLight rows rejected by isReadyMeal")
   assert.deepEqual(rejFull.map(r => r.id), [], "0 rankable rows rejected by isFullMeal")
-  for (const id of [530, 170, 877, 1031]) {
+  for (const id of [530, 1031, 51, 52, 860, 1091, 2948]) {
     const r = byId.get(id)
     assert.ok(r && !M.passesRankMin(r) && !M.passesLightRank(r), `#${id} excluded from passesRankMin/passesLightRank`)
     assert.ok(!M.passesRankMin({ ...r, rankable: undefined }) && !M.passesLightRank({ ...r, rankableLight: undefined }), `#${id} excluded by structural rules too`)
   }
+  for (const id of [877, 2820]) {
+    const r = byId.get(id)
+    assert.ok(r && r.rankable === true && M.passesRankMin(r), `#${id} rescued into rankable & passesRankMin (SC66 P1.2)`)
+  }
+  for (const id of [170, 639, 1007, 2663, 3206, 1255, 606, 3136]) {
+    const r = byId.get(id)
+    assert.ok(r && r.rankableLight === true && M.passesLightRank(r), `#${id} rescued into rankableLight & passesLightRank (SC66 P1.1)`)
+  }
   const rankDiff = D.rows.filter(r => M.passesRankMin(r) !== Boolean(r.rankable))
-  const lightDiff = D.rows.filter(r => M.passesLightRank(r) !== Boolean(r.rankableLight && !r.incomplete && !r.sold_out && !r.price_stale && (M.kcalPerPortion(r) ?? 0) >= 240 && (M.protPerPortion(r) ?? 0) >= 11))
-  assert.deepEqual(rankDiff.map(r => r.id), [], "passesRankMin 100% synced with r.rankable")
-  assert.deepEqual(lightDiff.map(r => r.id), [], "passesLightRank 100% synced with pipeline rankableLight (>=240 kcal, >=11g prot for explicit flag, not incomplete/sold_out/stale)")
+  const lightDiff = D.rows.filter(r => M.passesLightRank(r) !== Boolean(r.rankableLight))
+  assert.deepEqual(rankDiff.map(r => r.id), [], "passesRankMin 100% synced with r.rankable (0 diff)")
+  assert.deepEqual(lightDiff.map(r => r.id), [], "passesLightRank 100% synced with r.rankableLight (0 diff)")
   const onlSrc = readFileSync(new URL("../src/views/Online.tsx", import.meta.url), "utf8")
   assert.ok(/isReadyMeal\(r\)/.test(onlSrc) && /online-ready-toggle/.test(onlSrc), "Online.tsx filters by isReadyMeal(r) by default with toggle")
   for (const id of [3941, 3917, 3923, 3960]) {
@@ -238,7 +246,7 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   }
   const rkCnt = D.rows.filter(r => M.passesRankMin(r)).length
   const ltCnt = D.rows.filter(r => M.passesLightRank(r)).length
-  console.log(`[sc63-p1a-meal-sync] OK: 0 rejected rankable/rankableLight in isReadyMeal/isFullMeal (#2825,#2200,#2909,#3085,#2938 all true), #530/#170/#877/#1031 excluded, passesRankMin=${rkCnt} & passesLightRank=${ltCnt} synced, Online.tsx excludes #3941/#3917/#3923/#3960`)
+  console.log(`[sc63-p1a-meal-sync] OK: 0 rejected rankable/rankableLight in isReadyMeal/isFullMeal, #530/#1031 & 5 <11gP rows excluded, #877/#2820 & 32 light_meal rows rescued, passesRankMin=${rkCnt}===rankable & passesLightRank=${ltCnt}===rankableLight (0 diff)`)
 }
 
 // SC65 UI: breakdown(r) in src/components/health.tsx uses r.score_parts & r.score; NONMEAL rescues #2885, #1492, #1785
@@ -255,5 +263,5 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
       assert.ok(r.score_parts && typeof r.score_parts.base === "number", `#${r.id} has score_parts`)
     }
   }
-  console.log("[sc65-ui-sync] OK: health.tsx breakdown(r) synced with r.score_parts & r.score (3155 scored rows), #2885/#1492/#1785 pass isReadyMeal, passesLightRank=119")
+  console.log("[sc65-ui-sync] OK: health.tsx breakdown(r) synced with r.score_parts & r.score (3155 scored rows), #2885/#1492/#1785 pass isReadyMeal, passesLightRank=148")
 }
