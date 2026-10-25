@@ -1,6 +1,6 @@
 import { ChartContainer } from './ui/chart'
 import { useEffect, useState } from 'react'
-import { Beef, Wheat, Carrot, Droplets, Factory, Leaf, Info, FlaskConical, ShieldCheck, Sprout, MapPin } from 'lucide-react'
+import { Beef, Wheat, Carrot, Droplets, Factory, Candy, Leaf, Info, FlaskConical, ShieldCheck, Sprout, MapPin } from 'lucide-react'
 import { RadarChart, PolarGrid, PolarAngleAxis, Radar, Legend, Tooltip } from 'recharts'
 import { InfoTip, Flag } from './info'
 import { Badge } from './ui'
@@ -13,6 +13,7 @@ export const HK:Record<string,string>={
  veg:'+5 Punkte, wenn Gemüse oder Hülsenfrüchte im Namen stehen (z. B. Linsen, Bohnen, Chili, Curry).',
  salt:'Salz-Abzug: ab 0,6 g pro 100 g, maximal −20 Punkte bei 2 g.',
  sat:'Abzug für gesättigte Fettsäuren: ab 1,5 g pro 100 g, maximal −15 Punkte bei 6 g.',
+ sugar:'Zucker-Abzug: −2 Punkte je Zuckerstufe pro 100 g (Nutri-Score-Stufen ab 3,4 g), maximal −20 Punkte ab 34 g.',
  proc:'Verarbeitungs-Abzug (NOVA-ähnlich, aus der Verpackungsart geschätzt): Dose, Trocken/Instant und Pouch −10, Kühlregal, TK und Glas −5, Sous-vide 0.',
  tl:'Ampel nach den UK-FSA-Grenzwerten pro 100 g. Grün: Salz ≤ 0,3 g, Zucker ≤ 5 g, gesättigte Fette ≤ 1,5 g, Fett ≤ 3 g. Rot: Salz > 1,5 g, Zucker > 22,5 g, ges. Fette > 5 g, Fett > 17,5 g. % RI = Anteil an der Referenzmenge für Erwachsene pro Portion (Salz 6 g, Zucker 90 g, ges. Fett 20 g, Fett 70 g, Energie 2000 kcal, Protein 50 g).',
  radar:'Gericht im Vergleich zum Median seiner Fertigstufe. Alle Achsen sind auf 0–100 normiert, außen ist immer besser: weniger Salz, Zucker und gesättigte Fette gelten als besser.',
@@ -52,7 +53,7 @@ export function breakdown(r:Row):BD|null{
   const missing=[r.salt==null&&'Salz',r.sat==null&&'ges. Fett',r.fib==null&&'Ballaststoffe'].filter(Boolean) as string[]
   return {base:30,prot,fib,veg,salt,sat,sugar:0,proc,total:r.score!=null?r.score:Math.max(0,Math.min(100,raw)),missing}
 }
-export const PARTS:[keyof BD,string,any,string,string][]=[['prot','Protein',Beef,'#059669','prot'],['fib','Ballaststoffe',Wheat,'#65a30d','fib'],['veg','Gemüse/Hülsenfr.',Carrot,'#84cc16','veg'],['salt','Salz',Droplets,'#dc2626','salt'],['sat','Ges. Fette',Droplets,'#f97316','sat'],['proc','Verarbeitung',Factory,'#a855f7','proc']]
+export const PARTS:[keyof BD,string,any,string,string][]=[['prot','Protein',Beef,'#059669','prot'],['fib','Ballaststoffe',Wheat,'#65a30d','fib'],['veg','Gemüse/Hülsenfr.',Carrot,'#84cc16','veg'],['salt','Salz',Droplets,'#dc2626','salt'],['sat','Ges. Fette',Droplets,'#f97316','sat'],['sugar','Zucker',Candy,'#ec4899','sugar'],['proc','Verarbeitung',Factory,'#a855f7','proc']]
 export function ScoreWaterfall({r,compact}:{r:Row;compact?:boolean}){
   const b=breakdown(r)
   if(!b) return <Missing text="Kein Health-Score: Protein oder Energie fehlen in der Quelle."/>
