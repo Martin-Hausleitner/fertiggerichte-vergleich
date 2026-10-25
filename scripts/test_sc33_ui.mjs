@@ -381,13 +381,25 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   assert.equal(dennsRanked.length, 0, "Denn's has 0 rankable dishes after SC72 P0.1 (#2206 broth) & P0.2 (#2205 falafel component)")
   const pennyRanked = visRows.filter(r => r.store === "Penny" && M.isReadyMeal(r) && S.isRowRankable(r))
   const lidlRanked = visRows.filter(r => r.store === "Lidl" && M.isReadyMeal(r) && S.isRowRankable(r))
-  assert.equal(pennyRanked.length, 2, "Penny has 2 rankable dishes in MeineShops ranking (#2236 + #1537)")
-  assert.equal(lidlRanked.length, 1, "Lidl has 1 rankable dish in MeineShops ranking (#1212)")
+  assert.equal(pennyRanked.length, 1, "Penny has 1 verified rankable dish in MeineShops ranking (#2236 Podravka Rindergulasch)")
+  assert.equal(lidlRanked.length, 0, "Lidl has 0 rankable dishes after SC73 P0 (#1212 no online price on lidl.at)")
   const byId71 = new Map(D.rows.map(r => [r.id, r]))
-  for (const id of [2985, 2991, 2995, 2996, 2935, 3005, 2236, 1537, 1212]) {
+  for (const id of [2985, 2991, 2995, 2996, 2935, 3005, 2236]) {
     const r = byId71.get(id)
     assert.ok(r && r.rankable === true && M.passesRankMin(r), `#${id} rescued into rankable & passesRankMin (SC71)`)
   }
+  // SC73 P0 & P3 assertions:
+  const r2236 = byId71.get(2236)
+  const r1212 = byId71.get(1212)
+  const r1537 = byId71.get(1537)
+  const r1504 = byId71.get(1504)
+  const r1211 = byId71.get(1211)
+  assert.ok(r2236 && r2236.stage === "stew" && r2236.fib == null && r2236.nova_source === "ingredients_markers", "#2236 Podravka Rindergulasch stage=stew, fib=null, nova_source=ingredients_markers (SC73)")
+  assert.ok(r1212 && r1212.price == null && r1212.fib == null && r1212.veg_pct == null && r1212.rankable === false, "#1212 Lidl Lasagne no hardcoded price/fib/veg_pct (SC73 P0)")
+  assert.ok(r1537 && r1537.ean == null && r1537.kcal == null && r1537.nova_source !== "estimate" && r1537.rankable === false, "#1537 Penny Condeli Lasagne unverified German EAN removed (SC73 P0)")
+  assert.ok(r1504 && r1504.ean == null && r1504.sat == null && r1504.stage === "prot" && r1504.component === true && r1504.rankable === false, "#1504 Lidl Crispy Chicken Burger classified as stage=prot component (SC73 P0)")
+  assert.ok(r1211 && r1211.sat == null && r1211.salt == null && r1211.incomplete === true && r1211.rankable === false, "#1211 Lidl Mac & Cheese incomplete=true (SC73 P0)")
+  assert.equal(D.rows.filter(r => r.nova_source === "estimate").length, 0, "0 rows with nova_source='estimate' across all rows (SC73 P0)")
   for (const id of [3007, 3010, 3011]) {
     const r = byId71.get(id)
     assert.ok(r && r.rankableLight === true && M.passesLightRank(r), `#${id} rescued into rankableLight & passesLightRank (SC71)`)
