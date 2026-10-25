@@ -1,6 +1,6 @@
 # 🏭 Hersteller, Nährwerte & Preis-Fallen — Linz (4020)
 
-*Stand 25.10.2026 · Datenbasis: **1344 Hauptmahlzeiten & Eintöpfe** (`meal_rows`) sowie **88 Produkte** mit aufgelöstem Herstellerbetrieb.*
+*Stand 25.10.2026 · Datenbasis: **1343 Hauptmahlzeiten & Eintöpfe** (`meal_rows`) sowie **88 Produkte** mit aufgelöstem Herstellerbetrieb.*
 
 ## 1. Gleiche Fabrik, verschiedener Preis (`same_factory`)
 
@@ -11,7 +11,7 @@ Viele Eigenmarken- und Marken-Fertiggerichte stammen aus denselben österreichis
 | Herkunft | Produkte (*n*) | Median €/kg | Median Protein/100 g | Median Salz/100 g | Median Health Score | Median Protein/€ |
 |---|---:|---:|---:|---:|---:|---:|
 | **🦁 Oberösterreich** | 47 | 22.70 €/kg | 10.0 g | 1.55 g | **59.9** | 3.75 g/€ |
-| **🌍 Alle Nicht-OÖ-Produkte** | 1297 | 12.09 €/kg | 6.1 g | 1.00 g | **34.0** | 4.30 g/€ |
+| **🌍 Alle Nicht-OÖ-Produkte** | 1296 | 12.09 €/kg | 6.0 g | 1.00 g | **34.0** | 4.30 g/€ |
 
 ## 3. Preis- & Nährwert-Fallen (bereinigt)
 
