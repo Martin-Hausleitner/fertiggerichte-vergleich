@@ -198,7 +198,13 @@ const heuteTxt = await page.locator('body').innerText()
 assert.ok(!heuteTxt.includes('Hofstädter Fair zum Tier Putengeschnetzeltes') && !heuteTxt.includes('Iglo Green Cuisine Faschiertes vegan'), '#1323 and #3362 excluded from #tab=heute')
 console.log('[e2e sc62-p1a heute] OK: #1323 Putengeschnetzeltes and #3362 Iglo Faschiertes vegan excluded from #tab=heute')
 assert.ok(!heuteTxt.includes("Clever Lasagne Bolognese") && !heuteTxt.includes("S-BUDGET Gulaschsuppe"), "#530 1kg Lasagne multi_portion and #170 excluded from #tab=heute")
-await page.goto(base + "#tab=online"); await page.reload()
+if (await page.locator("[data-testid=goto-online]").count() > 0) {
+  await page.click("[data-testid=goto-online]")
+  await page.waitForSelector("[data-testid=online-ready-toggle]", { timeout: 30000 })
+  assert.ok(page.url().includes("#tab=online"), "goto-online switches hash and view to #tab=online")
+} else {
+  await page.goto(base + "#tab=online"); await page.reload()
+}
 await page.waitForSelector("[data-testid=online-ready-toggle]", { timeout: 30000 })
 const onlTxt = await page.locator("body").innerText()
 assert.ok(!onlTxt.includes("Bertagni Tagliatelle (frische Pasta)") && !onlTxt.includes("Wiesbauer Gourmet Original Wiener Wies") && !onlTxt.includes("Prestige Back-Camembert") && !onlTxt.includes("Neni Tahina Pure"), "#3941/#3917/#3923/#3960 excluded by default on #tab=online")

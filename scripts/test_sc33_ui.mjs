@@ -240,3 +240,20 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   const ltCnt = D.rows.filter(r => M.passesLightRank(r)).length
   console.log(`[sc63-p1a-meal-sync] OK: 0 rejected rankable/rankableLight in isReadyMeal/isFullMeal (#2825,#2200,#2909,#3085,#2938 all true), #530/#170/#877/#1031 excluded, passesRankMin=${rkCnt} & passesLightRank=${ltCnt} synced, Online.tsx excludes #3941/#3917/#3923/#3960`)
 }
+
+// SC65 UI: breakdown(r) in src/components/health.tsx uses r.score_parts & r.score; NONMEAL rescues #2885, #1492, #1785
+{
+  const byId = new Map(D.rows.map(r => [r.id, r]))
+  for (const id of [2885, 1492, 1785]) {
+    const r = byId.get(id)
+    assert.ok(r && M.isReadyMeal(r), `#${id} (${r?.name}) must pass isReadyMeal`)
+  }
+  const hSrc = readFileSync(new URL("../src/components/health.tsx", import.meta.url), "utf8")
+  assert.ok(/r\.score_parts/.test(hSrc) && /sp\.portion_salt/.test(hSrc), "health.tsx breakdown(r) uses r.score_parts & portion adjustments")
+  for (const r of D.rows) {
+    if (r.score != null) {
+      assert.ok(r.score_parts && typeof r.score_parts.base === "number", `#${r.id} has score_parts`)
+    }
+  }
+  console.log("[sc65-ui-sync] OK: health.tsx breakdown(r) synced with r.score_parts & r.score (3155 scored rows), #2885/#1492/#1785 pass isReadyMeal, passesLightRank=119")
+}

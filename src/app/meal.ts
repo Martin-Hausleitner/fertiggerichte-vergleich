@@ -13,7 +13,7 @@ type Row = MealRow
 export const MEAL_RULES = { kcalMin: 400, kcalMax: 900, proteinMin: 20, multiPortionMinG: 800, splitPortionG: 400 } as const
 
 // Client-seitige Schutzregeln (Sense-Check 1+2, 2026-10-13; SC63 P1a Sync). Ersetzt nicht die Korrektur in score.py (HCB).
-const NONMEAL = /^lasagne (hartweizen)?$|lasagneblätter|lasagne ?teig|suppe-(abc|gerstl|sternderl|hörnchen)|suppennudeln|suppeneinlage|backerbsen|suppenpulver|topfencreme|mousse|pudding|cheesecake|strudel|dessert|kaiserschmarrn|milchreis|götterspeise|jogurella|joghurt|grie(ß|ss)brei|panna cotta|tiramisu|kompott|\bcreme\b|cr[eè]me br[uû]l[eé]e|lavakuchen|schokokuchen|brownie|muffin|tarte au|back[- ]?(camembert|emmentaler|gouda)/i
+const NONMEAL = /^lasagne (hartweizen)?$|lasagneblätter|lasagne ?teig|suppe-(abc|gerstl|sternderl|hörnchen)|suppennudeln|suppeneinlage|backerbsen|suppenpulver|topfencreme|mousse|pudding|cheesecake|strudel|dessert|kaiserschmarrn|milchreis|götterspeise|jogurella|joghurt(?!-[a-zäöüß-]*huhn)|grie(ß|ss)brei|panna cotta|tiramisu|kompott|\bcreme\b(?! spinaci)|cr[eè]me br[uû]l[eé]e|lavakuchen|schokokuchen|brownie|muffin|tarte au|back[- ]?(camembert|emmentaler|gouda)/i
 export const CONDIMENT = /pesto|\bsugo\b|\btahina?\b|sesampaste/i
 export const NOT_CONDIMENT = /intermezzo|baguette|bruschetta|gnocchi|tortellini|tortelloni|ravioli|rigatoni|spaghetti|penne|pasta|lasagne|chicken|huhn|h[äa]hnchen|lachsfilet|salat|bowl|wrap|falafel/i
 export const PLAIN_VEG = /^(bio )?(gem[üu]se|spinat|rotkraut|blaukraut|sauerkraut|erbsen|bohnen|linsen|mais|karotten|brokkoli|blumenkohl|kohlsprossen)\b/i

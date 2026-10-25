@@ -23,8 +23,25 @@ export const HK:Record<string,string>={
 const NOVA:Record<string,number>={'Dose/Konserve':4,'Trocken/Instant':4,'Beutel ungekühlt (Retort-Pouch)':4,'Tiefkühl (TK)':3.5,'Kühlregal (Menüschale/frisch)':3.5,'Glas':3.5,'Sous-vide (vakuum)':3,'Unklar (keine Lagerangabe)':3.5}
 const RAW=/ripperl|spieß|spiess|filet|marinier|roh|natur\b/i
 const VEG=/gemüse|linsen|bohnen|kichererb|spinat|brokkoli|curry|chili|erbsen|paprika|kürbis/i
-export type BD={base:number;prot:number;fib:number;veg:number;salt:number;sat:number;proc:number;total:number;missing:string[]}
+const R1=(n:number)=>Math.round(n*10)/10
+export type BD={base:number;prot:number;fib:number;veg:number;salt:number;sat:number;sugar?:number;proc:number;total:number;missing:string[]}
 export function breakdown(r:Row):BD|null{
+  if(r.score==null&&(r.p100==null||r.kcal==null||r.kcal<=0)) return null
+  const sp=r.score_parts
+  if(sp){
+    const base=R1(sp.base??30)
+    const prot=R1((sp.protein??0)+(sp.portion_protein??0))
+    const fib=R1(sp.fiber??0)
+    const veg=R1(sp.veg??0)
+    const salt=R1((sp.salt??0)+(sp.portion_salt??0))
+    const sat=R1((sp.satfat??0)+(sp.portion_satfat??0))
+    const sugar=R1(sp.sugar??0)
+    const proc=R1(sp.nova??0)
+    const raw=base+prot+fib+veg+salt+sat+sugar+proc
+    const total=r.score!=null?r.score:R1(Math.max(0,Math.min(100,raw)))
+    const missing=[r.salt==null&&'Salz',r.sat==null&&'ges. Fett',r.fib==null&&'Ballaststoffe'].filter(Boolean) as string[]
+    return {base,prot,fib,veg,salt,sat,sugar,proc,total,missing}
+  }
   if(r.p100==null||r.kcal==null||r.kcal<=0) return null
   const pd=r.p100/r.kcal*100, prot=Math.min(pd/10,1)*40
   const salt=r.salt==null?0:-Math.min(Math.max(r.salt-0.6,0)/1.4,1)*20
@@ -33,7 +50,7 @@ export function breakdown(r:Row):BD|null{
   let nova=NOVA[r.pack]??3.5; if(RAW.test(r.name)&&r.pack!=='Dose/Konserve') nova=Math.min(nova,3)
   const proc=-(nova-3)*10, raw=30+prot+salt+sat+fib+veg+proc
   const missing=[r.salt==null&&'Salz',r.sat==null&&'ges. Fett',r.fib==null&&'Ballaststoffe'].filter(Boolean) as string[]
-  return {base:30,prot,fib,veg,salt,sat,proc,total:Math.max(0,Math.min(100,raw)),missing}
+  return {base:30,prot,fib,veg,salt,sat,sugar:0,proc,total:r.score!=null?r.score:Math.max(0,Math.min(100,raw)),missing}
 }
 export const PARTS:[keyof BD,string,any,string,string][]=[['prot','Protein',Beef,'#059669','prot'],['fib','Ballaststoffe',Wheat,'#65a30d','fib'],['veg','Gemüse/Hülsenfr.',Carrot,'#84cc16','veg'],['salt','Salz',Droplets,'#dc2626','salt'],['sat','Ges. Fette',Droplets,'#f97316','sat'],['proc','Verarbeitung',Factory,'#a855f7','proc']]
 export function ScoreWaterfall({r,compact}:{r:Row;compact?:boolean}){
