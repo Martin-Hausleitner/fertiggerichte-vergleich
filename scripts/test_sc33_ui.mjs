@@ -377,7 +377,7 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   const hoferRanked = visRows.filter(r => r.store === "Hofer" && M.isReadyMeal(r) && S.isRowRankable(r))
   const dennsRanked = visRows.filter(r => r.store === "Denn's" && M.isReadyMeal(r) && S.isRowRankable(r))
   assert.equal(dmRanked.length, 8, "dm has 8 rankable dishes in MeineShops ranking")
-  assert.equal(hoferRanked.length, 1, "Hofer has 1 rankable dish in MeineShops ranking")
+  assert.equal(hoferRanked.length, 2, "Hofer has 2 rankable dishes in MeineShops ranking (#1180 Kärntner Kasnudeln + #861 Udon Nudelschüssel)")
   assert.equal(dennsRanked.length, 0, "Denn's has 0 rankable dishes after SC72 P0.1 (#2206 broth) & P0.2 (#2205 falafel component)")
   const pennyRanked = visRows.filter(r => r.store === "Penny" && M.isReadyMeal(r) && S.isRowRankable(r))
   const lidlRanked = visRows.filter(r => r.store === "Lidl" && M.isReadyMeal(r) && S.isRowRankable(r))
@@ -664,5 +664,17 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   assert.equal(M.gtinOf({ ean: "2006050126619", psrc: "preisrunter.at 2026-10-13" }), "2006050126619", "gtinOf reads r.ean directly")
   assert.equal(M.gtinOf({ ean: "426065993017", psrc: null }), "426065993017", "gtinOf accepts 12-digit EAN/UPC")
   assert.equal(M.gtinOf({ psrc: "https://world.openfoodfacts.org/product/426065993017" }), "426065993017", "gtinOf parses /product/<digits> from psrc")
-  console.log("[sc75-ui-fixes] OK: P1.1 offFor by EAN & OffPanel fallback, P1.2 Detail key={detId} & ZoomImage reset, P2.1 Heute mode/PLI/pack-price, P2.2 Viva Billa petrol badge & non-petrol nearest preference, P3.3 gtinOf(r.ean)")
+  // P3.1, P3.2 & P3.3 data assertions:
+  const byId75 = new Map(D.rows.map(r => [r.id, r]))
+  const r1180 = byId75.get(1180)
+  const r801 = byId75.get(801)
+  const r635 = byId75.get(635)
+  assert.ok(r1180 && r1180.sugar === 1.2 && r1180.portion === 370 && r1180.rankable === true && M.passesRankMin(r1180), "#1180 Hofer Kärntner Kasnudeln sugar=1.2, portion=370, rankable=true (SC75 P3.1)")
+  assert.ok(r801 && r801.dupOf === 1180, "#801 Hofer Kärntner Kasnudeln dupOf=1180 (SC75 P3.1)")
+  assert.ok(r635 && r635.ppk === 12.83 && r635.name === "Omis Schmankerl Hühnerpfandl mit Spätzle", "#635 ppk=12.83 & normalized name (SC75 P3.2)")
+  assert.equal(D.rows.filter(r => /\s{2,}/.test(r.name || "")).length, 0, "0 rows with multiple whitespace in name (SC75 P3.2)")
+  for (const [losId, winId] of [[806, 691], [804, 1217], [821, 1425], [1356, 1218], [1357, 1220], [59, 60], [287, 286], [346, 363]]) {
+    assert.equal(byId75.get(losId)?.dupOf, winId, `#${losId} dupOf #${winId} (SC75 P3.3)`)
+  }
+  console.log("[sc75-ui-fixes] OK: P1.1 offFor by EAN & OffPanel fallback, P1.2 Detail key={detId} & ZoomImage reset, P2.1 Heute mode/PLI/pack-price, P2.2 Viva Billa petrol badge & non-petrol nearest preference, P3.1 #1180 Hofer Kasnudeln rankable, P3.2 ppk/whitespace, P3.3 gtinOf(r.ean) & 8 GTIN dupOf pairs")
 }
