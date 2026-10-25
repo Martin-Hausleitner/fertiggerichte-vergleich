@@ -101,11 +101,12 @@ export function mergeLinzStores(
         ex.lat = cand.lat
         ex.lon = cand.lon
       }
+      // SC74 P2.1: Gehzeit immer an die kanonische (nähere) Distanz koppeln, nie unabhängig nach unten überschreiben.
       if ((cand.walk_m ?? cand.dist) < (ex.walk_m ?? ex.dist)) {
         ex.walk_m = cand.walk_m ?? cand.dist
-      }
-      if ((cand.walk_min ?? estWalkMin(cand.dist)) < (ex.walk_min ?? estWalkMin(ex.dist))) {
-        ex.walk_min = cand.walk_min ?? estWalkMin(cand.dist)
+        ex.walk_min = cand.walk_min ?? estWalkMin(ex.walk_m)
+      } else if (ex.walk_min == null) {
+        ex.walk_min = estWalkMin(ex.walk_m ?? ex.dist)
       }
       return
     }
@@ -272,7 +273,7 @@ export function storeRankableCounts(rows: (MealRow & { store: string; dupOf?: nu
 const TYPE_DE: Record<string, string> = { chain: 'Supermarkt', 'ethnic/local': 'Nahversorger', bakery: 'Bäckerei', deli: 'Feinkost', butcher: 'Fleischerei', kiosk: 'Kiosk', greengrocer: 'Obst & Gemüse', chemist: 'Drogerie', 'petrol-station shop': 'Tankstellenshop', 'to-go chain': 'To-go-Kette', 'meal-prep': 'Meal-Prep', shop: 'Geschäft' }
 export const typeLabel = (t: string | null) => t ? TYPE_DE[t] ?? t : 'Geschäft'
 /** Gehzeit geschätzt: Luftlinie × 1,3 bei 4,8 km/h → immer mit „~“ anzeigen. */
-export const estWalkMin = (m: number) => Math.max(1, Math.round(m * 1.3 / 80))
+export const estWalkMin = (m: number) => Math.max(1, Math.ceil(m * 1.3 / 80)) // SC74 P2.1: ceil wie stores_linz_walk.json
 
 /** SC73 P1.2: Dedupliziert NearShop-Einträge derselben Kette im Umkreis < 60 m, behält kürzere Distanz/Gehzeit und reichert Straßenadressen an. */
 export function dedupeNearShops(rawList: NearShop[], baseShops?: Shop[] | null): NearShop[] {
@@ -286,8 +287,7 @@ export function dedupeNearShops(rawList: NearShop[], baseShops?: Shop[] | null):
     if (ex) {
       if (!ex.addr && addr) ex.addr = addr
       if (!ex.hours && hours) ex.hours = hours
-      if (cand.d < ex.d) { ex.d = cand.d; ex.dist = cand.dist }
-      if (cand.walkMin < ex.walkMin) ex.walkMin = cand.walkMin
+      if (cand.d < ex.d) { ex.d = cand.d; ex.dist = cand.dist; ex.walkMin = cand.walkMin } // SC74 P2.1: walkMin folgt der näheren Distanz
       if (cand.id && cand.id !== ex.id) ex.altIds = [...(ex.altIds ?? []), cand.id]
       continue
     }
