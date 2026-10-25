@@ -171,7 +171,7 @@ const completeness = (r: object) => Object.values(r).filter(v => v != null && v 
 /** Markiert Zeilen mit gleicher GTIN im selben Laden: die vollständigste bleibt, die anderen bekommen dupOf (Index bleibt stabil für topPLI/topLight). */
 export function dedupeGtin<T extends { id?: number; store: string; ean?: string | number | null; psrc?: string | null; dupOf?: number }>(rows: T[]): (T & { dupOf?: number })[] {
   const best = new Map<string, T>()
-  for (const r of rows) { const g = gtinOf(r); if (!g) continue; const k = g + '|' + r.store, o = best.get(k); if (!o || completeness(r) > completeness(o)) best.set(k, r) }
+  for (const r of rows) { const g = gtinOf(r); if (!g) continue; const k = g + '|' + r.store, o = best.get(k); if (!o || ((r.dupOf == null ? 1 : 0) - (o.dupOf == null ? 1 : 0)) > 0 || (r.dupOf == null === (o.dupOf == null) && completeness(r) > completeness(o))) best.set(k, r) }
   return rows.map(r => { const g = gtinOf(r), b = g ? best.get(g + '|' + r.store) : undefined; return b && b !== r ? { ...r, dupOf: r.dupOf ?? b.id } : r })
 }
 
