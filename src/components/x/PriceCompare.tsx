@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, Badge, Input
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import { BrandLogo, StoreLogo, ZoomImage } from '@/components/product'
 import { fmt, useApp, type Row } from '@/lib'
+import { isReadyMeal, isStalePrice } from '@/app/meal'
 
 /** Gleiches Produkt in mehreren Läden: gruppiert nach Marke + Namens-Tokens + Packungsgröße (±10 g), zeigt günstigsten Laden und Ersparnis. */
 const STOP = new Set('tiefgekühlt tk bio der die das mit und in im nach art pizza g kg stk stück 1er'.split(' '))
@@ -17,7 +18,7 @@ export function PriceComparePanel() {
   const groups = useMemo(() => {
     const m = new Map<string, Row[]>()
     for (const r of R) {
-      if (r.price == null || !r.size || r.nonfood || r.store.startsWith('unbekannt')) continue
+      if (r.price == null || r.price <= 0 || !r.size || r.nonfood || r.store.startsWith('unbekannt') || r.delivers_4020 === false || r.pstat === 'Preis veraltet' || isStalePrice(r as any) || !isReadyMeal(r as any)) continue
       const k = `${(r.brandN || r.brand || '').toLowerCase()}|${[...new Set(tokens(r.name))].join(' ')}|${Math.round(r.size / 10)}`
       const a = m.get(k); if (a) a.push(r); else m.set(k, [r])
     }
@@ -39,7 +40,7 @@ export function PriceComparePanel() {
       .sort((a, b) => sort === 'pct' ? b.pct - a.pct : sort === 'eur' ? b.save - a.save : b.rows.length - a.rows.length).slice(0, 12)
   }, [groups, q, sort])
   const wins = useMemo(() => { const c = new Map<string, number>(); for (const g of groups) if (g.save > 0) c.set(g.rows[0].store, (c.get(g.rows[0].store) ?? 0) + 1); return [...c].sort((a, b) => b[1] - a[1]) }, [groups])
-  return <Card className="min-w-0 overflow-hidden shadow-none">
+  return <Card className="min-w-0 overflow-hidden shadow-none" data-testid="price-compare">
     <CardHeader className="pb-2">
       <CardTitle className="flex items-center gap-2 text-base"><Scale className="size-4 text-sky-600" />Gleiches Produkt – wo am günstigsten?</CardTitle>
       <CardDescription>{groups.length} Produkte in mehreren Läden (gleiche Marke, gleicher Name, gleiche Packungsgröße) · am öftesten am günstigsten: {wins.slice(0, 4).map(([s, n]) => `${s} ${n}×`).join(' · ') || '–'}</CardDescription>

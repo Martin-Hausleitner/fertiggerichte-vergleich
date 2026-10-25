@@ -728,5 +728,77 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   assert.ok(sim1180.length === 4 && sim1180[0].id === 621 && sim1180.every(x => M.LINZ_LOCAL_STORES.has(x.store)), "#1180 healthierAlternatives prioritizes #621 Omis Kasnudeln (Billa) and Linz local stores over PrepMyMeal")
   const detailSrc = readFileSync(new URL("../src/views/Detail.tsx", import.meta.url), "utf8")
   assert.ok(detailSrc.includes("healthierAlternatives(") && detailSrc.includes("fmt(x.price,2)"), "Detail.tsx uses healthierAlternatives and shows price on alternative cards")
-  console.log("[sc76-ui-fixes] OK: P1.1 HoferTop30 fallback cards & allFood, P1.2 Profile bestProteinPerEuro ready meals only, P2.1 rowPli & isRowRankable across 5 views + App.tsx, P2.2 Detail healthierAlternatives Linz priority + price")
+  // P3.1: public/analysis/health_off.json >= 880 unique EANs & P3.1 Linz meals covered
+  const healthOff76 = JSON.parse(readFileSync(new URL("../public/analysis/health_off.json", import.meta.url), "utf8"))
+  const healthOffItems76 = Array.isArray(healthOff76) ? healthOff76 : (healthOff76.items || [])
+  const healthOffEans76 = new Set(healthOffItems76.map(x => String(x.ean || "")).filter(Boolean))
+  assert.ok(healthOffItems76.length >= 1000 && healthOffEans76.size >= 880, "health_off.json covers >= 880 unique EANs (SC76 P3.1)")
+  const byId76 = new Map(D.rows.map(r => [r.id, r]))
+  for (const id of [453, 2262, 1255, 1256, 1257, 1258, 1259, 1268, 1277, 1278, 1947, 2417, 3233, 3236]) {
+    const r = byId76.get(id)
+    assert.ok(r && Array.isArray(r.additives) && healthOffEans76.has(String(r.ean)), "#" + id + " in health_off.json with additives list (SC76 P3.1)")
+  }
+  assert.equal(byId76.get(880)?.name, "Rana Teriyaki Style Noodles Hühnchen", "#880 Noodles typo fixed (SC76 P3.2)")
+  // P3.2: 0 ranked EAN meals with nova==null & #2363 rank_excluded_reason 1 decimal place
+  for (const id of [861, 880, 1162, 1947, 2257, 2335, 2336, 2417, 2450, 2663, 3140, 3143, 3144, 3145, 3157, 3206, 3207, 3208, 3240]) {
+    const r = byId76.get(id)
+    assert.ok(r && (r.nova === 3 || r.nova === 4) && (r.nova_source === "off" || r.nova_source === "ingredients_markers") && r.ing, "#" + id + " has verified nova & ing (SC76 P3.2)")
+  }
+  assert.equal(D.rows.filter(r => r.dupOf == null && (r.rankable || r.rankableLight) && r.ean && r.nova == null).length, 0, "0 ranked EAN meals have nova==null (SC76 P3.2)")
+  const r2363 = byId76.get(2363)
+  assert.ok(r2363 && String(r2363.rank_excluded_reason || "").includes("Health-Score 29,9 < 30"), "#2363 shows Health-Score 29,9 < 30 (SC76 P3.2)")
+  assert.equal(D.rows.filter(r => String(r.rank_excluded_reason || "").includes("Health-Score 30 < 30")).length, 0, "0 rows show Health-Score 30 < 30 (SC76 P3.2)")
+  console.log("[sc76-ui-fixes] OK: P1.1 HoferTop30 fallback cards & allFood, P1.2 Profile bestProteinPerEuro ready meals only, P2.1 rowPli & isRowRankable across 5 views + App.tsx, P2.2 Detail healthierAlternatives Linz priority + price, P3.1 health_off.json 888 EANs, P3.2 19 ranked EAN NOVA & #2363 29,9 < 30")
+}
+
+// sensecheck 77 (P3.1 data hygiene: derived KPIs p100k/protpack/kcalpack/ppe/eur10p, #3425 light-meal rescue, #880/#3290 Noodles):
+{
+  const M = await load("../src/app/meal.ts")
+  const byId77 = new Map(D.rows.map(r => [r.id, r]))
+  assert.equal(D.rows.filter(r => r.p100 != null && (r.kcal || 0) > 0 && r.p100k == null).length, 0, "0 rows missing p100k when p100 & kcal>0 present (SC77 P3.1)")
+  assert.equal(byId77.get(861)?.p100k, 2.8, "#861 Hofer Udon Nudelschüssel p100k=2.8 (SC77 P3.1)")
+  assert.equal(D.rows.filter(r => (r.size || 0) > 0 && r.p100 != null && r.protpack == null).length, 0, "0 rows missing protpack when size>0 & p100 present (SC77 P3.1)")
+  assert.equal(D.rows.filter(r => (r.size || 0) > 0 && r.kcal != null && r.kcalpack == null).length, 0, "0 rows missing kcalpack when size>0 & kcal present (SC77 P3.1)")
+  assert.equal(D.rows.filter(r => (r.price || 0) > 0 && (r.protpack || 0) > 0 && (r.ppe == null || r.eur10p == null)).length, 0, "0 rows missing ppe/eur10p when price>0 & protpack>0 present (SC77 P3.1)")
+  const r3425 = byId77.get(3425)
+  assert.ok(r3425 && r3425.rankableLight === true && r3425.pliLight === 39.8 && M.passesLightRank(r3425) && M.isReadyMeal(r3425), "#3425 Billa Thunfischsalat Toskana Art rescued to rankableLight=true, pliLight=39.8 (SC77 P3.1)")
+  assert.equal(D.rows.filter(r => r.rankableLight).length, 156, "156 rankableLight meals after #3425 rescue (SC77 P3.1)")
+  assert.equal(byId77.get(880)?.name, "Rana Teriyaki Style Noodles Hühnchen", "#880 Noodles typo fixed (SC77 P3.1)")
+  assert.equal(byId77.get(3290)?.name, "Rana Teriyaki Style Noodles mit Huhn", "#3290 Noodles typo fixed (SC77 P3.1)")
+  assert.equal(D.rows.filter(r => String(r.name || "").includes("Noodels")).length, 0, "0 rows contain Noodels typo (SC77 P3.1)")
+  console.log("[sc77-p31-data] OK: 0 missing p100k/protpack/kcalpack/ppe/eur10p, #861 p100k=2.8, #3425 rankableLight=true (156 total), #880/#3290 Noodles")
+}
+
+// sensecheck 77 P1.1, P1.2, P2.1, P2.2: Stores catalog filter, Gerichte default Lasagne & ready-meal filter, PriceCompare/ProteinValue Linz & light meals, rowP100k & Leicht badge
+{
+  const M = await load("../src/app/meal.ts")
+  const byId77 = new Map(D.rows.map(r => [r.id, r]))
+  const r861 = byId77.get(861)
+  const r1180 = byId77.get(1180)
+  assert.equal(M.rowP100k(r861), 2.8, '#861 rowP100k is 2.8 g/100kcal')
+  assert.equal(M.rowP100k({ ...r861, p100k: null }), 2.8, '#861 rowP100k fallback from p100/kcal is 2.8 g/100kcal')
+  assert.equal(M.isLightOnlyRanked(r861), true, '#861 isLightOnlyRanked === true')
+  assert.equal(M.isLightOnlyRanked(r1180), false, '#1180 isLightOnlyRanked === false (full meal)')
+  assert.equal(M.isReadyMeal(byId77.get(677)), false, '#677 Lasagneblaetter excluded by isReadyMeal')
+  assert.equal(M.isReadyMeal(byId77.get(1203)), false, '#1203 MAMIA baby jar excluded by isReadyMeal')
+  assert.equal(M.isReadyMeal(byId77.get(1187)), false, '#1187 MAMIA baby jar excluded by isReadyMeal')
+  assert.equal(M.isReadyMeal(byId77.get(208)), false, '#208 SPAR Natur*pur baby jar excluded by isReadyMeal')
+
+  const storesSrc = readFileSync(new URL('../src/views/Stores.tsx', import.meta.url), 'utf8')
+  assert.ok(storesSrc.includes('storeCounts(') && storesSrc.includes('stores-all-osm-toggle') && storesSrc.includes('0 im Ranking ·'), 'Stores.tsx filters by storeCounts, has stores-all-osm-toggle, and shows 0 im Ranking · N erfasst')
+
+  const gerSrc = readFileSync(new URL('../src/views/Gerichte.tsx', import.meta.url), 'utf8')
+  assert.ok(gerSrc.includes("useHashState<string>('dish','lasagne')") && gerSrc.includes('isReadyMeal(') && gerSrc.includes('gerichte-light-badge') && gerSrc.includes('b.rankedCount-a.rankedCount'), 'Gerichte.tsx defaults to lasagne, filters ready meals, sorts by rankedCount, and shows Leicht badge')
+
+  const pcSrc = readFileSync(new URL('../src/components/x/PriceCompare.tsx', import.meta.url), 'utf8')
+  assert.ok(pcSrc.includes('r.delivers_4020 === false') && pcSrc.includes('isStalePrice(') && pcSrc.includes('isReadyMeal('), 'PriceCompare.tsx filters out non-4020, stale prices, and non-ready-meals')
+
+  const pvSrc = readFileSync(new URL('../src/components/x/ProteinValue.tsx', import.meta.url), 'utf8')
+  assert.ok(pvSrc.includes('isRowRankable(') && pvSrc.includes('rowP100k(') && pvSrc.includes('availStages'), 'ProteinValue.tsx uses isRowRankable, rowP100k, and availStages')
+
+  const detSrc = readFileSync(new URL('../src/views/Detail.tsx', import.meta.url), 'utf8')
+  const prodSrc = readFileSync(new URL('../src/components/product.tsx', import.meta.url), 'utf8')
+  assert.ok(detSrc.includes('detail-light-badge') && detSrc.includes('rowP100k(r)'), 'Detail.tsx renders detail-light-badge and uses rowP100k(r)')
+  assert.ok(prodSrc.includes('rowsummary-light-badge') && prodSrc.includes('rowP100k(r)'), 'product.tsx renders rowsummary-light-badge and uses rowP100k(r)')
+  console.log('[sc77-ui-fixes] OK: P1.1 Stores catalog filter & toggle, P1.2 Gerichte default Lasagne & ready-meal/baby filter, P2.1 PriceCompare/ProteinValue Linz & light meals, P2.2 rowP100k & Leicht badge')
 }

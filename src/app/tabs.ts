@@ -62,5 +62,5 @@ export const TAB_GROUPS: TabGroup[] = [
 ]
 export const ALL_TABS = TAB_GROUPS.flatMap(g => g.tabs.map(tab => ({ ...tab, group: g.label })))
 /** Aliase für API/GenUI-View-IDs */
-export const TAB_ALIAS: Record<string, string> = { ranking: 'meine-shops', start: 'heute', filter: 'tabelle' }
+export const TAB_ALIAS: Record<string, string> = { ranking: 'meine-shops', start: 'heute', filter: 'tabelle', karte: 'filialen' }
 export const findTab = (key: string) => ALL_TABS.find(x => x.key === (TAB_ALIAS[key] ?? key)) ?? ALL_TABS[0]

@@ -2,7 +2,7 @@ import { LOGIN_ONLY_PRICE } from '@/app/shops'
 import { useState, useEffect } from 'react'
 import { OldPriceBadge, priceAge } from './PriceAge'
 import { isLive as _isLive, isPriceCurrent, isPriceUnconfirmed, priceStatusLabel, showPstatBadge, UNCONFIRMED_TIP } from '@/app/priceFresh'
-import { isDelisted, rowPli } from '@/app/meal'
+import { isDelisted, isLightOnlyRanked, rowP100k, rowPli } from '@/app/meal'
 import { NutritionSourceBadge } from './NutritionSource'
 import { DeliveryHint } from './DeliveryHint'
 import { VariantNote, PriceCondition, PriceWinnerBadge, AlsoAt } from './RowNotes'
@@ -42,8 +42,10 @@ export function ScoreBar({r}:{r:Pick<Row,'score'|'incomplete'|'dry'>}){
 }
 const N='bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300'
 export function Chips({r,compact}:{r:Row;compact?:boolean}){
+  const p100k=rowP100k(r),protpack=r.protpack??(r.p100!=null&&r.size?+(r.p100*r.size/100).toFixed(1):null)
   return <div className="flex flex-wrap gap-1">
-    {r.protpack!=null&&<Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300" title="Protein pro Packung">🥩 {fmt(r.protpack,0)} g</Badge>}
+    {protpack!=null&&<Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300" title="Protein pro Packung">🥩 {fmt(protpack,0)} g</Badge>}
+    {!compact&&p100k!=null&&<Badge className={N} title="Protein pro 100 kcal">⚡ {fmt(p100k,1)} g/100kcal</Badge>}
     {r.kcal!=null&&<Badge className={N} title="kcal/100 g">🔥 {fmt(r.kcal,0)}</Badge>}
     {r.salt!=null&&<Badge className={r.salt>1.5?'bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-300':N} title="Salz g/100 g">🧂 {fmt(r.salt,2)}</Badge>}
     {!compact&&r.sat!=null&&<Badge className={r.sat>4?'bg-orange-100 text-orange-700':N} title="ges. Fett g/100 g">🧈 {fmt(r.sat)}</Badge>}
@@ -88,12 +90,12 @@ export function PriceKpis({r}:{r:Row}){
   const pPor=(r as any).pPorEff??r.pPor  // sensecheck 34: include shipPor when known (Biohof Einzelglas 6,80+4,50)
   return <div className="grid grid-cols-4 gap-1">
     <KpiBox k="pPor" label="€/Portion" v={pPor} unit=" €"/><KpiBox k="p100g" label="€/100 g" v={r.p100g} unit=" €"/><KpiBox k="eur100k" label="€/100 kcal" v={r.eur100k} unit=" €"/><KpiBox k="ppe" label="g P/€" v={r.ppe} d={1}/>
-    <KpiBox k="protPor" label="🥩 P/Portion" v={r.protPor} unit=" g" d={0}/><KpiBox k="kcalPor" label="🔥 kcal/Port." v={r.kcalPor} d={0}/><KpiBox k="p100k" label="P/100 kcal" v={r.p100k} unit=" g" d={1}/><KpiBox k="saltPor" label={`🧂 Salz ${r.saltPct??'–'} %`} v={r.saltPor} unit=" g"/></div>
+    <KpiBox k="protPor" label="🥩 P/Portion" v={r.protPor} unit=" g" d={0}/><KpiBox k="kcalPor" label="🔥 kcal/Port." v={r.kcalPor} d={0}/><KpiBox k="p100k" label="P/100 kcal" v={rowP100k(r)} unit=" g" d={1}/><KpiBox k="saltPor" label={`🧂 Salz ${r.saltPct??'–'} %`} v={r.saltPor} unit=" g"/></div>
 }
 export function StageBadge({r}:{r:Row}){const s=stageBadgeOf(r);return s?<InfoTip k="stage"><Badge data-testid="stage-badge" className="bg-violet-100 text-violet-800 dark:bg-violet-900/40 dark:text-violet-200">{s[1]} {s[2]}</Badge></InfoTip>:null}
 export function ProdLine({r,size='sm'}:{r:Row;size?:'sm'|'md'}){const n=r.p2?.producer||r.herst;if(!n)return null;return <div className="flex items-center gap-1 min-w-0 flex-wrap"><ProducerChip slug={r.prodSlug} name={n} size={size}/><Flag text={(r.p2?.town||'')+' '+(r.ort||'')+' '+(r.origin||'')} state={r.ooe?'Oberösterreich':null}/>{r.p2?.confidence&&<InfoTip k="conf"><span className="text-[10px] text-slate-500">{r.p2.confidence}</span></InfoTip>}</div>}
 export function RowSummary({r}:{r:Row}){
-  return <div className="w-[360px] space-y-2"><div className="flex gap-3"><img src={r.img??''} referrerPolicy="no-referrer" className="h-36 w-36 object-contain rounded-lg bg-white"/><div className="min-w-0 space-y-1"><div className="font-semibold leading-tight">{r.name}</div><div className="text-xs text-slate-500">{r.brand}</div><StoreLogo store={r.store} size={40}/><div className="text-lg font-bold">{r.price!=null?fmt(r.price,2)+' €':'–'}</div><PliBadge v={rowPli(r)}/></div></div>
+  return <div className="w-[360px] space-y-2"><div className="flex gap-3"><img src={r.img??''} referrerPolicy="no-referrer" className="h-36 w-36 object-contain rounded-lg bg-white"/><div className="min-w-0 space-y-1"><div className="font-semibold leading-tight">{r.name}</div><div className="text-xs text-slate-500">{r.brand}</div><StoreLogo store={r.store} size={40}/><div className="text-lg font-bold">{r.price!=null?fmt(r.price,2)+' €':'–'}</div><div className="flex items-center gap-1 flex-wrap"><PliBadge v={rowPli(r)}/>{isLightOnlyRanked(r as any)&&<Badge data-testid="rowsummary-light-badge" className="bg-sky-100 text-sky-800 dark:bg-sky-900/50 dark:text-sky-200 text-xs">Leicht</Badge>}</div></div></div>
     <div className="grid grid-cols-3 gap-1"><KpiBox k="eur10p" label="€/10 g P" v={r.eur10p} unit=" €" hi/><KpiBox k="score" label="Score" v={r.score} d={0}/><KpiBox k="pPor" label="€/Portion" v={(r as any).pPorEff??r.pPor} unit=" €"/></div><PriceKpis r={r}/><div className="text-xs">{packEmo(r.pack)} {r.pack}</div><ProdLine r={r}/></div>
 }
 export function RowHover({r,children}:{r:Row;children:React.ReactNode}){

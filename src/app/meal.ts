@@ -14,7 +14,7 @@ type Row = MealRow
 export const MEAL_RULES = { kcalMin: 400, kcalMax: 900, proteinMin: 20, multiPortionMinG: 800, splitPortionG: 400 } as const
 
 // Client-seitige Schutzregeln (Sense-Check 1+2, 2026-10-13; SC63 P1a Sync). Ersetzt nicht die Korrektur in score.py (HCB).
-const NONMEAL = /^lasagne (hartweizen)?$|lasagneblätter|lasagne ?teig|suppe-(abc|gerstl|sternderl|hörnchen)|suppennudeln|suppeneinlage|backerbsen|suppenpulver|topfencreme|mousse|pudding|cheesecake|strudel|dessert|kaiserschmarrn|milchreis|götterspeise|jogurella|joghurt(?!-[a-zäöüß-]*huhn)|grie(ß|ss)brei|panna cotta|tiramisu|kompott|\bcreme\b(?! spinaci)|cr[eè]me br[uû]l[eé]e|lavakuchen|schokokuchen|brownie|muffin|tarte au|back[- ]?(camembert|emmentaler|gouda)/i
+const NONMEAL = /^lasagne (hartweizen)?$|lasagnebl(ä|ae)tter|lasagne ?teig|suppe-(abc|gerstl|sternderl|hörnchen)|suppennudeln|suppeneinlage|backerbsen|suppenpulver|topfencreme|mousse|pudding|cheesecake|strudel|dessert|kaiserschmarrn|milchreis|götterspeise|jogurella|joghurt(?!-[a-zäöüß-]*huhn)|grie(ß|ss)brei|panna cotta|tiramisu|kompott|\bcreme\b(?! spinaci)|cr[eè]me br[uû]l[eé]e|lavakuchen|schokokuchen|brownie|muffin|tarte au|back[- ]?(camembert|emmentaler|gouda)/i
 export const CONDIMENT = /pesto|\bsugo\b|\btahina?\b|sesampaste/i
 export const NOT_CONDIMENT = /intermezzo|baguette|bruschetta|gnocchi|tortellini|tortelloni|ravioli|rigatoni|spaghetti|penne|pasta|lasagne|chicken|huhn|h[äa]hnchen|lachsfilet|salat|bowl|wrap|falafel/i
 export const PLAIN_VEG = /^(bio )?(gem[üu]se|spinat|rotkraut|blaukraut|sauerkraut|erbsen|bohnen|linsen|mais|karotten|brokkoli|blumenkohl|kohlsprossen)\b/i
@@ -34,10 +34,10 @@ const isFrozen = (r: Row) => /tiefk|\bTK\b/i.test(r.pack ?? '')
 export const isDryish = (r: Row) => !!r.dry || r.meal_class === 'dry' || (r.kcal != null && r.kcal >= 300 && (r.fat == null || r.fat < 10) && !isFrozen(r))
 /** Trockenprodukte/Würzmischungen und Babynahrung – immer raus, unabhängig von meal_class (Sense-Check 3). */
 const SEASONING = /\bfix\b|basis[- ]?fix|knorr basis|maggi (fix|idee|basis)|bouillon|w[üu]rfel|suppenw[üu]rze|w[üu]rzmischung|gew[üu]rzmischung|sauce ?(pulver|binder)|so[ßs]enbinder|instant ?suppe|tassen ?suppe|packerlsuppe|fixbeutel/i
-const BABY = /\bhipp\b|ab dem \d+\. ?(lebens)?(jahr|monat)|nach dem \d+\. monat|babynahrung|kindermen[üu]|\bbaby\b|beikost|alete|bebivita/i
+const BABY = /\bhipp\b|\bmamia\b|ab dem \d+\. ?(lebens)?(jahr|monat)|nach dem \d+\. monat|babynahrung|kindermen[üu]|\bbaby\b|beikost|alete|bebivita/i
 /** Bistro-Baguettes: Snack, auch wenn die Daten sie als Mahlzeit führen. */
 const BAGUETTE = /\bbistro\b|baguette/i
-const BABY_BRAND = /\b(hipp|alete|bebivita|beba|aptamil|babylove|freche freunde)\b/i
+const BABY_BRAND = /\b(hipp|alete|bebivita|beba|aptamil|babylove|freche freunde|mamia)\b/i
 export const isBabyFood = (r: Row) => r.segment === 'baby' || r.segment === 'baby_food' || r.meal_class === 'baby' || BABY.test(r.name) || BABY_BRAND.test(r.brand ?? '')
 export const isNonMeal = (r: Row) =>
   !!r.nonMeal ||
@@ -231,3 +231,15 @@ export const healthierAlternatives = <T extends MealRow>(r: T, R: T[], limit = 4
     .sort((a, b) => tier(a) - tier(b) || (b.score ?? 0) - (a.score ?? 0))
     .slice(0, limit)
 }
+
+/** SC77 P2.2: Protein per 100 kcal with fallback from p100/prot and kcal. */
+export const rowP100k = (r: { p100k?: number | null; p100?: number | null; prot?: number | null; kcal?: number | null } | null | undefined): number | null => {
+  if (!r) return null
+  if (typeof r.p100k === 'number' && Number.isFinite(r.p100k)) return r.p100k
+  const p = r.p100 ?? r.prot
+  return p != null && r.kcal != null && r.kcal > 0 ? +((p * 100) / r.kcal).toFixed(1) : null
+}
+
+/** SC77 P2.2: Whether a row is ranked only via the light-meal tier (200-299 kcal, >=8g protein). */
+export const isLightOnlyRanked = (r: (MealRow & { rankable?: boolean; rankableLight?: boolean }) | null | undefined): boolean =>
+  Boolean(r && r.dupOf == null && (r.rankableLight === true || passesLightRank(r)) && !(r.rankable === true || passesRankMin(r)))

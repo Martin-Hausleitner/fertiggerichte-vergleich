@@ -302,6 +302,36 @@ if (r1180e2e?.uid) {
   assert.ok(dlg1180.includes("Omis Schmankerl Kärntner Kasnudeln") && dlg1180.includes("2,39 €"), "#1180 Detail modal shows Omis Schmankerl Kärntner Kasnudeln (Billa, 2,39 €) in Gesündere Alternativen")
 }
 console.log("[e2e sc76-ui-fixes] OK: #tab=hofer-top30 fallback cards (#1180 + #861) & allFood categories, #tab=ladenprofil ready meals only, #1180 Detail local alternatives with price")
+// sensecheck 77 P1.1, P1.2, P2.1, P2.2: Stores catalog filter, Gerichte default Lasagne & Leicht badge, PriceCompare/ProteinValue, Detail #861 Leicht & P/100kcal
+await page.goto(base + "#tab=filialen"); await page.reload()
+await page.waitForSelector("[data-testid=stores-all-osm-toggle]", { timeout: 30000 })
+const chainBtnCnt = await page.locator("[data-testid=stores-chain-btn]").count()
+assert.ok(chainBtnCnt > 0 && chainBtnCnt <= 15, "#tab=karte shows only catalog chains by default (<= 15 buttons, got " + chainBtnCnt + ")")
+const shopCountsTxt = (await page.locator("[data-testid=stores-shop-count]").allInnerTexts()).join(" | ")
+assert.ok(shopCountsTxt.includes("Gerichte (Kette)") || shopCountsTxt.includes("0 im Ranking ·"), "#tab=karte shop cards show catalog counts")
+
+await page.goto(base + "#tab=gerichte"); await page.reload()
+await page.waitForSelector("[data-testid=gerichte-variant-card]", { timeout: 30000 })
+const gerTxt = await page.locator("body").innerText()
+assert.ok(gerTxt.includes("Lasagne") && gerTxt.includes("im Ranking") && !gerTxt.includes("Lasagneblaetter") && !gerTxt.includes("MAMIA"), "#tab=gerichte defaults to Lasagne, shows ranked count, and excludes Lasagneblaetter & MAMIA baby jars")
+assert.ok(await page.locator("[data-testid=gerichte-light-badge]").count() > 0, "#tab=gerichte shows Leicht badge on light-ranked Lasagne variants")
+
+await page.goto(base + "#tab=dashboard"); await page.reload()
+await page.waitForSelector("[data-testid=price-compare]", { timeout: 30000 })
+const pcTxt = await page.locator("[data-testid=price-compare]").first().innerText()
+assert.ok(!pcTxt.includes("MPreis") && !pcTxt.includes("Alfies") && !pcTxt.includes("Gurkerl"), "#tab=x-preis PriceCompare excludes non-4020 stores (MPreis, Alfies, Gurkerl)")
+const pvTxt = await page.locator("[data-testid=protein-value]").first().innerText()
+assert.ok(!pvTxt.includes("🥩 Protein-Komponente") && !pvTxt.includes("🥔 Beilage"), "#tab=x-preis ProteinValue hides empty prot and side stage categories")
+
+const r861e2e = D.rows.find(r => r.id === 861)
+if (r861e2e?.uid) {
+  await page.goto(base + "#tab=alle&p=" + r861e2e.uid); await page.reload()
+  await page.waitForSelector("[role=dialog]", { timeout: 30000 })
+  await page.waitForSelector("[data-testid=detail-light-badge]", { timeout: 10000 })
+  const dlg861 = await page.locator("[role=dialog]").first().innerText()
+  assert.ok(dlg861.includes("Leicht") && dlg861.includes("2,8 g"), "#861 Detail modal shows Leicht badge and 2,8 g Protein pro 100 kcal")
+}
+console.log("[e2e sc77-ui-fixes] OK: #tab=filialen catalog filter, #tab=gerichte default Lasagne & Leicht badge, #tab=dashboard Linz-only & non-empty stages, #861 Detail Leicht & 2,8 g/100kcal")
 assert.deepEqual(errs, [], 'no page errors')
 console.log(`[e2e legacy favs] OK: ${nums} (94e0cd2) → ${want.length} uids via restore dialog (${n} options), meta ${ls.meta.dataVersion}, fg-favs → parked ${ls2.parked.length}, 0 page errors`)
 await browser.close(); server.close()
