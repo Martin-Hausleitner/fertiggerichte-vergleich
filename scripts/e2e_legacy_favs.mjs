@@ -353,6 +353,28 @@ await page.waitForFunction(() => document.body.innerText.includes("Kombi-Baukast
 const kombiTxt = await page.locator("body").innerText()
 assert.ok(!kombiTxt.includes("MPreis") && !kombiTxt.includes("Gurkerl") && !kombiTxt.includes("Alfies"), "#tab=kombi excludes non-Linz stores (MPreis, Gurkerl, Alfies)")
 console.log("[e2e sc78-ui-fixes] OK: #tab=analyse dm/Löwenanteil boxplots, #tab=marken Löwenanteil PLI median, #tab=kategorien Linz Meal-Prep & ranked count, #tab=kombi portion values & Linz-only")
+// sensecheck 79 P1.2-UI, P2.1a, P2.1b, P2.2, P2.3a: Top hc/cheap light PLI & PriceKpis, Health scatter dm, Planner light meals, Packaging resolveTop click
+await page.goto(base + "#tab=top"); await page.reload()
+await page.waitForFunction(() => document.body.innerText.includes("Gesund & günstig"), null, { timeout: 30000 })
+const topHcTxt = await page.locator("body").innerText()
+assert.ok(topHcTxt.includes("⭐ PLI") && topHcTxt.includes("Leicht") && !topHcTxt.includes("Preis-Leistung\n–"), "#tab=top Gesund & günstig shows real PLI + Leicht badge in PriceKpis for light meals (SC79 P2.1a/b)")
+
+await page.goto(base + "#tab=pack"); await page.reload()
+await page.waitForSelector("[data-testid=packaging-top-card]", { timeout: 30000 })
+const firstPkgCard = page.locator("[data-testid=packaging-top-card]").first()
+const firstPkgName = (await firstPkgCard.innerText()).split("\n")[1]?.trim() || ""
+await firstPkgCard.click()
+await page.waitForFunction((want) => (document.querySelector("[role=dialog]")?.innerText || "").includes(want), firstPkgName.slice(0, 18), { timeout: 10000 })
+const pkgDlgTxt = await page.locator("[role=dialog]").first().innerText()
+assert.ok(firstPkgName && pkgDlgTxt.includes(firstPkgName.slice(0, 18)), "#tab=pack Top-5 card click opens the exact matching product in Detail dialog (" + firstPkgName + ")")
+await page.keyboard.press("Escape")
+await page.waitForTimeout(150)
+
+await page.goto(base + "#tab=planer"); await page.reload()
+await page.waitForFunction(() => document.body.innerText.includes("Linzer Wochenplaner"), null, { timeout: 30000 })
+const planerTxt = await page.locator("body").innerText()
+assert.ok(planerTxt.includes("gerankten Mahlzeiten") && (planerTxt.includes("dm") || planerTxt.includes("Little Lunch") || planerTxt.includes("Billa")), "#tab=planer includes Linz rankable & rankableLight meals")
+console.log("[e2e sc79-ui-fixes] OK: #tab=top PriceKpis real PLI + Leicht badge, #tab=verpackung Top-5 click resolves exact product, #tab=planer includes light meals")
 assert.deepEqual(errs, [], 'no page errors')
 console.log(`[e2e legacy favs] OK: ${nums} (94e0cd2) → ${want.length} uids via restore dialog (${n} options), meta ${ls.meta.dataVersion}, fg-favs → parked ${ls2.parked.length}, 0 page errors`)
 await browser.close(); server.close()

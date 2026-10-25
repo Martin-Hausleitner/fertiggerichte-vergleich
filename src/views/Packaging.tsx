@@ -6,6 +6,7 @@ import { Card, Badge } from '../components/ui'
 import { InfoTip } from '../components/info'
 import { Markdown } from '../components/md'
 import { fmt, useApp, STORE_LOGO } from '../lib'
+import { rowPli } from '../app/meal'
 const ACC='hsl(var(--primary))',MUTE='hsl(var(--muted-foreground))'
 const COL:Record<string,string>=new Proxy({},{get:()=>MUTE}) as any
 const LBL:Record<string,string>={'Dose':'Dose','Kühlschale/MAP':'Kühlschale (z. B. Good Choice)','Tiefkühl':'Tiefkühl (TK)','Pouch/Retort':'Pouch / Retorte','Glas':'Glas','Sous-vide/Vakuum':'Sous-vide','Trocken/Instant-Beutel':'Trockenware / Instant'}
@@ -23,7 +24,8 @@ function BoxRow({t,b,max,fmtv}:{t:string;b:number[]|null;max:number;fmtv:(v:numb
     <div className="absolute top-0.5 bottom-0.5 w-0.5 bg-foreground" style={{left:x(b[2])}} title={`Median ${fmtv(b[2])}`}/></>:<span className="text-muted-foreground text-[10px]">zu wenige Werte</span>}</div><span className="w-14 text-right tabular-nums shrink-0">{b?fmtv(b[2]):'–'}</span></div>
 }
 export default function Packaging(){
-  const {open}=useApp()
+  const {open,R,D}=useApp()
+  const resolveTop=(x:any)=>(x.uid&&(R.find(r=>r.uid===x.uid)||D.rows.find(r=>r.uid===x.uid)))||R.find(r=>r.name===x.name&&r.store===x.store)||D.rows.find(r=>r.dupOf==null&&r.name===x.name&&r.store===x.store)||(x.url&&(R.find(r=>r.url===x.url)||D.rows.find(r=>r.url===x.url)))||D.rows.find(r=>r.name===x.name&&r.store===x.store)||R.find(r=>r.id===x.id)||D.rows.find(r=>r.id===x.id)
   const [p,setP]=useState<any>(null),[md,setMd]=useState<string|null>(null),[sel,setSel]=useState<string>('Kühlschale/MAP')
   useEffect(()=>{fetch('./analysis/packaging_v2.json').then(r=>r.ok?r.json():null).then(setP).catch(()=>{});fetch('./analysis/packaging_v2_de.md').then(r=>r.ok?r.text():null).then(t=>t&&!t.startsWith('<!')&&setMd(t)).catch(()=>{})},[])
   const T:any[]=p?.types??[]
@@ -80,10 +82,10 @@ export default function Packaging(){
     <div className="flex gap-1.5 overflow-x-auto pb-1">{T.map(x=><button key={x.type} onClick={()=>setSel(x.type)} className={'shrink-0 rounded-full border px-3 py-1.5 text-sm '+(x.type===t.type?'text-white border-transparent':'bg-card ')} style={x.type===t.type?{background:COL[x.type]}:{}}>{x.icon} {LBL[x.type]}</button>)}</div>
     <div className="grid gap-4 lg:grid-cols-[1.2fr_1fr] min-w-0">
       <Card className="p-4 min-w-0"><h3 className="font-bold text-lg flex items-center gap-2"><span className="text-2xl">{t.icon}</span>Top 5 {LBL[t.type]}<InfoTip text="Beste Komplettmahlzeiten/Eintöpfe dieser Verpackung nach Preis-Leistungs-Index (mind. 12 g Protein pro Packung, aktueller Preis)."/></h3>
-        {t.top?.length?<div className="mt-2 space-y-2">{t.top.map((x:any,i:number)=><button key={x.id} onClick={()=>open(x.id)} className="w-full flex items-center gap-3 rounded-xl border  p-2 text-left hover:bg-muted/50">
-          <span className="text-lg w-6 text-center shrink-0">{['🥇','🥈','🥉','4','5'][i]}</span><img src={x.img} alt="" loading="lazy" className="h-14 w-14 shrink-0 rounded-lg object-contain bg-white"/>
-          <div className="min-w-0 flex-1"><div className="font-medium text-sm truncate">{x.name}</div><div className="flex items-center gap-1.5 mt-0.5">{x.logo&&<img src={'./'+x.logo} alt="" className="h-4 max-w-[60px] object-contain"/>}{STORE_LOGO[x.store]&&<img src={'./'+STORE_LOGO[x.store]} alt={x.store} className="h-4 max-w-[50px] object-contain"/>}<span className="text-[11px] text-muted-foreground truncate">{x.brand}</span></div></div>
-          <div className="text-right text-xs shrink-0 tabular-nums"><div className="font-bold text-sm">{fmt(x.price,2)} €</div><div className="text-muted-foreground">PLI {fmt(x.pli,0)} · {fmt(x.eur10p,2)} €/10 g P.</div></div></button>)}</div>:<p className="text-sm text-muted-foreground mt-2">Zu wenige rankbare Mahlzeiten mit vollständigen Nährwerten in dieser Gruppe.</p>}
+        {t.top?.length?<div className="mt-2 space-y-2">{t.top.map((x:any,i:number)=>{const r=resolveTop(x);const pli=rowPli(r)??x.pli;return <button key={r?.uid??x.id??i} data-testid="packaging-top-card" onClick={()=>open(r?.id??x.id)} className="w-full flex items-center gap-3 rounded-xl border  p-2 text-left hover:bg-muted/50">
+          <span className="text-lg w-6 text-center shrink-0">{['🥇','🥈','🥉','4','5'][i]}</span><img src={r?.img||x.img} alt="" loading="lazy" className="h-14 w-14 shrink-0 rounded-lg object-contain bg-white"/>
+          <div className="min-w-0 flex-1"><div className="font-medium text-sm truncate">{r?.name||x.name}</div><div className="flex items-center gap-1.5 mt-0.5">{x.logo&&<img src={'./'+x.logo} alt="" className="h-4 max-w-[60px] object-contain"/>}{STORE_LOGO[x.store]&&<img src={'./'+STORE_LOGO[x.store]} alt={x.store} className="h-4 max-w-[50px] object-contain"/>}<span className="text-[11px] text-muted-foreground truncate">{r?.brandN||x.brand}</span></div></div>
+          <div className="text-right text-xs shrink-0 tabular-nums"><div className="font-bold text-sm">{fmt(r?.price??x.price,2)} €</div><div className="text-muted-foreground">PLI {fmt(pli,0)} · {fmt(r?.eur10p??x.eur10p,2)} €/10 g P.</div></div></button>})}</div>:<p className="text-sm text-muted-foreground mt-2">Zu wenige rankbare Mahlzeiten mit vollständigen Nährwerten in dieser Gruppe.</p>}
         <div className="mt-3 flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground"><Store size={13}/>Erhältlich bei: {t.stores.filter((s:string)=>!s.startsWith('unbekannt')).map((s:string)=>STORE_LOGO[s]?<img key={s} src={'./'+STORE_LOGO[s]} alt={s} title={s} className="h-5 max-w-[56px] object-contain"/>:<Badge key={s}>{s}</Badge>)}</div></Card>
       <Card className="p-4 min-w-0"><h3 className="font-bold text-lg flex items-center gap-2"><BookOpen size={18} className="text-brand"/>Steckbrief {LBL[t.type]}</h3>
         <div className="mt-2 divide-y">{NOTES.map(([I,l,k,s])=>t[k]?<div key={k} className="flex gap-2 py-1.5 text-sm"><I size={15} className="mt-0.5 shrink-0 text-muted-foreground"/><div className="min-w-0"><div className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">{l}</div><div className="break-words">{String(t[k])} {src(t[s])}</div></div></div>:null)}</div>

@@ -855,3 +855,49 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
 
   console.log("[sc78-ui-fixes] OK: P1.1 156 rankableLight meals in 6 views (Analyse, Charts, Brands, HeatMatrix, Kategorien, Grid), P1.2 alsoText & Detail Linz defense-in-depth, P2.1 KombiBuilder portions & Kombi byId")
 }
+
+// sensecheck 79 P1.2-UI, P2.1a, P2.1b, P2.2, P2.3a, P2.3b: PriceKpis rowPli+light, Top withPli & isRowRankable, Health/HealthRadar rowP100k, Planner isRowRankable, Netz3D rowPli, Packaging resolveTop
+{
+  const M = await load("../src/app/meal.ts")
+  const active = D.rows.filter(r => r.dupOf == null && r.delivers_4020 !== false)
+  const lightRows = active.filter(r => !r.rankable && r.rankableLight)
+  assert.ok(lightRows.length >= 140, "at least 140 Linz rankableLight rows in dataset (got " + lightRows.length + ")")
+  for (const r of lightRows) {
+    assert.ok(M.rowPli(r) != null && M.rowP100k(r) != null, "every rankableLight row has rowPli & rowP100k: #" + r.id)
+  }
+
+  // P2.1a: product.tsx PriceKpis uses rowPli(r) + light badge and rowP100k(r)
+  const prodSrc = readFileSync(new URL("../src/components/product.tsx", import.meta.url), "utf8")
+  assert.ok(!prodSrc.includes("<PliBadge v={r.pli}/>") && prodSrc.includes("<PliBadge v={pli} light={Boolean((r as any).rankableLight)||isLightOnlyRanked(r as any)}/>") && prodSrc.includes("v={rowP100k(r)}"), "product.tsx PriceKpis uses rowPli(r) with light badge and rowP100k(r) (SC79 P2.1a)")
+
+  // P2.1b: Top.tsx uses isRowRankable(r) for cheap and applies withPli to all top lists (incl. hc & cheap)
+  const topSrc = readFileSync(new URL("../src/views/Top.tsx", import.meta.url), "utf8")
+  assert.ok(!topSrc.includes("r.rankable&&") && topSrc.includes("isRowRankable(r)&&r.eur10p") && topSrc.includes("const rows=withPli(rawRows)"), "Top.tsx uses isRowRankable(r) and applies withPli across all Top modes (SC79 P2.1b)")
+
+  // P2.2: Health.tsx & components/health.tsx use rowP100k(r) everywhere
+  const healthViewSrc = readFileSync(new URL("../src/views/Health.tsx", import.meta.url), "utf8")
+  const healthCompSrc = readFileSync(new URL("../src/components/health.tsx", import.meta.url), "utf8")
+  assert.ok(!healthViewSrc.includes("r.p100k") && healthViewSrc.includes("rowP100k(r)"), "Health.tsx uses rowP100k(r) in scatter data and ScatterTip (SC79 P2.2)")
+  assert.ok(!healthCompSrc.includes("r.p100k") && healthCompSrc.includes("rowP100k(r)"), "components/health.tsx uses rowP100k(r) in RadarVsMedian (SC79 P2.2)")
+
+  // P2.3a & P2.3b: Planner.tsx & Netz3D.tsx
+  const plannerSrc = readFileSync(new URL("../src/views/Planner.tsx", import.meta.url), "utf8")
+  const netzSrc = readFileSync(new URL("../src/views/Netz3D.tsx", import.meta.url), "utf8")
+  assert.ok(!plannerSrc.includes("r.rankable") && plannerSrc.includes("isRowRankable(r)"), "Planner.tsx uses isRowRankable(r) so Linz light meals are selectable (SC79 P2.3a)")
+  assert.ok(!netzSrc.includes("r.pli") && netzSrc.includes("rowPli(r)"), "Netz3D.tsx uses rowPli(r) in node sizes, links, and tooltip (SC79 P2.3b)")
+
+  // P1.2-UI: Packaging.tsx & AnalyseExt.tsx robust row resolution
+  const pkgSrc = readFileSync(new URL("../src/views/Packaging.tsx", import.meta.url), "utf8")
+  const aeSrc = readFileSync(new URL("../src/views/AnalyseExt.tsx", import.meta.url), "utf8")
+  assert.ok(pkgSrc.includes("resolveTop=") && pkgSrc.includes("onClick={()=>open(r?.id??x.id)}"), "Packaging.tsx resolves Top-5 cards by uid/name+store/url before falling back to x.id (SC79 P1.2-UI)")
+  assert.ok(aeSrc.includes("resolveRow="), "AnalyseExt.tsx resolves trap rows by uid/name+store (SC79 P1.2-UI)")
+  const pkgJson = JSON.parse(readFileSync(new URL("../public/analysis/packaging_v2.json", import.meta.url), "utf8"))
+  for (const t of pkgJson.types || []) {
+    for (const x of t.top || []) {
+      const resolved = (x.uid && D.rows.find(r => r.uid === x.uid)) || D.rows.find(r => r.dupOf == null && r.name === x.name && r.store === x.store) || (x.url && D.rows.find(r => r.url === x.url)) || D.rows.find(r => r.name === x.name && r.store === x.store) || D.rows.find(r => r.id === x.id)
+      assert.ok(resolved && (resolved.name === x.name || resolved.url === x.url), "Packaging Top-5 item resolves to exact product in D.rows: " + x.name)
+    }
+  }
+
+  console.log("[sc79-ui-fixes] OK: P2.1a PriceKpis rowPli+light & rowP100k, P2.1b Top withPli & isRowRankable, P2.2 Health/HealthRadar rowP100k, P2.3a Planner isRowRankable, P2.3b Netz3D rowPli, P1.2-UI Packaging & AnalyseExt resolveTop")
+}

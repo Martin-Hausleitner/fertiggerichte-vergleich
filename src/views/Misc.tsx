@@ -5,6 +5,7 @@ import { Factory, AlertTriangle } from 'lucide-react'
 import { Card, Badge } from '../components/ui'
 import { Img, Price, Gallery } from '../components/product'
 import { fmt, useApp } from '../lib'
+import { isRowRankable } from '../app/meal'
 import { StoreCompare } from './Charts'
 export function Producers(){
   const {R,D,open}=useApp()
@@ -28,7 +29,7 @@ export function Multipot(){
 }
 function DataQuality(){
   const {R,D}=useApp(); const qa=D.qaStats
-  const k=[[R.length,'Produkte gesamt'],[R.filter(r=>r.rankable).length,'vollständig bewertet (in Rankings)'],[R.filter(r=>r.incomplete&&!r.dry).length,'Score unvollständig'],[R.filter(r=>r.dry).length,'Trockenprodukte (ausgeschlossen)'],[R.filter(r=>r.priceOnly).length,'nur Preis, keine Nährwerte'],[R.filter(r=>r.pstat==='live 2026').length,'Preise 2026'],[R.filter(r=>r.pstat==='Preis 2025').length,'Altpreise 2025'],[R.filter(r=>r.flags?.some(f=>f.startsWith('Packgröße'))).length,'Packgrößen korrigiert'],[qa?.applied??0,'QA-Korrekturen angewendet']]
+  const k=[[R.length,'Produkte gesamt'],[R.filter(r=>isRowRankable(r)).length,'vollständig bewertet (in Rankings)'],[R.filter(r=>r.incomplete&&!r.dry).length,'Score unvollständig'],[R.filter(r=>r.dry).length,'Trockenprodukte (ausgeschlossen)'],[R.filter(r=>r.priceOnly).length,'nur Preis, keine Nährwerte'],[R.filter(r=>r.pstat==='live 2026').length,'Preise 2026'],[R.filter(r=>r.pstat==='Preis 2025').length,'Altpreise 2025'],[R.filter(r=>r.flags?.some(f=>f.startsWith('Packgröße'))).length,'Packgrößen korrigiert'],[qa?.applied??0,'QA-Korrekturen angewendet']]
   return <section><h3 className="font-semibold text-base mb-2">Datenqualität</h3><div className="grid grid-cols-2 sm:grid-cols-3 gap-2">{k.map(([v,l])=><div key={l as string} className="rounded-lg border p-2 dark:border-slate-700"><div className="text-lg font-bold text-brand">{v}</div><div className="text-[11px] text-slate-500">{l}</div></div>)}</div>
     {qa&&qa.files>0&&<div className="mt-2 text-xs text-slate-600 dark:text-slate-400"><div>QA-Dateien: {Object.entries(qa.by_file).map(([f,v]:any)=>`${f}: ${v.applied}/${v.fixes}`).join(' · ')}</div><div>Korrigierte Felder: {Object.entries(qa.by_field).map(([f,v])=>`${f} (${v})`).join(', ')}</div></div>}</section>
 }

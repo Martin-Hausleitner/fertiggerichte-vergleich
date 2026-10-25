@@ -4,6 +4,7 @@ import { Sheet, Button, Badge } from './ui'
 import { BrandLogo, StoreLogo } from './product'
 import { STAGES, InfoTip } from './info'
 import { useApp, useHashState, useLocal, cn, type Row } from '../lib'
+import { rowPli, rowP100k } from '../app/meal'
 export const GANG:[string,string,string][]=[['vorspeise','🥣','Vorspeise/Suppe'],['haupt','🍽️','Hauptspeise'],['beilage','🥔','Beilage'],['dessert','🍰','Nachspeise/Dessert']]
 type Rng=[number|null,number|null]
 export type F={gang?:string[];stage?:string[];chain?:string[];brand?:string[];herst?:string[];konz?:string[];pack?:string[];cat?:string[];diet?:string[];land?:string[];bl?:string[];r?:Record<string,Rng>;dist?:number|null;ns?:string[];nova?:string[]}
@@ -25,7 +26,7 @@ export function makePred(f:F,ctx:{konzOf:(r:Row)=>string|null;dist:(r:Row)=>numb
   return (r:Row)=>inA(f.gang,(r as any).gang)&&inA(f.stage,r.stage)&&inA(f.chain,r.store)&&inA(f.brand,r.brandN)&&inA(f.herst,(r as any).p2?.producer||r.herst)&&inA(f.konz,ctx.konzOf(r))&&inA(f.pack,r.pack)&&inA(f.land,landOf(r))&&inA(f.bl,r.state||(r.ooe?'Oberösterreich':null))
     &&(!f.cat?.length||f.cat.every(c=>r.cprot?.includes(c)||r.cdish?.includes(c)))
     &&(!f.diet?.length||f.diet.every(d=>d==='bio'?r.bio:d==='vegan'?r.vegan||r.cprot?.includes('vegan'):r.vegan||r.cprot?.includes('vegetarisch')||r.cprot?.includes('vegan')))
-    &&Object.entries(f.r||{}).every(([k,[lo,hi]])=>{const v=(r as any)[k];if(lo==null&&hi==null)return true;if(v==null)return false;return (lo==null||v>=lo)&&(hi==null||v<=hi)})
+    &&Object.entries(f.r||{}).every(([k,[lo,hi]])=>{const v=k==='pli'?rowPli(r):k==='p100k'?rowP100k(r):(r as any)[k];if(lo==null&&hi==null)return true;if(v==null)return false;return (lo==null||v>=lo)&&(hi==null||v<=hi)})
     &&(f.dist==null||(ctx.dist(r)??1e9)<=f.dist)
     &&inA(f.ns,r.ns?.toUpperCase())&&inA(f.nova,(r as any).nova==null?null:String((r as any).nova))
 }
