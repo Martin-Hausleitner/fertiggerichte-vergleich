@@ -1,13 +1,14 @@
+import { isRowRankable, rowPli } from '../app/meal'
 import { useMemo, useState } from 'react'
 import { Card } from '../components/ui'
 import { StoreLogo, BrandLogo, Gallery } from '../components/product'
 import { InfoTip, prodColor } from '../components/info'
 import { useApp, fmt, type Row } from '../lib'
 const med=(a:(number|null)[])=>{const s=a.filter((x):x is number=>x!=null).sort((x,y)=>x-y);return s.length?s[Math.floor(s.length/2)]:null}
-const M:[string,string,(rs:Row[])=>number|null,boolean][]=[['n','🛒 Anzahl',rs=>rs.length||null,false],['pli','⭐ Median PLI',rs=>med(rs.map(r=>r.pli)),false],['e','⚖️ Median €/10 g P',rs=>med(rs.map(r=>r.eur10p)),true],['s','💚 Median Score',rs=>med(rs.map(r=>r.score)),false]]
+const M:[string,string,(rs:Row[])=>number|null,boolean][]=[['n','🛒 Anzahl',rs=>rs.length||null,false],['pli','⭐ Median PLI',rs=>med(rs.map(r=>rowPli(r))),false],['e','⚖️ Median €/10 g P',rs=>med(rs.map(r=>r.eur10p)),true],['s','💚 Median Score',rs=>med(rs.map(r=>r.score)),false]]
 export default function HeatMatrix(){
   const {R,D,stores}=useApp(); const [mode,setMode]=useState<'brand'|'herst'>('brand'),[met,setMet]=useState('n'),[sel,setSel]=useState<{row:string;c:string}|null>(null)
-  const rows=useMemo(()=>R.filter(r=>r.rankable&&!r.nonfood&&!r.store.startsWith('unbekannt')),[R])
+  const rows=useMemo(()=>R.filter(r=>isRowRankable(r)&&!r.nonfood&&!r.store.startsWith('unbekannt')),[R])
   const keyOf=(r:Row)=>mode==='brand'?(r.noBrand?null:r.brandN):((r as any).p2?.producer||r.herst||null)
   const chains=useMemo(()=>[...new Set(rows.map(r=>r.store))].sort((a,b)=>rows.filter(r=>r.store===b).length-rows.filter(r=>r.store===a).length),[rows])
   const branches=(c:string)=>(stores?.shops??[]).filter(s=>s.chain===c).sort((a,b)=>(a.walk_m??a.dist)-(b.walk_m??b.dist)).slice(0,2)

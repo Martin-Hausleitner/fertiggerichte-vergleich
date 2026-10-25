@@ -1,3 +1,4 @@
+import { isRowRankable } from '../app/meal'
 import { ChartContainer } from '../components/ui/chart'
 import { RowSummary } from '../components/product'
 import AnalyseExt from './AnalyseExt'
@@ -14,7 +15,7 @@ function Box({title,groups,unit}:{title:string;groups:Record<string,number[]>;un
 }
 function Pareto({R}:{R:Row[]}){
   const {open,D}=useApp()
-  const pts=R.filter(r=>r.rankable&&r.eur10p!=null&&r.pstat==='live 2026'&&r.score!=null&&r.eur10p<5).map(r=>({x:r.eur10p!,y:r.score!,id:r.id,name:r.name,store:r.store}))
+  const pts=R.filter(r=>isRowRankable(r)&&r.eur10p!=null&&r.pstat==='live 2026'&&r.score!=null&&r.eur10p<5).map(r=>({x:r.eur10p!,y:r.score!,id:r.id,name:r.name,store:r.store}))
   const front=[...pts].sort((a,b)=>a.x-b.x).reduce<any[]>((acc,p)=>{if(!acc.length||p.y>acc[acc.length-1].y)acc.push(p);return acc},[])
   return <Card className="p-3"><h4 className="font-semibold text-sm">Pareto-Front: Health-Score vs. € pro 10 g Protein</h4><p className="text-xs text-slate-500 mb-2">Grüne Linie = Produkte, die von keinem anderen gleichzeitig billiger <i>und</i> gesünder geschlagen werden. Punkt anklicken öffnet die Details.</p>
     <ChartContainer config={{}} className="aspect-auto w-full" style={{height:380}}><ComposedChart margin={{left:-10}}><CartesianGrid strokeDasharray="3 3" opacity={.3}/><XAxis type="number" dataKey="x" name="€/10 g Protein" unit=" €" domain={[0,'auto']} tick={{fontSize:11}}/><YAxis type="number" dataKey="y" name="Score" domain={[0,100]} tick={{fontSize:11}}/><ZAxis range={[30,30]}/>
@@ -25,11 +26,11 @@ function Pareto({R}:{R:Row[]}){
 }
 function Heat({R,cats,keyF,title}:{R:Row[];cats:string[];keyF:'cprot'|'cdish';title:string}){
   const stores=['Billa','Spar','Hofer','Lidl','dm','Fit to Go']
-  const cell=(s:string,c:string)=>{const rs=R.filter(r=>r.store===s&&r.rankable&&(r[keyF]||[]).includes(c));const v=rs.map(r=>r.score!).sort((a,b)=>a-b);return {n:rs.length,med:v.length?v[Math.floor(v.length/2)]:null}}
+  const cell=(s:string,c:string)=>{const rs=R.filter(r=>r.store===s&&isRowRankable(r)&&(r[keyF]||[]).includes(c));const v=rs.map(r=>r.score!).sort((a,b)=>a-b);return {n:rs.length,med:v.length?v[Math.floor(v.length/2)]:null}}
   return <Card className="p-3 overflow-x-auto"><h4 className="font-semibold text-sm mb-2">{title}</h4><table className="text-xs"><thead><tr><th/>{stores.map(s=><th key={s} className="px-2 py-1">{s}</th>)}</tr></thead><tbody>{cats.map(c=><tr key={c}><td className="pr-2 py-0.5 whitespace-nowrap">{c}</td>{stores.map(s=>{const x=cell(s,c);return <td key={s} className="px-0.5"><div className="w-16 h-8 rounded flex flex-col items-center justify-center text-white" style={{background:x.med==null?'#e2e8f0':scoreColor(x.med),opacity:x.med==null?.5:Math.min(.45+x.n/15,1)}}>{x.med!=null&&<><b>{Math.round(x.med)}</b><span className="text-[9px]">n={x.n}</span></>}</div></td>})}</tr>)}</tbody></table><p className="text-[10px] text-slate-500 mt-1">Farbe = Median Health-Score, Deckkraft = Anzahl der Produkte.</p></Card>
 }
 function BrandRank({R}:{R:Row[]}){
-  const data=useMemo(()=>{const g:Record<string,Row[]>={};R.filter(r=>r.rankable&&r.eur10p!=null&&r.pstat==='live 2026').forEach(r=>(g[r.brandN]??=[]).push(r));return Object.entries(g).filter(([,v])=>v.length>=3).map(([b,v])=>({b,logo:v.find(r=>r.logo)?.logo??null,n:v.length,eur:q(v.map(r=>r.eur10p!),.5),score:q(v.map(r=>r.score!),.5)})).sort((a,b)=>a.eur-b.eur).slice(0,20)},[R])
+  const data=useMemo(()=>{const g:Record<string,Row[]>={};R.filter(r=>isRowRankable(r)&&r.eur10p!=null&&r.pstat==='live 2026').forEach(r=>(g[r.brandN]??=[]).push(r));return Object.entries(g).filter(([,v])=>v.length>=3).map(([b,v])=>({b,logo:v.find(r=>r.logo)?.logo??null,n:v.length,eur:q(v.map(r=>r.eur10p!),.5),score:q(v.map(r=>r.score!),.5)})).sort((a,b)=>a.eur-b.eur).slice(0,20)},[R])
   const mx=Math.max(...data.map(d=>d.eur))
   return <Card className="p-3"><h4 className="font-semibold text-sm mb-2">Marken-Ranking: Median € pro 10 g Protein (ab 3 Produkten)</h4><div className="space-y-1">{data.map((d,i)=><div key={d.b} className="flex items-center gap-2 text-xs"><span className="w-5 text-slate-400">{i+1}</span><BrandLogo r={{brandN:d.b,logo:d.logo}} size={22}/><span className="w-32 truncate">{d.b}</span><div className="flex-1 h-4 rounded bg-slate-100 dark:bg-slate-800"><div className="h-full rounded" style={{width:`${d.eur/mx*100}%`,background:scoreColor(d.score)}}/></div><span className="w-24 text-right">{fmt(d.eur,2)} € · ♥{fmt(d.score,0)}</span></div>)}</div><p className="text-[10px] text-slate-500 mt-1">Balkenfarbe = Median Health-Score der Marke</p></Card>
 }
@@ -45,9 +46,9 @@ function External(){
 }
 export default function Analyse(){
   const {R,D}=useApp()
-  const byStore=(f:keyof Row)=>{const g:Record<string,number[]>={};R.filter(r=>r.rankable&&r[f]!=null&&r.pstat==='live 2026').forEach(r=>(g[r.store]??=[]).push(r[f] as number));return g}
-  const byPack=(f:keyof Row)=>{const g:Record<string,number[]>={};R.filter(r=>r.rankable&&r[f]!=null).forEach(r=>(g[r.pack.replace(/ \(.*\)/,'')]??=[]).push(r[f] as number));return g}
-  const catBar=useMemo(()=>[...D.catProt].map(c=>{const rs=R.filter(r=>r.rankable&&r.cprot?.includes(c)&&r.eur10p!=null&&r.pstat==='live 2026');return {c:`${D.catIcon[c]??''} ${c}`,n:rs.length,eur:rs.length?q(rs.map(r=>r.eur10p!),.5):null,score:rs.length?q(rs.map(r=>r.score!),.5):null}}).filter(x=>x.n>=3).sort((a,b)=>a.eur!-b.eur!),[R,D])
+  const byStore=(f:keyof Row)=>{const g:Record<string,number[]>={};R.filter(r=>isRowRankable(r)&&r[f]!=null&&r.pstat==='live 2026').forEach(r=>(g[r.store]??=[]).push(r[f] as number));return g}
+  const byPack=(f:keyof Row)=>{const g:Record<string,number[]>={};R.filter(r=>isRowRankable(r)&&r[f]!=null).forEach(r=>(g[r.pack.replace(/ \(.*\)/,'')]??=[]).push(r[f] as number));return g}
+  const catBar=useMemo(()=>[...D.catProt].map(c=>{const rs=R.filter(r=>isRowRankable(r)&&r.cprot?.includes(c)&&r.eur10p!=null&&r.pstat==='live 2026');return {c:`${D.catIcon[c]??''} ${c}`,n:rs.length,eur:rs.length?q(rs.map(r=>r.eur10p!),.5):null,score:rs.length?q(rs.map(r=>r.score!),.5):null}}).filter(x=>x.n>=3).sort((a,b)=>a.eur!-b.eur!),[R,D])
   return <div className="space-y-3">
     <div className="grid gap-3 lg:grid-cols-2"><Pareto R={R}/><BrandRank R={R}/></div>
     <div className="grid gap-3 lg:grid-cols-2"><Box title="€ pro 10 g Protein je Laden" groups={byStore('eur10p')} unit="€"/><Box title="Health-Score je Verpackung" groups={byPack('score')} unit=""/><Box title="Salz g/100 g je Verpackung" groups={byPack('salt')} unit="g"/><Box title="Health-Score je Laden" groups={byStore('score')} unit=""/></div>
