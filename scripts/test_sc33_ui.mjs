@@ -226,11 +226,11 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
     assert.ok(r && !M.passesRankMin(r) && !M.passesLightRank(r), `#${id} excluded from passesRankMin/passesLightRank`)
     assert.ok(!M.passesRankMin({ ...r, rankable: undefined }) && !M.passesLightRank({ ...r, rankableLight: undefined }), `#${id} excluded by structural rules too`)
   }
-  for (const id of [877, 2820, 1031, 2980, 3071, 1067, 1478, 2968, 2966, 2967, 2970, 3052, 172, 530, 3057, 2205]) {
+  for (const id of [877, 2820, 1031, 2980, 3071, 1067, 1478, 2968, 2966, 2967, 2970, 3052, 172, 530, 3057]) {
     const r = byId.get(id)
     assert.ok(r && r.rankable === true && M.passesRankMin(r), `#${id} rescued into rankable & passesRankMin (SC66/SC67/SC68)`)
   }
-  for (const id of [170, 639, 1007, 2663, 3206, 1255, 606, 3136, 1277, 496, 3020, 2956, 2206]) {
+  for (const id of [170, 639, 1007, 2663, 3206, 1255, 606, 3136, 1277, 496, 3020, 2956]) {
     const r = byId.get(id)
     assert.ok(r && r.rankableLight === true && M.passesLightRank(r), `#${id} rescued into rankableLight & passesLightRank (SC66/SC67)`)
   }
@@ -337,7 +337,7 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   const rankCounts = S.storeRankableCounts(visRows)
   assert.ok(prodCounts["Spar"] > 0 && rankCounts["Spar"] > 0, "Spar has productCount > 0 and rankableCount > 0")
   assert.ok(prodCounts["Billa"] > 0 && rankCounts["Billa"] > 0, "Billa has productCount > 0 and rankableCount > 0")
-  assert.ok(prodCounts["Denn's"] === 5 && rankCounts["Denn's"] === 2, "Denn's has productCount === 5 and rankableCount === 2 (#2205 + #2206)")
+  assert.ok(prodCounts["Denn's"] === 5 && (rankCounts["Denn's"] ?? 0) === 0, "Denn's has productCount === 5 and rankableCount === 0 after SC72 P0.1/P0.2")
   assert.equal(rankCounts["Nah&Frisch"] ?? 0, 0, "Nah&Frisch has rankableCount === 0 (raw rows without complete nutrition/price)")
   assert.ok((prodCounts["Nah&Frisch"] ?? 0) > 0, "Nah&Frisch has productCount > 0")
   // Verify synthetic row check for storeRankableCounts
@@ -378,7 +378,28 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   const dennsRanked = visRows.filter(r => r.store === "Denn's" && M.isReadyMeal(r) && S.isRowRankable(r))
   assert.equal(dmRanked.length, 8, "dm has 8 rankable dishes in MeineShops ranking")
   assert.equal(hoferRanked.length, 1, "Hofer has 1 rankable dish in MeineShops ranking")
-  assert.equal(dennsRanked.length, 2, "Denn's has 2 rankable dishes in MeineShops ranking")
+  assert.equal(dennsRanked.length, 0, "Denn's has 0 rankable dishes after SC72 P0.1 (#2206 broth) & P0.2 (#2205 falafel component)")
+  const pennyRanked = visRows.filter(r => r.store === "Penny" && M.isReadyMeal(r) && S.isRowRankable(r))
+  const lidlRanked = visRows.filter(r => r.store === "Lidl" && M.isReadyMeal(r) && S.isRowRankable(r))
+  assert.equal(pennyRanked.length, 2, "Penny has 2 rankable dishes in MeineShops ranking (#2236 + #1537)")
+  assert.equal(lidlRanked.length, 1, "Lidl has 1 rankable dish in MeineShops ranking (#1212)")
+  const byId71 = new Map(D.rows.map(r => [r.id, r]))
+  for (const id of [2985, 2991, 2995, 2996, 2935, 3005, 2236, 1537, 1212]) {
+    const r = byId71.get(id)
+    assert.ok(r && r.rankable === true && M.passesRankMin(r), `#${id} rescued into rankable & passesRankMin (SC71)`)
+  }
+  for (const id of [3007, 3010, 3011]) {
+    const r = byId71.get(id)
+    assert.ok(r && r.rankableLight === true && M.passesLightRank(r), `#${id} rescued into rankableLight & passesLightRank (SC71)`)
+  }
+  // SC72 P0.1/P0.2/P0.3: #2206 MyDeli Bio-Hühnersuppe (25 kcal/100g, not in topLight) & #2205 SOTO Falafel (stage=prot)
+  const r2206 = byId71.get(2206)
+  const r2205 = byId71.get(2205)
+  const r2204 = byId71.get(2204)
+  assert.ok(r2206 && r2206.name === "MyDeli Bio-Hühnersuppe" && r2206.kcal === 25 && r2206.rankableLight === false && !M.passesLightRank(r2206), "#2206 corrected to MyDeli Bio-Hühnersuppe (SC72 P0.1)")
+  assert.ok(!D.topLight.includes(2206) && D.topLight[0] === 548, "#2206 removed from topLight; #548 is #1 in topLight")
+  assert.ok(r2205 && r2205.stage === "prot" && r2205.component === true && r2205.rankable === false, "#2205 reclassified to stage=prot component (SC72 P0.2)")
+  assert.ok(r2204?.img && r2205?.img && r2206?.img, "#2204-#2206 have verified product images (SC72 P0.3)")
   console.log(`[sc71-meineshops-rankable] OK: ranking/perChain via isRowRankable (dm=${dmRanked.length}, Hofer=${hoferRanked.length}, Denn's=${dennsRanked.length}), online-rank-badge via countsByChain, Leicht badge present`)
 }
 
@@ -388,4 +409,38 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   assert.ok(src.includes('allFood || isRowRankable(r as any)'), 'Tabelle value/ppe sort filters via isRowRankable (light meals visible)')
   assert.ok(!/\brankOk\(r\)/.test(src), 'Tabelle no longer hides light meals via rankOk')
   console.log('[sc72-tabelle-rankable] OK: Tabelle default sort uses isRowRankable')
+}
+
+// SC72 P1.1 & P1.2: mergeLinzStores / findNearestStore (Denn's, Interspar, Unimarkt, Maximarkt, Nah&Frisch, NORDSEE, Subway, Fit to Go, Winkler), Tabelle.tsx isRowRankable + pliLight, MeineShops.tsx gang="" default
+{
+  const S = await load("../src/app/shops.ts")
+  const baseStores = JSON.parse(readFileSync(new URL("../public/stores.json", import.meta.url), "utf8"))
+  const walkFile = JSON.parse(readFileSync(new URL("../public/stores_linz_walk.json", import.meta.url), "utf8"))
+  const provFile = JSON.parse(readFileSync(new URL("../public/stores_linz_providers.json", import.meta.url), "utf8"))
+  const osmFile = JSON.parse(readFileSync(new URL("../public/stores_linz_2026-10-13.json", import.meta.url), "utf8"))
+  const merged = S.mergeLinzStores(baseStores, walkFile, provFile, osmFile)
+  assert.ok(merged && merged.shops.length > baseStores.shops.length, "mergeLinzStores merges Linz stores beyond stores.json")
+  const denns = S.findNearestStore(merged, "Denn's")
+  assert.ok(denns && denns.name === "Denns BioMarkt" && /Tummelplatz 19/.test(denns.addr || "") && denns.dist === 489 && denns.walk_min === 8, "nearest(Denn's) resolves to Denns BioMarkt · Tummelplatz 19 · 489m · 8min")
+  for (const ch of ["Billa", "Spar", "Hofer", "Lidl", "Penny", "dm", "Interspar", "Unimarkt", "Maximarkt", "Nah&Frisch", "NORDSEE", "Subway", "Fit to Go", "Winkler"]) {
+    const n = S.findNearestStore(merged, ch)
+    assert.ok(n && typeof n.lat === "number" && typeof n.lon === "number" && (n.walk_m ?? n.dist) > 0, `findNearestStore(${ch}) returns a valid Linz store`)
+  }
+  const hookSrc = readFileSync(new URL("../src/hooks/useAppData.ts", import.meta.url), "utf8")
+  assert.ok(hookSrc.includes("mergeLinzStores") && hookSrc.includes("findNearestStore"), "useAppData.ts uses mergeLinzStores and findNearestStore")
+
+  // SC72 P1.2a: Tabelle.tsx uses isRowRankable and pliLight fallback for value sorting
+  const tabSrc = readFileSync(new URL("../src/views/Tabelle.tsx", import.meta.url), "utf8")
+  assert.ok(tabSrc.includes("isRowRankable(") && tabSrc.includes("pliLight"), "Tabelle.tsx includes isRowRankable and pliLight fallback")
+  assert.ok(tabSrc.includes("data-testid=\"tabelle-light-badge\""), "Tabelle.tsx renders Leicht badge for light meals")
+
+  // SC72 P1.2b: MeineShops.tsx defaults gang to "" (Alle Gänge) so Billa shows all 117 ranked dishes (including #935 Vorspeise/Suppe)
+  const msSrc = readFileSync(new URL("../src/views/MeineShops.tsx", import.meta.url), "utf8")
+  assert.ok(msSrc.includes("[gang, setGang] = useState('')"), "MeineShops.tsx defaults gang to empty string (Alle Gänge)")
+  const visRows = D.rows.filter(r => r.dupOf == null)
+  const billaAllGang = visRows.filter(r => r.store === "Billa" && M.isReadyMeal(r) && S.isRowRankable(r))
+  const billaBadgeCount = S.storeRankableCounts(visRows)["Billa"]
+  assert.equal(billaAllGang.length, billaBadgeCount, "Billa MeineShops ranking with gang='' matches storeRankableCounts[Billa] (117)")
+  assert.ok(billaAllGang.some(r => r.id === 935 && r.gang === "vorspeise"), "#935 Knorr Meisterkessel Bohnen-Speck Suppe (vorspeise) included in Billa MeineShops default ranking")
+  console.log(`[sc72-ui-fixes] OK: nearest(Denn's)=${denns.name} (${denns.addr}, ${denns.dist}m, ~${denns.walk_min}min), all 14 Linz chains resolved, Tabelle isRowRankable+pliLight, MeineShops gang='' (Billa ${billaAllGang.length}/${billaBadgeCount})`)
 }

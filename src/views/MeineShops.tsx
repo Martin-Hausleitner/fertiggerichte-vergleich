@@ -43,7 +43,7 @@ function ShopMap() {
 export default function MeineShops() {
   const { R, open } = useApp()
   const { inR, all, my, myChains, loc, deliversHere, online, countsByChain, rankableByChain } = useNearShops()
-  const [allFood, setAllFood] = useState(false), [minScore, setMinScore] = useState(0), [gang, setGang] = useState('haupt'), [chain, setChain] = useState('')
+  const [allFood, setAllFood] = useState(false), [minScore, setMinScore] = useState(0), [gang, setGang] = useState(''), [chain, setChain] = useState('')
   const ranking = useMemo(() => R.filter(r => (allFood ? !r.nonfood : isReadyMeal(r)) && (allFood ? r.score != null && r.price != null : isRowRankable(r as any)) && myChains.has(r.store) && (!gang || (r as any).gang === gang) && (r.score ?? 0) >= minScore && (!chain || r.store === chain))
     .sort((a, b) => (b.score! - a.score!) || ((a.p100g ?? 1e9) - (b.p100g ?? 1e9))).slice(0, 200), [R, myChains, gang, minScore, chain, allFood])
   const perChain = useMemo(() => [...myChains].map(c => { const xs = R.filter(r => r.store === c && (allFood ? r.score != null : isRowRankable(r as any)) && (allFood ? !r.nonfood : isReadyMeal(r)) && (!gang || (r as any).gang === gang)); const sc = xs.map(r => r.score!).sort((a, b) => a - b); return { c, n: xs.length, med: sc.length ? sc[Math.floor(sc.length / 2)] : null, best: sc.length ? sc[sc.length - 1] : null } }).sort((a, b) => (b.med ?? -1) - (a.med ?? -1)), [R, myChains, gang, allFood])

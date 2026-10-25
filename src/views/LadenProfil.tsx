@@ -13,7 +13,7 @@ export default function LadenProfil() {
   const n = nearest(s)
   return <div className="space-y-3"><Picker label="Laden wählen" options={opts} value={s} onChange={setS} />
     <Profile name={s} rows={rows} groupBy={r => r.brandN} logo={<StoreLogo store={s} size={26} />}
-      subtitle={n ? <span className="inline-flex items-center gap-1"><MapPin className="size-3.5" />Nächste Filiale: {n.addr || n.name} · {Math.round((n.walk_m ?? n.dist) / 10) * 10} m</span> : 'Online / keine Filiale in der Nähe'}
+      subtitle={n ? <span className="inline-flex items-center gap-1"><MapPin className="size-3.5" />Nächste Filiale: {n.addr || n.name} · {Math.round((n.walk_m ?? n.dist) / 10) * 10} m{n.walk_min ? ` · ~${n.walk_min} min` : ''}</span> : 'Online / keine Filiale in der Nähe'}
       extra={n?.gmaps ? <Button asChild size="sm" variant="outline"><a href={n.gmaps} target="_blank" rel="noreferrer"><Navigation />Route</a></Button> : undefined} />
   </div>
 }

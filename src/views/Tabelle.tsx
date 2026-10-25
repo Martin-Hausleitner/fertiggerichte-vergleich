@@ -11,9 +11,8 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { useFilter, makePred, type F } from '@/components/FilterPanel'
 import { FacetSidebar, ActiveChips, walkMin } from '@/components/FacetSidebar'
 import { Sheet } from '@/components/ui'
-import { isReadyMeal, pricePerPortion, lastPriceDate } from '@/app/meal'
-import { valueScore, useCfg } from '@/app/scoring'
-import { protPerEuro } from '@/app/meal'
+import { isReadyMeal, pricePerPortion, lastPriceDate, protPerEuro, passesRankMin, passesLightRank } from '@/app/meal'
+import { valueScore, clientScore, useCfg, rankOk } from '@/app/scoring'
 import { deliveryText, deliveryTitle, delivers4020, delivery4020Unconfirmed, isRowRankable } from '@/app/shops'
 import { StoreLogo } from '@/components/product'
 import { OldPriceBadge } from '@/components/PriceAge'
@@ -48,7 +47,7 @@ export default function Tabelle() {
   const pred = useMemo(() => makePred(f, { konzOf, dist: distOf }), [f, konzOf, distOf])
   const base = useMemo(() => R.filter(r => !r.nonfood && !r.store.startsWith('unbekannt') && (allFood ? true : isReadyMeal(r)) && (!lf || delivers4020(r as any))).map(r => { const pp = pricePerPortion(r); return { ...r, pPor: pp } }), [R, allFood, lf])
   const rows = useMemo(() => { const qq = q.toLowerCase(); const sd = SORTS.find(x => x[0] === so) ?? SORTS[0]; return base.filter(r => pred(r) && (so !== 'value' && so !== 'ppe' || allFood || isRowRankable(r as any)) && (!qq || `${r.name} ${r.brandN} ${r.herst}`.toLowerCase().includes(qq)))
-    .map(r => ({ ...r, cat: [...(r.cprot || []), ...(r.cdish || [])].join(', '), diet: veg(r), dist: distOf(r), ns: r.ns && r.ns !== 'unknown' ? r.ns.toUpperCase() : null, value: valueScore(r), ppeP: protPerEuro(r), avail: availOf(r.store, r), pstat: priceStatusLabel(r) }))
+    .map(r => ({ ...r, cat: [...(r.cprot || []), ...(r.cdish || [])].join(', '), diet: veg(r), dist: distOf(r), ns: r.ns && r.ns !== 'unknown' ? r.ns.toUpperCase() : null, value: (r as any).rankable === true || passesRankMin(r) ? (valueScore(r) ?? r.pli) : ((r as any).pliLight ?? valueScore(r) ?? r.pli), ppeP: protPerEuro(r), avail: availOf(r.store, r), pstat: priceStatusLabel(r) }))
     .sort((a, b) => { const x = sd[2](a), y = sd[2](b); return x == null ? (y == null ? 0 : 1) : y == null ? -1 : (x - y) * sd[3] }) }, [base, pred, q, distOf, so, cfg])
   const updated = useMemo(() => lastPriceDate(R), [R])
   const ctx = useMemo(() => ({ konzOf, dist: distOf }), [konzOf, distOf])
@@ -60,7 +59,7 @@ export default function Tabelle() {
         : c.k === 'price' ? (p: any) => p.value == null ? '–' : <span className="inline-flex items-center gap-1">{fmt(p.value, 2)}<OldPriceBadge r={p.data} /><PriceCondition r={p.data} /></span>
         : c.k === 'avail' ? (p: any) => <span title={deliveryTitle(p.data)} data-testid="avail" className={cn('flex flex-col justify-center leading-tight', p.data?.delivers_4020 === false && 'text-red-700', p.data && delivery4020Unconfirmed(p.data) && 'italic text-amber-700')}><span>{p.value}</span></span>
         : c.k === 'score' ? (p: any) => p.value == null ? '–' : <b style={{ color: scoreColor(p.value) }}>{fmt(p.value, 0)}</b>
-        : c.k === 'name' ? (p: any) => <span className="flex min-w-0 flex-col justify-center leading-tight"><button className="truncate text-left hover:underline" onClick={() => open(p.data.id)}>{p.value}</button>{p.data.variant_note && <span className="truncate text-[10px] text-muted-foreground" data-testid="variant-note">{p.data.variant_note}</span>}</span> : undefined,
+        : c.k === 'name' ? (p: any) => <span className="flex min-w-0 flex-col justify-center leading-tight"><span className="flex items-center gap-1 min-w-0"><button className="truncate text-left hover:underline" onClick={() => open(p.data.id)}>{p.value}</button>{((p.data as any).rankableLight === true || passesLightRank(p.data)) && !((p.data as any).rankable === true || passesRankMin(p.data)) && <span data-testid="tabelle-light-badge" className="shrink-0 rounded bg-sky-100 px-1 py-0.2 text-[9px] font-medium text-sky-800 dark:bg-sky-900/40 dark:text-sky-200">Leicht</span>}</span>{p.data.variant_note && <span className="truncate text-[10px] text-muted-foreground" data-testid="variant-note">{p.data.variant_note}</span>}</span> : undefined,
       comparator: c.num ? (a: any, b: any, _x: any, _y: any, desc: boolean) => a == null && b == null ? 0 : a == null ? (desc ? -1 : 1) : b == null ? (desc ? 1 : -1) : a - b : undefined })),
   ], [cols, compare, setCompare, open])
   const saveView = () => { if (!vn.trim()) return; setViews({ ...views, [vn.trim()]: { f, cols, sort: (grid.current?.api.getColumnState() ?? []).filter(s => s.sort).map(s => ({ colId: s.colId, sort: s.sort! })), so } }); setVn('') }
@@ -83,7 +82,7 @@ export default function Tabelle() {
               <p className="text-[11px] text-muted-foreground">Speichert Filter, Spalten und Sortierung lokal in diesem Browser.</p>
               {Object.entries(views).map(([k, v]) => <div key={k} className="flex items-center justify-between rounded border px-2 py-1 text-sm"><button className="hover:underline" onClick={() => loadView(v)}>{k}</button><button aria-label="löschen" onClick={() => { const c = { ...views }; delete c[k]; setViews(c) }}><X className="size-3.5" /></button></div>)}</PopoverContent></Popover>
         </div>
-        <div className="flex flex-wrap items-center gap-3 text-xs"><span className="font-semibold">{rows.length} Fertiggerichte{allFood && ' & Lebensmittel'}</span>{(so === 'value' || so === 'ppe') && !allFood && <span className="text-muted-foreground">Ranking: nur vollwertige Mahlzeiten (400–900 kcal, ≥ 20 g Protein), Score ≥ {cfg.minScore}, ≥ {Math.max(400, cfg.minKcal)} kcal/Portion</span>}
+        <div className="flex flex-wrap items-center gap-3 text-xs"><span className="font-semibold">{rows.length} Fertiggerichte{allFood && ' & Lebensmittel'}</span>{(so === 'value' || so === 'ppe') && !allFood && <span className="text-muted-foreground">Ranking: vollwertige (400–900 kcal, ≥ 20 g Protein) & leichte Mahlzeiten (ab 240 kcal / 11 g Protein), Score ≥ {cfg.minScore}</span>}
           <label className="flex items-center gap-1.5 text-muted-foreground"><input type="checkbox" checked={!!allFood} onChange={e => setAllFood(e.target.checked ? '1' : '')} />auch normale Lebensmittel zeigen</label>
           <label className="flex items-center gap-1.5 text-muted-foreground"><input type="checkbox" checked={!!lf} onChange={e => setLf(e.target.checked ? '1' : '')} />🚚 nur „Liefert nach 4020“</label></div>
         <ActiveChips f={f} set={setF} />

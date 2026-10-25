@@ -1,4 +1,5 @@
 import { dedupeGtin } from '@/app/meal'
+import { findNearestStore, mergeLinzStores, type WalkStore } from '@/app/shops'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import type { Data, Stores, Shop } from '@/lib'
 
@@ -15,17 +16,16 @@ function useJson<T>(url: string, optional = false): T | null {
   return v
 }
 
-/** Loads the product dataset and the store list; exposes a nearest-branch lookup. */
+/** Loads the product dataset and the merged Linz store list; exposes a nearest-branch lookup across all Linz chains. */
 export function useAppData() {
   const raw = useJson<Data>('./data.json')
   const data = useMemo(() => raw ? { ...raw, rows: dedupeGtin(raw.rows) as typeof raw.rows } : raw, [raw])
-  const stores = useJson<Stores>('./stores.json', true)
+  const baseStores = useJson<Stores>('./stores.json', true)
+  const walkFile = useJson<{ home: { addr: string; lat: number; lon: number }; stores: WalkStore[] }>('./stores_linz_walk.json', true)
+  const provFile = useJson<{ stores: any[] }>('./stores_linz_providers.json', true)
+  const osmFile = useJson<{ stores: any[] }>('./stores_linz_2026-10-13.json', true)
+  const stores = useMemo(() => mergeLinzStores(baseStores, walkFile, provFile, osmFile), [baseStores, walkFile, provFile, osmFile])
   useEffect(() => { const t = setTimeout(() => sessionStorage.removeItem('fg-reloaded'), 10000); return () => clearTimeout(t) }, [])
-  const nearest = useCallback((chain: string): Shop | null => {
-    if (!stores) return null
-    let best: Shop | null = null
-    for (const s of stores.shops) if (s.chain === chain && (!best || (s.walk_m ?? s.dist) < (best.walk_m ?? best.dist))) best = s
-    return best
-  }, [stores])
+  const nearest = useCallback((chain: string): Shop | null => findNearestStore(stores, chain), [stores])
   return { data, stores, nearest }
 }
