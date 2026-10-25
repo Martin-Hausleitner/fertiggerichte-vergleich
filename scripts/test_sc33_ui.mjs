@@ -221,16 +221,16 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   const rejFull = D.rows.filter(r => r.rankable && !M.isFullMeal(r))
   assert.deepEqual(rejReady.map(r => r.id), [], "0 rankable/rankableLight rows rejected by isReadyMeal")
   assert.deepEqual(rejFull.map(r => r.id), [], "0 rankable rows rejected by isFullMeal")
-  for (const id of [530, 51, 52, 860, 1091, 2948, 1020]) {
+  for (const id of [51, 52, 860, 1091, 2948, 1020]) {
     const r = byId.get(id)
     assert.ok(r && !M.passesRankMin(r) && !M.passesLightRank(r), `#${id} excluded from passesRankMin/passesLightRank`)
     assert.ok(!M.passesRankMin({ ...r, rankable: undefined }) && !M.passesLightRank({ ...r, rankableLight: undefined }), `#${id} excluded by structural rules too`)
   }
-  for (const id of [877, 2820, 1031, 2980, 3071, 1067, 1478, 2968, 2966, 2967, 2970, 3052]) {
+  for (const id of [877, 2820, 1031, 2980, 3071, 1067, 1478, 2968, 2966, 2967, 2970, 3052, 172, 530, 3057, 2205]) {
     const r = byId.get(id)
     assert.ok(r && r.rankable === true && M.passesRankMin(r), `#${id} rescued into rankable & passesRankMin (SC66/SC67/SC68)`)
   }
-  for (const id of [170, 639, 1007, 2663, 3206, 1255, 606, 3136, 1277, 496, 3020, 2956]) {
+  for (const id of [170, 639, 1007, 2663, 3206, 1255, 606, 3136, 1277, 496, 3020, 2956, 2206]) {
     const r = byId.get(id)
     assert.ok(r && r.rankableLight === true && M.passesLightRank(r), `#${id} rescued into rankableLight & passesLightRank (SC66/SC67)`)
   }
@@ -337,7 +337,7 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   const rankCounts = S.storeRankableCounts(visRows)
   assert.ok(prodCounts["Spar"] > 0 && rankCounts["Spar"] > 0, "Spar has productCount > 0 and rankableCount > 0")
   assert.ok(prodCounts["Billa"] > 0 && rankCounts["Billa"] > 0, "Billa has productCount > 0 and rankableCount > 0")
-  assert.ok(prodCounts["Denn's"] > 0, "Denn's has productCount > 0")
+  assert.ok(prodCounts["Denn's"] === 5 && rankCounts["Denn's"] === 2, "Denn's has productCount === 5 and rankableCount === 2 (#2205 + #2206)")
   assert.equal(rankCounts["Nah&Frisch"] ?? 0, 0, "Nah&Frisch has rankableCount === 0 (raw rows without complete nutrition/price)")
   assert.ok((prodCounts["Nah&Frisch"] ?? 0) > 0, "Nah&Frisch has productCount > 0")
   // Verify synthetic row check for storeRankableCounts
