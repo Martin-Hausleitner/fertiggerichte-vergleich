@@ -221,18 +221,18 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   const rejFull = D.rows.filter(r => r.rankable && !M.isFullMeal(r))
   assert.deepEqual(rejReady.map(r => r.id), [], "0 rankable/rankableLight rows rejected by isReadyMeal")
   assert.deepEqual(rejFull.map(r => r.id), [], "0 rankable rows rejected by isFullMeal")
-  for (const id of [530, 1031, 51, 52, 860, 1091, 2948]) {
+  for (const id of [530, 51, 52, 860, 1091, 2948, 1020]) {
     const r = byId.get(id)
     assert.ok(r && !M.passesRankMin(r) && !M.passesLightRank(r), `#${id} excluded from passesRankMin/passesLightRank`)
     assert.ok(!M.passesRankMin({ ...r, rankable: undefined }) && !M.passesLightRank({ ...r, rankableLight: undefined }), `#${id} excluded by structural rules too`)
   }
-  for (const id of [877, 2820]) {
+  for (const id of [877, 2820, 1031, 2980, 3071]) {
     const r = byId.get(id)
-    assert.ok(r && r.rankable === true && M.passesRankMin(r), `#${id} rescued into rankable & passesRankMin (SC66 P1.2)`)
+    assert.ok(r && r.rankable === true && M.passesRankMin(r), `#${id} rescued into rankable & passesRankMin (SC66/SC67)`)
   }
-  for (const id of [170, 639, 1007, 2663, 3206, 1255, 606, 3136]) {
+  for (const id of [170, 639, 1007, 2663, 3206, 1255, 606, 3136, 1277, 496, 3020, 2956]) {
     const r = byId.get(id)
-    assert.ok(r && r.rankableLight === true && M.passesLightRank(r), `#${id} rescued into rankableLight & passesLightRank (SC66 P1.1)`)
+    assert.ok(r && r.rankableLight === true && M.passesLightRank(r), `#${id} rescued into rankableLight & passesLightRank (SC66/SC67)`)
   }
   const rankDiff = D.rows.filter(r => M.passesRankMin(r) !== Boolean(r.rankable))
   const lightDiff = D.rows.filter(r => M.passesLightRank(r) !== Boolean(r.rankableLight))
