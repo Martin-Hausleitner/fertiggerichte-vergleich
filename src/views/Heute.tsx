@@ -51,7 +51,7 @@ export default function Heute() {
         <span className="min-w-0 flex-1"><span className="line-clamp-2 text-sm font-medium">{r.name}</span><VariantNote r={r} />
           <span className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground"><StoreLogo store={r.store} size={14} />{shop.name} · ~{shop.walkMin} min · {fmt(pp, 2)} €/Portion <OldPriceBadge r={r} /></span></span>
         <span className="w-24 shrink-0 sm:w-32"><ScoreBar r={r} /></span></button></li>)}</ol>
-      <p className="mt-2 text-[11px] text-muted-foreground">Eigenes Ranking für leichte Mahlzeiten (Salate, Suppen, kleine Portionen): gleiche Preis-Leistungs-Formel, Score ≥ Mindestwert, aber ohne die 400-kcal-/20-g-Protein-Prüfung. Daher nicht mit den vollwertigen Gerichten oben vermischt.</p></Card>}
+      <p className="mt-2 text-[11px] text-muted-foreground">Eigenes Ranking für leichte Mahlzeiten (250–399 kcal ab 15 g Protein sowie Gerichte ab 400 kcal mit 15–19,9 g Protein): gleiche Preis-Leistungs-Formel und Score ≥ Mindestwert, getrennt von den vollwertigen 400-kcal-/20-g-Protein-Hauptgerichten oben.</p></Card>}
     <Card className="flex items-center justify-between gap-2 p-3 text-sm shadow-none"><span><Truck className="mr-1 inline size-4" />Mehr Auswahl: alle Fertiggerichte filtern oder eigene Shops festlegen.</span>
       <span className="flex gap-2"><Button size="sm" onClick={() => { location.hash = 'tab=tabelle' }}>Alle filtern <ArrowRight className="size-4" /></Button><Button size="sm" onClick={() => { location.hash = 'tab=meine-shops' }}>Meine Shops</Button></span></Card>
   </div>
