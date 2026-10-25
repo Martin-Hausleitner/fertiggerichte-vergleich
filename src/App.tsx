@@ -148,6 +148,6 @@ export default function App() {
     </SidebarProvider>
     {compare.length > 0 && <div className="fixed bottom-4 left-1/2 z-40 -translate-x-1/2"><Button size="md" className="h-11 rounded-full px-5 shadow-lg" onClick={() => setCmpOpen(true)}><GitCompare />Vergleichen ({compare.length}/4)</Button></div>}
     <Sheet open={cmpOpen} onClose={() => setCmpOpen(false)} side={innerWidth < 768 ? 'bottom' : 'right'} title="Produktvergleich"><Suspense fallback={<ViewSkeleton />}><Compare /></Suspense></Sheet>
-    <Sheet open={det !== ''} onClose={() => { setDet(''); setDupNote(null) }} title="Produktdetails"><Suspense fallback={<ViewSkeleton />}>{detId != null && dupNote && (dupNote.kind === 'redirect' ? dupNote.to === detId : dupNote.from === detId) && <DupNotice n={dupNote} rows={D.rows} onOpen={id => { setDupNote(null); open(id) }} />}{detId != null && <Detail id={detId} />}</Suspense></Sheet>
+    <Sheet open={det !== ''} onClose={() => { setDet(''); setDupNote(null) }} title="Produktdetails"><Suspense fallback={<ViewSkeleton />}>{detId != null && dupNote && (dupNote.kind === 'redirect' ? dupNote.to === detId : dupNote.from === detId) && <DupNotice n={dupNote} rows={D.rows} onOpen={id => { setDupNote(null); open(id) }} />}{detId != null && <Detail key={detId} id={detId} />}</Suspense></Sheet>
   </AppCtx.Provider>
 }

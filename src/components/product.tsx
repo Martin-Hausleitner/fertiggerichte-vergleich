@@ -1,5 +1,5 @@
 import { LOGIN_ONLY_PRICE } from '@/app/shops'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { OldPriceBadge, priceAge } from './PriceAge'
 import { isLive as _isLive, isPriceCurrent, isPriceUnconfirmed, priceStatusLabel, showPstatBadge, UNCONFIRMED_TIP } from '@/app/priceFresh'
 import { isDelisted } from '@/app/meal'
@@ -23,10 +23,11 @@ export function KpiBox({k,label,v,unit='',d=2,hi}:{k:string;label:string;v:numbe
 const isTouch=typeof window!=='undefined'&&matchMedia('(hover: none)').matches
 export function ZoomImage({src,className='h-12 w-12',zoom=true,onErr,logo=false}:{src:string|null;className?:string;zoom?:boolean;onErr?:()=>void;logo?:boolean}){
   const [err,setErr]=useState(false),[pos,setPos]=useState<{x:number;y:number}|null>(null),[full,setFull]=useState(false)
+  useEffect(()=>{setErr(false);setPos(null);setFull(false)},[src]) // SC75 P1.2: reset stale error/zoom state on product change
   if(!src||err) return <div className={cn(className,'flex items-center justify-center rounded-lg bg-slate-100 text-slate-400 dark:bg-slate-800')}><UtensilsCrossed size={18}/></div>
   const S=400,place=(e:React.MouseEvent)=>{const x=e.clientX+24+S>innerWidth?e.clientX-24-S:e.clientX+24;const y=Math.min(Math.max(8,e.clientY-S/2),innerHeight-S-8);setPos({x,y})}
   return <>
-    <img src={src} loading="lazy" decoding="async" referrerPolicy="no-referrer" onError={()=>{setErr(true);onErr?.()}} className={cn(logo?'object-contain object-center bg-transparent select-none':'rounded-lg object-contain bg-white',className,zoom&&'cursor-zoom-in')} alt=""
+    <img key={src} src={src} loading="lazy" decoding="async" referrerPolicy="no-referrer" onError={()=>{setErr(true);onErr?.()}} className={cn(logo?'object-contain object-center bg-transparent select-none':'rounded-lg object-contain bg-white',className,zoom&&'cursor-zoom-in')} alt=""
       onMouseEnter={zoom&&!isTouch?place:undefined} onMouseMove={zoom&&!isTouch?place:undefined} onMouseLeave={()=>setPos(null)}
       onClick={zoom&&isTouch?(e=>{e.stopPropagation();setFull(true)}):undefined}/>
     {pos&&createPortal(<div className="pointer-events-none fixed z-[70] rounded-2xl border bg-white p-2 shadow-2xl zoom-in" style={{left:pos.x,top:pos.y,width:S,height:S}}><img src={src} referrerPolicy="no-referrer" className="h-full w-full object-contain" alt=""/></div>,document.body)}
@@ -60,6 +61,7 @@ export const Price=({r}:{r:Row})=><span className="inline-flex flex-wrap items-c
 const PriceInner=({r}:{r:Row})=> r.price==null?(LOGIN_ONLY_PRICE.includes(r.store)?<span className="text-xs text-slate-500" title="Der Anbieter zeigt Preise erst nach Anmeldung">Preis nur nach Login</span>:<span className="text-slate-400">–</span>):<span className="inline-flex items-center gap-1.5 whitespace-nowrap"><span className={cn('font-bold tabular-nums text-[1.05em]',isPriceCurrent(r)?'text-slate-900 dark:text-white':'text-slate-500')}>{fmt(r.price,2)} €</span><OldPriceBadge r={r}/>{isPriceCurrent(r)?<Badge data-testid="price-current" className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300 text-[10px]">✓ aktuell</Badge>:isPriceUnconfirmed(r)&&!priceAge(r).old?<Badge data-testid="price-unconfirmed" title={`${priceStatusLabel(r)} – ${UNCONFIRMED_TIP}`} className="bg-amber-100 text-amber-800 text-[10px]">Preis unbestätigt</Badge>:isDelisted(r)&&!priceAge(r).old?<Badge data-testid="price-delisted" title="Preis im Zeitfenster, Produkt aber evtl. nicht mehr im Sortiment – im Shop prüfen" className="bg-amber-100 text-amber-800 text-[10px]">{priceStatusLabel(r)??'evtl. ausgelistet'}</Badge>:showPstatBadge(r)?<Badge className="bg-amber-100 text-amber-800 text-[10px]">{r.pstat}</Badge>:null}</span>
 export function BrandLogo({r,size=28}:{r:Pick<Row,'brandN'|'logo'>;size?:number}){
   const [err,setErr]=useState(false)
+  useEffect(()=>setErr(false),[r.logo]) // SC75 P1.2
   if(r.logo&&!err) return <span title={r.brandN} style={{height:size,width:size*2.6}} className="inline-flex shrink-0 items-center justify-center"><ZoomImage logo src={r.logo} className="h-full w-full" onErr={()=>setErr(true)}/></span>
   const h=[...r.brandN].reduce((a,c)=>a*31+c.charCodeAt(0)|0,7),hue=Math.abs(h)%360
   return <span title={r.brandN} style={{height:size,minWidth:size,background:`hsl(${hue} 55% 42%)`,fontSize:size*.38}} className="inline-flex items-center justify-center rounded-md px-1 font-bold text-white">{r.brandN.replace(/[^A-Za-zÄÖÜäöü ]/g,'').split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join('').toUpperCase()||'?'}</span>
