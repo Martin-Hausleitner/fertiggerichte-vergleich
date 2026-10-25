@@ -65,8 +65,9 @@ export function BrandLogo({r,size=28}:{r:Pick<Row,'brandN'|'logo'>;size?:number}
   const [err,setErr]=useState(false)
   useEffect(()=>setErr(false),[r.logo]) // SC75 P1.2
   if(r.logo&&!err) return <span title={r.brandN} style={{height:size,width:size*2.6}} className="inline-flex shrink-0 items-center justify-center"><ZoomImage logo src={r.logo} className="h-full w-full" onErr={()=>setErr(true)}/></span>
-  const h=[...r.brandN].reduce((a,c)=>a*31+c.charCodeAt(0)|0,7),hue=Math.abs(h)%360
-  return <span title={r.brandN} style={{height:size,minWidth:size,background:`hsl(${hue} 55% 42%)`,fontSize:size*.38}} className="inline-flex items-center justify-center rounded-md px-1 font-bold text-white">{r.brandN.replace(/[^A-Za-zÄÖÜäöü ]/g,'').split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join('').toUpperCase()||'?'}</span>
+  const bn=String(r.brandN??'') // SC79: robust gegen fehlende Marke
+  const h=[...bn].reduce((a,c)=>a*31+c.charCodeAt(0)|0,7),hue=Math.abs(h)%360
+  return <span title={r.brandN} style={{height:size,minWidth:size,background:`hsl(${hue} 55% 42%)`,fontSize:size*.38}} className="inline-flex items-center justify-center rounded-md px-1 font-bold text-white">{bn.replace(/[^A-Za-zÄÖÜäöü ]/g,'').split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join('').toUpperCase()||'?'}</span>
 }
 export function StoreLogo({store,size=28}:{store:string;size?:number}){
   const l=STORE_LOGO[store]

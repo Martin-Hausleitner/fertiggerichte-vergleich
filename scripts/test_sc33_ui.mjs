@@ -898,6 +898,10 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
       assert.ok(resolved && (resolved.name === x.name || resolved.url === x.url), "Packaging Top-5 item resolves to exact product in D.rows: " + x.name)
     }
   }
+  const vegMeat = D.rows.filter(r => r.dupOf == null && (r.vegan || (r.cprot || []).includes("vegan") || (r.cprot || []).includes("vegetarisch")) && (r.cprot || []).some(c => ["Rind", "Schwein", "Geflügel", "Fisch"].includes(c)))
+  assert.equal(vegMeat.length, 0, "SC79 P1.1: 0 vegan/vegetarian rows carry meat/fish cprot tags")
+  const ohneMarke = active.filter(r => !r.brandN || r.brandN === "Ohne Marke" || r.brandN === "unbekannt")
+  assert.equal(ohneMarke.length, 0, "SC79 P3.1: 0 Linz rows have Ohne Marke / unbekannt brandN")
 
-  console.log("[sc79-ui-fixes] OK: P2.1a PriceKpis rowPli+light & rowP100k, P2.1b Top withPli & isRowRankable, P2.2 Health/HealthRadar rowP100k, P2.3a Planner isRowRankable, P2.3b Netz3D rowPli, P1.2-UI Packaging & AnalyseExt resolveTop")
+  console.log("[sc79-ui-fixes] OK: P1.1 0 veg meat tags, P1.2 analysis JSONs & Packaging/AnalyseExt resolveTop, P3.1 0 Linz Ohne Marke, P2.1a PriceKpis rowPli+light & rowP100k, P2.1b Top withPli & isRowRankable, P2.2 Health/HealthRadar rowP100k, P2.3a Planner isRowRankable, P2.3b Netz3D rowPli, P1.2-UI Packaging & AnalyseExt resolveTop")
 }
