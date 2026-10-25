@@ -5,8 +5,9 @@ import { Package, Euro, HeartPulse, Scale, Trophy, Snowflake, Recycle, ShieldAle
 import { Card, Badge } from '../components/ui'
 import { InfoTip } from '../components/info'
 import { Markdown } from '../components/md'
-import { fmt, useApp, STORE_LOGO } from '../lib'
+import { fmt, useApp, STORE_LOGO, isLinzStore } from '../lib'
 import { rowPli } from '../app/meal'
+const EXCLUDED_STORES=new Set(["hellofresh","bofrost","bofrost*","alfies","juit","gourmet","schär","gurkerl","mpreis","every.","nah&frisch"])
 const ACC='hsl(var(--primary))',MUTE='hsl(var(--muted-foreground))'
 const COL:Record<string,string>=new Proxy({},{get:()=>MUTE}) as any
 const LBL:Record<string,string>={'Dose':'Dose','Kühlschale/MAP':'Kühlschale (z. B. Good Choice)','Tiefkühl':'Tiefkühl (TK)','Pouch/Retort':'Pouch / Retorte','Glas':'Glas','Sous-vide/Vakuum':'Sous-vide','Trocken/Instant-Beutel':'Trockenware / Instant'}
@@ -86,7 +87,7 @@ export default function Packaging(){
           <span className="text-lg w-6 text-center shrink-0">{['🥇','🥈','🥉','4','5'][i]}</span><img src={r?.img||x.img} alt="" loading="lazy" className="h-14 w-14 shrink-0 rounded-lg object-contain bg-white"/>
           <div className="min-w-0 flex-1"><div className="font-medium text-sm truncate">{r?.name||x.name}</div><div className="flex items-center gap-1.5 mt-0.5">{x.logo&&<img src={'./'+x.logo} alt="" className="h-4 max-w-[60px] object-contain"/>}{STORE_LOGO[x.store]&&<img src={'./'+STORE_LOGO[x.store]} alt={x.store} className="h-4 max-w-[50px] object-contain"/>}<span className="text-[11px] text-muted-foreground truncate">{r?.brandN||x.brand}</span></div></div>
           <div className="text-right text-xs shrink-0 tabular-nums"><div className="font-bold text-sm">{fmt(r?.price??x.price,2)} €</div><div className="text-muted-foreground">PLI {fmt(pli,0)} · {fmt(r?.eur10p??x.eur10p,2)} €/10 g P.</div></div></button>})}</div>:<p className="text-sm text-muted-foreground mt-2">Zu wenige rankbare Mahlzeiten mit vollständigen Nährwerten in dieser Gruppe.</p>}
-        <div className="mt-3 flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground"><Store size={13}/>Erhältlich bei: {t.stores.filter((s:string)=>!s.startsWith('unbekannt')).map((s:string)=>STORE_LOGO[s]?<img key={s} src={'./'+STORE_LOGO[s]} alt={s} title={s} className="h-5 max-w-[56px] object-contain"/>:<Badge key={s}>{s}</Badge>)}</div></Card>
+        <div className="mt-3 flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground"><Store size={13}/>Erhältlich bei: {t.stores.filter((s:string)=>!s.startsWith('unbekannt')&&!EXCLUDED_STORES.has(s.toLowerCase())&&isLinzStore(s,(D as any).delivers_4020)).map((s:string)=>STORE_LOGO[s]?<img key={s} src={'./'+STORE_LOGO[s]} alt={s} title={s} className="h-5 max-w-[56px] object-contain"/>:<Badge key={s}>{s}</Badge>)}</div></Card>
       <Card className="p-4 min-w-0"><h3 className="font-bold text-lg flex items-center gap-2"><BookOpen size={18} className="text-brand"/>Steckbrief {LBL[t.type]}</h3>
         <div className="mt-2 divide-y">{NOTES.map(([I,l,k,s])=>t[k]?<div key={k} className="flex gap-2 py-1.5 text-sm"><I size={15} className="mt-0.5 shrink-0 text-muted-foreground"/><div className="min-w-0"><div className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">{l}</div><div className="break-words">{String(t[k])} {src(t[s])}</div></div></div>:null)}</div>
         {t.after_opening_labels?.length>0&&<div className="mt-2 rounded-xl bg-muted p-2.5 text-xs"><div className="font-semibold mb-1 flex items-center gap-1"><Tag size={12}/>Echte Etikett-Hinweise (BILLA)</div>{t.after_opening_labels.map(([s,n]:[string,number])=><div key={s} className="flex justify-between gap-2"><span className="first-letter:uppercase">{s}</span><span className="tabular-nums text-muted-foreground">{n}×</span></div>)}</div>}</Card>

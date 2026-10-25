@@ -905,3 +905,14 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
 
   console.log("[sc79-ui-fixes] OK: P1.1 0 veg meat tags, P1.2 analysis JSONs & Packaging/AnalyseExt resolveTop, P3.1 0 Linz Ohne Marke, P2.1a PriceKpis rowPli+light & rowP100k, P2.1b Top withPli & isRowRankable, P2.2 Health/HealthRadar rowP100k, P2.3a Planner isRowRankable, P2.3b Netz3D rowPli, P1.2-UI Packaging & AnalyseExt resolveTop")
 }
+
+// SC80 P1.1-UI & P3.1-UI: AnalyseExt OOE_LBL, tier filter, salt_by_packaging share_over_1_5g normalization, Packaging EXCLUDED_STORES + isLinzStore
+{
+  const aeSrc = readFileSync(new URL("../src/views/AnalyseExt.tsx", import.meta.url), "utf8")
+  const pkgSrc = readFileSync(new URL("../src/views/Packaging.tsx", import.meta.url), "utf8")
+  assert.ok(aeSrc.includes("OOE_LBL") && aeSrc.includes("🦁 Oberösterreich") && aeSrc.includes("🇦🇹 Übriges Österreich (bekannter Betrieb)") && aeSrc.includes("🌍 Alle Nicht-OÖ-Produkte"), "AnalyseExt.tsx translates ooe_vs_others keys via OOE_LBL (SC80 P1.1-UI)")
+  assert.ok(aeSrc.includes("n_with_nutrition>0") && aeSrc.includes("v?.health_score?.median!=null"), "AnalyseExt.tsx filters out tier rows without nutrition values such as health (SC80 P1.1-UI)")
+  assert.ok(aeSrc.includes("x.share_over_1_5g>0&&x.share_over_1_5g<=1?Math.round(x.share_over_1_5g*1000)/10:x.share_over_1_5g"), "AnalyseExt.tsx normalizes decimal share_over_1_5g to percent (SC80 P1.1-UI)")
+  assert.ok(pkgSrc.includes("EXCLUDED_STORES") && pkgSrc.includes("!EXCLUDED_STORES.has(s.toLowerCase())") && pkgSrc.includes("isLinzStore(s,"), "Packaging.tsx filters t.stores against EXCLUDED_STORES and isLinzStore (SC80 P3.1-UI)")
+  console.log("[sc80-ui-fixes] OK: P1.1-UI AnalyseExt OOE_LBL, tier nutrition filter & salt_by_packaging percent normalization, P3.1-UI Packaging EXCLUDED_STORES & isLinzStore filter")
+}

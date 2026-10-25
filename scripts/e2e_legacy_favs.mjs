@@ -375,6 +375,18 @@ await page.waitForFunction(() => document.body.innerText.includes("Linzer Wochen
 const planerTxt = await page.locator("body").innerText()
 assert.ok(planerTxt.includes("gerankten Mahlzeiten") && (planerTxt.includes("dm") || planerTxt.includes("Little Lunch") || planerTxt.includes("Billa")), "#tab=planer includes Linz rankable & rankableLight meals")
 console.log("[e2e sc79-ui-fixes] OK: #tab=top PriceKpis real PLI + Leicht badge, #tab=verpackung Top-5 click resolves exact product, #tab=planer includes light meals")
+// sensecheck 80 P1.1-UI & P3.1-UI: AnalyseExt OOE German labels, no empty health tier row, Packaging Erhältlich bei filtered
+await page.goto(base + "#tab=analyse"); await page.reload()
+await page.waitForFunction(() => document.body.innerText.includes("Oberösterreich vs. Rest"), null, { timeout: 30000 })
+const ae80Txt = await page.locator("body").innerText()
+assert.ok(ae80Txt.includes("🦁 Oberösterreich") && ae80Txt.includes("🇦🇹 Übriges Österreich (bekannter Betrieb)") && ae80Txt.includes("🌍 Alle Nicht-OÖ-Produkte") && !ae80Txt.includes("other_resolved_producers") && !ae80Txt.includes("all_non_ooe"), "#tab=analyse translates ooe_vs_others row keys to German (SC80 P1.1-UI)")
+assert.ok(!/\bhealth\s+[\d,]+\s+[\d,]+\s+–\s+–\s+–\s+–/.test(ae80Txt), "#tab=analyse hides empty health tier row without nutrition values (SC80 P1.1-UI)")
+
+await page.goto(base + "#tab=pack"); await page.reload()
+await page.waitForSelector("[data-testid=packaging-top-card]", { timeout: 30000 })
+const pkg80Txt = await page.locator("body").innerText()
+assert.ok(!pkg80Txt.includes("HelloFresh") && !pkg80Txt.includes("Nah&Frisch") && !pkg80Txt.includes("every."), "#tab=pack Erhältlich bei excludes HelloFresh, Nah&Frisch, every. (SC80 P3.1-UI)")
+console.log("[e2e sc80-ui-fixes] OK: #tab=analyse German OOE labels & no empty health tier row, #tab=pack Erhältlich bei excludes HelloFresh/Nah&Frisch/every.")
 assert.deepEqual(errs, [], 'no page errors')
 console.log(`[e2e legacy favs] OK: ${nums} (94e0cd2) → ${want.length} uids via restore dialog (${n} options), meta ${ls.meta.dataVersion}, fg-favs → parked ${ls2.parked.length}, 0 page errors`)
 await browser.close(); server.close()
