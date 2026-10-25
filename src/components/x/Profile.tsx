@@ -9,6 +9,8 @@ import { ProducerLogo } from './Logos'
 import { AreaDist, Radial, StackedBars, TreemapChart, histogram, median, nums } from './charts'
 import { colorOf } from './palette'
 import { fmt, useApp, type Row } from '@/lib'
+import { isReadyMeal } from '@/app/meal'
+import { isRowRankable } from '@/app/shops'
 
 export function Picker({ options, value, onChange, label }: { options: [string, number][]; value: string; onChange: (v: string) => void; label: string }) {
   const [open, setOpen] = useState(false)
@@ -32,7 +34,11 @@ export function Profile({ name, rows, logo, subtitle, extra, groupBy }: { name: 
     const stack = [...gm].sort((a, b) => b[1].length - a[1].length).slice(0, 10).map(([g, rs]) => ({ name: g.slice(0, 18), ...Object.fromEntries(packs.map(p => [p, rs.filter(r => r.pack === p).length])) }))
     return { pr, e, sc, sa, packs, stack, tree: [...gm].map(([n, rs]) => ({ name: n, size: rs.length })).sort((a, b) => b.size - a.size).slice(0, 30) }
   }, [rows, groupBy])
-  const best = [...rows].filter(r => r.eur10p != null).sort((a, b) => a.eur10p! - b.eur10p!).slice(0, 8)
+  /** SC76 P1.2: „Bestes Protein pro Euro“ nur Fertiggerichte – zuerst gerankte Mahlzeiten, dann mit sonstigen Fertiggerichten auffüllen (keine Rohzutaten/Mehl/Trockenbohnen). */
+  const byE = (a: Row, b: Row) => a.eur10p! - b.eur10p!
+  const bestRanked = rows.filter(r => r.eur10p != null && !r.nonfood && isRowRankable(r as any)).sort(byE)
+  const bestIds = new Set(bestRanked.map(r => r.id))
+  const best = [...bestRanked, ...rows.filter(r => r.eur10p != null && !r.nonfood && !bestIds.has(r.id) && r.stage !== 'base' && isReadyMeal(r)).sort(byE)].slice(0, 8)
   return <div className="space-y-4">
     <Card className="overflow-hidden shadow-none">
       <div className="h-28 sm:h-36" style={{ background: `linear-gradient(120deg, ${c}, ${c}cc 45%, ${c}55)` }} />
