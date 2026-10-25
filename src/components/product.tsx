@@ -2,7 +2,7 @@ import { LOGIN_ONLY_PRICE } from '@/app/shops'
 import { useState, useEffect } from 'react'
 import { OldPriceBadge, priceAge } from './PriceAge'
 import { isLive as _isLive, isPriceCurrent, isPriceUnconfirmed, priceStatusLabel, showPstatBadge, UNCONFIRMED_TIP } from '@/app/priceFresh'
-import { isDelisted } from '@/app/meal'
+import { isDelisted, rowPli } from '@/app/meal'
 import { NutritionSourceBadge } from './NutritionSource'
 import { DeliveryHint } from './DeliveryHint'
 import { VariantNote, PriceCondition, PriceWinnerBadge, AlsoAt } from './RowNotes'
@@ -93,7 +93,7 @@ export function PriceKpis({r}:{r:Row}){
 export function StageBadge({r}:{r:Row}){const s=stageBadgeOf(r);return s?<InfoTip k="stage"><Badge data-testid="stage-badge" className="bg-violet-100 text-violet-800 dark:bg-violet-900/40 dark:text-violet-200">{s[1]} {s[2]}</Badge></InfoTip>:null}
 export function ProdLine({r,size='sm'}:{r:Row;size?:'sm'|'md'}){const n=r.p2?.producer||r.herst;if(!n)return null;return <div className="flex items-center gap-1 min-w-0 flex-wrap"><ProducerChip slug={r.prodSlug} name={n} size={size}/><Flag text={(r.p2?.town||'')+' '+(r.ort||'')+' '+(r.origin||'')} state={r.ooe?'Oberösterreich':null}/>{r.p2?.confidence&&<InfoTip k="conf"><span className="text-[10px] text-slate-500">{r.p2.confidence}</span></InfoTip>}</div>}
 export function RowSummary({r}:{r:Row}){
-  return <div className="w-[360px] space-y-2"><div className="flex gap-3"><img src={r.img??''} referrerPolicy="no-referrer" className="h-36 w-36 object-contain rounded-lg bg-white"/><div className="min-w-0 space-y-1"><div className="font-semibold leading-tight">{r.name}</div><div className="text-xs text-slate-500">{r.brand}</div><StoreLogo store={r.store} size={40}/><div className="text-lg font-bold">{r.price!=null?fmt(r.price,2)+' €':'–'}</div><PliBadge v={r.pli}/></div></div>
+  return <div className="w-[360px] space-y-2"><div className="flex gap-3"><img src={r.img??''} referrerPolicy="no-referrer" className="h-36 w-36 object-contain rounded-lg bg-white"/><div className="min-w-0 space-y-1"><div className="font-semibold leading-tight">{r.name}</div><div className="text-xs text-slate-500">{r.brand}</div><StoreLogo store={r.store} size={40}/><div className="text-lg font-bold">{r.price!=null?fmt(r.price,2)+' €':'–'}</div><PliBadge v={rowPli(r)}/></div></div>
     <div className="grid grid-cols-3 gap-1"><KpiBox k="eur10p" label="€/10 g P" v={r.eur10p} unit=" €" hi/><KpiBox k="score" label="Score" v={r.score} d={0}/><KpiBox k="pPor" label="€/Portion" v={(r as any).pPorEff??r.pPor} unit=" €"/></div><PriceKpis r={r}/><div className="text-xs">{packEmo(r.pack)} {r.pack}</div><ProdLine r={r}/></div>
 }
 export function RowHover({r,children}:{r:Row;children:React.ReactNode}){

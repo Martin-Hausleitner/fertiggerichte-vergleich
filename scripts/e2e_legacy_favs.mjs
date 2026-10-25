@@ -280,6 +280,28 @@ if (r1428?.uid) {
   assert.ok(!dlg75.includes("Produkt nicht mit EAN auf Open Food Facts erfasst, keine Daten"), "Detail modal with r.nova does not claim 'keine Daten'")
 }
 console.log("[e2e sc75-ui-fixes] OK: no duplicate (Tankstellenshop), Heute mode switcher + PLI + pack price, MeineShops petrol badge, OffPanel NOVA fallback")
+// sensecheck 76 P1.1, P1.2, P2.1, P2.2: HoferTop30 fallback cards & allFood checkbox, LadenProfil Bestes Protein pro Euro ready meals only, Detail healthierAlternatives Linz local + price
+await page.goto(base + "#tab=hofer-top30"); await page.reload()
+await page.waitForSelector("[data-testid=hofer-fallback-cards]", { timeout: 30000 })
+const hoferFallbackTxt = await page.locator("[data-testid=hofer-fallback-cards]").first().innerText()
+assert.ok(hoferFallbackTxt.includes("Kärntner Kasnudeln") && hoferFallbackTxt.includes("Asia Green Garden Udon Nudelschüssel") && hoferFallbackTxt.includes("Leicht"), "#tab=hofer-top30 renders both #1180 and #861 (with Leicht badge) in hofer-fallback-cards")
+await page.locator("label", { hasText: "auch normale Lebensmittel zeigen" }).locator("input[type=checkbox]").check()
+await page.waitForTimeout(200)
+const hoferAllFoodTxt = await page.locator("body").innerText()
+assert.ok(hoferAllFoodTxt.includes("Kategorien erfüllen die Mindestanzahl") && hoferAllFoodTxt.includes("Pasta"), "#tab=hofer-top30 allFood checkbox renders category rankings (Pasta)")
+await page.goto(base + "#tab=ladenprofil"); await page.reload()
+await page.waitForFunction(() => document.body.innerText.includes("Bestes Protein pro Euro"), null, { timeout: 30000 })
+const ladenTxt = await page.locator("body").innerText()
+assert.ok(!ladenTxt.includes("Weizenmehl") && !ladenTxt.includes("Knödelbrot") && !ladenTxt.includes("Pinto Bohnen"), "#tab=ladenprofil Bestes Protein pro Euro shows no raw flour, dry beans, or Knödelbrot")
+const r1180e2e = D.rows.find(r => r.id === 1180)
+if (r1180e2e?.uid) {
+  await page.goto(base + "#tab=alle&p=" + r1180e2e.uid); await page.reload()
+  await page.waitForSelector("[role=dialog]", { timeout: 30000 })
+  await page.waitForFunction(() => (document.querySelector("[role=dialog]")?.innerText || "").includes("Gesündere Alternativen"), null, { timeout: 10000 })
+  const dlg1180 = await page.locator("[role=dialog]").first().innerText()
+  assert.ok(dlg1180.includes("Omis Schmankerl Kärntner Kasnudeln") && dlg1180.includes("2,39 €"), "#1180 Detail modal shows Omis Schmankerl Kärntner Kasnudeln (Billa, 2,39 €) in Gesündere Alternativen")
+}
+console.log("[e2e sc76-ui-fixes] OK: #tab=hofer-top30 fallback cards (#1180 + #861) & allFood categories, #tab=ladenprofil ready meals only, #1180 Detail local alternatives with price")
 assert.deepEqual(errs, [], 'no page errors')
 console.log(`[e2e legacy favs] OK: ${nums} (94e0cd2) → ${want.length} uids via restore dialog (${n} options), meta ${ls.meta.dataVersion}, fg-favs → parked ${ls2.parked.length}, 0 page errors`)
 await browser.close(); server.close()

@@ -5,6 +5,7 @@ export type MealRow = {
   name: string; store: string; stage: string; price: number | null; size: number | null; score: number | null; kcal: number | null; p100: number | null
   portion?: number | null; fat?: number | null; pack?: string; gang?: string | null; dry?: boolean; nonfood?: boolean; incomplete?: boolean; psrc?: string | null
   portion_g?: number | null; kcal_meal?: number | null; meal_class?: string | null; price_status?: string | null; shop_status?: string | null
+  id?: number; pli?: number | null; pliLight?: number | null; eur10p?: number | null; rankable?: boolean; rankableLight?: boolean; dishKey?: string | null
   segment?: string | null; brand?: string | null; dupOf?: number; component?: string | boolean | null; allergens?: string[] | null; cprot?: string[]; cdish?: string[]; sugar?: number | null; score_parts?: Record<string, number> | null; nonMeal?: { kind: string; reason?: string | null } | null; sauceInPack?: unknown
 }
 type Row = MealRow
@@ -172,4 +173,61 @@ export function dedupeGtin<T extends { id?: number; store: string; ean?: string 
   const best = new Map<string, T>()
   for (const r of rows) { const g = gtinOf(r); if (!g) continue; const k = g + '|' + r.store, o = best.get(k); if (!o || completeness(r) > completeness(o)) best.set(k, r) }
   return rows.map(r => { const g = gtinOf(r), b = g ? best.get(g + '|' + r.store) : undefined; return b && b !== r ? { ...r, dupOf: r.dupOf ?? b.id } : r })
+}
+
+/** SC76 P2.1: Central PLI helper across main-ranked and light-ranked meals. */
+export const rowPli = (r: { pli?: number | null; pliLight?: number | null } | null | undefined): number | null =>
+  r == null ? null : (r.pli ?? r.pliLight ?? null)
+
+/** SC74 P1 / SC76 P2.1: Combined rankable predicate including light meals (200-299 kcal, >=8g protein). */
+export const isRowRankable = (r: MealRow & { rankable?: boolean; rankableLight?: boolean }) =>
+  r.dupOf == null && (r.rankable === true || r.rankableLight === true || passesRankMin(r) || passesLightRank(r))
+
+/** SC76 P1.2: Best protein-per-euro ready meals for store/brand profiles (ranked meals first, then non-base ready meals). */
+export const bestProteinPerEuro = <T extends MealRow>(rows: T[], limit = 8): T[] => {
+  const byE = (a: T, b: T) => a.eur10p! - b.eur10p!
+  const bestRanked = rows.filter(r => r.eur10p != null && !r.nonfood && isRowRankable(r)).sort(byE)
+  const bestIds = new Set(bestRanked.map(r => r.id))
+  return [...bestRanked, ...rows.filter(r => r.eur10p != null && !r.nonfood && !bestIds.has(r.id) && r.stage !== 'base' && isReadyMeal(r)).sort(byE)].slice(0, limit)
+}
+
+/** Stationary supermarket chains in Linz for SC76 P2.2 everyday-relevance ranking. */
+export const LINZ_LOCAL_STORES = new Set([
+  'Billa',
+  'Spar',
+  'Hofer',
+  'Lidl',
+  'dm',
+  'Penny',
+  "Denn's",
+  'Interspar',
+  'Unimarkt',
+  'Maximarkt',
+])
+
+/** SC76 P2.2: Healthier alternatives prioritized by dishKey/cdish & Linz local supermarket before online mail-order. */
+export const healthierAlternatives = <T extends MealRow>(r: T, R: T[], limit = 4): T[] => {
+  const isLocal = (x: T) => x.store === r.store || LINZ_LOCAL_STORES.has(x.store || '')
+  const sameDishKey = (x: T) => Boolean(r.dishKey && x.dishKey === r.dishKey)
+  const sameCdish = (x: T) => Boolean(r.cdish?.length && x.cdish?.some(c => r.cdish!.includes(c)))
+  const samePack = (x: T) => Boolean(r.pack && x.pack === r.pack)
+  const tier = (x: T) => {
+    if (sameDishKey(x) && isLocal(x)) return x.store === r.store ? 0 : 1
+    if (sameCdish(x) && isLocal(x)) return x.store === r.store ? 2 : 3
+    if (samePack(x) && isLocal(x)) return x.store === r.store ? 4 : 5
+    if (sameDishKey(x)) return 6
+    if (sameCdish(x)) return 7
+    if (samePack(x)) return 8
+    return 9
+  }
+  return R.filter(
+    x =>
+      x.id !== r.id &&
+      isRowRankable(x) &&
+      x.score != null &&
+      (x.score ?? 0) > (r.score ?? 0) &&
+      (sameDishKey(x) || sameCdish(x) || samePack(x)),
+  )
+    .sort((a, b) => tier(a) - tier(b) || (b.score ?? 0) - (a.score ?? 0))
+    .slice(0, limit)
 }

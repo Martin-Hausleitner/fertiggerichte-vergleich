@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Command } from 'cmdk'
 import { Search, Sparkles, Loader2 } from 'lucide-react'
 import { useApp, cn, fmt, type Row } from '../lib'
+import { rowPli } from '../app/meal'
 import { STAGES } from './info'
 import { Img, BrandLogo, StoreLogo, PliBadge } from './product'
 
@@ -25,7 +26,7 @@ export function SearchPalette(){const {R,open}=useApp()
   useEffect(()=>{if(show&&st==='idle'){setSt('loading');loadEmb().then(m=>loadExt(m.model)).then(()=>setSt('ready')).catch(e=>{console.error(e);setSt('error')})}},[show])
   useEffect(()=>{const my=++seq.current;const t=setTimeout(async()=>{
     const pass=(r:Row)=>(stage.length?stage.includes(r.stage):r.stage!=='base')&&(!chain.length||chain.includes(r.store))&&(!hp||(r.p100??0)>=10)&&!r.nonfood
-    if(!q.trim()){setRes(R.filter(r=>pass(r)&&r.pli!=null).sort((a,b)=>b.pli!-a.pli!).slice(0,30).map(r=>[0,r]));return}
+    if(!q.trim()){setRes(R.filter(r=>pass(r)&&rowPli(r)!=null).sort((a,b)=>rowPli(b)!-rowPli(a)!).slice(0,30).map(r=>[0,r]));return}
     const sem=new Map<number,number>()
     if(st==='ready'){const m=await loadEmb(),ext=await loadExt(m.model);const v=(await ext('query: '+q,{pooling:'mean',normalize:true})).data as Float32Array
       for(let i=0;i<m.ids.length;i++){let d=0;const o=i*m.dim;for(let k=0;k<m.dim;k++)d+=m.E[o+k]*v[k];sem.set(m.ids[i],d*m.scales[i])}}
@@ -61,7 +62,7 @@ export function SearchPalette(){const {R,open}=useApp()
             <div className="mt-1 flex items-center gap-2 text-xs text-slate-500"><BrandLogo r={r} size={22}/><span className="truncate">{r.brandN}</span>{r.p100!=null&&<span>💪 {fmt(r.p100,1)} g/100 g</span>}</div></div>
           <StoreLogo store={r.store} size={30}/>
           <div className="text-right shrink-0 w-28"><div className="font-bold tabular-nums">{fmt(r.price,2)} €</div>
-            {r.eur10p!=null&&<div className="text-[11px] font-semibold text-emerald-700">{fmt(r.eur10p,2)} €/10 g P.</div>}<div className="mt-0.5"><PliBadge v={r.pli}/></div></div>
+            {r.eur10p!=null&&<div className="text-[11px] font-semibold text-emerald-700">{fmt(r.eur10p,2)} €/10 g P.</div>}<div className="mt-0.5"><PliBadge v={rowPli(r)}/></div></div>
         </Command.Item>)}
       </Command.List>
       <div className="border-t dark:border-slate-800 px-4 py-1.5 text-[11px] text-slate-500 flex justify-between"><span>↑↓ wählen · ↵ öffnen · Esc schließen</span><span>🔒 lokales Modell, keine Cloud-API</span></div>

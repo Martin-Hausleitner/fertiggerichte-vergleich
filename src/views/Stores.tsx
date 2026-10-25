@@ -7,13 +7,15 @@ import { Card, Badge } from '../components/ui'
 import { StoreLogo, Gallery } from '../components/product'
 import { InfoTip } from '../components/info'
 import { useApp, fmtDist, fmt, STORE_LOGO } from '../lib'
+import { rowPli } from '../app/meal'
+import { isRowRankable } from '../app/shops'
 const COL:Record<string,string>={Billa:'#eab308',Spar:'#16a34a',Hofer:'#2563eb',Lidl:'#0ea5e9',dm:'#db2777',Penny:'#dc2626','Fit to Go':'#f97316',Gurkerl:'#7c3aed',PrepMyMeal:'#0f766e',LiveFresh:'#16a34a',FitTaste:'#ea580c'}
 const med=(a:(number|null)[])=>{const s=a.filter((x):x is number=>x!=null).sort((x,y)=>x-y);return s.length?s[Math.floor(s.length/2)]:null}
 export default function Stores(){
   const {stores,R}=useApp(); const ref=useRef<HTMLDivElement>(null); const map=useRef<L.Map|null>(null)
   const [sel,setSel]=useState<number|null>(null),[chain,setChain]=useState(''),[n,setN]=useState(15)
   const shops=useMemo(()=>(stores?.shops??[]).map((s,i)=>({...s,i})).filter(s=>!chain||s.chain===chain).sort((a,b)=>(a.walk_m??a.dist)-(b.walk_m??b.dist)),[stores,chain])
-  const byChain=useMemo(()=>{const g:Record<string,typeof R>={};R.filter(r=>r.rankable).forEach(r=>(g[r.store]??=[]).push(r));return g},[R])
+  const byChain=useMemo(()=>{const g:Record<string,typeof R>={};R.filter(r=>isRowRankable(r as any)).forEach(r=>(g[r.store]??=[]).push(r));return g},[R])
   useEffect(()=>{if(!stores||!ref.current)return
     const m=L.map(ref.current).setView([stores.home.lat,stores.home.lon],14);map.current=m
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap-Mitwirkende',maxZoom:19}).addTo(m)
@@ -23,8 +25,8 @@ export default function Stores(){
     return()=>{m.remove();map.current=null}},[stores,shops])
   if(!stores) return <Card className="p-6 text-center text-slate-500">Filialdaten noch nicht verfügbar.</Card>
   const chains=[...new Set(stores.shops.map(s=>s.chain))]
-  const cur=sel!=null?stores.shops[sel]:null; const curRows=cur?[...(byChain[cur.chain]||[])].sort((a,b)=>(b.pli??0)-(a.pli??0)):[]
-  const chart=chains.map(c=>({c,n:(byChain[c]||[]).length,pli:med((byChain[c]||[]).map(r=>r.pli)),e:med((byChain[c]||[]).map(r=>r.eur10p)),d:Math.min(...stores.shops.filter(s=>s.chain===c).map(s=>s.walk_m??s.dist))})).filter(x=>x.n)
+  const cur=sel!=null?stores.shops[sel]:null; const curRows=cur?[...(byChain[cur.chain]||[])].sort((a,b)=>(rowPli(b)??0)-(rowPli(a)??0)):[]
+  const chart=chains.map(c=>({c,n:(byChain[c]||[]).length,pli:med((byChain[c]||[]).map(r=>rowPli(r))),e:med((byChain[c]||[]).map(r=>r.eur10p)),d:Math.min(...stores.shops.filter(s=>s.chain===c).map(s=>s.walk_m??s.dist))})).filter(x=>x.n)
   return <div className="space-y-3">
     <div className="flex flex-wrap gap-2 items-center"><button onClick={()=>setChain('')} className={'rounded-xl border-2 px-3 py-1.5 text-sm '+(!chain?'border-brand bg-brand/10':'border-slate-200 dark:border-slate-700')}>Alle Ketten</button>{chains.map(c=><button key={c} onClick={()=>setChain(chain===c?'':c)} className={'rounded-xl border-2 px-2 py-1 '+(chain===c?'border-brand bg-brand/10':'border-slate-200 dark:border-slate-700')}><StoreLogo store={c} size={26}/></button>)}
       <span className="text-xs text-slate-500 ml-auto">{shops.length} Filialen (OpenStreetMap) · ab {stores.home.addr}</span></div>

@@ -678,3 +678,55 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   }
   console.log("[sc75-ui-fixes] OK: P1.1 offFor by EAN & OffPanel fallback, P1.2 Detail key={detId} & ZoomImage reset, P2.1 Heute mode/PLI/pack-price, P2.2 Viva Billa petrol badge & non-petrol nearest preference, P3.1 #1180 Hofer Kasnudeln rankable, P3.2 ppk/whitespace, P3.3 gtinOf(r.ean) & 8 GTIN dupOf pairs")
 }
+
+// sensecheck 76 (P1.1, P1.2, P2.1, P2.2):
+{
+  const S = await load("../src/app/shops.ts")
+  const M = await load("../src/app/meal.ts")
+  // P2.1: rowPli helper & light-ranked meals across Gerichte, Stores, Detail, product, SemanticSearch, App
+  assert.equal(M.rowPli({ pli: null, pliLight: 42.1 }), 42.1, "rowPli returns pliLight when pli is null")
+  assert.equal(M.rowPli({ pli: 55.3, pliLight: 42.1 }), 55.3, "rowPli prefers pli when present")
+  assert.equal(M.rowPli({ pli: null, pliLight: null }), null, "rowPli returns null when both are null")
+  assert.equal(S.rowPli({ pli: null, pliLight: 31.5 }), 31.5, "shops.ts re-exports rowPli")
+  const lightWithDish = D.rows.filter(r => r.dupOf == null && r.dishKey && !r.nonfood && r.rankableLight)
+  assert.ok(lightWithDish.length >= 60 && lightWithDish.every(r => M.rowPli(r) != null), "all light-ranked Gerichte rows have non-null rowPli(r)")
+  for (const id of [5, 65, 170, 542, 1255]) {
+    const r = D.rows.find(x => x.id === id)
+    assert.ok(r && M.rowPli(r) != null && S.isRowRankable(r), "#" + id + " light meal has rowPli=" + M.rowPli(r) + " & isRowRankable")
+  }
+  const byChain76 = {}
+  for (const r of D.rows.filter(x => x.dupOf == null && S.isRowRankable(x))) (byChain76[r.store] ??= []).push(r)
+  assert.ok((byChain76["dm"]?.length ?? 0) >= 8, "Stores.tsx dm rankable count >= 8")
+  assert.ok((byChain76["Hofer"]?.length ?? 0) >= 2, "Stores.tsx Hofer rankable count >= 2")
+  assert.ok((byChain76["Billa"]?.length ?? 0) >= 117, "Stores.tsx Billa rankable count >= 117")
+  assert.ok((byChain76["Spar"]?.length ?? 0) >= 35, "Stores.tsx Spar rankable count >= 35")
+  for (const rel of ["../src/views/Gerichte.tsx", "../src/views/Stores.tsx", "../src/views/Detail.tsx", "../src/components/product.tsx", "../src/components/SemanticSearch.tsx"]) {
+    const src = readFileSync(new URL(rel, import.meta.url), "utf8")
+    assert.ok(src.includes("rowPli("), rel + " uses rowPli(r)")
+  }
+  const appSrc76 = readFileSync(new URL("../src/App.tsx", import.meta.url), "utf8")
+  assert.ok(appSrc76.includes("rankableLight: !!(r as any).rankableLight && r.stage !== 'base' && stageSel.includes(r.stage)"), "App.tsx filters rankableLight by stageSel")
+  // P1.1: HoferTop30.tsx counts both #1180 and #861, renders fallback cards, and supports allFood mode
+  const hoferSrc = readFileSync(new URL("../src/views/HoferTop30.tsx", import.meta.url), "utf8")
+  assert.ok(hoferSrc.includes('data-testid="hofer-fallback-cards"') && hoferSrc.includes("isRowRankable") && hoferSrc.includes("rowPli"), "HoferTop30.tsx uses isRowRankable, rowPli, and renders hofer-fallback-cards")
+  const hoferRanked = D.rows.filter(r => r.dupOf == null && r.store === "Hofer" && M.isReadyMeal(r) && S.isRowRankable(r))
+  assert.ok(hoferRanked.length >= 2 && hoferRanked.some(r => r.id === 1180) && hoferRanked.some(r => r.id === 861), "Hofer Top 30 ok includes #1180 Kasnudeln and #861 Udon Erdnuss-Satay")
+  const hoferAllFood = D.rows.filter(r => r.dupOf == null && r.store === "Hofer" && !r.nonfood && r.score != null && r.price != null)
+  assert.ok(hoferAllFood.length >= 45, "Hofer allFood mode includes >= 45 scored+priced items")
+  // P1.2: Profile.tsx Bestes Protein pro Euro excludes raw flour, dry legumes, and Knödelbrot
+  const profSrc = readFileSync(new URL("../src/components/x/Profile.tsx", import.meta.url), "utf8")
+  assert.ok(profSrc.includes("isRowRankable") && profSrc.includes("isReadyMeal"), "Profile.tsx filters best protein/euro by isRowRankable then isReadyMeal")
+  for (const store of ["Billa", "Spar", "Hofer"]) {
+    const storeRows = D.rows.filter(r => r.dupOf == null && r.store === store)
+    const best8 = M.bestProteinPerEuro(storeRows, 8)
+    assert.equal(best8.length, 8, store + " has 8 bestProteinPerEuro items")
+    assert.ok(best8.every(r => M.isReadyMeal(r) && r.stage !== "base" && !r.nonMeal && ![3578, 541, 529, 294].includes(r.id)), store + " bestProteinPerEuro has only real ready meals")
+  }
+  // P2.2: Detail.tsx healthierAlternatives prioritizes same dishKey/cdish & local Linz supermarkets over mail-order
+  const r1180 = D.rows.find(r => r.id === 1180)
+  const sim1180 = M.healthierAlternatives(r1180, D.rows.filter(r => r.dupOf == null), 4)
+  assert.ok(sim1180.length === 4 && sim1180[0].id === 621 && sim1180.every(x => M.LINZ_LOCAL_STORES.has(x.store)), "#1180 healthierAlternatives prioritizes #621 Omis Kasnudeln (Billa) and Linz local stores over PrepMyMeal")
+  const detailSrc = readFileSync(new URL("../src/views/Detail.tsx", import.meta.url), "utf8")
+  assert.ok(detailSrc.includes("healthierAlternatives(") && detailSrc.includes("fmt(x.price,2)"), "Detail.tsx uses healthierAlternatives and shows price on alternative cards")
+  console.log("[sc76-ui-fixes] OK: P1.1 HoferTop30 fallback cards & allFood, P1.2 Profile bestProteinPerEuro ready meals only, P2.1 rowPli & isRowRankable across 5 views + App.tsx, P2.2 Detail healthierAlternatives Linz priority + price")
+}

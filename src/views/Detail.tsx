@@ -1,4 +1,5 @@
 import { isPriceUnconfirmed, priceStatusLabel, UNCONFIRMED_TIP } from '../app/priceFresh'
+import { healthierAlternatives, rowPli } from '../app/meal'
 import { ExternalLink, MapPin, Factory, CookingPot, AlertTriangle, Info } from 'lucide-react'
 import { Img, Chips, Price, ScoreBar, Actions, StoreLogo, BrandLogo, Nearest, NearestBox, CatChips, PriceKpis, StageBadge, ProdLine, PliBadge } from '../components/product'
 import { Badge } from '../components/ui'
@@ -12,11 +13,11 @@ import { NonMealNote, NoSauceNote, SauceNote } from '../components/NonMealNote'
 export default function Detail({id}:{id:number}){
   const {R,D,open}=useApp(); const r=R.find(x=>x.id===id)??D.rows[id]; if(!r) return null
   const same=D.same.find(g=>g.ids.includes(id))
-  const sim=R.filter(x=>x.id!==id&&x.rankable&&x.pack===r.pack&&x.score!=null&&(x.score??0)>(r.score??0)).sort((a,b)=>(b.score??0)-(a.score??0)).slice(0,4)
+  const sim=healthierAlternatives(r as any, R as any, 4)
   const Row=({l,v}:{l:string;v:any})=><div className="flex justify-between border-b py-1.5 text-sm dark:border-slate-800"><span className="text-slate-500">{l}</span><span className="font-medium text-right tabular-nums">{v??'–'}</span></div>
   return <div className="space-y-4">
     <div className="flex gap-4"><Img src={r.img} className="h-32 w-32 shrink-0"/><div className="space-y-1 min-w-0"><h2 className="text-lg font-bold leading-tight">{r.name}</h2><VariantNote r={r}/><AlsoAt r={r} className="text-xs"/><NonMealNote n={r.nonMeal}/><NoSauceNote on={r.noSauce}/><SauceNote s={r.sauceInPack}/><DeliveryHint r={r as any} className="block"/><div className="text-sm text-slate-500">{r.brand} · {r.store}</div><Badge className="bg-slate-100 dark:bg-slate-800">{r.pack}</Badge><div className="text-lg"><Price r={r}/></div><div className="flex items-center gap-2"><StoreLogo store={r.store} size={56}/><BrandLogo r={r} size={44}/></div><Actions r={r}/></div></div>
-    <NearestBox store={r.store}/><div className="flex flex-wrap gap-2 items-center"><StageBadge r={r}/><PliBadge v={r.pli}/></div><PriceKpis r={r}/><ProdLine r={r} size="md"/><CatChips r={r}/>
+    <NearestBox store={r.store}/><div className="flex flex-wrap gap-2 items-center"><StageBadge r={r}/><PliBadge v={rowPli(r)}/></div><PriceKpis r={r}/><ProdLine r={r} size="md"/><CatChips r={r}/>
     <Chips r={r}/><div><div className="text-xs text-slate-500 mb-1">Health-Score</div><ScoreBar r={r}/></div>
     <HealthSection r={r} R={R}/>
     {r.flags?.length>0&&<div className="rounded-lg bg-amber-50 dark:bg-amber-900/20 p-2 text-xs text-amber-800 dark:text-amber-300 space-y-1">{r.flags.map(f=><div key={f} className="flex gap-1"><AlertTriangle size={13} className="shrink-0"/>{f}</div>)}</div>}
@@ -29,7 +30,7 @@ export default function Detail({id}:{id:number}){
       {(r.prodSlug||r.p2)&&<div className="mt-2 rounded-lg border p-2 text-xs dark:border-slate-700">{r.p2?.producer&&<div><b>{r.p2.producer}</b>{r.p2.plant?` · ${r.p2.plant}`:''}{r.p2.town?` · ${r.p2.town}`:''}</div>}{r.p2?.confidence&&<Badge className={(String(r.p2.confidence).match(/hoch|high|sicher/i)?'bg-emerald-100 text-emerald-800':String(r.p2.confidence).match(/mittel|medium/i)?'bg-amber-100 text-amber-800':'bg-slate-200 text-slate-600')+' mr-1'}>Sicherheit: {String(r.p2.confidence)}</Badge>}{r.p2?.meat_origin&&<span>Fleischherkunft: {r.p2.meat_origin} </span>}{r.p2?.evidence_url&&<a href={r.p2.evidence_url} target="_blank" rel="noreferrer" className="text-brand underline">Beleg</a>}
         {r.prodSlug&&<div><a className="text-brand underline" href={'#tab=hersteller-seiten&h='+r.prodSlug} onClick={()=>setTimeout(()=>dispatchEvent(new HashChangeEvent('hashchange')),0)}>Herstellerprofil öffnen →</a></div>}</div>}
       {same&&<div className="mt-2 text-xs"><b>Gleicher Betrieb liefert auch:</b><ul className="list-disc pl-4">{same.ids.filter(i=>i!==id&&D.rows[i]?.dupOf==null).map(i=><li key={i}><button className="hover:underline" onClick={()=>open(i)}>{D.rows[i].brand} {D.rows[i].name} ({D.rows[i].store})</button></li>)}</ul></div>}</section>
-    {sim.length>0&&<section><h3 className="font-semibold mb-1">Gesündere Alternativen ({r.pack})</h3>{sim.map(x=><button key={x.id} onClick={()=>open(x.id)} className="flex w-full items-center gap-2 py-1 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-800 rounded"><Img src={x.img} className="h-9 w-9"/><span className="flex-1 truncate">{x.name}</span><span className="text-xs font-semibold">{fmt(x.score,0)}</span></button>)}</section>}
+    {sim.length>0&&<section><h3 className="font-semibold mb-1">Gesündere Alternativen ({r.pack})</h3>{sim.map(x=><button key={x.id} onClick={()=>open(x.id)} className="flex w-full items-center gap-2 py-1 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-800 rounded"><Img src={x.img} className="h-9 w-9"/><span className="flex-1 truncate">{x.name} <span className="text-xs text-slate-400">({x.store}{x.price!=null?`, ${fmt(x.price,2)} €`:''})</span></span><span className="text-xs font-semibold">{fmt(x.score,0)}</span></button>)}</section>}
     <section className="text-xs text-slate-500 space-y-1"><h3 className="font-semibold text-sm text-slate-700 dark:text-slate-200 flex items-center gap-1"><Info size={14}/>Quellen</h3>{r.url&&<a href={r.url} target="_blank" rel="noreferrer" className="flex items-center gap-1 text-brand hover:underline break-all"><ExternalLink size={12}/>{r.url}</a>}{r.url&&<LinkNote url={r.url} pack={r.linkPack}/>}<LinkPackDetail url={r.url} pack={r.linkPack}/>{r.psrc&&<div>Preisquelle: {r.psrc}</div>}{(r as any).price_note&&<div data-testid="price-note">Preishinweis: {(r as any).price_note}</div>}<div>Datensatz: {r.src}</div></section>
   </div>
 }

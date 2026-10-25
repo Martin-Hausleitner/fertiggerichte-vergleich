@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useApp, type Row, type Shop, type Stores } from '@/lib'
 import { haversine, useLoc, useMyShops } from './location'
 import { UNCONFIRMED_TEXT, isDeliveryUnconfirmed } from '@/components/DeliveryHint'
-import { passesRankMin, passesLightRank, type MealRow } from '@/app/meal'
+import { passesRankMin, passesLightRank, rowPli, isRowRankable, type MealRow } from '@/app/meal'
 
 /** Eintrag aus public/stores_linz_walk.json (HCB, OSM/ODbL). */
 export type WalkStore = { osm: string; name: string; brand: string | null; chain: string | null; type: string | null; addr: string; lat: number; lon: number; hours?: string; dist_m: number; walk_m: number; walk_min: number; walk_band: string; walk_method: string; availability_level: string; source: string }
@@ -256,7 +256,7 @@ export const onlineId = (p: string) => `online|${p}`
 export const isPetrolShop = (s: { name?: string | null; type?: string | null; addr?: string | null }) => /petrol|fuel/i.test(s.type ?? '') || /\bviva\b|tankstelle|\bomv\b|\bbp\b|\bshell\b|\bjet\b|\beni\b|turmöl|avanti/i.test(`${s.name ?? ''} ${s.addr ?? ''}`)
 export type ShopOption = Shop & { id: string; altIds?: string[]; d: number; walkMin: number; type: string | null; hasProducts: boolean; productCount: number; rankableCount: number; osm?: string }
 export type NearShop = ShopOption
-export const isRowRankable = (r: MealRow & { rankable?: boolean; rankableLight?: boolean }) => r.dupOf == null && (r.rankable === true || r.rankableLight === true || passesRankMin(r) || passesLightRank(r))
+export { rowPli, isRowRankable }
 /** SC70 P1.2: Rohzeilen (dupOf == null) je Kette. */
 export function storeCounts(rows: (MealRow & { store: string; dupOf?: number })[]): Record<string, number> {
   const out: Record<string, number> = {}
