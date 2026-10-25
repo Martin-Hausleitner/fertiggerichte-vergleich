@@ -364,11 +364,20 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   console.log(`[sc70-ui-fixes] OK: storeCounts/storeRankableCounts (Spar ${rankCounts["Spar"]}/${prodCounts["Spar"]}, Denn's ${rankCounts["Denn's"] ?? 0}/${prodCounts["Denn's"]}, Nah&Frisch ${rankCounts["Nah&Frisch"] ?? 0}/${prodCounts["Nah&Frisch"]}), packPortions(#1018)=1, packPortions(#870)=2`)
 }
 
-// SC71 P1: MeineShops ranking/perChain must use isRowRankable (same as shop badges), online list shows "im Ranking · erfasst"
+// SC71 P1: MeineShops ranking/perChain must use isRowRankable (same as shop badges), online list shows "im Ranking · erfasst", light meals show Leicht badge
 {
+  const S = await load("../src/app/shops.ts")
   const src = readFileSync(new URL('../src/views/MeineShops.tsx', import.meta.url), 'utf8')
   assert.ok(!/\bisRankable\(/.test(src), 'MeineShops.tsx no longer uses isRankable()')
   assert.ok((src.match(/isRowRankable\(/g) ?? []).length >= 2, 'ranking & perChain use isRowRankable()')
-  assert.ok(src.includes('data-testid="online-rank-badge"') && src.includes('im Ranking · {counts[p] ?? 0} erfasst'), 'online providers show rankable vs erfasst')
-  console.log('[sc71-meineshops] OK: ranking/perChain via isRowRankable, online-rank-badge present')
+  assert.ok(src.includes('data-testid="online-rank-badge"') && src.includes('im Ranking · {countsByChain[p] ?? 0} erfasst'), 'online providers show rankableByChain vs countsByChain')
+  assert.ok(src.includes('data-testid="meineshops-light-badge"') && src.includes('>Leicht<'), 'MeineShops ranking rows show Leicht badge for light meals')
+  const visRows = D.rows.filter(r => r.dupOf == null)
+  const dmRanked = visRows.filter(r => r.store === "dm" && M.isReadyMeal(r) && S.isRowRankable(r))
+  const hoferRanked = visRows.filter(r => r.store === "Hofer" && M.isReadyMeal(r) && S.isRowRankable(r))
+  const dennsRanked = visRows.filter(r => r.store === "Denn's" && M.isReadyMeal(r) && S.isRowRankable(r))
+  assert.equal(dmRanked.length, 8, "dm has 8 rankable dishes in MeineShops ranking")
+  assert.equal(hoferRanked.length, 1, "Hofer has 1 rankable dish in MeineShops ranking")
+  assert.equal(dennsRanked.length, 2, "Denn's has 2 rankable dishes in MeineShops ranking")
+  console.log(`[sc71-meineshops-rankable] OK: ranking/perChain via isRowRankable (dm=${dmRanked.length}, Hofer=${hoferRanked.length}, Denn's=${dennsRanked.length}), online-rank-badge via countsByChain, Leicht badge present`)
 }

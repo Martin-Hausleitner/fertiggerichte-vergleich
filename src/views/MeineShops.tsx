@@ -6,8 +6,8 @@ import { Card, Badge, Button, Select } from '@/components/ui'
 import { StoreLogo, Img, ScoreBar } from '@/components/product'
 import { useApp, fmt, fmtDist, cn, STORE_LOGO, scoreColor, type Row } from '@/lib'
 import { toggleMyShop, fmtR, setLoc, RADII } from '@/app/location'
-import { useNearShops, onlineId, typeLabel, deliveryText, deliveryTitle, isRowRankable, storeRankableCounts } from '@/app/shops'
-import { isReadyMeal, pricePerPortion } from '@/app/meal'
+import { useNearShops, onlineId, typeLabel, deliveryText, deliveryTitle, isRowRankable } from '@/app/shops'
+import { isReadyMeal, pricePerPortion, passesRankMin, passesLightRank } from '@/app/meal'
 import { OldPriceBadge } from '@/components/PriceAge'
 
 const COL: Record<string, string> = { Billa: '#facc15', Spar: '#16a34a', Hofer: '#1d4ed8', Lidl: '#0050aa', Penny: '#dc2626', dm: '#e11d48' }
@@ -42,10 +42,8 @@ function ShopMap() {
 
 export default function MeineShops() {
   const { R, open } = useApp()
-  const { inR, all, my, myChains, loc, deliversHere, online } = useNearShops()
+  const { inR, all, my, myChains, loc, deliversHere, online, countsByChain, rankableByChain } = useNearShops()
   const [allFood, setAllFood] = useState(false), [minScore, setMinScore] = useState(0), [gang, setGang] = useState('haupt'), [chain, setChain] = useState('')
-  const counts = useMemo(() => { const c: Record<string, number> = {}; R.forEach(r => { if (r.score != null) c[r.store] = (c[r.store] ?? 0) + 1 }); return c }, [R])
-  const rankableByChain = useMemo(() => storeRankableCounts(R.filter(r => isReadyMeal(r)) as any), [R])
   const ranking = useMemo(() => R.filter(r => (allFood ? !r.nonfood : isReadyMeal(r)) && (allFood ? r.score != null && r.price != null : isRowRankable(r as any)) && myChains.has(r.store) && (!gang || (r as any).gang === gang) && (r.score ?? 0) >= minScore && (!chain || r.store === chain))
     .sort((a, b) => (b.score! - a.score!) || ((a.p100g ?? 1e9) - (b.p100g ?? 1e9))).slice(0, 200), [R, myChains, gang, minScore, chain, allFood])
   const perChain = useMemo(() => [...myChains].map(c => { const xs = R.filter(r => r.store === c && (allFood ? r.score != null : isRowRankable(r as any)) && (allFood ? !r.nonfood : isReadyMeal(r)) && (!gang || (r as any).gang === gang)); const sc = xs.map(r => r.score!).sort((a, b) => a - b); return { c, n: xs.length, med: sc.length ? sc[Math.floor(sc.length / 2)] : null, best: sc.length ? sc[sc.length - 1] : null } }).sort((a, b) => (b.med ?? -1) - (a.med ?? -1)), [R, myChains, gang, allFood])
@@ -67,7 +65,7 @@ export default function MeineShops() {
             <Star className={cn('size-5 shrink-0', on ? 'fill-amber-400 text-amber-500' : 'text-muted-foreground')} /></button> })}
           <div className="border-b bg-muted/40 px-3 py-1.5 text-xs font-semibold"><Truck className="mr-1 inline size-3.5" />Online & Lieferdienste</div>
           {online.map(p => { const id = onlineId(p), on = my.includes(id); return <button key={p} onClick={() => toggleMyShop(id)} aria-pressed={on} className={cn('flex w-full items-center gap-2 border-b px-3 py-2 text-left text-sm hover:bg-muted/60', on && 'bg-emerald-50 dark:bg-emerald-950/40')}>
-            <StoreLogo store={p} size={24} /><span className="flex-1">{p} <span data-testid="online-rank-badge" className={cn('text-xs', (rankableByChain[p] ?? 0) > 0 ? 'text-muted-foreground' : 'text-amber-700')}>({rankableByChain[p] ?? 0} im Ranking · {counts[p] ?? 0} erfasst){deliversHere(p) === false ? <b className="ml-1 text-red-600">nicht lieferbar nach Linz</b> : deliversHere(p) == null && <span className="ml-1 text-amber-700" title="Keine offizielle Quelle für Lieferung nach 4020 Linz">Lieferung nach Linz unbestätigt</span>}</span></span><Star className={cn('size-5', on ? 'fill-amber-400 text-amber-500' : 'text-muted-foreground')} /></button> })}
+            <StoreLogo store={p} size={24} /><span className="flex-1">{p} <span data-testid="online-rank-badge" className={cn('text-xs', (rankableByChain[p] ?? 0) > 0 ? 'text-muted-foreground' : 'text-amber-700')}>({rankableByChain[p] ?? 0} im Ranking · {countsByChain[p] ?? 0} erfasst){deliversHere(p) === false ? <b className="ml-1 text-red-600">nicht lieferbar nach Linz</b> : deliversHere(p) == null && <span className="ml-1 text-amber-700" title="Keine offizielle Quelle für Lieferung nach 4020 Linz">Lieferung nach Linz unbestätigt</span>}</span></span><Star className={cn('size-5', on ? 'fill-amber-400 text-amber-500' : 'text-muted-foreground')} /></button> })}
         </div>
       </Card>
     </div>
@@ -84,7 +82,7 @@ export default function MeineShops() {
         <div className="flex flex-wrap gap-2">{perChain.map(x => <Badge key={x.c} className="gap-1.5 py-1"><StoreLogo store={x.c} size={16} />{x.c}: {x.n} Gerichte · Median-Score {fmt(x.med, 0)} · Bester {fmt(x.best, 0)}</Badge>)}</div>
         <ol className="divide-y">{ranking.map((r: Row, i) => <li key={r.id}><button onClick={() => open(r.id)} className="flex w-full items-center gap-3 py-2 text-left hover:bg-muted/50">
           <span className="w-7 text-right text-sm font-bold text-muted-foreground">{i + 1}</span><Img src={r.img} className="size-12 shrink-0 rounded" />
-          <span className="min-w-0 flex-1"><span className="line-clamp-2 text-sm font-medium">{r.name}</span><span className="flex items-center gap-1.5 text-xs text-muted-foreground"><StoreLogo store={r.store} size={14} />{r.store} · {r.brandN}{r.price != null && ` · ${fmt(r.price, 2)} €`}{pricePerPortion(r) != null && ` · ${fmt(pricePerPortion(r), 2)} €/Portion`} <OldPriceBadge r={r} /></span><span className="mt-0.5 inline-block rounded border px-1 text-[10px] text-muted-foreground" title={deliveryTitle(r)}>{deliveryText(r)}</span></span>
+          <span className="min-w-0 flex-1"><span className="line-clamp-2 text-sm font-medium">{r.name}{((r as any).rankableLight === true || passesLightRank(r as any)) && !((r as any).rankable === true || passesRankMin(r as any)) && <span data-testid="meineshops-light-badge" className="ml-1.5 inline-block rounded bg-sky-100 px-1 py-0.5 text-[10px] font-medium text-sky-800 dark:bg-sky-900/40 dark:text-sky-200">Leicht</span>}</span><span className="flex items-center gap-1.5 text-xs text-muted-foreground"><StoreLogo store={r.store} size={14} />{r.store} · {r.brandN}{r.price != null && ` · ${fmt(r.price, 2)} €`}{pricePerPortion(r) != null && ` · ${fmt(pricePerPortion(r), 2)} €/Portion`} <OldPriceBadge r={r} /></span><span className="mt-0.5 inline-block rounded border px-1 text-[10px] text-muted-foreground" title={deliveryTitle(r)}>{deliveryText(r)}</span></span>
           <span className="w-24 shrink-0 sm:w-36"><ScoreBar r={r} /></span></button></li>)}</ol>
         {ranking.length === 0 && <p className="text-sm text-muted-foreground">Keine bewerteten Gerichte für diese Auswahl.</p>}
         <p className="flex gap-1 text-[11px] text-muted-foreground"><Info className="size-3.5 shrink-0" />Nur Fertiggerichte mit echtem Preis, Laden und vollständigem Score. „Kette führt es“ = Sortiment der Kette; nicht für die einzelne Filiale bestätigt. Sortiert nach Health-Score, bei Gleichstand nach Preis/100 g. Score-Farbe: <span style={{ color: scoreColor(60) }}>≥60 sehr gut</span>.</p>
