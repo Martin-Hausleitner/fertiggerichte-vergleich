@@ -20,6 +20,15 @@ export function useOsmStores() { const [f, setF] = useState<OsmStore[]>([]); use
 export function useWalkFile() { const [f, setF] = useState<WalkFile | null>(null); useEffect(() => { loadWalk().then(setF) }, []); return f }
 
 export const shopId = (s: { osm?: string; chain: string | null; name: string; lat: number }) => s.osm ?? `${s.chain}|${s.name}|${s.lat.toFixed(5)}`
+/** SC69 P1.2: Normalisiert Kettennamen aus OSM/Walk/Provider-Dateien auf die kanonischen Store-Keys in data.json & STORE_LOGO. */
+export function matchStoreChain(raw?: string | null): string {
+  const s = (raw ?? '').trim()
+  if (!s) return ''
+  if (/\bdenn'?s\b/i.test(s)) return "Denn's"
+  if (/^nordsee\b/i.test(s)) return 'NORDSEE'
+  if (/nah\s*&\s*frisch/i.test(s)) return 'Nah&Frisch'
+  return s
+}
 /** Anbieter, deren Preise nur nach Login sichtbar sind → kein Preis, nie in Preis-Rankings. */
 export const LOGIN_ONLY_PRICE = ['Juit']
 /** sensecheck 17 (3) / 18 (1): Liefer-/Verfügbarkeitstext ausschließlich aus delivers_4020 der Zeilendaten (Pipeline delivery_4020.json,
@@ -27,7 +36,7 @@ export const LOGIN_ONLY_PRICE = ['Juit']
  *  false → delivery_note bzw. „Liefert nicht nach 4020 Linz – nicht in Rankings“ (Begründung + Quelle im Tooltip);
  *  true + Beleg Filiale in Linz (OSM) → „Kette führt es“; true sonst (Versand/Lieferung belegt) → „Online / Lieferung“;
  *  null/unbekannt → „Lieferung nach Linz unbestätigt“ (bleibt rankbar, fällt aber aus dem Filter „nur Liefert nach 4020“). */
-export type DeliveryRow = { store: string; delivers_4020?: boolean | string | null; delivery_note?: string | null; delivery_source?: string | null; delivery_checked?: string | null; rank_excluded_reason?: string | null }
+export type DeliveryRow = { store: string; segment?: string | null; delivers_4020?: boolean | string | null; delivery_note?: string | null; delivery_source?: string | null; delivery_checked?: string | null; rank_excluded_reason?: string | null }
 export const NO_4020_TEXT = 'nicht lieferbar nach 4020 Linz'
 export const UNCONFIRMED_4020_TEXT = UNCONFIRMED_TEXT
 const isOsmSource = (src?: string | null) => /openstreetmap|overpass|\bosm\b/i.test(src ?? '')
@@ -46,23 +55,31 @@ export const deliveryTitle = (r: DeliveryRow) =>
     : linzStore(r) ? 'Sortiment der Kette (Filialen in Linz laut OpenStreetMap), nicht für die einzelne Filiale bestätigt'
       : r.delivers_4020 === true ? ['Lieferung nach 4020 Linz belegt', r.delivery_source && `Quelle: ${r.delivery_source}${checkedTxt(r)}`].filter(Boolean).join(' · ')
         : !delivery4020Unconfirmed(r) ? `Lieferstatus laut Daten: ${r.delivers_4020}` : `Für ${r.store} ist weder eine Filiale in Linz noch die Lieferung nach 4020 Linz aus einer offiziellen Quelle belegt. Das Produkt bleibt in den Rankings, fällt aber aus dem Filter „nur Liefert nach 4020“.`
-/** Lieferstatus je Anbieter aus den Zeilendaten (erste Zeile mit true/false gewinnt; false hat Vorrang). */
+/** Lieferstatus je Anbieter aus den Zeilendaten (erste Zeile mit true/false gewinnt; false hat Vorrang; SC69 P1.1: meal_kit ausgeschlossen, delivers_4020 === null mit Online-Quelle wie every. bleibt online). */
 export type StoreDelivery = { store: string; delivers_4020: boolean | null; source: string | null; checked: string | null; online: boolean }
 export function storeDeliveries(rows: DeliveryRow[], noDelivery: { store: string; kind?: string }[] = []): Record<string, StoreDelivery> {
   const out: Record<string, StoreDelivery> = {}
   const stationary = new Set(noDelivery.filter(n => n.kind === 'stationary').map(n => n.store))
   for (const r of rows) {
-    if (!r.store || r.store.startsWith('unbekannt')) continue
+    if (!r.store || r.store.startsWith('unbekannt') || r.segment === 'meal_kit') continue
     const o = out[r.store] ??= { store: r.store, delivers_4020: null, source: null, checked: null, online: false }
-    if (typeof r.delivers_4020 !== 'boolean' || o.delivers_4020 === false) continue
-    if (o.delivers_4020 == null || r.delivers_4020 === false) { o.delivers_4020 = r.delivers_4020; o.source = r.delivery_source ?? null; o.checked = r.delivery_checked ?? null }
-    if (r.delivers_4020 ? !isOsmSource(r.delivery_source) : !stationary.has(r.store)) o.online = true
+    if (o.delivers_4020 === false) continue
+    const deliv = r.delivers_4020 === true ? true : r.delivers_4020 === false ? false : null
+    if (typeof r.delivers_4020 === 'boolean') {
+      if (o.delivers_4020 == null || deliv === false) { o.delivers_4020 = deliv; o.source = r.delivery_source ?? null; o.checked = r.delivery_checked ?? null }
+      if (deliv ? !isOsmSource(r.delivery_source) : !stationary.has(r.store)) o.online = true
+    } else if (r.delivers_4020 == null && r.delivery_source && !isOsmSource(r.delivery_source) && !stationary.has(r.store)) {
+      o.delivers_4020 = deliv === true ? true : deliv === null ? null : false
+      o.source ??= r.delivery_source
+      o.checked ??= r.delivery_checked ?? null
+      o.online = true
+    }
   }
   for (const o of Object.values(out)) if (o.delivers_4020 === false && stationary.has(o.store)) o.online = false
   return out
 }
-/** Online-/Lieferanbieter ohne Linzer Filiale: Anbieter mit Versand-/Lieferbeleg (delivers_4020 true, Quelle nicht OSM) oder mit belegtem „liefert nicht“ (nicht stationär). Sortiert: liefert zuerst. */
-export const onlineProviders = (by: Record<string, StoreDelivery>) => Object.values(by).filter(o => o.online).sort((a, b) => Number(b.delivers_4020 === true) - Number(a.delivers_4020 === true) || a.store.localeCompare(b.store, 'de')).map(o => o.store)
+/** Online-/Lieferanbieter ohne Linzer Filiale: Anbieter mit Versand-/Lieferbeleg (delivers_4020 true/null, Quelle nicht OSM) oder mit belegtem „liefert nicht“ (nicht stationär). Sortiert: liefert zuerst, dann unbestätigt, dann liefert nicht. */
+export const onlineProviders = (by: Record<string, StoreDelivery>) => Object.values(by).filter(o => o.online).sort((a, b) => Number(b.delivers_4020 === true) - Number(a.delivers_4020 === true) || Number(b.delivers_4020 !== false) - Number(a.delivers_4020 !== false) || a.store.localeCompare(b.store, 'de')).map(o => o.store)
 export const onlineId = (p: string) => `online|${p}`
 /** SC63 P1.1: Tankstellenshops (z. B. OMV Viva Billa) führen kein Voll-Supermarktsortiment und zählen nicht als offene Filiale fürs Ranking. */
 export const isPetrolShop = (s: { name: string; type?: string | null }) => /petrol|fuel/i.test(s.type ?? '') || /\bviva\b|tankstelle|\bomv\b|\bbp\b|\bshell\b|\bjet\b|\beni\b|turmöl|avanti/i.test(s.name)
@@ -79,14 +96,14 @@ export function useNearShops() {
   const online = useMemo(() => onlineProviders(byStore), [byStore])
   return useMemo(() => {
     const atHome = wf && haversine(loc, wf.home) < 30
-    const all: NearShop[] = (wf?.stores ?? []).map((s): NearShop => { const d = atHome ? s.dist_m : haversine(loc, s); return { chain: s.chain ?? s.brand ?? s.name, name: s.name, addr: s.addr || null, lat: s.lat, lon: s.lon, dist: d, hours: s.hours, gmaps: `https://www.google.com/maps/dir/?api=1&destination=${s.lat},${s.lon}&travelmode=walking`, id: shopId(s), d, walkMin: atHome ? s.walk_min : estWalkMin(d), type: s.type, hasProducts: s.availability_level === 'chain', osm: s.osm } }).concat((() => { const seen = new Set((wf?.stores ?? []).map(s => s.osm)); return prov.filter(p => !p.osm_id || !seen.has(p.osm_id)).map(p => { const d = haversine(loc, p); return { chain: p.chain, name: p.name, addr: p.address, lat: p.lat, lon: p.lon, dist: d, hours: p.opening_hours, gmaps: `https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lon}&travelmode=walking`, id: p.osm_id ?? `prov|${p.chain}|${p.lat.toFixed(5)}`, d, walkMin: estWalkMin(d), type: p.provider_type, hasProducts: rowStores.has(p.chain), osm: p.osm_id } }) })())
-      .concat((() => { const seen = new Set([...(wf?.stores ?? []).map(s => s.osm), ...prov.map(p => p.osm_id)]); return osm.filter(o => !seen.has(`${o.osm_type}/${o.osm_id}`)).map((o): NearShop => { const d = haversine(loc, o); const addr = [o.street && `${o.street} ${o.housenumber ?? ''}`.trim(), [o.postcode, o.city].filter(Boolean).join(' ')].filter(Boolean).join(', ') || null; return { chain: o.chain || o.name, name: o.name, addr, lat: o.lat, lon: o.lon, dist: d, hours: o.opening_hours, gmaps: `https://www.google.com/maps/dir/?api=1&destination=${o.lat},${o.lon}&travelmode=walking`, id: `${o.osm_type}/${o.osm_id}`, d, walkMin: estWalkMin(d), type: rowStores.has(o.chain) ? 'chain' : 'shop', hasProducts: rowStores.has(o.chain), osm: `${o.osm_type}/${o.osm_id}` } }) })())
+    const all: NearShop[] = (wf?.stores ?? []).map((s): NearShop => { const d = atHome ? s.dist_m : haversine(loc, s); const chain = matchStoreChain(s.chain ?? s.brand ?? s.name) || s.name; return { chain, name: s.name, addr: s.addr || null, lat: s.lat, lon: s.lon, dist: d, hours: s.hours, gmaps: `https://www.google.com/maps/dir/?api=1&destination=${s.lat},${s.lon}&travelmode=walking`, id: shopId(s), d, walkMin: atHome ? s.walk_min : estWalkMin(d), type: s.type, hasProducts: s.availability_level === 'chain' || rowStores.has(chain), osm: s.osm } }).concat((() => { const seen = new Set((wf?.stores ?? []).map(s => s.osm)); return prov.filter(p => !p.osm_id || !seen.has(p.osm_id)).map(p => { const d = haversine(loc, p); const chain = matchStoreChain(p.chain || p.name) || p.name; return { chain, name: p.name, addr: p.address, lat: p.lat, lon: p.lon, dist: d, hours: p.opening_hours, gmaps: `https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lon}&travelmode=walking`, id: p.osm_id ?? `prov|${chain}|${p.lat.toFixed(5)}`, d, walkMin: estWalkMin(d), type: p.provider_type, hasProducts: rowStores.has(chain), osm: p.osm_id } }) })())
+      .concat((() => { const seen = new Set([...(wf?.stores ?? []).map(s => s.osm), ...prov.map(p => p.osm_id)]); return osm.filter(o => !seen.has(`${o.osm_type}/${o.osm_id}`)).map((o): NearShop => { const d = haversine(loc, o); const chain = matchStoreChain(o.chain || o.name) || o.name; const addr = [o.street && `${o.street} ${o.housenumber ?? ''}`.trim(), [o.postcode, o.city].filter(Boolean).join(' ')].filter(Boolean).join(', ') || null; return { chain, name: o.name, addr, lat: o.lat, lon: o.lon, dist: d, hours: o.opening_hours, gmaps: `https://www.google.com/maps/dir/?api=1&destination=${o.lat},${o.lon}&travelmode=walking`, id: `${o.osm_type}/${o.osm_id}`, d, walkMin: estWalkMin(d), type: rowStores.has(chain) ? 'chain' : 'shop', hasProducts: rowStores.has(chain), osm: `${o.osm_type}/${o.osm_id}` } }) })())
       .sort((a, b) => a.d - b.d)
     const inR = all.filter(s => s.d <= loc.radius)
     const mine = all.filter(s => my.includes(s.id))
     const delivery = wf?.delivery ?? []
     /** sensecheck 18: delivers_4020 aus den Zeilendaten ist die einzige Quelle; stores_linz_walk.json → delivery nur, wenn ein Anbieter dort gar keine Angabe hat. */
-    const deliversHere = (p: string): boolean | null => { const x = byStore[p.normalize('NFC')] ?? byStore[p]; if (x && x.delivers_4020 != null) return x.delivers_4020; const w = delivery.find(d => d.name.normalize('NFC') === p.normalize('NFC')); return w ? w.delivers_4020 : null }
+    const deliversHere = (p: string): boolean | null => { const x = byStore[p.normalize('NFC')] ?? byStore[p]; if (x) return x.delivers_4020 === true ? true : x.delivers_4020 === null ? null : false; const w = delivery.find(d => d.name.normalize('NFC') === p.normalize('NFC')); return w ? w.delivers_4020 : null }
     const myChains = new Set([...mine.filter(s => s.hasProducts).map(s => s.chain), ...online.filter(p => my.includes(onlineId(p)) && deliversHere(p) !== false)])
     const nearestByChain: Record<string, number> = {}
     all.forEach(s => { if (s.hasProducts && nearestByChain[s.chain] == null) nearestByChain[s.chain] = s.d })

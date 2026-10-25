@@ -4,7 +4,7 @@ import { build } from 'esbuild'
 import { readFileSync } from 'node:fs'
 import assert from 'node:assert/strict'
 import { createRequire } from 'node:module'
-const load = async f => { const o = await build({ entryPoints: [new URL(f, import.meta.url).pathname], bundle: true, write: false, format: 'esm', platform: 'node', logLevel: 'silent' }); return import('data:text/javascript;base64,' + Buffer.from(o.outputFiles[0].text).toString('base64')) }
+const load = async f => { const o = await build({ entryPoints: [new URL(f, import.meta.url).pathname], bundle: true, write: false, format: 'esm', platform: 'node', alias: { '@': new URL('../src', import.meta.url).pathname }, logLevel: 'silent' }); return import('data:text/javascript;base64,' + Buffer.from(o.outputFiles[0].text).toString('base64')) }
 const F = await load('../src/app/priceFresh.ts'), L = await load('../src/lib.ts')
 // (4) badge rule
 assert.equal(F.isPriceCurrent({ pstat: 'live 2026', price: 3.55, price_date: '2026-10-13' }), true)
@@ -284,4 +284,47 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   const missingRer = D.rows.filter(r => !r.rankable && !r.rankableLight && r.dupOf == null && !r.rank_excluded_reason)
   assert.deepEqual(missingRer.map(r => r.id), [], "0 unranked dupOf=null rows without rank_excluded_reason (including 54 live=null rows)")
   console.log("[sc68-online-providers] OK: bofrost/every./FitTaste cards synced in online_providers.json & 0 unranked rows without rank_excluded_reason")
+}
+
+// SC69 P1.1 & P1.2: storeDeliveries (every. online=true & delivers_4020=null; HelloFresh meal_kit excluded), matchStoreChain & STORE_LOGO (Denn's, NORDSEE, Nah&Frisch), portion rescues (196/155)
+{
+  const S = await load("../src/app/shops.ts")
+  const byId = new Map(D.rows.map(r => [r.id, r]))
+  assert.equal(D.dataVersion, "5652b8975c85", "SC69 dataVersion is 5652b8975c85")
+  const rk69 = D.rows.filter(r => r.rankable), rkl69 = D.rows.filter(r => r.rankableLight)
+  assert.equal(rk69.length, 196, "SC69 rankable === 196")
+  assert.equal(rkl69.length, 155, "SC69 rankableLight === 155")
+  assert.equal(D.rows.filter(r => M.passesRankMin(r)).length, 196, "SC69 passesRankMin === 196")
+  assert.equal(D.rows.filter(r => M.passesLightRank(r)).length, 155, "SC69 passesLightRank === 155")
+  for (const id of [870, 871, 1016, 1018]) {
+    const r = byId.get(id)
+    assert.ok(r && r.rankable === true && M.passesRankMin(r), `#${id} rescued into rankable (SC69)`)
+  }
+  for (const id of [563, 1256, 1258, 2978, 2997]) {
+    const r = byId.get(id)
+    assert.ok(r && r.rankableLight === true && M.passesLightRank(r), `#${id} rescued into rankableLight (SC69)`)
+  }
+  const visRows = D.rows.filter(r => r.dupOf == null)
+  const byStore = S.storeDeliveries(visRows, D.delivery4020?.noDelivery ?? [])
+  const online = S.onlineProviders(byStore)
+  assert.ok(byStore["every."] && byStore["every."].online === true && byStore["every."].delivers_4020 === null && byStore["every."].source, "every. is online=true with delivers_4020=null")
+  assert.ok(online.includes("every."), "every. is included in onlineProviders")
+  assert.equal(byStore["HelloFresh"], undefined, "HelloFresh (meal_kit) excluded from storeDeliveries")
+  assert.ok(!online.includes("HelloFresh"), "HelloFresh excluded from onlineProviders")
+  assert.equal(S.matchStoreChain("Denns BioMarkt"), "Denn's")
+  assert.equal(S.matchStoreChain("denn's BioMarkt"), "Denn's")
+  assert.equal(S.matchStoreChain("Nordsee"), "NORDSEE")
+  assert.equal(S.matchStoreChain("Nah & Frisch punkt"), "Nah&Frisch")
+  assert.equal(S.matchStoreChain("Nah&Frisch"), "Nah&Frisch")
+  assert.ok(L.STORE_LOGO["Denn's"] && L.STORE_LOGO["NORDSEE"] && L.STORE_LOGO["Nah&Frisch"], "STORE_LOGO has Denn's, NORDSEE, Nah&Frisch")
+  const rowStores = new Set(visRows.map(r => r.store))
+  const wf = JSON.parse(readFileSync(new URL("../public/stores_linz_walk.json", import.meta.url), "utf8"))
+  const pf = JSON.parse(readFileSync(new URL("../public/stores_linz_providers.json", import.meta.url), "utf8"))
+  const dennsWalk = wf.stores.find(s => s.osm === "node/3150023279")
+  assert.ok(dennsWalk && S.matchStoreChain(dennsWalk.chain ?? dennsWalk.brand ?? dennsWalk.name) === "Denn's" && rowStores.has("Denn's"), "Denns BioMarkt (node/3150023279) matches Denn's with products")
+  const nfWalk = wf.stores.find(s => s.osm === "node/8062586934")
+  assert.ok(nfWalk && S.matchStoreChain(nfWalk.chain ?? nfWalk.brand ?? nfWalk.name) === "Nah&Frisch" && rowStores.has("Nah&Frisch"), "Nah & Frisch punkt (node/8062586934) matches Nah&Frisch with products")
+  const nordseeProv = pf.stores.find(s => s.osm_id === "node/1106589119")
+  assert.ok(nordseeProv && S.matchStoreChain(nordseeProv.chain || nordseeProv.name) === "NORDSEE" && rowStores.has("NORDSEE"), "Nordsee (node/1106589119) matches NORDSEE with products")
+  console.log(`[sc69-shops-sync] OK: dataVersion=${D.dataVersion} (196/155), every. online=true/delivers_4020=null, HelloFresh excluded, Denn's/NORDSEE/Nah&Frisch matched with STORE_LOGO`)
 }
