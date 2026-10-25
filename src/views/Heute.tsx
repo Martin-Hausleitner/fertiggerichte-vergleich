@@ -4,7 +4,7 @@ import { Card, Badge, Button } from '@/components/ui'
 import { Img, StoreLogo, ScoreBar } from '@/components/product'
 import { useApp, fmt, fmtDist, useHashState } from '@/lib'
 import { VariantNote, PriceCondition, PriceWinnerBadge } from '@/components/RowNotes'
-import { useNearShops, type NearShop } from '@/app/shops'
+import { useNearShops, isPetrolShop, type NearShop } from '@/app/shops'
 import { openNow } from '@/app/hours'
 import { pricePerPortion, lastPriceDate, passesLightRank } from '@/app/meal'
 import { valueScore, rankOk } from '@/app/scoring'
@@ -14,12 +14,13 @@ export default function Heute() {
   const { R, open, D } = useApp(); const { all, loc, deliversHere, online } = useNearShops(); const [maxMin, setMaxMin] = useState(10)
   const now = new Date(); const sunday = now.getDay() === 0
   const shops = useMemo(() => all.filter(s => s.walkMin <= maxMin).map(s => ({ ...s, open: openNow(s.hours, now) })), [all, maxMin])
-  const openShops = shops.filter(s => s.open && s.hasProducts)
+  const fullShop = (s: NearShop) => s.hasProducts && !isPetrolShop(s)
+  const openShops = shops.filter(s => s.open && fullShop(s))
   /** SC62 P3.1: Sind alle Filialen im Radius zu (Sonntag/abends), Top-Listen trotzdem für den nächsten Einkauf zeigen. */
   const closedMode = openShops.length === 0
-  const pool = closedMode ? shops.filter(s => s.hasProducts) : openShops
+  const pool = closedMode ? shops.filter(fullShop) : openShops
   const best: Record<string, NearShop> = {}; pool.forEach(s => { if (!best[s.chain] || s.d < best[s.chain].d) best[s.chain] = s })
-  const cap = D.topCap; const [nl, setNl] = useHashState<string>('nolimit', ''); const unl = nl === '1'
+  const cap = D.topCap; const [nl, setNl] = useHashState<string>('nolimit', ''); const unl = nl === '1'; const [, setTab] = useHashState<string>('tab', 'heute')
   /** Wie die Top-Listen: standardmäßig max. topCap.perProvider Gerichte je Anbieter, „ohne Limit“ schaltet das ab. */
   const capFilter = () => { const n: Record<string, number> = {}; return (x: { r: { store: string } }) => unl || !cap ? true : (n[x.r.store] = (n[x.r.store] ?? 0) + 1) <= cap.perProvider }
   const top = useMemo(() => R.filter(r => rankOk(r) && best[r.store])
@@ -32,8 +33,8 @@ export default function Heute() {
       <p className="text-sm text-muted-foreground"><MapPin className="inline size-4" /> ab {loc.addr} · {now.toLocaleString('de-AT', { weekday: 'long', hour: '2-digit', minute: '2-digit' })}{updated && <> · Preise zuletzt aktualisiert {new Date(updated).toLocaleDateString('de-AT')}</>}</p></div>
     <div className="flex flex-wrap items-center gap-2 text-sm">Gehzeit bis {[5, 10, 15, 20].map(m => <Button key={m} size="sm" active={maxMin === m} onClick={() => setMaxMin(m)}>≤ {m} min</Button>)}</div>
     {(sunday || openShops.length === 0) && <Card className="flex gap-2 border-amber-300 bg-amber-50 p-3 text-sm shadow-none dark:bg-amber-950/30"><AlertTriangle className="size-5 shrink-0 text-amber-600" />
-      <div><b>{sunday ? 'Sonntag: Supermärkte haben in Österreich geschlossen.' : `Gerade hat keine Filiale in ≤ ${maxMin} Gehminuten offen.`}</b> Ausnahmen (Bahnhof, Tankstelle, Feiertage) sind nicht erfasst. Online-Anbieter: {online.map(p => `${p}${deliversHere(p) === false ? ' (nicht lieferbar nach Linz)' : deliversHere(p) == null ? ' (Lieferung nach Linz unbestätigt)' : ''}`).join(', ')}. Liefergebiet laut offizieller Versand-/Liefergebietsseite des Anbieters.</div></Card>}
-    <div className="flex flex-wrap gap-2">{shops.filter(s => s.hasProducts).map(s => <Badge key={s.id} className="gap-1.5 py-1"><StoreLogo store={s.chain} size={14} />{s.name} · ~{s.walkMin} min · <span className={s.open ? 'text-emerald-600' : s.open === false ? 'text-red-600' : 'text-muted-foreground'}>{s.open ? 'offen' : s.open === false ? 'geschlossen' : 'Zeiten unbekannt'}</span></Badge>)}</div>
+      <div><b>{sunday ? 'Sonntag: Supermärkte haben in Österreich geschlossen.' : `Gerade hat keine Filiale in ≤ ${maxMin} Gehminuten offen.`}</b> Ausnahmen (Bahnhof, Tankstelle, Feiertage) sind nicht erfasst. Online-Anbieter: {online.map(p => `${p}${deliversHere(p) === false ? ' (nicht lieferbar nach Linz)' : deliversHere(p) == null ? ' (Lieferung nach Linz unbestätigt)' : ''}`).join(', ')}. Liefergebiet laut offizieller Versand-/Liefergebietsseite des Anbieters. <button type="button" className="font-medium text-amber-800 underline underline-offset-2 dark:text-amber-300" data-testid="goto-online" onClick={() => setTab('online')}>→ Online-Anbieter für Linz vergleichen</button></div></Card>}
+    <div className="flex flex-wrap gap-2">{shops.filter(s => s.hasProducts).map(s => <Badge key={s.id} className="gap-1.5 py-1"><StoreLogo store={s.chain} size={14} />{s.name}{isPetrolShop(s) && <span className="text-muted-foreground" data-testid="petrol-shop"> (Tankstellenshop, eingeschränktes Sortiment)</span>} · ~{s.walkMin} min · <span className={s.open ? 'text-emerald-600' : s.open === false ? 'text-red-600' : 'text-muted-foreground'}>{s.open ? 'offen' : s.open === false ? 'geschlossen' : 'Zeiten unbekannt'}</span></Badge>)}</div>
     <p className="text-xs text-muted-foreground">{shops.filter(s => !s.hasProducts).length} weitere Geschäfte in ≤ {maxMin} min (Bäckereien, Nahversorger …) – ohne Produktdaten. Gehzeiten geschätzt (Luftlinie × 1,3).</p>
     {top.length > 0 && <Card className="p-3 shadow-none"><h2 className="mb-1 flex items-center gap-1.5 font-semibold"><Clock className="size-4" />{closedMode ? 'Top 10 für deinen nächsten Einkauf (aktuell geschlossen)' : 'Top 10 jetzt erhältlich'}{cap && <label className="ml-auto flex items-center gap-1.5 text-xs font-normal text-muted-foreground" data-testid="nolimit" title={`Standard: höchstens ${cap.perProvider} Gerichte je Anbieter`}><input type="checkbox" checked={unl} onChange={e => setNl(e.target.checked ? '1' : '')} />ohne Limit</label>}</h2>
       {closedMode && <p className="mb-1 text-xs text-amber-700" data-testid="closed-banner">Alle Filialen in ≤ {maxMin} min haben gerade geschlossen. Die Liste zeigt, was du beim nächsten Einkauf dort holen kannst.</p>}

@@ -64,6 +64,8 @@ export function storeDeliveries(rows: DeliveryRow[], noDelivery: { store: string
 /** Online-/Lieferanbieter ohne Linzer Filiale: Anbieter mit Versand-/Lieferbeleg (delivers_4020 true, Quelle nicht OSM) oder mit belegtem „liefert nicht“ (nicht stationär). Sortiert: liefert zuerst. */
 export const onlineProviders = (by: Record<string, StoreDelivery>) => Object.values(by).filter(o => o.online).sort((a, b) => Number(b.delivers_4020 === true) - Number(a.delivers_4020 === true) || a.store.localeCompare(b.store, 'de')).map(o => o.store)
 export const onlineId = (p: string) => `online|${p}`
+/** SC63 P1.1: Tankstellenshops (z. B. OMV Viva Billa) führen kein Voll-Supermarktsortiment und zählen nicht als offene Filiale fürs Ranking. */
+export const isPetrolShop = (s: { name: string; type?: string | null }) => /petrol|fuel/i.test(s.type ?? '') || /\bviva\b|tankstelle|\bomv\b|\bbp\b|\bshell\b|\bjet\b|\beni\b|turmöl|avanti/i.test(s.name)
 export type NearShop = Shop & { id: string; d: number; walkMin: number; type: string | null; hasProducts: boolean; osm?: string }
 const TYPE_DE: Record<string, string> = { chain: 'Supermarkt', 'ethnic/local': 'Nahversorger', bakery: 'Bäckerei', deli: 'Feinkost', butcher: 'Fleischerei', kiosk: 'Kiosk', greengrocer: 'Obst & Gemüse', chemist: 'Drogerie', 'petrol-station shop': 'Tankstellenshop', 'to-go chain': 'To-go-Kette', 'meal-prep': 'Meal-Prep', shop: 'Geschäft' }
 export const typeLabel = (t: string | null) => t ? TYPE_DE[t] ?? t : 'Geschäft'
