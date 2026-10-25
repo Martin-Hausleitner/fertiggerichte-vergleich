@@ -1,3213 +1,1595 @@
 {
- "meta": {
-  "sources": [
-   "scored.json",
-   "expand.json (nur Preis/Anzahl; Nährwerte meist fehlend)"
-  ],
-  "n_total": 1201,
-  "n_unassigned_chain": 78,
-  "note": "€/10g Protein & Health-Score nur aus rankable Produkten (scored.json); Mediane"
- },
- "chains": {
-  "Billa": {
-   "count": 490,
-   "n_with_nutrition": 481,
-   "n_rankable": 330,
-   "median_price": 3.59,
-   "median_price_per_kg": 12.62,
-   "median_eur_per_10g_protein": 1.9,
-   "median_eur_per_10g_protein_all": 1.92,
-   "median_health_score": 31.8,
-   "median_salt_100": 1.2,
-   "median_kcal_100": 187.0,
-   "median_protein_100": 7.7
+  "meta": {
+    "generated": "2026-10-25",
+    "total_products": 2236,
+    "chains": [
+      "Billa",
+      "Spar",
+      "Hofer",
+      "Lidl",
+      "dm",
+      "Fit to Go",
+      "Penny"
+    ],
+    "categories": [
+      "Ripperl",
+      "Pute",
+      "Huhn",
+      "Fisch",
+      "Gulasch",
+      "Curry",
+      "Suppe",
+      "Knödel",
+      "Pasta",
+      "Bowl",
+      "Asia",
+      "Hülsenfrüchte",
+      "Rind",
+      "Schwein",
+      "vegetarisch",
+      "vegan",
+      "Sonstige"
+    ]
   },
-  "Spar": {
-   "count": 461,
-   "n_with_nutrition": 68,
-   "n_rankable": 36,
-   "median_price": 3.49,
-   "median_price_per_kg": 8.98,
-   "median_eur_per_10g_protein": 1.75,
-   "median_eur_per_10g_protein_all": 1.75,
-   "median_health_score": 36.8,
-   "median_salt_100": 1.1,
-   "median_kcal_100": 104,
-   "median_protein_100": 3.95
+  "chains": {
+    "Billa": {
+      "count": 641,
+      "n_with_nutrition": 636,
+      "n_rankable": 118,
+      "median_price": 4.49,
+      "median_price_per_kg": 13.31,
+      "median_eur_per_10g_protein": 1.86,
+      "median_eur_per_10g_protein_all": 1.85,
+      "median_health_score": 38.25,
+      "median_salt_100": 1.1,
+      "median_kcal_100": 187.0,
+      "median_protein_100": 7.9
+    },
+    "Spar": {
+      "count": 598,
+      "n_with_nutrition": 214,
+      "n_rankable": 35,
+      "median_price": 3.99,
+      "median_price_per_kg": 11.52,
+      "median_eur_per_10g_protein": 1.66,
+      "median_eur_per_10g_protein_all": 1.87,
+      "median_health_score": 36.1,
+      "median_salt_100": 1.1,
+      "median_kcal_100": 144.0,
+      "median_protein_100": 6.4
+    },
+    "Hofer": {
+      "count": 185,
+      "n_with_nutrition": 90,
+      "n_rankable": 2,
+      "median_price": 2.49,
+      "median_price_per_kg": 6.83,
+      "median_eur_per_10g_protein": 1.46,
+      "median_eur_per_10g_protein_all": 1.25,
+      "median_health_score": 30.6,
+      "median_salt_100": 1.2,
+      "median_kcal_100": 160.0,
+      "median_protein_100": 6.2
+    },
+    "Lidl": {
+      "count": 34,
+      "n_with_nutrition": 29,
+      "n_rankable": 0,
+      "median_price": 4.39,
+      "median_price_per_kg": 5.71,
+      "median_eur_per_10g_protein": 1.56,
+      "median_eur_per_10g_protein_all": 1.56,
+      "median_health_score": 27.9,
+      "median_salt_100": 1.27,
+      "median_kcal_100": 147.0,
+      "median_protein_100": 5.3
+    },
+    "dm": {
+      "count": 31,
+      "n_with_nutrition": 25,
+      "n_rankable": 8,
+      "median_price": 2.75,
+      "median_price_per_kg": 7.87,
+      "median_eur_per_10g_protein": 1.48,
+      "median_eur_per_10g_protein_all": 2.37,
+      "median_health_score": 54.4,
+      "median_salt_100": 1.0,
+      "median_kcal_100": 86.0,
+      "median_protein_100": 3.3
+    },
+    "Fit to Go": {
+      "count": 29,
+      "n_with_nutrition": 29,
+      "n_rankable": 0,
+      "median_price": 9.99,
+      "median_price_per_kg": 23.79,
+      "median_eur_per_10g_protein": 2.78,
+      "median_eur_per_10g_protein_all": 2.78,
+      "median_health_score": 65.4,
+      "median_salt_100": null,
+      "median_kcal_100": 126.2,
+      "median_protein_100": 9.0
+    },
+    "Penny": {
+      "count": 30,
+      "n_with_nutrition": 19,
+      "n_rankable": 1,
+      "median_price": 3.34,
+      "median_price_per_kg": 6.93,
+      "median_eur_per_10g_protein": 1.13,
+      "median_eur_per_10g_protein_all": 1.03,
+      "median_health_score": 30.2,
+      "median_salt_100": 1.04,
+      "median_kcal_100": 126.0,
+      "median_protein_100": 6.88
+    }
   },
-  "Hofer": {
-   "count": 131,
-   "n_with_nutrition": 61,
-   "n_rankable": 58,
-   "median_price": 2.75,
-   "median_price_per_kg": 7.24,
-   "median_eur_per_10g_protein": 1.16,
-   "median_eur_per_10g_protein_all": 1.16,
-   "median_health_score": 30.2,
-   "median_salt_100": 1.18,
-   "median_kcal_100": 154.05,
-   "median_protein_100": 5.7
+  "categories": {
+    "Ripperl": {
+      "count": 6,
+      "n_rankable": 0,
+      "median_price": 11.49,
+      "median_price_per_kg": 11.49,
+      "median_eur_per_10g_protein": null,
+      "median_health_score": 31.5,
+      "median_salt_100": 1.7,
+      "median_kcal_100": 170.5,
+      "median_protein_100": 14.5
+    },
+    "Pute": {
+      "count": 10,
+      "n_rankable": 0,
+      "median_price": 4.29,
+      "median_price_per_kg": 13.83,
+      "median_eur_per_10g_protein": 1.2,
+      "median_health_score": 42.1,
+      "median_salt_100": 1.3,
+      "median_kcal_100": 126.2,
+      "median_protein_100": 8.2
+    },
+    "Huhn": {
+      "count": 183,
+      "n_rankable": 49,
+      "median_price": 5.99,
+      "median_price_per_kg": 16.78,
+      "median_eur_per_10g_protein": 2.36,
+      "median_health_score": 49.1,
+      "median_salt_100": 0.99,
+      "median_kcal_100": 132.5,
+      "median_protein_100": 8.9
+    },
+    "Fisch": {
+      "count": 107,
+      "n_rankable": 14,
+      "median_price": 6.49,
+      "median_price_per_kg": 18.39,
+      "median_eur_per_10g_protein": 2.3,
+      "median_health_score": 47.45,
+      "median_salt_100": 0.9,
+      "median_kcal_100": 183.5,
+      "median_protein_100": 11.0
+    },
+    "Gulasch": {
+      "count": 106,
+      "n_rankable": 28,
+      "median_price": 5.79,
+      "median_price_per_kg": 12.47,
+      "median_eur_per_10g_protein": 1.79,
+      "median_health_score": 46.2,
+      "median_salt_100": 1.1,
+      "median_kcal_100": 94.0,
+      "median_protein_100": 5.5
+    },
+    "Curry": {
+      "count": 122,
+      "n_rankable": 33,
+      "median_price": 5.49,
+      "median_price_per_kg": 16.86,
+      "median_eur_per_10g_protein": 2.4,
+      "median_health_score": 44.1,
+      "median_salt_100": 0.86,
+      "median_kcal_100": 112.0,
+      "median_protein_100": 5.35
+    },
+    "Suppe": {
+      "count": 219,
+      "n_rankable": 32,
+      "median_price": 4.49,
+      "median_price_per_kg": 9.97,
+      "median_eur_per_10g_protein": 2.32,
+      "median_health_score": 46.8,
+      "median_salt_100": 1.0,
+      "median_kcal_100": 79.0,
+      "median_protein_100": 3.7
+    },
+    "Knödel": {
+      "count": 98,
+      "n_rankable": 2,
+      "median_price": 3.99,
+      "median_price_per_kg": 9.63,
+      "median_eur_per_10g_protein": 2.79,
+      "median_health_score": 31.4,
+      "median_salt_100": 1.4,
+      "median_kcal_100": 196.0,
+      "median_protein_100": 7.5
+    },
+    "Pasta": {
+      "count": 391,
+      "n_rankable": 75,
+      "median_price": 4.25,
+      "median_price_per_kg": 11.83,
+      "median_eur_per_10g_protein": 2.3,
+      "median_health_score": 40.9,
+      "median_salt_100": 0.92,
+      "median_kcal_100": 144.0,
+      "median_protein_100": 6.3
+    },
+    "Bowl": {
+      "count": 108,
+      "n_rankable": 26,
+      "median_price": 6.49,
+      "median_price_per_kg": 17.11,
+      "median_eur_per_10g_protein": 2.65,
+      "median_health_score": 46.35,
+      "median_salt_100": 0.85,
+      "median_kcal_100": 116.0,
+      "median_protein_100": 5.7
+    },
+    "Asia": {
+      "count": 95,
+      "n_rankable": 21,
+      "median_price": 5.49,
+      "median_price_per_kg": 13.86,
+      "median_eur_per_10g_protein": 1.97,
+      "median_health_score": 45.6,
+      "median_salt_100": 0.91,
+      "median_kcal_100": 121.66,
+      "median_protein_100": 6.16
+    },
+    "Hülsenfrüchte": {
+      "count": 37,
+      "n_rankable": 1,
+      "median_price": 3.8,
+      "median_price_per_kg": 9.74,
+      "median_eur_per_10g_protein": 5.56,
+      "median_health_score": 57.0,
+      "median_salt_100": 1.0,
+      "median_kcal_100": 120.07,
+      "median_protein_100": 5.75
+    },
+    "Rind": {
+      "count": 49,
+      "n_rankable": 16,
+      "median_price": 7.99,
+      "median_price_per_kg": 20.2,
+      "median_eur_per_10g_protein": 2.48,
+      "median_health_score": 40.3,
+      "median_salt_100": 1.05,
+      "median_kcal_100": 121.98,
+      "median_protein_100": 8.1
+    },
+    "Schwein": {
+      "count": 107,
+      "n_rankable": 12,
+      "median_price": 4.99,
+      "median_price_per_kg": 14.21,
+      "median_eur_per_10g_protein": 1.37,
+      "median_health_score": 36.45,
+      "median_salt_100": 1.2,
+      "median_kcal_100": 172.0,
+      "median_protein_100": 8.2
+    },
+    "vegetarisch": {
+      "count": 144,
+      "n_rankable": 8,
+      "median_price": 3.99,
+      "median_price_per_kg": 11.25,
+      "median_eur_per_10g_protein": 2.05,
+      "median_health_score": 35.0,
+      "median_salt_100": 1.02,
+      "median_kcal_100": 205.0,
+      "median_protein_100": 7.0
+    },
+    "vegan": {
+      "count": 73,
+      "n_rankable": 3,
+      "median_price": 4.99,
+      "median_price_per_kg": 19.96,
+      "median_eur_per_10g_protein": 4.46,
+      "median_health_score": 66.8,
+      "median_salt_100": 0.91,
+      "median_kcal_100": 154.0,
+      "median_protein_100": 5.8
+    },
+    "Sonstige": {
+      "count": 381,
+      "n_rankable": 43,
+      "median_price": 3.99,
+      "median_price_per_kg": 12.47,
+      "median_eur_per_10g_protein": 1.86,
+      "median_health_score": 39.2,
+      "median_salt_100": 1.15,
+      "median_kcal_100": 215.0,
+      "median_protein_100": 9.0
+    }
   },
-  "Lidl": {
-   "count": 3,
-   "n_with_nutrition": 3,
-   "n_rankable": 3,
-   "median_price": null,
-   "median_price_per_kg": null,
-   "median_eur_per_10g_protein": null,
-   "median_eur_per_10g_protein_all": null,
-   "median_health_score": 44.0,
-   "median_salt_100": 1.1,
-   "median_kcal_100": 181,
-   "median_protein_100": 8
+  "best_per_category": {
+    "Ripperl": {
+      "best_overall": {
+        "id": 1319,
+        "uid": "2hyiykulq4",
+        "name": "Die Grillerei Spareribs Sous-Vide BBQ",
+        "brand": "Die Grillerei",
+        "store": "Billa",
+        "price": 11.99,
+        "eur_per_10g_protein": null,
+        "health_score": 48.4,
+        "pli": null,
+        "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-392364-500730747-NQaLeOSK.jpg",
+        "url": "https://shop.billa.at/produkte/die-grillerei-spareribs-sousvide-bbq-00392364"
+      },
+      "healthiest": {
+        "id": 1319,
+        "uid": "2hyiykulq4",
+        "name": "Die Grillerei Spareribs Sous-Vide BBQ",
+        "brand": "Die Grillerei",
+        "store": "Billa",
+        "price": 11.99,
+        "eur_per_10g_protein": null,
+        "health_score": 48.4,
+        "pli": null,
+        "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-392364-500730747-NQaLeOSK.jpg",
+        "url": "https://shop.billa.at/produkte/die-grillerei-spareribs-sousvide-bbq-00392364"
+      },
+      "cheapest_protein": {
+        "id": 1319,
+        "uid": "2hyiykulq4",
+        "name": "Die Grillerei Spareribs Sous-Vide BBQ",
+        "brand": "Die Grillerei",
+        "store": "Billa",
+        "price": 11.99,
+        "eur_per_10g_protein": null,
+        "health_score": 48.4,
+        "pli": null,
+        "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-392364-500730747-NQaLeOSK.jpg",
+        "url": "https://shop.billa.at/produkte/die-grillerei-spareribs-sousvide-bbq-00392364"
+      }
+    },
+    "Pute": {
+      "best_overall": {
+        "id": 3824,
+        "uid": "wtn6u6gntl",
+        "name": "One Pan: Putenbrust auf pinkem Perlcouscous mit Roter Beete, Dill und Kräutercreme",
+        "brand": "HelloFresh",
+        "store": "HelloFresh",
+        "price": 4.25,
+        "eur_per_10g_protein": 0.86,
+        "health_score": 52.3,
+        "pli": null,
+        "img": "https://d3hvwccx09j84u.cloudfront.net/0,0/image/HF_Y24_R03_W12_DE_R21684-1_MAIN_high-6136abdd.jpg",
+        "url": "https://www.hellofresh.at/recipes/one-pan-putenbrust-auf-pinkem-perlcouscous-6a5762c92c76eddc47d0f23a"
+      },
+      "healthiest": {
+        "id": 3824,
+        "uid": "wtn6u6gntl",
+        "name": "One Pan: Putenbrust auf pinkem Perlcouscous mit Roter Beete, Dill und Kräutercreme",
+        "brand": "HelloFresh",
+        "store": "HelloFresh",
+        "price": 4.25,
+        "eur_per_10g_protein": 0.86,
+        "health_score": 52.3,
+        "pli": null,
+        "img": "https://d3hvwccx09j84u.cloudfront.net/0,0/image/HF_Y24_R03_W12_DE_R21684-1_MAIN_high-6136abdd.jpg",
+        "url": "https://www.hellofresh.at/recipes/one-pan-putenbrust-auf-pinkem-perlcouscous-6a5762c92c76eddc47d0f23a"
+      },
+      "cheapest_protein": {
+        "id": 3824,
+        "uid": "wtn6u6gntl",
+        "name": "One Pan: Putenbrust auf pinkem Perlcouscous mit Roter Beete, Dill und Kräutercreme",
+        "brand": "HelloFresh",
+        "store": "HelloFresh",
+        "price": 4.25,
+        "eur_per_10g_protein": 0.86,
+        "health_score": 52.3,
+        "pli": null,
+        "img": "https://d3hvwccx09j84u.cloudfront.net/0,0/image/HF_Y24_R03_W12_DE_R21684-1_MAIN_high-6136abdd.jpg",
+        "url": "https://www.hellofresh.at/recipes/one-pan-putenbrust-auf-pinkem-perlcouscous-6a5762c92c76eddc47d0f23a"
+      }
+    },
+    "Huhn": {
+      "best_overall": {
+        "id": 2824,
+        "uid": "bnxsas9sbs",
+        "name": "Bratkartoffeln mit Hähnchen (XL, 2 Portionen)",
+        "brand": "PrepMyMeal",
+        "store": "PrepMyMeal",
+        "price": 12.48,
+        "eur_per_10g_protein": 1.47,
+        "health_score": 70.5,
+        "pli": 49.9,
+        "img": "https://cdn.shopify.com/s/files/1/0337/6349/1884/files/Shop-XLBratkartoffelnmitHahnchen.png?v=1780658931",
+        "url": "https://prepmymeal.at/products/bratkartoffeln-mit-hahnchen-xl-2-portionen"
+      },
+      "healthiest": {
+        "id": 2840,
+        "uid": "qs91p1pltu",
+        "name": "Hähnchen mit Käse überbacken",
+        "brand": "PrepMyMeal",
+        "store": "PrepMyMeal",
+        "price": 10.49,
+        "eur_per_10g_protein": 2.02,
+        "health_score": 70.8,
+        "pli": 46.7,
+        "img": "https://cdn.shopify.com/s/files/1/0337/6349/1884/files/Shop-HaehnchenmitKaeseueberbacken-2_fcfd60c0-78aa-48b5-a86c-c9085d930a8b.png?v=1778231544",
+        "url": "https://prepmymeal.at/products/hahnchen-mit-pilzragout-und-kase-uberbacken"
+      },
+      "cheapest_protein": {
+        "id": 1499,
+        "uid": "zrzx1gdz99",
+        "name": "Frosta High Protein Hähnchen mit Reis und Brokkoli",
+        "brand": "Frosta",
+        "store": "Billa",
+        "price": 6.99,
+        "eur_per_10g_protein": 1.14,
+        "health_score": 44.5,
+        "pli": 44.2,
+        "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-905081-0167193118-0T7NqZ3c.jpg",
+        "url": "https://shop.billa.at/produkte/frosta-high-protein-haehnchen-mit-reis-und-brokkoli-00905081"
+      }
+    },
+    "Fisch": {
+      "best_overall": {
+        "id": 2823,
+        "uid": "ygxpm1qxao",
+        "name": "Seelachs, Reis & Gemüse (XL, 2 Portionen)",
+        "brand": "PrepMyMeal",
+        "store": "PrepMyMeal",
+        "price": 12.48,
+        "eur_per_10g_protein": 1.95,
+        "health_score": 64.8,
+        "pli": 43.4,
+        "img": "https://cdn.shopify.com/s/files/1/0337/6349/1884/files/Shop-XLAlaska-SeelachsmitReis_Gemusemix.png?v=1780659774",
+        "url": "https://prepmymeal.at/products/alaska-seelachs-mit-reis-und-gemusemix"
+      },
+      "healthiest": {
+        "id": 2790,
+        "uid": "xgkckwxlkt",
+        "name": "Athletes Line: Garnele, Reis & Spinat",
+        "brand": "PrepMyMeal",
+        "store": "PrepMyMeal",
+        "price": 12.49,
+        "eur_per_10g_protein": 3.61,
+        "health_score": 67.6,
+        "pli": 40.2,
+        "img": "https://cdn.shopify.com/s/files/1/0337/6349/1884/files/AthletesLine_Garnelen_Reis_Spinat.png?v=1788511740",
+        "url": "https://prepmymeal.at/products/athlete-line-garnele-reis-spinat"
+      },
+      "cheapest_protein": {
+        "id": 2669,
+        "uid": "ngkha3z5gl",
+        "name": "Dr. Oetker Die Ofenfrische Pizza Thunfisch MSC",
+        "brand": "Dr. Oetker",
+        "store": "Spar",
+        "price": 4.49,
+        "eur_per_10g_protein": 1.11,
+        "health_score": 30.2,
+        "pli": 37.7,
+        "img": "https://cdn1.interspar.at/cachableservlets/articleImage.dam/at/2020002292751/dt_main.jpg",
+        "url": "https://www.interspar.at/shop/lebensmittel/dr-oetker-die-ofenfrische-thunfisch/p/2020002292751"
+      }
+    },
+    "Gulasch": {
+      "best_overall": {
+        "id": 548,
+        "uid": "0aw3fitupj",
+        "name": "Clever Rindsgulasch",
+        "brand": "Clever",
+        "store": "Billa",
+        "price": 2.99,
+        "eur_per_10g_protein": 0.77,
+        "health_score": 50.4,
+        "pli": 57.6,
+        "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-775145-0147218795-_HKii1id.jpg",
+        "url": "https://shop.billa.at/produkte/clever-rindsgulasch-00775145"
+      },
+      "healthiest": {
+        "id": 3673,
+        "uid": "hiiusdc01y",
+        "name": "rindergulasch",
+        "brand": "FITTASTE",
+        "store": "FitTaste",
+        "price": 8.99,
+        "eur_per_10g_protein": 1.89,
+        "health_score": 77.5,
+        "pli": 50.1,
+        "img": "https://cdn.shopify.com/s/files/1/0069/9773/7585/files/rindergulasch_cc236c29-432c-47db-bfc5-4927f8b779a8.png?v=1781005458",
+        "url": "https://fittaste.com/products/rindergulasch"
+      },
+      "cheapest_protein": {
+        "id": 548,
+        "uid": "0aw3fitupj",
+        "name": "Clever Rindsgulasch",
+        "brand": "Clever",
+        "store": "Billa",
+        "price": 2.99,
+        "eur_per_10g_protein": 0.77,
+        "health_score": 50.4,
+        "pli": 57.6,
+        "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-775145-0147218795-_HKii1id.jpg",
+        "url": "https://shop.billa.at/produkte/clever-rindsgulasch-00775145"
+      }
+    },
+    "Curry": {
+      "best_overall": {
+        "id": 1278,
+        "uid": "vbx7g13sqo",
+        "name": "dmBio Veganes No-Chicken Curry",
+        "brand": "dmBio",
+        "store": "dm",
+        "price": 2.45,
+        "eur_per_10g_protein": 1.16,
+        "health_score": 58.5,
+        "pli": 50.8,
+        "img": "https://products.dm-static.com/images/f_auto,q_auto,c_fit,h_440,w_500/v1774484136/assets/pas/images/65c2f8ff-02cf-4498-bc26-fa9ae394dc33/dmbio-veganes-no-chicken-curry",
+        "url": "https://www.dm.at/p/d/3127087/dmbio-veganes-no-chicken-curry"
+      },
+      "healthiest": {
+        "id": 3149,
+        "uid": "j2gan1ghjt",
+        "name": "Kichererbsen Curry",
+        "brand": "Goldblatt",
+        "store": "Goldblatt",
+        "price": 11.99,
+        "eur_per_10g_protein": 4.21,
+        "health_score": 63.8,
+        "pli": 37.4,
+        "img": "https://cdn.shopify.com/s/files/1/0917/3450/7860/files/f1-gb-fg-curry-251008.jpg?v=1780484954",
+        "url": "https://goldblatt.at/products/bio-kichererbsen-curry"
+      },
+      "cheapest_protein": {
+        "id": 1278,
+        "uid": "vbx7g13sqo",
+        "name": "dmBio Veganes No-Chicken Curry",
+        "brand": "dmBio",
+        "store": "dm",
+        "price": 2.45,
+        "eur_per_10g_protein": 1.16,
+        "health_score": 58.5,
+        "pli": 50.8,
+        "img": "https://products.dm-static.com/images/f_auto,q_auto,c_fit,h_440,w_500/v1774484136/assets/pas/images/65c2f8ff-02cf-4498-bc26-fa9ae394dc33/dmbio-veganes-no-chicken-curry",
+        "url": "https://www.dm.at/p/d/3127087/dmbio-veganes-no-chicken-curry"
+      }
+    },
+    "Suppe": {
+      "best_overall": {
+        "id": 1277,
+        "uid": "j9omf8zesv",
+        "name": "dmBio Chili con Tofu High Protein",
+        "brand": "dmBio",
+        "store": "dm",
+        "price": 2.75,
+        "eur_per_10g_protein": 1.23,
+        "health_score": 66.3,
+        "pli": 53.5,
+        "img": "https://products.dm-static.com/images/f_auto,q_auto,c_fit,h_440,w_500/v1781130717/assets/pas/images/658805e3-9be6-4780-b1ff-59b977c198c0/dmbio-chili-con-tofu-high-protein",
+        "url": "https://www.dm.at/p/d/3127080/dmbio-chili-con-tofu-high-protein"
+      },
+      "healthiest": {
+        "id": 1277,
+        "uid": "j9omf8zesv",
+        "name": "dmBio Chili con Tofu High Protein",
+        "brand": "dmBio",
+        "store": "dm",
+        "price": 2.75,
+        "eur_per_10g_protein": 1.23,
+        "health_score": 66.3,
+        "pli": 53.5,
+        "img": "https://products.dm-static.com/images/f_auto,q_auto,c_fit,h_440,w_500/v1781130717/assets/pas/images/658805e3-9be6-4780-b1ff-59b977c198c0/dmbio-chili-con-tofu-high-protein",
+        "url": "https://www.dm.at/p/d/3127080/dmbio-chili-con-tofu-high-protein"
+      },
+      "cheapest_protein": {
+        "id": 1256,
+        "uid": "ajcph0m0nc",
+        "name": "dmBio Chili sin Carne",
+        "brand": "dmBio",
+        "store": "dm",
+        "price": 2.35,
+        "eur_per_10g_protein": 1.15,
+        "health_score": 57.5,
+        "pli": 50.5,
+        "img": "https://products.dm-static.com/images/f_auto,q_auto,c_fit,h_440,w_500/v1760132977/assets/pas/images/1e5fa371-01c0-4a64-b591-52b15c7a1654/dmbio-eintopf-chili-sin-carne-mit-kidneybohnen-und-weizenhack",
+        "url": "https://www.dm.at/p/d/1488556/dmbio-eintopf-chili-sin-carne-mit-kidneybohnen-und-weizenhack"
+      }
+    },
+    "Knödel": {
+      "best_overall": {
+        "id": 1067,
+        "uid": "4wqpg8sfny",
+        "name": "Omis Schmankerl Eiernockerl",
+        "brand": "Omis Schmankerl",
+        "store": "Billa",
+        "price": 3.49,
+        "eur_per_10g_protein": 1.63,
+        "health_score": 32.5,
+        "pli": 31.6,
+        "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-867996-1946977807-ll6SoGo3.jpg",
+        "url": "https://shop.billa.at/produkte/omis-schmankerl-eiernockerl-00867996"
+      },
+      "healthiest": {
+        "id": 1067,
+        "uid": "4wqpg8sfny",
+        "name": "Omis Schmankerl Eiernockerl",
+        "brand": "Omis Schmankerl",
+        "store": "Billa",
+        "price": 3.49,
+        "eur_per_10g_protein": 1.63,
+        "health_score": 32.5,
+        "pli": 31.6,
+        "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-867996-1946977807-ll6SoGo3.jpg",
+        "url": "https://shop.billa.at/produkte/omis-schmankerl-eiernockerl-00867996"
+      },
+      "cheapest_protein": {
+        "id": 1067,
+        "uid": "4wqpg8sfny",
+        "name": "Omis Schmankerl Eiernockerl",
+        "brand": "Omis Schmankerl",
+        "store": "Billa",
+        "price": 3.49,
+        "eur_per_10g_protein": 1.63,
+        "health_score": 32.5,
+        "pli": 31.6,
+        "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-867996-1946977807-ll6SoGo3.jpg",
+        "url": "https://shop.billa.at/produkte/omis-schmankerl-eiernockerl-00867996"
+      }
+    },
+    "Pasta": {
+      "best_overall": {
+        "id": 2828,
+        "uid": "ejupucyhhi",
+        "name": "Protein Pasta All'Alfredo (XL, 2 Portionen)",
+        "brand": "PrepMyMeal",
+        "store": "PrepMyMeal",
+        "price": 12.48,
+        "eur_per_10g_protein": 1.04,
+        "health_score": 71.3,
+        "pli": 56.4,
+        "img": "https://cdn.shopify.com/s/files/1/0337/6349/1884/files/Shop-XLProteinPastaAll_Alfredo_e4f513a3-882d-4f38-a8a1-891ec95fe3ca.png?v=1780659425",
+        "url": "https://prepmymeal.at/products/protein-pasta-a-la-alfredo-xl-2-portionen"
+      },
+      "healthiest": {
+        "id": 2828,
+        "uid": "ejupucyhhi",
+        "name": "Protein Pasta All'Alfredo (XL, 2 Portionen)",
+        "brand": "PrepMyMeal",
+        "store": "PrepMyMeal",
+        "price": 12.48,
+        "eur_per_10g_protein": 1.04,
+        "health_score": 71.3,
+        "pli": 56.4,
+        "img": "https://cdn.shopify.com/s/files/1/0337/6349/1884/files/Shop-XLProteinPastaAll_Alfredo_e4f513a3-882d-4f38-a8a1-891ec95fe3ca.png?v=1780659425",
+        "url": "https://prepmymeal.at/products/protein-pasta-a-la-alfredo-xl-2-portionen"
+      },
+      "cheapest_protein": {
+        "id": 172,
+        "uid": "i2sglzycm8",
+        "name": "S-BUDGET Lasagne Bolognese",
+        "brand": "S-Budget",
+        "store": "Spar",
+        "price": 3.99,
+        "eur_per_10g_protein": 0.69,
+        "health_score": 34.3,
+        "pli": 53.4,
+        "img": "https://www.interspar.at/media/be/e7/7e/1789090032/G_9100000809281_HB.jpg",
+        "url": "https://www.interspar.at/p/7842306"
+      }
+    },
+    "Bowl": {
+      "best_overall": {
+        "id": 2821,
+        "uid": "12oieh0qg7",
+        "name": "Hähnchen Bowl Thai (XL, 2 Portionen)",
+        "brand": "PrepMyMeal",
+        "store": "PrepMyMeal",
+        "price": 12.48,
+        "eur_per_10g_protein": 1.25,
+        "health_score": 72.0,
+        "pli": 53.3,
+        "img": "https://cdn.shopify.com/s/files/1/0337/6349/1884/files/Shop-XLChickenBowlThaiStyle_c5faf6af-9c71-4663-91cc-430d90971b38.png?v=1780660545",
+        "url": "https://prepmymeal.at/products/hahnchen-bowl-thai-style-1000g-2-portionen"
+      },
+      "healthiest": {
+        "id": 2821,
+        "uid": "12oieh0qg7",
+        "name": "Hähnchen Bowl Thai (XL, 2 Portionen)",
+        "brand": "PrepMyMeal",
+        "store": "PrepMyMeal",
+        "price": 12.48,
+        "eur_per_10g_protein": 1.25,
+        "health_score": 72.0,
+        "pli": 53.3,
+        "img": "https://cdn.shopify.com/s/files/1/0337/6349/1884/files/Shop-XLChickenBowlThaiStyle_c5faf6af-9c71-4663-91cc-430d90971b38.png?v=1780660545",
+        "url": "https://prepmymeal.at/products/hahnchen-bowl-thai-style-1000g-2-portionen"
+      },
+      "cheapest_protein": {
+        "id": 2852,
+        "uid": "sxrcfm5xb5",
+        "name": "Hähnchen Fajita Bowl (XL, 2 Portionen)",
+        "brand": "PrepMyMeal",
+        "store": "PrepMyMeal",
+        "price": 12.48,
+        "eur_per_10g_protein": 1.14,
+        "health_score": 59.2,
+        "pli": 48.4,
+        "img": "https://cdn.shopify.com/s/files/1/0337/6349/1884/files/Shop-XLFajitaBowl_190544ae-6e28-4226-84b9-5162f5ce16ef.png?v=1780658677",
+        "url": "https://prepmymeal.at/products/hahnchen-fajita-bowl-1000g"
+      }
+    },
+    "Asia": {
+      "best_overall": {
+        "id": 2783,
+        "uid": "6jizulbnl9",
+        "name": "Chicken Teriyaki (XL, 2 Portionen)",
+        "brand": "PrepMyMeal",
+        "store": "PrepMyMeal",
+        "price": 12.48,
+        "eur_per_10g_protein": 1.45,
+        "health_score": 68.5,
+        "pli": 49.1,
+        "img": "https://cdn.shopify.com/s/files/1/0337/6349/1884/files/XLChickenTeriyaki_ad5983a0-2755-4eb7-ab82-81c16976b89e.png?v=1790149769",
+        "url": "https://prepmymeal.at/products/hahnchen-teriyaki-xl-2-portionen"
+      },
+      "healthiest": {
+        "id": 2837,
+        "uid": "cm321lfrpi",
+        "name": "Thai Pa Naeng mit Hähnchenbrust",
+        "brand": "PrepMyMeal",
+        "store": "PrepMyMeal",
+        "price": 10.49,
+        "eur_per_10g_protein": 2.17,
+        "health_score": 75.9,
+        "pli": 48.5,
+        "img": "https://cdn.shopify.com/s/files/1/0337/6349/1884/files/Shop-ThaiPaNaeng.png?v=1778231180",
+        "url": "https://prepmymeal.at/products/lachs-blumenkohl-grune-bohnen"
+      },
+      "cheapest_protein": {
+        "id": 563,
+        "uid": "149a5g84tc",
+        "name": "BILLA Gyoza mit Huhn & schwarzem Pilz",
+        "brand": "BILLA Immer Gut",
+        "store": "Billa",
+        "price": 3.99,
+        "eur_per_10g_protein": 1.08,
+        "health_score": 44.4,
+        "pli": 45.2,
+        "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-720062-0152609913-F_1pgWaF.jpg",
+        "url": "https://shop.billa.at/produkte/billa-gyoza-mit-huhn-und-schwarzem-pilz-00720062"
+      }
+    },
+    "Hülsenfrüchte": {
+      "best_overall": {
+        "id": 3145,
+        "uid": "k3hu3g1jqz",
+        "name": "Mediterran-Roggen mit Bohnen",
+        "brand": "Kernbeißer",
+        "store": "Kernbeißer",
+        "price": 9.0,
+        "eur_per_10g_protein": 5.56,
+        "health_score": 57.0,
+        "pli": 33.0,
+        "img": "https://kernbeisser.at/wp-content/uploads/2024/04/produktbild-03-2025-roggen.jpg",
+        "url": "https://kernbeisser.at/produkt/mediterran-roggen-mit-bohnen/"
+      },
+      "healthiest": {
+        "id": 3145,
+        "uid": "k3hu3g1jqz",
+        "name": "Mediterran-Roggen mit Bohnen",
+        "brand": "Kernbeißer",
+        "store": "Kernbeißer",
+        "price": 9.0,
+        "eur_per_10g_protein": 5.56,
+        "health_score": 57.0,
+        "pli": 33.0,
+        "img": "https://kernbeisser.at/wp-content/uploads/2024/04/produktbild-03-2025-roggen.jpg",
+        "url": "https://kernbeisser.at/produkt/mediterran-roggen-mit-bohnen/"
+      },
+      "cheapest_protein": {
+        "id": 3145,
+        "uid": "k3hu3g1jqz",
+        "name": "Mediterran-Roggen mit Bohnen",
+        "brand": "Kernbeißer",
+        "store": "Kernbeißer",
+        "price": 9.0,
+        "eur_per_10g_protein": 5.56,
+        "health_score": 57.0,
+        "pli": 33.0,
+        "img": "https://kernbeisser.at/wp-content/uploads/2024/04/produktbild-03-2025-roggen.jpg",
+        "url": "https://kernbeisser.at/produkt/mediterran-roggen-mit-bohnen/"
+      }
+    },
+    "Rind": {
+      "best_overall": {
+        "id": 2848,
+        "uid": "t9fopd2w7j",
+        "name": "Athletes Line: Rinderstreifen",
+        "brand": "PrepMyMeal",
+        "store": "PrepMyMeal",
+        "price": 12.49,
+        "eur_per_10g_protein": 2.52,
+        "health_score": 78.5,
+        "pli": 48.4,
+        "img": "https://cdn.shopify.com/s/files/1/0337/6349/1884/files/Shop-AthletesLine-Rinderstreifen_Reis_gruneBohnenundPaprika.png?v=1780669390",
+        "url": "https://prepmymeal.at/products/athletes-line-rinderstreifen-reis-grune-bohnen-paprika"
+      },
+      "healthiest": {
+        "id": 2848,
+        "uid": "t9fopd2w7j",
+        "name": "Athletes Line: Rinderstreifen",
+        "brand": "PrepMyMeal",
+        "store": "PrepMyMeal",
+        "price": 12.49,
+        "eur_per_10g_protein": 2.52,
+        "health_score": 78.5,
+        "pli": 48.4,
+        "img": "https://cdn.shopify.com/s/files/1/0337/6349/1884/files/Shop-AthletesLine-Rinderstreifen_Reis_gruneBohnenundPaprika.png?v=1780669390",
+        "url": "https://prepmymeal.at/products/athletes-line-rinderstreifen-reis-grune-bohnen-paprika"
+      },
+      "cheapest_protein": {
+        "id": 626,
+        "uid": "co6kh999k9",
+        "name": "Omis Schmankerl Kalbsbutterschnitzel",
+        "brand": "Omis Schmankerl",
+        "store": "Billa",
+        "price": 3.79,
+        "eur_per_10g_protein": 1.21,
+        "health_score": 45.8,
+        "pli": 43.6,
+        "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-780270-616068210-ldMgpmoJ.jpg",
+        "url": "https://shop.billa.at/produkte/omis-schmankerl-kalbsbutterschnitzel-00780270"
+      }
+    },
+    "Schwein": {
+      "best_overall": {
+        "id": 629,
+        "uid": "42ccs07bum",
+        "name": "Omis Schmankerl XXL Schinkenfleckel",
+        "brand": "Omis Schmankerl",
+        "store": "Billa",
+        "price": 3.99,
+        "eur_per_10g_protein": 1.06,
+        "health_score": 34.4,
+        "pli": 40.8,
+        "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-780323-1044875999-K4rvZAnT.jpg",
+        "url": "https://shop.billa.at/produkte/omis-schmankerl-xxl-schinkenfleckel-00780323"
+      },
+      "healthiest": {
+        "id": 3162,
+        "uid": "a8nmnh6xrh",
+        "name": "Bio Kürbispfanne mit Faschiertem",
+        "brand": "iss mich!",
+        "store": "iss mich!",
+        "price": 10.3,
+        "eur_per_10g_protein": 5.85,
+        "health_score": 48.3,
+        "pli": 27.8,
+        "img": "https://www.issmich.at/media/39/d1/6b/1707491699/bio-ku-rbispfanne-mit-faschiertem_iss-mich-1.jpg",
+        "url": "https://www.issmich.at/Bio-Shop/Eintoepfe/Fleisch/51/Bio-Kuerbispfanne-mit-Faschiertem"
+      },
+      "cheapest_protein": {
+        "id": 629,
+        "uid": "42ccs07bum",
+        "name": "Omis Schmankerl XXL Schinkenfleckel",
+        "brand": "Omis Schmankerl",
+        "store": "Billa",
+        "price": 3.99,
+        "eur_per_10g_protein": 1.06,
+        "health_score": 34.4,
+        "pli": 40.8,
+        "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-780323-1044875999-K4rvZAnT.jpg",
+        "url": "https://shop.billa.at/produkte/omis-schmankerl-xxl-schinkenfleckel-00780323"
+      }
+    },
+    "vegetarisch": {
+      "best_overall": {
+        "id": 577,
+        "uid": "tbphmbd1p1",
+        "name": "BILLA Steinofen Pizza Mozzarella 2er",
+        "brand": "BILLA Immer Gut",
+        "store": "Billa",
+        "price": 3.69,
+        "eur_per_10g_protein": 0.47,
+        "health_score": 34.2,
+        "pli": 67.1,
+        "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-771522-0140297026-B8z_uQgV.jpg",
+        "url": "https://shop.billa.at/produkte/billa-steinofen-pizza-mozzarella-2er-00771522"
+      },
+      "healthiest": {
+        "id": 2827,
+        "uid": "pg95a4q5gt",
+        "name": "Omelette mit Pilzrahmsoße",
+        "brand": "PrepMyMeal",
+        "store": "PrepMyMeal",
+        "price": 10.49,
+        "eur_per_10g_protein": 4.68,
+        "health_score": 53.0,
+        "pli": 31.4,
+        "img": "https://cdn.shopify.com/s/files/1/0337/6349/1884/files/Shop-Omelette_cdca9196-7f94-4ba7-98ad-0c60efcb2904.png?v=1778227027",
+        "url": "https://prepmymeal.at/products/omelette-mit-champignon-rahmsosse"
+      },
+      "cheapest_protein": {
+        "id": 577,
+        "uid": "tbphmbd1p1",
+        "name": "BILLA Steinofen Pizza Mozzarella 2er",
+        "brand": "BILLA Immer Gut",
+        "store": "Billa",
+        "price": 3.69,
+        "eur_per_10g_protein": 0.47,
+        "health_score": 34.2,
+        "pli": 67.1,
+        "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-771522-0140297026-B8z_uQgV.jpg",
+        "url": "https://shop.billa.at/produkte/billa-steinofen-pizza-mozzarella-2er-00771522"
+      }
+    },
+    "vegan": {
+      "best_overall": {
+        "id": 3150,
+        "uid": "05bm08o9ep",
+        "name": "Bolo Amore",
+        "brand": "Goldblatt",
+        "store": "Goldblatt",
+        "price": 11.99,
+        "eur_per_10g_protein": 3.58,
+        "health_score": 66.8,
+        "pli": 39.8,
+        "img": "https://cdn.shopify.com/s/files/1/0917/3450/7860/files/f1-gb-fg-bolognese-251008.jpg?v=1780484950",
+        "url": "https://goldblatt.at/products/bio-bolognese"
+      },
+      "healthiest": {
+        "id": 3143,
+        "uid": "qt6pxlaiv2",
+        "name": "Heimat-Hafer mit Pilzen",
+        "brand": "Kernbeißer",
+        "store": "Kernbeißer",
+        "price": 9.0,
+        "eur_per_10g_protein": 4.46,
+        "health_score": 68.1,
+        "pli": 39.7,
+        "img": "https://kernbeisser.at/wp-content/uploads/2024/04/produktbild-03-2025-hafer.jpg",
+        "url": "https://kernbeisser.at/produkt/heimat-hafer-mit-pilzen/"
+      },
+      "cheapest_protein": {
+        "id": 3150,
+        "uid": "05bm08o9ep",
+        "name": "Bolo Amore",
+        "brand": "Goldblatt",
+        "store": "Goldblatt",
+        "price": 11.99,
+        "eur_per_10g_protein": 3.58,
+        "health_score": 66.8,
+        "pli": 39.8,
+        "img": "https://cdn.shopify.com/s/files/1/0917/3450/7860/files/f1-gb-fg-bolognese-251008.jpg?v=1780484950",
+        "url": "https://goldblatt.at/products/bio-bolognese"
+      }
+    },
+    "Sonstige": {
+      "best_overall": {
+        "id": 576,
+        "uid": "5mah675apm",
+        "name": "BILLA Steinofen Pizza Tonno 2er",
+        "brand": "BILLA Immer Gut",
+        "store": "Billa",
+        "price": 3.69,
+        "eur_per_10g_protein": 0.47,
+        "health_score": 39.6,
+        "pli": 69.8,
+        "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-771519-1252558653-qQd3qKj2.jpg",
+        "url": "https://shop.billa.at/produkte/billa-steinofen-pizza-tonno-2er-00771519"
+      },
+      "healthiest": {
+        "id": 2813,
+        "uid": "q1gjx2hzrf",
+        "name": "Athletes Line x Urs Kalecinski",
+        "brand": "PrepMyMeal",
+        "store": "PrepMyMeal",
+        "price": 12.49,
+        "eur_per_10g_protein": 2.31,
+        "health_score": 68.8,
+        "pli": 44.4,
+        "img": "https://cdn.shopify.com/s/files/1/0337/6349/1884/files/Shop-AthletesLine-PadKraPro_3178f9ba-e1a4-47cb-aff2-b876ea644de9.png?v=1780660836",
+        "url": "https://prepmymeal.at/products/athlete-line-x-urs-phat-krapho"
+      },
+      "cheapest_protein": {
+        "id": 547,
+        "uid": "311izz6j5c",
+        "name": "Clever Pizza Margherita 3er",
+        "brand": "Clever",
+        "store": "Billa",
+        "price": 3.79,
+        "eur_per_10g_protein": 0.47,
+        "health_score": 39.2,
+        "pli": 69.6,
+        "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-771683-0463236399-xTlZQhdn.jpg",
+        "url": "https://shop.billa.at/produkte/clever-pizza-margherita-3er-00771683"
+      }
+    }
   },
-  "dm": {
-   "count": 12,
-   "n_with_nutrition": 12,
-   "n_rankable": 0,
-   "median_price": 2.62,
-   "median_price_per_kg": 8.15,
-   "median_eur_per_10g_protein": null,
-   "median_eur_per_10g_protein_all": 1.87,
-   "median_health_score": 41.7,
-   "median_salt_100": 1.0,
-   "median_kcal_100": 87.5,
-   "median_protein_100": 4.3
+  "price_histogram": {
+    "bins": [
+      "0–1 €",
+      "1–2 €",
+      "2–3 €",
+      "3–4 €",
+      "4–5 €",
+      "5–6 €",
+      "6–8 €",
+      "8–10 €",
+      "10–15 €",
+      "≥15 €"
+    ],
+    "series": {
+      "Billa": [
+        12,
+        77,
+        88,
+        137,
+        41,
+        47,
+        50,
+        8,
+        13,
+        3
+      ],
+      "Spar": [
+        46,
+        63,
+        89,
+        110,
+        65,
+        30,
+        28,
+        4,
+        6,
+        15
+      ],
+      "Hofer": [
+        0,
+        16,
+        25,
+        17,
+        6,
+        1,
+        2,
+        1,
+        0,
+        1
+      ],
+      "Lidl": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dm": [
+        0,
+        0,
+        9,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "Fit to Go": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        24,
+        0,
+        0
+      ],
+      "Penny": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
   },
-  "Fit to Go": {
-   "count": 24,
-   "n_with_nutrition": 23,
-   "n_rankable": 0,
-   "median_price": 9.99,
-   "median_price_per_kg": 24.98,
-   "median_eur_per_10g_protein": null,
-   "median_eur_per_10g_protein_all": 2.56,
-   "median_health_score": 55.5,
-   "median_salt_100": null,
-   "median_kcal_100": 126.2,
-   "median_protein_100": 10.0
+  "heatmap_chain_category": {
+    "counts": {
+      "Billa": {
+        "Ripperl": 2,
+        "Pute": 0,
+        "Huhn": 53,
+        "Fisch": 44,
+        "Gulasch": 31,
+        "Curry": 16,
+        "Suppe": 46,
+        "Knödel": 43,
+        "Pasta": 96,
+        "Bowl": 32,
+        "Asia": 22,
+        "Hülsenfrüchte": 4,
+        "Rind": 14,
+        "Schwein": 38,
+        "vegetarisch": 46,
+        "vegan": 25,
+        "Sonstige": 129
+      },
+      "Spar": {
+        "Ripperl": 2,
+        "Pute": 3,
+        "Huhn": 31,
+        "Fisch": 25,
+        "Gulasch": 38,
+        "Curry": 27,
+        "Suppe": 76,
+        "Knödel": 25,
+        "Pasta": 102,
+        "Bowl": 8,
+        "Asia": 16,
+        "Hülsenfrüchte": 20,
+        "Rind": 9,
+        "Schwein": 26,
+        "vegetarisch": 57,
+        "vegan": 14,
+        "Sonstige": 119
+      },
+      "Hofer": {
+        "Ripperl": 2,
+        "Pute": 2,
+        "Huhn": 11,
+        "Fisch": 2,
+        "Gulasch": 6,
+        "Curry": 8,
+        "Suppe": 14,
+        "Knödel": 15,
+        "Pasta": 55,
+        "Bowl": 9,
+        "Asia": 8,
+        "Hülsenfrüchte": 1,
+        "Rind": 1,
+        "Schwein": 10,
+        "vegetarisch": 17,
+        "vegan": 0,
+        "Sonstige": 24
+      },
+      "Lidl": {
+        "Ripperl": 0,
+        "Pute": 0,
+        "Huhn": 3,
+        "Fisch": 0,
+        "Gulasch": 0,
+        "Curry": 4,
+        "Suppe": 3,
+        "Knödel": 1,
+        "Pasta": 9,
+        "Bowl": 4,
+        "Asia": 2,
+        "Hülsenfrüchte": 0,
+        "Rind": 0,
+        "Schwein": 2,
+        "vegetarisch": 1,
+        "vegan": 2,
+        "Sonstige": 3
+      },
+      "dm": {
+        "Ripperl": 0,
+        "Pute": 0,
+        "Huhn": 0,
+        "Fisch": 0,
+        "Gulasch": 2,
+        "Curry": 8,
+        "Suppe": 14,
+        "Knödel": 0,
+        "Pasta": 2,
+        "Bowl": 2,
+        "Asia": 0,
+        "Hülsenfrüchte": 0,
+        "Rind": 0,
+        "Schwein": 0,
+        "vegetarisch": 2,
+        "vegan": 0,
+        "Sonstige": 1
+      },
+      "Fit to Go": {
+        "Ripperl": 0,
+        "Pute": 0,
+        "Huhn": 5,
+        "Fisch": 0,
+        "Gulasch": 0,
+        "Curry": 5,
+        "Suppe": 1,
+        "Knödel": 0,
+        "Pasta": 8,
+        "Bowl": 2,
+        "Asia": 2,
+        "Hülsenfrüchte": 0,
+        "Rind": 1,
+        "Schwein": 3,
+        "vegetarisch": 2,
+        "vegan": 0,
+        "Sonstige": 0
+      },
+      "Penny": {
+        "Ripperl": 0,
+        "Pute": 0,
+        "Huhn": 1,
+        "Fisch": 2,
+        "Gulasch": 4,
+        "Curry": 0,
+        "Suppe": 1,
+        "Knödel": 5,
+        "Pasta": 4,
+        "Bowl": 0,
+        "Asia": 3,
+        "Hülsenfrüchte": 0,
+        "Rind": 1,
+        "Schwein": 3,
+        "vegetarisch": 2,
+        "vegan": 0,
+        "Sonstige": 4
+      }
+    },
+    "median_eur_per_10g_protein": {
+      "Billa": {
+        "Ripperl": null,
+        "Pute": null,
+        "Huhn": 1.81,
+        "Fisch": 1.92,
+        "Gulasch": 2.33,
+        "Curry": 2.59,
+        "Suppe": 2.65,
+        "Knödel": 1.4,
+        "Pasta": 1.83,
+        "Bowl": 3.79,
+        "Asia": 1.96,
+        "Hülsenfrüchte": 2.15,
+        "Rind": 1.56,
+        "Schwein": 1.36,
+        "vegetarisch": 1.72,
+        "vegan": 1.87,
+        "Sonstige": 1.38
+      },
+      "Spar": {
+        "Ripperl": null,
+        "Pute": null,
+        "Huhn": 1.89,
+        "Fisch": 2.14,
+        "Gulasch": 2.1,
+        "Curry": 2.51,
+        "Suppe": 2.95,
+        "Knödel": 1.83,
+        "Pasta": 2.16,
+        "Bowl": null,
+        "Asia": 2.77,
+        "Hülsenfrüchte": 5.03,
+        "Rind": 2.41,
+        "Schwein": 1.37,
+        "vegetarisch": 1.98,
+        "vegan": 1.91,
+        "Sonstige": 1.33
+      },
+      "Hofer": {
+        "Ripperl": null,
+        "Pute": null,
+        "Huhn": 1.12,
+        "Fisch": 1.6,
+        "Gulasch": null,
+        "Curry": 3.85,
+        "Suppe": 0.94,
+        "Knödel": 0.8,
+        "Pasta": 1.33,
+        "Bowl": null,
+        "Asia": 2.71,
+        "Hülsenfrüchte": null,
+        "Rind": null,
+        "Schwein": 0.9,
+        "vegetarisch": 1.14,
+        "vegan": null,
+        "Sonstige": 0.9
+      },
+      "Lidl": {
+        "Ripperl": null,
+        "Pute": null,
+        "Huhn": null,
+        "Fisch": null,
+        "Gulasch": null,
+        "Curry": null,
+        "Suppe": null,
+        "Knödel": null,
+        "Pasta": 0.79,
+        "Bowl": null,
+        "Asia": 2.33,
+        "Hülsenfrüchte": null,
+        "Rind": null,
+        "Schwein": null,
+        "vegetarisch": null,
+        "vegan": null,
+        "Sonstige": null
+      },
+      "dm": {
+        "Ripperl": null,
+        "Pute": null,
+        "Huhn": null,
+        "Fisch": null,
+        "Gulasch": 1.79,
+        "Curry": 1.77,
+        "Suppe": 2.31,
+        "Knödel": null,
+        "Pasta": 5.23,
+        "Bowl": 2.35,
+        "Asia": null,
+        "Hülsenfrüchte": null,
+        "Rind": null,
+        "Schwein": null,
+        "vegetarisch": 3.93,
+        "vegan": null,
+        "Sonstige": null
+      },
+      "Fit to Go": {
+        "Ripperl": null,
+        "Pute": null,
+        "Huhn": 2.17,
+        "Fisch": null,
+        "Gulasch": null,
+        "Curry": 5.0,
+        "Suppe": 2.27,
+        "Knödel": null,
+        "Pasta": 2.2,
+        "Bowl": 3.0,
+        "Asia": 2.6,
+        "Hülsenfrüchte": null,
+        "Rind": 3.7,
+        "Schwein": 2.78,
+        "vegetarisch": 4.55,
+        "vegan": null,
+        "Sonstige": null
+      },
+      "Penny": {
+        "Ripperl": null,
+        "Pute": null,
+        "Huhn": 0.89,
+        "Fisch": 1.32,
+        "Gulasch": 1.13,
+        "Curry": null,
+        "Suppe": null,
+        "Knödel": null,
+        "Pasta": null,
+        "Bowl": null,
+        "Asia": null,
+        "Hülsenfrüchte": null,
+        "Rind": null,
+        "Schwein": null,
+        "vegetarisch": 0.88,
+        "vegan": null,
+        "Sonstige": null
+      }
+    }
   },
-  "Penny": {
-   "count": 2,
-   "n_with_nutrition": 2,
-   "n_rankable": 1,
-   "median_price": null,
-   "median_price_per_kg": null,
-   "median_eur_per_10g_protein": null,
-   "median_eur_per_10g_protein_all": null,
-   "median_health_score": 35.65,
-   "median_salt_100": 0.67,
-   "median_kcal_100": 39.5,
-   "median_protein_100": 1.3
+  "charts": {
+    "bar_chain_eur10gP": [
+      {
+        "chain": "Billa",
+        "median_eur_per_10g_protein": 1.86,
+        "n": 641
+      },
+      {
+        "chain": "Spar",
+        "median_eur_per_10g_protein": 1.66,
+        "n": 598
+      },
+      {
+        "chain": "Hofer",
+        "median_eur_per_10g_protein": 1.46,
+        "n": 185
+      },
+      {
+        "chain": "Lidl",
+        "median_eur_per_10g_protein": 1.56,
+        "n": 34
+      },
+      {
+        "chain": "dm",
+        "median_eur_per_10g_protein": 1.48,
+        "n": 31
+      },
+      {
+        "chain": "Fit to Go",
+        "median_eur_per_10g_protein": 2.78,
+        "n": 29
+      },
+      {
+        "chain": "Penny",
+        "median_eur_per_10g_protein": 1.13,
+        "n": 30
+      }
+    ],
+    "bar_cat_eur10gP": [
+      {
+        "category": "Pute",
+        "median_eur_per_10g_protein": 1.2,
+        "n": 10
+      },
+      {
+        "category": "Huhn",
+        "median_eur_per_10g_protein": 2.36,
+        "n": 183
+      },
+      {
+        "category": "Fisch",
+        "median_eur_per_10g_protein": 2.3,
+        "n": 107
+      },
+      {
+        "category": "Gulasch",
+        "median_eur_per_10g_protein": 1.79,
+        "n": 106
+      },
+      {
+        "category": "Curry",
+        "median_eur_per_10g_protein": 2.4,
+        "n": 122
+      },
+      {
+        "category": "Suppe",
+        "median_eur_per_10g_protein": 2.32,
+        "n": 219
+      },
+      {
+        "category": "Knödel",
+        "median_eur_per_10g_protein": 2.79,
+        "n": 98
+      },
+      {
+        "category": "Pasta",
+        "median_eur_per_10g_protein": 2.3,
+        "n": 391
+      },
+      {
+        "category": "Bowl",
+        "median_eur_per_10g_protein": 2.65,
+        "n": 108
+      },
+      {
+        "category": "Asia",
+        "median_eur_per_10g_protein": 1.97,
+        "n": 95
+      },
+      {
+        "category": "Hülsenfrüchte",
+        "median_eur_per_10g_protein": 5.56,
+        "n": 37
+      },
+      {
+        "category": "Rind",
+        "median_eur_per_10g_protein": 2.48,
+        "n": 49
+      },
+      {
+        "category": "Schwein",
+        "median_eur_per_10g_protein": 1.37,
+        "n": 107
+      },
+      {
+        "category": "vegetarisch",
+        "median_eur_per_10g_protein": 2.05,
+        "n": 144
+      },
+      {
+        "category": "vegan",
+        "median_eur_per_10g_protein": 4.46,
+        "n": 73
+      },
+      {
+        "category": "Sonstige",
+        "median_eur_per_10g_protein": 1.86,
+        "n": 381
+      }
+    ],
+    "bar_cat_health": [
+      {
+        "category": "Ripperl",
+        "median_health_score": 31.5,
+        "n": 6
+      },
+      {
+        "category": "Pute",
+        "median_health_score": 42.1,
+        "n": 10
+      },
+      {
+        "category": "Huhn",
+        "median_health_score": 49.1,
+        "n": 183
+      },
+      {
+        "category": "Fisch",
+        "median_health_score": 47.45,
+        "n": 107
+      },
+      {
+        "category": "Gulasch",
+        "median_health_score": 46.2,
+        "n": 106
+      },
+      {
+        "category": "Curry",
+        "median_health_score": 44.1,
+        "n": 122
+      },
+      {
+        "category": "Suppe",
+        "median_health_score": 46.8,
+        "n": 219
+      },
+      {
+        "category": "Knödel",
+        "median_health_score": 31.4,
+        "n": 98
+      },
+      {
+        "category": "Pasta",
+        "median_health_score": 40.9,
+        "n": 391
+      },
+      {
+        "category": "Bowl",
+        "median_health_score": 46.35,
+        "n": 108
+      },
+      {
+        "category": "Asia",
+        "median_health_score": 45.6,
+        "n": 95
+      },
+      {
+        "category": "Hülsenfrüchte",
+        "median_health_score": 57.0,
+        "n": 37
+      },
+      {
+        "category": "Rind",
+        "median_health_score": 40.3,
+        "n": 49
+      },
+      {
+        "category": "Schwein",
+        "median_health_score": 36.45,
+        "n": 107
+      },
+      {
+        "category": "vegetarisch",
+        "median_health_score": 35.0,
+        "n": 144
+      },
+      {
+        "category": "vegan",
+        "median_health_score": 66.8,
+        "n": 73
+      },
+      {
+        "category": "Sonstige",
+        "median_health_score": 39.2,
+        "n": 381
+      }
+    ]
   }
- },
- "categories": {
-  "Ripperl": {
-   "count": 2,
-   "n_with_nutrition": 2,
-   "n_rankable": 2,
-   "median_price": null,
-   "median_price_per_kg": 10.99,
-   "median_eur_per_10g_protein": null,
-   "median_eur_per_10g_protein_all": null,
-   "median_health_score": 37.35,
-   "median_salt_100": 1.7,
-   "median_kcal_100": 170.5,
-   "median_protein_100": 14.5
-  },
-  "Pute": {
-   "count": 8,
-   "n_with_nutrition": 6,
-   "n_rankable": 4,
-   "median_price": 3.49,
-   "median_price_per_kg": 8.73,
-   "median_eur_per_10g_protein": 1.86,
-   "median_eur_per_10g_protein_all": 1.86,
-   "median_health_score": 29.8,
-   "median_salt_100": 1.97,
-   "median_kcal_100": 146.0,
-   "median_protein_100": 12.0
-  },
-  "Huhn": {
-   "count": 104,
-   "n_with_nutrition": 75,
-   "n_rankable": 45,
-   "median_price": 4.49,
-   "median_price_per_kg": 13.67,
-   "median_eur_per_10g_protein": 2.2,
-   "median_eur_per_10g_protein_all": 2.24,
-   "median_health_score": 41.0,
-   "median_salt_100": 1.1,
-   "median_kcal_100": 143.0,
-   "median_protein_100": 8
-  },
-  "Fisch": {
-   "count": 37,
-   "n_with_nutrition": 29,
-   "n_rankable": 21,
-   "median_price": 5.59,
-   "median_price_per_kg": 19.02,
-   "median_eur_per_10g_protein": 2.35,
-   "median_eur_per_10g_protein_all": 2.07,
-   "median_health_score": 46.6,
-   "median_salt_100": 0.84,
-   "median_kcal_100": 157.0,
-   "median_protein_100": 13
-  },
-  "Gulasch": {
-   "count": 94,
-   "n_with_nutrition": 59,
-   "n_rankable": 35,
-   "median_price": 4.99,
-   "median_price_per_kg": 8.98,
-   "median_eur_per_10g_protein": 2.23,
-   "median_eur_per_10g_protein_all": 1.78,
-   "median_health_score": 42.2,
-   "median_salt_100": 1.14,
-   "median_kcal_100": 104,
-   "median_protein_100": 5.8
-  },
-  "Curry": {
-   "count": 81,
-   "n_with_nutrition": 54,
-   "n_rankable": 37,
-   "median_price": 3.99,
-   "median_price_per_kg": 13.31,
-   "median_eur_per_10g_protein": 2.5,
-   "median_eur_per_10g_protein_all": 2.5,
-   "median_health_score": 37.75,
-   "median_salt_100": 1.08,
-   "median_kcal_100": 127.6,
-   "median_protein_100": 5.3
-  },
-  "Suppe": {
-   "count": 287,
-   "n_with_nutrition": 148,
-   "n_rankable": 67,
-   "median_price": 2.66,
-   "median_price_per_kg": 7.48,
-   "median_eur_per_10g_protein": 3.17,
-   "median_eur_per_10g_protein_all": 2.29,
-   "median_health_score": 27.0,
-   "median_salt_100": 1.3,
-   "median_kcal_100": 89.5,
-   "median_protein_100": 3.9
-  },
-  "Knödel": {
-   "count": 134,
-   "n_with_nutrition": 72,
-   "n_rankable": 63,
-   "median_price": 3.99,
-   "median_price_per_kg": 9.38,
-   "median_eur_per_10g_protein": 1.57,
-   "median_eur_per_10g_protein_all": 1.73,
-   "median_health_score": 27.95,
-   "median_salt_100": 1.3,
-   "median_kcal_100": 207.0,
-   "median_protein_100": 7.3
-  },
-  "Pasta": {
-   "count": 254,
-   "n_with_nutrition": 156,
-   "n_rankable": 112,
-   "median_price": 3.19,
-   "median_price_per_kg": 10.7,
-   "median_eur_per_10g_protein": 1.64,
-   "median_eur_per_10g_protein_all": 1.8,
-   "median_health_score": 33.75,
-   "median_salt_100": 1.1,
-   "median_kcal_100": 201.0,
-   "median_protein_100": 7.7
-  },
-  "Bowl": {
-   "count": 22,
-   "n_with_nutrition": 17,
-   "n_rankable": 14,
-   "median_price": 6.49,
-   "median_price_per_kg": 21.81,
-   "median_eur_per_10g_protein": 3.79,
-   "median_eur_per_10g_protein_all": 3.25,
-   "median_health_score": 39.3,
-   "median_salt_100": 1.0,
-   "median_kcal_100": 149.2,
-   "median_protein_100": 5.6
-  },
-  "Asia": {
-   "count": 61,
-   "n_with_nutrition": 46,
-   "n_rankable": 17,
-   "median_price": 2.99,
-   "median_price_per_kg": 17.13,
-   "median_eur_per_10g_protein": 2.76,
-   "median_eur_per_10g_protein_all": 2.88,
-   "median_health_score": 26.7,
-   "median_salt_100": 1.2,
-   "median_kcal_100": 149.5,
-   "median_protein_100": 6.25
-  },
-  "Hülsenfrüchte": {
-   "count": 116,
-   "n_with_nutrition": 66,
-   "n_rankable": 36,
-   "median_price": 3.49,
-   "median_price_per_kg": 8.73,
-   "median_eur_per_10g_protein": 1.81,
-   "median_eur_per_10g_protein_all": 1.89,
-   "median_health_score": 38.3,
-   "median_salt_100": 1.1,
-   "median_kcal_100": 107.0,
-   "median_protein_100": 5.25
-  },
-  "Rind": {
-   "count": 127,
-   "n_with_nutrition": 76,
-   "n_rankable": 47,
-   "median_price": 4.19,
-   "median_price_per_kg": 13.11,
-   "median_eur_per_10g_protein": 1.35,
-   "median_eur_per_10g_protein_all": 1.65,
-   "median_health_score": 42.9,
-   "median_salt_100": 1.18,
-   "median_kcal_100": 123.0,
-   "median_protein_100": 8.75
-  },
-  "Schwein": {
-   "count": 82,
-   "n_with_nutrition": 61,
-   "n_rankable": 48,
-   "median_price": 3.99,
-   "median_price_per_kg": 10.29,
-   "median_eur_per_10g_protein": 1.35,
-   "median_eur_per_10g_protein_all": 1.38,
-   "median_health_score": 27.3,
-   "median_salt_100": 1.45,
-   "median_kcal_100": 189.0,
-   "median_protein_100": 8.0
-  },
-  "vegetarisch": {
-   "count": 332,
-   "n_with_nutrition": 152,
-   "n_rankable": 100,
-   "median_price": 2.99,
-   "median_price_per_kg": 8.88,
-   "median_eur_per_10g_protein": 1.77,
-   "median_eur_per_10g_protein_all": 1.78,
-   "median_health_score": 30.3,
-   "median_salt_100": 0.98,
-   "median_kcal_100": 207.0,
-   "median_protein_100": 6.9
-  },
-  "vegan": {
-   "count": 120,
-   "n_with_nutrition": 94,
-   "n_rankable": 63,
-   "median_price": 2.99,
-   "median_price_per_kg": 9.98,
-   "median_eur_per_10g_protein": 2.75,
-   "median_eur_per_10g_protein_all": 2.62,
-   "median_health_score": 30.6,
-   "median_salt_100": 1.2,
-   "median_kcal_100": 187.5,
-   "median_protein_100": 5.7
-  },
-  "Sonstige": {
-   "count": 83,
-   "n_with_nutrition": 56,
-   "n_rankable": 41,
-   "median_price": 3.89,
-   "median_price_per_kg": 12.7,
-   "median_eur_per_10g_protein": 2.04,
-   "median_eur_per_10g_protein_all": 1.86,
-   "median_health_score": 28.75,
-   "median_salt_100": 1.3,
-   "median_kcal_100": 168.55,
-   "median_protein_100": 9.2
-  }
- },
- "best_per_category": {
-  "Pute": {
-   "gerichts_leistung_formula": "0.5*health/maxHealth*100 + 0.5*minEurPer10gP/EurPer10gP*100 (innerhalb Kategorie)",
-   "top": [
-    {
-     "name": "Inzersdorfer Puten Chili Con Carne",
-     "brand": "Inzersdorfer",
-     "store": "BILLA",
-     "price_eur": 3.49,
-     "size_g": 400.0,
-     "protein_pack": 18.8,
-     "protein_100": 4.7,
-     "kcal_100": 82.0,
-     "salt_100": 1.0,
-     "price_per_10g_protein": 1.86,
-     "health_score": 42.2,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-965533-1063937393-maTYIFkU.jpg",
-     "url": "https://shop.billa.at/produkte/inzersdorfer-puten-chili-con-carne-00965533",
-     "chain": "Billa",
-     "leistung": 100.0
-    }
-   ],
-   "healthiest": {
-    "name": "Inzersdorfer Puten Chili Con Carne",
-    "brand": "Inzersdorfer",
-    "store": "BILLA",
-    "price_eur": 3.49,
-    "size_g": 400.0,
-    "protein_pack": 18.8,
-    "protein_100": 4.7,
-    "kcal_100": 82.0,
-    "salt_100": 1.0,
-    "price_per_10g_protein": 1.86,
-    "health_score": 42.2,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-965533-1063937393-maTYIFkU.jpg",
-    "url": "https://shop.billa.at/produkte/inzersdorfer-puten-chili-con-carne-00965533",
-    "chain": "Billa"
-   },
-   "cheapest_protein": {
-    "name": "Inzersdorfer Puten Chili Con Carne",
-    "brand": "Inzersdorfer",
-    "store": "BILLA",
-    "price_eur": 3.49,
-    "size_g": 400.0,
-    "protein_pack": 18.8,
-    "protein_100": 4.7,
-    "kcal_100": 82.0,
-    "salt_100": 1.0,
-    "price_per_10g_protein": 1.86,
-    "health_score": 42.2,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-965533-1063937393-maTYIFkU.jpg",
-    "url": "https://shop.billa.at/produkte/inzersdorfer-puten-chili-con-carne-00965533",
-    "chain": "Billa"
-   }
-  },
-  "Huhn": {
-   "gerichts_leistung_formula": "0.5*health/maxHealth*100 + 0.5*minEurPer10gP/EurPer10gP*100 (innerhalb Kategorie)",
-   "top": [
-    {
-     "name": "BILLA Hühner Cordon Bleu",
-     "brand": "BILLA Immer Gut",
-     "store": "Billa",
-     "price_eur": 8.79,
-     "size_g": 500,
-     "protein_pack": 90.0,
-     "protein_100": 18.0,
-     "kcal_100": 186.0,
-     "salt_100": 1.5,
-     "price_per_10g_protein": 0.98,
-     "health_score": 48.2,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-318508-1834249752-yydpg4k0.jpg",
-     "url": "https://shop.billa.at/produkte/billa-huehner-cordon-bleu-00318508",
-     "chain": "Billa",
-     "leistung": 88.5
-    },
-    {
-     "name": "Omis Schmankerl Cordon Bleu vom Huhn",
-     "brand": "Omis Schmankerl",
-     "store": "BILLA",
-     "price_eur": 4.49,
-     "size_g": 250.0,
-     "protein_pack": 40.0,
-     "protein_100": 16.0,
-     "kcal_100": 187.0,
-     "salt_100": 1.0,
-     "price_per_10g_protein": 1.12,
-     "health_score": 50.8,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-780262-1906694583-lHbCiHV6.jpg",
-     "url": "https://shop.billa.at/produkte/omis-schmankerl-cordon-bleu-vom-huhn-00780262",
-     "chain": "Billa",
-     "leistung": 84.3
-    },
-    {
-     "name": "BILLA Backhendl Keulen ",
-     "brand": "BILLA Immer Gut",
-     "store": "Billa",
-     "price_eur": 3.99,
-     "size_g": 250,
-     "protein_pack": 37.5,
-     "protein_100": 15.0,
-     "kcal_100": 187.0,
-     "salt_100": 1.5,
-     "price_per_10g_protein": 1.06,
-     "health_score": 42.9,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-749586-1593639811-a4niOLVA.jpg",
-     "url": "https://shop.billa.at/produkte/billa-backhendl-keulen-00749586",
-     "chain": "Billa",
-     "leistung": 80.5
-    },
-    {
-     "name": "BILLA Schnitzel Burger Huhn",
-     "brand": "BILLA Immer Gut",
-     "store": "BILLA",
-     "price_eur": 3.59,
-     "size_g": 260.0,
-     "protein_pack": 33.8,
-     "protein_100": 13.0,
-     "kcal_100": 231.0,
-     "salt_100": 1.2,
-     "price_per_10g_protein": 1.06,
-     "health_score": 38.9,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-891821-0211024102-4iU-UYf-.jpg",
-     "url": "https://shop.billa.at/produkte/billa-schnitzel-burger-huhn-00891821",
-     "chain": "Billa",
-     "leistung": 77.3
-    },
-    {
-     "name": "SPAR Feine Küche Paprika-Huhn mit Eierspätzle",
-     "brand": null,
-     "store": "SPAR",
-     "price_eur": 4.99,
-     "size_g": 400,
-     "protein_pack": 33.2,
-     "protein_100": 8.3,
-     "kcal_100": 132,
-     "salt_100": 0.002125,
-     "price_per_10g_protein": 1.5,
-     "health_score": 55.3,
-     "image_url": null,
-     "url": null,
-     "chain": "Spar",
-     "leistung": 76.8
-    }
-   ],
-   "healthiest": {
-    "name": "Iglo Kürbis Backhendlstreifen",
-    "brand": "iglo",
-    "store": "Billa",
-    "price_eur": 9.59,
-    "size_g": 200,
-    "protein_pack": 38.0,
-    "protein_100": 19.0,
-    "kcal_100": 226.0,
-    "salt_100": 0.77,
-    "price_per_10g_protein": 2.52,
-    "health_score": 62.6,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-702668-285418851-_HRdC7z4.jpg",
-    "url": "https://shop.billa.at/produkte/iglo-kuerbis-backhendlstreifen-00702668",
-    "chain": "Billa"
-   },
-   "cheapest_protein": {
-    "name": "BILLA Hühner Cordon Bleu",
-    "brand": "BILLA Immer Gut",
-    "store": "Billa",
-    "price_eur": 8.79,
-    "size_g": 500,
-    "protein_pack": 90.0,
-    "protein_100": 18.0,
-    "kcal_100": 186.0,
-    "salt_100": 1.5,
-    "price_per_10g_protein": 0.98,
-    "health_score": 48.2,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-318508-1834249752-yydpg4k0.jpg",
-    "url": "https://shop.billa.at/produkte/billa-huehner-cordon-bleu-00318508",
-    "chain": "Billa"
-   }
-  },
-  "Fisch": {
-   "gerichts_leistung_formula": "0.5*health/maxHealth*100 + 0.5*minEurPer10gP/EurPer10gP*100 (innerhalb Kategorie)",
-   "top": [
-    {
-     "name": "Clever Wildlachsfilet ohne Haut",
-     "brand": "CLEVER",
-     "store": "Billa",
-     "price_eur": 4.49,
-     "size_g": 250,
-     "protein_pack": 50.0,
-     "protein_100": 20.0,
-     "kcal_100": 107.0,
-     "salt_100": 0.13,
-     "price_per_10g_protein": 0.9,
-     "health_score": 70.0,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-743965-0506664245-AVMoj-Dv.jpg",
-     "url": "https://shop.billa.at/produkte/clever-wildlachsfilet-ohne-haut-00743965",
-     "chain": "Billa",
-     "leistung": 65.6
-    },
-    {
-     "name": "Fischer Knödelbrot",
-     "brand": null,
-     "store": "SPAR",
-     "price_eur": 1.8,
-     "size_g": 500,
-     "protein_pack": 65.0,
-     "protein_100": 13,
-     "kcal_100": 357,
-     "salt_100": 2.2,
-     "price_per_10g_protein": 0.28,
-     "health_score": 19.6,
-     "image_url": "https://images.openfoodfacts.org/images/products/900/162/412/8508/front_de.9.400.jpg",
-     "url": null,
-     "chain": "Spar",
-     "leistung": 64.0
-    },
-    {
-     "name": "Clever Lachsfilet mit Haut",
-     "brand": "CLEVER",
-     "store": "Billa",
-     "price_eur": 6.59,
-     "size_g": 300,
-     "protein_pack": 63.0,
-     "protein_100": 21.0,
-     "kcal_100": 210.0,
-     "salt_100": 0.09,
-     "price_per_10g_protein": 1.05,
-     "health_score": 68.3,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-487616-0205096067-pjQ9MBOW.jpg",
-     "url": "https://shop.billa.at/produkte/clever-lachsfilet-mit-haut-00487616",
-     "chain": "Billa",
-     "leistung": 62.1
-    },
-    {
-     "name": "BILLA Bio Lachsfilet",
-     "brand": "BILLA Bio",
-     "store": "Billa",
-     "price_eur": 7.19,
-     "size_g": 200,
-     "protein_pack": 40.0,
-     "protein_100": 20.0,
-     "kcal_100": 179.0,
-     "salt_100": 0.12,
-     "price_per_10g_protein": 1.8,
-     "health_score": 67.3,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-878884-0143416083-ItZ2wxEu.jpg",
-     "url": "https://shop.billa.at/produkte/billa-bio-lachsfilet-00878884",
-     "chain": "Billa",
-     "leistung": 55.8
-    },
-    {
-     "name": "Revo Lachsfilet",
-     "brand": "Revo",
-     "store": "Billa",
-     "price_eur": 4.19,
-     "size_g": 100,
-     "protein_pack": 13.9,
-     "protein_100": 13.9,
-     "kcal_100": 219.0,
-     "salt_100": 0.85,
-     "price_per_10g_protein": 3.01,
-     "health_score": 63.7,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-755952-1107447777-wlfghdmw.jpg",
-     "url": "https://shop.billa.at/produkte/revo-lachsfilet-00755952",
-     "chain": "Billa",
-     "leistung": 50.2
-    }
-   ],
-   "healthiest": {
-    "name": "Clever Wildlachsfilet ohne Haut",
-    "brand": "CLEVER",
-    "store": "Billa",
-    "price_eur": 4.49,
-    "size_g": 250,
-    "protein_pack": 50.0,
-    "protein_100": 20.0,
-    "kcal_100": 107.0,
-    "salt_100": 0.13,
-    "price_per_10g_protein": 0.9,
-    "health_score": 70.0,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-743965-0506664245-AVMoj-Dv.jpg",
-    "url": "https://shop.billa.at/produkte/clever-wildlachsfilet-ohne-haut-00743965",
-    "chain": "Billa"
-   },
-   "cheapest_protein": {
-    "name": "Fischer Knödelbrot",
-    "brand": null,
-    "store": "SPAR",
-    "price_eur": 1.8,
-    "size_g": 500,
-    "protein_pack": 65.0,
-    "protein_100": 13,
-    "kcal_100": 357,
-    "salt_100": 2.2,
-    "price_per_10g_protein": 0.28,
-    "health_score": 19.6,
-    "image_url": "https://images.openfoodfacts.org/images/products/900/162/412/8508/front_de.9.400.jpg",
-    "url": null,
-    "chain": "Spar"
-   }
-  },
-  "Gulasch": {
-   "gerichts_leistung_formula": "0.5*health/maxHealth*100 + 0.5*minEurPer10gP/EurPer10gP*100 (innerhalb Kategorie)",
-   "top": [
-    {
-     "name": "Gavrilovic Rindergulasch",
-     "brand": null,
-     "store": "SPAR",
-     "price_eur": 3.99,
-     "size_g": 300,
-     "protein_pack": 27.0,
-     "protein_100": 9,
-     "kcal_100": 101,
-     "salt_100": 1.18,
-     "price_per_10g_protein": 1.48,
-     "health_score": 52.4,
-     "image_url": null,
-     "url": null,
-     "chain": "Spar",
-     "leistung": 78.0
-    },
-    {
-     "name": "Omis Schmankerl Rindsgulasch",
-     "brand": "Omis Schmankerl",
-     "store": "BILLA",
-     "price_eur": 4.99,
-     "size_g": 330.0,
-     "protein_pack": 29.7,
-     "protein_100": 9.0,
-     "kcal_100": 116.0,
-     "salt_100": 0.63,
-     "price_per_10g_protein": 1.68,
-     "health_score": 55.6,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-780246-553564107-0tPaRYSa.jpg",
-     "url": "https://shop.billa.at/produkte/omis-schmankerl-rindsgulasch-00780246",
-     "chain": "Billa",
-     "leistung": 77.2
-    },
-    {
-     "name": "BILLA Genusswelt Kalbsrahmgulasch Sous Vide",
-     "brand": "BILLA Genusswelt",
-     "store": "BILLA",
-     "price_eur": 7.99,
-     "size_g": 350.0,
-     "protein_pack": 49.0,
-     "protein_100": 14.0,
-     "kcal_100": 130.0,
-     "salt_100": 1.4,
-     "price_per_10g_protein": 1.63,
-     "health_score": 53.9,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-718376-642343416-UgIUu9Bh.jpg",
-     "url": "https://shop.billa.at/produkte/billa-genusswelt-kalbsrahmgulasch-sous-vide-00718376",
-     "chain": "Billa",
-     "leistung": 76.5
-    },
-    {
-     "name": "Inzersdorfer Rindsgulasch",
-     "brand": "Inzersdorfer",
-     "store": "BILLA",
-     "price_eur": 10.49,
-     "size_g": 800.0,
-     "protein_pack": 77.6,
-     "protein_100": 9.7,
-     "kcal_100": 111.0,
-     "salt_100": 1.2,
-     "price_per_10g_protein": 1.35,
-     "health_score": 46.1,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-11369-1410790741-Tlb23s5W.jpg",
-     "url": "https://shop.billa.at/produkte/inzersdorfer-rindsgulasch-0011369",
-     "chain": "Billa",
-     "leistung": 75.4
-    },
-    {
-     "name": "Hofstädter Rindsgulasch Sous Vide",
-     "brand": "Hofstädter",
-     "store": "BILLA",
-     "price_eur": 7.99,
-     "size_g": 280.0,
-     "protein_pack": 36.4,
-     "protein_100": 13.0,
-     "kcal_100": 123.0,
-     "salt_100": 1.5,
-     "price_per_10g_protein": 2.2,
-     "health_score": 55.8,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-739286-1791425859-P0psxUK0.jpg",
-     "url": "https://shop.billa.at/produkte/hofstaedter-rindsgulasch-sous-vide-00739286",
-     "chain": "Billa",
-     "leistung": 70.9
-    }
-   ],
-   "healthiest": {
-    "name": "Hofstädter Rindsgulasch Sous Vide",
-    "brand": "Hofstädter",
-    "store": "BILLA",
-    "price_eur": 7.99,
-    "size_g": 280.0,
-    "protein_pack": 36.4,
-    "protein_100": 13.0,
-    "kcal_100": 123.0,
-    "salt_100": 1.5,
-    "price_per_10g_protein": 2.2,
-    "health_score": 55.8,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-739286-1791425859-P0psxUK0.jpg",
-    "url": "https://shop.billa.at/produkte/hofstaedter-rindsgulasch-sous-vide-00739286",
-    "chain": "Billa"
-   },
-   "cheapest_protein": {
-    "name": "Clever Rindsgulasch",
-    "brand": "CLEVER",
-    "store": "BILLA",
-    "price_eur": 2.99,
-    "size_g": 400.0,
-    "protein_pack": 32.4,
-    "protein_100": 8.1,
-    "kcal_100": 164.0,
-    "salt_100": 1.6,
-    "price_per_10g_protein": 0.92,
-    "health_score": 15.1,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-775145-0147218795-_HKii1id.jpg",
-    "url": "https://shop.billa.at/produkte/clever-rindsgulasch-00775145",
-    "chain": "Billa"
-   }
-  },
-  "Curry": {
-   "gerichts_leistung_formula": "0.5*health/maxHealth*100 + 0.5*minEurPer10gP/EurPer10gP*100 (innerhalb Kategorie)",
-   "top": [
-    {
-     "name": "Iglo Schlemmerfilet Rotes Curry",
-     "brand": "iglo",
-     "store": "Billa",
-     "price_eur": 6.99,
-     "size_g": 380,
-     "protein_pack": 36.9,
-     "protein_100": 9.7,
-     "kcal_100": 85.0,
-     "salt_100": 0.87,
-     "price_per_10g_protein": 1.89,
-     "health_score": 72.9,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-732067-0128673435-nf26lJ9U.jpg",
-     "url": "https://shop.billa.at/produkte/iglo-schlemmerfilet-rotes-curry-00732067",
-     "chain": "Billa",
-     "leistung": 87.6
-    },
-    {
-     "name": "Clever Chicken Tikka Masala",
-     "brand": "CLEVER",
-     "store": "BILLA",
-     "price_eur": 2.49,
-     "size_g": 330.0,
-     "protein_pack": 17.5,
-     "protein_100": 5.3,
-     "kcal_100": 106.0,
-     "salt_100": 0.69,
-     "price_per_10g_protein": 1.42,
-     "health_score": 41.0,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-739902-0143817709-KH4Vn-A0.jpg",
-     "url": "https://shop.billa.at/produkte/clever-chicken-tikka-masala-00739902",
-     "chain": "Billa",
-     "leistung": 78.1
-    },
-    {
-     "name": "Meica Curry King",
-     "brand": null,
-     "store": "SPAR",
-     "price_eur": 3.39,
-     "size_g": 220,
-     "protein_pack": 17.6,
-     "protein_100": 8,
-     "kcal_100": 148,
-     "salt_100": 1.6,
-     "price_per_10g_protein": 1.93,
-     "health_score": 35.3,
-     "image_url": "https://images.openfoodfacts.org/images/products/400/050/328/1001/front_en.14.400.jpg",
-     "url": "https://www.interspar.at/p/6194628",
-     "chain": "Spar",
-     "leistung": 61.0
-    },
-    {
-     "name": "PURE Huhn Tikka Masala mit Reis",
-     "brand": "Pure",
-     "store": "BILLA",
-     "price_eur": 4.39,
-     "size_g": 400.0,
-     "protein_pack": 21.2,
-     "protein_100": 5.3,
-     "kcal_100": 161.0,
-     "salt_100": 0.55,
-     "price_per_10g_protein": 2.07,
-     "health_score": 34.5,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-398324-1911904995-scimBEd9.jpg",
-     "url": "https://shop.billa.at/produkte/pure-huhn-tikka-masala-mit-reis-00398324",
-     "chain": "Billa",
-     "leistung": 58.0
-    },
-    {
-     "name": "Simply Good Indian Style Chicken Tikka",
-     "brand": "Simply Good",
-     "store": "BILLA",
-     "price_eur": 4.99,
-     "size_g": 420.0,
-     "protein_pack": 22.3,
-     "protein_100": 5.3,
-     "kcal_100": 122.0,
-     "salt_100": 0.68,
-     "price_per_10g_protein": 2.24,
-     "health_score": 37.6,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-742202-0145973094-bYpqrtBf.jpg",
-     "url": "https://shop.billa.at/produkte/simply-good-indian-style-chicken-tikka-00742202",
-     "chain": "Billa",
-     "leistung": 57.5
-    }
-   ],
-   "healthiest": {
-    "name": "Iglo Schlemmerfilet Rotes Curry",
-    "brand": "iglo",
-    "store": "Billa",
-    "price_eur": 6.99,
-    "size_g": 380,
-    "protein_pack": 36.9,
-    "protein_100": 9.7,
-    "kcal_100": 85.0,
-    "salt_100": 0.87,
-    "price_per_10g_protein": 1.89,
-    "health_score": 72.9,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-732067-0128673435-nf26lJ9U.jpg",
-    "url": "https://shop.billa.at/produkte/iglo-schlemmerfilet-rotes-curry-00732067",
-    "chain": "Billa"
-   },
-   "cheapest_protein": {
-    "name": "Clever Chicken Tikka Masala",
-    "brand": "CLEVER",
-    "store": "BILLA",
-    "price_eur": 2.49,
-    "size_g": 330.0,
-    "protein_pack": 17.5,
-    "protein_100": 5.3,
-    "kcal_100": 106.0,
-    "salt_100": 0.69,
-    "price_per_10g_protein": 1.42,
-    "health_score": 41.0,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-739902-0143817709-KH4Vn-A0.jpg",
-    "url": "https://shop.billa.at/produkte/clever-chicken-tikka-masala-00739902",
-    "chain": "Billa"
-   }
-  },
-  "Suppe": {
-   "gerichts_leistung_formula": "0.5*health/maxHealth*100 + 0.5*minEurPer10gP/EurPer10gP*100 (innerhalb Kategorie)",
-   "top": [
-    {
-     "name": "Stangl Suppe-ABC",
-     "brand": "Stangl",
-     "store": "BILLA",
-     "price_eur": 1.51,
-     "size_g": 250,
-     "protein_pack": 37.5,
-     "protein_100": 15.0,
-     "kcal_100": 373.0,
-     "salt_100": 0.04,
-     "price_per_10g_protein": 0.4,
-     "health_score": 36.1,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-774361-1137972515-S2glXflm.jpg",
-     "url": "https://shop.billa.at/produkte/stangl-suppeabc-00774361",
-     "chain": "Billa",
-     "leistung": 77.0
-    },
-    {
-     "name": "Stangl Suppe-Gerstl",
-     "brand": "Stangl",
-     "store": "BILLA",
-     "price_eur": 1.51,
-     "size_g": 250,
-     "protein_pack": 37.5,
-     "protein_100": 15.0,
-     "kcal_100": 373.0,
-     "salt_100": 0.04,
-     "price_per_10g_protein": 0.4,
-     "health_score": 36.1,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-774360-0192886640-dpuW6EOg.jpg",
-     "url": "https://shop.billa.at/produkte/stangl-suppegerstl-00774360",
-     "chain": "Billa",
-     "leistung": 77.0
-    },
-    {
-     "name": "Stangl Suppe-Mini Hörnchen",
-     "brand": "Stangl",
-     "store": "BILLA",
-     "price_eur": 1.51,
-     "size_g": 250,
-     "protein_pack": 37.5,
-     "protein_100": 15.0,
-     "kcal_100": 373.0,
-     "salt_100": 0.04,
-     "price_per_10g_protein": 0.4,
-     "health_score": 36.1,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-196980-1479103368-NtMJOosq.jpg",
-     "url": "https://shop.billa.at/produkte/stangl-suppemini-hoernchen-00196980",
-     "chain": "Billa",
-     "leistung": 77.0
-    },
-    {
-     "name": "Stangl Suppe-Sternderl",
-     "brand": "Stangl",
-     "store": "BILLA",
-     "price_eur": 1.51,
-     "size_g": 250,
-     "protein_pack": 37.5,
-     "protein_100": 15.0,
-     "kcal_100": 373.0,
-     "salt_100": 0.04,
-     "price_per_10g_protein": 0.4,
-     "health_score": 36.1,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-196956-1900140065-guJ_io7D.jpg",
-     "url": "https://shop.billa.at/produkte/stangl-suppesternderl-00196956",
-     "chain": "Billa",
-     "leistung": 77.0
-    },
-    {
-     "name": "PRIMANA Serbische Bohnensuppe 400g",
-     "brand": null,
-     "store": "HOFER",
-     "price_eur": 1.35,
-     "size_g": 400,
-     "protein_pack": 19.6,
-     "protein_100": 4.9,
-     "kcal_100": 133,
-     "salt_100": 1.08,
-     "price_per_10g_protein": 0.69,
-     "health_score": 33.5,
-     "image_url": "https://images.openfoodfacts.org/images/products/409/920/012/1598/front_de.9.400.jpg",
-     "url": "https://www.hofer.at/de/sortiment/Suppe-in-der-Dose-Tomatensu--2",
-     "chain": "Hofer",
-     "leistung": 54.0
-    }
-   ],
-   "healthiest": {
-    "name": "BILLA Bio Gemüsebrühe im Glas",
-    "brand": "BILLA Bio",
-    "store": "BILLA",
-    "price_eur": 3.99,
-    "size_g": 260.0,
-    "protein_pack": 1.3,
-    "protein_100": 0.5,
-    "kcal_100": 2.0,
-    "salt_100": 0.82,
-    "price_per_10g_protein": 30.69,
-    "health_score": 66.9,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-890306-016809040-NVb-wcJk.jpg",
-    "url": "https://shop.billa.at/produkte/billa-bio-gemuesebruehe-im-glas-00890306",
-    "chain": "Billa"
-   },
-   "cheapest_protein": {
-    "name": "Stangl Suppe-ABC",
-    "brand": "Stangl",
-    "store": "BILLA",
-    "price_eur": 1.51,
-    "size_g": 250,
-    "protein_pack": 37.5,
-    "protein_100": 15.0,
-    "kcal_100": 373.0,
-    "salt_100": 0.04,
-    "price_per_10g_protein": 0.4,
-    "health_score": 36.1,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-774361-1137972515-S2glXflm.jpg",
-    "url": "https://shop.billa.at/produkte/stangl-suppeabc-00774361",
-    "chain": "Billa"
-   }
-  },
-  "Knödel": {
-   "gerichts_leistung_formula": "0.5*health/maxHealth*100 + 0.5*minEurPer10gP/EurPer10gP*100 (innerhalb Kategorie)",
-   "top": [
-    {
-     "name": "Fischer Knödelbrot",
-     "brand": null,
-     "store": "SPAR",
-     "price_eur": 1.8,
-     "size_g": 500,
-     "protein_pack": 65.0,
-     "protein_100": 13,
-     "kcal_100": 357,
-     "salt_100": 2.2,
-     "price_per_10g_protein": 0.28,
-     "health_score": 19.6,
-     "image_url": "https://images.openfoodfacts.org/images/products/900/162/412/8508/front_de.9.400.jpg",
-     "url": null,
-     "chain": "Spar",
-     "leistung": 71.9
-    },
-    {
-     "name": "Clever Leberknödel",
-     "brand": "CLEVER",
-     "store": "Billa",
-     "price_eur": 3.99,
-     "size_g": 700,
-     "protein_pack": 91.0,
-     "protein_100": 13.0,
-     "kcal_100": 196.0,
-     "salt_100": 1.6,
-     "price_per_10g_protein": 0.44,
-     "health_score": 30.9,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-243149-0155592332-23OhpBgC.jpg",
-     "url": "https://shop.billa.at/produkte/clever-leberknoedel-00243149",
-     "chain": "Billa",
-     "leistung": 66.4
-    },
-    {
-     "name": "Iglo Riesen-Germknödel",
-     "brand": "iglo",
-     "store": "BILLA",
-     "price_eur": 3.52,
-     "size_g": 500,
-     "protein_pack": 37.0,
-     "protein_100": 7.4,
-     "kcal_100": 289.0,
-     "salt_100": 0.66,
-     "price_per_10g_protein": 0.95,
-     "health_score": 41.9,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-349612-028581437-9IJF893a.jpg",
-     "url": "https://shop.billa.at/produkte/iglo-riesengermknoedel-00349612",
-     "chain": "Billa",
-     "leistung": 61.6
-    },
-    {
-     "name": "Ja! Natürlich Sommerfrisch Himbeer-Eisknödel Art",
-     "brand": "Ja! Natürlich",
-     "store": "BILLA",
-     "price_eur": 0.81,
-     "size_g": 200,
-     "protein_pack": 8.6,
-     "protein_100": 4.3,
-     "kcal_100": 94.0,
-     "salt_100": 0.08,
-     "price_per_10g_protein": 0.94,
-     "health_score": 41.3,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-880290-790982647-Ps5q8-j8.jpg",
-     "url": "https://shop.billa.at/produkte/ja-natuerlich-sommerfrisch-himbeereisknoedel-art-00880290",
-     "chain": "Billa",
-     "leistung": 61.1
-    },
-    {
-     "name": "Iglo Erdbeerknödel",
-     "brand": "iglo",
-     "store": "BILLA",
-     "price_eur": 6.99,
-     "size_g": 530,
-     "protein_pack": 44.5,
-     "protein_100": 8.4,
-     "kcal_100": 207.0,
-     "salt_100": 0.55,
-     "price_per_10g_protein": 1.57,
-     "health_score": 44.7,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-968084-1154860940-IQuIAFen.jpg",
-     "url": "https://shop.billa.at/produkte/iglo-erdbeerknoedel-00968084",
-     "chain": "Billa",
-     "leistung": 58.9
-    }
-   ],
-   "healthiest": {
-    "name": "Iglo Erdbeerknödel",
-    "brand": "iglo",
-    "store": "BILLA",
-    "price_eur": 6.99,
-    "size_g": 530,
-    "protein_pack": 44.5,
-    "protein_100": 8.4,
-    "kcal_100": 207.0,
-    "salt_100": 0.55,
-    "price_per_10g_protein": 1.57,
-    "health_score": 44.7,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-968084-1154860940-IQuIAFen.jpg",
-    "url": "https://shop.billa.at/produkte/iglo-erdbeerknoedel-00968084",
-    "chain": "Billa"
-   },
-   "cheapest_protein": {
-    "name": "Fischer Knödelbrot",
-    "brand": null,
-    "store": "SPAR",
-    "price_eur": 1.8,
-    "size_g": 500,
-    "protein_pack": 65.0,
-    "protein_100": 13,
-    "kcal_100": 357,
-    "salt_100": 2.2,
-    "price_per_10g_protein": 0.28,
-    "health_score": 19.6,
-    "image_url": "https://images.openfoodfacts.org/images/products/900/162/412/8508/front_de.9.400.jpg",
-    "url": null,
-    "chain": "Spar"
-   }
-  },
-  "Pasta": {
-   "gerichts_leistung_formula": "0.5*health/maxHealth*100 + 0.5*minEurPer10gP/EurPer10gP*100 (innerhalb Kategorie)",
-   "top": [
-    {
-     "name": "Di Martino Gnocchi Sardi",
-     "brand": null,
-     "store": "SPAR",
-     "price_eur": 2.08,
-     "size_g": 500,
-     "protein_pack": 70.0,
-     "protein_100": 14,
-     "kcal_100": 351,
-     "salt_100": 0,
-     "price_per_10g_protein": 0.3,
-     "health_score": 48.5,
-     "image_url": null,
-     "url": null,
-     "chain": "Spar",
-     "leistung": 88.9
-    },
-    {
-     "name": "Barilla Gnocchi n.85",
-     "brand": null,
-     "store": "SPAR",
-     "price_eur": 1.89,
-     "size_g": 500,
-     "protein_pack": 62.5,
-     "protein_100": 12.5,
-     "kcal_100": 359,
-     "salt_100": 0.01,
-     "price_per_10g_protein": 0.3,
-     "health_score": 46.4,
-     "image_url": "https://images.openfoodfacts.org/images/products/807/680/208/5851/front.5.400.jpg",
-     "url": "https://www.interspar.at/p/5176410",
-     "chain": "Spar",
-     "leistung": 87.0
-    },
-    {
-     "name": "Clever Lasagne",
-     "brand": "CLEVER",
-     "store": "BILLA",
-     "price_eur": 1.6,
-     "size_g": 500,
-     "protein_pack": 60.0,
-     "protein_100": 12.0,
-     "kcal_100": 355.0,
-     "salt_100": 0.01,
-     "price_per_10g_protein": 0.27,
-     "health_score": 38.5,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-773056-989277448-oVQ9181V.jpg",
-     "url": "https://shop.billa.at/produkte/clever-lasagne-00773056",
-     "chain": "Billa",
-     "leistung": 84.8
-    },
-    {
-     "name": "BILLA Lasagne",
-     "brand": "BILLA Immer Gut",
-     "store": "BILLA",
-     "price_eur": 1.09,
-     "size_g": 250,
-     "protein_pack": 30.0,
-     "protein_100": 12.0,
-     "kcal_100": 355.0,
-     "salt_100": 0.01,
-     "price_per_10g_protein": 0.36,
-     "health_score": 38.5,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-703482-0152627594-ebcF8ArB.jpg",
-     "url": "https://shop.billa.at/produkte/billa-lasagne-00703482",
-     "chain": "Billa",
-     "leistung": 72.3
-    },
-    {
-     "name": "Barilla la Collezione Lasagne con Spinaci",
-     "brand": "Barilla",
-     "store": "BILLA",
-     "price_eur": 2.85,
-     "size_g": 500,
-     "protein_pack": 60.0,
-     "protein_100": 12.0,
-     "kcal_100": 359.0,
-     "salt_100": 0.05,
-     "price_per_10g_protein": 0.47,
-     "health_score": 45.9,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-436771-0740223873-_D8-3xws.jpg",
-     "url": "https://shop.billa.at/produkte/barilla-la-collezione-lasagne-con-spinaci-00436771",
-     "chain": "Billa",
-     "leistung": 70.2
-    }
-   ],
-   "healthiest": {
-    "name": "SPAR Feine Küche Paprika-Huhn mit Eierspätzle",
-    "brand": null,
-    "store": "SPAR",
-    "price_eur": 4.99,
-    "size_g": 400,
-    "protein_pack": 33.2,
-    "protein_100": 8.3,
-    "kcal_100": 132,
-    "salt_100": 0.002125,
-    "price_per_10g_protein": 1.5,
-    "health_score": 55.3,
-    "image_url": null,
-    "url": null,
-    "chain": "Spar"
-   },
-   "cheapest_protein": {
-    "name": "Clever Lasagne",
-    "brand": "CLEVER",
-    "store": "BILLA",
-    "price_eur": 1.6,
-    "size_g": 500,
-    "protein_pack": 60.0,
-    "protein_100": 12.0,
-    "kcal_100": 355.0,
-    "salt_100": 0.01,
-    "price_per_10g_protein": 0.27,
-    "health_score": 38.5,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-773056-989277448-oVQ9181V.jpg",
-    "url": "https://shop.billa.at/produkte/clever-lasagne-00773056",
-    "chain": "Billa"
-   }
-  },
-  "Bowl": {
-   "gerichts_leistung_formula": "0.5*health/maxHealth*100 + 0.5*minEurPer10gP/EurPer10gP*100 (innerhalb Kategorie)",
-   "top": [
-    {
-     "name": "Njami Chicken Bowl Mexicana",
-     "brand": "Njami",
-     "store": "BILLA",
-     "price_eur": 3.49,
-     "size_g": 160.0,
-     "protein_pack": 18.1,
-     "protein_100": 11.3,
-     "kcal_100": 152.0,
-     "salt_100": 1.1,
-     "price_per_10g_protein": 1.93,
-     "health_score": 55.1,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-885825-438096192-9NY20Ilx.jpg",
-     "url": "https://shop.billa.at/produkte/njami-chicken-bowl-mexicana-00885825",
-     "chain": "Billa",
-     "leistung": 100.0
-    },
-    {
-     "name": "BILLA Backhendl Bowl",
-     "brand": "BILLA Immer Gut",
-     "store": "BILLA",
-     "price_eur": 7.99,
-     "size_g": 340.0,
-     "protein_pack": 34.0,
-     "protein_100": 10.0,
-     "kcal_100": 145.0,
-     "salt_100": 1.4,
-     "price_per_10g_protein": 2.35,
-     "health_score": 41.2,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-900044-351981443-Byf1zuDI.jpg",
-     "url": "https://shop.billa.at/produkte/billa-backhendl-bowl-00900044",
-     "chain": "Billa",
-     "leistung": 78.5
-    },
-    {
-     "name": "Njami Chicken Bowl Curry",
-     "brand": "Njami",
-     "store": "BILLA",
-     "price_eur": 3.49,
-     "size_g": 160.0,
-     "protein_pack": 14.1,
-     "protein_100": 8.8,
-     "kcal_100": 161.0,
-     "salt_100": 1.2,
-     "price_per_10g_protein": 2.48,
-     "health_score": 40.5,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-885826-0363356578-MKU1eUl8.jpg",
-     "url": "https://shop.billa.at/produkte/njami-chicken-bowl-curry-00885826",
-     "chain": "Billa",
-     "leistung": 75.7
-    },
-    {
-     "name": "Simply Good Buddha Bowl",
-     "brand": "Simply Good",
-     "store": "BILLA",
-     "price_eur": 7.99,
-     "size_g": 370,
-     "protein_pack": 26.6,
-     "protein_100": 7.2,
-     "kcal_100": 146.0,
-     "salt_100": 0.82,
-     "price_per_10g_protein": 3.0,
-     "health_score": 41.6,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-877676-261991858-bb91U9nQ.jpg",
-     "url": "https://shop.billa.at/produkte/simply-good-buddha-bowl-00877676",
-     "chain": "Billa",
-     "leistung": 69.9
-    },
-    {
-     "name": "Reis-Fit Express Poké Bowl",
-     "brand": "Reis-Fit",
-     "store": "BILLA",
-     "price_eur": 2.19,
-     "size_g": 250,
-     "protein_pack": 8.0,
-     "protein_100": 3.2,
-     "kcal_100": 180.0,
-     "salt_100": 0.32,
-     "price_per_10g_protein": 2.74,
-     "health_score": 33.4,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-701253-2102972277-zzPLrFCF.jpg",
-     "url": "https://shop.billa.at/produkte/reisfit-express-poke-bowl-00701253",
-     "chain": "Billa",
-     "leistung": 65.5
-    }
-   ],
-   "healthiest": {
-    "name": "Njami Chicken Bowl Mexicana",
-    "brand": "Njami",
-    "store": "BILLA",
-    "price_eur": 3.49,
-    "size_g": 160.0,
-    "protein_pack": 18.1,
-    "protein_100": 11.3,
-    "kcal_100": 152.0,
-    "salt_100": 1.1,
-    "price_per_10g_protein": 1.93,
-    "health_score": 55.1,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-885825-438096192-9NY20Ilx.jpg",
-    "url": "https://shop.billa.at/produkte/njami-chicken-bowl-mexicana-00885825",
-    "chain": "Billa"
-   },
-   "cheapest_protein": {
-    "name": "Njami Chicken Bowl Mexicana",
-    "brand": "Njami",
-    "store": "BILLA",
-    "price_eur": 3.49,
-    "size_g": 160.0,
-    "protein_pack": 18.1,
-    "protein_100": 11.3,
-    "kcal_100": 152.0,
-    "salt_100": 1.1,
-    "price_per_10g_protein": 1.93,
-    "health_score": 55.1,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-885825-438096192-9NY20Ilx.jpg",
-    "url": "https://shop.billa.at/produkte/njami-chicken-bowl-mexicana-00885825",
-    "chain": "Billa"
-   }
-  },
-  "Asia": {
-   "gerichts_leistung_formula": "0.5*health/maxHealth*100 + 0.5*minEurPer10gP/EurPer10gP*100 (innerhalb Kategorie)",
-   "top": [
-    {
-     "name": "Clever Huhn Süß-Sauer mit Basmatireis",
-     "brand": "CLEVER",
-     "store": "BILLA",
-     "price_eur": 2.49,
-     "size_g": 330.0,
-     "protein_pack": 18.5,
-     "protein_100": 5.6,
-     "kcal_100": 96.0,
-     "salt_100": 0.57,
-     "price_per_10g_protein": 1.35,
-     "health_score": 48.3,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-870379-0163539302-vlbjeF06.jpg",
-     "url": "https://shop.billa.at/produkte/clever-huhn-suesssauer-mit-basmatireis-00870379",
-     "chain": "Billa",
-     "leistung": 90.9
-    },
-    {
-     "name": "Vegavita Geschnetzeltes Teriyaki",
-     "brand": "Vegavita",
-     "store": "Billa",
-     "price_eur": 3.49,
-     "size_g": 160,
-     "protein_pack": 24.0,
-     "protein_100": 15.0,
-     "kcal_100": 157.0,
-     "salt_100": 1.6,
-     "price_per_10g_protein": 1.45,
-     "health_score": 48.9,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-869730-0988206357-mmF4gjuW.jpg",
-     "url": "https://shop.billa.at/produkte/vegavita-geschnetzeltes-teriyaki-00869730",
-     "chain": "Billa",
-     "leistung": 88.0
-    },
-    {
-     "name": "Rana Teriyaki Style Noodels Hühnchen",
-     "brand": "Rana",
-     "store": "BILLA",
-     "price_eur": 5.49,
-     "size_g": 407.0,
-     "protein_pack": 31.3,
-     "protein_100": 7.7,
-     "kcal_100": 113.0,
-     "salt_100": 0.34,
-     "price_per_10g_protein": 1.75,
-     "health_score": 54.5,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-773584-317909271-O7BPhrxa.jpg",
-     "url": "https://shop.billa.at/produkte/rana-teriyaki-style-noodels-huehnchen-00773584",
-     "chain": "Billa",
-     "leistung": 84.8
-    },
-    {
-     "name": "Iglo Erntefrisch Wok-Gemüse",
-     "brand": null,
-     "store": "SPAR",
-     "price_eur": 4.56,
-     "size_g": 580,
-     "protein_pack": 10.4,
-     "protein_100": 1.8,
-     "kcal_100": 30,
-     "salt_100": 0.1,
-     "price_per_10g_protein": 4.38,
-     "health_score": 59.0,
-     "image_url": null,
-     "url": "https://www.interspar.at/p/2552682",
-     "chain": "Spar",
-     "leistung": 65.4
-    },
-    {
-     "name": "PURE Huhn Süß-Sauer mit Reis",
-     "brand": "Pure",
-     "store": "BILLA",
-     "price_eur": 4.39,
-     "size_g": 400.0,
-     "protein_pack": 19.6,
-     "protein_100": 4.9,
-     "kcal_100": 146.0,
-     "salt_100": 0.49,
-     "price_per_10g_protein": 2.24,
-     "health_score": 38.4,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-398204-0313907241-wRXYS-FP.jpg",
-     "url": "https://shop.billa.at/produkte/pure-huhn-suesssauer-mit-reis-00398204",
-     "chain": "Billa",
-     "leistung": 62.7
-    }
-   ],
-   "healthiest": {
-    "name": "Iglo Erntefrisch Wok-Gemüse",
-    "brand": null,
-    "store": "SPAR",
-    "price_eur": 4.56,
-    "size_g": 580,
-    "protein_pack": 10.4,
-    "protein_100": 1.8,
-    "kcal_100": 30,
-    "salt_100": 0.1,
-    "price_per_10g_protein": 4.38,
-    "health_score": 59.0,
-    "image_url": null,
-    "url": "https://www.interspar.at/p/2552682",
-    "chain": "Spar"
-   },
-   "cheapest_protein": {
-    "name": "Clever Huhn Süß-Sauer mit Basmatireis",
-    "brand": "CLEVER",
-    "store": "BILLA",
-    "price_eur": 2.49,
-    "size_g": 330.0,
-    "protein_pack": 18.5,
-    "protein_100": 5.6,
-    "kcal_100": 96.0,
-    "salt_100": 0.57,
-    "price_per_10g_protein": 1.35,
-    "health_score": 48.3,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-870379-0163539302-vlbjeF06.jpg",
-    "url": "https://shop.billa.at/produkte/clever-huhn-suesssauer-mit-basmatireis-00870379",
-    "chain": "Billa"
-   }
-  },
-  "Hülsenfrüchte": {
-   "gerichts_leistung_formula": "0.5*health/maxHealth*100 + 0.5*minEurPer10gP/EurPer10gP*100 (innerhalb Kategorie)",
-   "top": [
-    {
-     "name": "PRIMANA Serbische Bohnensuppe 400g",
-     "brand": null,
-     "store": "HOFER",
-     "price_eur": 1.35,
-     "size_g": 400,
-     "protein_pack": 19.6,
-     "protein_100": 4.9,
-     "kcal_100": 133,
-     "salt_100": 1.08,
-     "price_per_10g_protein": 0.69,
-     "health_score": 33.5,
-     "image_url": "https://images.openfoodfacts.org/images/products/409/920/012/1598/front_de.9.400.jpg",
-     "url": "https://www.hofer.at/de/sortiment/Suppe-in-der-Dose-Tomatensu--2",
-     "chain": "Hofer",
-     "leistung": 75.8
-    },
-    {
-     "name": "BILLA Chili Con Carne XXL",
-     "brand": "BILLA Immer Gut",
-     "store": "BILLA",
-     "price_eur": 3.99,
-     "size_g": 450.0,
-     "protein_pack": 32.4,
-     "protein_100": 7.2,
-     "kcal_100": 104.0,
-     "salt_100": 0.91,
-     "price_per_10g_protein": 1.23,
-     "health_score": 48.3,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-771705-0209654692-ewI4LKmL.jpg",
-     "url": "https://shop.billa.at/produkte/billa-chili-con-carne-xxl-00771705",
-     "chain": "Billa",
-     "leistung": 65.2
-    },
-    {
-     "name": "Die Grillerei Torpedospieße Chili",
-     "brand": "Die Grillerei",
-     "store": "Billa",
-     "price_eur": 3.99,
-     "size_g": 100,
-     "protein_pack": 16.0,
-     "protein_100": 16.0,
-     "kcal_100": 145.0,
-     "salt_100": 1.3,
-     "price_per_10g_protein": 2.49,
-     "health_score": 65.0,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-775395-0201708039-68Cropl_.jpg",
-     "url": "https://shop.billa.at/produkte/die-grillerei-torpedospiesse-chili-00775395",
-     "chain": "Billa",
-     "leistung": 63.9
-    },
-    {
-     "name": "BILLA Lachs Mariniert Limette-Ingwer-Chili",
-     "brand": "BILLA Immer Gut",
-     "store": "Billa",
-     "price_eur": 7.49,
-     "size_g": 250,
-     "protein_pack": 40.0,
-     "protein_100": 16.0,
-     "kcal_100": 262.0,
-     "salt_100": 0.66,
-     "price_per_10g_protein": 1.87,
-     "health_score": 53.5,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-575850-0200161448-3qiEboMr.jpg",
-     "url": "https://shop.billa.at/produkte/billa-lachs-mariniert-limetteingwerchili-00575850",
-     "chain": "Billa",
-     "leistung": 59.6
-    },
-    {
-     "name": "BILLA Bio Linseneintopf",
-     "brand": "BILLA Bio",
-     "store": "BILLA",
-     "price_eur": 2.39,
-     "size_g": 400.0,
-     "protein_pack": 14.8,
-     "protein_100": 3.7,
-     "kcal_100": 60.0,
-     "salt_100": 0.85,
-     "price_per_10g_protein": 1.61,
-     "health_score": 46.1,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-747939-0196269619-KjnnLvKL.jpg",
-     "url": "https://shop.billa.at/produkte/billa-bio-linseneintopf-00747939",
-     "chain": "Billa",
-     "leistung": 56.9
-    }
-   ],
-   "healthiest": {
-    "name": "Die Grillerei Torpedospieße Chili",
-    "brand": "Die Grillerei",
-    "store": "Billa",
-    "price_eur": 3.99,
-    "size_g": 100,
-    "protein_pack": 16.0,
-    "protein_100": 16.0,
-    "kcal_100": 145.0,
-    "salt_100": 1.3,
-    "price_per_10g_protein": 2.49,
-    "health_score": 65.0,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-775395-0201708039-68Cropl_.jpg",
-    "url": "https://shop.billa.at/produkte/die-grillerei-torpedospiesse-chili-00775395",
-    "chain": "Billa"
-   },
-   "cheapest_protein": {
-    "name": "PRIMANA Serbische Bohnensuppe 400g",
-    "brand": null,
-    "store": "HOFER",
-    "price_eur": 1.35,
-    "size_g": 400,
-    "protein_pack": 19.6,
-    "protein_100": 4.9,
-    "kcal_100": 133,
-    "salt_100": 1.08,
-    "price_per_10g_protein": 0.69,
-    "health_score": 33.5,
-    "image_url": "https://images.openfoodfacts.org/images/products/409/920/012/1598/front_de.9.400.jpg",
-    "url": "https://www.hofer.at/de/sortiment/Suppe-in-der-Dose-Tomatensu--2",
-    "chain": "Hofer"
-   }
-  },
-  "Rind": {
-   "gerichts_leistung_formula": "0.5*health/maxHealth*100 + 0.5*minEurPer10gP/EurPer10gP*100 (innerhalb Kategorie)",
-   "top": [
-    {
-     "name": "Lasagne Bolognese",
-     "brand": "S-BUDGET",
-     "store": "INTERSPAR/SPAR Online",
-     "price_eur": 3.99,
-     "size_g": 1000.0,
-     "protein_pack": 68.0,
-     "protein_100": 6.8,
-     "kcal_100": 150,
-     "salt_100": 1.3,
-     "price_per_10g_protein": 0.59,
-     "health_score": 26.1,
-     "image_url": "https://cdn1.interspar.at/cachableservlets/articleImage.dam/at/7842306/dt_main.jpg",
-     "url": "https://www.interspar.at/shop/lebensmittel/s-budget-lasagne-bolognese/p/7842306",
-     "chain": "Spar",
-     "leistung": 71.9
-    },
-    {
-     "name": "Hofstädter Die Grillerei Pulled Beef Sous Vide mit BBQ",
-     "brand": "Hofstädter",
-     "store": "BILLA",
-     "price_eur": 10.99,
-     "size_g": 500.0,
-     "protein_pack": 80.0,
-     "protein_100": 16.0,
-     "kcal_100": 113.0,
-     "salt_100": 1.5,
-     "price_per_10g_protein": 1.37,
-     "health_score": 57.1,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-730190-0769027252-Cmu6f7Eg.jpg",
-     "url": "https://shop.billa.at/produkte/hofstaedter-die-grillerei-pulled-beef-sous-vide-mit-bbq-00730190",
-     "chain": "Billa",
-     "leistung": 69.5
-    },
-    {
-     "name": "Omis Schmankerl Kalbsbutterschnitzel",
-     "brand": "Omis Schmankerl",
-     "store": "BILLA",
-     "price_eur": 3.79,
-     "size_g": 370.0,
-     "protein_pack": 35.1,
-     "protein_100": 9.5,
-     "kcal_100": 125.0,
-     "salt_100": 1.1,
-     "price_per_10g_protein": 1.08,
-     "health_score": 47.9,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-780270-616068210-ldMgpmoJ.jpg",
-     "url": "https://shop.billa.at/produkte/omis-schmankerl-kalbsbutterschnitzel-00780270",
-     "chain": "Billa",
-     "leistung": 67.6
-    },
-    {
-     "name": "Clever Lasagne Bolognese",
-     "brand": "CLEVER",
-     "store": "BILLA",
-     "price_eur": 3.99,
-     "size_g": 1000.0,
-     "protein_pack": 56.0,
-     "protein_100": 5.6,
-     "kcal_100": 142.0,
-     "salt_100": 0.99,
-     "price_per_10g_protein": 0.71,
-     "health_score": 30.9,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-465349-1370200877-bO-OV3Mx.jpg",
-     "url": "https://shop.billa.at/produkte/clever-lasagne-bolognese-00465349",
-     "chain": "Billa",
-     "leistung": 67.5
-    },
-    {
-     "name": "Omis Schmankerl Rindsgulasch",
-     "brand": "Omis Schmankerl",
-     "store": "BILLA",
-     "price_eur": 4.99,
-     "size_g": 330.0,
-     "protein_pack": 29.7,
-     "protein_100": 9.0,
-     "kcal_100": 116.0,
-     "salt_100": 0.63,
-     "price_per_10g_protein": 1.68,
-     "health_score": 55.6,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-780246-553564107-0tPaRYSa.jpg",
-     "url": "https://shop.billa.at/produkte/omis-schmankerl-rindsgulasch-00780246",
-     "chain": "Billa",
-     "leistung": 64.3
-    }
-   ],
-   "healthiest": {
-    "name": "BILLA Genusswelt Rindsbackerl Sous Vide",
-    "brand": "BILLA Genusswelt",
-    "store": "BILLA",
-    "price_eur": 6.99,
-    "size_g": 280.0,
-    "protein_pack": 28.0,
-    "protein_100": 10.0,
-    "kcal_100": 123.0,
-    "salt_100": 0.57,
-    "price_per_10g_protein": 2.5,
-    "health_score": 59.5,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-346357-0194496744-E5xeANM-.jpg",
-    "url": "https://shop.billa.at/produkte/billa-genusswelt-rindsbackerl-sous-vide-00346357",
-    "chain": "Billa"
-   },
-   "cheapest_protein": {
-    "name": "Lasagne Bolognese",
-    "brand": "S-BUDGET",
-    "store": "INTERSPAR/SPAR Online",
-    "price_eur": 3.99,
-    "size_g": 1000.0,
-    "protein_pack": 68.0,
-    "protein_100": 6.8,
-    "kcal_100": 150,
-    "salt_100": 1.3,
-    "price_per_10g_protein": 0.59,
-    "health_score": 26.1,
-    "image_url": "https://cdn1.interspar.at/cachableservlets/articleImage.dam/at/7842306/dt_main.jpg",
-    "url": "https://www.interspar.at/shop/lebensmittel/s-budget-lasagne-bolognese/p/7842306",
-    "chain": "Spar"
-   }
-  },
-  "Schwein": {
-   "gerichts_leistung_formula": "0.5*health/maxHealth*100 + 0.5*minEurPer10gP/EurPer10gP*100 (innerhalb Kategorie)",
-   "top": [
-    {
-     "name": "BILLA Schweins Cordon Bleu",
-     "brand": "BILLA Immer Gut",
-     "store": "Billa",
-     "price_eur": 7.99,
-     "size_g": 500,
-     "protein_pack": 100.0,
-     "protein_100": 20.0,
-     "kcal_100": 201.0,
-     "salt_100": 1.0,
-     "price_per_10g_protein": 0.8,
-     "health_score": 56.4,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-692113-764392739-1GQLeXIi.jpg",
-     "url": "https://shop.billa.at/produkte/billa-schweins-cordon-bleu-00692113",
-     "chain": "Billa",
-     "leistung": 81.2
-    },
-    {
-     "name": "Omis Schmankerl Wiener Schnitzel",
-     "brand": "Omis Schmankerl",
-     "store": "BILLA",
-     "price_eur": 3.99,
-     "size_g": 250.0,
-     "protein_pack": 42.5,
-     "protein_100": 17.0,
-     "kcal_100": 209.0,
-     "salt_100": 1.1,
-     "price_per_10g_protein": 0.94,
-     "health_score": 49.7,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-780261-1418376040-i5jiITSg.jpg",
-     "url": "https://shop.billa.at/produkte/omis-schmankerl-wiener-schnitzel-00780261",
-     "chain": "Billa",
-     "leistung": 70.6
-    },
-    {
-     "name": "Clever Selchfleischknödel",
-     "brand": "CLEVER",
-     "store": "Billa",
-     "price_eur": 3.99,
-     "size_g": 1000,
-     "protein_pack": 67.0,
-     "protein_100": 6.7,
-     "kcal_100": 189.0,
-     "salt_100": 1.5,
-     "price_per_10g_protein": 0.6,
-     "health_score": 26.3,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-686343-0554835225-a1-I9PRk.jpg",
-     "url": "https://shop.billa.at/produkte/clever-selchfleischknoedel-00686343",
-     "chain": "Billa",
-     "leistung": 66.6
-    },
-    {
-     "name": "Omis Schmankerl Kalbsbutterschnitzel",
-     "brand": "Omis Schmankerl",
-     "store": "BILLA",
-     "price_eur": 3.79,
-     "size_g": 370.0,
-     "protein_pack": 35.1,
-     "protein_100": 9.5,
-     "kcal_100": 125.0,
-     "salt_100": 1.1,
-     "price_per_10g_protein": 1.08,
-     "health_score": 47.9,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-780270-616068210-ldMgpmoJ.jpg",
-     "url": "https://shop.billa.at/produkte/omis-schmankerl-kalbsbutterschnitzel-00780270",
-     "chain": "Billa",
-     "leistung": 65.4
-    },
-    {
-     "name": "Clever Backofen-Leberkäse",
-     "brand": "CLEVER",
-     "store": "Billa",
-     "price_eur": 3.29,
-     "size_g": 400,
-     "protein_pack": 60.0,
-     "protein_100": 15.0,
-     "kcal_100": 206.0,
-     "salt_100": 2.2,
-     "price_per_10g_protein": 0.55,
-     "health_score": 19.1,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-425737-2118934297-A4qdOkE2.jpg",
-     "url": "https://shop.billa.at/produkte/clever-backofenleberkaese-00425737",
-     "chain": "Billa",
-     "leistung": 64.5
-    }
-   ],
-   "healthiest": {
-    "name": "Hofstädter Rindsschnitzel Sous Vide",
-    "brand": "Hofstädter",
-    "store": "BILLA",
-    "price_eur": 7.99,
-    "size_g": 260.0,
-    "protein_pack": 31.2,
-    "protein_100": 12.0,
-    "kcal_100": 93.0,
-    "salt_100": 1.4,
-    "price_per_10g_protein": 2.56,
-    "health_score": 58.6,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-739211-195295694--HEaPxTO.jpg",
-    "url": "https://shop.billa.at/produkte/hofstaedter-rindsschnitzel-sous-vide-00739211",
-    "chain": "Billa"
-   },
-   "cheapest_protein": {
-    "name": "Clever Wurstknödel",
-    "brand": "CLEVER",
-    "store": "Billa",
-    "price_eur": 3.99,
-    "size_g": 1000,
-    "protein_pack": 75.0,
-    "protein_100": 7.5,
-    "kcal_100": 224.0,
-    "salt_100": 2.0,
-    "price_per_10g_protein": 0.53,
-    "health_score": 8.4,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-730178-263258284-O2R0Pn-J.jpg",
-    "url": "https://shop.billa.at/produkte/clever-wurstknoedel-00730178",
-    "chain": "Billa"
-   }
-  },
-  "vegetarisch": {
-   "gerichts_leistung_formula": "0.5*health/maxHealth*100 + 0.5*minEurPer10gP/EurPer10gP*100 (innerhalb Kategorie)",
-   "top": [
-    {
-     "name": "Di Martino Gnocchi Sardi",
-     "brand": null,
-     "store": "SPAR",
-     "price_eur": 2.08,
-     "size_g": 500,
-     "protein_pack": 70.0,
-     "protein_100": 14,
-     "kcal_100": 351,
-     "salt_100": 0,
-     "price_per_10g_protein": 0.3,
-     "health_score": 48.5,
-     "image_url": null,
-     "url": null,
-     "chain": "Spar",
-     "leistung": 75.2
-    },
-    {
-     "name": "Clever Lasagne",
-     "brand": "CLEVER",
-     "store": "BILLA",
-     "price_eur": 1.6,
-     "size_g": 500,
-     "protein_pack": 60.0,
-     "protein_100": 12.0,
-     "kcal_100": 355.0,
-     "salt_100": 0.01,
-     "price_per_10g_protein": 0.27,
-     "health_score": 38.5,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-773056-989277448-oVQ9181V.jpg",
-     "url": "https://shop.billa.at/produkte/clever-lasagne-00773056",
-     "chain": "Billa",
-     "leistung": 74.0
-    },
-    {
-     "name": "Barilla Gnocchi n.85",
-     "brand": null,
-     "store": "SPAR",
-     "price_eur": 1.89,
-     "size_g": 500,
-     "protein_pack": 62.5,
-     "protein_100": 12.5,
-     "kcal_100": 359,
-     "salt_100": 0.01,
-     "price_per_10g_protein": 0.3,
-     "health_score": 46.4,
-     "image_url": "https://images.openfoodfacts.org/images/products/807/680/208/5851/front.5.400.jpg",
-     "url": "https://www.interspar.at/p/5176410",
-     "chain": "Spar",
-     "leistung": 73.9
-    },
-    {
-     "name": "Recheis Lasagne",
-     "brand": "Recheis",
-     "store": "BILLA",
-     "price_eur": 1.7,
-     "size_g": 250,
-     "protein_pack": 35.0,
-     "protein_100": 14.0,
-     "kcal_100": 358.0,
-     "salt_100": 0.05,
-     "price_per_10g_protein": 0.49,
-     "health_score": 47.1,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-418953-534433931-Zk5IrCtJ.jpg",
-     "url": "https://shop.billa.at/produkte/recheis-lasagne-00418953",
-     "chain": "Billa",
-     "leistung": 56.9
-    },
-    {
-     "name": "Stangl Suppe-ABC",
-     "brand": "Stangl",
-     "store": "BILLA",
-     "price_eur": 1.51,
-     "size_g": 250,
-     "protein_pack": 37.5,
-     "protein_100": 15.0,
-     "kcal_100": 373.0,
-     "salt_100": 0.04,
-     "price_per_10g_protein": 0.4,
-     "health_score": 36.1,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-774361-1137972515-S2glXflm.jpg",
-     "url": "https://shop.billa.at/produkte/stangl-suppeabc-00774361",
-     "chain": "Billa",
-     "leistung": 56.3
-    }
-   ],
-   "healthiest": {
-    "name": "SPAR Natur*pur Bio-Blattspinat-Minis tiefgekühlt",
-    "brand": null,
-    "store": "SPAR",
-    "price_eur": 2.46,
-    "size_g": 300,
-    "protein_pack": 9.3,
-    "protein_100": 3.1,
-    "kcal_100": 26,
-    "salt_100": 0.05,
-    "price_per_10g_protein": 2.65,
-    "health_score": 80.2,
-    "image_url": "https://images.openfoodfacts.org/images/products/910/000/006/6189/front_en.12.400.jpg",
-    "url": "https://www.interspar.at/p/1186567",
-    "chain": "Spar"
-   },
-   "cheapest_protein": {
-    "name": "Clever Lasagne",
-    "brand": "CLEVER",
-    "store": "BILLA",
-    "price_eur": 1.6,
-    "size_g": 500,
-    "protein_pack": 60.0,
-    "protein_100": 12.0,
-    "kcal_100": 355.0,
-    "salt_100": 0.01,
-    "price_per_10g_protein": 0.27,
-    "health_score": 38.5,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-773056-989277448-oVQ9181V.jpg",
-    "url": "https://shop.billa.at/produkte/clever-lasagne-00773056",
-    "chain": "Billa"
-   }
-  },
-  "vegan": {
-   "gerichts_leistung_formula": "0.5*health/maxHealth*100 + 0.5*minEurPer10gP/EurPer10gP*100 (innerhalb Kategorie)",
-   "top": [
-    {
-     "name": "BILLA Lasagne",
-     "brand": "BILLA Immer Gut",
-     "store": "BILLA",
-     "price_eur": 1.09,
-     "size_g": 250,
-     "protein_pack": 30.0,
-     "protein_100": 12.0,
-     "kcal_100": 355.0,
-     "salt_100": 0.01,
-     "price_per_10g_protein": 0.36,
-     "health_score": 38.5,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-703482-0152627594-ebcF8ArB.jpg",
-     "url": "https://shop.billa.at/produkte/billa-lasagne-00703482",
-     "chain": "Billa",
-     "leistung": 78.8
-    },
-    {
-     "name": "Barilla la Collezione Lasagne con Spinaci",
-     "brand": "Barilla",
-     "store": "BILLA",
-     "price_eur": 2.85,
-     "size_g": 500,
-     "protein_pack": 60.0,
-     "protein_100": 12.0,
-     "kcal_100": 359.0,
-     "salt_100": 0.05,
-     "price_per_10g_protein": 0.47,
-     "health_score": 45.9,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-436771-0740223873-_D8-3xws.jpg",
-     "url": "https://shop.billa.at/produkte/barilla-la-collezione-lasagne-con-spinaci-00436771",
-     "chain": "Billa",
-     "leistung": 72.6
-    },
-    {
-     "name": "Barilla Lasagne",
-     "brand": "Barilla",
-     "store": "BILLA",
-     "price_eur": 1.7,
-     "size_g": 250,
-     "protein_pack": 32.5,
-     "protein_100": 13.0,
-     "kcal_100": 359.0,
-     "salt_100": 0.01,
-     "price_per_10g_protein": 0.52,
-     "health_score": 47.0,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-712252-525676843-dQoP21f2.jpg",
-     "url": "https://shop.billa.at/produkte/barilla-lasagne-00712252",
-     "chain": "Billa",
-     "leistung": 69.7
-    },
-    {
-     "name": "Alnatura Lasagne Hartweizen",
-     "brand": "Alnatura",
-     "store": "BILLA",
-     "price_eur": 1.89,
-     "size_g": 250,
-     "protein_pack": 27.5,
-     "protein_100": 11.0,
-     "kcal_100": 349.0,
-     "salt_100": 0.01,
-     "price_per_10g_protein": 0.69,
-     "health_score": 46.4,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-666418-1801611627-7oYiyjvm.jpg",
-     "url": "https://shop.billa.at/produkte/alnatura-lasagne-hartweizen-00666418",
-     "chain": "Billa",
-     "leistung": 60.8
-    },
-    {
-     "name": "Riso Gallo Risottoreis Selezione Speciale",
-     "brand": "Riso Gallo",
-     "store": "BILLA",
-     "price_eur": 2.46,
-     "size_g": 500,
-     "protein_pack": 34.5,
-     "protein_100": 6.9,
-     "kcal_100": 347.0,
-     "salt_100": 0.0,
-     "price_per_10g_protein": 0.71,
-     "health_score": 35.5,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-411802-0492825128-kyJzCXy-.jpg",
-     "url": "https://shop.billa.at/produkte/riso-gallo-risottoreis-selezione-speciale-00411802",
-     "chain": "Billa",
-     "leistung": 51.9
-    }
-   ],
-   "healthiest": {
-    "name": "BILLA Bio Gemüsebrühe im Glas",
-    "brand": "BILLA Bio",
-    "store": "BILLA",
-    "price_eur": 3.99,
-    "size_g": 260.0,
-    "protein_pack": 1.3,
-    "protein_100": 0.5,
-    "kcal_100": 2.0,
-    "salt_100": 0.82,
-    "price_per_10g_protein": 30.69,
-    "health_score": 66.9,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-890306-016809040-NVb-wcJk.jpg",
-    "url": "https://shop.billa.at/produkte/billa-bio-gemuesebruehe-im-glas-00890306",
-    "chain": "Billa"
-   },
-   "cheapest_protein": {
-    "name": "BILLA Lasagne",
-    "brand": "BILLA Immer Gut",
-    "store": "BILLA",
-    "price_eur": 1.09,
-    "size_g": 250,
-    "protein_pack": 30.0,
-    "protein_100": 12.0,
-    "kcal_100": 355.0,
-    "salt_100": 0.01,
-    "price_per_10g_protein": 0.36,
-    "health_score": 38.5,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-703482-0152627594-ebcF8ArB.jpg",
-    "url": "https://shop.billa.at/produkte/billa-lasagne-00703482",
-    "chain": "Billa"
-   }
-  },
-  "Sonstige": {
-   "gerichts_leistung_formula": "0.5*health/maxHealth*100 + 0.5*minEurPer10gP/EurPer10gP*100 (innerhalb Kategorie)",
-   "top": [
-    {
-     "name": "Clever Schlemmerfilet Bordelaise",
-     "brand": "CLEVER",
-     "store": "Billa",
-     "price_eur": 3.29,
-     "size_g": 400,
-     "protein_pack": 48.0,
-     "protein_100": 12.0,
-     "kcal_100": 135.0,
-     "salt_100": 0.88,
-     "price_per_10g_protein": 0.69,
-     "health_score": 61.6,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-312931-242984896-xMeXCtF_.jpg",
-     "url": "https://shop.billa.at/produkte/clever-schlemmerfilet-bordelaise-00312931",
-     "chain": "Billa",
-     "leistung": 87.7
-    },
-    {
-     "name": "Clever Schlemmerfilet Broccoli",
-     "brand": "CLEVER",
-     "store": "Billa",
-     "price_eur": 3.29,
-     "size_g": 400,
-     "protein_pack": 40.0,
-     "protein_100": 10.0,
-     "kcal_100": 92.0,
-     "salt_100": 0.85,
-     "price_per_10g_protein": 0.82,
-     "health_score": 66.4,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-312930-1688715876-WWkJygz2.jpg",
-     "url": "https://shop.billa.at/produkte/clever-schlemmerfilet-broccoli-00312930",
-     "chain": "Billa",
-     "leistung": 84.8
-    },
-    {
-     "name": "Clever Fleischlaibchen",
-     "brand": "CLEVER",
-     "store": "BILLA",
-     "price_eur": 3.99,
-     "size_g": 500.0,
-     "protein_pack": 70.0,
-     "protein_100": 14.0,
-     "kcal_100": 295.0,
-     "salt_100": 1.5,
-     "price_per_10g_protein": 0.57,
-     "health_score": 16.1,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-480687-60111299-It5taQaz.jpg",
-     "url": "https://shop.billa.at/produkte/clever-fleischlaibchen-00480687",
-     "chain": "Billa",
-     "leistung": 62.1
-    },
-    {
-     "name": "Iglo Schlemmerfilet Mexicana",
-     "brand": "iglo",
-     "store": "Billa",
-     "price_eur": 6.99,
-     "size_g": 380,
-     "protein_pack": 41.8,
-     "protein_100": 11.0,
-     "kcal_100": 172.0,
-     "salt_100": 0.59,
-     "price_per_10g_protein": 1.67,
-     "health_score": 58.6,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-732124-779477672-lzKUEpkB.jpg",
-     "url": "https://shop.billa.at/produkte/iglo-schlemmerfilet-mexicana-00732124",
-     "chain": "Billa",
-     "leistung": 61.2
-    },
-    {
-     "name": "Omis Schmankerl Szegediner Krautfleisch",
-     "brand": "Omis Schmankerl",
-     "store": "BILLA",
-     "price_eur": 4.49,
-     "size_g": 350.0,
-     "protein_pack": 20.3,
-     "protein_100": 5.8,
-     "kcal_100": 61.0,
-     "salt_100": 0.66,
-     "price_per_10g_protein": 2.21,
-     "health_score": 62.2,
-     "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-869832-0212158168-H8mcovOi.jpg",
-     "url": "https://shop.billa.at/produkte/omis-schmankerl-szegediner-krautfleisch-00869832",
-     "chain": "Billa",
-     "leistung": 59.7
-    }
-   ],
-   "healthiest": {
-    "name": "Clever Schlemmerfilet Broccoli",
-    "brand": "CLEVER",
-    "store": "Billa",
-    "price_eur": 3.29,
-    "size_g": 400,
-    "protein_pack": 40.0,
-    "protein_100": 10.0,
-    "kcal_100": 92.0,
-    "salt_100": 0.85,
-    "price_per_10g_protein": 0.82,
-    "health_score": 66.4,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-312930-1688715876-WWkJygz2.jpg",
-    "url": "https://shop.billa.at/produkte/clever-schlemmerfilet-broccoli-00312930",
-    "chain": "Billa"
-   },
-   "cheapest_protein": {
-    "name": "Clever Fleischlaibchen",
-    "brand": "CLEVER",
-    "store": "BILLA",
-    "price_eur": 3.99,
-    "size_g": 500.0,
-    "protein_pack": 70.0,
-    "protein_100": 14.0,
-    "kcal_100": 295.0,
-    "salt_100": 1.5,
-    "price_per_10g_protein": 0.57,
-    "health_score": 16.1,
-    "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-480687-60111299-It5taQaz.jpg",
-    "url": "https://shop.billa.at/produkte/clever-fleischlaibchen-00480687",
-    "chain": "Billa"
-   }
-  }
- },
- "price_histogram": {
-  "bins": [
-   "0–1 €",
-   "1–2 €",
-   "2–3 €",
-   "3–4 €",
-   "4–5 €",
-   "5–6 €",
-   "6–8 €",
-   "8–10 €",
-   "10–15 €",
-   "≥15 €"
-  ],
-  "series": {
-   "Billa": [
-    12,
-    77,
-    88,
-    137,
-    41,
-    47,
-    50,
-    8,
-    13,
-    3
-   ],
-   "Spar": [
-    46,
-    63,
-    89,
-    110,
-    65,
-    30,
-    28,
-    4,
-    6,
-    15
-   ],
-   "Hofer": [
-    0,
-    16,
-    25,
-    17,
-    6,
-    1,
-    2,
-    1,
-    0,
-    1
-   ],
-   "Lidl": [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-   ],
-   "dm": [
-    0,
-    0,
-    9,
-    3,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-   ],
-   "Fit to Go": [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    24,
-    0,
-    0
-   ],
-   "Penny": [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-   ]
-  }
- },
- "heatmap_chain_category": [
-  {
-   "chain": "Billa",
-   "category": "Ripperl",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Billa",
-   "category": "Pute",
-   "median_eur_per_10g_protein": 1.86,
-   "n": 1
-  },
-  {
-   "chain": "Billa",
-   "category": "Huhn",
-   "median_eur_per_10g_protein": 2.2,
-   "n": 31
-  },
-  {
-   "chain": "Billa",
-   "category": "Fisch",
-   "median_eur_per_10g_protein": 2.37,
-   "n": 19
-  },
-  {
-   "chain": "Billa",
-   "category": "Gulasch",
-   "median_eur_per_10g_protein": 1.99,
-   "n": 16
-  },
-  {
-   "chain": "Billa",
-   "category": "Curry",
-   "median_eur_per_10g_protein": 2.43,
-   "n": 12
-  },
-  {
-   "chain": "Billa",
-   "category": "Suppe",
-   "median_eur_per_10g_protein": 2.85,
-   "n": 37
-  },
-  {
-   "chain": "Billa",
-   "category": "Knödel",
-   "median_eur_per_10g_protein": 1.54,
-   "n": 56
-  },
-  {
-   "chain": "Billa",
-   "category": "Pasta",
-   "median_eur_per_10g_protein": 1.74,
-   "n": 85
-  },
-  {
-   "chain": "Billa",
-   "category": "Bowl",
-   "median_eur_per_10g_protein": 3.79,
-   "n": 13
-  },
-  {
-   "chain": "Billa",
-   "category": "Asia",
-   "median_eur_per_10g_protein": 2.76,
-   "n": 10
-  },
-  {
-   "chain": "Billa",
-   "category": "Hülsenfrüchte",
-   "median_eur_per_10g_protein": 1.87,
-   "n": 22
-  },
-  {
-   "chain": "Billa",
-   "category": "Rind",
-   "median_eur_per_10g_protein": 1.37,
-   "n": 32
-  },
-  {
-   "chain": "Billa",
-   "category": "Schwein",
-   "median_eur_per_10g_protein": 1.33,
-   "n": 40
-  },
-  {
-   "chain": "Billa",
-   "category": "vegetarisch",
-   "median_eur_per_10g_protein": 1.78,
-   "n": 55
-  },
-  {
-   "chain": "Billa",
-   "category": "vegan",
-   "median_eur_per_10g_protein": 2.74,
-   "n": 57
-  },
-  {
-   "chain": "Billa",
-   "category": "Sonstige",
-   "median_eur_per_10g_protein": 2.05,
-   "n": 29
-  },
-  {
-   "chain": "Spar",
-   "category": "Ripperl",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Spar",
-   "category": "Pute",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Spar",
-   "category": "Huhn",
-   "median_eur_per_10g_protein": 9.0,
-   "n": 2
-  },
-  {
-   "chain": "Spar",
-   "category": "Fisch",
-   "median_eur_per_10g_protein": 0.28,
-   "n": 1
-  },
-  {
-   "chain": "Spar",
-   "category": "Gulasch",
-   "median_eur_per_10g_protein": 2.5,
-   "n": 6
-  },
-  {
-   "chain": "Spar",
-   "category": "Curry",
-   "median_eur_per_10g_protein": 2.22,
-   "n": 2
-  },
-  {
-   "chain": "Spar",
-   "category": "Suppe",
-   "median_eur_per_10g_protein": 3.93,
-   "n": 5
-  },
-  {
-   "chain": "Spar",
-   "category": "Knödel",
-   "median_eur_per_10g_protein": 1.77,
-   "n": 2
-  },
-  {
-   "chain": "Spar",
-   "category": "Pasta",
-   "median_eur_per_10g_protein": 1.29,
-   "n": 8
-  },
-  {
-   "chain": "Spar",
-   "category": "Bowl",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Spar",
-   "category": "Asia",
-   "median_eur_per_10g_protein": 3.44,
-   "n": 2
-  },
-  {
-   "chain": "Spar",
-   "category": "Hülsenfrüchte",
-   "median_eur_per_10g_protein": 1.5,
-   "n": 5
-  },
-  {
-   "chain": "Spar",
-   "category": "Rind",
-   "median_eur_per_10g_protein": 1.28,
-   "n": 4
-  },
-  {
-   "chain": "Spar",
-   "category": "Schwein",
-   "median_eur_per_10g_protein": 3.25,
-   "n": 1
-  },
-  {
-   "chain": "Spar",
-   "category": "vegetarisch",
-   "median_eur_per_10g_protein": 1.66,
-   "n": 12
-  },
-  {
-   "chain": "Spar",
-   "category": "vegan",
-   "median_eur_per_10g_protein": 5.03,
-   "n": 1
-  },
-  {
-   "chain": "Spar",
-   "category": "Sonstige",
-   "median_eur_per_10g_protein": 1.2,
-   "n": 1
-  },
-  {
-   "chain": "Hofer",
-   "category": "Ripperl",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Hofer",
-   "category": "Pute",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Hofer",
-   "category": "Huhn",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Hofer",
-   "category": "Fisch",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Hofer",
-   "category": "Gulasch",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Hofer",
-   "category": "Curry",
-   "median_eur_per_10g_protein": 3.85,
-   "n": 2
-  },
-  {
-   "chain": "Hofer",
-   "category": "Suppe",
-   "median_eur_per_10g_protein": 0.69,
-   "n": 1
-  },
-  {
-   "chain": "Hofer",
-   "category": "Knödel",
-   "median_eur_per_10g_protein": 1.79,
-   "n": 1
-  },
-  {
-   "chain": "Hofer",
-   "category": "Pasta",
-   "median_eur_per_10g_protein": 1.14,
-   "n": 5
-  },
-  {
-   "chain": "Hofer",
-   "category": "Bowl",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Hofer",
-   "category": "Asia",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Hofer",
-   "category": "Hülsenfrüchte",
-   "median_eur_per_10g_protein": 0.88,
-   "n": 2
-  },
-  {
-   "chain": "Hofer",
-   "category": "Rind",
-   "median_eur_per_10g_protein": 1.23,
-   "n": 3
-  },
-  {
-   "chain": "Hofer",
-   "category": "Schwein",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Hofer",
-   "category": "vegetarisch",
-   "median_eur_per_10g_protein": 1.46,
-   "n": 6
-  },
-  {
-   "chain": "Hofer",
-   "category": "vegan",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Hofer",
-   "category": "Sonstige",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Lidl",
-   "category": "Ripperl",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Lidl",
-   "category": "Pute",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Lidl",
-   "category": "Huhn",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Lidl",
-   "category": "Fisch",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Lidl",
-   "category": "Gulasch",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Lidl",
-   "category": "Curry",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Lidl",
-   "category": "Suppe",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Lidl",
-   "category": "Knödel",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Lidl",
-   "category": "Pasta",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Lidl",
-   "category": "Bowl",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Lidl",
-   "category": "Asia",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Lidl",
-   "category": "Hülsenfrüchte",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Lidl",
-   "category": "Rind",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Lidl",
-   "category": "Schwein",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Lidl",
-   "category": "vegetarisch",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Lidl",
-   "category": "vegan",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Lidl",
-   "category": "Sonstige",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "dm",
-   "category": "Ripperl",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "dm",
-   "category": "Pute",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "dm",
-   "category": "Huhn",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "dm",
-   "category": "Fisch",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "dm",
-   "category": "Gulasch",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "dm",
-   "category": "Curry",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "dm",
-   "category": "Suppe",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "dm",
-   "category": "Knödel",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "dm",
-   "category": "Pasta",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "dm",
-   "category": "Bowl",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "dm",
-   "category": "Asia",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "dm",
-   "category": "Hülsenfrüchte",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "dm",
-   "category": "Rind",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "dm",
-   "category": "Schwein",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "dm",
-   "category": "vegetarisch",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "dm",
-   "category": "vegan",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "dm",
-   "category": "Sonstige",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Fit to Go",
-   "category": "Ripperl",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Fit to Go",
-   "category": "Pute",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Fit to Go",
-   "category": "Huhn",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Fit to Go",
-   "category": "Fisch",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Fit to Go",
-   "category": "Gulasch",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Fit to Go",
-   "category": "Curry",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Fit to Go",
-   "category": "Suppe",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Fit to Go",
-   "category": "Knödel",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Fit to Go",
-   "category": "Pasta",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Fit to Go",
-   "category": "Bowl",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Fit to Go",
-   "category": "Asia",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Fit to Go",
-   "category": "Hülsenfrüchte",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Fit to Go",
-   "category": "Rind",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Fit to Go",
-   "category": "Schwein",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Fit to Go",
-   "category": "vegetarisch",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Fit to Go",
-   "category": "vegan",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Fit to Go",
-   "category": "Sonstige",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Penny",
-   "category": "Ripperl",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Penny",
-   "category": "Pute",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Penny",
-   "category": "Huhn",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Penny",
-   "category": "Fisch",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Penny",
-   "category": "Gulasch",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Penny",
-   "category": "Curry",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Penny",
-   "category": "Suppe",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Penny",
-   "category": "Knödel",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Penny",
-   "category": "Pasta",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Penny",
-   "category": "Bowl",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Penny",
-   "category": "Asia",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Penny",
-   "category": "Hülsenfrüchte",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Penny",
-   "category": "Rind",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Penny",
-   "category": "Schwein",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Penny",
-   "category": "vegetarisch",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Penny",
-   "category": "vegan",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  },
-  {
-   "chain": "Penny",
-   "category": "Sonstige",
-   "median_eur_per_10g_protein": null,
-   "n": 0
-  }
- ],
- "charts": {
-  "bar_chain_eur10gP": [
-   {
-    "x": "Billa",
-    "y": 1.9
-   },
-   {
-    "x": "Spar",
-    "y": 1.75
-   },
-   {
-    "x": "Hofer",
-    "y": 1.16
-   },
-   {
-    "x": "Lidl",
-    "y": null
-   },
-   {
-    "x": "dm",
-    "y": null
-   },
-   {
-    "x": "Fit to Go",
-    "y": null
-   },
-   {
-    "x": "Penny",
-    "y": null
-   }
-  ],
-  "bar_cat_eur10gP": [
-   {
-    "x": "Rind",
-    "y": 1.35,
-    "n": 47
-   },
-   {
-    "x": "Schwein",
-    "y": 1.35,
-    "n": 48
-   },
-   {
-    "x": "Knödel",
-    "y": 1.57,
-    "n": 63
-   },
-   {
-    "x": "Pasta",
-    "y": 1.64,
-    "n": 112
-   },
-   {
-    "x": "vegetarisch",
-    "y": 1.77,
-    "n": 100
-   },
-   {
-    "x": "Hülsenfrüchte",
-    "y": 1.81,
-    "n": 36
-   },
-   {
-    "x": "Pute",
-    "y": 1.86,
-    "n": 4
-   },
-   {
-    "x": "Sonstige",
-    "y": 2.04,
-    "n": 41
-   },
-   {
-    "x": "Huhn",
-    "y": 2.2,
-    "n": 45
-   },
-   {
-    "x": "Gulasch",
-    "y": 2.23,
-    "n": 35
-   },
-   {
-    "x": "Fisch",
-    "y": 2.35,
-    "n": 21
-   },
-   {
-    "x": "Curry",
-    "y": 2.5,
-    "n": 37
-   },
-   {
-    "x": "vegan",
-    "y": 2.75,
-    "n": 63
-   },
-   {
-    "x": "Asia",
-    "y": 2.76,
-    "n": 17
-   },
-   {
-    "x": "Suppe",
-    "y": 3.17,
-    "n": 67
-   },
-   {
-    "x": "Bowl",
-    "y": 3.79,
-    "n": 14
-   }
-  ],
-  "bar_cat_health": [
-   {
-    "x": "Fisch",
-    "y": 46.6
-   },
-   {
-    "x": "Rind",
-    "y": 42.9
-   },
-   {
-    "x": "Gulasch",
-    "y": 42.2
-   },
-   {
-    "x": "Huhn",
-    "y": 41.0
-   },
-   {
-    "x": "Bowl",
-    "y": 39.3
-   },
-   {
-    "x": "Hülsenfrüchte",
-    "y": 38.3
-   },
-   {
-    "x": "Curry",
-    "y": 37.75
-   },
-   {
-    "x": "Ripperl",
-    "y": 37.35
-   },
-   {
-    "x": "Pasta",
-    "y": 33.75
-   },
-   {
-    "x": "vegan",
-    "y": 30.6
-   },
-   {
-    "x": "vegetarisch",
-    "y": 30.3
-   },
-   {
-    "x": "Pute",
-    "y": 29.8
-   },
-   {
-    "x": "Sonstige",
-    "y": 28.75
-   },
-   {
-    "x": "Knödel",
-    "y": 27.95
-   },
-   {
-    "x": "Schwein",
-    "y": 27.3
-   },
-   {
-    "x": "Suppe",
-    "y": 27.0
-   },
-   {
-    "x": "Asia",
-    "y": 26.7
-   }
-  ]
- }
 }
