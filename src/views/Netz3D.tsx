@@ -6,6 +6,7 @@ import { Card, Badge } from '../components/ui'
 import { Gallery, StoreLogo } from '../components/product'
 import { prodColor, STAGES, InfoTip } from '../components/info'
 import { useApp, STORE_LOGO, fmt, type Row } from '../lib'
+import { rowPli } from '../app/meal'
 type N={id:string;type:'konzern'|'hersteller'|'marke'|'kette'|'gericht';label:string;sub?:string;logo?:string|null;color:string;n:number;rows:Row[];val:number}
 type E={source:string;target:string;n:number;dashed:boolean;note?:string}
 const TC:Record<string,string>={konzern:'#7c3aed',hersteller:'#ea580c',marke:'#0284c7',kette:'#16a34a',gericht:'#64748b'}
@@ -34,7 +35,7 @@ export default function Netz3D(){
       h.rows.push(...rows)
       if(p.group){const unsure=/unverified|unsicher|vermut/i.test(p.group);const gname=String(p.group).replace(/\(.*?\)/g,'').trim();if(gname&&gname.toLowerCase()!==String(p.name||'').toLowerCase()){const kid='k:'+gname.toLowerCase();node(kid,{type:'konzern',label:gname,color:TC.konzern});edge(kid,hid,unsure,1,unsure?'Zuordnung unbestätigt':'laut Firmenrecherche')}}
       for(const r of rows){const mid='m:'+r.brandN;const m=node(mid,{type:'marke',label:r.brandN,logo:r.logo,color:TC.marke});m.rows.push(r);edge(hid,mid,false,1,'Identitätskennzeichen/Herstellerangabe');const cid='c:'+r.store;const c=node(cid,{type:'kette',label:r.store,logo:STORE_LOGO[r.store],color:TC.kette});c.rows.push(r);edge(mid,cid,false,1)
-        if(dishes&&(r.pli??0)>=50){const gid='g:'+r.id;node(gid,{type:'gericht',label:r.name,logo:null,color:TC.gericht}).rows=[r];edge(mid,gid,false,1)}}
+        if(dishes&&(rowPli(r)??0)>=50){const gid='g:'+r.id;node(gid,{type:'gericht',label:r.name,logo:null,color:TC.gericht}).rows=[r];edge(mid,gid,false,1)}}
       for(const x of claims){const mid='m:'+x.b;if(!nodes.has(mid))node(mid,{type:'marke',label:x.b,logo:brandLogo(x.b),color:TC.marke});if(!edges.has(hid+'>'+mid))edge(hid,mid,true,0,'laut Recherche/Quelle, kein Produkt im aktuellen Filter');const cid='c:'+x.c;node(cid,{type:'kette',label:x.c,logo:STORE_LOGO[x.c],color:TC.kette});if(!edges.has(mid+'>'+cid))edge(mid,cid,true,0)}
     }
     nodes.forEach(n=>{const u=[...new Map(n.rows.map(r=>[r.id,r])).values()];n.rows=u;n.n=u.length;n.val=n.type==='gericht'?2:Math.max(3,Math.sqrt(u.length+1)*4+(n.type==='kette'?6:n.type==='konzern'?4:0))})
@@ -49,7 +50,7 @@ export default function Netz3D(){
       const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:t,transparent:true}));sp.scale.set(s*1.1,s*0.7,1);sp.position.z=0.5;grp.add(sp)
       const lb=new SpriteText(n.label.length>28?n.label.slice(0,26)+'…':n.label,Math.max(2.2,s*0.16),'#0f172a');lb.backgroundColor='rgba(255,255,255,.85)';lb.padding=1;lb.borderRadius=2;(lb as any).position.y=-s*0.65;grp.add(lb);return grp}
     const t=new SpriteText((n.type==='hersteller'?'🏭 ':n.type==='konzern'?'🏢 ':'')+n.label,Math.max(3,s*0.22),'#fff');t.backgroundColor=n.color;t.padding=2;t.borderRadius=4;return t}
-  const tip=(n:any)=>{const pli=med(n.rows.map((r:Row)=>r.pli!)),e=med(n.rows.map((r:Row)=>r.eur10p!));return `<div style="background:#0f172a;color:#fff;padding:8px 10px;border-radius:10px;font:12px system-ui;max-width:280px"><div style="opacity:.7">${TL[n.type]}</div><b style="font-size:14px">${n.label}</b>${n.sub?`<div>📍 ${n.sub}</div>`:''}<div>${n.n} Produkte im Filter</div>${pli!=null?`<div>⭐ ø PLI ${Math.round(pli)}</div>`:''}${e!=null?`<div>⚖️ ${fmt(e,2)} € / 10 g Protein (Median)</div>`:''}</div>`}
+  const tip=(n:any)=>{const pli=med(n.rows.map((r:Row)=>rowPli(r)!)),e=med(n.rows.map((r:Row)=>r.eur10p!));return `<div style="background:#0f172a;color:#fff;padding:8px 10px;border-radius:10px;font:12px system-ui;max-width:280px"><div style="opacity:.7">${TL[n.type]}</div><b style="font-size:14px">${n.label}</b>${n.sub?`<div>📍 ${n.sub}</div>`:''}<div>${n.n} Produkte im Filter</div>${pli!=null?`<div>⭐ ø PLI ${Math.round(pli)}</div>`:''}${e!=null?`<div>⚖️ ${fmt(e,2)} € / 10 g Protein (Median)</div>`:''}</div>`}
   const focus=(n:any)=>{setSel(n);const d=90;const r=1+d/Math.hypot(n.x||1,n.y||1,n.z||1);fg.current?.cameraPosition({x:n.x*r,y:n.y*r,z:n.z*r},n,1200)}
   const chains=[...new Set(R.map(r=>r.store))].filter(s=>STORE_LOGO[s])
   return <div className="space-y-3">
@@ -65,7 +66,7 @@ export default function Netz3D(){
         linkMaterial={(l:any)=>l.dashed?new THREE.LineDashedMaterial({color:0x94a3b8,dashSize:2,gapSize:2}):undefined as any}
         onNodeClick={focus} enableNodeDrag={true} cooldownTicks={120} onEngineStop={()=>fg.current?.zoomToFit(600,10)}/></div>
     {sel&&<Card className="p-4 space-y-2"><div className="flex items-center gap-3">{sel.type==='kette'?<StoreLogo store={sel.label} size={48}/>:sel.logo&&<img src={sel.logo} className="h-12 max-w-32 object-contain"/>}<div><div className="text-xs text-slate-500">{TL[sel.type]}</div><div className="text-lg font-bold" style={{color:sel.color}}>{sel.label}</div>{sel.sub&&<div className="text-sm">📍 {sel.sub}</div>}</div>
-      <div className="ml-auto flex gap-2"><Badge className="bg-slate-100 dark:bg-slate-800">{sel.n} Produkte</Badge>{med(sel.rows.map(r=>r.pli!))!=null&&<Badge className="bg-emerald-600 text-white">⭐ ø PLI {Math.round(med(sel.rows.map(r=>r.pli!))!)}</Badge>}{sel.type==='hersteller'&&<a className="text-sm text-brand underline" href={'#tab=hersteller-seiten&h='+sel.id.slice(2)}>Profil →</a>}<button onClick={()=>setSel(null)} className="text-slate-400">✕</button></div></div>
+      <div className="ml-auto flex gap-2"><Badge className="bg-slate-100 dark:bg-slate-800">{sel.n} Produkte</Badge>{med(sel.rows.map(r=>rowPli(r)!))!=null&&<Badge className="bg-emerald-600 text-white">⭐ ø PLI {Math.round(med(sel.rows.map(r=>rowPli(r)!))!)}</Badge>}{sel.type==='hersteller'&&<a className="text-sm text-brand underline" href={'#tab=hersteller-seiten&h='+sel.id.slice(2)}>Profil →</a>}<button onClick={()=>setSel(null)} className="text-slate-400">✕</button></div></div>
       <Gallery rows={[...sel.rows].sort((a,b)=>(a.eur10p??99)-(b.eur10p??99))} step={12}/></Card>}
   </div>
 }

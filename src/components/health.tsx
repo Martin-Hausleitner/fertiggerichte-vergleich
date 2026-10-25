@@ -5,6 +5,7 @@ import { RadarChart, PolarGrid, PolarAngleAxis, Radar, Legend, Tooltip } from 'r
 import { InfoTip, Flag } from './info'
 import { Badge } from './ui'
 import { cn, fmt, type Row } from '../lib'
+import { rowP100k } from '../app/meal'
 
 export const HK:Record<string,string>={
  bd:'So setzt sich der Health-Score zusammen: Basis 30 Punkte, grüne Balken sind Bonuspunkte, rote Balken Abzüge. Das Ergebnis wird auf 0–100 begrenzt.',
@@ -82,7 +83,7 @@ export function TrafficLights({r}:{r:Row}){
     return <div key={k} className={cn('rounded-xl p-1.5 text-center text-white shadow-sm',tlColor(k,v))}><div className="text-base leading-none">{e}</div><div className="text-[10px] opacity-90">{l}</div><div className="font-bold text-sm tabular-nums">{v==null?'k. A.':fmt(v,1)+' g'}</div><div className="text-[10px] font-semibold bg-black/15 rounded-full">{pct==null?'– % RI':fmt(pct,0)+' % RI'}</div></div>})}</div></div>
 }
 // normalized 0..100, higher better
-export const AX:[string,string,(r:Row)=>number|null][]=[['💪 Protein/100kcal','p100k',r=>r.p100k==null?null:Math.min(r.p100k/10,1)*100],['🧂 wenig Salz','salt',r=>r.salt==null?null:Math.max(0,100-r.salt/2*100)],['🧈 wenig ges. Fett','sat',r=>r.sat==null?null:Math.max(0,100-r.sat/6*100)],['🍬 wenig Zucker','sugar',r=>r.sugar==null?null:Math.max(0,100-r.sugar/15*100)],['🌾 Ballaststoffe','fib',r=>r.fib==null?null:Math.min(r.fib/6,1)*100],['💶 Protein/€','ppe',r=>r.ppe==null?null:Math.min(r.ppe/20,1)*100]]
+export const AX:[string,string,(r:Row)=>number|null][]=[['💪 Protein/100kcal','p100k',r=>{const v=rowP100k(r);return v==null?null:Math.min(v/10,1)*100}],['🧂 wenig Salz','salt',r=>r.salt==null?null:Math.max(0,100-r.salt/2*100)],['🧈 wenig ges. Fett','sat',r=>r.sat==null?null:Math.max(0,100-r.sat/6*100)],['🍬 wenig Zucker','sugar',r=>r.sugar==null?null:Math.max(0,100-r.sugar/15*100)],['🌾 Ballaststoffe','fib',r=>r.fib==null?null:Math.min(r.fib/6,1)*100],['💶 Protein/€','ppe',r=>r.ppe==null?null:Math.min(r.ppe/20,1)*100]]
 const med=(a:number[])=>{if(!a.length)return null;const s=[...a].sort((x,y)=>x-y);return s[Math.floor(s.length/2)]}
 export function RadarVsMedian({r,R}:{r:Row;R:Row[]}){
   const peers=R.filter(x=>x.stage===r.stage&&!x.dry)

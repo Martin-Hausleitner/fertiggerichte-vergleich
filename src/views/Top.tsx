@@ -3,10 +3,10 @@ import { useHashState } from '../lib'
 import { Gallery } from '../components/product'
 import { Button } from '../components/ui'
 import { useApp, healthyCheap, type Row } from '../lib'
-import { isReadyMeal } from '../app/meal'
+import { isReadyMeal, isRowRankable } from '../app/meal'
 export default function Top(){
   const {R,D}=useApp(); const [k,setK]=useState<'hc'|'pli'|'h'|'pe'|'cheap'|'light'>('hc'),[min,setMin]=useState(45)
-  const cheap=R.filter(r=>r.rankable&&r.eur10p!=null&&r.pstat==='live 2026').sort((a,b)=>a.eur10p!-b.eur10p!).slice(0,30)
+  const cheap=R.filter(r=>isRowRankable(r)&&r.eur10p!=null&&r.pstat==='live 2026').sort((a,b)=>a.eur10p!-b.eur10p!).slice(0,30)
   const [nl,setNl]=useHashState<string>('nolimit',''); const unl=nl==='1'&&!!D.topPLIUncapped
   const L=unl?{pli:D.topPLIUncapped!,h:D.topHealthUncapped??D.topHealth,pe:D.topPEUncapped??D.topPE,light:D.topLightUncapped??D.topLight??[]}:{pli:D.topPLI,h:D.topHealth,pe:D.topPE,light:D.topLight||[]}
   const cap=D.topCap

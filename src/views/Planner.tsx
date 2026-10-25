@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { Card, Input, Select, Button } from '../components/ui'
 import { Img } from '../components/product'
 import { fmt, useApp, useHashState, type Row } from '../lib'
+import { isRowRankable } from '../app/meal'
 const DAYS=['Mo','Di','Mi','Do','Fr','Sa','So']
 export default function Planner(){
   const {R,D,open}=useApp()
@@ -9,7 +10,7 @@ export default function Planner(){
   const [seed,setSeed]=useState(0)
   const plan=useMemo(()=>{
     const P=+prot,B=+budget,M=+meals,alpha=+w/100
-    const pool=R.filter(r=>r.rankable&&r.price!=null&&r.pstat==='live 2026'&&r.protpack!=null&&r.protpack>=15&&r.protpack<=90&&r.kcalpack!=null&&r.kcalpack<=900&&r.score!=null&&(!veg||r.vegan||/vegan|vegetar|gemüse|linsen|kichererb|tofu|falafel/i.test(r.name)))
+    const pool=R.filter(r=>isRowRankable(r)&&r.price!=null&&r.pstat==='live 2026'&&r.protpack!=null&&r.protpack>=15&&r.protpack<=90&&r.kcalpack!=null&&r.kcalpack<=900&&r.score!=null&&(!veg||r.vegan||/vegan|vegetar|gemüse|linsen|kichererb|tofu|falafel/i.test(r.name)))
     if(!pool.length) return null
     const perMealBudget=B/7/M, perMealProt=P/M*0.8
     const value=(r:Row)=>{const pe=Math.min((r.protpack!/r.price!)/15,1.5),hs=(r.score!)/70,fit=Math.min(r.protpack!/perMealProt,1.2),cost=r.price!>perMealBudget*1.5?-0.6:0;return alpha*pe+(1-alpha)*hs+0.5*fit+cost+((r.id*9301+seed*49297)%233)/233*0.25}

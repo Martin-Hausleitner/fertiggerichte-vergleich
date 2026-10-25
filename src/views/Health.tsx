@@ -9,6 +9,7 @@ import { InfoTip, Flag, STAGES, packEmo } from '../components/info'
 import { Img, StoreLogo, BrandLogo, HealthBadge } from '../components/product'
 import { breakdown, PARTS, HK, ScoreWaterfall, useOff, offFor, NS_C, NOVA_C, HealthSection, tlColor, Missing, QualityBadges } from '../components/health'
 import { useApp, fmt, cn, scoreColor, type Row } from '../lib'
+import { rowP100k } from '../app/meal'
 
 const H=({icon:I,title,info,grad}:{icon:any;title:string;info:string;grad:string})=><div className={cn('flex items-center gap-2 rounded-t-2xl px-4 py-2.5 text-white bg-gradient-to-r',grad)}><I size={18}/><h2 className="font-bold">{title}</h2><span className="ml-auto [&_svg]:text-white/80"><InfoTip text={info}/></span></div>
 const Sec=({children,...h}:{children:any;icon:any;title:string;info:string;grad:string})=><Card className="overflow-hidden"><H {...h}/><div className="p-3 sm:p-4">{children}</div></Card>
@@ -39,7 +40,7 @@ export default function Health(){
   const [grp,setGrp]=useState<'store'|'pack'|'brandN'>('store')
   const nsRows=R.filter(r=>r.ns), nsData=useMemo(()=>{const m:Record<string,any>={};for(const r of nsRows){const k=(r as any)[grp]||'?';m[k]??={k,n:0};const g=r.ns!.toUpperCase();m[k][g]=(m[k][g]||0)+1;m[k].n++}return Object.values(m).sort((a:any,b:any)=>b.n-a.n).slice(0,14)},[nsRows,grp])
   const [stg,setStg]=useState('meal')
-  const sc=scored.filter(r=>r.p100k!=null&&r.salt!=null&&(stg==='all'||r.stage===stg)).map(r=>({x:r.salt,y:r.p100k,z:r.score,r}))
+  const sc=scored.filter(r=>rowP100k(r)!=null&&r.salt!=null&&(stg==='all'||r.stage===stg)).map(r=>({x:r.salt,y:rowP100k(r),z:r.score,r}))
   const packBD=useMemo(()=>{const m:Record<string,any>={};for(const r of scored){const b=breakdown(r);if(!b)continue;const k=r.pack.split(' (')[0];m[k]??={k:packEmo(r.pack)+' '+k,n:0,prot:0,fib:0,veg:0,salt:0,sat:0,proc:0,tot:0};const o=m[k];o.n++;for(const p of ['prot','fib','veg','salt','sat','proc'])o[p]+=(b as any)[p];o.tot+=b.total}return Object.values(m).map((o:any)=>{for(const p of ['prot','fib','veg','salt','sat','proc','tot'])o[p]=+(o[p]/o.n).toFixed(1);return o}).sort((a:any,b:any)=>b.tot-a.tot)},[scored])
   const tlPack=useMemo(()=>{const m:Record<string,any>={};for(const r of scored){const k=packEmo(r.pack)+' '+r.pack.split(' (')[0];m[k]??={k,g:0,a:0,rd:0,na:0};const v=r.salt;if(v==null)m[k].na++;else if(v<=0.3)m[k].g++;else if(v>1.5)m[k].rd++;else m[k].a++}return Object.values(m)},[scored])
   const offRows=O||[], novaD=[1,2,3,4].map(n=>({n:'NOVA '+n,c:offRows.filter(o=>o.nova===n).length,nv:n}))
