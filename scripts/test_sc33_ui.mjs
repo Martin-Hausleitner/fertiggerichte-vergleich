@@ -193,3 +193,16 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   assert.ok(!visR.some(r => r.uid === 'qiwq3vdvmq') && visR.some(r => r.uid === 'idj4tje0ei'), '#2857 excluded from R, #2845 kept')
   console.log(`[sc57-dup-filter] OK: ${dups.length} dupOf rows (${nonPoDups.length} non-priceOnly incl. #${r2857.id} -> #${r2845.id}) excluded from R/Online/Gerichte; ${visR.length} visible rows in R`)
 }
+// sensecheck 62 P1a: isReadyMeal / isRankable / passesRankMin exclude stage="base" / gang="zutat" raw ingredients (#1323 Putengeschnetzeltes, #3362 Iglo Faschiertes vegan) while keeping all rankable/rankableLight meals
+{
+  const r1323 = D.rows.find(r => r.uid === 'iydn74hhpw'), r3362 = D.rows.find(r => r.uid === 'l9qc5zxj4w')
+  assert.ok(r1323 && r1323.stage === 'base' && r1323.gang === 'zutat' && !M.isReadyMeal(r1323) && !M.isRankable(r1323) && !M.passesRankMin(r1323), '#1323 Putengeschnetzeltes not a ready meal / not rankable')
+  assert.ok(r3362 && r3362.stage === 'base' && r3362.gang === 'zutat' && !M.isReadyMeal(r3362) && !M.isRankable(r3362) && !M.passesRankMin(r3362), '#3362 Iglo Faschiertes vegan not a ready meal / not rankable')
+  const badBase = D.rows.filter(r => !r.sauceInPack && ((r.stage && r.stage !== 'meal' && r.stage !== 'stew') || ['zutat', 'beilage', 'sauce', 'snack', 'drink'].includes(r.gang)) && (M.isReadyMeal(r) || M.isRankable(r) || M.passesRankMin(r) || M.passesLightRank(r)))
+  assert.deepEqual(badBase.map(r => r.id), [], 'no non-meal/stew or zutat/beilage/sauce/snack/drink row passes isReadyMeal/isRankable')
+  const rk = D.rows.filter(r => r.rankable), rkl = D.rows.filter(r => r.rankableLight)
+  assert.ok(rk.length >= 150 && rkl.length >= 80, 'rankable and rankableLight counts')
+  assert.ok(rk.every(r => r.stage === 'meal' || r.stage === 'stew'), 'all rankable rows have stage meal/stew')
+  assert.ok(rkl.every(r => r.stage === 'meal' || r.stage === 'stew'), 'all rankableLight rows have stage meal/stew')
+  console.log(`[sc62-p1a-ready-meal] OK: #1323 + #3362 + all stage!=meal/stew excluded from isReadyMeal/isRankable; all ${rk.length} rankable + ${rkl.length} rankableLight intact`)
+}
