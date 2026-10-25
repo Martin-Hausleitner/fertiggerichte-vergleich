@@ -1,7 +1,7 @@
 {
   "meta": {
     "generated": "2026-10-25",
-    "total_products": 2236,
+    "total_products": 1913,
     "chains": [
       "Billa",
       "Spar",
@@ -33,8 +33,8 @@
   },
   "chains": {
     "Billa": {
-      "count": 641,
-      "n_with_nutrition": 636,
+      "count": 639,
+      "n_with_nutrition": 634,
       "n_rankable": 118,
       "median_price": 4.49,
       "median_price_per_kg": 13.31,
@@ -42,34 +42,34 @@
       "median_eur_per_10g_protein_all": 1.85,
       "median_health_score": 38.25,
       "median_salt_100": 1.1,
-      "median_kcal_100": 187.0,
+      "median_kcal_100": 186.5,
       "median_protein_100": 7.9
     },
     "Spar": {
       "count": 598,
-      "n_with_nutrition": 214,
-      "n_rankable": 35,
+      "n_with_nutrition": 251,
+      "n_rankable": 36,
       "median_price": 3.99,
       "median_price_per_kg": 11.52,
-      "median_eur_per_10g_protein": 1.66,
-      "median_eur_per_10g_protein_all": 1.87,
-      "median_health_score": 36.1,
+      "median_eur_per_10g_protein": 1.65,
+      "median_eur_per_10g_protein_all": 1.97,
+      "median_health_score": 36.75,
       "median_salt_100": 1.1,
-      "median_kcal_100": 144.0,
-      "median_protein_100": 6.4
+      "median_kcal_100": 130.0,
+      "median_protein_100": 5.5
     },
     "Hofer": {
       "count": 185,
-      "n_with_nutrition": 90,
+      "n_with_nutrition": 99,
       "n_rankable": 2,
       "median_price": 2.49,
       "median_price_per_kg": 6.83,
       "median_eur_per_10g_protein": 1.46,
-      "median_eur_per_10g_protein_all": 1.25,
+      "median_eur_per_10g_protein_all": 1.18,
       "median_health_score": 30.6,
       "median_salt_100": 1.2,
-      "median_kcal_100": 160.0,
-      "median_protein_100": 6.2
+      "median_kcal_100": 145.0,
+      "median_protein_100": 5.8
     },
     "Lidl": {
       "count": 34,
@@ -86,16 +86,16 @@
     },
     "dm": {
       "count": 31,
-      "n_with_nutrition": 25,
+      "n_with_nutrition": 27,
       "n_rankable": 8,
       "median_price": 2.75,
       "median_price_per_kg": 7.87,
       "median_eur_per_10g_protein": 1.48,
-      "median_eur_per_10g_protein_all": 2.37,
+      "median_eur_per_10g_protein_all": 2.25,
       "median_health_score": 54.4,
       "median_salt_100": 1.0,
-      "median_kcal_100": 86.0,
-      "median_protein_100": 3.3
+      "median_kcal_100": 85.0,
+      "median_protein_100": 3.65
     },
     "Fit to Go": {
       "count": 29,
@@ -112,16 +112,16 @@
     },
     "Penny": {
       "count": 30,
-      "n_with_nutrition": 19,
+      "n_with_nutrition": 20,
       "n_rankable": 1,
       "median_price": 3.34,
       "median_price_per_kg": 6.93,
       "median_eur_per_10g_protein": 1.13,
-      "median_eur_per_10g_protein_all": 1.03,
+      "median_eur_per_10g_protein_all": 1.08,
       "median_health_score": 30.2,
-      "median_salt_100": 1.04,
-      "median_kcal_100": 126.0,
-      "median_protein_100": 6.88
+      "median_salt_100": 1.0,
+      "median_kcal_100": 124.5,
+      "median_protein_100": 6.39
     }
   },
   "categories": {
@@ -137,180 +137,180 @@
       "median_protein_100": 14.5
     },
     "Pute": {
-      "count": 10,
+      "count": 6,
       "n_rankable": 0,
       "median_price": 4.29,
       "median_price_per_kg": 13.83,
-      "median_eur_per_10g_protein": 1.2,
-      "median_health_score": 42.1,
-      "median_salt_100": 1.3,
-      "median_kcal_100": 126.2,
-      "median_protein_100": 8.2
+      "median_eur_per_10g_protein": null,
+      "median_health_score": 5.2,
+      "median_salt_100": 2.4,
+      "median_kcal_100": 194.0,
+      "median_protein_100": 12.0
     },
     "Huhn": {
-      "count": 183,
-      "n_rankable": 49,
+      "count": 147,
+      "n_rankable": 44,
       "median_price": 5.99,
-      "median_price_per_kg": 16.78,
-      "median_eur_per_10g_protein": 2.36,
-      "median_health_score": 49.1,
-      "median_salt_100": 0.99,
-      "median_kcal_100": 132.5,
-      "median_protein_100": 8.9
+      "median_price_per_kg": 17.02,
+      "median_eur_per_10g_protein": 2.34,
+      "median_health_score": 52.35,
+      "median_salt_100": 1.0,
+      "median_kcal_100": 146.0,
+      "median_protein_100": 9.4
     },
     "Fisch": {
-      "count": 107,
-      "n_rankable": 14,
+      "count": 88,
+      "n_rankable": 12,
       "median_price": 6.49,
-      "median_price_per_kg": 18.39,
+      "median_price_per_kg": 19.93,
       "median_eur_per_10g_protein": 2.3,
-      "median_health_score": 47.45,
-      "median_salt_100": 0.9,
-      "median_kcal_100": 183.5,
+      "median_health_score": 44.25,
+      "median_salt_100": 0.91,
+      "median_kcal_100": 192.0,
       "median_protein_100": 11.0
     },
     "Gulasch": {
-      "count": 106,
-      "n_rankable": 28,
-      "median_price": 5.79,
-      "median_price_per_kg": 12.47,
-      "median_eur_per_10g_protein": 1.79,
-      "median_health_score": 46.2,
+      "count": 98,
+      "n_rankable": 25,
+      "median_price": 5.49,
+      "median_price_per_kg": 11.08,
+      "median_eur_per_10g_protein": 1.69,
+      "median_health_score": 44.8,
       "median_salt_100": 1.1,
-      "median_kcal_100": 94.0,
-      "median_protein_100": 5.5
+      "median_kcal_100": 91.0,
+      "median_protein_100": 5.3
     },
     "Curry": {
-      "count": 122,
-      "n_rankable": 33,
+      "count": 112,
+      "n_rankable": 32,
       "median_price": 5.49,
-      "median_price_per_kg": 16.86,
+      "median_price_per_kg": 17.2,
       "median_eur_per_10g_protein": 2.4,
-      "median_health_score": 44.1,
-      "median_salt_100": 0.86,
+      "median_health_score": 43.9,
+      "median_salt_100": 0.87,
       "median_kcal_100": 112.0,
-      "median_protein_100": 5.35
+      "median_protein_100": 5.3
     },
     "Suppe": {
-      "count": 219,
-      "n_rankable": 32,
-      "median_price": 4.49,
+      "count": 201,
+      "n_rankable": 29,
+      "median_price": 4.39,
       "median_price_per_kg": 9.97,
-      "median_eur_per_10g_protein": 2.32,
+      "median_eur_per_10g_protein": 2.26,
       "median_health_score": 46.8,
       "median_salt_100": 1.0,
-      "median_kcal_100": 79.0,
+      "median_kcal_100": 80.0,
       "median_protein_100": 3.7
     },
     "Knödel": {
-      "count": 98,
+      "count": 91,
       "n_rankable": 2,
       "median_price": 3.99,
-      "median_price_per_kg": 9.63,
+      "median_price_per_kg": 8.22,
       "median_eur_per_10g_protein": 2.79,
       "median_health_score": 31.4,
-      "median_salt_100": 1.4,
-      "median_kcal_100": 196.0,
+      "median_salt_100": 1.5,
+      "median_kcal_100": 193.5,
       "median_protein_100": 7.5
     },
     "Pasta": {
-      "count": 391,
-      "n_rankable": 75,
-      "median_price": 4.25,
-      "median_price_per_kg": 11.83,
-      "median_eur_per_10g_protein": 2.3,
-      "median_health_score": 40.9,
-      "median_salt_100": 0.92,
-      "median_kcal_100": 144.0,
+      "count": 314,
+      "n_rankable": 57,
+      "median_price": 3.79,
+      "median_price_per_kg": 11.63,
+      "median_eur_per_10g_protein": 1.95,
+      "median_health_score": 42.7,
+      "median_salt_100": 0.95,
+      "median_kcal_100": 142.0,
       "median_protein_100": 6.3
     },
     "Bowl": {
-      "count": 108,
+      "count": 102,
       "n_rankable": 26,
-      "median_price": 6.49,
-      "median_price_per_kg": 17.11,
+      "median_price": 7.99,
+      "median_price_per_kg": 17.59,
       "median_eur_per_10g_protein": 2.65,
       "median_health_score": 46.35,
-      "median_salt_100": 0.85,
+      "median_salt_100": 0.89,
       "median_kcal_100": 116.0,
-      "median_protein_100": 5.7
+      "median_protein_100": 5.6
     },
     "Asia": {
-      "count": 95,
-      "n_rankable": 21,
-      "median_price": 5.49,
-      "median_price_per_kg": 13.86,
-      "median_eur_per_10g_protein": 1.97,
-      "median_health_score": 45.6,
-      "median_salt_100": 0.91,
-      "median_kcal_100": 121.66,
-      "median_protein_100": 6.16
+      "count": 72,
+      "n_rankable": 14,
+      "median_price": 5.14,
+      "median_price_per_kg": 14.09,
+      "median_eur_per_10g_protein": 1.91,
+      "median_health_score": 45.0,
+      "median_salt_100": 0.94,
+      "median_kcal_100": 124.0,
+      "median_protein_100": 6.1
     },
     "Hülsenfrüchte": {
-      "count": 37,
+      "count": 34,
       "n_rankable": 1,
-      "median_price": 3.8,
-      "median_price_per_kg": 9.74,
+      "median_price": 3.75,
+      "median_price_per_kg": 9.98,
       "median_eur_per_10g_protein": 5.56,
       "median_health_score": 57.0,
       "median_salt_100": 1.0,
-      "median_kcal_100": 120.07,
-      "median_protein_100": 5.75
+      "median_kcal_100": 109.5,
+      "median_protein_100": 5.1
     },
     "Rind": {
-      "count": 49,
-      "n_rankable": 16,
+      "count": 34,
+      "n_rankable": 12,
       "median_price": 7.99,
-      "median_price_per_kg": 20.2,
-      "median_eur_per_10g_protein": 2.48,
+      "median_price_per_kg": 21.98,
+      "median_eur_per_10g_protein": 2.41,
       "median_health_score": 40.3,
-      "median_salt_100": 1.05,
-      "median_kcal_100": 121.98,
-      "median_protein_100": 8.1
+      "median_salt_100": 1.2,
+      "median_kcal_100": 123.0,
+      "median_protein_100": 8.7
     },
     "Schwein": {
-      "count": 107,
-      "n_rankable": 12,
-      "median_price": 4.99,
-      "median_price_per_kg": 14.21,
+      "count": 83,
+      "n_rankable": 11,
+      "median_price": 4.49,
+      "median_price_per_kg": 12.81,
       "median_eur_per_10g_protein": 1.37,
-      "median_health_score": 36.45,
+      "median_health_score": 34.4,
       "median_salt_100": 1.2,
-      "median_kcal_100": 172.0,
-      "median_protein_100": 8.2
+      "median_kcal_100": 165.0,
+      "median_protein_100": 8.4
     },
     "vegetarisch": {
-      "count": 144,
+      "count": 132,
       "n_rankable": 8,
-      "median_price": 3.99,
-      "median_price_per_kg": 11.25,
+      "median_price": 3.89,
+      "median_price_per_kg": 11.23,
       "median_eur_per_10g_protein": 2.05,
       "median_health_score": 35.0,
-      "median_salt_100": 1.02,
-      "median_kcal_100": 205.0,
-      "median_protein_100": 7.0
+      "median_salt_100": 1.1,
+      "median_kcal_100": 212.0,
+      "median_protein_100": 7.7
     },
     "vegan": {
-      "count": 73,
+      "count": 71,
       "n_rankable": 3,
       "median_price": 4.99,
       "median_price_per_kg": 19.96,
       "median_eur_per_10g_protein": 4.46,
       "median_health_score": 66.8,
-      "median_salt_100": 0.91,
-      "median_kcal_100": 154.0,
-      "median_protein_100": 5.8
+      "median_salt_100": 0.93,
+      "median_kcal_100": 158.0,
+      "median_protein_100": 6.0
     },
     "Sonstige": {
-      "count": 381,
-      "n_rankable": 43,
+      "count": 322,
+      "n_rankable": 27,
       "median_price": 3.99,
-      "median_price_per_kg": 12.47,
-      "median_eur_per_10g_protein": 1.86,
-      "median_health_score": 39.2,
-      "median_salt_100": 1.15,
-      "median_kcal_100": 215.0,
-      "median_protein_100": 9.0
+      "median_price_per_kg": 12.09,
+      "median_eur_per_10g_protein": 1.47,
+      "median_health_score": 40.0,
+      "median_salt_100": 1.2,
+      "median_kcal_100": 218.0,
+      "median_protein_100": 9.15
     }
   },
   "best_per_category": {
@@ -353,47 +353,6 @@
         "pli": null,
         "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-392364-500730747-NQaLeOSK.jpg",
         "url": "https://shop.billa.at/produkte/die-grillerei-spareribs-sousvide-bbq-00392364"
-      }
-    },
-    "Pute": {
-      "best_overall": {
-        "id": 3824,
-        "uid": "wtn6u6gntl",
-        "name": "One Pan: Putenbrust auf pinkem Perlcouscous mit Roter Beete, Dill und Kräutercreme",
-        "brand": "HelloFresh",
-        "store": "HelloFresh",
-        "price": 4.25,
-        "eur_per_10g_protein": 0.86,
-        "health_score": 52.3,
-        "pli": null,
-        "img": "https://d3hvwccx09j84u.cloudfront.net/0,0/image/HF_Y24_R03_W12_DE_R21684-1_MAIN_high-6136abdd.jpg",
-        "url": "https://www.hellofresh.at/recipes/one-pan-putenbrust-auf-pinkem-perlcouscous-6a5762c92c76eddc47d0f23a"
-      },
-      "healthiest": {
-        "id": 3824,
-        "uid": "wtn6u6gntl",
-        "name": "One Pan: Putenbrust auf pinkem Perlcouscous mit Roter Beete, Dill und Kräutercreme",
-        "brand": "HelloFresh",
-        "store": "HelloFresh",
-        "price": 4.25,
-        "eur_per_10g_protein": 0.86,
-        "health_score": 52.3,
-        "pli": null,
-        "img": "https://d3hvwccx09j84u.cloudfront.net/0,0/image/HF_Y24_R03_W12_DE_R21684-1_MAIN_high-6136abdd.jpg",
-        "url": "https://www.hellofresh.at/recipes/one-pan-putenbrust-auf-pinkem-perlcouscous-6a5762c92c76eddc47d0f23a"
-      },
-      "cheapest_protein": {
-        "id": 3824,
-        "uid": "wtn6u6gntl",
-        "name": "One Pan: Putenbrust auf pinkem Perlcouscous mit Roter Beete, Dill und Kräutercreme",
-        "brand": "HelloFresh",
-        "store": "HelloFresh",
-        "price": 4.25,
-        "eur_per_10g_protein": 0.86,
-        "health_score": 52.3,
-        "pli": null,
-        "img": "https://d3hvwccx09j84u.cloudfront.net/0,0/image/HF_Y24_R03_W12_DE_R21684-1_MAIN_high-6136abdd.jpg",
-        "url": "https://www.hellofresh.at/recipes/one-pan-putenbrust-auf-pinkem-perlcouscous-6a5762c92c76eddc47d0f23a"
       }
     },
     "Huhn": {
@@ -673,7 +632,7 @@
         "id": 172,
         "uid": "i2sglzycm8",
         "name": "S-BUDGET Lasagne Bolognese",
-        "brand": "S-Budget",
+        "brand": "S-BUDGET",
         "store": "Spar",
         "price": 3.99,
         "eur_per_10g_protein": 0.69,
@@ -1027,58 +986,58 @@
     ],
     "series": {
       "Billa": [
-        12,
-        77,
-        88,
-        137,
-        41,
-        47,
-        50,
-        8,
-        13,
-        3
+        5,
+        9,
+        73,
+        206,
+        101,
+        97,
+        79,
+        26,
+        24,
+        8
       ],
       "Spar": [
+        5,
         46,
+        117,
+        170,
+        108,
         63,
-        89,
-        110,
-        65,
-        30,
-        28,
-        4,
+        47,
+        19,
         6,
-        15
+        10
       ],
       "Hofer": [
-        0,
-        16,
-        25,
-        17,
+        7,
+        38,
+        52,
+        18,
+        7,
+        1,
+        5,
         6,
-        1,
         2,
-        1,
-        0,
-        1
+        2
       ],
       "Lidl": [
         0,
+        2,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
+        1,
+        1,
+        1,
+        1,
         0,
         0,
         0
       ],
       "dm": [
         0,
-        0,
-        9,
-        3,
+        5,
+        16,
+        10,
         0,
         0,
         0,
@@ -1094,18 +1053,104 @@
         0,
         0,
         0,
-        24,
+        29,
         0,
         0
       ],
       "Penny": [
         0,
         0,
+        7,
+        3,
+        5,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    "by_store": {
+      "Billa": [
+        5,
+        9,
+        73,
+        206,
+        101,
+        97,
+        79,
+        26,
+        24,
+        8
+      ],
+      "Spar": [
+        5,
+        46,
+        117,
+        170,
+        108,
+        63,
+        47,
+        19,
+        6,
+        10
+      ],
+      "Hofer": [
+        7,
+        38,
+        52,
+        18,
+        7,
+        1,
+        5,
+        6,
+        2,
+        2
+      ],
+      "Lidl": [
+        0,
+        2,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "dm": [
+        0,
+        5,
+        16,
+        10,
         0,
         0,
         0,
         0,
         0,
+        0
+      ],
+      "Fit to Go": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        29,
+        0,
+        0
+      ],
+      "Penny": [
+        0,
+        0,
+        7,
+        3,
+        5,
+        0,
+        1,
         0,
         0,
         0
@@ -1131,7 +1176,7 @@
         "Schwein": 38,
         "vegetarisch": 46,
         "vegan": 25,
-        "Sonstige": 129
+        "Sonstige": 127
       },
       "Spar": {
         "Ripperl": 2,
@@ -1271,40 +1316,40 @@
       "Spar": {
         "Ripperl": null,
         "Pute": null,
-        "Huhn": 1.89,
+        "Huhn": 2.02,
         "Fisch": 2.14,
-        "Gulasch": 2.1,
+        "Gulasch": 2.07,
         "Curry": 2.51,
         "Suppe": 2.95,
         "Knödel": 1.83,
-        "Pasta": 2.16,
-        "Bowl": null,
+        "Pasta": 1.9,
+        "Bowl": 4.17,
         "Asia": 2.77,
-        "Hülsenfrüchte": 5.03,
-        "Rind": 2.41,
-        "Schwein": 1.37,
+        "Hülsenfrüchte": 5.02,
+        "Rind": 2.39,
+        "Schwein": 1.4,
         "vegetarisch": 1.98,
         "vegan": 1.91,
-        "Sonstige": 1.33
+        "Sonstige": 1.36
       },
       "Hofer": {
         "Ripperl": null,
         "Pute": null,
         "Huhn": 1.12,
         "Fisch": 1.6,
-        "Gulasch": null,
+        "Gulasch": 0.64,
         "Curry": 3.85,
-        "Suppe": 0.94,
-        "Knödel": 0.8,
+        "Suppe": 0.86,
+        "Knödel": 1.21,
         "Pasta": 1.33,
         "Bowl": null,
         "Asia": 2.71,
         "Hülsenfrüchte": null,
         "Rind": null,
-        "Schwein": 0.9,
+        "Schwein": 1.1,
         "vegetarisch": 1.14,
         "vegan": null,
-        "Sonstige": 0.9
+        "Sonstige": 0.82
       },
       "Lidl": {
         "Ripperl": null,
@@ -1332,7 +1377,7 @@
         "Fisch": null,
         "Gulasch": 1.79,
         "Curry": 1.77,
-        "Suppe": 2.31,
+        "Suppe": 1.96,
         "Knödel": null,
         "Pasta": 5.23,
         "Bowl": 2.35,
@@ -1380,7 +1425,7 @@
         "Schwein": null,
         "vegetarisch": 0.88,
         "vegan": null,
-        "Sonstige": null
+        "Sonstige": 1.5
       }
     }
   },
@@ -1389,11 +1434,11 @@
       {
         "chain": "Billa",
         "median_eur_per_10g_protein": 1.86,
-        "n": 641
+        "n": 639
       },
       {
         "chain": "Spar",
-        "median_eur_per_10g_protein": 1.66,
+        "median_eur_per_10g_protein": 1.65,
         "n": 598
       },
       {
@@ -1424,84 +1469,79 @@
     ],
     "bar_cat_eur10gP": [
       {
-        "category": "Pute",
-        "median_eur_per_10g_protein": 1.2,
-        "n": 10
-      },
-      {
         "category": "Huhn",
-        "median_eur_per_10g_protein": 2.36,
-        "n": 183
+        "median_eur_per_10g_protein": 2.34,
+        "n": 147
       },
       {
         "category": "Fisch",
         "median_eur_per_10g_protein": 2.3,
-        "n": 107
+        "n": 88
       },
       {
         "category": "Gulasch",
-        "median_eur_per_10g_protein": 1.79,
-        "n": 106
+        "median_eur_per_10g_protein": 1.69,
+        "n": 98
       },
       {
         "category": "Curry",
         "median_eur_per_10g_protein": 2.4,
-        "n": 122
+        "n": 112
       },
       {
         "category": "Suppe",
-        "median_eur_per_10g_protein": 2.32,
-        "n": 219
+        "median_eur_per_10g_protein": 2.26,
+        "n": 201
       },
       {
         "category": "Knödel",
         "median_eur_per_10g_protein": 2.79,
-        "n": 98
+        "n": 91
       },
       {
         "category": "Pasta",
-        "median_eur_per_10g_protein": 2.3,
-        "n": 391
+        "median_eur_per_10g_protein": 1.95,
+        "n": 314
       },
       {
         "category": "Bowl",
         "median_eur_per_10g_protein": 2.65,
-        "n": 108
+        "n": 102
       },
       {
         "category": "Asia",
-        "median_eur_per_10g_protein": 1.97,
-        "n": 95
+        "median_eur_per_10g_protein": 1.91,
+        "n": 72
       },
       {
         "category": "Hülsenfrüchte",
         "median_eur_per_10g_protein": 5.56,
-        "n": 37
+        "n": 34
       },
       {
         "category": "Rind",
-        "median_eur_per_10g_protein": 2.48,
-        "n": 49
+        "median_eur_per_10g_protein": 2.41,
+        "n": 34
       },
       {
         "category": "Schwein",
         "median_eur_per_10g_protein": 1.37,
-        "n": 107
+        "n": 83
       },
       {
         "category": "vegetarisch",
         "median_eur_per_10g_protein": 2.05,
-        "n": 144
+        "n": 132
       },
       {
         "category": "vegan",
         "median_eur_per_10g_protein": 4.46,
-        "n": 73
+        "n": 71
       },
       {
         "category": "Sonstige",
-        "median_eur_per_10g_protein": 1.86,
-        "n": 381
+        "median_eur_per_10g_protein": 1.47,
+        "n": 322
       }
     ],
     "bar_cat_health": [
@@ -1512,83 +1552,83 @@
       },
       {
         "category": "Pute",
-        "median_health_score": 42.1,
-        "n": 10
+        "median_health_score": 5.2,
+        "n": 6
       },
       {
         "category": "Huhn",
-        "median_health_score": 49.1,
-        "n": 183
+        "median_health_score": 52.35,
+        "n": 147
       },
       {
         "category": "Fisch",
-        "median_health_score": 47.45,
-        "n": 107
+        "median_health_score": 44.25,
+        "n": 88
       },
       {
         "category": "Gulasch",
-        "median_health_score": 46.2,
-        "n": 106
+        "median_health_score": 44.8,
+        "n": 98
       },
       {
         "category": "Curry",
-        "median_health_score": 44.1,
-        "n": 122
+        "median_health_score": 43.9,
+        "n": 112
       },
       {
         "category": "Suppe",
         "median_health_score": 46.8,
-        "n": 219
+        "n": 201
       },
       {
         "category": "Knödel",
         "median_health_score": 31.4,
-        "n": 98
+        "n": 91
       },
       {
         "category": "Pasta",
-        "median_health_score": 40.9,
-        "n": 391
+        "median_health_score": 42.7,
+        "n": 314
       },
       {
         "category": "Bowl",
         "median_health_score": 46.35,
-        "n": 108
+        "n": 102
       },
       {
         "category": "Asia",
-        "median_health_score": 45.6,
-        "n": 95
+        "median_health_score": 45.0,
+        "n": 72
       },
       {
         "category": "Hülsenfrüchte",
         "median_health_score": 57.0,
-        "n": 37
+        "n": 34
       },
       {
         "category": "Rind",
         "median_health_score": 40.3,
-        "n": 49
+        "n": 34
       },
       {
         "category": "Schwein",
-        "median_health_score": 36.45,
-        "n": 107
+        "median_health_score": 34.4,
+        "n": 83
       },
       {
         "category": "vegetarisch",
         "median_health_score": 35.0,
-        "n": 144
+        "n": 132
       },
       {
         "category": "vegan",
         "median_health_score": 66.8,
-        "n": 73
+        "n": 71
       },
       {
         "category": "Sonstige",
-        "median_health_score": 39.2,
-        "n": 381
+        "median_health_score": 40.0,
+        "n": 322
       }
     ]
   }

@@ -1,20 +1,29 @@
-# Marken-Analyse Fertiggerichte (Stand 12.10.2026)
+# 🏷️ Marken- & Eigenmarken-Analyse — Linz (4020)
 
-Basis: 1071 Produkte aus scored.json + expand.json (dedupliziert nach URL), 148 Marken. Alle Werte sind **Mediane**. n = Anzahl der Produkte mit dem jeweiligen Wert. Rankings nur ab n ≥ 3.
+*Stand 25.10.2026 · Basis: **1344 Hauptmahlzeiten & Eintöpfe** in Linzer Märkten & Zustelldiensten (**152 Marken**, davon **73 Marken mit ≥ 3 Produkten** und **51 Marken mit ≥ 5 Produkten**).*
 
-1. **Eigenmarke vs. Markenartikel:** Pro Kilo kosten Eigenmarken 9,23 €/kg (n=455), Markenartikel 12,80 €/kg (n=436). Das sind **+39 % für die Marke**. Beim Protein ist es ähnlich: 1,75 € gegenüber 2,15 € pro 10 g (**+23 %**). Der Gesundheitsscore ist praktisch gleich (33,5 vs. 32,6). Den Aufpreis zahlt man also für den Namen.
-2. **Clever ist Protein-Preis-Sieger der großen Marken:** **0,65 € pro 10 g Protein** (n=26), das sind 66 % unter dem Gesamtmedian von 1,91 €. Clever hat dazu 12 g Protein/100 g und 6,5 g Protein pro 100 kcal.
-3. **Clever vs. Inzersdorfer:** Für dieselbe Proteinmenge zahlt man bei Inzersdorfer 2,04 € pro 10 g (n=22), also rund **das 3-Fache** von Clever. Pro Kilo liegen beide nah beieinander (8,73 vs. 7,48 €/kg). Inzersdorfer hat aber nur 5,5 g Protein/100 g, Clever 12 g.
-4. **S-Budget ist die günstigste Marke pro Kilo:** **3,99 €/kg** (n=43). Am teuersten ist SPAR Premium mit 13,96 €/kg, also **3,5-mal so viel**. SPAR Premium hat zudem den schwächsten Proteinwert der Spar-Linien (2,6 g Protein/100 kcal, aber nur n=2).
-5. **Billa-Linien:** Clever kostet 7,48 €/kg, Immer Gut 9,20, Omis Schmankerl 11,48, BILLA Bio 15,95, Genusswelt 17,96 und Simply Good 21,59 €/kg. **Von Clever zu Simply Good steigt der Preis auf fast das 3-Fache.** Pro Protein ist es noch mehr: 0,65 € gegenüber 3,79 € pro 10 g, also das 5,8-Fache.
-6. **Simply Good („gesund“-Linie) ist pro Protein die teuerste große Eigenmarke:** 3,79 € pro 10 g (n=13). Beim Gesundheitsscore liegt sie mit 37,1 nur knapp über Clever (30,9). Sie hat aber weniger Salz: 0,84 g gegenüber 1,0 g pro 100 g.
-7. **Hofer:** Primana kostet 4,98 €/kg (n=11), Good Choice 7,97 €/kg (n=14). Good Choice kostet fast immer **3,06 €** pro Packung (Spanne 2,29–3,49 €). Mit 4,95 g Protein/100 g und einem Gesundheitsscore von 30,0 ist es aber eher Mittelmaß.
-8. **Fit to Go ist eine Premium-Marke mit Top-Gesundheitswert:** 24,98 €/kg ist das dritt-teuerste Kilo-Niveau. Dafür hat Fit to Go den zweitbesten Gesundheitsscore (55,5, n=23) und 7,2 g Protein pro 100 kcal. Pro Protein kostet es 2,56 € je 10 g, das sind **+34 % zum Gesamtmedian** und fast das 4-Fache von Clever. Das beste Fit-to-Go-Gericht ist Pollo Picante mit 1,54 € pro 10 g.
-9. **Gesündeste Marke ist Hofstädter:** Gesundheitsscore 56,5, **11,7 g Protein pro 100 kcal** (der höchste Wert aller Marken) und trotzdem nur 1,37 € pro 10 g Protein (n=5). Pro Kilo zahlt man 19,99 €, pro Protein ist es aber günstig.
-10. **Bei Knorr kommt am meisten Salz zusammen:** 144 Produkte, Salz-Median **2,3 g/100 g** (n=97, Maximum 8,8 g), Gesundheitsscore nur 20,5. Das ist der schlechteste Wert unter den großen Marken. Achtung: Viele Knorr-Werte sind Trockenware, also Beutel vor der Zubereitung.
-11. **Teuerste Marken pro Kilo (n ≥ 3):** Feelfood 44,33 €, Hink 28,73 €, Fit to Go 24,98 €, Simply Good 21,59 € und Hofstädter 19,99 €/kg.
-12. **Bio ist nicht automatisch teurer:** Bio-Eigenmarken kosten 9,98 €/kg (n=87) und liegen damit nur knapp über Standard-Eigenmarken mit 9,64 €/kg. dmBio liegt sogar bei 6,44 €/kg und hat einen Gesundheitsscore von 41,1. BILLA Bio kostet dagegen 15,95 €/kg.
-13. **Premium-Linien bringen keinen Gesundheitsvorteil:** Der Gesundheitsscore der Premium-Eigenmarken liegt bei 26,8 (n=22) und damit **unter** dem der Budget-Linien mit 30,9 (n=50). Budget-Linien haben im Median auch mehr Protein, nämlich 9,85 g gegenüber 9,6 g pro 100 g, bei 0,69 € pro 10 g Protein.
-14. **iglo (Tiefkühl) ist ein solider Markenartikel:** Gesundheitsscore 43,4 (n=27) und 0,82 g Salz. Mit 14,26 €/kg kostet es aber 35 % über dem Gesamtmedian von 10,58 €/kg.
+## 1. Eigenmarke vs. Markenartikel
 
-**Vorbehalte:** Stangl und Barilla liegen bei € pro 10 g Protein ganz vorne (0,40 € / 0,47 €). Das sind wahrscheinlich Trockenteigwaren, die als Gericht nicht vergleichbar sind. Bei S-Budget, SPAR Premium und Primana gibt es nur wenige Nährwertdaten (n ≤ 3). Werte über 20 € pro 10 g Protein und Salzwerte über 10 g/100 g habe ich als Datenfehler verworfen.
+| Segment | Produkte | Median Preis | Median €/kg | Median €/10 g Protein | Median Health Score |
+|---|---:|---:|---:|---:|---:|
+| **Eigenmarken** (`SPAR`, `BILLA`, `S-BUDGET`, `Clever`, `Good Choice`, `Chef Select`, `Primana`, `dmBio` u. a.) | 475 | 3.19 € | 9.96 €/kg | **1.77 €** | **28.4** |
+| **Markenartikel** (`Iglo`, `Frosta`, `Inzersdorfer`, `Knorr`, `Youcook`, `every.`, `Löwenanteil` u. a.) | 494 | 7.99 € | 15.37 €/kg | **2.36 €** | **38.9** |
+
+- **Preis-Leistungs-Vorteil der Eigenmarken:** Eigenmarken liefern Protein im Median um **1.77 €/10 g** gegenüber **2.36 €/10 g** bei Markenartikeln.
+- **Bereinigte Datenbasis (v2):** Ausgeblendete Kochbox-/Versand-Anbieter (`HelloFresh`, `bofrost*`, `Juit`, `Alfies`), Rohzutaten (`stage == 'base'`) sowie Beilagen/Desserts (`Meggle`-Baguettes, `franuí`) sind aus dem Mahlzeiten-Markenranking ausgeschlossen. Alle Marken-Schreibweisen (`SPAR Feine Küche`, `Primana`, `Good Choice`, `BILLA`, `BILLA Bio`, `FITTASTE`, `every.` u. a.) sind kanonisiert.
+
+## 2. Top-Marken nach günstigstem Protein (€/10 g Protein, ≥ 3 Produkte)
+
+- **S-BUDGET** (private, *n = 4*): Median **0.93 €/10 g Protein**
+- **Primana** (private, *n = 7*): Median **0.94 €/10 g Protein**
+- **Nature's Gold** (private, *n = 3*): Median **1.02 €/10 g Protein**
+- **Clever** (private, *n = 11*): Median **1.15 €/10 g Protein**
+- **Leibspeis'** (Eigenmarke, *n = 3*): Median **1.27 €/10 g Protein**
+
+## 3. Top-Marken nach Health Score (≥ 3 Produkte)
+
+- **Fit to Go** (Markenartikel, *n = 29*): Median Health Score **65.4**
+- **Goldblatt** (Markenartikel, *n = 8*): Median Health Score **63.9**
+- **Lotao** (brand, *n = 3*): Median Health Score **63.6**
+- **PrepMyMeal** (brand, *n = 86*): Median Health Score **54.0**
+- **Löwenanteil** (brand, *n = 17*): Median Health Score **53.4**

@@ -241,10 +241,8 @@
    },
    "stores": [
     "Billa",
-    "HelloFresh",
     "Hofer",
     "Lidl",
-    "Nah&Frisch",
     "Penny",
     "Spar"
    ],
@@ -295,7 +293,7 @@
      "id": 176,
      "uid": "186nzva9u6",
      "name": "S-BUDGET Rindsgulasch 400 G",
-     "brand": "S-Budget",
+     "brand": "S-BUDGET",
      "store": "Spar",
      "img": "https://cdn1.interspar.at/cachableservlets/articleImage.dam/at/7442025/dt_main.jpg",
      "logo": "analysis/logos/s-budget.png",
@@ -349,7 +347,7 @@
     }
    ],
    "stats": {
-    "n_products": 217,
+    "n_products": 216,
     "n_rankable": 28,
     "median_price": 4.29,
     "median_price_per_kg": 8.72,
@@ -572,23 +570,23 @@
    "box": {
     "eur10p": [
      0.69,
-     1.53,
-     2.16,
-     2.7,
+     1.52,
+     2.09,
+     2.66,
      6.24
     ],
     "score": [
      30.6,
-     34.3,
-     38.4,
-     47.0,
+     34.32,
+     38.9,
+     46.57,
      72.0
     ],
     "salt": [
      0.0,
-     0.8,
+     0.83,
      1.1,
-     1.3,
+     1.4,
      9.4
     ]
    },
@@ -598,22 +596,16 @@
     "Denn's",
     "Fit to Go",
     "FitTaste",
-    "Goldblatt",
-    "HelloFresh",
     "Hofer",
-    "Juit",
     "Lidl",
     "LiveFresh",
-    "Löwenanteil",
     "NORDSEE",
     "Penny",
     "PrepMyMeal",
     "Spar",
     "Subway",
-    "bofrost",
     "dm",
-    "every.",
-    "myProduct"
+    "every."
    ],
    "mhd_typical": [
     5,
@@ -648,7 +640,7 @@
      "id": 172,
      "uid": "i2sglzycm8",
      "name": "S-BUDGET Lasagne Bolognese",
-     "brand": "S-Budget",
+     "brand": "S-BUDGET",
      "store": "Spar",
      "img": "https://www.interspar.at/media/be/e7/7e/1789090032/G_9100000809281_HB.jpg",
      "logo": "analysis/logos/s-budget.png",
@@ -716,18 +708,18 @@
     }
    ],
    "stats": {
-    "n_products": 675,
-    "n_rankable": 79,
-    "median_price": 3.79,
-    "median_price_per_kg": 12.2,
-    "median_price_per_10g_protein": 2.16,
-    "median_health_score": 38.4,
-    "median_pli": 31.6,
-    "median_protein_100": 6.9,
+    "n_products": 631,
+    "n_rankable": 72,
+    "median_price": 3.69,
+    "median_price_per_kg": 12.47,
+    "median_price_per_10g_protein": 2.09,
+    "median_health_score": 38.9,
+    "median_pli": 31.9,
+    "median_protein_100": 7.1,
     "median_salt_100": 1.1,
-    "median_kcal_100": 152.5,
+    "median_kcal_100": 155.0,
     "median_additives": 0.0,
-    "n_additives": 184,
+    "n_additives": 180,
     "share_bio": 6
    }
   },
@@ -826,22 +818,22 @@
    "box": {
     "eur10p": [
      0.47,
-     1.69,
-     2.27,
-     2.8,
+     1.47,
+     2.13,
+     2.57,
      5.81
     ],
     "score": [
-     30.0,
-     37.15,
-     44.05,
-     52.48,
+     30.2,
+     39.12,
+     44.9,
+     56.3,
      78.5
     ],
     "salt": [
      0.01,
-     0.77,
-     0.98,
+     0.74,
+     0.95,
      1.2,
      2.8
     ]
@@ -851,14 +843,11 @@
     "Denn's",
     "Fit to Go",
     "Hofer",
-    "Juit",
     "Lidl",
     "NORDSEE",
-    "Nah&Frisch",
     "Penny",
     "PrepMyMeal",
     "Spar",
-    "bofrost",
     "every."
    ],
    "mhd_typical": [
@@ -962,19 +951,19 @@
     }
    ],
    "stats": {
-    "n_products": 982,
-    "n_rankable": 188,
-    "median_price": 6.49,
-    "median_price_per_kg": 15.16,
-    "median_price_per_10g_protein": 2.27,
-    "median_health_score": 44.05,
-    "median_pli": 33.75,
-    "median_protein_100": 8.3,
-    "median_salt_100": 0.98,
-    "median_kcal_100": 171.0,
+    "n_products": 741,
+    "n_rankable": 130,
+    "median_price": 5.19,
+    "median_price_per_kg": 13.56,
+    "median_price_per_10g_protein": 2.13,
+    "median_health_score": 44.9,
+    "median_pli": 35.55,
+    "median_protein_100": 8.8,
+    "median_salt_100": 0.95,
+    "median_kcal_100": 187.0,
     "median_additives": 1,
     "n_additives": 81,
-    "share_bio": 2
+    "share_bio": 3
    }
   },
   {
@@ -1034,9 +1023,9 @@
     ],
     "salt": [
      0.15,
-     0.44,
-     1.1,
-     1.3,
+     0.57,
+     1.12,
+     1.2,
      2.8
     ]
    },
@@ -1130,18 +1119,18 @@
     }
    ],
    "stats": {
-    "n_products": 34,
+    "n_products": 33,
     "n_rankable": 5,
-    "median_price": 2.84,
+    "median_price": 2.69,
     "median_price_per_kg": 12.23,
     "median_price_per_10g_protein": 2.63,
     "median_health_score": 34.5,
     "median_pli": 27.6,
     "median_protein_100": 6.0,
-    "median_salt_100": 1.1,
+    "median_salt_100": 1.12,
     "median_kcal_100": 126.0,
-    "median_additives": 2,
-    "n_additives": 15,
+    "median_additives": 2.0,
+    "n_additives": 14,
     "share_bio": 6
    }
   },
@@ -1234,21 +1223,21 @@
     "eur10p": [
      1.14,
      2.37,
-     3.11,
-     4.2,
+     3.08,
+     4.15,
      5.85
     ],
     "score": [
      34.2,
-     45.1,
-     52.3,
-     57.9,
+     44.35,
+     51.65,
+     57.7,
      77.5
     ],
     "salt": [
      0.0,
-     0.49,
-     0.8,
+     0.5,
+     0.84,
      1.1,
      2.6
     ]
@@ -1368,19 +1357,19 @@
     }
    ],
    "stats": {
-    "n_products": 139,
-    "n_rankable": 59,
+    "n_products": 152,
+    "n_rankable": 64,
     "median_price": 8.7,
-    "median_price_per_kg": 17.71,
-    "median_price_per_10g_protein": 3.11,
-    "median_health_score": 52.3,
-    "median_pli": 34.0,
+    "median_price_per_kg": 17.62,
+    "median_price_per_10g_protein": 3.08,
+    "median_health_score": 51.65,
+    "median_pli": 33.7,
     "median_protein_100": 4.5,
-    "median_salt_100": 0.8,
-    "median_kcal_100": 87.5,
-    "median_additives": 0,
-    "n_additives": 43,
-    "share_bio": 61
+    "median_salt_100": 0.84,
+    "median_kcal_100": 88.5,
+    "median_additives": 0.0,
+    "n_additives": 48,
+    "share_bio": 60
    }
   },
   {
@@ -1738,7 +1727,6 @@
     "Billa",
     "Denn's",
     "Hofer",
-    "Nah&Frisch",
     "Penny",
     "Spar",
     "dm",
@@ -2096,18 +2084,18 @@
    "Trocken/Instant-Beutel"
   ],
   "n_products": [
-   217,
-   675,
-   982,
-   34,
-   139,
+   216,
+   631,
+   741,
+   33,
+   152,
    14,
    200
   ],
   "median_protein_100": [
    3.9,
-   6.9,
-   8.3,
+   7.1,
+   8.8,
    6.0,
    4.5,
    16.0,
@@ -2116,27 +2104,27 @@
   "median_salt_100": [
    1.2,
    1.1,
-   0.98,
-   1.1,
-   0.8,
+   0.95,
+   1.12,
+   0.84,
    1.4,
    0.9
   ],
   "median_price_per_10g_protein": [
    1.56,
-   2.16,
-   2.27,
+   2.09,
+   2.13,
    2.63,
-   3.11,
+   3.08,
    1.92,
    null
   ],
   "median_health_score": [
    36.1,
-   38.4,
-   44.05,
+   38.9,
+   44.9,
    34.5,
-   52.3,
+   51.65,
    42.95,
    null
   ]
@@ -2152,15 +2140,15 @@
   "by_reason": [
    [
     "bisherige Einstufung (Shop-Rubrik)",
-    1228
+    984
    ],
    [
     "keine belastbaren Hinweise",
-    426
+    357
    ],
    [
     "Name/Marke: Kühlregal",
-    368
+    324
    ],
    [
     "Name/Marke: TK",
@@ -2200,7 +2188,11 @@
    ],
    [
     "Name: Express/Pouch",
-    18
+    17
+   ],
+   [
+    "Marke: Löwenanteil (Schraubglas)",
+    17
    ],
    [
     "Etikett: Verpackung Glas",
@@ -2231,17 +2223,13 @@
     6
    ],
    [
-    "Name: Glas",
-    2
-   ],
-   [
     "BILLA-Kategorie: Frischer Teig & Pasta",
     1
    ]
   ],
-  "moved": 273,
-  "unclassified": 426,
-  "total": 2687
+  "moved": 235,
+  "unclassified": 357,
+  "total": 2344
  },
  "assign": {
   "0": [
@@ -3158,7 +3146,7 @@
   ],
   "262": [
    "Glas",
-   "Name: Glas"
+   "bisherige Einstufung (Shop-Rubrik)"
   ],
   "263": [
    "Kühlschale/MAP",
@@ -6014,7 +6002,7 @@
   ],
   "1206": [
    "Glas",
-   "Name: Glas"
+   "bisherige Einstufung (Shop-Rubrik)"
   ],
   "1207": [
    "Kühlschale/MAP",
@@ -6201,8 +6189,8 @@
    "bisherige Einstufung (Shop-Rubrik)"
   ],
   "1257": [
-   "Kühlschale/MAP",
-   "Name/Marke: Kühlregal"
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
   ],
   "1258": [
    "Glas",
@@ -6213,12 +6201,12 @@
    "bisherige Einstufung (Shop-Rubrik)"
   ],
   "1260": [
-   "Pouch/Retort",
-   "Name: Express/Pouch"
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
   ],
   "1261": [
-   "Kühlschale/MAP",
-   "Name/Marke: Kühlregal"
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
   ],
   "1262": [
    "Glas",
@@ -6233,8 +6221,8 @@
    "bisherige Einstufung (Shop-Rubrik)"
   ],
   "1265": [
-   "Kühlschale/MAP",
-   "Name/Marke: Kühlregal"
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
   ],
   "1266": [
    "Trocken/Instant-Beutel",
@@ -6269,8 +6257,8 @@
    "bisherige Einstufung (Shop-Rubrik)"
   ],
   "1274": [
-   "Kühlschale/MAP",
-   "Name/Marke: Kühlregal"
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
   ],
   "1275": [
    "Glas",
@@ -7325,8 +7313,8 @@
    "bisherige Einstufung (Shop-Rubrik)"
   ],
   "1586": [
-   "Kühlschale/MAP",
-   "Name/Marke: Kühlregal"
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
   ],
   "1587": [
    "Trocken/Instant-Beutel",
@@ -7869,8 +7857,8 @@
    "bisherige Einstufung (Shop-Rubrik)"
   ],
   "1763": [
-   "Kühlschale/MAP",
-   "Name/Marke: Kühlregal"
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
   ],
   "1764": [
    "Glas",
@@ -13122,71 +13110,71 @@
   ],
   "3123": [
    "Glas",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Marke: Löwenanteil (Schraubglas)"
   ],
   "3124": [
    "Glas",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Marke: Löwenanteil (Schraubglas)"
   ],
   "3125": [
    "Glas",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Marke: Löwenanteil (Schraubglas)"
   ],
   "3126": [
    "Glas",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Marke: Löwenanteil (Schraubglas)"
   ],
   "3127": [
    "Glas",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Marke: Löwenanteil (Schraubglas)"
   ],
   "3128": [
    "Glas",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Marke: Löwenanteil (Schraubglas)"
   ],
   "3129": [
    "Glas",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Marke: Löwenanteil (Schraubglas)"
   ],
   "3130": [
    "Glas",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Marke: Löwenanteil (Schraubglas)"
   ],
   "3131": [
    "Glas",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Marke: Löwenanteil (Schraubglas)"
   ],
   "3132": [
    "Glas",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Marke: Löwenanteil (Schraubglas)"
   ],
   "3133": [
    "Glas",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Marke: Löwenanteil (Schraubglas)"
   ],
   "3134": [
    "Glas",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Marke: Löwenanteil (Schraubglas)"
   ],
   "3135": [
-   "Kühlschale/MAP",
-   "Name/Marke: Kühlregal"
+   "Glas",
+   "Marke: Löwenanteil (Schraubglas)"
   ],
   "3136": [
    "Glas",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Marke: Löwenanteil (Schraubglas)"
   ],
   "3137": [
    "Glas",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Marke: Löwenanteil (Schraubglas)"
   ],
   "3138": [
    "Glas",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Marke: Löwenanteil (Schraubglas)"
   ],
   "3139": [
    "Glas",
-   "bisherige Einstufung (Shop-Rubrik)"
+   "Marke: Löwenanteil (Schraubglas)"
   ],
   "3140": [
    "Glas",
@@ -13213,8 +13201,8 @@
    "bisherige Einstufung (Shop-Rubrik)"
   ],
   "3146": [
-   "Kühlschale/MAP",
-   "Name/Marke: Kühlregal"
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
   ],
   "3147": [
    "Glas",
@@ -13237,12 +13225,12 @@
    "bisherige Einstufung (Shop-Rubrik)"
   ],
   "3152": [
-   "Kühlschale/MAP",
-   "Name/Marke: Kühlregal"
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
   ],
   "3153": [
-   "Kühlschale/MAP",
-   "Name/Marke: Kühlregal"
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
   ],
   "3154": [
    "Glas",
@@ -13525,8 +13513,8 @@
    "bisherige Einstufung (Shop-Rubrik)"
   ],
   "3236": [
-   "Kühlschale/MAP",
-   "Name/Marke: Kühlregal"
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
   ],
   "3237": [
    "Glas",
@@ -13545,8 +13533,8 @@
    "bisherige Einstufung (Shop-Rubrik)"
   ],
   "3241": [
-   "Kühlschale/MAP",
-   "Name/Marke: Kühlregal"
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
   ],
   "3242": [
    "Kühlschale/MAP",
@@ -14613,8 +14601,8 @@
    "bisherige Einstufung (Shop-Rubrik)"
   ],
   "3661": [
-   "Kühlschale/MAP",
-   "Name/Marke: Kühlregal"
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
   ],
   "3662": [
    "Glas",
@@ -14649,8 +14637,8 @@
    "bisherige Einstufung (Shop-Rubrik)"
   ],
   "3670": [
-   "Kühlschale/MAP",
-   "Name/Marke: Kühlregal"
+   "Glas",
+   "bisherige Einstufung (Shop-Rubrik)"
   ],
   "3671": [
    "Glas",
