@@ -24,7 +24,7 @@ function DishCard({r,rank,bad}:{r:Row;rank:number;bad?:boolean}){const {open}=us
     <div className="flex gap-1">{(['salt','sugar','sat','fat'] as const).map(k=><span key={k} title={k} className={cn('h-2 flex-1 rounded-full',tlColor(k,r[k]))}/>)}</div></div></button>}
 
 function ScatterTip({active,payload}:any){if(!active||!payload?.length)return null;const r:Row=payload[0].payload.r
-  return <div className="rounded-xl bg-white dark:bg-slate-900 shadow-xl border p-2 w-56 dark:border-slate-700"><Img src={r.img} zoom={false} className="h-28 w-full"/><div className="text-xs font-semibold mt-1">{r.name}</div><div className="text-[11px] text-slate-500">{r.brand} · {r.store}</div><div className="text-xs mt-1">💪 {fmt(r.p100k)} g/100 kcal · 🧂 {fmt(r.salt,2)} g/100 g · 💚 {fmt(r.score,0)}</div></div>}
+  return <div className="rounded-xl bg-white dark:bg-slate-900 shadow-xl border p-2 w-56 dark:border-slate-700"><Img src={r.img} zoom={false} className="h-28 w-full"/><div className="text-xs font-semibold mt-1">{r.name}</div><div className="text-[11px] text-slate-500">{r.brand} · {r.store}</div><div className="text-xs mt-1">💪 {fmt(rowP100k(r))} g/100 kcal · 🧂 {fmt(r.salt,2)} g/100 g · 💚 {fmt(r.score,0)}</div></div>}
 
 function PlantMap(){const {D}=useApp();const ref=useRef<HTMLDivElement>(null)
   useEffect(()=>{if(!ref.current)return;const m=L.map(ref.current,{scrollWheelZoom:false}).setView([47.8,13.8],7);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap'}).addTo(m)
