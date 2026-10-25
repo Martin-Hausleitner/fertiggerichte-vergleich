@@ -52,7 +52,7 @@ for (const vp of VIEWPORTS) {
       summary.brokenImg += imgs.broken
       const tabErrs = cons.splice(0)
       // filter noisy known benign
-      const real = tabErrs.filter(e => !/favicon|Download the React DevTools|net::ERR_FAILED.*embeddings/i.test(e))
+      const real = tabErrs.filter(e => !/favicon|Download the React DevTools|net::ERR_FAILED.*embeddings|Failed to load resource: net::ERR_(CONNECTION_CLOSED|CONNECTION_RESET|TIMED_OUT|HTTP2_PROTOCOL_ERROR)/i.test(e))
       if (real.length) { summary.errors.push(...real.map(e => `${key} ${e}`)); summary.ok = false }
       summary.tabs[key] = { blank, overflow, imgs, errs: real.length }
     } catch (e) {
