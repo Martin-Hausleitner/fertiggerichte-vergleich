@@ -71,9 +71,13 @@ export function ScoreWaterfall({r,compact}:{r:Row;compact?:boolean}){
 export function Missing({text}:{text:string}){return <div className="rounded-lg border border-dashed border-slate-300 dark:border-slate-700 px-2 py-1.5 text-xs text-slate-500 flex items-center gap-1.5"><Info size={13}/>{text}</div>}
 const TL:Record<string,[number,number,number,string,string]>={salt:[0.3,1.5,6,'🧂','Salz'],sugar:[5,22.5,90,'🍬','Zucker'],sat:[1.5,5,20,'🧈','Ges. Fett'],fat:[3,17.5,70,'🫒','Fett']}
 export const tlColor=(k:string,v:number|null)=>v==null?'bg-slate-300 dark:bg-slate-700':v<=TL[k][0]?'bg-emerald-500':v>TL[k][1]?'bg-red-500':'bg-amber-400'
+export const packPortions = (r: Pick<Row, "size" | "portion">) => {
+  const por = r.portion ?? r.size
+  return r.size && por && Math.round(r.size / por) >= 2 ? Math.round(r.size / por) : 1
+}
 export function TrafficLights({r}:{r:Row}){
-  const por=r.portion??r.size
-  return <div><InfoTip text={HK.tl}><span className="text-xs font-semibold">🚦 Ampel pro 100 g · % Tagesbedarf pro Portion{por?` (${fmt(por,0)} g)`:''}</span></InfoTip>
+  const por=r.portion??r.size, nPor=packPortions(r)
+  return <div><div className="flex flex-wrap items-center gap-1.5"><InfoTip text={HK.tl}><span className="text-xs font-semibold">🚦 Ampel pro 100 g · % Tagesbedarf pro Portion{por?` (${fmt(por,0)} g)`:''}</span></InfoTip>{nPor>=2&&<Badge data-testid="pack-portions" className="bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-200 text-[10px]" title={`Packung (${fmt(r.size,0)} g) entspricht ${nPor} Portionen à ${fmt(por,0)} g`}>{nPor} Portionen</Badge>}</div>
    <div className="grid grid-cols-4 gap-1.5 mt-1">{Object.entries(TL).map(([k,[,,ri,e,l]])=>{const v=(r as any)[k] as number|null;const pct=v!=null&&por?v*por/100/ri*100:null
     return <div key={k} className={cn('rounded-xl p-1.5 text-center text-white shadow-sm',tlColor(k,v))}><div className="text-base leading-none">{e}</div><div className="text-[10px] opacity-90">{l}</div><div className="font-bold text-sm tabular-nums">{v==null?'k. A.':fmt(v,1)+' g'}</div><div className="text-[10px] font-semibold bg-black/15 rounded-full">{pct==null?'– % RI':fmt(pct,0)+' % RI'}</div></div>})}</div></div>
 }

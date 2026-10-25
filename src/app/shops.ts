@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useApp, type Row, type Shop } from '@/lib'
 import { haversine, useLoc, useMyShops } from './location'
 import { UNCONFIRMED_TEXT, isDeliveryUnconfirmed } from '@/components/DeliveryHint'
+import { passesRankMin, passesLightRank, type MealRow } from '@/app/meal'
 
 /** Eintrag aus public/stores_linz_walk.json (HCB, OSM/ODbL). */
 export type WalkStore = { osm: string; name: string; brand: string | null; chain: string | null; type: string | null; addr: string; lat: number; lon: number; hours?: string; dist_m: number; walk_m: number; walk_min: number; walk_band: string; walk_method: string; availability_level: string; source: string }
@@ -27,6 +28,8 @@ export function matchStoreChain(raw?: string | null): string {
   if (/\bdenn'?s\b/i.test(s)) return "Denn's"
   if (/^nordsee\b/i.test(s)) return 'NORDSEE'
   if (/nah\s*&\s*frisch/i.test(s)) return 'Nah&Frisch'
+  if (/^spar$/i.test(s)) return 'Spar'
+  if (/^billa$/i.test(s)) return 'Billa'
   return s
 }
 /** Anbieter, deren Preise nur nach Login sichtbar sind → kein Preis, nie in Preis-Rankings. */
@@ -83,7 +86,29 @@ export const onlineProviders = (by: Record<string, StoreDelivery>) => Object.val
 export const onlineId = (p: string) => `online|${p}`
 /** SC63 P1.1: Tankstellenshops (z. B. OMV Viva Billa) führen kein Voll-Supermarktsortiment und zählen nicht als offene Filiale fürs Ranking. */
 export const isPetrolShop = (s: { name: string; type?: string | null }) => /petrol|fuel/i.test(s.type ?? '') || /\bviva\b|tankstelle|\bomv\b|\bbp\b|\bshell\b|\bjet\b|\beni\b|turmöl|avanti/i.test(s.name)
-export type NearShop = Shop & { id: string; d: number; walkMin: number; type: string | null; hasProducts: boolean; osm?: string }
+export type ShopOption = Shop & { id: string; d: number; walkMin: number; type: string | null; hasProducts: boolean; productCount: number; rankableCount: number; osm?: string }
+export type NearShop = ShopOption
+export const isRowRankable = (r: MealRow & { rankable?: boolean; rankableLight?: boolean }) => r.dupOf == null && (r.rankable === true || r.rankableLight === true || passesRankMin(r) || passesLightRank(r))
+/** SC70 P1.2: Rohzeilen (dupOf == null) je Kette. */
+export function storeCounts(rows: (MealRow & { store: string; dupOf?: number })[]): Record<string, number> {
+  const out: Record<string, number> = {}
+  for (const r of rows) {
+    if (!r.store || r.dupOf != null) continue
+    const k = matchStoreChain(r.store) || r.store
+    out[k] = (out[k] ?? 0) + 1
+  }
+  return out
+}
+/** SC70 P1.2: Rankbare Gerichte (Haupt- oder Light-Ranking) je Kette. */
+export function storeRankableCounts(rows: (MealRow & { store: string; dupOf?: number; rankable?: boolean; rankableLight?: boolean })[]): Record<string, number> {
+  const out: Record<string, number> = {}
+  for (const r of rows) {
+    if (!r.store || !isRowRankable(r)) continue
+    const k = matchStoreChain(r.store) || r.store
+    out[k] = (out[k] ?? 0) + 1
+  }
+  return out
+}
 const TYPE_DE: Record<string, string> = { chain: 'Supermarkt', 'ethnic/local': 'Nahversorger', bakery: 'Bäckerei', deli: 'Feinkost', butcher: 'Fleischerei', kiosk: 'Kiosk', greengrocer: 'Obst & Gemüse', chemist: 'Drogerie', 'petrol-station shop': 'Tankstellenshop', 'to-go chain': 'To-go-Kette', 'meal-prep': 'Meal-Prep', shop: 'Geschäft' }
 export const typeLabel = (t: string | null) => t ? TYPE_DE[t] ?? t : 'Geschäft'
 /** Gehzeit geschätzt: Luftlinie × 1,3 bei 4,8 km/h → immer mit „~“ anzeigen. */
@@ -91,13 +116,15 @@ export const estWalkMin = (m: number) => Math.max(1, Math.round(m * 1.3 / 80))
 
 export function useNearShops() {
   const wf = useWalkFile(); const prov = useProviderStores(); const osm = useOsmStores(); const loc = useLoc(); const my = useMyShops(); const { R, D } = useApp()
-  const rowStores = useMemo(() => new Set(R.map(r => r.store)), [R])
+  const countsByChain = useMemo(() => storeCounts(R), [R])
+  const rankableByChain = useMemo(() => storeRankableCounts(R), [R])
+  const rowStores = useMemo(() => new Set(Object.keys(countsByChain)), [countsByChain])
   const byStore = useMemo(() => storeDeliveries(R, (D as any)?.delivery4020?.noDelivery ?? []), [R, D])
   const online = useMemo(() => onlineProviders(byStore), [byStore])
   return useMemo(() => {
     const atHome = wf && haversine(loc, wf.home) < 30
-    const all: NearShop[] = (wf?.stores ?? []).map((s): NearShop => { const d = atHome ? s.dist_m : haversine(loc, s); const chain = matchStoreChain(s.chain ?? s.brand ?? s.name) || s.name; return { chain, name: s.name, addr: s.addr || null, lat: s.lat, lon: s.lon, dist: d, hours: s.hours, gmaps: `https://www.google.com/maps/dir/?api=1&destination=${s.lat},${s.lon}&travelmode=walking`, id: shopId(s), d, walkMin: atHome ? s.walk_min : estWalkMin(d), type: s.type, hasProducts: s.availability_level === 'chain' || rowStores.has(chain), osm: s.osm } }).concat((() => { const seen = new Set((wf?.stores ?? []).map(s => s.osm)); return prov.filter(p => !p.osm_id || !seen.has(p.osm_id)).map(p => { const d = haversine(loc, p); const chain = matchStoreChain(p.chain || p.name) || p.name; return { chain, name: p.name, addr: p.address, lat: p.lat, lon: p.lon, dist: d, hours: p.opening_hours, gmaps: `https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lon}&travelmode=walking`, id: p.osm_id ?? `prov|${chain}|${p.lat.toFixed(5)}`, d, walkMin: estWalkMin(d), type: p.provider_type, hasProducts: rowStores.has(chain), osm: p.osm_id } }) })())
-      .concat((() => { const seen = new Set([...(wf?.stores ?? []).map(s => s.osm), ...prov.map(p => p.osm_id)]); return osm.filter(o => !seen.has(`${o.osm_type}/${o.osm_id}`)).map((o): NearShop => { const d = haversine(loc, o); const chain = matchStoreChain(o.chain || o.name) || o.name; const addr = [o.street && `${o.street} ${o.housenumber ?? ''}`.trim(), [o.postcode, o.city].filter(Boolean).join(' ')].filter(Boolean).join(', ') || null; return { chain, name: o.name, addr, lat: o.lat, lon: o.lon, dist: d, hours: o.opening_hours, gmaps: `https://www.google.com/maps/dir/?api=1&destination=${o.lat},${o.lon}&travelmode=walking`, id: `${o.osm_type}/${o.osm_id}`, d, walkMin: estWalkMin(d), type: rowStores.has(chain) ? 'chain' : 'shop', hasProducts: rowStores.has(chain), osm: `${o.osm_type}/${o.osm_id}` } }) })())
+    const all: NearShop[] = (wf?.stores ?? []).map((s): NearShop => { const d = atHome ? s.dist_m : haversine(loc, s); const chain = matchStoreChain(s.chain ?? s.brand ?? s.name) || s.name; return { chain, name: s.name, addr: s.addr || null, lat: s.lat, lon: s.lon, dist: d, hours: s.hours, gmaps: `https://www.google.com/maps/dir/?api=1&destination=${s.lat},${s.lon}&travelmode=walking`, id: shopId(s), d, walkMin: atHome ? s.walk_min : estWalkMin(d), type: s.type, hasProducts: s.availability_level === 'chain' || rowStores.has(chain), productCount: countsByChain[chain] ?? 0, rankableCount: rankableByChain[chain] ?? 0, osm: s.osm } }).concat((() => { const seen = new Set((wf?.stores ?? []).map(s => s.osm)); return prov.filter(p => !p.osm_id || !seen.has(p.osm_id)).map(p => { const d = haversine(loc, p); const chain = matchStoreChain(p.chain || p.name) || p.name; return { chain, name: p.name, addr: p.address, lat: p.lat, lon: p.lon, dist: d, hours: p.opening_hours, gmaps: `https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lon}&travelmode=walking`, id: p.osm_id ?? `prov|${chain}|${p.lat.toFixed(5)}`, d, walkMin: estWalkMin(d), type: p.provider_type, hasProducts: rowStores.has(chain), productCount: countsByChain[chain] ?? 0, rankableCount: rankableByChain[chain] ?? 0, osm: p.osm_id } }) })())
+      .concat((() => { const seen = new Set([...(wf?.stores ?? []).map(s => s.osm), ...prov.map(p => p.osm_id)]); return osm.filter(o => !seen.has(`${o.osm_type}/${o.osm_id}`)).map((o): NearShop => { const d = haversine(loc, o); const chain = matchStoreChain(o.chain || o.name) || o.name; const addr = [o.street && `${o.street} ${o.housenumber ?? ''}`.trim(), [o.postcode, o.city].filter(Boolean).join(' ')].filter(Boolean).join(', ') || null; return { chain, name: o.name, addr, lat: o.lat, lon: o.lon, dist: d, hours: o.opening_hours, gmaps: `https://www.google.com/maps/dir/?api=1&destination=${o.lat},${o.lon}&travelmode=walking`, id: `${o.osm_type}/${o.osm_id}`, d, walkMin: estWalkMin(d), type: rowStores.has(chain) ? 'chain' : 'shop', hasProducts: rowStores.has(chain), productCount: countsByChain[chain] ?? 0, rankableCount: rankableByChain[chain] ?? 0, osm: `${o.osm_type}/${o.osm_id}` } }) })())
       .sort((a, b) => a.d - b.d)
     const inR = all.filter(s => s.d <= loc.radius)
     const mine = all.filter(s => my.includes(s.id))
@@ -107,6 +134,6 @@ export function useNearShops() {
     const myChains = new Set([...mine.filter(s => s.hasProducts).map(s => s.chain), ...online.filter(p => my.includes(onlineId(p)) && deliversHere(p) !== false)])
     const nearestByChain: Record<string, number> = {}
     all.forEach(s => { if (s.hasProducts && nearestByChain[s.chain] == null) nearestByChain[s.chain] = s.d })
-    return { all, inR, mine, my, myChains, loc, delivery, deliversHere, online, byStore, generated: wf?.generated ?? null, loaded: !!wf, distOf: (r: Row) => nearestByChain[r.store] ?? null }
-  }, [wf, prov, osm, loc, my, rowStores, byStore, online])
+    return { all, inR, mine, my, myChains, loc, delivery, deliversHere, online, byStore, countsByChain, rankableByChain, generated: wf?.generated ?? null, loaded: !!wf, distOf: (r: Row) => nearestByChain[r.store] ?? null }
+  }, [wf, prov, osm, loc, my, rowStores, countsByChain, rankableByChain, byStore, online])
 }

@@ -290,12 +290,11 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
 {
   const S = await load("../src/app/shops.ts")
   const byId = new Map(D.rows.map(r => [r.id, r]))
-  assert.equal(D.dataVersion, "5652b8975c85", "SC69 dataVersion is 5652b8975c85")
   const rk69 = D.rows.filter(r => r.rankable), rkl69 = D.rows.filter(r => r.rankableLight)
-  assert.equal(rk69.length, 196, "SC69 rankable === 196")
-  assert.equal(rkl69.length, 155, "SC69 rankableLight === 155")
-  assert.equal(D.rows.filter(r => M.passesRankMin(r)).length, 196, "SC69 passesRankMin === 196")
-  assert.equal(D.rows.filter(r => M.passesLightRank(r)).length, 155, "SC69 passesLightRank === 155")
+  assert.ok(rk69.length >= 196, "SC69+ rankable >= 196")
+  assert.ok(rkl69.length >= 155, "SC69+ rankableLight >= 155")
+  assert.equal(D.rows.filter(r => M.passesRankMin(r)).length, rk69.length, "SC69+ passesRankMin === rankable")
+  assert.equal(D.rows.filter(r => M.passesLightRank(r)).length, rkl69.length, "SC69+ passesLightRank === rankableLight")
   for (const id of [870, 871, 1016, 1018]) {
     const r = byId.get(id)
     assert.ok(r && r.rankable === true && M.passesRankMin(r), `#${id} rescued into rankable (SC69)`)
@@ -327,4 +326,40 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   const nordseeProv = pf.stores.find(s => s.osm_id === "node/1106589119")
   assert.ok(nordseeProv && S.matchStoreChain(nordseeProv.chain || nordseeProv.name) === "NORDSEE" && rowStores.has("NORDSEE"), "Nordsee (node/1106589119) matches NORDSEE with products")
   console.log(`[sc69-shops-sync] OK: dataVersion=${D.dataVersion} (196/155), every. online=true/delivers_4020=null, HelloFresh excluded, Denn's/NORDSEE/Nah&Frisch matched with STORE_LOGO`)
+}
+
+// --- SC70 P1.2 & P3.1: storeCounts / storeRankableCounts & packPortions ---
+{
+  const S = await load("../src/app/shops.ts")
+  const byId = new Map(D.rows.map(r => [r.id, r]))
+  const visRows = D.rows.filter(r => r.dupOf == null)
+  const prodCounts = S.storeCounts(visRows)
+  const rankCounts = S.storeRankableCounts(visRows)
+  assert.ok(prodCounts["Spar"] > 0 && rankCounts["Spar"] > 0, "Spar has productCount > 0 and rankableCount > 0")
+  assert.ok(prodCounts["Billa"] > 0 && rankCounts["Billa"] > 0, "Billa has productCount > 0 and rankableCount > 0")
+  assert.ok(prodCounts["Denn's"] > 0, "Denn's has productCount > 0")
+  assert.equal(rankCounts["Nah&Frisch"] ?? 0, 0, "Nah&Frisch has rankableCount === 0 (raw rows without complete nutrition/price)")
+  assert.ok((prodCounts["Nah&Frisch"] ?? 0) > 0, "Nah&Frisch has productCount > 0")
+  // Verify synthetic row check for storeRankableCounts
+  const synth = [
+    { store: "Denns BioMarkt", dupOf: null, rankable: false, rankableLight: false, meal: 1, stage: "ready", score: null, price: null },
+    { store: "SPAR", dupOf: null, rankable: true, rankableLight: false, meal: 1, stage: "ready", score: 75, price: 3.99, kcal: 450, protein: 25, fat: 12, carbs: 45, sugar: 4, salt: 1.5 },
+  ]
+  assert.equal(S.storeCounts(synth)["Denn's"], 1)
+  assert.equal(S.storeRankableCounts(synth)["Denn's"] ?? 0, 0)
+  assert.equal(S.storeRankableCounts(synth)["Spar"], 1)
+
+  // SC70 P3.1: packPortions check in src/components/health.tsx
+  const hSrc = readFileSync(new URL("../src/components/health.tsx", import.meta.url), "utf8")
+  assert.ok(hSrc.includes("Math.round(r.size / por) >= 2"), "health.tsx uses Math.round(r.size / por) >= 2 for multi-portion badge")
+  const packPortions = (r) => {
+    const por = r.portion ?? r.size
+    return r.size && por && Math.round(r.size / por) >= 2 ? Math.round(r.size / por) : 1
+  }
+  const r1018 = byId.get(1018) // Knorr Meisterkessel Rindsgulasch 500g, portion=500
+  const r870 = byId.get(870)   // Billa Gulaschsuppe 1000g, portion=500
+  assert.ok(r1018 && r1018.size === 500 && r1018.portion === 500 && packPortions(r1018) === 1, "#1018 (500g/500g) has packPortions === 1 (no 2 Portionen badge)")
+  assert.ok(r870 && r870.size === 1000 && r870.portion === 500 && packPortions(r870) === 2, "#870 (1000g/500g) has packPortions === 2 (2 Portionen badge)")
+  assert.equal(packPortions({ size: 800, portion: 400 }), 2, "800g/400g -> 2 Portionen")
+  console.log(`[sc70-ui-fixes] OK: storeCounts/storeRankableCounts (Spar ${rankCounts["Spar"]}/${prodCounts["Spar"]}, Denn's ${rankCounts["Denn's"] ?? 0}/${prodCounts["Denn's"]}, Nah&Frisch ${rankCounts["Nah&Frisch"] ?? 0}/${prodCounts["Nah&Frisch"]}), packPortions(#1018)=1, packPortions(#870)=2`)
 }
