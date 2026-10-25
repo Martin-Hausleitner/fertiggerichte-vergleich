@@ -25,7 +25,7 @@ export function useHashState<T extends string=string>(key:string,def:T|string):[
   type V=T
   const [v,setV]=useState<V>(()=>(readHash()[key] as V)??(def as V))
   useEffect(()=>{const h=()=>setV(((readHash()[key]) as V)??(def as V));addEventListener('hashchange',h);return()=>removeEventListener('hashchange',h)},[key])
-  const set=(nv:T|string)=>{const p=new URLSearchParams(location.hash.slice(1));if(nv===def||nv==='')p.delete(key);else p.set(key,nv);history.replaceState(null,'','#'+p.toString());setV(nv as V)}
+  const set=(nv:T|string)=>{const p=new URLSearchParams(location.hash.slice(1));if(nv===def||nv==='')p.delete(key);else p.set(key,nv);history.replaceState(null,'','#'+p.toString());setV(nv as V);/* SC64 P1.1: replaceState fires no hashchange – notify all useHashState consumers (e.g. App tab) */dispatchEvent(new HashChangeEvent('hashchange'))}
   return [v,set]
 }
 export function useLocal<T>(key:string,def:T):[T,(v:T)=>void]{

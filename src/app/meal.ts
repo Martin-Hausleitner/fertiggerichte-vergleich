@@ -153,8 +153,9 @@ export const passesLightRank = (r: Row, c: ValueCfg = {}) =>
   r.gang !== 'vorspeise' &&
   r.gang !== 'frühstück' &&
   !portionEstimated(r) &&
-  (kcalPerPortion(r) ?? 0) >= 300 &&
-  (protPerPortion(r) ?? 0) >= 15 &&
+  // SC64 P1.2: explicit pipeline rankableLight=true (Dead-Zone rescue) is trusted down to 240 kcal / 11 g protein
+  (kcalPerPortion(r) ?? 0) >= ((r as any).rankableLight === true ? 240 : 300) &&
+  (protPerPortion(r) ?? 0) >= ((r as any).rankableLight === true ? 11 : 15) &&
   isReadyMeal(r) &&
   r.price != null &&
   r.price > 0 &&

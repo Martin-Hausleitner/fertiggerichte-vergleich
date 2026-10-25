@@ -227,9 +227,9 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
     assert.ok(!M.passesRankMin({ ...r, rankable: undefined }) && !M.passesLightRank({ ...r, rankableLight: undefined }), `#${id} excluded by structural rules too`)
   }
   const rankDiff = D.rows.filter(r => M.passesRankMin(r) !== Boolean(r.rankable))
-  const lightDiff = D.rows.filter(r => M.passesLightRank(r) !== Boolean(r.rankableLight && !r.incomplete && !r.sold_out && !r.price_stale && (M.kcalPerPortion(r) ?? 0) >= 300 && (M.protPerPortion(r) ?? 0) >= 15))
+  const lightDiff = D.rows.filter(r => M.passesLightRank(r) !== Boolean(r.rankableLight && !r.incomplete && !r.sold_out && !r.price_stale && (M.kcalPerPortion(r) ?? 0) >= 240 && (M.protPerPortion(r) ?? 0) >= 11))
   assert.deepEqual(rankDiff.map(r => r.id), [], "passesRankMin 100% synced with r.rankable")
-  assert.deepEqual(lightDiff.map(r => r.id), [], "passesLightRank 100% synced with pipeline rankableLight (>=300 kcal, >=15g prot, not incomplete/sold_out/stale)")
+  assert.deepEqual(lightDiff.map(r => r.id), [], "passesLightRank 100% synced with pipeline rankableLight (>=240 kcal, >=11g prot for explicit flag, not incomplete/sold_out/stale)")
   const onlSrc = readFileSync(new URL("../src/views/Online.tsx", import.meta.url), "utf8")
   assert.ok(/isReadyMeal\(r\)/.test(onlSrc) && /online-ready-toggle/.test(onlSrc), "Online.tsx filters by isReadyMeal(r) by default with toggle")
   for (const id of [3941, 3917, 3923, 3960]) {
