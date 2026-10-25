@@ -31,18 +31,19 @@
    "company": "bofrost* Austria GmbH (FN 185873v LG Innsbruck, UID ATU66058936 lt. Impressum)",
    "seat": "6430 Ötztal-Bahnhof (Tirol); Niederlassung OÖ: Welser Str. 3, 4642 Sattledt",
    "producer": "Eigenmarke bofrost*; Hersteller je Produkt nicht veröffentlicht",
-   "delivers_linz": null,
-   "shipping": "Lieferung durch bofrost*-Verkaufsfahrer (14 Niederlassungen in AT, nächste zu Linz: Sattledt); Liefergebühr/Liefergebiet nicht auf den öffentlichen Seiten → PLZ-Prüfung im Shop",
+   "delivers_linz": true,
+   "shipping": "Lieferung durch bofrost*-Verkaufsfahrer (14 Niederlassungen in AT, nächste zu Linz: Sattledt); keine Liefergebühr ab 20 € Bestellwert (lt. bofrost.at/faq/service-bestellung-lieferung.html)",
    "storage": "tiefgekühlt (TK)",
    "price_from": null,
    "products_in_app": true,
    "products_note": "Fertiggerichte (Pfannengerichte, Pasta, Schlemmer-Menüs, Hausmannskost, Suppen, Länderküche, Pizza, Fleisch-/Geflügelzubereitungen, vegetarisch/vegan) mit Preis, €/kg, Packung, Nährwerten/100 g, Nutri-Score-Badge und Produktfoto von den öffentlichen bofrost.at-Produktseiten (Sitemap, JSON-LD); kein GTIN veröffentlicht",
-   "store": "Online: bofrost*",
+   "store": "Online: bofrost",
    "sources": [
     "https://www.bofrost.at/",
     "https://www.bofrost.at/sitemap.xml",
     "https://www.bofrost.at/impressum.html",
-    "https://www.bofrost.at/niederlassungen.html"
+    "https://www.bofrost.at/niederlassungen.html",
+    "https://www.bofrost.at/faq/service-bestellung-lieferung.html"
    ],
    "stats": {
     "n_products": 144,
@@ -57,7 +58,7 @@
    "company": "Every. GmbH (HRB 221768 B AG Charlottenburg, USt-ID DE335586517 lt. Impressum; Bio-Kontrolle DE-ÖKO-001)",
    "seat": "Ritterstraße 9–10, 10969 Berlin (DE)",
    "producer": "Eigenmarke every.; Produktionsstätte nicht veröffentlicht",
-   "delivers_linz": true,
+   "delivers_linz": null,
    "shipping": "nach AT per DPD lt. eat.every-foods.com/policies/shipping-policy; 5,99 €, ab 8 Gerichten frei, Express 7,99 € (AGB §6 nennt noch nur DE – Konflikt dokumentiert)",
    "storage": "tiefgekühlt (Trockeneis), bis 12 Monate TK",
    "price_from": "8,99 € / Gericht einzeln (Bundles/Abo günstiger)",
@@ -225,6 +226,31 @@
     "https://fittogo.at/pages/impressum"
    ],
    "stats": null
+  },
+  {
+   "name": "FitTaste",
+   "company": "FITTASTE23 GmbH",
+   "seat": "Predigerstraße 15, 54290 Trier (DE)",
+   "producer": "Eigenmarke FITTASTE; Fertiggerichte im Glas",
+   "delivers_linz": true,
+   "shipping": "nach AT per DHL: 12er-Box 17,99 €, 24/36er-Box 20,99 €; Mindestbestellung 12 Gläser (lt. fittaste.com/pages/unser-versand)",
+   "storage": "ungekühlt (Glas, steril), 12–24 Monate haltbar",
+   "price_from": "8,99 € / Glas 380 g (ab 12er-Box)",
+   "products_in_app": true,
+   "products_note": "18 Gerichte im Glas (davon 16 mit aktuellem Shop-Preis 8,99 €, Nährwerten/100 g, Zutaten, Allergenen und Packshot via food-connectors fittaste; 2 weitere aus Open Food Facts)",
+   "store": "Online: FitTaste",
+   "sources": [
+    "https://fittaste.com/",
+    "https://fittaste.com/pages/unser-versand",
+    "https://fittaste.com/pages/impressum"
+   ],
+   "stats": {
+    "n_products": 18,
+    "median_price_eur": 8.99,
+    "median_eur_per_10g_protein": 3.02,
+    "best_eur_per_10g_protein": 1.89,
+    "median_protein_pack_g": 29.2
+   }
   },
   {
    "name": "LiveFresh",

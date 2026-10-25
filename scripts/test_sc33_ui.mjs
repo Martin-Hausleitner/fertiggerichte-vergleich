@@ -226,9 +226,9 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
     assert.ok(r && !M.passesRankMin(r) && !M.passesLightRank(r), `#${id} excluded from passesRankMin/passesLightRank`)
     assert.ok(!M.passesRankMin({ ...r, rankable: undefined }) && !M.passesLightRank({ ...r, rankableLight: undefined }), `#${id} excluded by structural rules too`)
   }
-  for (const id of [877, 2820, 1031, 2980, 3071]) {
+  for (const id of [877, 2820, 1031, 2980, 3071, 1067, 1478, 2968, 2966, 2967, 2970, 3052]) {
     const r = byId.get(id)
-    assert.ok(r && r.rankable === true && M.passesRankMin(r), `#${id} rescued into rankable & passesRankMin (SC66/SC67)`)
+    assert.ok(r && r.rankable === true && M.passesRankMin(r), `#${id} rescued into rankable & passesRankMin (SC66/SC67/SC68)`)
   }
   for (const id of [170, 639, 1007, 2663, 3206, 1255, 606, 3136, 1277, 496, 3020, 2956]) {
     const r = byId.get(id)
@@ -263,5 +263,25 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
       assert.ok(r.score_parts && typeof r.score_parts.base === "number", `#${r.id} has score_parts`)
     }
   }
-  console.log("[sc65-ui-sync] OK: health.tsx breakdown(r) synced with r.score_parts & r.score (3155 scored rows), #2885/#1492/#1785 pass isReadyMeal, passesLightRank=148")
+  const ltCnt65 = D.rows.filter(r => M.passesLightRank(r)).length
+  const rkCnt65 = D.rows.filter(r => M.passesRankMin(r)).length
+  console.log(`[sc65-ui-sync] OK: health.tsx breakdown(r) synced with r.score_parts & r.score (3155 scored rows), #2885/#1492/#1785 pass isReadyMeal, passesRankMin=${rkCnt65}===rankable & passesLightRank=${ltCnt65}===rankableLight`)
+}
+
+// SC68 P2.3 & P3.1: online_providers.json (bofrost, every., FitTaste) + 0 unranked dupOf=null rows without rank_excluded_reason
+{
+  const op = JSON.parse(readFileSync(new URL("../public/analysis/online_providers.json", import.meta.url), "utf8"))
+  const byName = new Map(op.providers.map(p => [p.name, p]))
+  const nm = s => s.replace("Online: ", "")
+  const pBof = byName.get("bofrost*")
+  assert.ok(pBof && pBof.store === "Online: bofrost" && pBof.delivers_linz === true, "bofrost* store is Online: bofrost and delivers_linz=true")
+  assert.ok(D.rows.filter(r => r.dupOf == null && r.store === nm(pBof.store) && M.isReadyMeal(r) && r.eur10p).length > 100, "bofrost* card matches >100 ready meals in Online.tsx")
+  const pEv = byName.get("every.")
+  assert.ok(pEv && pEv.delivers_linz === null, "every. delivers_linz is null (Linz ?)")
+  const pFt = byName.get("FitTaste")
+  assert.ok(pFt && pFt.store === "Online: FitTaste" && pFt.delivers_linz === true, "FitTaste card present in online_providers.json")
+  assert.ok(D.rows.filter(r => r.dupOf == null && r.store === nm(pFt.store) && M.isReadyMeal(r) && r.eur10p).length === 15, "FitTaste card matches 15 ready meals with eur10p in Online.tsx")
+  const missingRer = D.rows.filter(r => !r.rankable && !r.rankableLight && r.dupOf == null && !r.rank_excluded_reason)
+  assert.deepEqual(missingRer.map(r => r.id), [], "0 unranked dupOf=null rows without rank_excluded_reason (including 54 live=null rows)")
+  console.log("[sc68-online-providers] OK: bofrost/every./FitTaste cards synced in online_providers.json & 0 unranked rows without rank_excluded_reason")
 }
