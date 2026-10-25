@@ -206,3 +206,13 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   assert.ok(rkl.every(r => r.stage === 'meal' || r.stage === 'stew'), 'all rankableLight rows have stage meal/stew')
   console.log(`[sc62-p1a-ready-meal] OK: #1323 + #3362 + all stage!=meal/stew excluded from isReadyMeal/isRankable; all ${rk.length} rankable + ${rkl.length} rankableLight intact`)
 }
+// SC63 P1a: pipeline rankable/rankableLight wins over name regex; protPor/kcalPor from pipeline; light ranking tightened
+{
+  const byId = new Map(D.rows.map(r => [r.id, r]))
+  for (const id of [2825, 2200, 2909, 3085, 2938]) { const r = byId.get(id); if (r && (r.rankable || r.rankableLight)) assert.ok(M.isReadyMeal(r), `#${id} rankable in pipeline but not isReadyMeal`) }
+  const r2938 = byId.get(2938); if (r2938 && r2938.protPor != null) assert.ok(M.protPerPortion(r2938) >= 20, '#2938 protPerPortion < 20')
+  const bad = D.rows.filter(r => M.passesLightRank(r) && ((M.kcalPerPortion(r) ?? 0) < 300 || (M.protPerPortion(r) ?? 0) < 15 || r.incomplete || r.sold_out))
+  assert.equal(bad.length, 0, 'passesLightRank lets through <300 kcal/<15 g/incomplete/sold-out: ' + bad.slice(0, 5).map(r => '#' + r.id).join(','))
+  const light = D.rows.filter(r => M.passesLightRank(r)).length
+  console.log(`[sc63-p1a] OK: #2825/#2200/#2909/#3085/#2938 ready meals, passesLightRank ${light} rows (all >=300 kcal, >=15 g protein)`)
+}

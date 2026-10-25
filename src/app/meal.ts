@@ -40,7 +40,10 @@ const hasDataClass = (r: Row) => !!r.meal_class && r.meal_class !== 'unknown'
 export const isSnackLike = (r: Row) => !hasDataClass(r) && SNACK.test(r.name)
 /** Fertiggericht = meal/stew bzw. meal_class meal/light_meal/multi_portion; kein Dessert, Snack, Trockenprodukt, Meal-Kit. */
 export const isReadyMeal = (r: Row) => {
-  if (r.dupOf != null || r.nonfood || r.segment === 'meal_kit' || isNonMeal(r) || isSnackLike(r) || isComponentOnly(r)) return false
+  if (r.dupOf != null || r.nonfood || r.segment === 'meal_kit' || !!r.nonMeal || r.gang === 'dessert' || r.meal_class === 'dessert' || isBabyFood(r)) return false
+  /** SC63 P1a: Pipeline-rankable/rankableLight hat Vorrang vor Namens-Regex (#2825, #2200, #2909, #3085). */
+  if ((r as any).rankable === true || (r as any).rankableLight === true) return !isDryish(r)
+  if (isNonMeal(r) || isSnackLike(r) || isComponentOnly(r)) return false
   if (!(r as any).sauceInPack) {
     if (r.stage && r.stage !== 'meal' && r.stage !== 'stew') return false
     if (r.gang === 'zutat' || r.gang === 'beilage' || r.gang === 'sauce' || r.gang === 'snack' || r.gang === 'drink') return false
@@ -62,8 +65,9 @@ export function portionG(r: Row): number | null {
 }
 /** eur_meal = price × portion_g / size */
 export const pricePerPortion = (r: Row) => { const p = portionG(r); return r.price != null && r.size && p ? r.price * p / r.size : null }
-export const kcalPerPortion = (r: Row) => { const p = portionG(r); if (r.kcal_meal != null && !portionEstimated(r) && (r.portion_g == null || p === r.portion_g)) return r.kcal_meal; return r.kcal != null && p ? r.kcal * p / 100 : null }
-export const protPerPortion = (r: Row) => { const p = portionG(r); return r.p100 != null && p ? r.p100 * p / 100 : null }
+export const kcalPerPortion = (r: Row) => { const p = portionG(r); if ((r as any).kcalPor != null && p != null && r.portion != null && Math.abs(p - r.portion) < 1) return (r as any).kcalPor; if (r.kcal_meal != null && !portionEstimated(r) && (r.portion_g == null || p === r.portion_g)) return r.kcal_meal; return r.kcal != null && p ? r.kcal * p / 100 : null }
+/** SC63 P1a: pipeline protPor (gerundet) hat Vorrang, wenn die Portion übereinstimmt (#2938: 19.98 vs 20.0). */
+export const protPerPortion = (r: Row) => { const p = portionG(r); if ((r as any).protPor != null && p != null && r.portion != null && Math.abs(p - r.portion) < 1) return (r as any).protPor; return r.p100 != null && p ? Math.round(r.p100 * p / 10) / 10 : null }
 /** Vollwertige Mahlzeit: 400–900 kcal und ≥ 20 g Protein pro Portion. */
 export const isFullMeal = (r: Row) => { const k = kcalPerPortion(r), p = protPerPortion(r); return k != null && p != null && k >= MEAL_RULES.kcalMin && k <= MEAL_RULES.kcalMax && p >= MEAL_RULES.proteinMin }
 /** Für Rankings: Fertiggericht + echter Preis/Laden + vollständiger Score + harte Mahlzeit-Prüfung. */
@@ -95,10 +99,12 @@ export function valueOf(r: Row, c: ValueCfg = {}) {
 /** Gilt für Preis-Leistungs- und €/Protein-Rankings: rankable + Mindest-Score + Mindest-kcal. */
 export const isLightMeal = (r: Row) => r.meal_class === 'light_meal'
 /** Haupt-Rankings: vollwertige Gerichte, leichte Mahlzeiten haben ein eigenes Ranking (passesLightRank). */
-export const passesRankMin = (r: Row, c: ValueCfg = {}) => !isLightMeal(r) && isRankable(r) && (scoreOf(r, c) ?? 0) >= (c.minScore ?? VALUE_DEFAULTS.minScore) && (kcalPerPortion(r) ?? 0) >= Math.max(MEAL_RULES.kcalMin, c.minKcal ?? VALUE_DEFAULTS.minKcal)
+
+const isRankDup = (r: Row) => (((r as any).flags ?? []) as string[]).some((f: string) => /^Duplikat/i.test(f))
+export const passesRankMin = (r: Row, c: ValueCfg = {}) => !isLightMeal(r) && !isRankDup(r) && isRankable(r) && (scoreOf(r, c) ?? 0) >= (c.minScore ?? VALUE_DEFAULTS.minScore) && (kcalPerPortion(r) ?? 0) >= Math.max(MEAL_RULES.kcalMin, c.minKcal ?? VALUE_DEFAULTS.minKcal)
 
 /** Separates Ranking „Leichte Mahlzeiten“ (meal_class light_meal): Fertiggericht, Preis + Score, Mindest-Score – ohne 400-kcal/20-g-Prüfung. */
-export const passesLightRank = (r: Row, c: ValueCfg = {}) => isLightMeal(r) && !isPriceExcluded(r) && isReadyMeal(r) && r.price != null && r.score != null && (scoreOf(r, c) ?? 0) >= (c.minScore ?? VALUE_DEFAULTS.minScore) && pricePerPortion(r) != null
+export const passesLightRank = (r: Row, c: ValueCfg = {}) => isLightMeal(r) && !isPriceExcluded(r) && !isRankDup(r) && !r.incomplete && !(r as any).sold_out && r.price_status !== 'unknown' && !portionEstimated(r) && (kcalPerPortion(r) ?? 0) >= 300 && (protPerPortion(r) ?? 0) >= 15 && isReadyMeal(r) && r.price != null && r.score != null && (scoreOf(r, c) ?? 0) >= (c.minScore ?? VALUE_DEFAULTS.minScore) && pricePerPortion(r) != null
 /** GTIN aus psrc (z. B. „GTIN 4260237451068“). */
 export const gtinOf = (r: { psrc?: string | null }) => (r.psrc ?? '').match(/\b(\d{13}|\d{8})\b/)?.[1] ?? null
 const completeness = (r: object) => Object.values(r).filter(v => v != null && v !== '' && !(Array.isArray(v) && !v.length)).length
