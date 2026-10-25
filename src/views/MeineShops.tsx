@@ -6,8 +6,8 @@ import { Card, Badge, Button, Select } from '@/components/ui'
 import { StoreLogo, Img, ScoreBar } from '@/components/product'
 import { useApp, fmt, fmtDist, cn, STORE_LOGO, scoreColor, type Row } from '@/lib'
 import { toggleMyShop, fmtR, setLoc, RADII } from '@/app/location'
-import { useNearShops, onlineId, typeLabel, deliveryText, deliveryTitle } from '@/app/shops'
-import { isReadyMeal, isRankable, pricePerPortion } from '@/app/meal'
+import { useNearShops, onlineId, typeLabel, deliveryText, deliveryTitle, isRowRankable, storeRankableCounts } from '@/app/shops'
+import { isReadyMeal, pricePerPortion } from '@/app/meal'
 import { OldPriceBadge } from '@/components/PriceAge'
 
 const COL: Record<string, string> = { Billa: '#facc15', Spar: '#16a34a', Hofer: '#1d4ed8', Lidl: '#0050aa', Penny: '#dc2626', dm: '#e11d48' }
@@ -45,9 +45,10 @@ export default function MeineShops() {
   const { inR, all, my, myChains, loc, deliversHere, online } = useNearShops()
   const [allFood, setAllFood] = useState(false), [minScore, setMinScore] = useState(0), [gang, setGang] = useState('haupt'), [chain, setChain] = useState('')
   const counts = useMemo(() => { const c: Record<string, number> = {}; R.forEach(r => { if (r.score != null) c[r.store] = (c[r.store] ?? 0) + 1 }); return c }, [R])
-  const ranking = useMemo(() => R.filter(r => (allFood ? !r.nonfood : isReadyMeal(r)) && (allFood ? r.score != null && r.price != null : isRankable(r)) && myChains.has(r.store) && (!gang || (r as any).gang === gang) && (r.score ?? 0) >= minScore && (!chain || r.store === chain))
+  const rankableByChain = useMemo(() => storeRankableCounts(R.filter(r => isReadyMeal(r)) as any), [R])
+  const ranking = useMemo(() => R.filter(r => (allFood ? !r.nonfood : isReadyMeal(r)) && (allFood ? r.score != null && r.price != null : isRowRankable(r as any)) && myChains.has(r.store) && (!gang || (r as any).gang === gang) && (r.score ?? 0) >= minScore && (!chain || r.store === chain))
     .sort((a, b) => (b.score! - a.score!) || ((a.p100g ?? 1e9) - (b.p100g ?? 1e9))).slice(0, 200), [R, myChains, gang, minScore, chain, allFood])
-  const perChain = useMemo(() => [...myChains].map(c => { const xs = R.filter(r => r.store === c && isRankable(r) && (allFood ? !r.nonfood : isReadyMeal(r)) && (!gang || (r as any).gang === gang)); const sc = xs.map(r => r.score!).sort((a, b) => a - b); return { c, n: xs.length, med: sc.length ? sc[Math.floor(sc.length / 2)] : null, best: sc.length ? sc[sc.length - 1] : null } }).sort((a, b) => (b.med ?? -1) - (a.med ?? -1)), [R, myChains, gang, allFood])
+  const perChain = useMemo(() => [...myChains].map(c => { const xs = R.filter(r => r.store === c && (allFood ? r.score != null : isRowRankable(r as any)) && (allFood ? !r.nonfood : isReadyMeal(r)) && (!gang || (r as any).gang === gang)); const sc = xs.map(r => r.score!).sort((a, b) => a - b); return { c, n: xs.length, med: sc.length ? sc[Math.floor(sc.length / 2)] : null, best: sc.length ? sc[sc.length - 1] : null } }).sort((a, b) => (b.med ?? -1) - (a.med ?? -1)), [R, myChains, gang, allFood])
   const outside = all.length - inR.length
   return <div className="space-y-4">
     <div className="flex flex-wrap items-end justify-between gap-2">
@@ -66,7 +67,7 @@ export default function MeineShops() {
             <Star className={cn('size-5 shrink-0', on ? 'fill-amber-400 text-amber-500' : 'text-muted-foreground')} /></button> })}
           <div className="border-b bg-muted/40 px-3 py-1.5 text-xs font-semibold"><Truck className="mr-1 inline size-3.5" />Online & Lieferdienste</div>
           {online.map(p => { const id = onlineId(p), on = my.includes(id); return <button key={p} onClick={() => toggleMyShop(id)} aria-pressed={on} className={cn('flex w-full items-center gap-2 border-b px-3 py-2 text-left text-sm hover:bg-muted/60', on && 'bg-emerald-50 dark:bg-emerald-950/40')}>
-            <StoreLogo store={p} size={24} /><span className="flex-1">{p} <span className="text-xs text-muted-foreground">({counts[p] ?? 0} bewertet){deliversHere(p) === false ? <b className="ml-1 text-red-600">nicht lieferbar nach Linz</b> : deliversHere(p) == null && <span className="ml-1 text-amber-700" title="Keine offizielle Quelle für Lieferung nach 4020 Linz">Lieferung nach Linz unbestätigt</span>}</span></span><Star className={cn('size-5', on ? 'fill-amber-400 text-amber-500' : 'text-muted-foreground')} /></button> })}
+            <StoreLogo store={p} size={24} /><span className="flex-1">{p} <span data-testid="online-rank-badge" className={cn('text-xs', (rankableByChain[p] ?? 0) > 0 ? 'text-muted-foreground' : 'text-amber-700')}>({rankableByChain[p] ?? 0} im Ranking · {counts[p] ?? 0} erfasst){deliversHere(p) === false ? <b className="ml-1 text-red-600">nicht lieferbar nach Linz</b> : deliversHere(p) == null && <span className="ml-1 text-amber-700" title="Keine offizielle Quelle für Lieferung nach 4020 Linz">Lieferung nach Linz unbestätigt</span>}</span></span><Star className={cn('size-5', on ? 'fill-amber-400 text-amber-500' : 'text-muted-foreground')} /></button> })}
         </div>
       </Card>
     </div>

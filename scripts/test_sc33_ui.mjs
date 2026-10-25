@@ -363,3 +363,12 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   assert.equal(packPortions({ size: 800, portion: 400 }), 2, "800g/400g -> 2 Portionen")
   console.log(`[sc70-ui-fixes] OK: storeCounts/storeRankableCounts (Spar ${rankCounts["Spar"]}/${prodCounts["Spar"]}, Denn's ${rankCounts["Denn's"] ?? 0}/${prodCounts["Denn's"]}, Nah&Frisch ${rankCounts["Nah&Frisch"] ?? 0}/${prodCounts["Nah&Frisch"]}), packPortions(#1018)=1, packPortions(#870)=2`)
 }
+
+// SC71 P1: MeineShops ranking/perChain must use isRowRankable (same as shop badges), online list shows "im Ranking · erfasst"
+{
+  const src = readFileSync(new URL('../src/views/MeineShops.tsx', import.meta.url), 'utf8')
+  assert.ok(!/\bisRankable\(/.test(src), 'MeineShops.tsx no longer uses isRankable()')
+  assert.ok((src.match(/isRowRankable\(/g) ?? []).length >= 2, 'ranking & perChain use isRowRankable()')
+  assert.ok(src.includes('data-testid="online-rank-badge"') && src.includes('im Ranking · {counts[p] ?? 0} erfasst'), 'online providers show rankable vs erfasst')
+  console.log('[sc71-meineshops] OK: ranking/perChain via isRowRankable, online-rank-badge present')
+}
