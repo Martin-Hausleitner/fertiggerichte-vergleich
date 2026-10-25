@@ -456,3 +456,63 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   assert.ok(billaAllGang.some(r => r.id === 935 && r.gang === "vorspeise"), "#935 Knorr Meisterkessel Bohnen-Speck Suppe (vorspeise) included in Billa MeineShops default ranking")
   console.log(`[sc72-ui-fixes] OK: nearest(Denn's)=${denns.name} (${denns.addr}, ${denns.dist}m, ~${denns.walk_min}min), all 14 Linz chains resolved, Tabelle isRowRankable+pliLight, MeineShops gang='' (Billa ${billaAllGang.length}/${billaBadgeCount})`)
 }
+
+// SC73 P1.1 & P1.2: Tabak Trafik Zeitlhofer exclusion, Spar (<60m) deduplication at Holzstraße 13, and street address enrichment
+{
+  const S = await load("../src/app/shops.ts")
+  assert.equal(S.matchStoreChain("Tabak Trafik Zeitlhofer Michael"), "", "Tabak Trafik Zeitlhofer Michael excluded by matchStoreChain")
+  assert.equal(S.matchStoreChain("Hofer", "Tabak Trafik Zeitlhofer Michael"), "", "Tabak Trafik Zeitlhofer Michael with chain=Hofer excluded by matchStoreChain")
+  assert.equal(S.matchStoreChain("Hofer"), "Hofer", "Hofer matched with word boundary")
+  assert.equal(S.matchStoreChain("Unimarkt", "Nah & Frisch"), "Nah&Frisch", "Nah & Frisch name overrides false chain=Unimarkt")
+
+  const baseStores = JSON.parse(readFileSync(new URL("../public/stores.json", import.meta.url), "utf8"))
+  const walkFile = JSON.parse(readFileSync(new URL("../public/stores_linz_walk.json", import.meta.url), "utf8"))
+  const provFile = JSON.parse(readFileSync(new URL("../public/stores_linz_providers.json", import.meta.url), "utf8"))
+  const osmFile = JSON.parse(readFileSync(new URL("../public/stores_linz_2026-10-13.json", import.meta.url), "utf8"))
+  const merged = S.mergeLinzStores(baseStores, walkFile, provFile, osmFile)
+
+  assert.ok(!merged.shops.some(s => /zeitlhofer|trafik/i.test(`${s.name} ${s.chain}`)), "mergeLinzStores excludes Tabak Trafik Zeitlhofer Michael")
+  const nearestHofer = S.findNearestStore(merged, "Hofer")
+  assert.ok(nearestHofer && nearestHofer.name === "Hofer" && !/zeitlhofer|trafik/i.test(nearestHofer.name) && nearestHofer.dist !== 789 && Boolean(nearestHofer.addr), "nearest(Hofer) is a real Hofer branch with street address, never Zeitlhofer (789m)")
+  assert.ok(merged.shops.some(x => x.chain === "Hofer" && /Landstraße 12, 4020 Linz/.test(x.addr || "")), "Hofer Landstraße 12, 4020 Linz has full street address")
+  assert.ok(merged.shops.some(x => x.chain === "Hofer" && /Blütenstraße 15, 4040 Linz/.test(x.addr || "")), "Hofer Blütenstraße 15, 4040 Linz has full street address")
+
+  const sparsUnder600 = merged.shops.filter(s => s.chain === "Spar" && s.dist < 600)
+  assert.equal(sparsUnder600.length, 1, "Spar at Holzstraße 13 deduplicated to 1 entry within <600m")
+  const nearestSpar = S.findNearestStore(merged, "Spar")
+  assert.ok(nearestSpar && nearestSpar.dist === 378 && nearestSpar.addr === "Holzstraße 13, 4020 Linz", "nearest(Spar) has dist=378 and addr='Holzstraße 13, 4020 Linz'")
+  assert.equal(S.findNearestStore(merged, "dm")?.addr, "Holzstraße 15, 4020 Linz", "nearest(dm) has addr='Holzstraße 15, 4020 Linz'")
+  assert.equal(S.findNearestStore(merged, "Lidl")?.addr, "Lederergasse 33b, 4020 Linz", "nearest(Lidl) has addr='Lederergasse 33b, 4020 Linz'")
+  assert.ok(merged.shops.some(x => x.chain === "Billa" && x.addr === "Eisenhandstraße 42, 4020 Linz"), "Billa 903m in merged stores has addr='Eisenhandstraße 42, 4020 Linz'")
+
+  const rawNear = (walkFile.stores ?? []).map(s => ({
+    chain: S.matchStoreChain(s.chain ?? s.brand ?? s.name, s.name) || s.name,
+    name: s.name,
+    addr: S.cleanStoreAddr(s.addr, s.osm),
+    lat: s.lat,
+    lon: s.lon,
+    dist: s.dist_m,
+    hours: s.hours,
+    gmaps: "",
+    id: S.shopId(s),
+    d: s.dist_m,
+    walkMin: s.walk_min,
+    type: s.type,
+    hasProducts: true,
+    productCount: 1,
+    rankableCount: 1,
+    osm: s.osm,
+  }))
+  const dedupedNear = S.dedupeNearShops(rawNear, baseStores.shops)
+  assert.ok(!dedupedNear.some(s => /zeitlhofer|trafik/i.test(s.name)), "dedupeNearShops excludes Tabak Trafik Zeitlhofer Michael")
+  const nearSpars10Min = dedupedNear.filter(s => s.chain === "Spar" && s.walkMin <= 10)
+  assert.equal(nearSpars10Min.length, 1, "dedupeNearShops produces exactly 1 Spar within <=10 min")
+  assert.equal(nearSpars10Min[0].d, 378, "deduped Spar keeps shorter distance 378m")
+  assert.equal(nearSpars10Min[0].addr, "Holzstraße 13, 4020 Linz", "deduped Spar keeps street address 'Holzstraße 13, 4020 Linz'")
+  assert.equal(dedupedNear.find(s => s.chain === "dm")?.addr, "Holzstraße 15, 4020 Linz", "deduped dm has 'Holzstraße 15, 4020 Linz'")
+  assert.equal(dedupedNear.find(s => s.chain === "Lidl")?.addr, "Lederergasse 33b, 4020 Linz", "deduped Lidl has 'Lederergasse 33b, 4020 Linz'")
+  assert.equal(dedupedNear.find(s => s.osm === "node/1566303942")?.addr, "Eisenhandstraße 42, 4020 Linz", "deduped Billa 903m has 'Eisenhandstraße 42, 4020 Linz'")
+  assert.equal(dedupedNear.find(s => s.osm === "node/10102892642")?.addr, "Landstraße 12, 4020 Linz", "deduped Hofer 1180m has 'Landstraße 12, 4020 Linz'")
+  assert.equal(dedupedNear.find(s => s.osm === "node/527809213")?.addr, "Blütenstraße 15, 4040 Linz", "deduped Hofer 1223m has 'Blütenstraße 15, 4040 Linz'")
+  console.log(`[sc73-ui-fixes] OK: Zeitlhofer excluded, Spar deduplicated (1 chip, ${nearSpars10Min[0].d}m, ${nearSpars10Min[0].addr}), addresses enriched (dm=${dedupedNear.find(s => s.chain === "dm")?.addr}, Lidl=${dedupedNear.find(s => s.chain === "Lidl")?.addr}, Hofer=${nearestHofer.addr})`)
+}

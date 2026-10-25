@@ -20,21 +20,64 @@ const loadOsm = () => ocache ??= fetch(`${import.meta.env.BASE_URL}stores_linz_2
 export function useOsmStores() { const [f, setF] = useState<OsmStore[]>([]); useEffect(() => { loadOsm().then(setF) }, []); return f }
 export function useWalkFile() { const [f, setF] = useState<WalkFile | null>(null); useEffect(() => { loadWalk().then(setF) }, []); return f }
 
-export const shopId = (s: { osm?: string; chain: string | null; name: string; lat: number }) => s.osm ?? `${s.chain}|${s.name}|${s.lat.toFixed(5)}`
-/** SC69 P1.2: Normalisiert Kettennamen aus OSM/Walk/Provider-Dateien auf die kanonischen Store-Keys in data.json & STORE_LOGO. */
-export function matchStoreChain(raw?: string | null): string {
+export const shopId = (s: { osm?: string; chain: string | null; name?: string | null; lat: number }) => s.osm ?? `${s.chain}|${s.name ?? ""}|${s.lat.toFixed(5)}`
+const sameChainOrName = (a: { chain?: string | null; name?: string | null }, b: { chain?: string | null; name?: string | null }) =>
+  Boolean((a.chain && b.chain && a.chain === b.chain) || (a.name && b.name && a.name.toLowerCase() === b.name.toLowerCase()))
+
+/** SC73 P1.1: Schließt Tabak-Trafiken und Nachnamen auf -hofer (z. B. Tabak Trafik Zeitlhofer Michael) explizit aus. */
+export const isTrafikOrFalseHofer = (raw?: string | null, nameHint?: string | null) =>
+  /trafik|zeitlhofer|maierhofer|oberhofer|gillhofer|hofer\s+diskont/i.test(`${raw ?? ''} ${nameHint ?? ''}`)
+
+/** SC69 P1.2 / SC72 P1.1 / SC73 P1.1: Normalisiert Kettennamen aus OSM/Walk/Provider-Dateien auf die kanonischen Store-Keys in data.json & STORE_LOGO. */
+export function matchStoreChain(raw?: string | null, nameHint?: string | null): string {
   const s = (raw ?? '').trim()
-  if (!s) return ''
-  if (/\bdenn'?s\b/i.test(s)) return "Denn's"
-  if (/^nordsee\b/i.test(s)) return 'NORDSEE'
-  if (/nah\s*&\s*frisch/i.test(s)) return 'Nah&Frisch'
-  if (/^fit\s*(?:2|to)\s*go\b/i.test(s)) return 'Fit to Go'
-  if (/^spar$/i.test(s)) return 'Spar'
-  if (/^billa$/i.test(s)) return 'Billa'
-  return s
+  const n = (nameHint ?? '').trim()
+  if ((!s && !n) || isTrafikOrFalseHofer(s, n)) return ''
+  if (/nah\s*&\s*frisch/i.test(`${n} ${s}`)) return 'Nah&Frisch'
+  const c = s || n
+  if (/\bdenn'?s\b/i.test(c)) return "Denn's"
+  if (/^nordsee\b/i.test(c)) return 'NORDSEE'
+  if (/^fit\s*(?:2|to)\s*go\b/i.test(c)) return 'Fit to Go'
+  if (/\bwinkler\b/i.test(c)) return 'Winkler'
+  if (/\bhofer\b/i.test(c)) return 'Hofer'
+  if (/^spar$/i.test(c)) return 'Spar'
+  if (/^billa$/i.test(c)) return 'Billa'
+  return c
 }
-const KNOWN_OSM_ADDR: Record<string, string> = { 'node/3150023279': 'Tummelplatz 19, 4020 Linz' }
-/** SC72 P1.1: Merges stores.json with stores_linz_walk.json, stores_linz_providers.json, and stores_linz_2026-10-13.json so nearest(chain) covers all Linz chains. */
+
+/** SC72 P1.1 & SC73 P1.2: Bekannte Linzer Straßenadressen für OSM-Einträge mit leerer/unvollständiger Adresse. */
+export const KNOWN_OSM_ADDR: Record<string, string> = {
+  'node/3150023279': 'Tummelplatz 19, 4020 Linz',
+  'node/10839691328': 'Holzstraße 15, 4020 Linz',
+  'way/248400338': 'Holzstraße 15, 4020 Linz',
+  'way/112573309': 'Holzstraße 13, 4020 Linz',
+  'way/37655226': 'Holzstraße 13, 4020 Linz',
+  'node/2309636166': 'Lederergasse 33b, 4020 Linz',
+  'node/1566303942': 'Eisenhandstraße 42, 4020 Linz',
+  'node/10102892642': 'Landstraße 12, 4020 Linz',
+  'node/527809213': 'Blütenstraße 15, 4040 Linz',
+  'node/259863256': 'Wildbergstraße 12, 4040 Linz',
+  'node/3633280138': 'Taubenmarkt 1, 4020 Linz',
+  'node/3633359583': 'Landstraße 46, 4020 Linz',
+  'node/259863252': 'Blütenstraße 13-23, 4040 Linz',
+  'node/1565970451': 'Schillerplatz 1, 4020 Linz',
+  'way/116935280': 'Franckstraße 18, 4020 Linz',
+  'way/93055919': 'Franckstraße 18, 4020 Linz',
+  'node/632835546': 'Lindengasse 16, 4040 Linz',
+  'node/13966179707': 'Lindengasse 16, 4040 Linz',
+}
+
+export function cleanStoreAddr(addr?: string | null, osm?: string | null): string | null {
+  if (osm && KNOWN_OSM_ADDR[osm]) return KNOWN_OSM_ADDR[osm]
+  const a = (addr ?? '').replace(/^\s*,\s*(?:\d*\s*)?$/, '').trim()
+  if (!a) return null
+  if (/^Lederergasse\s*,/i.test(a)) return 'Lederergasse 33b, 4020 Linz'
+  if (/^Blütenstraße\s*,/i.test(a)) return 'Blütenstraße 15, 4040 Linz'
+  if (/^Taubenmarkt\s*,/i.test(a)) return 'Taubenmarkt 1, 4020 Linz'
+  return a
+}
+
+/** SC72 P1.1 & SC73 P1.2: Merges stores.json with stores_linz_walk.json, stores_linz_providers.json, and stores_linz_2026-10-13.json, deduplicating < 60 m and preserving street addresses. */
 export function mergeLinzStores(
   base: Stores | null | undefined,
   wf?: { home?: { addr: string; lat: number; lon: number }; stores?: WalkStore[] } | null,
@@ -46,21 +89,38 @@ export function mergeLinzStores(
   const oStores = Array.isArray(osm) ? osm : (osm?.stores ?? [])
   if (!base && !wStores.length && !pStores.length && !oStores.length) return null
   const home = base?.home ?? wf?.home ?? { addr: 'Gruberstraße 19, 4020 Linz', lat: 48.3102805, lon: 14.2992021 }
-  const shops: Shop[] = (base?.shops ?? []).map(x => ({ ...x, chain: matchStoreChain(x.chain) || x.chain, name: x.name || x.chain, addr: x.addr?.trim() || null }))
+  const shops: Shop[] = []
   const add = (cand: Shop) => {
-    if (!cand.chain && !cand.name) return
-    const ex = shops.find(e => Math.abs(e.lat - cand.lat) < 0.0003 && Math.abs(e.lon - cand.lon) < 0.0003 && (e.chain === cand.chain || e.name === cand.name))
+    if ((!cand.chain && !cand.name) || isTrafikOrFalseHofer(cand.chain, cand.name)) return
+    const ex = shops.find(e => sameChainOrName(e, cand) && haversine(e, cand) < 60)
     if (ex) {
       if (!ex.addr && cand.addr) ex.addr = cand.addr
       if (!ex.hours && cand.hours) ex.hours = cand.hours
+      if (cand.dist < ex.dist) {
+        ex.dist = cand.dist
+        ex.lat = cand.lat
+        ex.lon = cand.lon
+      }
+      if ((cand.walk_m ?? cand.dist) < (ex.walk_m ?? ex.dist)) {
+        ex.walk_m = cand.walk_m ?? cand.dist
+      }
+      if ((cand.walk_min ?? estWalkMin(cand.dist)) < (ex.walk_min ?? estWalkMin(ex.dist))) {
+        ex.walk_min = cand.walk_min ?? estWalkMin(cand.dist)
+      }
       return
     }
     shops.push(cand)
   }
+  for (const x of base?.shops ?? []) {
+    if (isTrafikOrFalseHofer(x.chain, x.name)) continue
+    const chain = matchStoreChain(x.chain, x.name) || x.chain
+    add({ ...x, chain, name: x.name || chain, addr: cleanStoreAddr(x.addr) })
+  }
   for (const x of wStores) {
-    const chain = matchStoreChain(x.chain ?? x.brand ?? x.name) || x.name || ''
+    if (isTrafikOrFalseHofer(x.chain ?? x.brand, x.name)) continue
+    const chain = matchStoreChain(x.chain ?? x.brand ?? x.name, x.name) || x.name || ''
     const dist = x.dist_m ?? Math.round(haversine(home, x))
-    const addr = x.addr?.trim() || (x.osm ? KNOWN_OSM_ADDR[x.osm] : null) || null
+    const addr = cleanStoreAddr(x.addr, x.osm)
     const walk_m = x.walk_method?.includes('fallback') ? dist : (x.walk_m ?? dist)
     add({
       chain,
@@ -76,12 +136,13 @@ export function mergeLinzStores(
     })
   }
   for (const x of pStores) {
-    const chain = matchStoreChain(x.chain || x.name) || x.name || ''
+    if (isTrafikOrFalseHofer(x.chain, x.name)) continue
+    const chain = matchStoreChain(x.chain || x.name, x.name) || x.name || ''
     const dist = x.distance_km != null ? Math.round(x.distance_km * 1000) : Math.round(haversine(home, x))
     add({
       chain,
       name: x.name || chain,
-      addr: x.address?.trim() || (x.osm_id ? KNOWN_OSM_ADDR[x.osm_id] : null) || null,
+      addr: cleanStoreAddr(x.address, x.osm_id),
       lat: x.lat,
       lon: x.lon,
       dist,
@@ -92,9 +153,11 @@ export function mergeLinzStores(
     })
   }
   for (const x of oStores) {
-    const chain = matchStoreChain(x.chain || x.name) || x.name || ''
+    if (isTrafikOrFalseHofer(x.chain, x.name)) continue
+    const chain = matchStoreChain(x.chain || x.name, x.name) || x.name || ''
     const osmKey = `${x.osm_type}/${x.osm_id}`
-    const addr = [x.street && `${x.street} ${x.housenumber ?? ''}`.trim(), [x.postcode, x.city].filter(Boolean).join(' ')].filter(Boolean).join(', ') || KNOWN_OSM_ADDR[osmKey] || null
+    const rawAddr = [x.street && `${x.street} ${x.housenumber ?? ''}`.trim(), [x.postcode, x.city].filter(Boolean).join(' ')].filter(Boolean).join(', ')
+    const addr = cleanStoreAddr(rawAddr, osmKey)
     const dist = Math.round(haversine(home, x))
     add({
       chain,
@@ -120,6 +183,7 @@ export function findNearestStore(stores: Stores | Shop[] | null | undefined, que
   const tl = target.toLowerCase(), rawL = (queryChain ?? '').trim().toLowerCase()
   let best: Shop | null = null
   for (const sh of list) {
+    if (isTrafikOrFalseHofer(sh.chain, sh.name)) continue
     const sc = (sh.chain ?? '').toLowerCase(), sn = (sh.name ?? '').toLowerCase()
     const match = rawL && (sn === rawL || sn.startsWith(rawL + ' ') || sc === rawL)
       ? true
@@ -181,8 +245,8 @@ export function storeDeliveries(rows: DeliveryRow[], noDelivery: { store: string
 export const onlineProviders = (by: Record<string, StoreDelivery>) => Object.values(by).filter(o => o.online).sort((a, b) => Number(b.delivers_4020 === true) - Number(a.delivers_4020 === true) || Number(b.delivers_4020 !== false) - Number(a.delivers_4020 !== false) || a.store.localeCompare(b.store, 'de')).map(o => o.store)
 export const onlineId = (p: string) => `online|${p}`
 /** SC63 P1.1: Tankstellenshops (z. B. OMV Viva Billa) führen kein Voll-Supermarktsortiment und zählen nicht als offene Filiale fürs Ranking. */
-export const isPetrolShop = (s: { name: string; type?: string | null }) => /petrol|fuel/i.test(s.type ?? '') || /\bviva\b|tankstelle|\bomv\b|\bbp\b|\bshell\b|\bjet\b|\beni\b|turmöl|avanti/i.test(s.name)
-export type ShopOption = Shop & { id: string; d: number; walkMin: number; type: string | null; hasProducts: boolean; productCount: number; rankableCount: number; osm?: string }
+export const isPetrolShop = (s: { name?: string | null; type?: string | null }) => /petrol|fuel/i.test(s.type ?? '') || /\bviva\b|tankstelle|\bomv\b|\bbp\b|\bshell\b|\bjet\b|\beni\b|turmöl|avanti/i.test(s.name ?? '')
+export type ShopOption = Shop & { id: string; altIds?: string[]; d: number; walkMin: number; type: string | null; hasProducts: boolean; productCount: number; rankableCount: number; osm?: string }
 export type NearShop = ShopOption
 export const isRowRankable = (r: MealRow & { rankable?: boolean; rankableLight?: boolean }) => r.dupOf == null && (r.rankable === true || r.rankableLight === true || passesRankMin(r) || passesLightRank(r))
 /** SC70 P1.2: Rohzeilen (dupOf == null) je Kette. */
@@ -210,8 +274,30 @@ export const typeLabel = (t: string | null) => t ? TYPE_DE[t] ?? t : 'Geschäft'
 /** Gehzeit geschätzt: Luftlinie × 1,3 bei 4,8 km/h → immer mit „~“ anzeigen. */
 export const estWalkMin = (m: number) => Math.max(1, Math.round(m * 1.3 / 80))
 
+/** SC73 P1.2: Dedupliziert NearShop-Einträge derselben Kette im Umkreis < 60 m, behält kürzere Distanz/Gehzeit und reichert Straßenadressen an. */
+export function dedupeNearShops(rawList: NearShop[], baseShops?: Shop[] | null): NearShop[] {
+  const sorted = [...rawList].filter(s => !isTrafikOrFalseHofer(s.chain, s.name)).sort((a, b) => a.d - b.d)
+  const out: NearShop[] = []
+  for (const cand of sorted) {
+    const baseMatch = baseShops?.find(b => sameChainOrName(b, cand) && haversine(b, cand) < 80)
+    const addr = cleanStoreAddr(cand.addr, cand.osm) ?? cleanStoreAddr(baseMatch?.addr) ?? null
+    const hours = cand.hours || baseMatch?.hours || undefined
+    const ex = out.find(e => sameChainOrName(e, cand) && haversine(e, cand) < 60)
+    if (ex) {
+      if (!ex.addr && addr) ex.addr = addr
+      if (!ex.hours && hours) ex.hours = hours
+      if (cand.d < ex.d) { ex.d = cand.d; ex.dist = cand.dist }
+      if (cand.walkMin < ex.walkMin) ex.walkMin = cand.walkMin
+      if (cand.id && cand.id !== ex.id) ex.altIds = [...(ex.altIds ?? []), cand.id]
+      continue
+    }
+    out.push({ ...cand, addr, hours })
+  }
+  return out
+}
+
 export function useNearShops() {
-  const wf = useWalkFile(); const prov = useProviderStores(); const osm = useOsmStores(); const loc = useLoc(); const my = useMyShops(); const { R, D } = useApp()
+  const wf = useWalkFile(); const prov = useProviderStores(); const osm = useOsmStores(); const loc = useLoc(); const my = useMyShops(); const { R, D, stores: appStores } = useApp()
   const countsByChain = useMemo(() => storeCounts(R), [R])
   const rankableByChain = useMemo(() => storeRankableCounts(R), [R])
   const rowStores = useMemo(() => new Set(Object.keys(countsByChain)), [countsByChain])
@@ -219,11 +305,12 @@ export function useNearShops() {
   const online = useMemo(() => onlineProviders(byStore), [byStore])
   return useMemo(() => {
     const atHome = wf && haversine(loc, wf.home) < 30
-    const all: NearShop[] = (wf?.stores ?? []).map((s): NearShop => { const d = atHome ? s.dist_m : haversine(loc, s); const chain = matchStoreChain(s.chain ?? s.brand ?? s.name) || s.name; return { chain, name: s.name, addr: s.addr?.trim() || (s.osm ? KNOWN_OSM_ADDR[s.osm] : null) || null, lat: s.lat, lon: s.lon, dist: d, hours: s.hours, gmaps: `https://www.google.com/maps/dir/?api=1&destination=${s.lat},${s.lon}&travelmode=walking`, id: shopId(s), d, walkMin: atHome ? s.walk_min : estWalkMin(d), type: s.type, hasProducts: s.availability_level === 'chain' || rowStores.has(chain), productCount: countsByChain[chain] ?? 0, rankableCount: rankableByChain[chain] ?? 0, osm: s.osm } }).concat((() => { const seen = new Set((wf?.stores ?? []).map(s => s.osm)); return prov.filter(p => !p.osm_id || !seen.has(p.osm_id)).map(p => { const d = haversine(loc, p); const chain = matchStoreChain(p.chain || p.name) || p.name; return { chain, name: p.name, addr: p.address, lat: p.lat, lon: p.lon, dist: d, hours: p.opening_hours, gmaps: `https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lon}&travelmode=walking`, id: p.osm_id ?? `prov|${chain}|${p.lat.toFixed(5)}`, d, walkMin: estWalkMin(d), type: p.provider_type, hasProducts: rowStores.has(chain), productCount: countsByChain[chain] ?? 0, rankableCount: rankableByChain[chain] ?? 0, osm: p.osm_id } }) })())
-      .concat((() => { const seen = new Set([...(wf?.stores ?? []).map(s => s.osm), ...prov.map(p => p.osm_id)]); return osm.filter(o => !seen.has(`${o.osm_type}/${o.osm_id}`)).map((o): NearShop => { const d = haversine(loc, o); const chain = matchStoreChain(o.chain || o.name) || o.name; const addr = [o.street && `${o.street} ${o.housenumber ?? ''}`.trim(), [o.postcode, o.city].filter(Boolean).join(' ')].filter(Boolean).join(', ') || null; return { chain, name: o.name, addr, lat: o.lat, lon: o.lon, dist: d, hours: o.opening_hours, gmaps: `https://www.google.com/maps/dir/?api=1&destination=${o.lat},${o.lon}&travelmode=walking`, id: `${o.osm_type}/${o.osm_id}`, d, walkMin: estWalkMin(d), type: rowStores.has(chain) ? 'chain' : 'shop', hasProducts: rowStores.has(chain), productCount: countsByChain[chain] ?? 0, rankableCount: rankableByChain[chain] ?? 0, osm: `${o.osm_type}/${o.osm_id}` } }) })())
-      .sort((a, b) => a.d - b.d)
+    const rawAll: NearShop[] = (wf?.stores ?? []).filter(s => !isTrafikOrFalseHofer(s.chain ?? s.brand, s.name)).map((s): NearShop => { const d = atHome ? s.dist_m : haversine(loc, s); const chain = matchStoreChain(s.chain ?? s.brand ?? s.name, s.name) || s.name; return { chain, name: s.name || chain, addr: cleanStoreAddr(s.addr, s.osm), lat: s.lat, lon: s.lon, dist: d, hours: s.hours, gmaps: `https://www.google.com/maps/dir/?api=1&destination=${s.lat},${s.lon}&travelmode=walking`, id: shopId(s), d, walkMin: atHome ? s.walk_min : estWalkMin(d), type: s.type, hasProducts: s.availability_level === 'chain' || rowStores.has(chain), productCount: countsByChain[chain] ?? 0, rankableCount: rankableByChain[chain] ?? 0, osm: s.osm } })
+      .concat((() => { const seen = new Set((wf?.stores ?? []).map(s => s.osm)); return prov.filter(p => (!p.osm_id || !seen.has(p.osm_id)) && !isTrafikOrFalseHofer(p.chain, p.name)).map(p => { const d = haversine(loc, p); const chain = matchStoreChain(p.chain || p.name, p.name) || p.name; return { chain, name: p.name || chain, addr: cleanStoreAddr(p.address, p.osm_id), lat: p.lat, lon: p.lon, dist: d, hours: p.opening_hours, gmaps: `https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lon}&travelmode=walking`, id: p.osm_id ?? `prov|${chain}|${p.lat.toFixed(5)}`, d, walkMin: estWalkMin(d), type: p.provider_type, hasProducts: rowStores.has(chain), productCount: countsByChain[chain] ?? 0, rankableCount: rankableByChain[chain] ?? 0, osm: p.osm_id } }) })())
+      .concat((() => { const seen = new Set([...(wf?.stores ?? []).map(s => s.osm), ...prov.map(p => p.osm_id)]); return osm.filter(o => !seen.has(`${o.osm_type}/${o.osm_id}`) && !isTrafikOrFalseHofer(o.chain, o.name)).map((o): NearShop => { const d = haversine(loc, o); const chain = matchStoreChain(o.chain || o.name, o.name) || o.name; const osmKey = `${o.osm_type}/${o.osm_id}`; const rawAddr = [o.street && `${o.street} ${o.housenumber ?? ''}`.trim(), [o.postcode, o.city].filter(Boolean).join(' ')].filter(Boolean).join(', '); const addr = cleanStoreAddr(rawAddr, osmKey); return { chain, name: o.name || chain, addr, lat: o.lat, lon: o.lon, dist: d, hours: o.opening_hours, gmaps: `https://www.google.com/maps/dir/?api=1&destination=${o.lat},${o.lon}&travelmode=walking`, id: osmKey, d, walkMin: estWalkMin(d), type: rowStores.has(chain) ? 'chain' : 'shop', hasProducts: rowStores.has(chain), productCount: countsByChain[chain] ?? 0, rankableCount: rankableByChain[chain] ?? 0, osm: osmKey } }) })())
+    const all = dedupeNearShops(rawAll, appStores?.shops)
     const inR = all.filter(s => s.d <= loc.radius)
-    const mine = all.filter(s => my.includes(s.id))
+    const mine = all.filter(s => my.includes(s.id) || s.altIds?.some(id => my.includes(id)))
     const delivery = wf?.delivery ?? []
     /** sensecheck 18: delivers_4020 aus den Zeilendaten ist die einzige Quelle; stores_linz_walk.json → delivery nur, wenn ein Anbieter dort gar keine Angabe hat. */
     const deliversHere = (p: string): boolean | null => { const x = byStore[p.normalize('NFC')] ?? byStore[p]; if (x) return x.delivers_4020 === true ? true : x.delivers_4020 === null ? null : false; const w = delivery.find(d => d.name.normalize('NFC') === p.normalize('NFC')); return w ? w.delivers_4020 : null }
@@ -231,5 +318,5 @@ export function useNearShops() {
     const nearestByChain: Record<string, number> = {}
     all.forEach(s => { if (s.hasProducts && nearestByChain[s.chain] == null) nearestByChain[s.chain] = s.d })
     return { all, inR, mine, my, myChains, loc, delivery, deliversHere, online, byStore, countsByChain, rankableByChain, generated: wf?.generated ?? null, loaded: !!wf, distOf: (r: Row) => nearestByChain[r.store] ?? null }
-  }, [wf, prov, osm, loc, my, rowStores, countsByChain, rankableByChain, byStore, online])
+  }, [wf, prov, osm, loc, my, rowStores, countsByChain, rankableByChain, byStore, online, appStores])
 }
