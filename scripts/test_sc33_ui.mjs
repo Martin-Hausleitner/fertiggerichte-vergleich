@@ -628,3 +628,41 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   assert.ok(heuteSrc.includes('isPetrolShop(s) ? "eingeschränktes Sortiment"'), "Heute.tsx displays 'eingeschränktes Sortiment' instead of rankableCount on petrol-station shop chips")
   console.log("[sc74-ui-fixes] OK: walk_min === walkMin parity across mergeLinzStores & dedupeNearShops (Spar=7min, dm=7min, Hofer=7min, Lidl=9min, Penny=19min), Heute chip street short-names & petrol shop badge")
 }
+
+// sensecheck 75 P1.1, P1.2, P2.1, P2.2, P3.3
+{
+  const healthOff = JSON.parse(readFileSync(new URL("../public/analysis/health_off.json", import.meta.url), "utf8"))
+  const H = await load("../src/components/health.tsx")
+  const S = await load("../src/app/shops.ts")
+  const M = await load("../src/app/meal.ts")
+  // P1.1: offFor matches by EAN even when product name differs (#1264, #1730, etc.)
+  const fakeRow = { id: 1264, name: "Mismatched Name", store: "Billa", ean: healthOff[0]?.ean }
+  if (fakeRow.ean) {
+    const m = H.offFor(healthOff, fakeRow)
+    assert.ok(m && m.ean === String(fakeRow.ean), "offFor matches by EAN first even when product name differs")
+  }
+  const healthSrc = readFileSync(new URL("../src/components/health.tsx", import.meta.url), "utf8")
+  assert.ok(healthSrc.includes('data-testid="off-panel-fallback"'), "OffPanel renders fallback from r.nova/r.nova_source/r.additives/r.ean when off is null")
+  // P1.2: Detail keyed by detId and ZoomImage/BrandLogo reset on src/r.logo change
+  const appSrc = readFileSync(new URL("../src/App.tsx", import.meta.url), "utf8")
+  const prodSrc = readFileSync(new URL("../src/components/product.tsx", import.meta.url), "utf8")
+  assert.ok(appSrc.includes("<Detail key={detId} id={detId} />"), "App.tsx mounts Detail with key={detId}")
+  assert.ok(prodSrc.includes("useEffect(()=>{setErr(false);setPos(null);setFull(false)},[src])"), "ZoomImage resets err/pos/full when src changes")
+  // P2.1: Heute.tsx has mode switcher ('hc' | 'pli' | 'h'), PLI badge, and pack price for multi-portion packs
+  const heuteSrc = readFileSync(new URL("../src/views/Heute.tsx", import.meta.url), "utf8")
+  assert.ok(heuteSrc.includes('data-testid="heute-mode"') && heuteSrc.includes('data-testid="heute-pli"') && heuteSrc.includes('data-testid="heute-pack-price"'), "Heute.tsx has mode switcher, PLI badge, and pack price")
+  assert.ok(heuteSrc.includes("replace(/\\s*\\(Tankstellenshop\\)\\s*$/, '')"), "Heute.tsx strips duplicate (Tankstellenshop) from street short-name")
+  // P2.2.2 & P2.2.3: MeineShops petrol badge & findNearestStore prefers non-petrol branch
+  const meineShopsSrc = readFileSync(new URL("../src/views/MeineShops.tsx", import.meta.url), "utf8")
+  assert.ok(meineShopsSrc.includes('data-testid="shop-petrol-badge"'), "MeineShops.tsx renders shop-petrol-badge for petrol-station shops")
+  const nearBilla = S.findNearestStore([
+    { chain: "Billa", name: "Viva Billa", addr: "Hafenstraße 8 (Tankstellenshop), 4020 Linz", lat: 48.31, lon: 14.30, dist: 150, walk_m: 150, walk_min: 3 },
+    { chain: "Billa", name: "Billa", addr: "Gruberstraße 65, 4020 Linz", lat: 48.308, lon: 14.299, dist: 234, walk_m: 234, walk_min: 4 },
+  ], "Billa")
+  assert.equal(nearBilla?.name, "Billa", "findNearestStore prefers regular Billa over closer Viva Billa petrol shop")
+  // P3.3: gtinOf checks r.ean (including 11/12/13 digits) and /product/<digits> in psrc
+  assert.equal(M.gtinOf({ ean: "2006050126619", psrc: "preisrunter.at 2026-10-13" }), "2006050126619", "gtinOf reads r.ean directly")
+  assert.equal(M.gtinOf({ ean: "426065993017", psrc: null }), "426065993017", "gtinOf accepts 12-digit EAN/UPC")
+  assert.equal(M.gtinOf({ psrc: "https://world.openfoodfacts.org/product/426065993017" }), "426065993017", "gtinOf parses /product/<digits> from psrc")
+  console.log("[sc75-ui-fixes] OK: P1.1 offFor by EAN & OffPanel fallback, P1.2 Detail key={detId} & ZoomImage reset, P2.1 Heute mode/PLI/pack-price, P2.2 Viva Billa petrol badge & non-petrol nearest preference, P3.3 gtinOf(r.ean)")
+}

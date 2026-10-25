@@ -95,7 +95,7 @@ export function RadarVsMedian({r,R}:{r:Row;R:Row[]}){
 export type Off={name:string;store:string|null;ean:string;additives:string[];nova:number|null;ns:string|null;labels:string[];analysis:string[];origins:string|null;mplace:string|null;ingr:string;url:string}
 let offP:Promise<Off[]>|null=null
 export function useOff(){const [o,setO]=useState<Off[]|null>(null);useEffect(()=>{offP??=fetch('./analysis/health_off.json').then(r=>r.ok?r.json():[]).catch(()=>[]);offP.then(setO)},[]);return o}
-export const offFor=(O:Off[]|null,r:Row)=>O?.find(o=>o.name===r.name&&(o.store??null)===(r.store||null))??O?.find(o=>o.name===r.name)??null
+export const offFor=(O:Off[]|null,r:Row)=>{if(!O||!r)return null;const ean=r.ean?String(r.ean).trim():'';if(ean){const byEan=O.find(o=>o.ean===ean&&(o.store??null)===(r.store||null))??O.find(o=>o.ean===ean);if(byEan)return byEan}return O.find(o=>o.name===r.name&&(o.store??null)===(r.store||null))??O.find(o=>o.name===r.name)??null}
 export const NOVA_C=['','bg-emerald-500','bg-lime-500','bg-amber-500','bg-red-500']
 export const NS_C:Record<string,string>={A:'#038141',B:'#85bb2f',C:'#fecb02',D:'#ee8100',E:'#e63e11'}
 export function NutriScore({v}:{v:string|null|undefined}){const g=(v||'').toUpperCase();return <InfoTip text={HK.ns}><span className="inline-flex rounded-md overflow-hidden text-[11px] font-bold">{'ABCDE'.split('').map(l=><span key={l} style={{background:NS_C[l],opacity:l===g?1:.3}} className={cn('px-1.5 py-0.5 text-white',l===g&&'scale-110 px-2')}>{l}</span>)}</span></InfoTip>}
@@ -111,11 +111,22 @@ export function QualityBadges({r,off}:{r:Row;off?:Off|null}){
   ]
   const on=b.filter(x=>x[0]); return on.length?<div className="flex flex-wrap gap-1">{on.map(x=><Badge key={x[1]} className={x[2]+' shadow-sm'}>{x[1]}</Badge>)}</div>:<span className="text-xs text-slate-400">Keine Gütesiegel in den Daten</span>
 }
-export function OffPanel({off}:{r?:Row;off:Off|null}){
-  if(!off) return <Missing text="Zusatzstoffe & NOVA: Produkt nicht mit EAN auf Open Food Facts erfasst, keine Daten."/>
-  return <div className="space-y-1.5 text-xs">
-   <div className="flex flex-wrap items-center gap-2"><InfoTip text={HK.nova}><span className="font-semibold flex items-center gap-1"><FlaskConical size={13}/>NOVA</span></InfoTip>{off.nova?<span className={cn('rounded-md px-2 py-0.5 text-white font-bold',NOVA_C[off.nova])}>{off.nova}</span>:<span className="text-slate-400">k. A.</span>}
-    <InfoTip text={HK.add}><span className="font-semibold ml-2">🧪 Zusatzstoffe</span></InfoTip>{off.additives.length?off.additives.map(a=><Badge key={a} className="bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-200">{a}</Badge>):<Badge className="bg-emerald-100 text-emerald-800">keine gelistet</Badge>}</div>
+export function OffPanel({r,off}:{r?:Row;off:Off|null}){
+  if(!off){
+    const hasFallback=Boolean(r&&(r.nova!=null||(r.additives&&r.additives.length>0)||r.ean))
+    if(!hasFallback||!r) return <Missing text="Zusatzstoffe & NOVA: Produkt nicht mit EAN auf Open Food Facts erfasst, keine Daten."/>
+    const srcLabel=r.nova_source==='off'?'Open Food Facts':r.nova_source==='ingredients_markers'?'Zutatenliste':null
+    return <div data-testid="off-panel-fallback" className="space-y-1.5 text-xs">
+      <div className="flex flex-wrap items-center gap-2"><InfoTip text={HK.nova}><span className="font-semibold flex items-center gap-1"><FlaskConical size={13}/>NOVA</span></InfoTip>{r.nova?<span data-testid="off-nova-badge" className={cn('rounded-md px-2 py-0.5 text-white font-bold',NOVA_C[r.nova])}>{r.nova}</span>:<span className="text-slate-400">k. A.</span>}{srcLabel&&<span data-testid="off-nova-source" className="text-slate-500">({srcLabel})</span>}
+       <InfoTip text={HK.add}><span className="font-semibold ml-2">🧪 Zusatzstoffe</span></InfoTip>{Array.isArray(r.additives)?(r.additives.length?r.additives.map(a=><Badge key={a} className="bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-200">{a}</Badge>):<Badge className="bg-emerald-100 text-emerald-800">keine gelistet</Badge>):<span className="text-slate-400">k. A.</span>}</div>
+      {r.ean&&<a href={`https://world.openfoodfacts.org/product/${r.ean}`} target="_blank" rel="noreferrer" className="text-brand hover:underline">Quelle: Open Food Facts ({r.ean}) ↗</a>}
+    </div>
+  }
+  const nova=off.nova??r?.nova??null
+  const adds=off.additives?.length?off.additives:(r?.additives??off.additives)
+  return <div data-testid="off-panel" className="space-y-1.5 text-xs">
+   <div className="flex flex-wrap items-center gap-2"><InfoTip text={HK.nova}><span className="font-semibold flex items-center gap-1"><FlaskConical size={13}/>NOVA</span></InfoTip>{nova?<span data-testid="off-nova-badge" className={cn('rounded-md px-2 py-0.5 text-white font-bold',NOVA_C[nova])}>{nova}</span>:<span className="text-slate-400">k. A.</span>}
+    <InfoTip text={HK.add}><span className="font-semibold ml-2">🧪 Zusatzstoffe</span></InfoTip>{adds.length?adds.map(a=><Badge key={a} className="bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-200">{a}</Badge>):<Badge className="bg-emerald-100 text-emerald-800">keine gelistet</Badge>}</div>
    {(off.origins||off.mplace)&&<div className="flex items-center gap-1"><MapPin size={12}/>{off.origins&&<>Herkunft: {off.origins} <Flag text={off.origins}/></>} {off.mplace&&<>· Herstellort: {off.mplace} <Flag text={off.mplace}/></>}</div>}
    {off.ingr&&<details><summary className="cursor-pointer text-slate-500">📜 Zutaten</summary><p className="mt-1 text-slate-600 dark:text-slate-300">{off.ingr}</p></details>}
    <a href={off.url} target="_blank" rel="noreferrer" className="text-brand hover:underline">Quelle: Open Food Facts ({off.ean}) ↗</a>

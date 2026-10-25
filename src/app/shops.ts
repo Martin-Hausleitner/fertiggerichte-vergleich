@@ -183,15 +183,22 @@ export function findNearestStore(stores: Stores | Shop[] | null | undefined, que
   if (!target) return null
   const tl = target.toLowerCase(), rawL = (queryChain ?? '').trim().toLowerCase()
   let best: Shop | null = null
+  let bestPetrol: Shop | null = null
   for (const sh of list) {
     if (isTrafikOrFalseHofer(sh.chain, sh.name)) continue
     const sc = (sh.chain ?? '').toLowerCase(), sn = (sh.name ?? '').toLowerCase()
     const match = rawL && (sn === rawL || sn.startsWith(rawL + ' ') || sc === rawL)
       ? true
       : sh.chain === target || sc === tl || sn === tl || sn.startsWith(tl + ' ')
-    if (match && (!best || (sh.walk_m ?? sh.dist) < (best.walk_m ?? best.dist))) best = sh
+    if (!match) continue
+    const d = sh.walk_m ?? sh.dist
+    if (isPetrolShop(sh)) {
+      if (!bestPetrol || d < (bestPetrol.walk_m ?? bestPetrol.dist)) bestPetrol = sh
+    } else {
+      if (!best || d < (best.walk_m ?? best.dist)) best = sh
+    }
   }
-  return best
+  return best ?? bestPetrol
 }
 /** Anbieter, deren Preise nur nach Login sichtbar sind → kein Preis, nie in Preis-Rankings. */
 export const LOGIN_ONLY_PRICE = ['Juit']
@@ -246,7 +253,7 @@ export function storeDeliveries(rows: DeliveryRow[], noDelivery: { store: string
 export const onlineProviders = (by: Record<string, StoreDelivery>) => Object.values(by).filter(o => o.online).sort((a, b) => Number(b.delivers_4020 === true) - Number(a.delivers_4020 === true) || Number(b.delivers_4020 !== false) - Number(a.delivers_4020 !== false) || a.store.localeCompare(b.store, 'de')).map(o => o.store)
 export const onlineId = (p: string) => `online|${p}`
 /** SC63 P1.1: Tankstellenshops (z. B. OMV Viva Billa) führen kein Voll-Supermarktsortiment und zählen nicht als offene Filiale fürs Ranking. */
-export const isPetrolShop = (s: { name?: string | null; type?: string | null }) => /petrol|fuel/i.test(s.type ?? '') || /\bviva\b|tankstelle|\bomv\b|\bbp\b|\bshell\b|\bjet\b|\beni\b|turmöl|avanti/i.test(s.name ?? '')
+export const isPetrolShop = (s: { name?: string | null; type?: string | null; addr?: string | null }) => /petrol|fuel/i.test(s.type ?? '') || /\bviva\b|tankstelle|\bomv\b|\bbp\b|\bshell\b|\bjet\b|\beni\b|turmöl|avanti/i.test(`${s.name ?? ''} ${s.addr ?? ''}`)
 export type ShopOption = Shop & { id: string; altIds?: string[]; d: number; walkMin: number; type: string | null; hasProducts: boolean; productCount: number; rankableCount: number; osm?: string }
 export type NearShop = ShopOption
 export const isRowRankable = (r: MealRow & { rankable?: boolean; rankableLight?: boolean }) => r.dupOf == null && (r.rankable === true || r.rankableLight === true || passesRankMin(r) || passesLightRank(r))
@@ -316,6 +323,7 @@ export function useNearShops() {
     const deliversHere = (p: string): boolean | null => { const x = byStore[p.normalize('NFC')] ?? byStore[p]; if (x) return x.delivers_4020 === true ? true : x.delivers_4020 === null ? null : false; const w = delivery.find(d => d.name.normalize('NFC') === p.normalize('NFC')); return w ? w.delivers_4020 : null }
     const myChains = new Set([...mine.filter(s => s.hasProducts).map(s => s.chain), ...online.filter(p => my.includes(onlineId(p)) && deliversHere(p) !== false)])
     const nearestByChain: Record<string, number> = {}
+    all.forEach(s => { if (s.hasProducts && !isPetrolShop(s) && nearestByChain[s.chain] == null) nearestByChain[s.chain] = s.d })
     all.forEach(s => { if (s.hasProducts && nearestByChain[s.chain] == null) nearestByChain[s.chain] = s.d })
     return { all, inR, mine, my, myChains, loc, delivery, deliversHere, online, byStore, countsByChain, rankableByChain, generated: wf?.generated ?? null, loaded: !!wf, distOf: (r: Row) => nearestByChain[r.store] ?? null }
   }, [wf, prov, osm, loc, my, rowStores, countsByChain, rankableByChain, byStore, online, appStores])
