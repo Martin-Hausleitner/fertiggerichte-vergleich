@@ -2,7 +2,7 @@
  *  the 'Preis von 2024' hint (components/PriceAge.tsx). pstat 'live 2026' alone is not enough: heisse-preise 'latest-canonical'
  *  keeps a product listed while its price date is 2023/2024, and the export marks old prices 'Preis veraltet / evtl. ausgelistet'. */
 import { isStalePrice, isDelisted } from './meal'
-type P = { pstat?: string | null; price?: number | null; price_date?: string | null; price_stale?: boolean | null; rank_excluded_reason?: string | null; variant_note?: string | null; price_status?: string | null; price_unconfirmed?: boolean | null; sold_out?: boolean | null; availability_checked?: string | null }
+type P = { pstat?: string | null; price?: number | null; price_date?: string | null; price_stale?: boolean | null; rank_excluded_reason?: string | null; variant_note?: string | null; price_status?: string | null; price_unconfirmed?: boolean | null; refresh_failed?: boolean | null; refresh_status?: string | null; sold_out?: boolean | null; availability_checked?: string | null }
 export const isLive = (p?: string | null) => !!p && /live|aktuell/i.test(p)
 export const priceYear = (r: P): string | null => r.price_date?.slice(0, 4) ?? (r.pstat?.match(/20\d\d/)?.[0] ?? null)
 /** Sensecheck 41 (2): 'old' = the price is stale by its DATE (export: supermarkets > 90 days, online shops > 6 months → price_stale),
@@ -11,7 +11,11 @@ export const priceYear = (r: P): string | null => r.price_date?.slice(0, 4) ?? (
 export const isOldPrice = (r: P) => r.price != null && isStalePrice(r as any)
 /** Sensecheck 39 (5): supermarket price older than 30 days (export: price_status 'unbestätigt' / price_unconfirmed) – 'unbestätigt' wins over
  *  the source status pstat 'live 2026' (#334/#349/#766 showed '✓ aktuell' + Preisstatus 'live 2026' next to price_status 'unbestätigt'). */
-export const isPriceUnconfirmed = (r: P) => r.price != null && (r.price_status === 'unbestätigt' || !!r.price_unconfirmed) && !isStalePrice(r as any)
+/** Sensecheck 84 P1 (2): the shop refresh actively failed (404/410, size mismatch, price block unreadable) → the price could not be
+ *  re-confirmed (#920/#972 Billa 404 kept '✓ aktuell'). 'keine SKU' = no lookup was possible, not a failed one → rule unchanged.
+ *  Rows stay ranked; only the badge/label changes. */
+export const isRefreshFailed = (r: P) => !!r.refresh_failed && r.refresh_status !== 'keine SKU'
+export const isPriceUnconfirmed = (r: P) => r.price != null && (r.price_status === 'unbestätigt' || !!r.price_unconfirmed || isRefreshFailed(r)) && !isStalePrice(r as any)
 /** '✓ aktuell' = live status AND price date 2026 AND not marked stale AND not unconfirmed by the export. */
 export const isPriceCurrent = (r: P) => isLive(r.pstat) && !isOldPrice(r) && !isStalePrice(r as any) && !isPriceUnconfirmed(r) && !isDelisted(r as any) && !r.sold_out   // sensecheck 54 P3: sold-out rows (#2851) get no '✓ aktuell'
 const _d = (d?: string | null) => d && /^\d{4}-\d{2}-\d{2}/.test(d) ? new Date(d.slice(0, 10)).toLocaleDateString('de-AT') : null

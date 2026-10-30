@@ -17,6 +17,11 @@ assert.equal(F.isOldPrice({ pstat: 'live 2026', price: 1, price_date: '2025-12-0
 assert.equal(F.isPriceCurrent({ pstat: 'live 2026', price: 11.98, price_date: '2026-10-24', sold_out: true }), false)
 assert.equal(F.priceStatusLabel({ pstat: 'live 2026', price: 11.98, price_date: '2026-10-24', sold_out: true, availability_checked: '2026-10-24' }), 'ausverkauft (geprüft am ' + new Date('2026-10-24').toLocaleDateString('de-AT') + ')')
 assert.equal(F.showPstatBadge({ pstat: 'live 2026', price: 11.98, price_date: '2026-10-24', sold_out: true }), false)
+// sensecheck 84 P1 (2): failed shop refresh (#920 Billa 404) → no '✓ aktuell', 'Preis unbestätigt'; 'keine SKU' unchanged
+assert.equal(F.isPriceCurrent({ pstat: 'live 2026', price: 2.99, price_date: '2026-10-13', refresh_failed: true, refresh_status: '404' }), false)
+assert.equal(F.isPriceUnconfirmed({ pstat: 'live 2026', price: 2.99, price_date: '2026-10-13', refresh_failed: true, refresh_status: '404' }), true)
+assert.equal(F.isPriceCurrent({ pstat: 'live 2026', price: 2.99, price_date: '2026-10-13', refresh_failed: true, refresh_status: 'keine SKU' }), true)
+assert.equal(F.isPriceCurrent({ pstat: 'live 2026', price: 2.99, price_date: '2026-10-13', refresh_failed: false, refresh_status: null }), true)
 // (1) alsoText
 assert.deepEqual(L.alsoText({ alsoAt: ['Hofer', 'MPreis'], alsoPack: [{ store: 'Spar', kind: 'size', label: '800 g', sameStore: true }, { store: 'Billa', kind: 'size', label: '800 g' }] }), ['auch bei Hofer', 'auch als 800 g (auch bei Billa)'])
 assert.deepEqual(L.alsoText({ alsoPack: [{ store: 'Billa', kind: 'size', label: '700 g', sameStore: true }] }), ['auch als 700 g'])
@@ -160,7 +165,7 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
     const t = tier(r); n[t]++
     if (F.isOldPrice(r) !== (t === 'stale')) bad.push(['old', r.id, t])
     if (!!r.price_stale !== (t === 'stale')) bad.push(['price_stale', r.id, t])
-    if (F.isPriceUnconfirmed(r) !== (t === 'unconfirmed')) bad.push(['unconfirmed', r.id, t])
+    if (F.isPriceUnconfirmed(r) !== (t === 'unconfirmed' || (t === 'ok' && F.isRefreshFailed(r)))) bad.push(['unconfirmed', r.id, t])   // sensecheck 84 P1 (2): failed shop refresh = unconfirmed
     if (t === 'stale' && r.pstat !== 'Preis veraltet') bad.push(['pstat', r.id, r.pstat])
     if ((t === 'ok' || t === 'unconfirmed') && r.pstat !== 'live ' + r.price_date.slice(0, 4)) bad.push(['pstat', r.id, r.pstat])
     if (t === 'stale' && !F.priceStatusLabel(r).startsWith('Preis veraltet')) bad.push(['label', r.id])
