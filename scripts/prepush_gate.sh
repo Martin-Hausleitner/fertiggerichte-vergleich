@@ -25,6 +25,7 @@ node -e 'const s=require("./public/data.json").soldOut||{};console.log(s.stale?"
 node scripts/test_rowref.mjs public/data.json   # sensecheck 27: stable uid refs (favs/#cmp=/#p=)
 node scripts/test_linkkind.mjs public/data.json   # UI follow-up SC28: Shop-Suche/Kategorie/PDF-Links gekennzeichnet
 node scripts/test_sc33_ui.mjs public/data.json   # sensecheck 33: alsoText same-store sizes, ✓ aktuell follows price staleness
+node scripts/test_heute_tz.mjs   # sensecheck 83 P3: Heute-Kopfzeile + Sonntags-Check in Europe/Vienna
 node scripts/regress_top50.mjs public/data.json   # Top 50 (pli) nur meal/stew, keine Trockenware/Desserts
 if [ "${GATE_FAST:-0}" = 1 ]; then echo "[gate] OK (fast: data checks only)"; exit 0; fi
 npm run build

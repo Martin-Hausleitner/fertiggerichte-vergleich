@@ -5,7 +5,7 @@ import { Img, StoreLogo, ScoreBar } from '@/components/product'
 import { useApp, fmt, fmtDist, useHashState, type Row } from '@/lib'
 import { VariantNote, PriceCondition, PriceWinnerBadge } from '@/components/RowNotes'
 import { useNearShops, isPetrolShop, type NearShop } from '@/app/shops'
-import { openNow } from '@/app/hours'
+import { openNow, viennaDayMin } from '@/app/hours'
 import { pricePerPortion, lastPriceDate, passesLightRank, portionG } from '@/app/meal'
 
 const packPortions = (r: Row) => {
@@ -18,7 +18,7 @@ import { OldPriceBadge } from '@/components/PriceAge'
 
 export default function Heute() {
   const { R, open, D } = useApp(); const { all, loc, deliversHere, online } = useNearShops(); const [maxMin, setMaxMin] = useState(10); const [mode, setMode] = useState<'hc' | 'pli' | 'h'>('hc')
-  const now = new Date(); const sunday = now.getDay() === 0
+  const now = new Date(); const sunday = viennaDayMin(now).day === 6 // Mo=0 … So=6, Europe/Vienna (SC83 P3)
   const shops = useMemo(() => all.filter(s => s.walkMin <= maxMin).map(s => ({ ...s, open: openNow(s.hours, now) })), [all, maxMin])
   const fullShop = (s: NearShop) => s.hasProducts && !isPetrolShop(s)
   const openShops = shops.filter(s => s.open && fullShop(s))
@@ -40,7 +40,7 @@ export default function Heute() {
   const updated = lastPriceDate(R)
   return <div className="space-y-4">
     <div><h1 className="text-2xl font-bold tracking-tight">Was kaufe ich heute?</h1>
-      <p className="text-sm text-muted-foreground"><MapPin className="inline size-4" /> ab {loc.addr} · {now.toLocaleString('de-AT', { weekday: 'long', hour: '2-digit', minute: '2-digit' })}{updated && <> · Preise zuletzt aktualisiert {new Date(updated).toLocaleDateString('de-AT')}</>}</p></div>
+      <p className="text-sm text-muted-foreground"><MapPin className="inline size-4" /> ab {loc.addr} · {now.toLocaleString('de-AT', { weekday: 'long', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Vienna' })}{updated && <> · Preise zuletzt aktualisiert {new Date(updated).toLocaleDateString('de-AT')}</>}</p></div>
     <div className="flex flex-wrap items-center gap-2 text-sm">Gehzeit bis {[5, 10, 15, 20].map(m => <Button key={m} size="sm" active={maxMin === m} onClick={() => setMaxMin(m)}>≤ {m} min</Button>)}<div className="flex flex-wrap items-center gap-1 ml-auto" data-testid="heute-mode">{([['hc', '🥇 Gesund & günstig'], ['pli', '🏆 Preis-Leistung'], ['h', '💚 Gesündeste']] as const).map(([v, l]) => <Button key={v} size="sm" active={mode === v} data-testid={`heute-mode-${v}`} onClick={() => setMode(v)}>{l}</Button>)}</div></div>
     {(sunday || openShops.length === 0) && <Card className="flex gap-2 border-amber-300 bg-amber-50 p-3 text-sm shadow-none dark:bg-amber-950/30"><AlertTriangle className="size-5 shrink-0 text-amber-600" />
       <div><b>{sunday ? 'Sonntag: Supermärkte haben in Österreich geschlossen.' : `Gerade hat keine Filiale in ≤ ${maxMin} Gehminuten offen.`}</b> Ausnahmen (Bahnhof, Tankstelle, Feiertage) sind nicht erfasst. Online-Anbieter: {online.map(p => `${p}${deliversHere(p) === false ? ' (nicht lieferbar nach Linz)' : deliversHere(p) == null ? ' (Lieferung nach Linz unbestätigt)' : ''}`).join(', ')}. Liefergebiet laut offizieller Versand-/Liefergebietsseite des Anbieters. <button type="button" className="font-medium text-amber-800 underline underline-offset-2 dark:text-amber-300" data-testid="goto-online" onClick={() => setTab('online')}>→ Online-Anbieter für Linz vergleichen</button></div></Card>}
