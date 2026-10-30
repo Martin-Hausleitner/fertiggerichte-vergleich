@@ -168,11 +168,25 @@ export const passesLightRank = (r: Row, c: ValueCfg = {}) =>
 /** GTIN aus psrc (z. B. „GTIN 4260237451068“). */
 export const gtinOf = (r: { ean?: string | number | null; psrc?: string | null }) => (r.ean && /^\d{8,14}$/.test(String(r.ean).trim()) ? String(r.ean).trim() : null) ?? (r.psrc ?? '').match(/(?:\/product\/|\b)(\d{8,14})\b/)?.[1] ?? null
 const completeness = (r: object) => Object.values(r).filter(v => v != null && v !== '' && !(Array.isArray(v) && !v.length)).length
-/** Markiert Zeilen mit gleicher GTIN im selben Laden: die vollständigste bleibt, die anderen bekommen dupOf (Index bleibt stabil für topPLI/topLight). */
-export function dedupeGtin<T extends { id?: number; store: string; ean?: string | number | null; psrc?: string | null; dupOf?: number }>(rows: T[]): (T & { dupOf?: number })[] {
-  const best = new Map<string, T>()
-  for (const r of rows) { const g = gtinOf(r); if (!g) continue; const k = g + '|' + r.store, o = best.get(k); if (!o || ((r.dupOf == null ? 1 : 0) - (o.dupOf == null ? 1 : 0)) > 0 || (r.dupOf == null === (o.dupOf == null) && completeness(r) > completeness(o))) best.set(k, r) }
-  return rows.map(r => { const g = gtinOf(r), b = g ? best.get(g + '|' + r.store) : undefined; return b && b !== r ? { ...r, dupOf: r.dupOf ?? b.id } : r })
+/** SC81 P1.2: Packungsgrößen unterscheiden sich um mehr als 3 % (z. B. 400 g vs. 800 g, Einzelglas vs. 6er-Pack) → nie als GTIN-Duplikat zusammenführen. */
+export const packSizeDiffers = (a: { size?: number | null }, b: { size?: number | null }) => {
+  const sa = a.size ?? 0, sb = b.size ?? 0
+  return sa > 0 && sb > 0 && Math.abs(sa - sb) / Math.max(sa, sb) > 0.03
+}
+/** Markiert Zeilen mit gleicher GTIN im selben Laden: die vollständigste bleibt, die anderen bekommen dupOf (Index bleibt stabil für topPLI/topLight).
+ *  SC81 P1.2: nur innerhalb derselben Packungsgröße – eine andere Größe mit (fälschlich) geteilter GTIN bleibt eine eigene Zeile. */
+export function dedupeGtin<T extends { id?: number; store: string; ean?: string | number | null; psrc?: string | null; dupOf?: number; size?: number | null }>(rows: T[]): (T & { dupOf?: number })[] {
+  const better = (r: T, o: T) => ((r.dupOf == null ? 1 : 0) - (o.dupOf == null ? 1 : 0)) > 0 || (r.dupOf == null === (o.dupOf == null) && completeness(r) > completeness(o))
+  const groups = new Map<string, T[]>()
+  for (const r of rows) { const g = gtinOf(r); if (!g) continue; const k = g + '|' + r.store; const a = groups.get(k); if (a) a.push(r); else groups.set(k, [r]) }
+  const bestFor = (r: T): T | undefined => {
+    const g = gtinOf(r); const grp = g ? groups.get(g + '|' + r.store) : undefined
+    if (!grp || grp.length < 2) return undefined
+    let b: T | undefined
+    for (const o of grp) if (!packSizeDiffers(o, r) && (!b || better(o, b))) b = o
+    return b
+  }
+  return rows.map(r => { const b = bestFor(r); return b && b !== r ? { ...r, dupOf: r.dupOf ?? b.id } : r })
 }
 
 /** SC76 P2.1: Central PLI helper across main-ranked and light-ranked meals. */

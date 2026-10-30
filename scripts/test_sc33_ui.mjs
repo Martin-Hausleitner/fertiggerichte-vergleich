@@ -673,10 +673,11 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   assert.ok(r801 && r801.dupOf === 1180, "#801 Hofer Kärntner Kasnudeln dupOf=1180 (SC75 P3.1)")
   assert.ok(r635 && r635.ppk === 12.83 && r635.name === "Omis Schmankerl Hühnerpfandl mit Spätzle", "#635 ppk=12.83 & normalized name (SC75 P3.2)")
   assert.equal(D.rows.filter(r => /\s{2,}/.test(r.name || "")).length, 0, "0 rows with multiple whitespace in name (SC75 P3.2)")
-  for (const [losId, winId] of [[806, 691], [804, 1217], [821, 1425], [1356, 1218], [1357, 1220], [59, 60], [287, 286], [346, 363]]) {
+  // SC81 P1.2: #59/#60 (800 g vs 400 g) and #287/#286 (1 kg vs 500 g) are different pack sizes, intentionally no longer dupOf
+  for (const [losId, winId] of [[806, 691], [804, 1217], [821, 1425], [1356, 1218], [1357, 1220], [346, 363]]) {
     assert.equal(byId75.get(losId)?.dupOf, winId, `#${losId} dupOf #${winId} (SC75 P3.3)`)
   }
-  console.log("[sc75-ui-fixes] OK: P1.1 offFor by EAN & OffPanel fallback, P1.2 Detail key={detId} & ZoomImage reset, P2.1 Heute mode/PLI/pack-price, P2.2 Viva Billa petrol badge & non-petrol nearest preference, P3.1 #1180 Hofer Kasnudeln rankable, P3.2 ppk/whitespace, P3.3 gtinOf(r.ean) & 8 GTIN dupOf pairs")
+  console.log("[sc75-ui-fixes] OK: P1.1 offFor by EAN & OffPanel fallback, P1.2 Detail key={detId} & ZoomImage reset, P2.1 Heute mode/PLI/pack-price, P2.2 Viva Billa petrol badge & non-petrol nearest preference, P3.1 #1180 Hofer Kasnudeln rankable, P3.2 ppk/whitespace, P3.3 gtinOf(r.ean) & 6 GTIN dupOf pairs")
 }
 
 // sensecheck 76 (P1.1, P1.2, P2.1, P2.2):
