@@ -1,10 +1,23 @@
 // Parser für OSM-artige Öffnungszeiten aus stores.json, z. B. "Mo-Fr 07:15-19:15; Sa 07:15-18:00"
 const D = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'], DE: Record<string, string> = { Di: 'Tu', Mi: 'We', Do: 'Th', So: 'Su' }
 const di = (s: string) => D.indexOf(DE[s] ?? s)
+/** Öffnungszeiten der Linzer Filialen sind Ortszeit Linz: Wochentag/Uhrzeit immer in Europe/Vienna auswerten,
+ *  nicht in der Zeitzone des Geräts (sonst z. B. dm „offen“ um 18:45 Wiener Zeit auf einem UTC-Rechner). */
+const TZ = 'Europe/Vienna'
+let fmtTz: Intl.DateTimeFormat | null = null
+export function viennaDayMin(now: Date): { day: number; min: number } {
+  try {
+    fmtTz ??= new Intl.DateTimeFormat('en-GB', { timeZone: TZ, weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
+    const p = Object.fromEntries(fmtTz.formatToParts(now).map(x => [x.type, x.value]))
+    const day = D.indexOf(String(p.weekday).slice(0, 2)), h = +p.hour % 24, m = +p.minute
+    if (day >= 0 && Number.isFinite(h) && Number.isFinite(m)) return { day, min: h * 60 + m }
+  } catch { /* Intl ohne Zeitzonendaten → Gerätezeit */ }
+  return { day: (now.getDay() + 6) % 7, min: now.getHours() * 60 + now.getMinutes() }
+}
 export function openNow(hours: string | undefined, now = new Date()): boolean | null {
   if (!hours) return null
   if (/24\/7/.test(hours)) return true
-  const day = (now.getDay() + 6) % 7, min = now.getHours() * 60 + now.getMinutes(); let known = false
+  const { day, min } = viennaDayMin(now); let known = false
   for (const part of hours.split(';').map(x => x.trim()).filter(Boolean)) {
     const m = part.match(/^([A-Za-z,\- ]+?)\s+(.+)$/); if (!m) continue
     const days = new Set<number>()

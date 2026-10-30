@@ -240,6 +240,18 @@ await page.waitForFunction(() => (document.querySelector("[role=dialog]")?.inner
 const dlg2205 = await page.locator("[role=dialog]").first().innerText()
 assert.ok(dlg2205.includes("Denns BioMarkt") && dlg2205.includes("Tummelplatz 19") && !dlg2205.includes("keine Filiale in der Nähe gefunden"), "#2205 Denn's Produktdetails shows Denns BioMarkt · Tummelplatz 19")
 console.log("[e2e sc72-ui-fixes] OK: #2205 Denn's Produktdetails NearestBox shows Denns BioMarkt · Tummelplatz 19, 4020 Linz")
+// SC81 gate fix: Heute's Top lists only use shops that are open "now", so the full addresses below appear only while Spar (Mo-Fr -19:00)
+// and dm (Mo-Fr -18:30) are open. Opening hours are Linz local time (src/app/hours.ts evaluates Europe/Vienna, not the device zone).
+// (a) Regression: Fr 30.10.2026 18:45 Vienna = 17:45 UTC → dm geschlossen, Spar offen, even if the browser runs in UTC.
+await page.clock.setFixedTime(new Date("2026-10-30T17:45:00Z"))
+await page.goto(base + "#tab=heute"); await page.reload()
+await page.waitForSelector("[data-testid=heute-shop-rank]", { timeout: 30000 })
+const chipsTz = await page.locator("[data-testid=heute-shop-rank]").evaluateAll(els => els.map(e => (e.parentElement?.innerText || "").replace(/\s+/g, " ").trim()))
+assert.ok(chipsTz.some(t => t.startsWith("dm · Holzstraße 15") && t.endsWith("geschlossen")), "dm chip is 'geschlossen' at Fr 18:45 Vienna (17:45 UTC): " + JSON.stringify(chipsTz.filter(t => t.startsWith("dm"))))
+assert.ok(chipsTz.some(t => t.startsWith("Spar · Holzstraße 13") && t.endsWith("offen")), "Spar chip is 'offen' at Fr 18:45 Vienna: " + JSON.stringify(chipsTz.filter(t => t.startsWith("Spar"))))
+console.log("[e2e sc81-heute-tz] OK: opening hours evaluated in Europe/Vienna (Fr 18:45 Vienna: dm geschlossen, Spar offen)")
+// (b) Deterministic clock for the SC73/SC74 Heute checks: Wed 28.10.2026 10:00 Vienna, all Linz stores open.
+await page.clock.setFixedTime(new Date("2026-10-28T09:00:00Z"))
 // sensecheck 73 P1.1 & P1.2: #tab=heute & #tab=meine-shops exclude Tabak Trafik Zeitlhofer Michael, deduplicate Spar (<60m) to 1 chip (Holzstraße 13, 4020 Linz), and show street addresses (Holzstraße 15, Lederergasse 33b)
 await page.goto(base + "#tab=heute"); await page.reload()
 await page.waitForSelector("[data-testid=heute-shop-rank]", { timeout: 30000 })
