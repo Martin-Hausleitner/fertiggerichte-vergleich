@@ -1,7 +1,7 @@
 {
   "meta": {
     "generated": "2026-10-25",
-    "total_products": 1911,
+    "total_products": 1915,
     "chains": [
       "Billa",
       "Spar",
@@ -35,32 +35,32 @@
     "Billa": {
       "count": 639,
       "n_with_nutrition": 634,
-      "n_rankable": 118,
+      "n_rankable": 117,
       "median_price": 4.49,
       "median_price_per_kg": 13.31,
       "median_eur_per_10g_protein": 1.86,
       "median_eur_per_10g_protein_all": 1.85,
-      "median_health_score": 38.25,
+      "median_health_score": 38.1,
       "median_salt_100": 1.1,
       "median_kcal_100": 186.5,
       "median_protein_100": 7.9
     },
     "Spar": {
-      "count": 597,
-      "n_with_nutrition": 253,
+      "count": 599,
+      "n_with_nutrition": 254,
       "n_rankable": 36,
       "median_price": 3.99,
-      "median_price_per_kg": 11.52,
+      "median_price_per_kg": 11.51,
       "median_eur_per_10g_protein": 1.65,
       "median_eur_per_10g_protein_all": 1.97,
       "median_health_score": 36.75,
       "median_salt_100": 1.1,
-      "median_kcal_100": 130.0,
+      "median_kcal_100": 129.5,
       "median_protein_100": 5.5
     },
     "Hofer": {
-      "count": 180,
-      "n_with_nutrition": 105,
+      "count": 182,
+      "n_with_nutrition": 107,
       "n_rankable": 2,
       "median_price": 2.49,
       "median_price_per_kg": 6.93,
@@ -128,7 +128,7 @@
     "Ripperl": {
       "count": 6,
       "n_rankable": 0,
-      "median_price": 11.49,
+      "median_price": 12.49,
       "median_price_per_kg": 11.49,
       "median_eur_per_10g_protein": null,
       "median_health_score": 31.5,
@@ -171,33 +171,33 @@
     },
     "Gulasch": {
       "count": 100,
-      "n_rankable": 26,
+      "n_rankable": 25,
       "median_price": 5.64,
       "median_price_per_kg": 11.08,
-      "median_eur_per_10g_protein": 1.73,
-      "median_health_score": 46.0,
+      "median_eur_per_10g_protein": 1.69,
+      "median_health_score": 44.8,
       "median_salt_100": 1.1,
       "median_kcal_100": 91.0,
       "median_protein_100": 5.3
     },
     "Curry": {
       "count": 113,
-      "n_rankable": 34,
+      "n_rankable": 33,
       "median_price": 5.49,
       "median_price_per_kg": 17.53,
       "median_eur_per_10g_protein": 2.4,
-      "median_health_score": 43.9,
+      "median_health_score": 43.7,
       "median_salt_100": 0.88,
       "median_kcal_100": 111.0,
       "median_protein_100": 5.3
     },
     "Suppe": {
       "count": 201,
-      "n_rankable": 30,
+      "n_rankable": 28,
       "median_price": 4.49,
       "median_price_per_kg": 9.97,
-      "median_eur_per_10g_protein": 2.29,
-      "median_health_score": 46.8,
+      "median_eur_per_10g_protein": 2.24,
+      "median_health_score": 46.65,
       "median_salt_100": 1.0,
       "median_kcal_100": 80.0,
       "median_protein_100": 3.7
@@ -206,7 +206,7 @@
       "count": 90,
       "n_rankable": 2,
       "median_price": 3.99,
-      "median_price_per_kg": 8.52,
+      "median_price_per_kg": 8.77,
       "median_eur_per_10g_protein": 2.79,
       "median_health_score": 31.4,
       "median_salt_100": 1.45,
@@ -214,23 +214,23 @@
       "median_protein_100": 7.5
     },
     "Pasta": {
-      "count": 311,
+      "count": 313,
       "n_rankable": 57,
       "median_price": 3.79,
-      "median_price_per_kg": 11.69,
+      "median_price_per_kg": 11.63,
       "median_eur_per_10g_protein": 1.95,
       "median_health_score": 42.7,
       "median_salt_100": 0.95,
-      "median_kcal_100": 143.5,
+      "median_kcal_100": 144.0,
       "median_protein_100": 6.3
     },
     "Bowl": {
       "count": 102,
-      "n_rankable": 26,
+      "n_rankable": 25,
       "median_price": 7.99,
       "median_price_per_kg": 17.59,
-      "median_eur_per_10g_protein": 2.65,
-      "median_health_score": 46.35,
+      "median_eur_per_10g_protein": 2.7,
+      "median_health_score": 46.8,
       "median_salt_100": 0.89,
       "median_kcal_100": 116.0,
       "median_protein_100": 5.6
@@ -269,45 +269,45 @@
       "median_protein_100": 8.7
     },
     "Schwein": {
-      "count": 82,
+      "count": 83,
       "n_rankable": 11,
       "median_price": 4.49,
-      "median_price_per_kg": 13.32,
+      "median_price_per_kg": 12.81,
       "median_eur_per_10g_protein": 1.37,
       "median_health_score": 34.4,
       "median_salt_100": 1.2,
-      "median_kcal_100": 172.0,
-      "median_protein_100": 8.6
+      "median_kcal_100": 165.0,
+      "median_protein_100": 8.4
     },
     "vegetarisch": {
-      "count": 132,
+      "count": 133,
       "n_rankable": 8,
-      "median_price": 3.89,
-      "median_price_per_kg": 11.23,
+      "median_price": 3.84,
+      "median_price_per_kg": 11.22,
       "median_eur_per_10g_protein": 2.05,
       "median_health_score": 35.0,
       "median_salt_100": 1.1,
-      "median_kcal_100": 212.0,
-      "median_protein_100": 7.7
+      "median_kcal_100": 211.0,
+      "median_protein_100": 7.55
     },
     "vegan": {
       "count": 72,
-      "n_rankable": 4,
+      "n_rankable": 3,
       "median_price": 4.99,
       "median_price_per_kg": 19.97,
-      "median_eur_per_10g_protein": 4.02,
-      "median_health_score": 63.7,
+      "median_eur_per_10g_protein": 4.46,
+      "median_health_score": 66.8,
       "median_salt_100": 0.9,
       "median_kcal_100": 156.0,
       "median_protein_100": 6.0
     },
     "Sonstige": {
       "count": 322,
-      "n_rankable": 27,
+      "n_rankable": 26,
       "median_price": 3.99,
       "median_price_per_kg": 12.09,
       "median_eur_per_10g_protein": 1.47,
-      "median_health_score": 40.0,
+      "median_health_score": 39.8,
       "median_salt_100": 1.2,
       "median_kcal_100": 218.0,
       "median_protein_100": 9.15
@@ -321,7 +321,7 @@
         "name": "Die Grillerei Spareribs Sous-Vide BBQ",
         "brand": "Die Grillerei",
         "store": "Billa",
-        "price": 11.99,
+        "price": 14.99,
         "eur_per_10g_protein": null,
         "health_score": 48.4,
         "pli": null,
@@ -334,7 +334,7 @@
         "name": "Die Grillerei Spareribs Sous-Vide BBQ",
         "brand": "Die Grillerei",
         "store": "Billa",
-        "price": 11.99,
+        "price": 14.99,
         "eur_per_10g_protein": null,
         "health_score": 48.4,
         "pli": null,
@@ -347,7 +347,7 @@
         "name": "Die Grillerei Spareribs Sous-Vide BBQ",
         "brand": "Die Grillerei",
         "store": "Billa",
-        "price": 11.99,
+        "price": 14.99,
         "eur_per_10g_protein": null,
         "health_score": 48.4,
         "pli": null,
@@ -493,17 +493,17 @@
         "url": "https://www.dm.at/p/d/3127087/dmbio-veganes-no-chicken-curry"
       },
       "healthiest": {
-        "id": 3149,
-        "uid": "j2gan1ghjt",
-        "name": "Kichererbsen Curry",
+        "id": 3214,
+        "uid": "a9iz57iu08",
+        "name": "Bio Kichererbsen Curry 500g - 6er Vorteilspack von Goldblatt",
         "brand": "Goldblatt",
-        "store": "Goldblatt",
-        "price": 11.99,
-        "eur_per_10g_protein": 4.21,
+        "store": "myProduct",
+        "price": 64.92,
+        "eur_per_10g_protein": 3.8,
         "health_score": 63.8,
-        "pli": 37.4,
-        "img": "https://cdn.shopify.com/s/files/1/0917/3450/7860/files/f1-gb-fg-curry-251008.jpg?v=1780484954",
-        "url": "https://goldblatt.at/products/bio-kichererbsen-curry"
+        "pli": 37.8,
+        "img": "https://myproduct.at/media/catalog/product/b/i/bio-kichererbsen-curry-500g-6er-vorteilspack-359243-von-goldblatt.jpg",
+        "url": "https://myproduct.at/bio-kichererbsen-curry-500g-6er-vorteilspack-359243-von-goldblatt"
       },
       "cheapest_protein": {
         "id": 1254,
@@ -854,7 +854,7 @@
         "name": "BILLA Steinofen Pizza Mozzarella 2er",
         "brand": "BILLA Immer Gut",
         "store": "Billa",
-        "price": 3.69,
+        "price": 3.64,
         "eur_per_10g_protein": 0.47,
         "health_score": 34.2,
         "pli": 67.1,
@@ -880,7 +880,7 @@
         "name": "BILLA Steinofen Pizza Mozzarella 2er",
         "brand": "BILLA Immer Gut",
         "store": "Billa",
-        "price": 3.69,
+        "price": 3.64,
         "eur_per_10g_protein": 0.47,
         "health_score": 34.2,
         "pli": 67.1,
@@ -916,17 +916,17 @@
         "url": "https://kernbeisser.at/produkt/heimat-hafer-mit-pilzen/"
       },
       "cheapest_protein": {
-        "id": 3213,
-        "uid": "yu500vw6ka",
-        "name": "Bio Bolo Amore 500g - 6er Vorteilspack von Goldblatt",
+        "id": 3150,
+        "uid": "05bm08o9ep",
+        "name": "Bolo Amore",
         "brand": "Goldblatt",
-        "store": "myProduct",
-        "price": 64.92,
-        "eur_per_10g_protein": 3.23,
-        "health_score": 60.6,
-        "pli": 37.2,
-        "img": "https://myproduct.at/media/catalog/product/b/i/bio-bolo-amore-500g-6er-vorteilspack-359240-von-goldblatt.jpg",
-        "url": "https://myproduct.at/bio-bolo-amore-500g-6er-vorteilspack-359240-von-goldblatt"
+        "store": "Goldblatt",
+        "price": 11.99,
+        "eur_per_10g_protein": 3.58,
+        "health_score": 66.8,
+        "pli": 39.8,
+        "img": "https://cdn.shopify.com/s/files/1/0917/3450/7860/files/f1-gb-fg-bolognese-251008.jpg?v=1780484950",
+        "url": "https://goldblatt.at/products/bio-bolognese"
       }
     },
     "Sonstige": {
@@ -936,7 +936,7 @@
         "name": "BILLA Steinofen Pizza Tonno 2er",
         "brand": "BILLA Immer Gut",
         "store": "Billa",
-        "price": 3.69,
+        "price": 3.64,
         "eur_per_10g_protein": 0.47,
         "health_score": 39.6,
         "pli": 69.8,
@@ -988,20 +988,20 @@
       "Billa": [
         5,
         9,
-        73,
-        206,
-        101,
-        97,
-        79,
+        72,
+        205,
+        103,
+        96,
+        80,
         26,
         24,
         8
       ],
       "Spar": [
         5,
-        45,
+        46,
         117,
-        169,
+        170,
         108,
         63,
         48,
@@ -1012,7 +1012,7 @@
       "Hofer": [
         7,
         37,
-        50,
+        52,
         18,
         6,
         1,
@@ -1074,20 +1074,20 @@
       "Billa": [
         5,
         9,
-        73,
-        206,
-        101,
-        97,
-        79,
+        72,
+        205,
+        103,
+        96,
+        80,
         26,
         24,
         8
       ],
       "Spar": [
         5,
-        45,
+        46,
         117,
-        169,
+        170,
         108,
         63,
         48,
@@ -1098,7 +1098,7 @@
       "Hofer": [
         7,
         37,
-        50,
+        52,
         18,
         6,
         1,
@@ -1187,13 +1187,13 @@
         "Curry": 27,
         "Suppe": 76,
         "Knödel": 25,
-        "Pasta": 100,
+        "Pasta": 101,
         "Bowl": 8,
         "Asia": 16,
         "Hülsenfrüchte": 20,
         "Rind": 9,
         "Schwein": 26,
-        "vegetarisch": 57,
+        "vegetarisch": 58,
         "vegan": 14,
         "Sonstige": 119
       },
@@ -1206,12 +1206,12 @@
         "Curry": 8,
         "Suppe": 13,
         "Knödel": 14,
-        "Pasta": 54,
+        "Pasta": 55,
         "Bowl": 9,
         "Asia": 7,
         "Hülsenfrüchte": 1,
         "Rind": 1,
-        "Schwein": 9,
+        "Schwein": 10,
         "vegetarisch": 17,
         "vegan": 0,
         "Sonstige": 24
@@ -1307,7 +1307,7 @@
         "Bowl": 3.79,
         "Asia": 1.96,
         "Hülsenfrüchte": 2.15,
-        "Rind": 1.56,
+        "Rind": 1.64,
         "Schwein": 1.36,
         "vegetarisch": 1.72,
         "vegan": 1.87,
@@ -1328,7 +1328,7 @@
         "Hülsenfrüchte": 5.02,
         "Rind": 2.39,
         "Schwein": 1.4,
-        "vegetarisch": 1.98,
+        "vegetarisch": 1.97,
         "vegan": 1.91,
         "Sonstige": 1.36
       },
@@ -1341,12 +1341,12 @@
         "Curry": 2.75,
         "Suppe": 0.92,
         "Knödel": 0.96,
-        "Pasta": 1.33,
+        "Pasta": 1.32,
         "Bowl": null,
         "Asia": 2.71,
         "Hülsenfrüchte": null,
         "Rind": null,
-        "Schwein": 0.9,
+        "Schwein": 1.19,
         "vegetarisch": 1.14,
         "vegan": null,
         "Sonstige": 0.82
@@ -1439,12 +1439,12 @@
       {
         "chain": "Spar",
         "median_eur_per_10g_protein": 1.65,
-        "n": 597
+        "n": 599
       },
       {
         "chain": "Hofer",
         "median_eur_per_10g_protein": 1.46,
-        "n": 180
+        "n": 182
       },
       {
         "chain": "Lidl",
@@ -1480,7 +1480,7 @@
       },
       {
         "category": "Gulasch",
-        "median_eur_per_10g_protein": 1.73,
+        "median_eur_per_10g_protein": 1.69,
         "n": 100
       },
       {
@@ -1490,7 +1490,7 @@
       },
       {
         "category": "Suppe",
-        "median_eur_per_10g_protein": 2.29,
+        "median_eur_per_10g_protein": 2.24,
         "n": 201
       },
       {
@@ -1501,11 +1501,11 @@
       {
         "category": "Pasta",
         "median_eur_per_10g_protein": 1.95,
-        "n": 311
+        "n": 313
       },
       {
         "category": "Bowl",
-        "median_eur_per_10g_protein": 2.65,
+        "median_eur_per_10g_protein": 2.7,
         "n": 102
       },
       {
@@ -1526,16 +1526,16 @@
       {
         "category": "Schwein",
         "median_eur_per_10g_protein": 1.37,
-        "n": 82
+        "n": 83
       },
       {
         "category": "vegetarisch",
         "median_eur_per_10g_protein": 2.05,
-        "n": 132
+        "n": 133
       },
       {
         "category": "vegan",
-        "median_eur_per_10g_protein": 4.02,
+        "median_eur_per_10g_protein": 4.46,
         "n": 72
       },
       {
@@ -1567,17 +1567,17 @@
       },
       {
         "category": "Gulasch",
-        "median_health_score": 46.0,
+        "median_health_score": 44.8,
         "n": 100
       },
       {
         "category": "Curry",
-        "median_health_score": 43.9,
+        "median_health_score": 43.7,
         "n": 113
       },
       {
         "category": "Suppe",
-        "median_health_score": 46.8,
+        "median_health_score": 46.65,
         "n": 201
       },
       {
@@ -1588,11 +1588,11 @@
       {
         "category": "Pasta",
         "median_health_score": 42.7,
-        "n": 311
+        "n": 313
       },
       {
         "category": "Bowl",
-        "median_health_score": 46.35,
+        "median_health_score": 46.8,
         "n": 102
       },
       {
@@ -1613,21 +1613,21 @@
       {
         "category": "Schwein",
         "median_health_score": 34.4,
-        "n": 82
+        "n": 83
       },
       {
         "category": "vegetarisch",
         "median_health_score": 35.0,
-        "n": 132
+        "n": 133
       },
       {
         "category": "vegan",
-        "median_health_score": 63.7,
+        "median_health_score": 66.8,
         "n": 72
       },
       {
         "category": "Sonstige",
-        "median_health_score": 40.0,
+        "median_health_score": 39.8,
         "n": 322
       }
     ]

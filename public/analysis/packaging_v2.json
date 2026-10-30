@@ -584,7 +584,7 @@
     ],
     "salt": [
      0.0,
-     0.83,
+     0.84,
      1.1,
      1.4,
      9.4
@@ -708,18 +708,18 @@
     }
    ],
    "stats": {
-    "n_products": 627,
+    "n_products": 630,
     "n_rankable": 72,
     "median_price": 3.79,
-    "median_price_per_kg": 12.48,
+    "median_price_per_kg": 12.47,
     "median_price_per_10g_protein": 2.09,
     "median_health_score": 38.9,
     "median_pli": 31.9,
     "median_protein_100": 7.1,
     "median_salt_100": 1.1,
-    "median_kcal_100": 156.0,
-    "median_additives": 0,
-    "n_additives": 179,
+    "median_kcal_100": 155.5,
+    "median_additives": 0.5,
+    "n_additives": 180,
     "share_bio": 6
    }
   },
@@ -820,14 +820,14 @@
      0.47,
      1.47,
      2.13,
-     2.57,
+     2.58,
      5.81
     ],
     "score": [
      30.2,
-     39.12,
-     44.9,
-     56.3,
+     39.05,
+     45.0,
+     56.4,
      78.5
     ],
     "salt": [
@@ -887,7 +887,7 @@
      "store": "Billa",
      "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-771519-1252558653-qQd3qKj2.jpg",
      "logo": "analysis/logos/immer-gut.png",
-     "price": 3.69,
+     "price": 3.64,
      "eur10p": 0.47,
      "score": 39.6,
      "pli": 69.8,
@@ -915,7 +915,7 @@
      "store": "Billa",
      "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-771522-0140297026-B8z_uQgV.jpg",
      "logo": "analysis/logos/immer-gut.png",
-     "price": 3.69,
+     "price": 3.64,
      "eur10p": 0.47,
      "score": 34.2,
      "pli": 67.1,
@@ -951,14 +951,14 @@
     }
    ],
    "stats": {
-    "n_products": 740,
-    "n_rankable": 130,
+    "n_products": 741,
+    "n_rankable": 129,
     "median_price": 5.19,
-    "median_price_per_kg": 13.59,
+    "median_price_per_kg": 13.56,
     "median_price_per_10g_protein": 2.13,
-    "median_health_score": 44.9,
-    "median_pli": 35.55,
-    "median_protein_100": 8.75,
+    "median_health_score": 45.0,
+    "median_pli": 35.5,
+    "median_protein_100": 8.7,
     "median_salt_100": 0.95,
     "median_kcal_100": 187.0,
     "median_additives": 1,
@@ -1223,15 +1223,15 @@
     "eur10p": [
      1.14,
      2.37,
-     3.15,
+     3.1,
      4.0,
      5.85
     ],
     "score": [
      34.2,
-     45.45,
-     52.3,
-     58.27,
+     44.85,
+     52.15,
+     57.7,
      77.5
     ],
     "salt": [
@@ -1358,12 +1358,12 @@
    ],
    "stats": {
     "n_products": 156,
-    "n_rankable": 68,
+    "n_rankable": 62,
     "median_price": 8.99,
     "median_price_per_kg": 17.71,
-    "median_price_per_10g_protein": 3.15,
-    "median_health_score": 52.3,
-    "median_pli": 34.1,
+    "median_price_per_10g_protein": 3.1,
+    "median_health_score": 52.15,
+    "median_pli": 33.95,
     "median_protein_100": 4.6,
     "median_salt_100": 0.8,
     "median_kcal_100": 88.0,
@@ -2085,8 +2085,8 @@
   ],
   "n_products": [
    216,
-   627,
-   740,
+   630,
+   741,
    33,
    156,
    14,
@@ -2095,7 +2095,7 @@
   "median_protein_100": [
    3.9,
    7.1,
-   8.75,
+   8.7,
    6.0,
    4.6,
    16.0,
@@ -2115,16 +2115,16 @@
    2.09,
    2.13,
    2.63,
-   3.15,
+   3.1,
    1.92,
    null
   ],
   "median_health_score": [
    36.1,
    38.9,
-   44.9,
+   45.0,
    34.5,
-   52.3,
+   52.15,
    42.95,
    null
   ]
@@ -2140,7 +2140,7 @@
   "by_reason": [
    [
     "bisherige Einstufung (Shop-Rubrik)",
-    988
+    989
    ],
    [
     "keine belastbaren Hinweise",
@@ -2148,7 +2148,7 @@
    ],
    [
     "Name/Marke: Kühlregal",
-    321
+    324
    ],
    [
     "Name/Marke: TK",
@@ -2229,7 +2229,7 @@
   ],
   "moved": 234,
   "unclassified": 357,
-  "total": 2344
+  "total": 2348
  },
  "assign": {
   "0": [

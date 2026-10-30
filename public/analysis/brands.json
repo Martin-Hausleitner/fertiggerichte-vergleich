@@ -1,11 +1,11 @@
 {
   "meta": {
     "generated": "2026-10-25",
-    "total_products": 1342,
+    "total_products": 1344,
     "distinct_brands": 152,
     "brands_ge_3": 72,
     "brands_ge_5": 51,
-    "private_label_products": 470,
+    "private_label_products": 472,
     "name_brand_products": 492,
     "unbranded_products": 0,
     "overall_median_ppk": 12.47,
@@ -39,7 +39,7 @@
           "min": 4.85,
           "q1": 11.43,
           "median": 12.09,
-          "q3": 13.36,
+          "q3": 13.37,
           "max": 19.94,
           "mean": 12.26,
           "n": 88
@@ -136,16 +136,16 @@
         },
         "pli": {
           "min": 28.9,
-          "q1": 33.3,
-          "median": 34.0,
-          "q3": 38.6,
+          "q1": 33.17,
+          "median": 33.9,
+          "q3": 37.9,
           "max": 47.7,
-          "mean": 36.05,
-          "n": 15
+          "mean": 35.49,
+          "n": 14
         },
         "n_with_price": 88,
         "n_with_nutrition": 86,
-        "n_rankable": 15,
+        "n_rankable": 14,
         "bio_share": 0.0,
         "vegan_share": 0.03
       },
@@ -383,7 +383,7 @@
           "min": 5.17,
           "q1": 7.48,
           "median": 8.72,
-          "q3": 13.72,
+          "q3": 13.73,
           "max": 19.97,
           "mean": 10.89,
           "n": 76
@@ -830,7 +830,7 @@
           "median": 12.82,
           "q3": 16.54,
           "max": 21.63,
-          "mean": 13.81,
+          "mean": 13.82,
           "n": 47
         },
         "eur_per_10g_protein": {
@@ -999,12 +999,12 @@
           "n": 46
         },
         "price_per_kg": {
-          "min": 5.2,
+          "min": 5.13,
           "q1": 7.96,
           "median": 9.42,
           "q3": 15.32,
           "max": 35.24,
-          "mean": 12.74,
+          "mean": 12.73,
           "n": 46
         },
         "eur_per_10g_protein": {
@@ -1093,17 +1093,17 @@
           "q1": 4.5,
           "median": 7.45,
           "q3": 11.22,
-          "max": 21.2,
-          "mean": 8.13,
+          "max": 21.5,
+          "mean": 8.15,
           "n": 46
         },
         "pli": {
           "min": 27.5,
           "q1": 31.32,
           "median": 38.9,
-          "q3": 44.65,
+          "q3": 44.63,
           "max": 69.8,
-          "mean": 41.91,
+          "mean": 41.9,
           "n": 12
         },
         "n_with_price": 46,
@@ -1144,7 +1144,7 @@
         "name": "BILLA Steinofen Pizza Tonno 2er",
         "eur10p": 0.47,
         "protpack": 78.1,
-        "price": 3.69,
+        "price": 3.64,
         "score": 39.6,
         "store": "Billa"
       },
@@ -1324,6 +1324,168 @@
       "logo_is_chain_logo": false
     },
     {
+      "brand": "Good Choice",
+      "slug": "good-choice",
+      "owner": "Hofer KG / Aldi Süd (Convenience-Eigenmarke)",
+      "type": "private",
+      "tier": "standard",
+      "count": 35,
+      "stores": {
+        "Hofer": 35
+      },
+      "stats": {
+        "price": {
+          "min": 2.29,
+          "q1": 2.54,
+          "median": 2.94,
+          "q3": 3.06,
+          "max": 3.99,
+          "mean": 2.87,
+          "n": 28
+        },
+        "price_per_kg": {
+          "min": 3.99,
+          "q1": 7.24,
+          "median": 7.58,
+          "q3": 8.79,
+          "max": 14.65,
+          "mean": 8.49,
+          "n": 28
+        },
+        "eur_per_10g_protein": {
+          "min": 0.59,
+          "q1": 1.2,
+          "median": 1.6,
+          "q3": 1.94,
+          "max": 3.85,
+          "mean": 1.7,
+          "n": 16
+        },
+        "protein_per_100kcal": {
+          "min": 1.99,
+          "q1": 3.36,
+          "median": 4.09,
+          "q3": 4.28,
+          "max": 6.76,
+          "mean": 4.1,
+          "n": 23
+        },
+        "protein_100": {
+          "min": 2.2,
+          "q1": 4.5,
+          "median": 6.6,
+          "q3": 9.2,
+          "max": 11.0,
+          "mean": 6.62,
+          "n": 23
+        },
+        "kcal_100": {
+          "min": 93.0,
+          "q1": 121.58,
+          "median": 145.0,
+          "q3": 220.0,
+          "max": 266.0,
+          "mean": 161.97,
+          "n": 23
+        },
+        "salt_100": {
+          "min": 0.59,
+          "q1": 0.98,
+          "median": 1.2,
+          "q3": 1.5,
+          "max": 1.82,
+          "mean": 1.2,
+          "n": 23
+        },
+        "satfat_100": {
+          "min": 0.2,
+          "q1": 0.9,
+          "median": 1.8,
+          "q3": 2.3,
+          "max": 3.6,
+          "mean": 1.69,
+          "n": 23
+        },
+        "sugar_100": {
+          "min": 0.5,
+          "q1": 1.2,
+          "median": 3.2,
+          "q3": 4.3,
+          "max": 6.9,
+          "mean": 2.88,
+          "n": 23
+        },
+        "fiber_100": {
+          "min": 0.0,
+          "q1": 0.0,
+          "median": 0.0,
+          "q3": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "n": 4
+        },
+        "health_score": {
+          "min": 11.8,
+          "q1": 17.5,
+          "median": 22.9,
+          "q3": 35.1,
+          "max": 48.7,
+          "mean": 25.47,
+          "n": 23
+        },
+        "protein_per_eur": {
+          "min": 2.6,
+          "q1": 5.15,
+          "median": 6.26,
+          "q3": 8.33,
+          "max": 17.0,
+          "mean": 7.04,
+          "n": 16
+        },
+        "pli": null,
+        "n_with_price": 28,
+        "n_with_nutrition": 23,
+        "n_rankable": 0,
+        "bio_share": 0.0,
+        "vegan_share": 0.0
+      },
+      "price_premium_kg_pct": -39.2,
+      "protein_price_premium_pct": -30.7,
+      "top_producers": [
+        [
+          "GMS GOURMET GmbH",
+          1
+        ],
+        [
+          "Wilhelm Blasko CONVENIENCE-Fertiggerichte GmbH",
+          1
+        ]
+      ],
+      "packaging": {
+        "Kühlregal (Menüschale/frisch)": 35
+      },
+      "cheapest": {
+        "id": 1226,
+        "uid": "feiuvis1t7",
+        "name": "Eiersalat",
+        "price": 2.29,
+        "size": 400.0,
+        "store": "Hofer"
+      },
+      "best_protein_value": {
+        "id": 469,
+        "uid": "7jgzigayee",
+        "name": "GOOD CHOICE Lasagne Bolognese 1 kg",
+        "eur10p": 0.59,
+        "protpack": 68.0,
+        "price": 3.99,
+        "score": 14.6,
+        "store": "Hofer"
+      },
+      "logo": "analysis/logos/good-choice.png",
+      "logo_is_chain_logo": true
+    },
+    {
       "brand": "SPAR",
       "slug": "spar",
       "owner": "SPAR Österreich (Eigenmarke)",
@@ -1486,168 +1648,6 @@
       },
       "logo": "analysis/logos/spar.svg",
       "logo_is_chain_logo": false
-    },
-    {
-      "brand": "Good Choice",
-      "slug": "good-choice",
-      "owner": "Hofer KG / Aldi Süd (Convenience-Eigenmarke)",
-      "type": "private",
-      "tier": "standard",
-      "count": 33,
-      "stores": {
-        "Hofer": 33
-      },
-      "stats": {
-        "price": {
-          "min": 2.29,
-          "q1": 2.49,
-          "median": 2.99,
-          "q3": 3.06,
-          "max": 3.99,
-          "mean": 2.88,
-          "n": 26
-        },
-        "price_per_kg": {
-          "min": 3.99,
-          "q1": 7.24,
-          "median": 7.81,
-          "q3": 8.91,
-          "max": 14.65,
-          "mean": 8.59,
-          "n": 26
-        },
-        "eur_per_10g_protein": {
-          "min": 0.59,
-          "q1": 1.31,
-          "median": 1.62,
-          "q3": 2.1,
-          "max": 3.85,
-          "mean": 1.78,
-          "n": 14
-        },
-        "protein_per_100kcal": {
-          "min": 1.99,
-          "q1": 3.33,
-          "median": 4.06,
-          "q3": 4.34,
-          "max": 6.76,
-          "mean": 4.09,
-          "n": 21
-        },
-        "protein_100": {
-          "min": 2.2,
-          "q1": 4.45,
-          "median": 6.7,
-          "q3": 9.4,
-          "max": 11.0,
-          "mean": 6.66,
-          "n": 21
-        },
-        "kcal_100": {
-          "min": 93.0,
-          "q1": 120.29,
-          "median": 145.0,
-          "q3": 221.76,
-          "max": 266.0,
-          "mean": 163.34,
-          "n": 21
-        },
-        "salt_100": {
-          "min": 0.59,
-          "q1": 0.97,
-          "median": 1.2,
-          "q3": 1.5,
-          "max": 1.82,
-          "mean": 1.21,
-          "n": 21
-        },
-        "satfat_100": {
-          "min": 0.2,
-          "q1": 0.85,
-          "median": 1.8,
-          "q3": 2.5,
-          "max": 3.6,
-          "mean": 1.69,
-          "n": 21
-        },
-        "sugar_100": {
-          "min": 0.5,
-          "q1": 1.2,
-          "median": 3.2,
-          "q3": 4.4,
-          "max": 6.9,
-          "mean": 3.03,
-          "n": 21
-        },
-        "fiber_100": {
-          "min": 0.0,
-          "q1": 0.0,
-          "median": 0.0,
-          "q3": 0.0,
-          "max": 0.0,
-          "mean": 0.0,
-          "n": 3
-        },
-        "health_score": {
-          "min": 11.8,
-          "q1": 16.85,
-          "median": 22.9,
-          "q3": 32.6,
-          "max": 48.7,
-          "mean": 25.27,
-          "n": 21
-        },
-        "protein_per_eur": {
-          "min": 2.6,
-          "q1": 4.78,
-          "median": 6.15,
-          "q3": 7.65,
-          "max": 17.0,
-          "mean": 6.82,
-          "n": 14
-        },
-        "pli": null,
-        "n_with_price": 26,
-        "n_with_nutrition": 21,
-        "n_rankable": 0,
-        "bio_share": 0.0,
-        "vegan_share": 0.0
-      },
-      "price_premium_kg_pct": -37.4,
-      "protein_price_premium_pct": -29.9,
-      "top_producers": [
-        [
-          "GMS GOURMET GmbH",
-          1
-        ],
-        [
-          "Wilhelm Blasko CONVENIENCE-Fertiggerichte GmbH",
-          1
-        ]
-      ],
-      "packaging": {
-        "Kühlregal (Menüschale/frisch)": 33
-      },
-      "cheapest": {
-        "id": 1226,
-        "uid": "feiuvis1t7",
-        "name": "Eiersalat",
-        "price": 2.29,
-        "size": 400.0,
-        "store": "Hofer"
-      },
-      "best_protein_value": {
-        "id": 469,
-        "uid": "7jgzigayee",
-        "name": "GOOD CHOICE Lasagne Bolognese 1 kg",
-        "eur10p": 0.59,
-        "protpack": 68.0,
-        "price": 3.99,
-        "score": 14.6,
-        "store": "Hofer"
-      },
-      "logo": "analysis/logos/good-choice.png",
-      "logo_is_chain_logo": true
     },
     {
       "brand": "iss mich!",
@@ -1819,21 +1819,21 @@
       },
       "stats": {
         "price": {
-          "min": 2.49,
+          "min": 2.59,
           "q1": 3.19,
           "median": 3.49,
           "q3": 3.49,
           "max": 3.99,
-          "mean": 3.32,
+          "mean": 3.33,
           "n": 28
         },
         "price_per_kg": {
-          "min": 9.96,
+          "min": 10.36,
           "q1": 15.88,
           "median": 17.06,
           "q3": 18.66,
           "max": 30.69,
-          "mean": 17.39,
+          "mean": 17.41,
           "n": 28
         },
         "eur_per_10g_protein": {
@@ -1841,8 +1841,8 @@
           "q1": 1.49,
           "median": 1.96,
           "q3": 2.25,
-          "max": 6.23,
-          "mean": 2.06,
+          "max": 6.47,
+          "mean": 2.07,
           "n": 28
         },
         "protein_per_100kcal": {
@@ -1918,7 +1918,7 @@
           "n": 32
         },
         "protein_per_eur": {
-          "min": 1.6,
+          "min": 1.5,
           "q1": 4.43,
           "median": 5.15,
           "q3": 6.75,
@@ -1953,7 +1953,7 @@
         "id": 3541,
         "uid": "f1hv05ska8",
         "name": "BILLA Cole Slaw",
-        "price": 2.49,
+        "price": 2.59,
         "size": 250.0,
         "store": "Billa"
       },
@@ -3170,17 +3170,17 @@
           "n": 21
         },
         "pli": {
-          "min": 26.0,
-          "q1": 27.45,
-          "median": 31.4,
-          "q3": 33.1,
+          "min": 28.9,
+          "q1": 28.9,
+          "median": 32.0,
+          "q3": 34.2,
           "max": 34.2,
-          "mean": 30.5,
-          "n": 5
+          "mean": 31.7,
+          "n": 3
         },
         "n_with_price": 21,
         "n_with_nutrition": 21,
-        "n_rankable": 5,
+        "n_rankable": 3,
         "bio_share": 0.52,
         "vegan_share": 0.48
       },
@@ -4933,20 +4933,20 @@
           "median": 2.79,
           "q3": 3.99,
           "max": 8.99,
-          "mean": 3.45,
+          "mean": 3.48,
           "n": 12
         },
         "price_per_kg": {
           "min": 3.11,
-          "q1": 4.04,
+          "q1": 4.12,
           "median": 5.53,
           "q3": 7.55,
           "max": 8.99,
-          "mean": 5.83,
+          "mean": 5.86,
           "n": 12
         },
         "eur_per_10g_protein": {
-          "min": 0.4,
+          "min": 0.43,
           "q1": 0.71,
           "median": 1.15,
           "q3": 1.37,
@@ -5023,8 +5023,8 @@
           "q1": 7.3,
           "median": 8.7,
           "q3": 14.0,
-          "max": 25.3,
-          "mean": 11.93,
+          "max": 23.5,
+          "mean": 11.76,
           "n": 11
         },
         "pli": {
@@ -5075,9 +5075,9 @@
         "id": 546,
         "uid": "bxikgqo70o",
         "name": "Clever Pizza Salami 3er",
-        "eur10p": 0.4,
+        "eur10p": 0.43,
         "protpack": 100.8,
-        "price": 3.99,
+        "price": 4.29,
         "score": 26.1,
         "store": "Billa"
       },
@@ -5206,16 +5206,16 @@
         },
         "pli": {
           "min": 35.9,
-          "q1": 36.22,
-          "median": 37.6,
-          "q3": 39.38,
+          "q1": 36.38,
+          "median": 38.8,
+          "q3": 42.58,
           "max": 43.5,
-          "mean": 38.2,
-          "n": 8
+          "mean": 39.25,
+          "n": 4
         },
         "n_with_price": 12,
         "n_with_nutrition": 12,
-        "n_rankable": 8,
+        "n_rankable": 4,
         "bio_share": 1.0,
         "vegan_share": 1.0
       },
@@ -5606,11 +5606,11 @@
         },
         "price_per_kg": {
           "min": 5.69,
-          "q1": 5.97,
-          "median": 9.97,
+          "q1": 5.98,
+          "median": 9.98,
           "q3": 12.96,
           "max": 18.37,
-          "mean": 10.2,
+          "mean": 10.21,
           "n": 9
         },
         "eur_per_10g_protein": {
@@ -9253,11 +9253,11 @@
           "n": 3
         },
         "price_per_kg": {
-          "min": 26.22,
-          "q1": 26.22,
+          "min": 26.23,
+          "q1": 26.23,
           "median": 28.72,
-          "q3": 28.72,
-          "max": 28.72,
+          "q3": 28.73,
+          "max": 28.73,
           "mean": 27.89,
           "n": 3
         },
@@ -18294,30 +18294,30 @@
       },
       "stats": {
         "price": {
-          "min": 0.81,
-          "q1": 0.81,
-          "median": 0.81,
-          "q3": 0.81,
-          "max": 0.81,
-          "mean": 0.81,
+          "min": 0.75,
+          "q1": 0.75,
+          "median": 0.75,
+          "q3": 0.75,
+          "max": 0.75,
+          "mean": 0.75,
           "n": 1
         },
         "price_per_kg": {
-          "min": 5.4,
-          "q1": 5.4,
-          "median": 5.4,
-          "q3": 5.4,
-          "max": 5.4,
-          "mean": 5.4,
+          "min": 5.0,
+          "q1": 5.0,
+          "median": 5.0,
+          "q3": 5.0,
+          "max": 5.0,
+          "mean": 5.0,
           "n": 1
         },
         "eur_per_10g_protein": {
-          "min": 1.62,
-          "q1": 1.62,
-          "median": 1.62,
-          "q3": 1.62,
-          "max": 1.62,
-          "mean": 1.62,
+          "min": 1.5,
+          "q1": 1.5,
+          "median": 1.5,
+          "q3": 1.5,
+          "max": 1.5,
+          "mean": 1.5,
           "n": 1
         },
         "protein_per_100kcal": {
@@ -18385,12 +18385,12 @@
           "n": 1
         },
         "protein_per_eur": {
-          "min": 6.2,
-          "q1": 6.2,
-          "median": 6.2,
-          "q3": 6.2,
-          "max": 6.2,
-          "mean": 6.2,
+          "min": 6.7,
+          "q1": 6.7,
+          "median": 6.7,
+          "q3": 6.7,
+          "max": 6.7,
+          "mean": 6.7,
           "n": 1
         },
         "pli": null,
@@ -18400,8 +18400,8 @@
         "bio_share": 0.0,
         "vegan_share": 0.0
       },
-      "price_premium_kg_pct": -56.7,
-      "protein_price_premium_pct": -29.9,
+      "price_premium_kg_pct": -59.9,
+      "protein_price_premium_pct": -35.1,
       "top_producers": [
         [
           "Berglandmilch eGen",
@@ -18415,7 +18415,7 @@
         "id": 3394,
         "uid": "7kw3j5s06l",
         "name": "Schärdinger Jogurella Stracciatella",
-        "price": 0.81,
+        "price": 0.75,
         "size": 150.0,
         "store": "Billa"
       },
@@ -18423,9 +18423,9 @@
         "id": 3394,
         "uid": "7kw3j5s06l",
         "name": "Schärdinger Jogurella Stracciatella",
-        "eur10p": 1.62,
+        "eur10p": 1.5,
         "protpack": 5.0,
-        "price": 0.81,
+        "price": 0.75,
         "score": 15.2,
         "store": "Billa"
       },
@@ -18667,12 +18667,12 @@
           "n": 1
         },
         "price_per_kg": {
-          "min": 9.97,
-          "q1": 9.97,
-          "median": 9.97,
-          "q3": 9.97,
-          "max": 9.97,
-          "mean": 9.97,
+          "min": 9.98,
+          "q1": 9.98,
+          "median": 9.98,
+          "q3": 9.98,
+          "max": 9.98,
+          "mean": 9.98,
           "n": 1
         },
         "eur_per_10g_protein": {
@@ -19658,8 +19658,8 @@
         "count": 12,
         "n": 12,
         "median": 5.53,
-        "mean": 5.83,
-        "q1": 4.04,
+        "mean": 5.86,
+        "q1": 4.12,
         "q3": 7.55
       },
       {
@@ -19718,6 +19718,17 @@
         "q3": 8.35
       },
       {
+        "brand": "Good Choice",
+        "type": "private",
+        "tier": "standard",
+        "count": 35,
+        "n": 28,
+        "median": 7.58,
+        "mean": 8.49,
+        "q1": 7.24,
+        "q3": 8.79
+      },
+      {
         "brand": "SPAR Natur*pur",
         "type": "private",
         "tier": "bio",
@@ -19738,17 +19749,6 @@
         "mean": 9.05,
         "q1": 6.84,
         "q3": 11.09
-      },
-      {
-        "brand": "Good Choice",
-        "type": "private",
-        "tier": "standard",
-        "count": 33,
-        "n": 26,
-        "median": 7.81,
-        "mean": 8.59,
-        "q1": 7.24,
-        "q3": 8.91
       },
       {
         "brand": "Tressbrüder",
@@ -19803,7 +19803,7 @@
         "median": 8.72,
         "mean": 10.89,
         "q1": 7.48,
-        "q3": 13.72
+        "q3": 13.73
       },
       {
         "brand": "SPAR Veggie",
@@ -19834,7 +19834,7 @@
         "count": 46,
         "n": 46,
         "median": 9.42,
-        "mean": 12.74,
+        "mean": 12.73,
         "q1": 7.96,
         "q3": 15.32
       },
@@ -19855,9 +19855,9 @@
         "tier": "bio",
         "count": 10,
         "n": 9,
-        "median": 9.97,
-        "mean": 10.2,
-        "q1": 5.97,
+        "median": 9.98,
+        "mean": 10.21,
+        "q1": 5.98,
         "q3": 12.96
       },
       {
@@ -19914,8 +19914,8 @@
         "n": 3,
         "median": 28.72,
         "mean": 27.89,
-        "q1": 26.22,
-        "q3": 28.72
+        "q1": 26.23,
+        "q3": 28.73
       },
       {
         "brand": "Goldblatt",
@@ -20056,7 +20056,7 @@
         "count": 32,
         "n": 28,
         "median": 17.06,
-        "mean": 17.39,
+        "mean": 17.41,
         "q1": 15.88,
         "q3": 18.66
       },
@@ -20166,7 +20166,7 @@
         "count": 48,
         "n": 47,
         "median": 12.82,
-        "mean": 13.81,
+        "mean": 13.82,
         "q1": 11.52,
         "q3": 16.54
       }
@@ -20319,12 +20319,12 @@
         "brand": "Good Choice",
         "type": "private",
         "tier": "standard",
-        "count": 33,
-        "n": 14,
-        "median": 1.62,
-        "mean": 1.78,
-        "q1": 1.31,
-        "q3": 2.1
+        "count": 35,
+        "n": 16,
+        "median": 1.6,
+        "mean": 1.7,
+        "q1": 1.2,
+        "q3": 1.94
       },
       {
         "brand": "SPAR Feine Küche",
@@ -20388,7 +20388,7 @@
         "count": 32,
         "n": 28,
         "median": 1.96,
-        "mean": 2.06,
+        "mean": 2.07,
         "q1": 1.49,
         "q3": 2.25
       },
@@ -21419,9 +21419,20 @@
         "count": 12,
         "n": 12,
         "median": 2.79,
-        "mean": 3.45,
+        "mean": 3.48,
         "q1": 2.49,
         "q3": 3.99
+      },
+      {
+        "brand": "Good Choice",
+        "type": "private",
+        "tier": "standard",
+        "count": 35,
+        "n": 28,
+        "median": 2.94,
+        "mean": 2.87,
+        "q1": 2.54,
+        "q3": 3.06
       },
       {
         "brand": "Tressbrüder",
@@ -21433,17 +21444,6 @@
         "mean": 3.4,
         "q1": 2.95,
         "q3": 4.29
-      },
-      {
-        "brand": "Good Choice",
-        "type": "private",
-        "tier": "standard",
-        "count": 33,
-        "n": 26,
-        "median": 2.99,
-        "mean": 2.88,
-        "q1": 2.49,
-        "q3": 3.06
       },
       {
         "brand": "Ben's Original",
@@ -21507,7 +21507,7 @@
         "count": 32,
         "n": 28,
         "median": 3.49,
-        "mean": 3.32,
+        "mean": 3.33,
         "q1": 3.19,
         "q3": 3.49
       },
@@ -21678,10 +21678,10 @@
         "brand": "Good Choice",
         "type": "private",
         "tier": "standard",
-        "count": 33,
-        "n": 14,
-        "eur10p_median": 1.62,
-        "premium_pct": -29.9
+        "count": 35,
+        "n": 16,
+        "eur10p_median": 1.6,
+        "premium_pct": -30.7
       },
       {
         "brand": "SPAR Feine Küche",
@@ -22114,6 +22114,18 @@
         "n": 36
       },
       {
+        "brand": "Good Choice",
+        "type": "private",
+        "tier": "standard",
+        "min": 2.29,
+        "q1": 2.54,
+        "median": 2.94,
+        "q3": 3.06,
+        "max": 3.99,
+        "mean": 2.87,
+        "n": 28
+      },
+      {
         "brand": "SPAR",
         "type": "private",
         "tier": "standard",
@@ -22124,18 +22136,6 @@
         "max": 5.49,
         "mean": 3.46,
         "n": 34
-      },
-      {
-        "brand": "Good Choice",
-        "type": "private",
-        "tier": "standard",
-        "min": 2.29,
-        "q1": 2.49,
-        "median": 2.99,
-        "q3": 3.06,
-        "max": 3.99,
-        "mean": 2.88,
-        "n": 26
       },
       {
         "brand": "iss mich!",
@@ -22153,12 +22153,12 @@
         "brand": "BILLA",
         "type": "private",
         "tier": "standard",
-        "min": 2.49,
+        "min": 2.59,
         "q1": 3.19,
         "median": 3.49,
         "q3": 3.49,
         "max": 3.99,
-        "mean": 3.32,
+        "mean": 3.33,
         "n": 28
       },
       {
@@ -22374,7 +22374,7 @@
         "min": 4.85,
         "q1": 11.43,
         "median": 12.09,
-        "q3": 13.36,
+        "q3": 13.37,
         "max": 19.94,
         "mean": 12.26,
         "n": 88
@@ -22398,7 +22398,7 @@
         "min": 5.17,
         "q1": 7.48,
         "median": 8.72,
-        "q3": 13.72,
+        "q3": 13.73,
         "max": 19.97,
         "mean": 10.89,
         "n": 76
@@ -22424,19 +22424,19 @@
         "median": 12.82,
         "q3": 16.54,
         "max": 21.63,
-        "mean": 13.81,
+        "mean": 13.82,
         "n": 47
       },
       {
         "brand": "BILLA Immer Gut",
         "type": "private",
         "tier": "standard",
-        "min": 5.2,
+        "min": 5.13,
         "q1": 7.96,
         "median": 9.42,
         "q3": 15.32,
         "max": 35.24,
-        "mean": 12.74,
+        "mean": 12.73,
         "n": 46
       },
       {
@@ -22452,6 +22452,18 @@
         "n": 36
       },
       {
+        "brand": "Good Choice",
+        "type": "private",
+        "tier": "standard",
+        "min": 3.99,
+        "q1": 7.24,
+        "median": 7.58,
+        "q3": 8.79,
+        "max": 14.65,
+        "mean": 8.49,
+        "n": 28
+      },
+      {
         "brand": "SPAR",
         "type": "private",
         "tier": "standard",
@@ -22462,18 +22474,6 @@
         "max": 19.93,
         "mean": 11.2,
         "n": 33
-      },
-      {
-        "brand": "Good Choice",
-        "type": "private",
-        "tier": "standard",
-        "min": 3.99,
-        "q1": 7.24,
-        "median": 7.81,
-        "q3": 8.91,
-        "max": 14.65,
-        "mean": 8.59,
-        "n": 26
       },
       {
         "brand": "iss mich!",
@@ -22491,12 +22491,12 @@
         "brand": "BILLA",
         "type": "private",
         "tier": "standard",
-        "min": 9.96,
+        "min": 10.36,
         "q1": 15.88,
         "median": 17.06,
         "q3": 18.66,
         "max": 30.69,
-        "mean": 17.39,
+        "mean": 17.41,
         "n": 28
       },
       {
@@ -22790,6 +22790,18 @@
         "n": 36
       },
       {
+        "brand": "Good Choice",
+        "type": "private",
+        "tier": "standard",
+        "min": 0.59,
+        "q1": 1.2,
+        "median": 1.6,
+        "q3": 1.94,
+        "max": 3.85,
+        "mean": 1.7,
+        "n": 16
+      },
+      {
         "brand": "SPAR",
         "type": "private",
         "tier": "standard",
@@ -22800,18 +22812,6 @@
         "max": 2.51,
         "mean": 1.75,
         "n": 3
-      },
-      {
-        "brand": "Good Choice",
-        "type": "private",
-        "tier": "standard",
-        "min": 0.59,
-        "q1": 1.31,
-        "median": 1.62,
-        "q3": 2.1,
-        "max": 3.85,
-        "mean": 1.78,
-        "n": 14
       },
       {
         "brand": "iss mich!",
@@ -22833,8 +22833,8 @@
         "q1": 1.49,
         "median": 1.96,
         "q3": 2.25,
-        "max": 6.23,
-        "mean": 2.06,
+        "max": 6.47,
+        "mean": 2.07,
         "n": 28
       },
       {
@@ -23140,6 +23140,18 @@
         "n": 36
       },
       {
+        "brand": "Good Choice",
+        "type": "private",
+        "tier": "standard",
+        "min": 11.8,
+        "q1": 17.5,
+        "median": 22.9,
+        "q3": 35.1,
+        "max": 48.7,
+        "mean": 25.47,
+        "n": 23
+      },
+      {
         "brand": "SPAR",
         "type": "private",
         "tier": "standard",
@@ -23150,18 +23162,6 @@
         "max": 46.7,
         "mean": 34.0,
         "n": 3
-      },
-      {
-        "brand": "Good Choice",
-        "type": "private",
-        "tier": "standard",
-        "min": 11.8,
-        "q1": 16.85,
-        "median": 22.9,
-        "q3": 32.6,
-        "max": 48.7,
-        "mean": 25.27,
-        "n": 21
       },
       {
         "brand": "iss mich!",
@@ -23502,6 +23502,18 @@
         "n": 36
       },
       {
+        "brand": "Good Choice",
+        "type": "private",
+        "tier": "standard",
+        "min": 1.99,
+        "q1": 3.36,
+        "median": 4.09,
+        "q3": 4.28,
+        "max": 6.76,
+        "mean": 4.1,
+        "n": 23
+      },
+      {
         "brand": "SPAR",
         "type": "private",
         "tier": "standard",
@@ -23512,18 +23524,6 @@
         "max": 4.8,
         "mean": 3.98,
         "n": 3
-      },
-      {
-        "brand": "Good Choice",
-        "type": "private",
-        "tier": "standard",
-        "min": 1.99,
-        "q1": 3.33,
-        "median": 4.06,
-        "q3": 4.34,
-        "max": 6.76,
-        "mean": 4.09,
-        "n": 21
       },
       {
         "brand": "iss mich!",
@@ -23864,6 +23864,18 @@
         "n": 36
       },
       {
+        "brand": "Good Choice",
+        "type": "private",
+        "tier": "standard",
+        "min": 0.59,
+        "q1": 0.98,
+        "median": 1.2,
+        "q3": 1.5,
+        "max": 1.82,
+        "mean": 1.2,
+        "n": 23
+      },
+      {
         "brand": "SPAR",
         "type": "private",
         "tier": "standard",
@@ -23874,18 +23886,6 @@
         "max": 0.94,
         "mean": 0.81,
         "n": 3
-      },
-      {
-        "brand": "Good Choice",
-        "type": "private",
-        "tier": "standard",
-        "min": 0.59,
-        "q1": 0.97,
-        "median": 1.2,
-        "q3": 1.5,
-        "max": 1.82,
-        "mean": 1.21,
-        "n": 21
       },
       {
         "brand": "iss mich!",
@@ -25808,7 +25808,7 @@
         "tier": "standard",
         "store": "Billa",
         "price": 3.99,
-        "ppk": 9.97,
+        "ppk": 9.98,
         "protpack": 8.8,
         "eur10p": 4.53,
         "p100k": 2.97,
@@ -26527,10 +26527,10 @@
         "type": "private",
         "tier": "standard",
         "store": "Billa",
-        "price": 3.99,
-        "ppk": 3.8,
+        "price": 4.29,
+        "ppk": 4.09,
         "protpack": 100.8,
-        "eur10p": 0.4,
+        "eur10p": 0.43,
         "p100k": 4.17,
         "score": 26.1,
         "salt": 1.1
@@ -26624,7 +26624,7 @@
         "tier": "standard",
         "store": "Billa",
         "price": 5.49,
-        "ppk": 13.72,
+        "ppk": 13.73,
         "protpack": 30.0,
         "eur10p": 1.83,
         "p100k": 4.78,
@@ -26672,7 +26672,7 @@
         "tier": "standard",
         "store": "Billa",
         "price": 3.99,
-        "ppk": 9.97,
+        "ppk": 9.98,
         "protpack": 36.8,
         "eur10p": 1.08,
         "p100k": 5.9,
@@ -26831,8 +26831,8 @@
         "type": "private",
         "tier": "standard",
         "store": "Billa",
-        "price": 3.69,
-        "ppk": 5.2,
+        "price": 3.64,
+        "ppk": 5.13,
         "protpack": 78.1,
         "eur10p": 0.47,
         "p100k": 5.5,
@@ -26847,8 +26847,8 @@
         "type": "private",
         "tier": "standard",
         "store": "Billa",
-        "price": 3.69,
-        "ppk": 5.2,
+        "price": 3.64,
+        "ppk": 5.13,
         "protpack": 78.1,
         "eur10p": 0.47,
         "p100k": 5.16,
@@ -26863,8 +26863,8 @@
         "type": "private",
         "tier": "standard",
         "store": "Billa",
-        "price": 3.69,
-        "ppk": 5.27,
+        "price": 3.64,
+        "ppk": 5.2,
         "protpack": 69.3,
         "eur10p": 0.53,
         "p100k": 4.85,
@@ -27616,7 +27616,7 @@
         "tier": "standard",
         "store": "Billa",
         "price": 3.99,
-        "ppk": 9.97,
+        "ppk": 9.98,
         "protpack": 16.0,
         "eur10p": 2.49,
         "p100k": 7.84,
@@ -27632,7 +27632,7 @@
         "tier": "standard",
         "store": "Billa",
         "price": 3.99,
-        "ppk": 9.97,
+        "ppk": 9.98,
         "protpack": 4.8,
         "eur10p": 8.31,
         "p100k": 1.6,
@@ -27680,7 +27680,7 @@
         "tier": "standard",
         "store": "Billa",
         "price": 3.99,
-        "ppk": 9.97,
+        "ppk": 9.98,
         "protpack": 14.8,
         "eur10p": 2.7,
         "p100k": 7.87,
@@ -27696,7 +27696,7 @@
         "tier": "standard",
         "store": "Billa",
         "price": 3.99,
-        "ppk": 9.97,
+        "ppk": 9.98,
         "protpack": 4.4,
         "eur10p": 9.07,
         "p100k": 1.15,
@@ -27712,7 +27712,7 @@
         "tier": "bio",
         "store": "Billa",
         "price": 2.39,
-        "ppk": 5.97,
+        "ppk": 5.98,
         "protpack": 14.8,
         "eur10p": 1.61,
         "p100k": 6.17,
@@ -27728,7 +27728,7 @@
         "tier": "bio",
         "store": "Billa",
         "price": 2.39,
-        "ppk": 5.97,
+        "ppk": 5.98,
         "protpack": 9.6,
         "eur10p": 2.49,
         "p100k": 3.38,
@@ -27760,7 +27760,7 @@
         "tier": "bio",
         "store": "Billa",
         "price": 3.99,
-        "ppk": 9.97,
+        "ppk": 9.98,
         "protpack": 2.4,
         "eur10p": 16.62,
         "p100k": 1.36,
@@ -27776,7 +27776,7 @@
         "tier": "bio",
         "store": "Billa",
         "price": 3.99,
-        "ppk": 9.97,
+        "ppk": 9.98,
         "protpack": 3.2,
         "eur10p": 12.47,
         "p100k": 2.29,
@@ -28070,6 +28070,38 @@
         "p100k": 4.2,
         "score": 40.2,
         "salt": 0.9825
+      },
+      {
+        "id": 801,
+        "uid": "dujvn1m91v",
+        "name": "Kärntner Kasnudeln",
+        "brand": "Good Choice",
+        "type": "private",
+        "tier": "standard",
+        "store": "Hofer",
+        "price": 2.78,
+        "ppk": 7.51,
+        "protpack": 24.4,
+        "eur10p": 1.14,
+        "p100k": 4.28,
+        "score": 35.9,
+        "salt": 0.9825
+      },
+      {
+        "id": 804,
+        "uid": "1aekpsob4b",
+        "name": "Faschierte Laibchen mit Kartoffelpüree",
+        "brand": "Good Choice",
+        "type": "private",
+        "tier": "standard",
+        "store": "Hofer",
+        "price": 2.75,
+        "ppk": 6.88,
+        "protpack": 23.2,
+        "eur10p": 1.19,
+        "p100k": 4.11,
+        "score": 19.2,
+        "salt": 1.2
       },
       {
         "id": 834,
@@ -28400,7 +28432,7 @@
         "tier": "bio",
         "store": "Billa",
         "price": 3.99,
-        "ppk": 9.97,
+        "ppk": 9.98,
         "protpack": 14.4,
         "eur10p": 2.77,
         "p100k": 3.08,
@@ -28416,7 +28448,7 @@
         "tier": "bio",
         "store": "Billa",
         "price": 3.99,
-        "ppk": 9.97,
+        "ppk": 9.98,
         "protpack": 16.8,
         "eur10p": 2.38,
         "p100k": 3.56,
@@ -28624,7 +28656,7 @@
         "tier": "standard",
         "store": "Billa",
         "price": 5.49,
-        "ppk": 13.72,
+        "ppk": 13.73,
         "protpack": 20.8,
         "eur10p": 2.64,
         "p100k": 4.6,
@@ -28800,7 +28832,7 @@
         "tier": "standard",
         "store": "Billa",
         "price": 5.49,
-        "ppk": 13.72,
+        "ppk": 13.73,
         "protpack": 27.2,
         "eur10p": 2.02,
         "p100k": 5.57,
@@ -28960,7 +28992,7 @@
         "tier": "standard",
         "store": "Billa",
         "price": 11.49,
-        "ppk": 28.72,
+        "ppk": 28.73,
         "protpack": 28.8,
         "eur10p": 3.99,
         "p100k": 6.43,
@@ -29312,7 +29344,7 @@
         "tier": "standard",
         "store": "Billa",
         "price": 10.49,
-        "ppk": 26.22,
+        "ppk": 26.23,
         "protpack": 24.8,
         "eur10p": 4.23,
         "p100k": 7.38,
@@ -29520,7 +29552,7 @@
         "tier": "standard",
         "store": "Billa",
         "price": 3.99,
-        "ppk": 9.97,
+        "ppk": 9.98,
         "protpack": 14.0,
         "eur10p": 2.85,
         "p100k": 3.98,
@@ -32272,7 +32304,7 @@
         "tier": "standard",
         "store": "Billa",
         "price": 5.29,
-        "ppk": 13.22,
+        "ppk": 13.23,
         "protpack": 44.0,
         "eur10p": 1.2,
         "p100k": 4.78,
@@ -38207,10 +38239,10 @@
         "type": "brand",
         "tier": "standard",
         "store": "Billa",
-        "price": 0.81,
-        "ppk": 5.4,
+        "price": 0.75,
+        "ppk": 5.0,
         "protpack": 5.0,
-        "eur10p": 1.62,
+        "eur10p": 1.5,
         "p100k": 2.62,
         "score": 15.2,
         "salt": 0.1
@@ -38511,10 +38543,10 @@
         "type": "private",
         "tier": "standard",
         "store": "Billa",
-        "price": 2.49,
-        "ppk": 9.96,
+        "price": 2.59,
+        "ppk": 10.36,
         "protpack": 4.0,
-        "eur10p": 6.23,
+        "eur10p": 6.47,
         "p100k": 1.24,
         "score": 23.4,
         "salt": 1.2
@@ -39104,6 +39136,16 @@
         "p100k_median": 4.92
       },
       {
+        "brand": "Good Choice",
+        "type": "private",
+        "tier": "standard",
+        "count": 35,
+        "ppk_median": 7.58,
+        "eur10p_median": 1.6,
+        "score_median": 22.9,
+        "p100k_median": 4.09
+      },
+      {
         "brand": "SPAR",
         "type": "private",
         "tier": "standard",
@@ -39112,16 +39154,6 @@
         "eur10p_median": 1.39,
         "score_median": 42.7,
         "p100k_median": 4.14
-      },
-      {
-        "brand": "Good Choice",
-        "type": "private",
-        "tier": "standard",
-        "count": 33,
-        "ppk_median": 7.81,
-        "eur10p_median": 1.62,
-        "score_median": 22.9,
-        "p100k_median": 4.06
       },
       {
         "brand": "iss mich!",
@@ -39358,7 +39390,7 @@
         "type": "private",
         "tier": "bio",
         "count": 10,
-        "ppk_median": 9.97,
+        "ppk_median": 9.98,
         "eur10p_median": 2.77,
         "score_median": 27.65,
         "p100k_median": 3.34
@@ -39617,60 +39649,60 @@
   },
   "private_vs_name": {
     "Eigenmarke": {
-      "count": 470,
+      "count": 472,
       "price": {
         "min": 0.73,
         "q1": 2.49,
         "median": 3.19,
         "q3": 3.99,
         "max": 23.99,
-        "mean": 3.77,
-        "n": 402
+        "mean": 3.76,
+        "n": 404
       },
       "price_per_kg": {
         "min": 1.46,
-        "q1": 7.41,
+        "q1": 7.38,
         "median": 9.97,
-        "q3": 14.99,
+        "q3": 14.95,
         "max": 35.24,
-        "mean": 11.24,
-        "n": 390
+        "mean": 11.22,
+        "n": 392
       },
       "eur_per_10g_protein": {
-        "min": 0.4,
-        "q1": 1.26,
-        "median": 1.77,
-        "q3": 2.58,
+        "min": 0.43,
+        "q1": 1.23,
+        "median": 1.75,
+        "q3": 2.57,
         "max": 17.57,
-        "mean": 2.47,
-        "n": 225
+        "mean": 2.46,
+        "n": 227
       },
       "protein_per_100kcal": {
         "min": 0.0,
-        "q1": 3.23,
+        "q1": 3.25,
         "median": 4.11,
-        "q3": 5.04,
+        "q3": 4.99,
         "max": 16.44,
         "mean": 4.32,
-        "n": 296
+        "n": 298
       },
       "protein_100": {
         "min": 0.0,
         "q1": 4.0,
         "median": 5.8,
-        "q3": 8.97,
+        "q3": 8.93,
         "max": 18.0,
         "mean": 6.3,
-        "n": 296
+        "n": 298
       },
       "kcal_100": {
         "min": 21.0,
-        "q1": 101.5,
-        "median": 134.0,
-        "q3": 200.14,
+        "q1": 102.0,
+        "median": 136.0,
+        "q3": 200.0,
         "max": 336.0,
-        "mean": 150.49,
-        "n": 297
+        "mean": 150.48,
+        "n": 299
       },
       "salt_100": {
         "min": 0.0,
@@ -39678,8 +39710,8 @@
         "median": 1.1,
         "q3": 1.4,
         "max": 3.75,
-        "mean": 1.19,
-        "n": 293
+        "mean": 1.18,
+        "n": 295
       },
       "satfat_100": {
         "min": 0.1,
@@ -39687,8 +39719,8 @@
         "median": 1.7,
         "q3": 2.8,
         "max": 13.0,
-        "mean": 2.17,
-        "n": 293
+        "mean": 2.16,
+        "n": 295
       },
       "sugar_100": {
         "min": 0.33,
@@ -39696,8 +39728,8 @@
         "median": 2.4,
         "q3": 3.4,
         "max": 13.0,
-        "mean": 2.75,
-        "n": 293
+        "mean": 2.74,
+        "n": 295
       },
       "fiber_100": {
         "min": 0.0,
@@ -39705,26 +39737,26 @@
         "median": 1.5,
         "q3": 2.4,
         "max": 11.0,
-        "mean": 1.93,
-        "n": 99
+        "mean": 1.91,
+        "n": 100
       },
       "health_score": {
         "min": 0,
-        "q1": 20.42,
+        "q1": 20.35,
         "median": 29.05,
         "q3": 37.8,
         "max": 66.3,
-        "mean": 29.17,
-        "n": 296
+        "mean": 29.15,
+        "n": 298
       },
       "protein_per_eur": {
         "min": 0.6,
         "q1": 3.9,
-        "median": 5.6,
-        "q3": 7.95,
-        "max": 25.3,
-        "mean": 6.47,
-        "n": 225
+        "median": 5.7,
+        "q3": 8.1,
+        "max": 23.5,
+        "mean": 6.48,
+        "n": 227
       },
       "pli": {
         "min": 21.9,
@@ -39732,11 +39764,11 @@
         "median": 38.7,
         "q3": 44.95,
         "max": 69.8,
-        "mean": 39.66,
+        "mean": 39.65,
         "n": 56
       },
-      "n_with_price": 402,
-      "n_with_nutrition": 297,
+      "n_with_price": 404,
+      "n_with_nutrition": 299,
       "n_rankable": 56,
       "bio_share": 0.1,
       "vegan_share": 0.1
@@ -39744,7 +39776,7 @@
     "Markenartikel": {
       "count": 492,
       "price": {
-        "min": 0.79,
+        "min": 0.75,
         "q1": 3.99,
         "median": 7.99,
         "q3": 9.99,
@@ -39853,16 +39885,16 @@
       },
       "pli": {
         "min": 21.0,
-        "q1": 31.35,
+        "q1": 31.3,
         "median": 34.7,
-        "q3": 40.0,
+        "q3": 39.85,
         "max": 56.4,
-        "mean": 35.76,
-        "n": 150
+        "mean": 35.7,
+        "n": 149
       },
       "n_with_price": 411,
       "n_with_nutrition": 441,
-      "n_rankable": 150,
+      "n_rankable": 149,
       "bio_share": 0.11,
       "vegan_share": 0.22
     }
@@ -39980,16 +40012,16 @@
       },
       "pli": {
         "min": 22.4,
-        "q1": 30.97,
-        "median": 35.45,
-        "q3": 38.15,
+        "q1": 30.27,
+        "median": 35.35,
+        "q3": 38.3,
         "max": 53.5,
-        "mean": 35.5,
-        "n": 42
+        "mean": 35.69,
+        "n": 36
       },
       "n_with_price": 173,
       "n_with_nutrition": 135,
-      "n_rankable": 42,
+      "n_rankable": 36,
       "bio_share": 0.86,
       "vegan_share": 0.51
     },
@@ -40010,11 +40042,11 @@
         "median": 4.97,
         "q3": 7.61,
         "max": 18.89,
-        "mean": 5.87,
+        "mean": 5.88,
         "n": 46
       },
       "eur_per_10g_protein": {
-        "min": 0.4,
+        "min": 0.43,
         "q1": 0.7,
         "median": 1.02,
         "q3": 1.36,
@@ -40099,8 +40131,8 @@
         "q1": 7.35,
         "median": 9.8,
         "q3": 14.25,
-        "max": 25.3,
-        "mean": 11.55,
+        "max": 23.5,
+        "mean": 11.46,
         "n": 21
       },
       "pli": {
@@ -40244,15 +40276,15 @@
       "vegan_share": 0.12
     },
     "standard": {
-      "count": 958,
+      "count": 960,
       "price": {
         "min": 0.73,
         "q1": 3.49,
         "median": 4.49,
-        "q3": 6.36,
+        "q3": 6.32,
         "max": 21.99,
         "mean": 5.43,
-        "n": 824
+        "n": 826
       },
       "price_per_kg": {
         "min": 1.46,
@@ -40260,35 +40292,35 @@
         "median": 11.98,
         "q3": 15.96,
         "max": 49.92,
-        "mean": 13.31,
-        "n": 817
+        "mean": 13.29,
+        "n": 819
       },
       "eur_per_10g_protein": {
         "min": 0.47,
         "q1": 1.39,
-        "median": 2.02,
+        "median": 2.01,
         "q3": 2.81,
         "max": 17.57,
-        "mean": 2.45,
-        "n": 669
+        "mean": 2.44,
+        "n": 671
       },
       "protein_per_100kcal": {
         "min": 0.0,
         "q1": 3.67,
         "median": 4.31,
-        "q3": 5.68,
+        "q3": 5.67,
         "max": 23.08,
         "mean": 4.81,
-        "n": 806
+        "n": 808
       },
       "protein_100": {
         "min": 0.0,
         "q1": 4.8,
-        "median": 6.8,
+        "median": 6.75,
         "q3": 9.4,
         "max": 16.0,
         "mean": 6.98,
-        "n": 806
+        "n": 808
       },
       "kcal_100": {
         "min": 13.0,
@@ -40296,8 +40328,8 @@
         "median": 136.0,
         "q3": 211.0,
         "max": 336.0,
-        "mean": 153.43,
-        "n": 809
+        "mean": 153.41,
+        "n": 811
       },
       "salt_100": {
         "min": 0.0,
@@ -40306,7 +40338,7 @@
         "q3": 1.3,
         "max": 3.75,
         "mean": 1.09,
-        "n": 804
+        "n": 806
       },
       "satfat_100": {
         "min": 0.0,
@@ -40315,7 +40347,7 @@
         "q3": 3.0,
         "max": 14.0,
         "mean": 2.21,
-        "n": 807
+        "n": 809
       },
       "sugar_100": {
         "min": 0.0,
@@ -40324,7 +40356,7 @@
         "q3": 3.3,
         "max": 19.0,
         "mean": 2.54,
-        "n": 807
+        "n": 809
       },
       "fiber_100": {
         "min": 0.0,
@@ -40333,38 +40365,38 @@
         "q3": 2.0,
         "max": 5.0,
         "mean": 1.72,
-        "n": 417
+        "n": 418
       },
       "health_score": {
         "min": 0,
-        "q1": 22.48,
+        "q1": 22.42,
         "median": 32.7,
-        "q3": 41.23,
+        "q3": 41.2,
         "max": 78.5,
-        "mean": 32.86,
-        "n": 806
+        "mean": 32.84,
+        "n": 808
       },
       "protein_per_eur": {
         "min": 0.4,
-        "q1": 3.59,
+        "q1": 3.6,
         "median": 5.0,
         "q3": 7.2,
-        "max": 21.2,
-        "mean": 5.43,
-        "n": 670
+        "max": 21.5,
+        "mean": 5.44,
+        "n": 672
       },
       "pli": {
         "min": 21.0,
-        "q1": 30.0,
+        "q1": 29.98,
         "median": 33.8,
-        "q3": 38.9,
+        "q3": 38.75,
         "max": 69.8,
-        "mean": 34.98,
-        "n": 243
+        "mean": 34.94,
+        "n": 242
       },
-      "n_with_price": 824,
-      "n_with_nutrition": 809,
-      "n_rankable": 243,
+      "n_with_price": 826,
+      "n_with_nutrition": 811,
+      "n_rankable": 242,
       "bio_share": 0.0,
       "vegan_share": 0.03
     },

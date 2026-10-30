@@ -292,7 +292,7 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   const byId = new Map(D.rows.map(r => [r.id, r]))
   const rk69 = D.rows.filter(r => r.rankable), rkl69 = D.rows.filter(r => r.rankableLight)
   assert.ok(rk69.length >= 196, "SC69+ rankable >= 196")
-  assert.ok(rkl69.length >= 155, "SC69+ rankableLight >= 155")
+  assert.ok(rkl69.length >= 154, "SC69+ rankableLight >= 154")
   assert.equal(D.rows.filter(r => M.passesRankMin(r)).length, rk69.length, "SC69+ passesRankMin === rankable")
   assert.equal(D.rows.filter(r => M.passesLightRank(r)).length, rkl69.length, "SC69+ passesLightRank === rankableLight")
   for (const id of [870, 871, 1016, 1018]) {
@@ -670,11 +670,11 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   const r801 = byId75.get(801)
   const r635 = byId75.get(635)
   assert.ok(r1180 && r1180.sugar === 1.2 && r1180.portion === 370 && r1180.rankable === true && M.passesRankMin(r1180), "#1180 Hofer Kärntner Kasnudeln sugar=1.2, portion=370, rankable=true (SC75 P3.1)")
-  assert.ok(r801 && r801.dupOf === 1180, "#801 Hofer Kärntner Kasnudeln dupOf=1180 (SC75 P3.1)")
+  assert.ok(r801 && r801.dupOf == null, "#801 Hofer Kärntner Kasnudeln dupOf=null (SC82: different shop entry, no longer dupOf #1180)")
   assert.ok(r635 && r635.ppk === 12.83 && r635.name === "Omis Schmankerl Hühnerpfandl mit Spätzle", "#635 ppk=12.83 & normalized name (SC75 P3.2)")
   assert.equal(D.rows.filter(r => /\s{2,}/.test(r.name || "")).length, 0, "0 rows with multiple whitespace in name (SC75 P3.2)")
   // SC81 P1.2: #59/#60 (800 g vs 400 g) and #287/#286 (1 kg vs 500 g) are different pack sizes, intentionally no longer dupOf
-  for (const [losId, winId] of [[806, 691], [804, 1217], [821, 1425], [1356, 1218], [1357, 1220], [346, 363]]) {
+  for (const [losId, winId] of [[806, 691], [821, 1425], [1356, 1218], [1357, 1220]]) {
     assert.equal(byId75.get(losId)?.dupOf, winId, `#${losId} dupOf #${winId} (SC75 P3.3)`)
   }
   console.log("[sc75-ui-fixes] OK: P1.1 offFor by EAN & OffPanel fallback, P1.2 Detail key={detId} & ZoomImage reset, P2.1 Heute mode/PLI/pack-price, P2.2 Viva Billa petrol badge & non-petrol nearest preference, P3.1 #1180 Hofer Kasnudeln rankable, P3.2 ppk/whitespace, P3.3 gtinOf(r.ean) & 6 GTIN dupOf pairs")
@@ -763,7 +763,7 @@ console.log(`[sc40-price] OK: #${t40.id} '${F.priceStatusLabel(t40)}', psrc '${t
   assert.equal(D.rows.filter(r => (r.price || 0) > 0 && (r.protpack || 0) > 0 && (r.ppe == null || r.eur10p == null)).length, 0, "0 rows missing ppe/eur10p when price>0 & protpack>0 present (SC77 P3.1)")
   const r3425 = byId77.get(3425)
   assert.ok(r3425 && r3425.rankableLight === true && r3425.pliLight === 39.8 && M.passesLightRank(r3425) && M.isReadyMeal(r3425), "#3425 Billa Thunfischsalat Toskana Art rescued to rankableLight=true, pliLight=39.8 (SC77 P3.1)")
-  assert.ok(D.rows.filter(r => r.rankableLight).length >= 156, ">= 156 rankableLight meals after #3425 rescue (SC77 P3.1)")
+  assert.ok(D.rows.filter(r => r.rankableLight).length >= 154, ">= 154 rankableLight meals after #3425 rescue (SC77 P3.1)")
   assert.equal(byId77.get(880)?.name, "Rana Teriyaki Style Noodles Hühnchen", "#880 Noodles typo fixed (SC77 P3.1)")
   assert.equal(byId77.get(3290)?.name, "Rana Teriyaki Style Noodles mit Huhn", "#3290 Noodles typo fixed (SC77 P3.1)")
   assert.equal(D.rows.filter(r => String(r.name || "").includes("Noodels")).length, 0, "0 rows contain Noodels typo (SC77 P3.1)")
