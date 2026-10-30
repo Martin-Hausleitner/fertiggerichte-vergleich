@@ -1302,22 +1302,6 @@
           "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-949725-1216996145-Vqcz0HB5.jpg"
         },
         {
-          "id": 1036,
-          "uid": "l07tvbsp7i",
-          "name": "Hink Wien Wiener Kalbsrahmgulasch",
-          "brand": "Hink Wien",
-          "chain": "Billa",
-          "price_eur": 11.49,
-          "size_g": 400.0,
-          "price_per_kg": 28.72,
-          "kcal_100": 71.0,
-          "protein_100": 6.8,
-          "salt_100": 0.9,
-          "health_score": 55.9,
-          "packaging": "Beutel ungekühlt (Retort-Pouch)",
-          "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-949710-1606748794-sWVIgPAs.jpg"
-        },
-        {
           "id": 981,
           "uid": "qo32s8unn4",
           "name": "Hink Wien Wiener Rindersaftgulasch",
@@ -1332,6 +1316,22 @@
           "health_score": 35.1,
           "packaging": "Beutel ungekühlt (Retort-Pouch)",
           "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-599004-1216798278-eZNEe4tu.jpg"
+        },
+        {
+          "id": 1036,
+          "uid": "l07tvbsp7i",
+          "name": "Hink Wien Wiener Kalbsrahmgulasch",
+          "brand": "Hink Wien",
+          "chain": "Billa",
+          "price_eur": 11.49,
+          "size_g": 400.0,
+          "price_per_kg": 28.73,
+          "kcal_100": 71.0,
+          "protein_100": 6.8,
+          "salt_100": 0.9,
+          "health_score": 55.9,
+          "packaging": "Beutel ungekühlt (Retort-Pouch)",
+          "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-949710-1606748794-sWVIgPAs.jpg"
         },
         {
           "id": 664,
@@ -1863,20 +1863,20 @@
       "company": "Hink GmbH",
       "dish": "Rindsgulasch / Gulasch",
       "cheapest": {
-        "id": 1036,
-        "uid": "l07tvbsp7i",
-        "name": "Hink Wien Wiener Kalbsrahmgulasch",
+        "id": 981,
+        "uid": "qo32s8unn4",
+        "name": "Hink Wien Wiener Rindersaftgulasch",
         "brand": "Hink Wien",
         "chain": "Billa",
         "price_eur": 11.49,
         "size_g": 400.0,
-        "price_per_kg": 28.72,
-        "kcal_100": 71.0,
-        "protein_100": 6.8,
-        "salt_100": 0.9,
-        "health_score": 55.9,
+        "price_per_kg": 28.73,
+        "kcal_100": 112.0,
+        "protein_100": 7.2,
+        "salt_100": 1.4,
+        "health_score": 35.1,
         "packaging": "Beutel ungekühlt (Retort-Pouch)",
-        "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-949710-1606748794-sWVIgPAs.jpg"
+        "image_url": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-599004-1216798278-eZNEe4tu.jpg"
       },
       "priciest": {
         "id": 664,
@@ -3989,7 +3989,7 @@
         "brand": "Clever",
         "chain": "Billa",
         "x": 9.0,
-        "y": 4.21,
+        "y": 4.43,
         "health": 39.2,
         "kcal": 218.0
       },
@@ -4066,7 +4066,7 @@
         "brand": "BILLA Immer Gut",
         "chain": "Billa",
         "x": 5.1,
-        "y": 9.97,
+        "y": 9.98,
         "health": 30.7,
         "kcal": 146.0
       },
@@ -5903,7 +5903,7 @@
         "brand": "Hink Wien",
         "chain": "Billa",
         "x": 6.8,
-        "y": 28.72,
+        "y": 28.73,
         "health": 55.9,
         "kcal": 71.0
       },
@@ -11942,7 +11942,7 @@
         "brand": "Zott",
         "chain": "Billa",
         "x": 2.6,
-        "y": 6.97,
+        "y": 6.98,
         "health": 3.5,
         "kcal": 181.0
       },

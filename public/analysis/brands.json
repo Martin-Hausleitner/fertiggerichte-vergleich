@@ -1001,7 +1001,7 @@
         "price_per_kg": {
           "min": 5.13,
           "q1": 7.96,
-          "median": 9.42,
+          "median": 9.43,
           "q3": 15.32,
           "max": 35.24,
           "mean": 12.73,
@@ -1112,7 +1112,7 @@
         "bio_share": 0.0,
         "vegan_share": 0.09
       },
-      "price_premium_kg_pct": -24.5,
+      "price_premium_kg_pct": -24.4,
       "protein_price_premium_pct": -42.0,
       "top_producers": [
         [
@@ -4933,16 +4933,16 @@
           "median": 2.79,
           "q3": 3.99,
           "max": 8.99,
-          "mean": 3.48,
+          "mean": 3.5,
           "n": 12
         },
         "price_per_kg": {
           "min": 3.11,
-          "q1": 4.12,
+          "q1": 4.16,
           "median": 5.53,
           "q3": 7.55,
           "max": 8.99,
-          "mean": 5.86,
+          "mean": 5.88,
           "n": 12
         },
         "eur_per_10g_protein": {
@@ -5024,7 +5024,7 @@
           "median": 8.7,
           "q3": 14.0,
           "max": 23.5,
-          "mean": 11.76,
+          "mean": 11.66,
           "n": 11
         },
         "pli": {
@@ -9255,10 +9255,10 @@
         "price_per_kg": {
           "min": 26.23,
           "q1": 26.23,
-          "median": 28.72,
+          "median": 28.73,
           "q3": 28.73,
           "max": 28.73,
-          "mean": 27.89,
+          "mean": 27.9,
           "n": 3
         },
         "eur_per_10g_protein": {
@@ -9358,7 +9358,7 @@
         "bio_share": 0.0,
         "vegan_share": 0.0
       },
-      "price_premium_kg_pct": 130.3,
+      "price_premium_kg_pct": 130.4,
       "protein_price_premium_pct": 82.7,
       "top_producers": [
         [
@@ -19658,8 +19658,8 @@
         "count": 12,
         "n": 12,
         "median": 5.53,
-        "mean": 5.86,
-        "q1": 4.12,
+        "mean": 5.88,
+        "q1": 4.16,
         "q3": 7.55
       },
       {
@@ -19833,7 +19833,7 @@
         "tier": "standard",
         "count": 46,
         "n": 46,
-        "median": 9.42,
+        "median": 9.43,
         "mean": 12.73,
         "q1": 7.96,
         "q3": 15.32
@@ -19912,8 +19912,8 @@
         "tier": "standard",
         "count": 3,
         "n": 3,
-        "median": 28.72,
-        "mean": 27.89,
+        "median": 28.73,
+        "mean": 27.9,
         "q1": 26.23,
         "q3": 28.73
       },
@@ -21419,7 +21419,7 @@
         "count": 12,
         "n": 12,
         "median": 2.79,
-        "mean": 3.48,
+        "mean": 3.5,
         "q1": 2.49,
         "q3": 3.99
       },
@@ -22433,7 +22433,7 @@
         "tier": "standard",
         "min": 5.13,
         "q1": 7.96,
-        "median": 9.42,
+        "median": 9.43,
         "q3": 15.32,
         "max": 35.24,
         "mean": 12.73,
@@ -26543,10 +26543,10 @@
         "type": "private",
         "tier": "standard",
         "store": "Billa",
-        "price": 3.79,
-        "ppk": 4.21,
+        "price": 3.99,
+        "ppk": 4.43,
         "protpack": 81.0,
-        "eur10p": 0.47,
+        "eur10p": 0.49,
         "p100k": 4.13,
         "score": 39.2,
         "salt": 0.9
@@ -26656,7 +26656,7 @@
         "tier": "standard",
         "store": "Billa",
         "price": 3.99,
-        "ppk": 9.97,
+        "ppk": 9.98,
         "protpack": 20.4,
         "eur10p": 1.96,
         "p100k": 3.49,
@@ -29328,7 +29328,7 @@
         "tier": "standard",
         "store": "Billa",
         "price": 11.49,
-        "ppk": 28.72,
+        "ppk": 28.73,
         "protpack": 27.2,
         "eur10p": 4.22,
         "p100k": 9.58,
@@ -38080,7 +38080,7 @@
         "tier": "standard",
         "store": "Billa",
         "price": 2.79,
-        "ppk": 6.97,
+        "ppk": 6.98,
         "protpack": 10.4,
         "eur10p": 2.68,
         "p100k": 1.44,
@@ -39120,7 +39120,7 @@
         "type": "private",
         "tier": "standard",
         "count": 46,
-        "ppk_median": 9.42,
+        "ppk_median": 9.43,
         "eur10p_median": 1.34,
         "score_median": 25.3,
         "p100k_median": 4.3
@@ -39570,7 +39570,7 @@
         "type": "brand",
         "tier": "standard",
         "count": 3,
-        "ppk_median": 28.72,
+        "ppk_median": 28.73,
         "eur10p_median": 4.22,
         "score_median": 37.0,
         "p100k_median": 7.38
@@ -40033,7 +40033,7 @@
         "median": 1.99,
         "q3": 2.99,
         "max": 8.99,
-        "mean": 2.48,
+        "mean": 2.49,
         "n": 53
       },
       "price_per_kg": {
@@ -40132,7 +40132,7 @@
         "median": 9.8,
         "q3": 14.25,
         "max": 23.5,
-        "mean": 11.46,
+        "mean": 11.41,
         "n": 21
       },
       "pli": {

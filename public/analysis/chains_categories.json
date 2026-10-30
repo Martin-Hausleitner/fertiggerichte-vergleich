@@ -957,17 +957,17 @@
         "url": "https://prepmymeal.at/products/athlete-line-x-urs-phat-krapho"
       },
       "cheapest_protein": {
-        "id": 547,
-        "uid": "311izz6j5c",
-        "name": "Clever Pizza Margherita 3er",
-        "brand": "Clever",
+        "id": 576,
+        "uid": "5mah675apm",
+        "name": "BILLA Steinofen Pizza Tonno 2er",
+        "brand": "BILLA Immer Gut",
         "store": "Billa",
-        "price": 3.79,
+        "price": 3.64,
         "eur_per_10g_protein": 0.47,
-        "health_score": 39.2,
-        "pli": 69.6,
-        "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-771683-0463236399-xTlZQhdn.jpg",
-        "url": "https://shop.billa.at/produkte/clever-pizza-margherita-3er-00771683"
+        "health_score": 39.6,
+        "pli": 69.8,
+        "img": "https://images.cdn.europe-west1.gcp.commercetools.com/723b2575-66c7-4d92-ae49-82bf1d168d26/00-771519-1252558653-qQd3qKj2.jpg",
+        "url": "https://shop.billa.at/produkte/billa-steinofen-pizza-tonno-2er-00771519"
       }
     }
   },
@@ -988,8 +988,8 @@
       "Billa": [
         5,
         9,
-        72,
-        205,
+        69,
+        208,
         103,
         96,
         80,
@@ -1074,8 +1074,8 @@
       "Billa": [
         5,
         9,
-        72,
-        205,
+        69,
+        208,
         103,
         96,
         80,
