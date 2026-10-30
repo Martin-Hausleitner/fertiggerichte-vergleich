@@ -1,9 +1,9 @@
 {
   "meta": {
     "generated": "2026-10-25",
-    "n_total": 2343,
-    "n_meal_rows": 1343,
-    "n_resolved_producer_products": 88
+    "n_total": 2344,
+    "n_meal_rows": 1342,
+    "n_resolved_producer_products": 87
   },
   "same_factory": [
     {
@@ -544,7 +544,7 @@
       "state": "Steiermark",
       "code": "AT 62028 EG",
       "ooe": false,
-      "n": 21,
+      "n": 20,
       "brands": [
         "Chef Menü",
         "Clever",
@@ -593,22 +593,6 @@
           "protein_100": 4.7,
           "salt_100": 2.8,
           "health_score": 8.9,
-          "packaging": "Dose/Konserve",
-          "image_url": "https://images.openfoodfacts.org/images/products/409/920/012/1574/front_en.27.400.jpg"
-        },
-        {
-          "id": 1238,
-          "uid": "a2p21h0f1q",
-          "name": "Chili con carne",
-          "brand": "Primana",
-          "chain": "Hofer",
-          "price_eur": 1.99,
-          "size_g": 400.0,
-          "price_per_kg": 4.97,
-          "kcal_100": 87.0,
-          "protein_100": 5.3,
-          "salt_100": 1.4,
-          "health_score": 27.7,
           "packaging": "Dose/Konserve",
           "image_url": "https://images.openfoodfacts.org/images/products/409/920/012/1574/front_en.27.400.jpg"
         },
@@ -1917,370 +1901,370 @@
     "kcal_100": {
       "kcal_100": {
         "r": 1.0,
-        "n": 1103
+        "n": 1102
       },
       "protein_100": {
-        "r": 0.677,
-        "n": 1100
+        "r": 0.676,
+        "n": 1099
       },
       "fat_100": {
         "r": 0.829,
-        "n": 1101
+        "n": 1100
       },
       "satfat_100": {
-        "r": 0.631,
-        "n": 1069
+        "r": 0.632,
+        "n": 1068
       },
       "carbs_100": {
-        "r": 0.784,
-        "n": 1101
+        "r": 0.786,
+        "n": 1100
       },
       "sugar_100": {
-        "r": 0.157,
-        "n": 1069
+        "r": 0.159,
+        "n": 1068
       },
       "fiber_100": {
-        "r": 0.171,
-        "n": 569
+        "r": 0.163,
+        "n": 566
       },
       "salt_100": {
-        "r": 0.325,
-        "n": 1064
+        "r": 0.328,
+        "n": 1063
       },
       "price_per_kg": {
-        "r": 0.093,
+        "r": 0.086,
         "n": 936
       },
       "health_score": {
-        "r": -0.413,
-        "n": 1099
+        "r": -0.417,
+        "n": 1098
       }
     },
     "protein_100": {
       "kcal_100": {
-        "r": 0.677,
-        "n": 1100
+        "r": 0.676,
+        "n": 1099
       },
       "protein_100": {
         "r": 1.0,
-        "n": 1100
+        "n": 1099
       },
       "fat_100": {
-        "r": 0.503,
-        "n": 1100
+        "r": 0.502,
+        "n": 1099
       },
       "satfat_100": {
-        "r": 0.433,
-        "n": 1068
+        "r": 0.432,
+        "n": 1067
       },
       "carbs_100": {
         "r": 0.4,
-        "n": 1100
+        "n": 1099
       },
       "sugar_100": {
-        "r": -0.064,
-        "n": 1068
+        "r": -0.062,
+        "n": 1067
       },
       "fiber_100": {
-        "r": 0.107,
-        "n": 569
+        "r": 0.102,
+        "n": 566
       },
       "salt_100": {
-        "r": 0.228,
-        "n": 1064
+        "r": 0.227,
+        "n": 1063
       },
       "price_per_kg": {
-        "r": 0.31,
+        "r": 0.309,
         "n": 934
       },
       "health_score": {
-        "r": 0.143,
-        "n": 1099
+        "r": 0.142,
+        "n": 1098
       }
     },
     "fat_100": {
       "kcal_100": {
         "r": 0.829,
-        "n": 1101
+        "n": 1100
       },
       "protein_100": {
-        "r": 0.503,
-        "n": 1100
+        "r": 0.502,
+        "n": 1099
       },
       "fat_100": {
         "r": 1.0,
-        "n": 1101
+        "n": 1100
       },
       "satfat_100": {
-        "r": 0.76,
-        "n": 1069
+        "r": 0.761,
+        "n": 1068
       },
       "carbs_100": {
-        "r": 0.34,
-        "n": 1101
+        "r": 0.345,
+        "n": 1100
       },
       "sugar_100": {
-        "r": 0.081,
-        "n": 1069
+        "r": 0.086,
+        "n": 1068
       },
       "fiber_100": {
-        "r": 0.132,
-        "n": 569
+        "r": 0.126,
+        "n": 566
       },
       "salt_100": {
-        "r": 0.293,
-        "n": 1064
+        "r": 0.296,
+        "n": 1063
       },
       "price_per_kg": {
-        "r": 0.127,
+        "r": 0.12,
         "n": 934
       },
       "health_score": {
-        "r": -0.476,
-        "n": 1099
+        "r": -0.48,
+        "n": 1098
       }
     },
     "satfat_100": {
       "kcal_100": {
-        "r": 0.631,
-        "n": 1069
-      },
-      "protein_100": {
-        "r": 0.433,
+        "r": 0.632,
         "n": 1068
       },
+      "protein_100": {
+        "r": 0.432,
+        "n": 1067
+      },
       "fat_100": {
-        "r": 0.76,
-        "n": 1069
+        "r": 0.761,
+        "n": 1068
       },
       "satfat_100": {
         "r": 1.0,
-        "n": 1069
+        "n": 1068
       },
       "carbs_100": {
-        "r": 0.253,
-        "n": 1069
+        "r": 0.257,
+        "n": 1068
       },
       "sugar_100": {
-        "r": 0.092,
-        "n": 1067
+        "r": 0.096,
+        "n": 1066
       },
       "fiber_100": {
-        "r": -0.02,
-        "n": 568
+        "r": -0.028,
+        "n": 565
       },
       "salt_100": {
-        "r": 0.18,
-        "n": 1063
+        "r": 0.182,
+        "n": 1062
       },
       "price_per_kg": {
-        "r": 0.026,
+        "r": 0.019,
         "n": 905
       },
       "health_score": {
-        "r": -0.515,
-        "n": 1067
+        "r": -0.518,
+        "n": 1066
       }
     },
     "carbs_100": {
       "kcal_100": {
-        "r": 0.784,
-        "n": 1101
+        "r": 0.786,
+        "n": 1100
       },
       "protein_100": {
         "r": 0.4,
-        "n": 1100
+        "n": 1099
       },
       "fat_100": {
-        "r": 0.34,
-        "n": 1101
+        "r": 0.345,
+        "n": 1100
       },
       "satfat_100": {
-        "r": 0.253,
-        "n": 1069
+        "r": 0.257,
+        "n": 1068
       },
       "carbs_100": {
         "r": 1.0,
-        "n": 1101
+        "n": 1100
       },
       "sugar_100": {
-        "r": 0.237,
-        "n": 1069
+        "r": 0.236,
+        "n": 1068
       },
       "fiber_100": {
-        "r": 0.13,
-        "n": 569
+        "r": 0.123,
+        "n": 566
       },
       "salt_100": {
-        "r": 0.235,
-        "n": 1064
+        "r": 0.239,
+        "n": 1063
       },
       "price_per_kg": {
-        "r": -0.088,
+        "r": -0.092,
         "n": 934
       },
       "health_score": {
-        "r": -0.345,
-        "n": 1099
+        "r": -0.35,
+        "n": 1098
       }
     },
     "sugar_100": {
       "kcal_100": {
-        "r": 0.157,
-        "n": 1069
-      },
-      "protein_100": {
-        "r": -0.064,
+        "r": 0.159,
         "n": 1068
       },
-      "fat_100": {
-        "r": 0.081,
-        "n": 1069
-      },
-      "satfat_100": {
-        "r": 0.092,
+      "protein_100": {
+        "r": -0.062,
         "n": 1067
       },
+      "fat_100": {
+        "r": 0.086,
+        "n": 1068
+      },
+      "satfat_100": {
+        "r": 0.096,
+        "n": 1066
+      },
       "carbs_100": {
-        "r": 0.237,
-        "n": 1069
+        "r": 0.236,
+        "n": 1068
       },
       "sugar_100": {
         "r": 1.0,
-        "n": 1069
+        "n": 1068
       },
       "fiber_100": {
-        "r": 0.139,
-        "n": 568
+        "r": 0.142,
+        "n": 565
       },
       "salt_100": {
-        "r": -0.046,
-        "n": 1062
+        "r": -0.044,
+        "n": 1061
       },
       "price_per_kg": {
-        "r": 0.04,
+        "r": 0.041,
         "n": 904
       },
       "health_score": {
-        "r": -0.254,
-        "n": 1067
+        "r": -0.255,
+        "n": 1066
       }
     },
     "fiber_100": {
       "kcal_100": {
-        "r": 0.171,
-        "n": 569
+        "r": 0.163,
+        "n": 566
       },
       "protein_100": {
-        "r": 0.107,
-        "n": 569
+        "r": 0.102,
+        "n": 566
       },
       "fat_100": {
-        "r": 0.132,
-        "n": 569
+        "r": 0.126,
+        "n": 566
       },
       "satfat_100": {
-        "r": -0.02,
-        "n": 568
-      },
-      "carbs_100": {
-        "r": 0.13,
-        "n": 569
-      },
-      "sugar_100": {
-        "r": 0.139,
-        "n": 568
-      },
-      "fiber_100": {
-        "r": 1.0,
-        "n": 569
-      },
-      "salt_100": {
         "r": -0.028,
         "n": 565
       },
+      "carbs_100": {
+        "r": 0.123,
+        "n": 566
+      },
+      "sugar_100": {
+        "r": 0.142,
+        "n": 565
+      },
+      "fiber_100": {
+        "r": 1.0,
+        "n": 566
+      },
+      "salt_100": {
+        "r": -0.027,
+        "n": 562
+      },
       "price_per_kg": {
-        "r": 0.379,
-        "n": 479
+        "r": 0.375,
+        "n": 477
       },
       "health_score": {
         "r": 0.171,
-        "n": 569
+        "n": 566
       }
     },
     "salt_100": {
       "kcal_100": {
-        "r": 0.325,
-        "n": 1064
-      },
-      "protein_100": {
-        "r": 0.228,
-        "n": 1064
-      },
-      "fat_100": {
-        "r": 0.293,
-        "n": 1064
-      },
-      "satfat_100": {
-        "r": 0.18,
+        "r": 0.328,
         "n": 1063
       },
-      "carbs_100": {
-        "r": 0.235,
-        "n": 1064
+      "protein_100": {
+        "r": 0.227,
+        "n": 1063
       },
-      "sugar_100": {
-        "r": -0.046,
+      "fat_100": {
+        "r": 0.296,
+        "n": 1063
+      },
+      "satfat_100": {
+        "r": 0.182,
         "n": 1062
       },
+      "carbs_100": {
+        "r": 0.239,
+        "n": 1063
+      },
+      "sugar_100": {
+        "r": -0.044,
+        "n": 1061
+      },
       "fiber_100": {
-        "r": -0.028,
-        "n": 565
+        "r": -0.027,
+        "n": 562
       },
       "salt_100": {
         "r": 1.0,
-        "n": 1064
+        "n": 1063
       },
       "price_per_kg": {
-        "r": -0.16,
+        "r": -0.166,
         "n": 903
       },
       "health_score": {
-        "r": -0.556,
-        "n": 1063
+        "r": -0.557,
+        "n": 1062
       }
     },
     "price_per_kg": {
       "kcal_100": {
-        "r": 0.093,
+        "r": 0.086,
         "n": 936
       },
       "protein_100": {
-        "r": 0.31,
+        "r": 0.309,
         "n": 934
       },
       "fat_100": {
-        "r": 0.127,
+        "r": 0.12,
         "n": 934
       },
       "satfat_100": {
-        "r": 0.026,
+        "r": 0.019,
         "n": 905
       },
       "carbs_100": {
-        "r": -0.088,
+        "r": -0.092,
         "n": 934
       },
       "sugar_100": {
-        "r": 0.04,
+        "r": 0.041,
         "n": 904
       },
       "fiber_100": {
-        "r": 0.379,
-        "n": 479
+        "r": 0.375,
+        "n": 477
       },
       "salt_100": {
-        "r": -0.16,
+        "r": -0.166,
         "n": 903
       },
       "price_per_kg": {
@@ -2288,50 +2272,50 @@
         "n": 1163
       },
       "health_score": {
-        "r": 0.34,
+        "r": 0.348,
         "n": 933
       }
     },
     "health_score": {
       "kcal_100": {
-        "r": -0.413,
-        "n": 1099
+        "r": -0.417,
+        "n": 1098
       },
       "protein_100": {
-        "r": 0.143,
-        "n": 1099
+        "r": 0.142,
+        "n": 1098
       },
       "fat_100": {
-        "r": -0.476,
-        "n": 1099
+        "r": -0.48,
+        "n": 1098
       },
       "satfat_100": {
-        "r": -0.515,
-        "n": 1067
+        "r": -0.518,
+        "n": 1066
       },
       "carbs_100": {
-        "r": -0.345,
-        "n": 1099
+        "r": -0.35,
+        "n": 1098
       },
       "sugar_100": {
-        "r": -0.254,
-        "n": 1067
+        "r": -0.255,
+        "n": 1066
       },
       "fiber_100": {
         "r": 0.171,
-        "n": 569
+        "n": 566
       },
       "salt_100": {
-        "r": -0.556,
-        "n": 1063
+        "r": -0.557,
+        "n": 1062
       },
       "price_per_kg": {
-        "r": 0.34,
+        "r": 0.348,
         "n": 933
       },
       "health_score": {
         "r": 1.0,
-        "n": 1099
+        "n": 1098
       }
     }
   },
@@ -2600,6 +2584,17 @@
         "y": 8.72,
         "health": 33.1,
         "kcal": 101.0
+      },
+      {
+        "id": 59,
+        "uid": "378mhvmy4a",
+        "name": "Felix Erdäpfelgulasch 800 G",
+        "brand": "Felix",
+        "chain": "Spar",
+        "x": 3.1,
+        "y": 8.11,
+        "health": 28.9,
+        "kcal": 104.0
       },
       {
         "id": 60,
@@ -3779,17 +3774,6 @@
         "kcal": 120.0
       },
       {
-        "id": 486,
-        "uid": "2cr9lvp9rk",
-        "name": "Heinz Baked Beans",
-        "brand": "Heinz",
-        "chain": "Spar",
-        "x": 4.8,
-        "y": 7.2,
-        "health": 58.7,
-        "kcal": 81.0
-      },
-      {
         "id": 491,
         "uid": "7jf4yxwj2y",
         "name": "Iglo Genießer Schmankerl Paprikahuhn mit Spiralen",
@@ -4956,17 +4940,6 @@
         "kcal": 215.0
       },
       {
-        "id": 685,
-        "uid": "3t3lwbztqm",
-        "name": "GOOD CHOICE Faschierte Laibchen mit Kartoffelpüree 430g",
-        "brand": "Good Choice",
-        "chain": "Hofer",
-        "x": 5.8,
-        "y": 6.4,
-        "health": 23.2,
-        "kcal": 141.0
-      },
-      {
         "id": 690,
         "uid": "6apo6366uo",
         "name": "GOOD CHOICE Wrap Caeser Chicken 170g",
@@ -5053,17 +5026,6 @@
         "y": 3.38,
         "health": 18.0,
         "kcal": 133.0
-      },
-      {
-        "id": 734,
-        "uid": "1d5t6cvsu4",
-        "name": "SPAR Feine Küche Spaghetti Carbonara",
-        "brand": "SPAR Feine Küche",
-        "chain": "Spar",
-        "x": 4.7,
-        "y": 8.2,
-        "health": 22.7,
-        "kcal": 127.0
       },
       {
         "id": 758,
@@ -6439,17 +6401,6 @@
         "y": 9.96,
         "health": 0,
         "kcal": 252.0
-      },
-      {
-        "id": 1238,
-        "uid": "a2p21h0f1q",
-        "name": "Chili con carne",
-        "brand": "Primana",
-        "chain": "Hofer",
-        "x": 5.3,
-        "y": 4.97,
-        "health": 27.7,
-        "kcal": 87.0
       },
       {
         "id": 1242,
@@ -8441,17 +8392,6 @@
         "y": 12.47,
         "health": 30.2,
         "kcal": 113.0
-      },
-      {
-        "id": 2241,
-        "uid": "wwu2kyrj6k",
-        "name": "Heinz Baked Beans",
-        "brand": "Heinz",
-        "chain": "Penny",
-        "x": 4.8,
-        "y": 7.2,
-        "health": 58.7,
-        "kcal": 81.0
       },
       {
         "id": 2243,
@@ -11743,6 +11683,50 @@
         "kcal": 79.0
       },
       {
+        "id": 3211,
+        "uid": "qtba18ifo2",
+        "name": "Bio Chili con Tempeh 500g - 6er Vorteilspack von Goldblatt",
+        "brand": "Goldblatt",
+        "chain": "myProduct",
+        "x": 7.0,
+        "y": 21.64,
+        "health": 57.3,
+        "kcal": 97.0
+      },
+      {
+        "id": 3212,
+        "uid": "avzy3do4hs",
+        "name": "Bio Edelpilz Gulasch 500g - 6er Vorteilspack von Goldblatt",
+        "brand": "Goldblatt",
+        "chain": "myProduct",
+        "x": 5.5,
+        "y": 21.64,
+        "health": 75.6,
+        "kcal": 50.0
+      },
+      {
+        "id": 3213,
+        "uid": "yu500vw6ka",
+        "name": "Bio Bolo Amore 500g - 6er Vorteilspack von Goldblatt",
+        "brand": "Goldblatt",
+        "chain": "myProduct",
+        "x": 6.7,
+        "y": 21.64,
+        "health": 60.6,
+        "kcal": 67.0
+      },
+      {
+        "id": 3214,
+        "uid": "a9iz57iu08",
+        "name": "Bio Kichererbsen Curry 500g - 6er Vorteilspack von Goldblatt",
+        "brand": "Goldblatt",
+        "chain": "myProduct",
+        "x": 5.7,
+        "y": 21.64,
+        "health": 63.8,
+        "kcal": 78.0
+      },
+      {
         "id": 3217,
         "uid": "cn3sd16kmw",
         "name": "Bio Gulaschsuppe ungarische Art 400g - 6er Vorteilspack von Ökoland",
@@ -12876,6 +12860,17 @@
         "y": 5.3,
         "salt": 1.2,
         "health": 33.1
+      },
+      {
+        "id": 59,
+        "uid": "378mhvmy4a",
+        "name": "Felix Erdäpfelgulasch 800 G",
+        "brand": "Felix",
+        "chain": "Spar",
+        "x": 104.0,
+        "y": 3.1,
+        "salt": 1.2,
+        "health": 28.9
       },
       {
         "id": 60,
@@ -14055,17 +14050,6 @@
         "health": 41.3
       },
       {
-        "id": 486,
-        "uid": "2cr9lvp9rk",
-        "name": "Heinz Baked Beans",
-        "brand": "Heinz",
-        "chain": "Spar",
-        "x": 81.0,
-        "y": 4.8,
-        "salt": 0.6,
-        "health": 58.7
-      },
-      {
         "id": 491,
         "uid": "7jf4yxwj2y",
         "name": "Iglo Genießer Schmankerl Paprikahuhn mit Spiralen",
@@ -15232,17 +15216,6 @@
         "health": 36.7
       },
       {
-        "id": 685,
-        "uid": "3t3lwbztqm",
-        "name": "GOOD CHOICE Faschierte Laibchen mit Kartoffelpüree 430g",
-        "brand": "Good Choice",
-        "chain": "Hofer",
-        "x": 141.0,
-        "y": 5.8,
-        "salt": 1.2,
-        "health": 23.2
-      },
-      {
         "id": 690,
         "uid": "6apo6366uo",
         "name": "GOOD CHOICE Wrap Caeser Chicken 170g",
@@ -15329,17 +15302,6 @@
         "y": 4.9,
         "salt": 1.08,
         "health": 18.0
-      },
-      {
-        "id": 734,
-        "uid": "1d5t6cvsu4",
-        "name": "SPAR Feine Küche Spaghetti Carbonara",
-        "brand": "SPAR Feine Küche",
-        "chain": "Spar",
-        "x": 127.0,
-        "y": 4.7,
-        "salt": 1.2,
-        "health": 22.7
       },
       {
         "id": 758,
@@ -17069,17 +17031,6 @@
         "health": 29.7
       },
       {
-        "id": 1178,
-        "uid": "awxvg4bx3q",
-        "name": "Huhn Süß Sauer mit Ananas",
-        "brand": "Good Choice",
-        "chain": "Hofer",
-        "x": 108.0,
-        "y": 4.4,
-        "salt": 1.1,
-        "health": 22.1
-      },
-      {
         "id": 1179,
         "uid": "wap2ophrlg",
         "name": "Risotto con asparagi",
@@ -17320,17 +17271,6 @@
         "y": 5.7,
         "salt": 1.2,
         "health": 0
-      },
-      {
-        "id": 1238,
-        "uid": "a2p21h0f1q",
-        "name": "Chili con carne",
-        "brand": "Primana",
-        "chain": "Hofer",
-        "x": 87.0,
-        "y": 5.3,
-        "salt": 1.4,
-        "health": 27.7
       },
       {
         "id": 1241,
@@ -19608,17 +19548,6 @@
         "y": 11.0,
         "salt": 1.5,
         "health": 30.2
-      },
-      {
-        "id": 2241,
-        "uid": "wwu2kyrj6k",
-        "name": "Heinz Baked Beans",
-        "brand": "Heinz",
-        "chain": "Penny",
-        "x": 81.0,
-        "y": 4.8,
-        "salt": 0.6,
-        "health": 58.7
       },
       {
         "id": 2243,
@@ -22910,6 +22839,50 @@
         "health": 24.4
       },
       {
+        "id": 3211,
+        "uid": "qtba18ifo2",
+        "name": "Bio Chili con Tempeh 500g - 6er Vorteilspack von Goldblatt",
+        "brand": "Goldblatt",
+        "chain": "myProduct",
+        "x": 97.0,
+        "y": 7.0,
+        "salt": 0.42,
+        "health": 57.3
+      },
+      {
+        "id": 3212,
+        "uid": "avzy3do4hs",
+        "name": "Bio Edelpilz Gulasch 500g - 6er Vorteilspack von Goldblatt",
+        "brand": "Goldblatt",
+        "chain": "myProduct",
+        "x": 50.0,
+        "y": 5.5,
+        "salt": 0.65,
+        "health": 75.6
+      },
+      {
+        "id": 3213,
+        "uid": "yu500vw6ka",
+        "name": "Bio Bolo Amore 500g - 6er Vorteilspack von Goldblatt",
+        "brand": "Goldblatt",
+        "chain": "myProduct",
+        "x": 67.0,
+        "y": 6.7,
+        "salt": 0.65,
+        "health": 60.6
+      },
+      {
+        "id": 3214,
+        "uid": "a9iz57iu08",
+        "name": "Bio Kichererbsen Curry 500g - 6er Vorteilspack von Goldblatt",
+        "brand": "Goldblatt",
+        "chain": "myProduct",
+        "x": 78.0,
+        "y": 5.7,
+        "salt": 0.53,
+        "health": 63.8
+      },
+      {
         "id": 3217,
         "uid": "cn3sd16kmw",
         "name": "Bio Gulaschsuppe ungarische Art 400g - 6er Vorteilspack von Ökoland",
@@ -24732,17 +24705,17 @@
     },
     {
       "packaging": "Unklar (keine Lagerangabe)",
-      "n": 167,
+      "n": 165,
       "median": 1.12,
       "mean": 1.16,
-      "share_over_1_5g": 0.15
+      "share_over_1_5g": 0.152
     },
     {
       "packaging": "Kühlregal (Menüschale/frisch)",
-      "n": 233,
+      "n": 230,
       "median": 1.1,
       "mean": 1.11,
-      "share_over_1_5g": 0.09
+      "share_over_1_5g": 0.091
     },
     {
       "packaging": "Tiefkühl (TK)",
@@ -24753,7 +24726,7 @@
     },
     {
       "packaging": "Glas",
-      "n": 124,
+      "n": 128,
       "median": 0.8,
       "mean": 0.78,
       "share_over_1_5g": 0.008
@@ -24895,7 +24868,7 @@
     },
     {
       "health_band": "40-49",
-      "n": 83,
+      "n": 82,
       "best": {
         "id": 176,
         "uid": "186nzva9u6",
@@ -24918,7 +24891,7 @@
     },
     {
       "health_band": "50-59",
-      "n": 55,
+      "n": 53,
       "best": {
         "id": 548,
         "uid": "0aw3fitupj",
@@ -25725,19 +25698,19 @@
       "median_protein_per_euro": 3.75
     },
     "other_resolved_producers": {
-      "n": 765,
-      "median_price_per_kg": 13.39,
+      "n": 768,
+      "median_price_per_kg": 13.44,
       "median_protein_100": 6.5,
       "median_salt_100": 1.0,
-      "median_health_score": 35.6,
+      "median_health_score": 35.7,
       "median_protein_per_euro": 4.2
     },
     "all_non_ooe": {
-      "n": 1296,
+      "n": 1295,
       "median_price_per_kg": 12.09,
-      "median_protein_100": 6.0,
+      "median_protein_100": 6.1,
       "median_salt_100": 1.0,
-      "median_health_score": 33.95,
+      "median_health_score": 34.0,
       "median_protein_per_euro": 4.3
     },
     "ooe_products": [
