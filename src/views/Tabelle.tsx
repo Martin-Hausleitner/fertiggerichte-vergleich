@@ -11,7 +11,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { useFilter, makePred, type F } from '@/components/FilterPanel'
 import { FacetSidebar, ActiveChips, walkMin } from '@/components/FacetSidebar'
 import { Sheet } from '@/components/ui'
-import { isReadyMeal, pricePerPortion, lastPriceDate, protPerEuro, passesRankMin, passesLightRank } from '@/app/meal'
+import { isReadyMeal, pricePerPortion, priceDateSpan, fmtPriceSpan, protPerEuro, passesRankMin, passesLightRank } from '@/app/meal'
 import { valueScore, clientScore, useCfg, rankOk } from '@/app/scoring'
 import { deliveryText, deliveryTitle, delivers4020, delivery4020Unconfirmed, isRowRankable } from '@/app/shops'
 import { StoreLogo } from '@/components/product'
@@ -49,7 +49,7 @@ export default function Tabelle() {
   const rows = useMemo(() => { const qq = q.toLowerCase(); const sd = SORTS.find(x => x[0] === so) ?? SORTS[0]; return base.filter(r => pred(r) && (so !== 'value' && so !== 'ppe' || allFood || isRowRankable(r as any)) && (!qq || `${r.name} ${r.brandN} ${r.herst}`.toLowerCase().includes(qq)))
     .map(r => ({ ...r, cat: [...(r.cprot || []), ...(r.cdish || [])].join(', '), diet: veg(r), dist: distOf(r), ns: r.ns && r.ns !== 'unknown' ? r.ns.toUpperCase() : null, value: (r as any).rankable === true || passesRankMin(r) ? (valueScore(r) ?? r.pli) : ((r as any).pliLight ?? valueScore(r) ?? r.pli), ppeP: protPerEuro(r), avail: availOf(r.store, r), pstat: priceStatusLabel(r) }))
     .sort((a, b) => { const x = sd[2](a), y = sd[2](b); return x == null ? (y == null ? 0 : 1) : y == null ? -1 : (x - y) * sd[3] }) }, [base, pred, q, distOf, so, cfg])
-  const updated = useMemo(() => lastPriceDate(R), [R])
+  const updated = useMemo(() => fmtPriceSpan(priceDateSpan(R)), [R])
   const ctx = useMemo(() => ({ konzOf, dist: distOf }), [konzOf, distOf])
   const colDefs = useMemo<ColDef[]>(() => [
     { headerName: '', width: 44, pinned: 'left', sortable: false, cellRenderer: (p: any) => <input type="checkbox" aria-label="vergleichen" checked={compare.includes(p.data.id)} onChange={() => setCompare(compare.includes(p.data.id) ? compare.filter(x => x !== p.data.id) : [...compare, p.data.id])} /> },
@@ -66,7 +66,7 @@ export default function Tabelle() {
   const loadView = (v: SavedView) => { setF(v.f); if (v.so) setSo(v.so); setCols(v.cols); setTimeout(() => grid.current?.api.applyColumnState({ state: v.sort, defaultState: { sort: null } }), 50) }
   const sidebar = <FacetSidebar base={base} f={f} set={setF} ctx={ctx} />
   return <div className="space-y-3">
-    <div><h1 className="text-xl font-bold tracking-tight">Fertiggerichte finden & vergleichen</h1><p className="text-sm text-muted-foreground">Filter wirken sofort und lassen sich kombinieren · Zahlen = Treffer bei den übrigen Filtern · Link teilen übernimmt Filter & Sortierung{updated && <> · Preise zuletzt aktualisiert: <b>{new Date(updated).toLocaleDateString('de-AT')}</b></>}</p></div>
+    <div><h1 className="text-xl font-bold tracking-tight">Fertiggerichte finden & vergleichen</h1><p className="text-sm text-muted-foreground">Filter wirken sofort und lassen sich kombinieren · Zahlen = Treffer bei den übrigen Filtern · Link teilen übernimmt Filter & Sortierung{updated && <> · <b title={updated.title}>{updated.label}</b></>}</p></div>
     <div className="grid gap-4 lg:grid-cols-[270px_minmax(0,1fr)]">
       <aside className="hidden lg:block"><div className="sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto pr-1">{sidebar}</div></aside>
       <div className="min-w-0 space-y-2">

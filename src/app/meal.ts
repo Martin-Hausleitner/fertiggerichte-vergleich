@@ -107,6 +107,21 @@ export const isDelisted = (r: Row) => /ausgelistet|nicht mehr auf \S+ gelistet/i
 /** not rankable for price reasons: stale price date or delisted */
 export const isPriceExcluded = (r: Row) => isStalePrice(r) || isDelisted(r)
 export const isRankable = (r: Row) => isReadyMeal(r) && (!r.stage || r.stage === 'meal' || r.stage === 'stew') && !(r as any).sold_out && !isPriceExcluded(r) && r.price_status !== 'unknown' && r.shop_status !== 'unknown' && r.score != null && !r.incomplete && r.price != null && r.price > 0 && !!r.store && !r.store.startsWith('unbekannt') && pricePerPortion(r) != null && isFullMeal(r)
+/** SC84 P2(3): Preisstand je Shop statt nur Maximum – "zuletzt aktualisiert" war irreführend (nur Billa 30.10., Rest älter).
+ *  byStore = jüngstes psrc-Datum je Shop; oldest = ältester dieser Shop-Stände; newest = jüngster. */
+export const priceDateSpan = (rows: { store?: string; psrc?: string | null }[]) => {
+  const byStore: Record<string, string> = {}
+  rows.forEach(r => { const m = r.psrc?.match(/\d{4}-\d{2}-\d{2}/); const k = r.store ?? '?'; if (m && !(byStore[k] >= m[0])) byStore[k] = m[0] })
+  const v = Object.values(byStore).sort()
+  return v.length ? { oldest: v[0], newest: v[v.length - 1], byStore } : null
+}
+export const fmtPriceSpan = (sp: ReturnType<typeof priceDateSpan>) => {
+  if (!sp) return null
+  const f = (d: string) => new Date(d + 'T12:00:00Z').toLocaleDateString('de-AT', { timeZone: 'Europe/Vienna' })
+  const label = sp.oldest === sp.newest ? `Preisstand ${f(sp.newest)}` : `Preisstand je Shop ${f(sp.oldest)}–${f(sp.newest)}`
+  const title = Object.entries(sp.byStore).sort((a, b) => b[1].localeCompare(a[1]) || a[0].localeCompare(b[0])).map(([k, d]) => `${k}: ${f(d)}`).join(' · ')
+  return { label, title }
+}
 export const lastPriceDate = (rows: Row[]) => { let d = ''; rows.forEach(r => { const m = r.psrc?.match(/\d{4}-\d{2}-\d{2}/); if (m && m[0] > d) d = m[0] }); return d || null }
 
 /** ---- Preis-Leistung: EINE Formel für alle Ansichten ----
