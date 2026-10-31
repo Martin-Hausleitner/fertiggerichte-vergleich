@@ -30,20 +30,25 @@ export function check(rows) {
 function selftest() {
   const fx = [
     { id: 1, ean: '9000000000001', store: 'billa', rankable: true, alsoAt: [], alsoPack: [{ store: 'spar', id: 2 }] },
-    { id: 2, ean: '9000000000001', store: 'spar', rankable: false, dupOf: 1, alsoAt: [], alsoPack: [] },
+    { id: 2, ean: '9000000000001', store: 'spar', rankable: false, dupOf: 1, alsoAt: [], alsoPack: [{ store: 'billa', id: 1 }] },
     { id: 3, ean: '9000000000002', store: 'hofer', rankable: true, alsoAt: ['penny'] },
     { id: 4, ean: '9000000000002', store: 'penny', rankable: false, alsoAt: ['hofer'] },
   ];
   const ok = check(fx);
   const errs = [];
   if (ok.gaps.length || ok.doubleRanked.length) errs.push('Fixture muss grün sein: ' + ok.gaps.join('; '));
-  if (ok.viaPackOnly !== 1) errs.push(`Fixture: genau 1 Store nur via alsoPack erwartet, ist ${ok.viaPackOnly}`);
+  if (ok.viaPackOnly !== 2) errs.push(`Fixture: genau 2 Stores nur via alsoPack erwartet, ist ${ok.viaPackOnly}`);
+  if (ok.gapsAll !== 0) errs.push(`Fixture: gapsAll 0 erwartet, ist ${ok.gapsAll}`);
   const mut = check(fx.map((r) => (r.id === 1 ? { ...r, alsoPack: [] } : r)));
   if (mut.gaps.length !== 1 || !mut.gaps[0].startsWith('#1 billa')) errs.push('Mutation alsoPack entfernt muss genau #1 als Lücke melden');
   const mut2 = check(fx.map((r) => (r.id === 4 ? { ...r, rankable: true } : r)));
   if (mut2.doubleRanked.length !== 1) errs.push('Mutation 2× gerankt je EAN muss fehlschlagen');
-  const mut3 = check(fx.map((r) => (r.id === 2 ? { ...r, alsoPack: [] } : r)));
+  // SC88 P3-1: Mutation 3 muss die Fixture tatsächlich verändern (vorher No-op, weil #2 schon alsoPack: [] hatte).
+  const fx3 = fx.map((r) => (r.id === 2 ? { ...r, alsoPack: [] } : r));
+  if (JSON.stringify(fx3) === JSON.stringify(fx)) errs.push('Mutation 3 ist ein No-op (Fixture unverändert)');
+  const mut3 = check(fx3);
   if (mut3.gaps.length) errs.push('dupOf-Zeile ohne alsoPack darf keine aktive Lücke sein');
+  if (mut3.gapsAll !== 1) errs.push(`Mutation 3: dupOf-Lücke muss in gapsAll gezählt werden (1), ist ${mut3.gapsAll}`);
   return errs;
 }
 
