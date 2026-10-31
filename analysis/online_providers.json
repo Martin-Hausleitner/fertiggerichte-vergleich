@@ -1,0 +1,352 @@
+{
+ "generated": "2026-10-14",
+ "providers": [
+  {
+   "name": "Juit",
+   "company": "Juit GmbH (HRB 42921 AG Bielefeld, USt-ID DE316648632 – VIES gültig 2026-10-14)",
+   "seat": "Lutterstraße 14, 33617 Bielefeld (DE)",
+   "producer": "eigene Küche lt. Website ('von Köchen zubereitet'); Produktionsstätte nicht veröffentlicht",
+   "delivers_linz": true,
+   "shipping": "nach AT 8,99 € (DHL Express Standard, Di/Mi/Fr lt. FAQ)",
+   "storage": "tiefgekühlt (Trockeneis); 3 Tage Kühlschrank ungeöffnet",
+   "price_from": null,
+   "products_in_app": true,
+   "products_note": "50 bestellbare Gerichte mit EAN, Gewicht, Nährwerten/100 g, Zutaten, Packshot aus dem öffentlichen Storefront-Content (cdn.juit.gmbh/content-de.json); Einzelpreise nur eingeloggt (api.juitnow.com 401) → kein Preis",
+   "store": "Online: Juit",
+   "sources": [
+    "https://www.juit.com/de",
+    "https://cdn.juit.gmbh/content-de.json",
+    "https://www.juit.com/de/impressum"
+   ],
+   "stats": {
+    "n_products": 50,
+    "median_price_eur": null,
+    "median_eur_per_10g_protein": null,
+    "best_eur_per_10g_protein": null,
+    "median_protein_pack_g": 33.9
+   }
+  },
+  {
+   "name": "bofrost*",
+   "company": "bofrost* Austria GmbH (FN 185873v LG Innsbruck, UID ATU66058936 lt. Impressum)",
+   "seat": "6430 Ötztal-Bahnhof (Tirol); Niederlassung OÖ: Welser Str. 3, 4642 Sattledt",
+   "producer": "Eigenmarke bofrost*; Hersteller je Produkt nicht veröffentlicht",
+   "delivers_linz": true,
+   "shipping": "Lieferung durch bofrost*-Verkaufsfahrer (14 Niederlassungen in AT, nächste zu Linz: Sattledt); keine Liefergebühr ab 20 € Bestellwert (lt. bofrost.at/faq/service-bestellung-lieferung.html)",
+   "storage": "tiefgekühlt (TK)",
+   "price_from": null,
+   "products_in_app": true,
+   "products_note": "Fertiggerichte (Pfannengerichte, Pasta, Schlemmer-Menüs, Hausmannskost, Suppen, Länderküche, Pizza, Fleisch-/Geflügelzubereitungen, vegetarisch/vegan) mit Preis, €/kg, Packung, Nährwerten/100 g, Nutri-Score-Badge und Produktfoto von den öffentlichen bofrost.at-Produktseiten (Sitemap, JSON-LD); kein GTIN veröffentlicht",
+   "store": "Online: bofrost",
+   "sources": [
+    "https://www.bofrost.at/",
+    "https://www.bofrost.at/sitemap.xml",
+    "https://www.bofrost.at/impressum.html",
+    "https://www.bofrost.at/niederlassungen.html",
+    "https://www.bofrost.at/faq/service-bestellung-lieferung.html"
+   ],
+   "stats": {
+    "n_products": 144,
+    "median_price_eur": 13.79,
+    "median_eur_per_10g_protein": 2.87,
+    "best_eur_per_10g_protein": 1.28,
+    "median_protein_pack_g": 50.7
+   }
+  },
+  {
+   "name": "every.",
+   "company": "Every. GmbH (HRB 221768 B AG Charlottenburg, USt-ID DE335586517 lt. Impressum; Bio-Kontrolle DE-ÖKO-001)",
+   "seat": "Ritterstraße 9–10, 10969 Berlin (DE)",
+   "producer": "Eigenmarke every.; Produktionsstätte nicht veröffentlicht",
+   "delivers_linz": null,
+   "shipping": "nach AT per DPD lt. eat.every-foods.com/policies/shipping-policy; 5,99 €, ab 8 Gerichten frei, Express 7,99 € (AGB §6 nennt noch nur DE – Konflikt dokumentiert)",
+   "storage": "tiefgekühlt (Trockeneis), bis 12 Monate TK",
+   "price_from": "8,99 € / Gericht einzeln (Bundles/Abo günstiger)",
+   "products_in_app": true,
+   "products_note": "pflanzliche TK-Fertiggerichte (Bowls, Currys, Pasta, Eintöpfe, Salate) mit Einzelpreis, SKU, Gewicht, Nährwerten/100 g, Zutaten, Zubereitung und HEAD-200-Packshot aus öffentlichem Shopify-products.json + Produktseiten; kein GTIN veröffentlicht",
+   "store": "Online: every.",
+   "sources": [
+    "https://every-foods.com/",
+    "https://eat.every-foods.com/products.json",
+    "https://every-foods.com/sitemap-products.xml",
+    "https://eat.every-foods.com/policies/shipping-policy",
+    "https://every-foods.com/impressum"
+   ],
+   "stats": {
+    "n_products": 50,
+    "median_price_eur": 8.99,
+    "median_eur_per_10g_protein": 4.47,
+    "best_eur_per_10g_protein": 2.74,
+    "median_protein_pack_g": 20.2
+   }
+  },
+  {
+   "name": "Löwenanteil",
+   "company": "Löwenanteil GmbH (HRB 212808 AG Oldenburg, USt-ID DE316057151 – public Handelsregister/North Data; footer © Löwenanteil GmbH)",
+   "seat": "Heiligengeiststraße 6–8, 26121 Oldenburg (DE)",
+   "producer": "Eigenmarke Löwenanteil; Bio-Fertiggerichte im Glas",
+   "delivers_linz": true,
+   "shipping": "AT selectable on storefront (homepage country switcher Österreich EUR); /policies/shipping-policy robots-Disallow → fee not scraped",
+   "storage": "ungekühlt (Glas, steril), über 1 Jahr",
+   "price_from": "9,99 € / Glas (2 Portionen; Abo/Bundle günstiger)",
+   "products_in_app": true,
+   "products_note": "17 Bio-Fertiggerichte im Glas mit Einzelpreis, Nährwerten/100 g + pro Glas (570 g), Zutaten, Zubereitung und HEAD-200-Packshot aus öffentlichem Shopify-products.json + Produkt-HTML (food-connectors loewenanteil); kein GTIN; shipping_eur null (robots)",
+   "store": "Online: Löwenanteil",
+   "sources": [
+    "https://www.loewenanteil.com/",
+    "https://www.loewenanteil.com/products.json",
+    "https://www.northdata.com/L%C3%B6wenanteil%20GmbH,%20Oldenburg/HRB%20212808"
+   ],
+   "stats": {
+    "n_products": 17,
+    "median_price_eur": 9.99,
+    "median_eur_per_10g_protein": 2.5,
+    "best_eur_per_10g_protein": 2.31,
+    "median_protein_pack_g": 39.9
+   }
+  },
+  {
+   "name": "Kernbeißer",
+   "company": "Kernbeißer OG (FN 622470y HG Wien, UID ATU80744456 – VIES gültig 2026-10-14, lt. Impressum)",
+   "seat": "Jheringgasse 33/2/8, 1150 Wien (AT)",
+   "producer": "Eigenmarke Kernbeißer; vegane Vollkorn-Fertiggerichte im Glas aus Wien",
+   "delivers_linz": true,
+   "shipping": "kostenlos, Lieferung nur innerhalb Österreichs; Bestellmengen 6/12/18/24/30 Gläser (lt. Website)",
+   "storage": "ungekühlt (Glas)",
+   "price_from": "9,00 € / Glas 450 g (Probierpaket 6 Gerichte 50 €)",
+   "products_in_app": true,
+   "products_note": "6 vegane Vollkorn-Fertiggerichte im Glas mit Preis, GTIN, Nährwerten/100 g, kcal pro Glas, Zutaten und HEAD-200-Packshot aus der öffentlichen WooCommerce Store API + Produkt-JSON-LD (food-connectors kernbeisser)",
+   "store": "Online: Kernbeißer",
+   "sources": [
+    "https://kernbeisser.at/",
+    "https://kernbeisser.at/wp-json/wc/store/v1/products",
+    "https://kernbeisser.at/impressum/"
+   ],
+   "stats": {
+    "n_products": 6,
+    "median_price_eur": 9.0,
+    "median_eur_per_10g_protein": 4.82,
+    "best_eur_per_10g_protein": 4.17,
+    "median_protein_pack_g": 18.6
+   }
+  },
+  {
+   "name": "Goldblatt",
+   "company": "Golden Veggies GmbH (FN 550344f LG Graz, UID ATU76525048 – VIES gültig 2026-10-14, lt. Impressum goldblatt.at/policies/legal-notice)",
+   "seat": "Wagerberg 37, 8271 Bad Waltersdorf (Steiermark, AT)",
+   "producer": "Eigenmarke Goldblatt; High-Protein-Bio-Fertiggerichte im Glas (vegan, AT-BIO-301)",
+   "delivers_linz": true,
+   "shipping": "Österreich: 5,99 € ab 30 € Bestellwert (darunter 9,99 €), gratis ab 90 €; Österreichische Post 1–3 Werktage (lt. goldblatt.at/policies/shipping-policy)",
+   "storage": "ungekühlt (Glas), bis zu 3 Monate",
+   "price_from": "11,99 € / Glas 500 g (2 Portionen; Pakete günstiger)",
+   "products_in_app": true,
+   "products_note": "8 vegane High-Protein-Bio-Fertiggerichte im Glas mit Einzelpreis, Nährwerten/100 g + pro Glas (500 g), Zutaten, Zubereitung und HEAD-200-Packshot aus öffentlichem Shopify-products.json + Produkt-HTML (food-connectors goldblatt); kein GTIN",
+   "store": "Online: Goldblatt",
+   "sources": [
+    "https://goldblatt.at/",
+    "https://goldblatt.at/products.json",
+    "https://goldblatt.at/policies/shipping-policy",
+    "https://goldblatt.at/policies/legal-notice"
+   ],
+   "stats": {
+    "n_products": 8,
+    "median_price_eur": 11.99,
+    "median_eur_per_10g_protein": 4.11,
+    "best_eur_per_10g_protein": 3.11,
+    "median_protein_pack_g": 29.2
+   }
+  },
+  {
+   "name": "iss mich!",
+   "company": "iss mich! GmbH (FN 471722i HG Wien, UID ATU72305301 – VIES gültig 2026-10-14; Sanierungsverfahren 12/2025 mit angenommenem Sanierungsplan, aufgehoben 18.03.2026)",
+   "seat": "Erlafstraße 7, 1020 Wien (AT)",
+   "producer": "eigene Bio-Manufaktur in Wien (Bio-Kontrollstelle AT-BIO-401); Eintöpfe & Suppen im WECK-Pfandglas",
+   "delivers_linz": true,
+   "shipping": "nur Österreich: Post (Bestellung bis So 18:00 → Versand Montag), Wien Fahrrad/Auto; 9,90 €, versandkostenfrei ab 99 €; +2,00 € Pfand je Glas; Selbstabholung Fr 10–13 Uhr (lt. issmich.at/versand-und-bezahlung)",
+   "storage": "WECK-Glas (Lagerhinweis nicht veröffentlicht)",
+   "price_from": "3,90 € / Glas 280–480 g (Aktionen mit Streichpreis)",
+   "products_in_app": true,
+   "products_note": "35 Bio-Eintöpfe & Suppen (vegan/vegetarisch/Fleisch) mit Preis, Streichpreis, Pfand, Inhalt, GTIN-13 (wo veröffentlicht), Zutaten, Allergenen, HEAD-200-Packshot aus Shopware-Produktseiten (food-connectors issmich); Nährwerte aus offiziellem Nährwerttabellen-Bild, vision-verifiziert + strikte OCR",
+   "store": "Online: iss mich!",
+   "sources": [
+    "https://www.issmich.at/bio-shop",
+    "https://www.issmich.at/sitemap.xml",
+    "https://www.issmich.at/versand-und-bezahlung",
+    "https://www.issmich.at/impressum",
+    "https://www.evi.gv.at/f/471722i"
+   ],
+   "stats": {
+    "n_products": 35,
+    "median_price_eur": 8.6,
+    "median_eur_per_10g_protein": 11.04,
+    "best_eur_per_10g_protein": 3.01,
+    "median_protein_pack_g": 7.7
+   }
+  },
+  {
+   "name": "PrepMyMeal",
+   "company": "prepmymeal GmbH",
+   "seat": "Unterlindau 28, 60323 Frankfurt am Main (DE), HRB 113466",
+   "producer": "eigene Fertigung lt. Unternehmensgegenstand; Produktionsstätte nicht veröffentlicht",
+   "delivers_linz": true,
+   "shipping": "5,99 € (DPD, Wunschtag, 9–17 Uhr)",
+   "storage": "gekühlt/tiefgefroren; 3–4 Tage Kühlschrank bzw. ≥3 Monate TK",
+   "price_from": "ab 5,22 €/Portion (Boxen)",
+   "products_in_app": true,
+   "store": "Online: PrepMyMeal",
+   "sources": [
+    "https://prepmymeal.at/policies/shipping-policy",
+    "https://prepmymeal.com/policies/legal-notice",
+    "https://www.northdata.de/?id=4910967125",
+    "https://prepmymeal.at/products.json"
+   ],
+   "stats": {
+    "n_products": 86,
+    "median_price_eur": 10.49,
+    "median_eur_per_10g_protein": 2.34,
+    "best_eur_per_10g_protein": 0.96,
+    "median_protein_pack_g": 45.0
+   }
+  },
+  {
+   "name": "fit2go.meals",
+   "company": "Fit2go GmbH (FN 615822 x)",
+   "seat": "Piccoloweg 4, 4055 Pucking (OÖ); Büro Langgasse 11, 4020 Linz",
+   "producer": "eigene Manufaktur in Österreich, Fleisch aus AT",
+   "delivers_linz": true,
+   "shipping": "4,99 € österreichweit (Express, Versand Di–Do)",
+   "storage": "schockgefrostet, 12 Monate haltbar",
+   "packaging": "plastikfreie Bio-Pap-Schalen",
+   "price_from": "9,49 €/Meal (18er) – 10,49 € (6er), bis 65 g Protein",
+   "products_in_app": true,
+   "products_note": "30 Fertiggerichte live via food-connectors `fittogo` (public sitemap + product HTML; /products.json 404 on Hydrogen). price_eur = 12er-Box 9,99 €/Meal; Einzel-SKU 0,00 €. Evidence fertiggerichte-daten/raw/fittogo_2026-10-14T0307.json",
+   "store": "Online: Fit to Go",
+   "sources": [
+    "https://fittogo.at/",
+    "https://fittogo.at/pages/impressum"
+   ],
+   "stats": null
+  },
+  {
+   "name": "FitTaste",
+   "company": "FITTASTE23 GmbH",
+   "seat": "Predigerstraße 15, 54290 Trier (DE)",
+   "producer": "Eigenmarke FITTASTE; Fertiggerichte im Glas",
+   "delivers_linz": true,
+   "shipping": "nach AT per DHL: 12er-Box 17,99 €, 24/36er-Box 20,99 €; Mindestbestellung 12 Gläser (lt. fittaste.com/pages/unser-versand)",
+   "storage": "ungekühlt (Glas, steril), 12–24 Monate haltbar",
+   "price_from": "8,99 € / Glas 380 g (ab 12er-Box)",
+   "products_in_app": true,
+   "products_note": "18 Gerichte im Glas (davon 16 mit aktuellem Shop-Preis 8,99 €, Nährwerten/100 g, Zutaten, Allergenen und Packshot via food-connectors fittaste; 2 weitere aus Open Food Facts)",
+   "store": "Online: FitTaste",
+   "sources": [
+    "https://fittaste.com/",
+    "https://fittaste.com/pages/unser-versand",
+    "https://fittaste.com/pages/impressum"
+   ],
+   "stats": {
+    "n_products": 18,
+    "median_price_eur": 8.99,
+    "median_eur_per_10g_protein": 3.02,
+    "best_eur_per_10g_protein": 1.89,
+    "median_protein_pack_g": 29.2
+   }
+  },
+  {
+   "name": "LiveFresh",
+   "company": "LiveFresh GmbH",
+   "seat": "Take-Off Gewerbepark 27c, 78579 Neuhausen ob Eck (DE)",
+   "producer": "nicht veröffentlicht",
+   "delivers_linz": true,
+   "shipping": "Fertiggerichte nach AT: 9,95 € bis 100 €; 100–150 € frei + 3,50 € Trockeneis; ab 150 € frei",
+   "storage": "TK (−18 °C)",
+   "price_from": "5,99 € / 400 g Bowl",
+   "products_in_app": true,
+   "store": "Online: LiveFresh",
+   "sources": [
+    "https://livefresh.at/policies/legal-notice",
+    "https://livefresh.at/pages/versand",
+    "https://livefresh.at/products.json"
+   ],
+   "stats": {
+    "n_products": 10,
+    "median_price_eur": 5.99,
+    "median_eur_per_10g_protein": 2.0,
+    "best_eur_per_10g_protein": 1.5,
+    "median_protein_pack_g": 30.0
+   }
+  },
+  {
+   "name": "Marley Spoon (Ready-to-heat)",
+   "company": "Marley Spoon SE",
+   "seat": "Berlin (DE)",
+   "delivers_linz": null,
+   "shipping": "PLZ-Prüfung nötig",
+   "price_from": null,
+   "products_in_app": false,
+   "products_note": "Ready-to-heat-Menü öffentlich ohne Preise/Nährwerte (Login nötig)",
+   "store": "Online: Marley Spoon",
+   "sources": [
+    "https://marleyspoon.at/menu/ready-to-heat"
+   ],
+   "stats": null
+  },
+  {
+   "name": "HelloFresh / Factor",
+   "company": "HelloFresh SE",
+   "seat": "Berlin (DE)",
+   "delivers_linz": false,
+   "shipping": null,
+   "products_in_app": false,
+   "products_note": "HelloFresh AT = nur Kochboxen; Factor (Fertiggerichte) liefert nicht nach Österreich",
+   "store": "Online: Factor",
+   "sources": [
+    "https://www.factormeals.de/about/liefergebiete",
+    "https://www.hellofresh.at/"
+   ],
+   "stats": null
+  },
+  {
+   "name": "Gurkerl.at",
+   "company": "Gurkerl (Rohlik Group)",
+   "seat": "Wien",
+   "delivers_linz": false,
+   "shipping": "0,90–6,90 €, ab 79 € frei, Mindestbestellwert 39 €",
+   "products_in_app": "teilweise (Gurkerl-Connector)",
+   "products_note": "Liefergebiet Wien + Umland/NÖ/Eisenstadt – nicht Linz",
+   "store": "Gurkerl",
+   "sources": [
+    "https://www.gurkerl.at/thema/liefergebiet"
+   ],
+   "stats": null
+  },
+  {
+   "name": "Gourmetfein",
+   "company": "Gourmetfein GmbH",
+   "delivers_linz": true,
+   "shipping": "Lieferung meist in 5 Werktagen",
+   "products_in_app": false,
+   "products_note": "nur Fleisch-/Grillboxen, keine Fertiggerichte",
+   "store": "Online: Gourmetfein",
+   "sources": [
+    "https://shop.gourmetfein.com/collections/genussboxen"
+   ],
+   "stats": null
+  },
+  {
+   "name": "Marianne's Mealprep",
+   "company": "M-Mealprep",
+   "seat": "Aspach (OÖ)",
+   "delivers_linz": false,
+   "shipping": "gratis im Umkreis 5 km, ab 4 Gerichten",
+   "price_from": "10,30 €/Gericht",
+   "products_in_app": false,
+   "store": "Online: M-Mealprep",
+   "sources": [
+    "https://www.m-mealprep.at/bestellung/"
+   ],
+   "stats": null
+  }
+ ],
+ "not_found_de": "VERIFIED dead ends 2026-10-14T0307: Foodist (foodist.de 301 → morenutrition.de/collections/foodist, snack/Abo-Boxen no ready meals); Kochzauber (kochzauber.de / www DNS fail / NXDOMAIN); Mealprep.at (mealprep.at + www → parked /lander); eismann.at 301 → eismann.de (DE only, not AT); Gourmetfein = Fleisch-/Grillwurst only (75 Shopify products, 0 ready meals). Marianne's Mealprep Aspach = 5 km radius only (not Linz). Marley Spoon Ready-to-heat = login wall for prices/nutrition. Frischepost/Alnatura unchecked. T0441: Foodpunk = PDF meal plans only (no ready meals). Kernbeißer now live (T0504, 6 meals)."
+}

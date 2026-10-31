@@ -1,0 +1,619 @@
+[
+ {
+  "slug": "gms-gourmet",
+  "name": "GMS GOURMET GmbH",
+  "summary_de": "GMS Gourmet ist Österreichs Marktführer in der Gemeinschaftsverpflegung (gegründet 1975 als Gourmet Menü-Service in St. Pölten, seit 2014 GMS GOURMET GmbH). Die Frischküche in der Zdarskystraße St. Pölten produziert auch gekühlte/tiefgekühlte Fertiggerichte als Private Label für Handel und Discount, laut Firmengeschichte auch Sterilprodukte für Inzersdorfer. Eigentümer ist die Linzer VIVATIS Holding (Raiffeisenlandesbank OÖ).",
+  "facts": {
+   "website": "https://www.gourmet.at",
+   "gruendung": "1975 (Gourmet Menü-Service); 2014 Fusion zur GMS GOURMET GmbH",
+   "eigentuemer": "VIVATIS Holding AG, Linz (Tochter der Raiffeisenlandesbank OÖ)",
+   "mitarbeiter": "ca. 2.100 inkl. Töchter",
+   "umsatz": "gut 300 Mio. € (2024, Gruppe lt. Presse); Firmenbuch-Jahresabschluss 2024: 246,8 Mio. €",
+   "werke": [
+    "Wien (Frischküche)",
+    "St. Pölten, Zdarskystraße 3 (Frischküche, Fertiggerichte)"
+   ],
+   "produktfokus": "Gemeinschaftsverpflegung, Catering, Private-Label-Fertiggerichte, Sterilprodukte",
+   "zertifizierungen": "In dieser Recherche nicht geprüft",
+   "news": "2025: 50-Jahr-Jubiläum, Expansion Deutschland geplant (+60–80 Mio. € Umsatz); Zukauf SV Österreich",
+   "rueckrufe": "In dieser Recherche nicht geprüft",
+   "identitaetskennzeichen": "AT 30733 EG",
+   "adresse_lt_zulassungsliste": "Zdarskystraße 3, 3100 St. Pölten"
+  },
+  "brands_supplied": [
+   {
+    "brand_at_chain": "Good Choice (Hofer Eigenmarke) @ Hofer",
+    "evidence": "Kontrollnummer AT 30733 EG auf Produkt(en): Gelbes Gemüse Curry Mit Reis; Omis Schmankerl Knödeltrio mit Paradeiskraut",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   },
+   {
+    "brand_at_chain": "Omis Schmankerl @ Billa",
+    "evidence": "Kontrollnummer AT 30733 EG auf Produkt(en): Gelbes Gemüse Curry Mit Reis; Omis Schmankerl Knödeltrio mit Paradeiskraut",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   }
+  ],
+  "sources": [
+   "https://www.gourmet.at/ueber-uns/das-unternehmen",
+   "https://www.diepresse.com/19563868/gastronomie-und-cateringfirma-gms-gourmet-plant-expansion-in-deutschland",
+   "https://kurier.at/wirtschaft/catering-oesterreich-tschechien-gourmet-maresi-knabbernossi/403030837",
+   "https://www.firmenatlas.com/firma/104525p",
+   "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+  ]
+ },
+ {
+  "slug": "rewe-fleischwaren-eberstalzell",
+  "name": "Rewe Austria Fleischwaren GmbH",
+  "summary_de": "Konzerneigener Fleischbetrieb der REWE Group Austria. Das Werk Eberstalzell (OÖ), eröffnet 2019, ist der größte Standort der Rewe Austria Fleischwaren und verarbeitet jährlich 20.000–22.000 t Schweinefleisch aus 100 % österreichischer Herkunft – u. a. Faschiertes, Minutensteaks und marinierte Spezialitäten für BILLA, BILLA PLUS, ADEG, PENNY und Sutterlüty.",
+  "facts": {
+   "website": "https://rewe-group.jobs/de/wir-als-arbeitgeber/fachbereiche/fleischwaren/eberstalzell",
+   "gruendung": "Gesellschaft eingetragen 1993 (FN 65329y); Werk Eberstalzell seit 2019",
+   "eigentuemer": "REWE Group (REWE International)",
+   "mitarbeiter": "ca. 250 am Standort; 531 gesamt (JA 2025)",
+   "umsatz": "nicht öffentlich gefunden (Bilanzsumme 53,8 Mio. €)",
+   "werke": [
+    "Eberstalzell, Solarstraße 8 (OÖ)",
+    "insgesamt 4 Produktionsbetriebe, Zentrale Wiener Neudorf"
+   ],
+   "produktfokus": "Schweinefleisch, mariniertes Grillfleisch, Faschiertes",
+   "zertifizierungen": "In dieser Recherche nicht geprüft",
+   "rueckrufe": "In dieser Recherche nicht geprüft",
+   "identitaetskennzeichen": "AT 42152 EG",
+   "adresse_lt_zulassungsliste": "Solarstraße 8, 4653 Eberstalzell"
+  },
+  "brands_supplied": [
+   {
+    "brand_at_chain": "CLEVER @ Billa",
+    "evidence": "Kontrollnummer AT 42152 EG auf Produkt(en): Clever Schwein-Karreesteak mariniert; Clever Schweinebauchstreifen mariniert; Clever Schweinsschopfsteak mariniert; Clever Spareribs",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/O20.pdf"
+   }
+  ],
+  "sources": [
+   "https://rewe-group.jobs/de/wir-als-arbeitgeber/fachbereiche/fleischwaren/eberstalzell",
+   "https://firmenakte.at/business/65329y-rewe-austria-fleischwaren-gmbh",
+   "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+  ]
+ },
+ {
+  "slug": "wiesbauer-gourmet-gastro",
+  "name": "Wiesbauer Gourmet Gastro GmbH",
+  "summary_de": "Gastro-Fleischspezialist der Wiesbauer-Gruppe in Sitzenberg-Reidling (NÖ), gegründet 1928, 2003 von Wiesbauer übernommen. Beliefert ca. 3.500 Gastrokunden und produziert Sous-vide-Spezialitäten in großen Wasserkochanlagen. Umsatzsprung 2025 durch Zukauf von Kabinger (2024) und Trünkel (2025).",
+  "facts": {
+   "website": "https://www.wiesbauer-gourmet.at",
+   "gruendung": "1928 / Übernahme durch Wiesbauer 2003",
+   "eigentuemer": "Wiesbauer Holding AG (Familie Schmiedbauer)",
+   "geschaeftsfuehrung": "Ernst Stocker",
+   "mitarbeiter": "255 (Unternehmensangabe 2025); 215 Ø lt. JA 2025",
+   "umsatz": "112 Mio. € (2025, Unternehmensangabe); 102,05 Mio. € Umsatzerlöse lt. JA 2025",
+   "werke": [
+    "Sitzenberg-Reidling, Wiesbauer Straße 1 (NÖ)"
+   ],
+   "produktfokus": "Fleisch für Gastro, Tiefkühl, Sous-vide",
+   "zertifizierungen": "In dieser Recherche nicht geprüft",
+   "rueckrufe": "In dieser Recherche nicht geprüft",
+   "identitaetskennzeichen": "AT 31538 EG",
+   "adresse_lt_zulassungsliste": "Wiesbauer Straße 1, 3454 Sitzenberg-Reidling"
+  },
+  "brands_supplied": [
+   {
+    "brand_at_chain": "BILLA Genusswelt @ Billa",
+    "evidence": "Kontrollnummer AT 31538 EG auf Produkt(en): BILLA Genusswelt Kalbsrahmgulasch Sous Vide; BILLA Genusswelt Rindsbackerl Sous Vide; BILLA Genusswelt Roastbeef Sous Vide; Hofstädter Rindsgulasch Sous Vide",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/O20.pdf"
+   },
+   {
+    "brand_at_chain": "Hofstädter @ Billa",
+    "evidence": "Kontrollnummer AT 31538 EG auf Produkt(en): BILLA Genusswelt Kalbsrahmgulasch Sous Vide; BILLA Genusswelt Rindsbackerl Sous Vide; BILLA Genusswelt Roastbeef Sous Vide; Hofstädter Rindsgulasch Sous Vide",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/O20.pdf"
+   }
+  ],
+  "sources": [
+   "https://www.wiesbauer-gourmet.at/unternehmensgruppe",
+   "https://www.wiesbauer.at/wiesbauer-holding/",
+   "https://presse.wiesbauer.at/news-wiesbauer-mit-solider-geschaeftsentwicklung?id=229428&l=deutsch&menueid=34285",
+   "https://www.wiesbauer-sousvide.at/",
+   "https://firmenakte.at/business/98447a-wiesbauer-gourmet-gastro-gmbh",
+   "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+  ]
+ },
+ {
+  "slug": "blasko-convenience",
+  "name": "Wilhelm Blasko CONVENIENCE-Fertiggerichte GmbH",
+  "summary_de": "Blasko Convenience blickt auf über 50 Jahre Geschichte der Familie Blasko zurück und gehört seit 2015 zu den Marcher Fleischwerken (Villach), Österreichs größtem Schlacht- und Zerlegeunternehmen. Produziert Hausmannskost (Schnitzel, Laibchen, Cevapcici) für Systemgastronomie, Heiße Theke, TK und SB-Convenience im LEH in Bruck an der Mur und Oberwaltersdorf; Fleisch laut Unternehmen 100 % aus Österreich.",
+  "facts": {
+   "website": "https://www.blasko.at",
+   "gruendung": "Familie Blasko, >50 Jahre; GmbH eingetragen 1994 (FN 74665b, Sitz Bruck an der Mur)",
+   "eigentuemer": "Marcher Fleischwerke (Marcher Beteiligungsverwaltung GmbH / Norbert Marcher GmbH), seit 2015",
+   "geschaeftsfuehrung": "Mag. Norbert Marcher, Mag. (FH) Markus Fahrnberger-Schweizer",
+   "mitarbeiter": "nicht öffentlich gefunden (Marcher-Gruppe ca. 1.800)",
+   "umsatz": "nicht öffentlich gefunden (Marcher-Gruppe ca. 560 Mio. € 2019/20)",
+   "werke": [
+    "Oberwaltersdorf, Fabriksstraße 18 (NÖ)",
+    "Bruck an der Mur (Stmk.)"
+   ],
+   "produktfokus": "Hausmannskost, Heiße Theke, TK, Sous-vide/Convenience",
+   "zertifizierungen": "In dieser Recherche nicht geprüft",
+   "news": "2020 Relaunch: Marke 'Feines am Tisch' durch 'Blasko' ersetzt",
+   "rueckrufe": "In dieser Recherche nicht geprüft",
+   "identitaetskennzeichen": "AT 31353 EG",
+   "adresse_lt_zulassungsliste": "Fabriksstraße 18, 2522 Oberwaltersdorf"
+  },
+  "brands_supplied": [
+   {
+    "brand_at_chain": "Die Grillerei @ Billa",
+    "evidence": "Kontrollnummer AT 31353 EG auf Produkt(en): Die Grillerei Spareribs Sous-Vide BBQ; Hofstädter Die Grillerei Pulled Beef Sous Vide mit BBQ",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/O20.pdf"
+   },
+   {
+    "brand_at_chain": "Hofstädter @ Billa",
+    "evidence": "Kontrollnummer AT 31353 EG auf Produkt(en): Die Grillerei Spareribs Sous-Vide BBQ; Hofstädter Die Grillerei Pulled Beef Sous Vide mit BBQ",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/O20.pdf"
+   }
+  ],
+  "sources": [
+   "https://www.blasko.at/ueber-uns",
+   "https://medianet.at/news/retail/regionalitaetstrend-erhaelt-aufwind-33793.html",
+   "https://medianet.at/news/retail/blasko-convenience-startet-ins-neue-jahr-mit-marken-relaunch-31288.html",
+   "https://www.evi.gv.at/f/74665b",
+   "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+  ]
+ },
+ {
+  "slug": "karnerta",
+  "name": "KARNERTA GmbH",
+  "summary_de": "Kärntner Lebensmittelhersteller (Klagenfurt) mit rund 70 Jahren Tradition, Teil der VIVATIS Holding. Produziert Fleisch-/Wurstwaren und betreibt laut eigener Angabe die modernste Frischteigwaren-Produktion Österreichs (seit 1984), die den LEH in Österreich, Deutschland und der Schweiz beliefert.",
+  "facts": {
+   "website": "https://www.karnerta.at",
+   "website_teigwaren": "https://frischteigwaren.at",
+   "gruendung": "ca. 70 Jahre Tradition; Teigwaren seit 1984; GmbH 1996 (FN 143123a)",
+   "eigentuemer": "100 % VIVATIS Vermögensverwaltungs GmbH & Co KG (VIVATIS Holding AG)",
+   "geschaeftsfuehrung": "Franz Tremschnig, Clemens Lacher",
+   "mitarbeiter": "ca. 250 (davon ca. 50 Teigwaren)",
+   "umsatz": "90,1 Mio. € (2025)",
+   "werke": [
+    "Klagenfurt, Südring 334"
+   ],
+   "produktfokus": "Frische gefüllte Teigwaren, Fleisch/Wurst, Fisch, Menükomponenten",
+   "zertifizierungen": "In dieser Recherche nicht geprüft",
+   "rueckrufe": "In dieser Recherche nicht geprüft",
+   "identitaetskennzeichen": "AT 20271 EG",
+   "adresse_lt_zulassungsliste": "Südring 334, 9020 Klagenfurt"
+  },
+  "brands_supplied": [
+   {
+    "brand_at_chain": "BILLA Immer Gut @ Billa",
+    "evidence": "Kontrollnummer AT 20271 EG auf Produkt(en): BILLA Tortelloni Prosciutto; BILLA Tortelloni Ricotta Spinat; Billa Tortelloni Rindfleisch; Ja! Natürlich Eierspätzle",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   },
+   {
+    "brand_at_chain": "Ja! Natürlich @ Billa",
+    "evidence": "Kontrollnummer AT 20271 EG auf Produkt(en): BILLA Tortelloni Prosciutto; BILLA Tortelloni Ricotta Spinat; Billa Tortelloni Rindfleisch; Ja! Natürlich Eierspätzle",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   }
+  ],
+  "sources": [
+   "https://www.karnerta.at/unternehmen/",
+   "https://frischteigwaren.at/",
+   "https://firmenakte.at/business/143123a-karnerta-gmbh",
+   "https://www.karnerta.at/impressum/",
+   "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+  ]
+ },
+ {
+  "slug": "landena",
+  "name": "Landgenossenschaft Ennstal LANDENA KG",
+  "summary_de": "Landena KG in Stainach-Pürgg (Steiermark) ist Tochter der Landgenossenschaft Ennstal und seit über 50 Jahren Lohn-/Handelsmarkenproduzent: TK-Fertiggerichte, Konserven, Suppen und Saucen im Glas, Wurst-Snacks und Aufstriche – für Markenartikel und Handelsmarken.",
+  "facts": {
+   "website": "https://www.landena.at",
+   "gruendung": "über 50 Jahre (lt. Website)",
+   "eigentuemer": "Landgenossenschaft Ennstal (Raiffeisen-Genossenschaft)",
+   "mitarbeiter": "ca. 500 (Website) bzw. 550 (Jobseite); Genossenschaft gesamt Ø 1.715 (2025)",
+   "umsatz": "nicht öffentlich gefunden",
+   "werke": [
+    "Stainach-Pürgg, Erzherzog-Johann-Straße 303"
+   ],
+   "produktfokus": "Dosen-/Glaskonserven, TK-Fertiggerichte, Saucen, Suppen, Wurst-Snacks",
+   "zertifizierungen": "In dieser Recherche nicht geprüft",
+   "rueckrufe": "In dieser Recherche nicht geprüft",
+   "identitaetskennzeichen": "AT 62028 EG",
+   "adresse_lt_zulassungsliste": "Erzherzog-Johann-Straße 303, 8950 Stainach-Pürgg"
+  },
+  "brands_supplied": [
+   {
+    "brand_at_chain": "CLEVER @ Billa",
+    "evidence": "Kontrollnummer AT 62028 EG auf Produkt(en): Clever Rindsgulasch; Clever gefüllte Paprika 400g; Curry Madras - Pure Beef; Rinds Gulasch",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   },
+   {
+    "brand_at_chain": "Inzersdorfer @ INTERSPAR/SPAR Online",
+    "evidence": "Kontrollnummer AT 62028 EG auf Produkt(en): Clever Rindsgulasch; Clever gefüllte Paprika 400g; Curry Madras - Pure Beef; Rinds Gulasch",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   },
+   {
+    "brand_at_chain": "PRIMANA @ Hofer",
+    "evidence": "Kontrollnummer AT 62028 EG auf Produkt(en): Clever Rindsgulasch; Clever gefüllte Paprika 400g; Curry Madras - Pure Beef; Rinds Gulasch",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   },
+   {
+    "brand_at_chain": "inzersdorfer @ Billa, tegut...",
+    "evidence": "Kontrollnummer AT 62028 EG auf Produkt(en): Clever Rindsgulasch; Clever gefüllte Paprika 400g; Curry Madras - Pure Beef; Rinds Gulasch",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   }
+  ],
+  "sources": [
+   "https://www.landena.at/de/",
+   "https://www.landena.at/de/jobs/",
+   "https://www.rvstmk.at/news__Landgenossenschaft-Ennstal-freut-sich-ueber-Rekordjahr__001deo.php",
+   "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+  ]
+ },
+ {
+  "slug": "hink",
+  "name": "Hink GmbH",
+  "summary_de": "Wiener Pasteten- und Feinkostmanufaktur, 1937 von Anton Hink sen. gegründet, seit 1972 in Wien-Floridsdorf, seit 2007 von der Familie Spak geführt.",
+  "facts": {
+   "website": "https://hink.wien",
+   "gruendung": "1937",
+   "eigentuemer": "HPS Beteiligungs- und Liegenschaftsverwaltungs GmbH (Familie Spak)",
+   "geschaeftsfuehrung": "Hans Peter Spak, Peter Spak",
+   "mitarbeiter": "nicht öffentlich gefunden",
+   "umsatz": "nicht öffentlich gefunden",
+   "werke": [
+    "Wien-Floridsdorf, Otto-Beyschlag-Gasse 3"
+   ],
+   "produktfokus": "Pasteten, Terrinen, Feinkost",
+   "zertifizierungen": "In dieser Recherche nicht geprüft",
+   "rueckrufe": "In dieser Recherche nicht geprüft",
+   "identitaetskennzeichen": "AT 92526 EG",
+   "adresse_lt_zulassungsliste": "Otto-Beyschlag-Gasse 3, 1210 Wien"
+  },
+  "brands_supplied": [
+   {
+    "brand_at_chain": "BILLA Genusswelt @ Billa",
+    "evidence": "Kontrollnummer AT 92526 EG auf Produkt(en): BILLA Genusswelt Erdäpfel Gulasch mit Chorizo",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   }
+  ],
+  "sources": [
+   "https://hink.wien/pages/manufaktur",
+   "https://firmenakte.at/business/290492w-hink-gmbh",
+   "https://www.evi.gv.at/f/290492w",
+   "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+  ]
+ },
+ {
+  "slug": "greisinger",
+  "name": "Greisinger GmbH",
+  "summary_de": "Familiengeführter Fleisch-, Wurst- und Selchwarenhersteller aus Münzbach (Mühlviertel, OÖ). 1982 als Fleischabteilung eines ADEG-Marktes gestartet, seit 1995 am Standort Münzbach; ca. 600 Beschäftigte, 110 t/Tag, Export in 50 Länder.",
+  "facts": {
+   "website": "https://www.greisinger.com",
+   "gruendung": "1982",
+   "eigentuemer": "Familie Greisinger",
+   "mitarbeiter": "ca. 600",
+   "umsatz": "172,9 Mio. € (2025)",
+   "werke": [
+    "Münzbach, Klamer Straße 10 (OÖ), ca. 59.000 m²"
+   ],
+   "produktfokus": "Wurst, Würstel, Selchwaren, pasteurisierte Vakuumware",
+   "zertifizierungen": "In dieser Recherche nicht geprüft",
+   "rueckrufe": "In dieser Recherche nicht geprüft",
+   "identitaetskennzeichen": "AT 40559 EG",
+   "adresse_lt_zulassungsliste": "Klamer Straße 10, 4323 Münzbach"
+  },
+  "brands_supplied": [
+   {
+    "brand_at_chain": "Greisinger @ Hofer",
+    "evidence": "Kontrollnummer AT 40559 EG auf Produkt(en): Mini Berner Würstel; Putenknacker",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/O20.pdf"
+   }
+  ],
+  "sources": [
+   "https://www.greisinger.com/fuer-unsere-partner/betriebsdaten/",
+   "https://www.greisinger.com/ueber-uns/geschichte-vision/",
+   "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+  ]
+ },
+ {
+  "slug": "wiesbauer-wurstspezialitaeten",
+  "name": "Wiesbauer österreichische Wurstspezialitäten GmbH",
+  "summary_de": "Wiener Stammbetrieb der Wiesbauer-Gruppe, 1931 von Franz Wiesbauer gegründet, Werk in Wien-Liesing (Laxenburger Straße) seit 1995. Exportanteil über 53 %. Im Datensatz keine Fertiggerichte direkt zugeordnet.",
+  "facts": {
+   "website": "https://www.wiesbauer.at",
+   "gruendung": "1931",
+   "eigentuemer": "Wiesbauer Holding AG (Familie Schmiedbauer; Thomas Schmiedbauer Vorstandsvorsitzender)",
+   "mitarbeiter": "ca. 500 in Wien (Gruppe 935)",
+   "umsatz": "120 Mio. € (2025); Gruppe 272 Mio. €",
+   "werke": [
+    "Wien, Laxenburger Straße 256"
+   ],
+   "produktfokus": "Wurstspezialitäten",
+   "zertifizierungen": "In dieser Recherche nicht geprüft",
+   "rueckrufe": "In dieser Recherche nicht geprüft",
+   "identitaetskennzeichen": "AT 92556 EG",
+   "adresse_lt_zulassungsliste": "Laxenburger Straße 256, 1230 Wien"
+  },
+  "brands_supplied": [],
+  "sources": [
+   "https://www.wiesbauer.at/geschichte/",
+   "https://www.wiesbauer.at/wiesbauer-holding/",
+   "https://presse.wiesbauer.at/news-wiesbauer-mit-solider-geschaeftsentwicklung?id=229428&l=deutsch&menueid=34285",
+   "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+  ]
+ },
+ {
+  "slug": "rewe-genusskueche",
+  "name": "Rewe Austria Genussküche GmbH",
+  "summary_de": "Konzerneigene Convenience-Küche der REWE Austria in Traiskirchen (NÖ), seit 2002, 2017 von Inzersdorf übersiedelt. Ca. 120 Beschäftigte produzieren rund 100 Artikel pro Woche (1,3 Mio. Portionen/Monat) für Heiße Theke sowie die Marken Omi's, Simply Good, Clever und Delikatessa – erhältlich bei BILLA, BILLA PLUS, ADEG, PENNY. Pasteurisierung u. a. per Mikrowellen-Tunnel.",
+  "facts": {
+   "website": "https://rewe-group.jobs/de/wir-als-arbeitgeber/fachbereiche/fleischwaren/genusskueche",
+   "gruendung": "2002; Traiskirchen seit 2017",
+   "eigentuemer": "REWE Group",
+   "mitarbeiter": "ca. 120",
+   "umsatz": "nicht öffentlich gefunden",
+   "werke": [
+    "Traiskirchen, Betriebsstraße 2 (4.000 m²)"
+   ],
+   "produktfokus": "Gekühlte Fertiggerichte, Heiße Theke",
+   "zertifizierungen": "In dieser Recherche nicht geprüft",
+   "rueckrufe": "In dieser Recherche nicht geprüft",
+   "identitaetskennzeichen": "AT 32629 EG",
+   "adresse_lt_zulassungsliste": "Betriebsstraße 2, 2512 Traiskirchen"
+  },
+  "brands_supplied": [
+   {
+    "brand_at_chain": "BILLA Immer Gut @ Billa",
+    "evidence": "Kontrollnummer AT 32629 EG auf Produkt(en): BILLA Butter Chicken mit Reis; BILLA Chili Con Carne XXL; BILLA Chili Sin Carne XXL; BILLA Mac'n Cheese",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   },
+   {
+    "brand_at_chain": "CLEVER @ Billa",
+    "evidence": "Kontrollnummer AT 32629 EG auf Produkt(en): BILLA Butter Chicken mit Reis; BILLA Chili Con Carne XXL; BILLA Chili Sin Carne XXL; BILLA Mac'n Cheese",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   },
+   {
+    "brand_at_chain": "Omis Schmankerl @ Billa",
+    "evidence": "Kontrollnummer AT 32629 EG auf Produkt(en): BILLA Butter Chicken mit Reis; BILLA Chili Con Carne XXL; BILLA Chili Sin Carne XXL; BILLA Mac'n Cheese",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   },
+   {
+    "brand_at_chain": "Simply Good @ Billa",
+    "evidence": "Kontrollnummer AT 32629 EG auf Produkt(en): BILLA Butter Chicken mit Reis; BILLA Chili Con Carne XXL; BILLA Chili Sin Carne XXL; BILLA Mac'n Cheese",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   }
+  ],
+  "sources": [
+   "https://rewe-group.jobs/de/wir-als-arbeitgeber/fachbereiche/fleischwaren/genusskueche",
+   "https://www.noen.at/baden/traiskirchen-grosskueche-schafft-60-neue-arbeitsplaetze-top-13414514",
+   "https://www.evi.gv.at/f/204764z",
+   "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+  ]
+ },
+ {
+  "slug": "hochreiter",
+  "name": "Hochreiter Quality Meat Factory GmbH",
+  "summary_de": "Teil der Mühlviertler Hochreiter-Gruppe (Eigentümer Wolfgang Hochreiter, Bad Leonfelden; Gruppe 2025: 380 Mio. €, 1.200 MA). Die Quality Meat Factory in Reichenthal ist das zentrale Fleisch-Einkaufs- und Zerlegezentrum; am selben Ort produziert die Schwesterfirma Condeli – nach eigener Angabe Europas zweitgrößter Lasagne-Produzent (95 % Export).",
+  "facts": {
+   "website": "https://www.hochreiter-gruppe.at",
+   "eigentuemer": "Wolfgang Hochreiter (Familienunternehmen)",
+   "geschaeftsfuehrung_gruppe": "Mag. Peter Weidinger",
+   "mitarbeiter": "75 (Unternehmensangabe) bzw. 90 (JA 2025); Condeli 190",
+   "umsatz": "116 Mio. € (Quality Meat Factory); Condeli 92 Mio. €",
+   "werke": [
+    "Reichenthal, Gewerbepark 1 (OÖ)",
+    "Bad Leonfelden (Hochreiter Fleischwaren)",
+    "Perg (Yummhy Austria)"
+   ],
+   "produktfokus": "Fleischzerlegung, Lasagne & Convenience (Condeli)",
+   "zertifizierungen": "In dieser Recherche nicht geprüft",
+   "rueckrufe": "In dieser Recherche nicht geprüft",
+   "identitaetskennzeichen": "AT 41586 EG",
+   "adresse_lt_zulassungsliste": "Gewerbepark 1, 4193 Reichenthal"
+  },
+  "brands_supplied": [
+   {
+    "brand_at_chain": "Good Choice (Hofer Eigenmarke) @ Hofer",
+    "evidence": "Kontrollnummer AT 41586 EG auf Produkt(en): Lasagne Bolognese",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/O20.pdf"
+   },
+   {
+    "brand_at_chain": "Good Choice @ HOFER",
+    "evidence": "Kontrollnummer AT 41586 EG auf Produkt(en): Lasagne Bolognese",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/O20.pdf"
+   },
+   {
+    "brand_at_chain": "S-BUDGET @ INTERSPAR/SPAR Online",
+    "evidence": "Kontrollnummer AT 41586 EG auf Produkt(en): Lasagne Bolognese",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/O20.pdf"
+   }
+  ],
+  "sources": [
+   "https://www.hochreiter-gruppe.at/",
+   "https://firmenakte.at/business/505367m-hochreiter-quality-meat-factory-gmbh",
+   "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+  ]
+ },
+ {
+  "slug": "hubers-landhendl",
+  "name": "Hubers Landhendl GmbH",
+  "summary_de": "Österreichs Geflügel-Marktführer aus Pfaffstätt (Innviertel, OÖ), 1973 von Maria und Johann Huber gegründet, 1990 erster österreichischer Bio-Hühner-Produzent, seit 2016 Teil der Schweizer Bell Food Group. Eigene Brüterei (2009) und Wursterei (2012).",
+  "facts": {
+   "website": "https://huberslandhendl.at",
+   "gruendung": "1973",
+   "eigentuemer": "Bell Food Group (Schweiz), seit 2016",
+   "mitarbeiter": "ca. 1.750 (lt. GS1-Bericht)",
+   "umsatz": "521,46 Mio. € (2024, lt. GS1-Bericht)",
+   "werke": [
+    "Pfaffstätt, Hauptstraße 80 (OÖ)",
+    "Süddeutsche Truthahn AG (Bayern, seit 2005)"
+   ],
+   "produktfokus": "Huhn, Pute, Geflügelwurst, Bio-Geflügel",
+   "zertifizierungen": "Bio-Produktion seit 1990; Mitglied ARGE Gentechnik-frei",
+   "rueckrufe": "In dieser Recherche nicht geprüft",
+   "identitaetskennzeichen": "AT 40840 EG",
+   "adresse_lt_zulassungsliste": "Hauptstraße 80, 5223 Pfaffstätt"
+  },
+  "brands_supplied": [
+   {
+    "brand_at_chain": "FairHOF @ HOFER",
+    "evidence": "Kontrollnummer AT 40840 EG auf Produkt(en): Maishendl Ministeaks",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/O20.pdf"
+   }
+  ],
+  "sources": [
+   "https://huberslandhendl.at/uber-uns/geschichte/",
+   "https://www.gs1.at/gs1info/da-lachen-ja-die-huehner",
+   "https://gentechnikfrei.at/mitglieder/hubers-landhendl-gmbh/",
+   "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+  ]
+ },
+ {
+  "slug": "graninger",
+  "name": "Graninger Holding GmbH",
+  "summary_de": "Vorarlberger Private-Label-Hersteller von Tiefkühlprodukten (u. a. bis 200.000 Knödel/Tag, gegrilltes Hühnerfleisch, Beef Jerky), gegründet von Metzgermeister Georg Graninger. Ursprünglich in Krumbach; 2021 Übersiedlung/Ausbau ins ehemalige Gastina/Ospelt-Werk in Frastanz (ca. 3 Mio. € Investition).",
+  "facts": {
+   "website": "https://graninger-lebensmittel.at",
+   "gruendung": "Gründer Georg Graninger (Jahr nicht gefunden)",
+   "eigentuemer": "Graninger Holding GmbH (Georg Graninger)",
+   "mitarbeiter": "25 in Krumbach (2021), Ziel ca. 70 in Frastanz",
+   "umsatz": "nicht öffentlich gefunden",
+   "werke": [
+    "Krumbach, Unterkrumbach 209 (Vbg.) – lt. Zulassungsliste",
+    "Frastanz (seit 2021)"
+   ],
+   "produktfokus": "TK-Knödel, Leberspätzle, Hühnerfleisch, Beef Jerky (Private Label)",
+   "zertifizierungen": "In dieser Recherche nicht geprüft",
+   "rueckrufe": "In dieser Recherche nicht geprüft",
+   "identitaetskennzeichen": "AT 80368 EG",
+   "adresse_lt_zulassungsliste": "Unterkrumbach 209, 6942 Krumbach"
+  },
+  "brands_supplied": [
+   {
+    "brand_at_chain": "CLEVER @ Billa",
+    "evidence": "Kontrollnummer AT 80368 EG auf Produkt(en): Clever Leberknödel",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   }
+  ],
+  "sources": [
+   "https://www.vn.at/markt/2021/08/21/wo-in-vorarlberg-hunderttausende-knoedel-gekocht-werden.vn",
+   "https://graninger-lebensmittel.at/uber-uns",
+   "https://www.sutterluety.at/aus-der-region/graninger-tiefku%CC%88hl/",
+   "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+  ]
+ },
+ {
+  "slug": "radatz",
+  "name": "Radatz - Feine Wiener Fleischwaren GmbH",
+  "summary_de": "Wiener Familienunternehmen für Fleisch-, Wurst- und Feinkost (seit 1962), bekannt u. a. für Leberkäse; Tochter Stastnik. Umsatz 2025 über 200 Mio. €, knapp 900 Beschäftigte.",
+  "facts": {
+   "website": "https://www.radatz.at",
+   "gruendung": "1962",
+   "eigentuemer": "Radatz Anteilsverwaltung GmbH (99 %), Radatz Privatstiftung (1 %)",
+   "mitarbeiter": "knapp 900",
+   "umsatz": "über 200 Mio. € (2025)",
+   "werke": [
+    "Wien, Erlaaer Straße 187"
+   ],
+   "produktfokus": "Wurst, Leberkäse, Fleisch, Feinkost",
+   "zertifizierungen": "In dieser Recherche nicht geprüft",
+   "rueckrufe": "In dieser Recherche nicht geprüft",
+   "identitaetskennzeichen": "AT 92540 EG",
+   "adresse_lt_zulassungsliste": "Erlaaer Straße 187, 1230 Wien"
+  },
+  "brands_supplied": [
+   {
+    "brand_at_chain": "CLEVER @ Billa",
+    "evidence": "Kontrollnummer AT 92540 EG auf Produkt(en): Clever Backofen-Leberkäse",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/O20.pdf"
+   }
+  ],
+  "sources": [
+   "https://www.radatz.at/medien/presse",
+   "https://www.wirtschaft.at/u/109045k",
+   "https://www.leadersnet.at/news/98831,so-behauptet-sich-die-fleischbranche-in-einem-schwierigen.html",
+   "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+  ]
+ },
+ {
+  "slug": "wech-gefluegel",
+  "name": "Wech-Geflügel GmbH",
+  "summary_de": "Kärntner Geflügelunternehmen aus St. Andrä im Lavanttal, 1958 von Hermine und Otto Wech gegründet. Aufzucht, Schlachtung und Verarbeitung von Huhn und Pute mit ca. 200 Partner-Bauernfamilien, sechs Standorte (u. a. Kärntner Truthahnverarbeitung in Glanegg).",
+  "facts": {
+   "website": "https://www.wech.at",
+   "gruendung": "1958",
+   "eigentuemer": "Wech-Gruppe (Leitung Mag. Jakob Sintschnig)",
+   "geschaeftsfuehrung": "DI Dr. Karl Feichtinger, DI Paul Pötz (lt. Suchergebnis)",
+   "mitarbeiter": "ca. 800 (Website); ca. 370 am Standort St. Andrä",
+   "umsatz": "nicht öffentlich gefunden",
+   "werke": [
+    "St. Andrä, Kollegg 8",
+    "Glanegg (Pute)"
+   ],
+   "produktfokus": "Huhn, Pute, panierte Geflügelprodukte",
+   "zertifizierungen": "In dieser Recherche nicht geprüft",
+   "rueckrufe": "In dieser Recherche nicht geprüft",
+   "identitaetskennzeichen": "AT 20293 EG",
+   "adresse_lt_zulassungsliste": "Kollegg 8, 9433 St. Andrä"
+  },
+  "brands_supplied": [
+   {
+    "brand_at_chain": "Ja! Natürlich @ Billa",
+    "evidence": "Kontrollnummer AT 20293 EG auf Produkt(en): Ja! Natürlich Backhendlteller",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/O20.pdf"
+   }
+  ],
+  "sources": [
+   "https://www.wech.at/unternehmen",
+   "https://www.wech.at/standorte/st-andrae",
+   "https://www.evi.gv.at/f/118996w",
+   "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+  ]
+ },
+ {
+  "slug": "heiploeg",
+  "name": "Heiploeg International B.V.",
+  "summary_de": "Niederländischer Garnelen- und Meeresfrüchteverarbeiter aus Zoutkamp; seit Jänner 2014 im Besitz von Parlevliet & Van der Plas. Beliefert Handel, Foodservice und Industrie, ca. 2.500 Beschäftigte weltweit.",
+  "facts": {
+   "website": "https://heiploeg.com",
+   "eigentuemer": "Parlevliet & Van der Plas B.V. (seit 2014)",
+   "mitarbeiter": "ca. 2.500 weltweit",
+   "umsatz": "nicht öffentlich gefunden",
+   "werke": [
+    "Zoutkamp (NL)"
+   ],
+   "produktfokus": "Garnelen, Meeresfrüchte",
+   "zertifizierungen": "In dieser Recherche nicht geprüft",
+   "rueckrufe": "In dieser Recherche nicht geprüft",
+   "identitaetskennzeichen": "NL 6039 EC",
+   "adresse_lt_zulassungsliste": "Zoutkamp"
+  },
+  "brands_supplied": [
+   {
+    "brand_at_chain": "Die Grillerei @ Billa",
+    "evidence": "Kontrollnummer NL 6039 EC auf Produkt(en): Die Grillerei Torpedospieße Chili",
+    "source": "https://www.openbare-inspectieresultaten.nvwa.nl/bedrijfsinspecties/visverwerkende-bedrijven/heiploeg-international-bv-eg-6039"
+   }
+  ],
+  "sources": [
+   "https://heiploeg.com/en-us/company",
+   "https://mergr.com/company/heiploeg-international-b.v.",
+   "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+  ]
+ },
+ {
+  "slug": "unbekannt-at-92584-eg",
+  "name": null,
+  "summary_de": "Betrieb mit Kennzeichen AT 92584 EG konnte weder in der Zulassungsliste noch per Websuche eindeutig zugeordnet werden – kein Profil erstellt.",
+  "facts": {
+   "identitaetskennzeichen": "AT 92584 EG",
+   "status": "nicht aufgelöst"
+  },
+  "brands_supplied": [
+   {
+    "brand_at_chain": "Omis Schmankerl @ Billa",
+    "evidence": "Kontrollnummer AT 92584 EG auf Produkt(en): Omis Schmankerl Xxl Bratwürstel mit Püree und Sauerkraut",
+    "source": "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+   }
+  ],
+  "sources": [
+   "https://vis.statistik.at/fileadmin/ovis/pdf/VI26.pdf"
+  ]
+ }
+]

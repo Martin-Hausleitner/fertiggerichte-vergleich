@@ -1,0 +1,1 @@
+import{cy as a,W as t,Y as i,cz as s}from"./index-DcPTs3eM.js";import{S as e,Z as r}from"./Scatter-1LwzZ7b1.js";var x=a({chartName:"ScatterChart",GraphicalChild:e,defaultTooltipEventType:"item",validateTooltipEventTypes:["item"],axisComponents:[{axisType:"xAxis",AxisComp:t},{axisType:"yAxis",AxisComp:i},{axisType:"zAxis",AxisComp:r}],formatAxisMap:s});export{x as S};
