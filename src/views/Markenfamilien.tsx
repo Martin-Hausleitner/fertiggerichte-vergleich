@@ -9,7 +9,7 @@ export default function Markenfamilien(){
   const {D,open}=useApp()
   const [B,setB]=useState<{families:F[];total:number;vision_gate?:any}|null>(null)
   const [fam,setFam]=useState('hofer'),[sub,setSub]=useState(''),[q,setQ]=useState('')
-  useEffect(()=>{fetch('./brand_families.json?v='+Date.now()).then(r=>r.ok?r.json():null).then(setB).catch(()=>{})},[])
+  useEffect(()=>{fetch('./brand_families.json?v='+__BUILD__).then(r=>r.ok?r.json():null).then(setB).catch(()=>{})},[])
   const byUrl=useMemo(()=>{const m=new Map<string,number>();D.rows.forEach(r=>r.url&&m.set(r.url,r.id));return m},[D])
   if(!B) return <Card className="p-10 text-center text-muted-foreground animate-pulse">Lädt Markenfamilien…</Card>
   const F=B.families.find(f=>f.id===fam)??B.families[0]

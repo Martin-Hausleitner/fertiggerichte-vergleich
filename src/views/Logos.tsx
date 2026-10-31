@@ -17,7 +17,7 @@ function guess(name:string,cat?:string|null,isProd?:boolean):string{
 }
 export default function Logos(){
   const {D,R}=useApp(); const [L,setL]=useState<Record<string,any>>({}),[cat,setCat]=useState(''),[q,setQ]=useState('')
-  useEffect(()=>{fetch('./analysis/logos.json?v='+Date.now()).then(r=>r.ok?r.json():{}).then(setL).catch(()=>{})},[])
+  useEffect(()=>{fetch('./analysis/logos.json?v='+__BUILD__).then(r=>r.ok?r.json():{}).then(setL).catch(()=>{})},[])
   const items=useMemo(()=>{const m=new Map<string,{key:string;name:string;logo:string|null;cat:string;n:number;q:string;src?:string}>()
     const cnt=(b:string)=>R.filter(r=>r.brandN===b||r.store===b).length
     Object.entries(STORE_LOGO).forEach(([k,v])=>m.set(k.toLowerCase(),{key:k,name:k,logo:v,cat:'Handelskette',n:cnt(k),q:k}))
