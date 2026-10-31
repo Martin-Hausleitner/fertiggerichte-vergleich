@@ -35,6 +35,7 @@ const fx = [
   { id: 2995, score: 32.3, score_parts: { base: 30.0, protein: 13.2, salt: -5.1, satfat: -5.3, sugar: 0.0, fiber: 2.7, veg: 0, nova: -3 } },
   { id: 568, score: 0, score_parts: { base: 30.0, protein: 7.8, salt: -20, satfat: -15, sugar: -2.0, fiber: 0, veg: 0, nova: -3, portion_salt: -8, portion_satfat: -4.0 } },
   { id: 9, score: 40.0, score_parts: { base: 30.0, protein: 10.0 } },
+  { id: 11, score: 24.1, score_parts: { base: 30.0, protein: 5.3, sugar: -12.5, salt: 1.2 } },
   { id: 7, score: 29.9, score_parts: { base: 30.0, protein: 18.4, salt: -2.9, nova: -10, portion_salt: -5.4, portion_satfat: -7.9, portion_protein: 5 } },
 ]
 const fxOrig = JSON.stringify(fx)
@@ -53,6 +54,19 @@ assert.ok(m2.some(b => /score geändert/.test(b)), 'Mutation 2 (Score verschoben
 // Mutation 3: ganze Lücke auf einen Teil (auch sugar) → > 0,1 / sugar gemeldet
 const m3 = check(fx, fx.map(r => r.id === 1941 ? { ...r, score_parts: { ...r.score_parts, sugar: -0.2 } } : S.consistentParts([r])[0]))
 assert.ok(m3.some(b => /#1941 sugar 0 → -0.2/.test(b)) && m3.some(b => /#1941 ganzzahliger\/sugar-Teil sugar/.test(b)), 'Mutation 3 (sugar-Teil verschoben) muss fehlschlagen')
+
+// SC89 P3-1: gebrochener sugar-Teil (#11, größter Kandidat) darf nie verschoben werden – der Schutz in isFrac ist sonst ungetestet
+const fx11 = fxShown.find(r => r.id === 11)
+assert.equal(fx11.score_parts.sugar, -12.5, 'Selftest #11: sugar-Teil unverändert')
+assert.equal(fx11.score_parts.protein, 5.4, 'Selftest #11: Lücke auf protein statt sugar')
+// Mutation 4: sugar-Schutz aus isFrac entfernt → check() muss #11 sugar melden
+const srcSP = readFileSync(new URL('../src/app/scoreParts.ts', import.meta.url), 'utf8')
+const srcMut = srcSP.replace("k !== 'sugar' && ", '')
+assert.notEqual(srcMut, srcSP, 'Mutation 4: sugar-Schutz im Quelltext nicht gefunden')
+const outMut = await build({ stdin: { contents: srcMut, loader: 'ts', resolveDir: new URL('../src/app/', import.meta.url).pathname }, bundle: true, write: false, format: 'esm', platform: 'node', logLevel: 'silent' })
+const SM = await import('data:text/javascript;base64,' + Buffer.from(outMut.outputFiles[0].text).toString('base64'))
+const m4 = check(fx, SM.consistentParts(fx))
+assert.ok(m4.some(b => /#11 ganzzahliger\/sugar-Teil sugar/.test(b)), 'Mutation 4 (sugar-Schutz entfernt) muss fehlschlagen: ' + m4.join('; '))
 
 // --- echte Daten ---
 const rows = JSON.parse(readFileSync(file, 'utf8')).rows
