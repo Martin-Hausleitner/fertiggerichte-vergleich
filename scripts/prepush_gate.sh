@@ -29,6 +29,7 @@ node scripts/test_heute_tz.mjs   # sensecheck 83 P3: Heute-Kopfzeile + Sonntags-
 node scripts/test_build_files.mjs   # sensecheck 84 P3: stores*.json im Build-Hash (Cache-Bust)
 node scripts/test_price_span.mjs   # sensecheck 84 P2(3): Preisstand je Shop statt Maximum-Datum
 node scripts/test_alsoat_gaps.mjs public/data.json   # sensecheck 86 P3: alsoAt-Lücken gezählt, aktive Zeilen 0 Lücken, max. 1 gerankt je EAN
+node scripts/test_dupof_invariant.mjs public/data.json   # sensecheck 86 P3: dupOf-Ziel existiert, keine Ketten, versteckt nie gerankt; pPor-Lücken ≤ Budget (23)
 node scripts/regress_top50.mjs public/data.json   # Top 50 (pli) nur meal/stew, keine Trockenware/Desserts
 if [ "${GATE_FAST:-0}" = 1 ]; then echo "[gate] OK (fast: data checks only)"; exit 0; fi
 npm run build
