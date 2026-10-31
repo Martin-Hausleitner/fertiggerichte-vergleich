@@ -1,4 +1,5 @@
 import { dedupeGtin } from '@/app/meal'
+import { consistentParts } from '@/app/scoreParts'
 import { findNearestStore, mergeLinzStores, type WalkStore } from '@/app/shops'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import type { Data, Stores, Shop } from '@/lib'
@@ -19,7 +20,7 @@ function useJson<T>(url: string, optional = false): T | null {
 /** Loads the product dataset and the merged Linz store list; exposes a nearest-branch lookup across all Linz chains. */
 export function useAppData() {
   const raw = useJson<Data>('./data.json')
-  const data = useMemo(() => raw ? { ...raw, rows: dedupeGtin(raw.rows) as typeof raw.rows } : raw, [raw])
+  const data = useMemo(() => raw ? { ...raw, rows: consistentParts(dedupeGtin(raw.rows)) as typeof raw.rows /* SC88 P3-3: parts add up to score */ } : raw, [raw])
   const baseStores = useJson<Stores>('./stores.json', true)
   const walkFile = useJson<{ home: { addr: string; lat: number; lon: number }; stores: WalkStore[] }>('./stores_linz_walk.json', true)
   const provFile = useJson<{ stores: any[] }>('./stores_linz_providers.json', true)
