@@ -16,6 +16,9 @@ const server = createServer((req, res) => {
 })
 await new Promise(r => server.listen(0, '127.0.0.1', r))
 const base = `http://127.0.0.1:${server.address().port}/`
+// Oracle (SC96 P3-1): expected hidden count per list straight from the built data.json - uncapped top N ids missing from the capped list.
+const D = JSON.parse(readFileSync(join(ROOT, 'data.json'), 'utf8')); const BY = new Set(D.rows.map(r => r.id))
+const ORA = Object.fromEntries([['pli', 'topPLI'], ['h', 'topHealth'], ['pe', 'topPE'], ['light', 'topLight']].map(([k, L]) => { const c = D[L] || [], u = D[L + 'Uncapped'] || []; return [k, u.slice(0, c.length).filter(i => !c.includes(i) && BY.has(i)).length] }))
 const LISTS = [['🏆 Preis-Leistung', 'pli'], ['💚 Gesündeste', 'h'], ['💪 Protein pro €', 'pe'], ['🥗 Leichte Mahlzeiten', 'light']]
 const browser = await chromium.launch({ headless: true, args: ['--no-sandbox'] }); const errs = []; const seen = {}
 for (const [w, h] of [[390, 844], [1366, 900]]) {
@@ -26,6 +29,7 @@ for (const [w, h] of [[390, 844], [1366, 900]]) {
     await page.getByRole('button', { name: label }).click(); await page.waitForTimeout(200)
     const el = page.locator('[data-testid=cap-hidden]')
     if (!(await el.count())) { seen[`${k}@${w}`] = 0; continue }
+    assert.ok(ORA[k] > 0, `${k}@${w}: no cap-hidden element when the oracle is 0`) // SC96 P3-2: check absence, not just a 0 in the text
     const m = await el.evaluate(e => { const p = e.closest('p'), cs = getComputedStyle(e), pr = p.getBoundingClientRect(), er = e.getClientRects()[0], lh = parseFloat(getComputedStyle(p).lineHeight) || 20
       return { disp: cs.display, bg: cs.backgroundColor, top: er.top - pr.top, left: Math.round(er.left - pr.left), lh, txt: e.textContent, docW: document.documentElement.scrollWidth } })
     const n = +(m.txt.match(/kämen (\d+)/) || [])[1]; seen[`${k}@${w}`] = n
@@ -39,11 +43,14 @@ for (const [w, h] of [[390, 844], [1366, 900]]) {
   }
   // "ohne Limit" removes the hint
   await page.getByRole('button', { name: '🏆 Preis-Leistung' }).click(); await page.locator('[data-testid=nolimit] input').check(); await page.waitForTimeout(200)
-  assert.equal(await page.locator('[data-testid=cap-hidden]').count(), 0, `@${w}: no hint with ohne Limit`)
+  for (const [label, k] of LISTS) { // SC96 P3-3: every capped list
+    await page.getByRole('button', { name: label }).click(); await page.waitForTimeout(200)
+    assert.equal(await page.locator('[data-testid=cap-hidden]').count(), 0, `${k}@${w}: no hint with ohne Limit`)
+  }
   await page.close()
 }
 await browser.close(); server.close()
-for (const k of ['pli', 'h', 'pe', 'light']) assert.equal(seen[`${k}@390`], seen[`${k}@1366`], `${k}: same count mobile/desktop`)
+for (const k of ['pli', 'h', 'pe', 'light']) for (const w of [390, 1366]) assert.equal(seen[`${k}@${w}`], ORA[k], `${k}@${w}: shown ${seen[`${k}@${w}`]} = oracle ${ORA[k]}`)
 assert.ok(seen['pli@390'] > 0, 'at least one list shows the hint'); assert.equal(seen['light@390'], 0, 'topLight: no hint')
 assert.deepEqual(errs, [], 'no page errors')
 console.log(`[e2e-cap-mobile] OK – pli ${seen['pli@390']}, h ${seen['h@390']}, pe ${seen['pe@390']}, light ${seen['light@390']}; 390 px eigene Zeile/Badge, 1366 px inline`)
