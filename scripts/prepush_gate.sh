@@ -33,6 +33,7 @@ node scripts/test_dupof_invariant.mjs public/data.json   # sensecheck 86 P3: dup
 node scripts/test_score_parts.mjs public/data.json   # sensecheck 88 P3-3: angezeigte score_parts summieren zum Score (|score − Σ| ≤ 0,05), Score/Ranking unverändert; Nicht-Rundungs-Lücken ≤ Budget (1: #1212)
 node scripts/test_p100g.mjs public/data.json   # sensecheck 91 P3-4: €/100 g = Preis ÷ Größe × 100 (App-Pass), Preis/ppk/pPor/Score/Ranking unverändert
 node scripts/test_tie_order.mjs public/data.json   # sensecheck 91 P3-7: Gleichstände in topPE/topPLI nach ungerundetem Wert, Menge/Cap unverändert
+node scripts/test_cap_hidden.mjs public/data.json   # sensecheck 91 P3-8: Hinweis, wie viele Gerichte das Anbieter-Limit verdrängt (je Laden)
 node scripts/regress_top50.mjs public/data.json   # Top 50 (pli) nur meal/stew, keine Trockenware/Desserts
 if [ "${GATE_FAST:-0}" = 1 ]; then echo "[gate] OK (fast: data checks only)"; exit 0; fi
 npm run build
