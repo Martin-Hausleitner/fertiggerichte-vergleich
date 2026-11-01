@@ -1,6 +1,7 @@
 // Sensecheck 91 P3-4: angezeigter €/100 g (useAppData → consistentP100g) = Preis ÷ Packungsgewicht × 100 (±0,005) für jede Zeile
 // mit Preis und Größe; Zeilen ohne Preis/Größe bleiben unverändert; Preis, ppk, pPor, Score und Ranking werden nie verändert.
-// Selftest mit drei Mutationen bei jedem Lauf (No-op-Pass, Pass der p100g ohne Preis/Größe löscht, abgeschnittene 0,1-Werte müssen rot werden).
+// SC92 P3: bei ganzzahligen Cent/Gramm exakt kaufmännisch gerundet (halbe Cent aufwärts, Ganzzahl-Orakel).
+// Selftest mit vier Mutationen bei jedem Lauf (No-op-Pass, Pass der p100g ohne Preis/Größe löscht, abgeschnittene 0,1-Werte müssen rot werden).
 import { readFileSync } from 'node:fs'
 import assert from 'node:assert/strict'
 import { build } from 'esbuild'
@@ -16,6 +17,7 @@ function check(raw, shown) {
     for (const k of KEEP) if (s[k] !== r[k]) bad.push(`#${r.id} ${k} geändert`)
     const ok = typeof r.price === 'number' && r.price > 0 && typeof r.size === 'number' && r.size > 0
     if (ok) { const want = r.price / r.size * 100; if (typeof s.p100g !== 'number' || Math.abs(s.p100g - want) > 0.005 + 1e-9) bad.push(`#${r.id} p100g ${s.p100g} ≠ ${r.price}/${r.size}×100 = ${want.toFixed(3)}`) }
+    if (ok && Number.isInteger(r.size) && Number.isInteger(Math.round(r.price * 100))) { const c = Math.round(r.price * 100); const half = Math.floor((2 * c * 100 + r.size) / (2 * r.size)) / 100; if (s.p100g !== half) bad.push(`#${r.id} p100g ${s.p100g} ≠ kaufmännisch gerundet ${half}`) }
     else if (s.p100g !== r.p100g) bad.push(`#${r.id} p100g ohne Preis/Größe verändert`)
   })
   return bad
@@ -30,14 +32,18 @@ const fx = [
   { id: 10, price: 2.0, size: 400, p100g: 0.5, ppk: 5 },
   { id: 11, price: null, size: 400, p100g: 0.6 },
   { id: 12, price: 2.5, size: null, p100g: null },
+  { id: 1170, price: 0.99, size: 200, p100g: 0.49 }, // SC92 P3: exakt halber Cent → 0,50
+  { id: 2951, price: 11.79, size: 600, p100g: 1.96 }, // 1,965 → 1,97
 ]
 const fixed = S.consistentP100g(fx)
 assert.deepEqual(check(fx, fixed), [], 'Selftest: Pass muss die Fixture reparieren')
 assert.equal(fixed[0].p100g, 0.44); assert.equal(fixed[1].p100g, 0.51); assert.equal(fixed[2].p100g, 1.06); assert.equal(fixed[3].p100g, 0.62)
+assert.equal(fixed[7].p100g, 0.5); assert.equal(fixed[8].p100g, 1.97)
 assert.equal(fixed[4], fx[4], 'korrekte Zeile behält Identität'); assert.equal(fixed[5].p100g, 0.6); assert.equal(fixed[6].p100g, null)
 const muts = [
   ['No-op', rows => rows],
   ['löscht p100g ohne Preis/Größe', rows => S.consistentP100g(rows).map(r => (S.p100gOf(r) == null ? { ...r, p100g: null } : r))],
+  ['Float-Rundung Math.round(x·10000)/100 (halbe Cent abwärts)', rows => rows.map(r => (r.price && r.size ? { ...r, p100g: Math.round(r.price / r.size * 10000) / 100 } : r))],
   ['ohne Rundung auf ppk/10 mit Abschneiden', rows => rows.map(r => (r.price && r.size ? { ...r, p100g: Math.floor(r.price / r.size * 10) / 10 } : r))],
 ]
 for (const [n, m] of muts) assert.ok(check(fx, m(fx)).length > 0, `Selftest: Mutation „${n}“ muss rot werden`)

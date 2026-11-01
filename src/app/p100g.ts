@@ -6,9 +6,11 @@
 // value. Ranking (pli/ppe/topX) is precomputed per portion and does not use p100g, so nothing else moves.
 type R = { price?: number | null; size?: number | null; p100g?: number | null }
 
-/** €/100 g from pack price and net size, rounded to 0.01 like the export; null when price or size is missing/invalid. */
+// SC92 P3: exact half cents round up (0,99 € / 200 g = 0,495 → 0,50, not 0,49 from float 49.49999…); toPrecision(12)
+// strips the binary float error before Math.round. 13 rows were 0,01 too low (#1170, #2951/#3018/#3019, #3060, #3265, …).
+/** €/100 g from pack price and net size, rounded half-up to 0.01; null when price or size is missing/invalid. */
 export const p100gOf = (r: R): number | null =>
-  typeof r.price === 'number' && r.price > 0 && typeof r.size === 'number' && r.size > 0 ? Math.round((r.price / r.size) * 10000) / 100 : null
+  typeof r.price === 'number' && r.price > 0 && typeof r.size === 'number' && r.size > 0 ? Math.round(Number(((r.price * 10000) / r.size).toPrecision(12))) / 100 : null
 
 /** Returns rows with p100g = price ÷ size × 100 (rounded to 0.01) where derivable; unchanged rows keep their identity. */
 export function consistentP100g<T extends R>(rows: T[]): T[] {
