@@ -31,6 +31,7 @@ node scripts/test_price_span.mjs   # sensecheck 84 P2(3): Preisstand je Shop sta
 node scripts/test_alsoat_gaps.mjs public/data.json   # sensecheck 86 P3: alsoAt-Lücken gezählt, aktive Zeilen 0 Lücken, max. 1 gerankt je EAN
 node scripts/test_dupof_invariant.mjs public/data.json   # sensecheck 86 P3: dupOf-Ziel existiert, keine Ketten, versteckt nie gerankt; pPor-Lücken ≤ Budget (23)
 node scripts/test_score_parts.mjs public/data.json   # sensecheck 88 P3-3: angezeigte score_parts summieren zum Score (|score − Σ| ≤ 0,05), Score/Ranking unverändert; Nicht-Rundungs-Lücken ≤ Budget (1: #1212)
+node scripts/test_p100g.mjs public/data.json   # sensecheck 91 P3-4: €/100 g = Preis ÷ Größe × 100 (App-Pass), Preis/ppk/pPor/Score/Ranking unverändert
 node scripts/regress_top50.mjs public/data.json   # Top 50 (pli) nur meal/stew, keine Trockenware/Desserts
 if [ "${GATE_FAST:-0}" = 1 ]; then echo "[gate] OK (fast: data checks only)"; exit 0; fi
 npm run build
