@@ -6,6 +6,7 @@ import { ZoomImage, BrandLogo, StoreLogo, PliBadge, HealthBadge, Price, Nearest 
 import { InfoTip, packEmo } from '../components/info'
 import { useHashState } from '../lib'
 import { LinkNote } from '../components/LinkNote'
+import { sizeUnit, per100Label } from '../app/unit'
 const norm=(s:string)=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
 export default function Gerichte(){
   const {D,open}=useApp()
@@ -37,12 +38,12 @@ export default function Gerichte(){
         <ZoomImage src={r.img} className="h-36 w-full"/>
         <div className="mt-2 flex items-center justify-between gap-1"><BrandLogo r={r} size={26}/><StoreLogo store={r.store} size={26}/></div>
         <div className="mt-1 text-sm font-semibold leading-tight line-clamp-2 min-h-[2.5rem]" title={r.name}>{r.name}</div>
-        <div className="text-[11px] text-slate-500">{packEmo(r.pack)} {r.pack||'–'} · {r.size?fmt(r.size,0)+' g':'–'}</div>
+        <div className="text-[11px] text-slate-500">{packEmo(r.pack)} {r.pack||'–'} · {r.size?fmt(r.size,0)+' '+sizeUnit(r):'–'}</div>
         <div className="mt-1.5"><Price r={r}/></div>
         <div className="mt-1.5 grid grid-cols-2 gap-1 text-[11px]">
           <div className="rounded-lg bg-emerald-50 dark:bg-emerald-950/40 px-1.5 py-1"><InfoTip k="eur10p"><span className="text-slate-500">€/10 g Prot.</span></InfoTip><div className="font-bold text-sm">{r.eur10p!=null?fmt(r.eur10p,2)+' €':'–'}</div></div>
           <div className="rounded-lg bg-slate-50 dark:bg-slate-800 px-1.5 py-1"><span className="text-slate-500">Protein/Pkg.</span><div className="font-bold text-sm">{(r.protpack??(r.p100!=null&&r.size?+(r.p100*r.size/100).toFixed(1):null))!=null?fmt(r.protpack??(r.p100!=null&&r.size?+(r.p100*r.size/100).toFixed(1):null),0)+' g':'–'}</div></div>
-          <div className="rounded-lg bg-slate-50 dark:bg-slate-800 px-1.5 py-1"><span className="text-slate-500">€/100 g</span><div className="font-bold text-sm">{r.ppk!=null?fmt(r.ppk/10,2)+' €':'–'}</div></div>
+          <div className="rounded-lg bg-slate-50 dark:bg-slate-800 px-1.5 py-1"><span className="text-slate-500">{per100Label(r)}</span><div className="font-bold text-sm">{r.ppk!=null?fmt(r.ppk/10,2)+' €':'–'}</div></div>
           <div className="rounded-lg bg-slate-50 dark:bg-slate-800 px-1.5 py-1"><span className="text-slate-500">kcal/Pkg.</span><div className="font-bold text-sm">{r.kcalpack!=null?fmt(r.kcalpack,0):'–'}</div></div>
         </div>
         <div className="mt-2 flex flex-wrap items-center gap-1"><PliBadge v={rowPli(r)}/>{isLightOnlyRanked(r as any)&&<Badge data-testid="gerichte-light-badge" className="bg-sky-100 text-sky-800 dark:bg-sky-900/50 dark:text-sky-200 text-[10px]">Leicht</Badge>}<HealthBadge s={r.score}/>{rowPli(r)==null&&<span className="text-[10px] text-slate-400">PLI fehlt (Preis/Nährwerte)</span>}</div>
