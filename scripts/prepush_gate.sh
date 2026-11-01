@@ -40,5 +40,6 @@ if [ "${GATE_FAST:-0}" = 1 ]; then echo "[gate] OK (fast: data checks only)"; ex
 npm run build
 node scripts/pw_gate.mjs "${PW_DIST:-$PWD/dist}"   # tests this checkout's own dist (PW_DIST overrides); Smoke-Test: alle Tabs, Desktop + Mobil, keine Konsolenfehler/leeren Seiten
 node scripts/e2e_legacy_favs.mjs   # sensecheck 29 (1): alte Favoriten → Stand wählen → genau diese Produkte
+node scripts/e2e_cap_mobile.mjs   # sensecheck 93 P3: Anbieter-Limit-Hinweis auf 390 px eigene Zeile/Badge, Desktop inline, Werte = Orakel
 echo "$rows" > "$STATE"
 echo "[gate] OK"
