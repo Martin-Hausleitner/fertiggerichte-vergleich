@@ -19,6 +19,11 @@ const base = `http://127.0.0.1:${server.address().port}/`
 // Oracle (SC96 P3-1): expected hidden count per list straight from the built data.json - uncapped top N ids missing from the capped list.
 const D = JSON.parse(readFileSync(join(ROOT, 'data.json'), 'utf8')); const BY = new Set(D.rows.map(r => r.id))
 const ORA = Object.fromEntries([['pli', 'topPLI'], ['h', 'topHealth'], ['pe', 'topPE'], ['light', 'topLight']].map(([k, L]) => { const c = D[L] || [], u = D[L + 'Uncapped'] || []; return [k, u.slice(0, c.length).filter(i => !c.includes(i) && BY.has(i)).length] }))
+// SC97 P3-4: full expected text per list (total + count per shop + tail), built independently of capHiddenText.
+const BYR = new Map(D.rows.map(r => [r.id, r]))
+const TXT = Object.fromEntries([['pli', 'topPLI'], ['h', 'topHealth'], ['pe', 'topPE'], ['light', 'topLight']].map(([k, L]) => { const c = D[L] || [], u = D[L + 'Uncapped'] || []
+  const ids = u.slice(0, c.length).filter(i => !c.includes(i) && BY.has(i)); if (!ids.length) return [k, '']; const m = {}; for (const i of ids) { const s = BYR.get(i).store || '?'; m[s] = (m[s] || 0) + 1 }
+  return [k, `Ohne Limit kämen ${ids.length} höher bewertete ${ids.length === 1 ? 'Gericht' : 'Gerichte'} in die Liste (${Object.entries(m).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([s, n]) => `${s} ${n}`).join(', ')}); „ohne Limit“ zeigt sie.`] }))
 const LISTS = [['🏆 Preis-Leistung', 'pli'], ['💚 Gesündeste', 'h'], ['💪 Protein pro €', 'pe'], ['🥗 Leichte Mahlzeiten', 'light']]
 const browser = await chromium.launch({ headless: true, args: ['--no-sandbox'] }); const errs = []; const seen = {}
 for (const [w, h] of [[390, 844], [1366, 900]]) {
@@ -33,6 +38,7 @@ for (const [w, h] of [[390, 844], [1366, 900]]) {
     const m = await el.evaluate(e => { const p = e.closest('p'), cs = getComputedStyle(e), pr = p.getBoundingClientRect(), er = e.getClientRects()[0], lh = parseFloat(getComputedStyle(p).lineHeight) || 20
       return { disp: cs.display, bg: cs.backgroundColor, top: er.top - pr.top, left: Math.round(er.left - pr.left), lh, txt: e.textContent, docW: document.documentElement.scrollWidth } })
     const n = +(m.txt.match(/kämen (\d+)/) || [])[1]; seen[`${k}@${w}`] = n
+    assert.equal(m.txt.replace(/\s+/g, ' ').trim(), TXT[k], `${k}@${w}: full hint text = oracle (total, per shop, tail)`)
     assert.ok(m.docW <= w, `${k}@${w}: no horizontal overflow (${m.docW})`)
     if (w < 640) {
       assert.equal(m.disp, 'block', `${k}@390: cap hint on its own line`); assert.equal(m.left, 0, `${k}@390: starts at paragraph left`)
