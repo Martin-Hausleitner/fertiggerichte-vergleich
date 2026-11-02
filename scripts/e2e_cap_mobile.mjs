@@ -36,13 +36,14 @@ for (const [w, h] of [[390, 844], [1366, 900]]) {
     if (!(await el.count())) { seen[`${k}@${w}`] = 0; continue }
     assert.ok(ORA[k] > 0, `${k}@${w}: no cap-hidden element when the oracle is 0`) // SC96 P3-2: check absence, not just a 0 in the text
     const m = await el.evaluate(e => { const p = e.closest('p'), cs = getComputedStyle(e), pr = p.getBoundingClientRect(), er = e.getClientRects()[0], lh = parseFloat(getComputedStyle(p).lineHeight) || 20
-      return { disp: cs.display, bg: cs.backgroundColor, top: er.top - pr.top, left: Math.round(er.left - pr.left), lh, txt: e.textContent, docW: document.documentElement.scrollWidth } })
+      return { disp: cs.display, bg: cs.backgroundColor, top: er.top - pr.top, below: Math.round(pr.bottom - er.bottom), left: Math.round(er.left - pr.left), lh, txt: e.textContent, docW: document.documentElement.scrollWidth } })
     const n = +(m.txt.match(/kämen (\d+)/) || [])[1]; seen[`${k}@${w}`] = n
     assert.equal(m.txt.replace(/\s+/g, ' ').trim(), TXT[k], `${k}@${w}: full hint text = oracle (total, per shop, tail)`)
     assert.ok(m.docW <= w, `${k}@${w}: no horizontal overflow (${m.docW})`)
     if (w < 640) {
       assert.equal(m.disp, 'block', `${k}@390: cap hint on its own line`); assert.equal(m.left, 0, `${k}@390: starts at paragraph left`)
       assert.ok(m.top >= m.lh * 0.9, `${k}@390: below the first text line (top ${m.top}, lh ${m.lh})`); assert.notEqual(m.bg, 'rgba(0, 0, 0, 0)', `${k}@390: badge background`)
+      assert.ok(m.below <= 1, `${k}@390: badge under the paragraph text, not mid-paragraph (SC97 P3-5; ${m.below}px text below it)`)
     } else {
       assert.equal(m.disp, 'inline', `${k}@1366: desktop unchanged (inline)`); assert.equal(m.bg, 'rgba(0, 0, 0, 0)', `${k}@1366: no badge`)
     }
