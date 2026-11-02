@@ -78,3 +78,15 @@ const miscOk = (m) => [!/\{fmt\(r\.ppk,2\)\} €\/kg</.test(m) && /\{fmt\(r\.ppk
 assert.deepEqual(miscOk(misc), [], 'Misc €/l-Beschriftung')
 assert.notDeepEqual(miscOk(misc.replace('{fmt(r.ppk,2)} {perKgLabel(r)}<', '{fmt(r.ppk,2)} €/kg<')), [], 'Mutation Misc hart €/kg muss rot werden')
 console.log('[size-unit] Misc Fabrik-Karten: €/l bei ml je Produkt; 1 Mutation rot – OK')
+// Sensecheck 102 P3-1: Spannen-Badge im Fabrik-Kartenkopf nicht mehr hart „€/kg-Spanne“, sondern spreadLabel(rs) (gemischt g/ml neutral).
+const misc2 = readFileSync(new URL('../src/views/Misc.tsx', import.meta.url), 'utf8')
+const spOk = (m) => [
+  !/>€\/kg-Spanne ×/.test(m) && /\{spreadLabel\(rs\)\} ×\{fmt\(spread,1\)\}/.test(m) || 'Badge hart €/kg',
+  /u\.size>1\?'Grundpreis-Spanne':`\$\{\[\.\.\.u\]\[0\]\?\?'€\/kg'\}-Spanne`/.test(m) || 'spreadLabel gemischt/einheitlich',
+].filter(x => x !== true)
+assert.deepEqual(spOk(misc2), [], 'Spannen-Badge folgt Einheit')
+assert.notDeepEqual(spOk(misc2.replace('{spreadLabel(rs)} ×{fmt(spread,1)}', '€/kg-Spanne ×{fmt(spread,1)}')), [], 'Mutation Badge hart €/kg muss rot werden')
+assert.notDeepEqual(spOk(misc2.replace("u.size>1?'Grundpreis-Spanne':", "u.size>1?'€/kg-Spanne':")), [], 'Mutation gemischt €/kg muss rot werden')
+const spl = (ids) => { const u = new Set(ids.map(id => S.perKgLabel(rows.find(r => r.id === id) ?? {}))); return u.size > 1 ? 'Grundpreis-Spanne' : `${[...u][0]}-Spanne` }
+assert.equal(spl([3221, 3220]), '€/l-Spanne'); assert.equal(spl([3221, 8]), 'Grundpreis-Spanne'); assert.equal(spl([8]), '€/kg-Spanne')
+console.log('[size-unit] Fabrik-Spannen-Badge folgt Einheit (€/kg, €/l, gemischt „Grundpreis-Spanne“); 2 Mutationen rot – OK')
