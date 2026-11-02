@@ -1,0 +1,373 @@
+{
+ "slot": "2026-10-16T22",
+ "note": "Nährwerte für myProduct-Zeilen ohne eigene Angabe: nur identisches Produkt per EAN (Datensatz oder Open Food Facts), nie geschätzt",
+ "overlay": {
+  "ATKXYO350994": {
+   "n": {
+    "kcal": 122.0,
+    "protein": 2.8,
+    "fat": 1.6,
+    "satfat": 0.2,
+    "carbs": 23.0,
+    "sugar": 2.6,
+    "fiber": null,
+    "salt": 1.5
+   },
+   "source": "identisches Produkt (EAN 4250073462571) bereits im Datensatz: Gurkerl.at „followfood BIO Tasty & Saucy Sweet Chili Noodles vegan“ – Gurkerl.at API (composition)"
+  },
+  "ATKIPN323804": {
+   "n": {
+    "kcal": 89.0,
+    "protein": 4.4,
+    "fat": 2.4,
+    "satfat": 0.3,
+    "carbs": 11.0,
+    "sugar": 2.8,
+    "fiber": null,
+    "salt": 1.0
+   },
+   "source": "identisches Produkt (EAN 4280000878519) bereits im Datensatz: dm „Little Lunch Chili Sin Carne“ – https://www.dm.at/p/d/1923461/little-lunch-eintopf-chili-sin-carne-vegan"
+  },
+  "ATKIPN323805": {
+   "n": {
+    "kcal": 60.0,
+    "protein": 1.6,
+    "fat": 1.9,
+    "satfat": 0.4,
+    "carbs": 8.0,
+    "sugar": 3.1,
+    "fiber": null,
+    "salt": 1.1
+   },
+   "source": "identisches Produkt (EAN 4280000878946) bereits im Datensatz: dm „Little Lunch Eintopf Thai Curry“ – https://www.dm.at/p/d/1923478/little-lunch-eintopf-thai-curry"
+  },
+  "ATKIPN323807": {
+   "n": {
+    "kcal": 86.0,
+    "protein": 4.6,
+    "fat": 1.5,
+    "satfat": 0.2,
+    "carbs": 12.0,
+    "sugar": 2.9,
+    "fiber": null,
+    "salt": 1.1
+   },
+   "source": "identisches Produkt (EAN 4260614720343) bereits im Datensatz: dm „Little Lunch Protein Bowl Kichererbsen & Linsen“ – https://www.dm.at/p/d/1923464/little-lunch-eintopf-protein-bowl-kichererbsen-und-linsen"
+  },
+  "ATKIPN323810": {
+   "n": {
+    "kcal": 41.0,
+    "protein": 0.7,
+    "fat": 1.1,
+    "satfat": 0.5,
+    "carbs": 6.5,
+    "sugar": 2.7,
+    "fiber": null,
+    "salt": 0.8
+   },
+   "source": "identisches Produkt (EAN 4260614720411) bereits im Datensatz: dm „Little Lunch Kürbissuppe“ – https://www.dm.at/p/d/1716629/little-lunch-kuerbissuppe"
+  },
+  "ATKIPN338296": {
+   "n": {
+    "kcal": 88.0,
+    "protein": 2.0,
+    "fat": 2.7,
+    "satfat": 0.3,
+    "carbs": 13.0,
+    "sugar": 6.2,
+    "fiber": null,
+    "salt": 1.5
+   },
+   "source": "identisches Produkt (EAN 4260614721517) bereits im Datensatz: dm „Little Lunch Fertiggericht Ravioli in Tomatensoße“ – https://www.dm.at/p/d/1923477/little-lunch-fertiggericht-ravioli-in-tomatensosse"
+  },
+  "ATKXJD158820": {
+   "n": {
+    "kcal": 91.0,
+    "fat": 0.5,
+    "satfat": 0.1,
+    "carbs": 13.6,
+    "sugar": 4.1,
+    "fiber": 5.2,
+    "protein": 5.6,
+    "salt": 1.0
+   },
+   "source": "Open Food Facts Produktseite EAN 8711823195256 („Weiße Bohnen in Tomatensauce – De rit – 360g“, Spalte ‚As sold for 100 g / 100 ml‘, https://world.openfoodfacts.org/product/8711823195256/weisse-bohnen-in-tomatensauce-de-rit) 2026-10-16"
+  },
+  "ATKXJW167041": {
+   "n": {
+    "kcal": 79.0,
+    "fat": 4.0,
+    "satfat": 0.7,
+    "carbs": 6.0,
+    "sugar": 2.1,
+    "fiber": 1.7,
+    "protein": 4.0,
+    "salt": 1.5
+   },
+   "source": "Open Food Facts Produktseite EAN 4031829232408 („Gulaschsuppe – Ökoland – 385ml“, Spalte ‚As sold for 100 g / 100 ml‘, https://world.openfoodfacts.org/product/4031829232408/gulaschsuppe-okoland) 2026-10-16"
+  },
+  "ATKIPR190480": {
+   "n": {
+    "kcal": 307.0,
+    "fat": 2.6,
+    "satfat": 0.6,
+    "carbs": 52.4,
+    "sugar": 3.6,
+    "fiber": null,
+    "protein": 16.2,
+    "salt": 3.75
+   },
+   "source": "Open Food Facts Produktseite EAN 4020943134309 („Soupe Nouilles Japonaise Gingembre108g – Arche Naturküche“, Spalte ‚As sold for 100 g / 100 ml‘, https://world.openfoodfacts.org/product/4020943134309/soupe-nouilles-japonaise-gingembre108g-arche-naturkuche) 2026-10-16"
+  },
+  "ATKISB317358": {
+   "n": {
+    "kcal": 64.0,
+    "fat": 3.2,
+    "satfat": 1.9,
+    "carbs": 7.2,
+    "sugar": 3.5,
+    "fiber": 1.8,
+    "protein": 0.7,
+    "salt": 0.86
+   },
+   "source": "Open Food Facts Produktseite EAN 4280001516656 („Karotte Ingwer Suppe – Followfood – 375ml“, Spalte ‚As sold for 100 g / 100 ml‘, https://world.openfoodfacts.org/product/4280001516656/karotte-ingwer-suppe-followfood) 2026-10-16"
+  },
+  "ATKISB317359": {
+   "n": {
+    "kcal": 66.0,
+    "fat": 3.4,
+    "satfat": 0.4,
+    "carbs": 6.9,
+    "sugar": 1.5,
+    "fiber": 1.6,
+    "protein": 1.0,
+    "salt": 1.1
+   },
+   "source": "Open Food Facts Produktseite EAN 4280001516670 („Followfood Bio Kartoffelsuppe mit Lauch – 375ml“, Spalte ‚As sold for 100 g / 100 ml‘, https://world.openfoodfacts.org/product/4280001516670/followfood-bio-kartoffelsuppe-mit-lauch) 2026-10-16"
+  },
+  "ATKISD321914": {
+   "n": {
+    "kcal": 114.0,
+    "fat": 4.2,
+    "satfat": 0.5,
+    "carbs": 13.0,
+    "sugar": 8.0,
+    "fiber": 2.8,
+    "protein": 4.8,
+    "salt": 1.5
+   },
+   "source": "Open Food Facts Produktseite EAN 4030917045401 („Bio Veganes Gulasch Ungarische Art – Sanchon – 330ml“, Spalte ‚As sold for 100 g / 100 ml‘, https://world.openfoodfacts.org/product/4030917045401/bio-veganes-gulasch-ungarische-art-sanchon) 2026-10-16"
+  },
+  "ATKXJW322791": {
+   "n": {
+    "kcal": 61.0,
+    "fat": 1.4,
+    "satfat": 0.4,
+    "carbs": 8.0,
+    "sugar": 0.6,
+    "fiber": null,
+    "protein": 2.9,
+    "salt": 1.2
+   },
+   "source": "Open Food Facts Produktseite EAN 4031829232590 („Mexikanische Bohnensuppe – Ökoland“, Spalte ‚As sold for 100 g / 100 ml‘, https://world.openfoodfacts.org/product/4031829232590/mexikanische-bohnensuppe-okoland) 2026-10-16"
+  },
+  "ATKISB324217": {
+   "n": {
+    "kcal": 56.0,
+    "fat": 1.9,
+    "satfat": 0.2,
+    "carbs": 8.1,
+    "sugar": 1.2,
+    "fiber": 0.9,
+    "protein": 0.9,
+    "salt": 0.9
+   },
+   "source": "Open Food Facts Produktseite EAN 4260655551180 („Kartoffelsuppe – Followfood – 375 ml“, Spalte ‚As sold for 100 g / 100 ml‘, https://world.openfoodfacts.org/product/4260655551180/kartoffelsuppe-followfood) 2026-10-16"
+  },
+  "ATKYFH340032": {
+   "n": {
+    "kcal": 351.0,
+    "fat": 2.6,
+    "satfat": 0.8,
+    "carbs": 73.0,
+    "sugar": 5.9,
+    "fiber": null,
+    "protein": 7.1,
+    "salt": 3.3
+   },
+   "source": "Open Food Facts Produktseite EAN 8856848001318 („Organic instant noodles Tom Yum – Perfect Earth – 85g“, Spalte ‚As sold for 100 g / 100 ml‘, https://world.openfoodfacts.org/product/8856848001318/organic-instant-noodles-tom-yum-perfect-earth) 2026-10-16"
+  },
+  "ATKYFH340033": {
+   "n": {
+    "kcal": 348.0,
+    "fat": 2.4,
+    "satfat": 0.7,
+    "carbs": 72.0,
+    "sugar": 5.8,
+    "fiber": null,
+    "protein": 7.7,
+    "salt": 3.1
+   },
+   "source": "Open Food Facts Produktseite EAN 8856848001325 („Organic Instant Noodles Garlic & Pepper – Perfect Earth – 85g“, Spalte ‚As sold for 100 g / 100 ml‘, https://world.openfoodfacts.org/product/8856848001325/organic-instant-noodles-garlic-pepper-perfect-earth) 2026-10-16"
+  },
+  "ATKYFH341172": {
+   "n": {
+    "kcal": 353.0,
+    "fat": 2.8,
+    "satfat": 0.8,
+    "carbs": 73.0,
+    "sugar": 7.0,
+    "fiber": null,
+    "protein": 7.4,
+    "salt": 3.2
+   },
+   "source": "Open Food Facts Produktseite EAN 8856848001370 („organic instant noodles kimchi – 85 g“, Spalte ‚As sold for 100 g / 100 ml‘, https://world.openfoodfacts.org/product/8856848001370/organic-instant-noodles-kimchi) 2026-10-16"
+  },
+  "ATKXYO350991": {
+   "n": {
+    "kcal": 163.0,
+    "fat": 1.5,
+    "satfat": 0.2,
+    "carbs": 32.0,
+    "sugar": 4.1,
+    "fiber": 3.7,
+    "protein": 3.7,
+    "salt": 1.6
+   },
+   "source": "Open Food Facts Produktseite EAN 4250073462533 („TERIYAKI NOODLES – followfood – 161 g“, Spalte ‚As sold for 100 g / 100 ml‘, https://world.openfoodfacts.org/product/4250073462533/teriyaki-noodles-followfood) 2026-10-16"
+  },
+  "ATKXYO350993": {
+   "n": {
+    "kcal": 140.0,
+    "fat": 3.02,
+    "satfat": 0.69,
+    "carbs": 22.9,
+    "sugar": 2.84,
+    "fiber": null,
+    "protein": 4.26,
+    "salt": 1.49
+   },
+   "source": "Open Food Facts Produktseite EAN 4250073462557 („Carbonara Style Noodles – followfood“, Spalte ‚As sold for 100 g / 100 ml‘, https://world.openfoodfacts.org/product/4250073462557/carbonara-style-noodles-followfood) 2026-10-16"
+  },
+  "ATKIRY209504": {
+   "n": {
+    "kcal": 158.0,
+    "fat": 7.5,
+    "satfat": 1.1,
+    "carbs": 19.0,
+    "sugar": 2.8,
+    "fiber": 3.1,
+    "protein": 2.4,
+    "salt": 1.5
+   },
+   "source": "Open Food Facts Produktseite EAN 4006040164197 („Weinblätter gefüllt mit Reis – Dolmas – 280g“, Spalte ‚As sold for 100 g / 100 ml‘, https://world.openfoodfacts.org/product/4006040164197/weinblatter-gefullt-mit-reis-dolmas) 2026-10-16"
+  },
+  "ATKISU329795": {
+   "n": {
+    "kcal": 85.0,
+    "fat": 4.5,
+    "satfat": 2.0,
+    "carbs": 8.6,
+    "sugar": 6.1,
+    "fiber": 2.1,
+    "protein": 1.5,
+    "salt": 1.2
+   },
+   "source": "Open Food Facts Produktseite EAN 4019736012832 („Curry: Soul Kitchen Gemüse Curry – Zwergenwiese – 370g“, Spalte ‚As sold for 100 g / 100 ml‘, https://world.openfoodfacts.org/product/4019736012832/curry-soul-kitchen-gemuse-curry-zwergenwiese) 2026-10-16"
+  },
+  "ATKISU329799": {
+   "n": {
+    "kcal": 83.0,
+    "fat": 3.4,
+    "satfat": 1.8,
+    "carbs": 8.3,
+    "sugar": 6.9,
+    "fiber": 1.8,
+    "protein": 4.0,
+    "salt": 1.6
+   },
+   "source": "Open Food Facts Produktseite EAN 4019736012726 („Soul Kitchen Gemüse Käse – Zwergenwiese – 1pcs“, Spalte ‚As sold for 100 g / 100 ml‘, https://world.openfoodfacts.org/product/4019736012726/soul-kitchen-gemuse-kase-zwergenwiese) 2026-10-16"
+  },
+  "ATKIPN323806": {
+   "n": {
+    "kcal": 76.0,
+    "fat": 1.7,
+    "satfat": 0.2,
+    "carbs": 11.1,
+    "sugar": 3.6,
+    "fiber": 1.55625,
+    "protein": 2.5,
+    "salt": 1.08
+   },
+   "source": "Open Food Facts Produktseite EAN 4280000878991 („Little Marokko Eintopf Bio – Little Lunch – 350ml“, Spalte ‚As sold for 100 g / 100 ml‘, https://world.openfoodfacts.org/product/4280000878991/little-marokko-eintopf-bio-little-lunch) 2026-10-16"
+  },
+  "ATKIPN323808": {
+   "n": {
+    "kcal": 64.0,
+    "fat": 1.6,
+    "satfat": 0.2,
+    "carbs": 9.8,
+    "sugar": 3.2,
+    "fiber": 2.81652,
+    "protein": 1.5,
+    "salt": 1.3
+   },
+   "source": "Open Food Facts Produktseite EAN 4260614720350 („Süßkartoffel Curry – 16% – 350ml“, Spalte ‚As sold for 100 g / 100 ml‘, https://world.openfoodfacts.org/product/4260614720350/susskartoffel-curry-16) 2026-10-16"
+  },
+  "ATKIPN332680": {
+   "n": {
+    "kcal": 78.0,
+    "fat": 1.6,
+    "satfat": 0.2,
+    "carbs": 11.0,
+    "sugar": 1.7,
+    "fiber": null,
+    "protein": 3.7,
+    "salt": 1.0
+   },
+   "source": "Open Food Facts Produktseite EAN 4280000878083 („linseneintopf 4280000878083 Bio-Eintopf mit Linsen, Kartoffeln und Karotten – Little Lunch – 350ml“, Spalte ‚As sold for 100 g / 100 ml‘, https://world.openfoodfacts.org/product/4280000878083/linseneintopf-4280000878083-bio-eintopf-mit-linsen-kartoffeln-und-karotten-little-lunch) 2026-10-16"
+  },
+  "ATKIPN332681": {
+   "n": {
+    "kcal": 107.0,
+    "fat": 4.4,
+    "satfat": 1.5,
+    "carbs": 9.5,
+    "sugar": 3.8,
+    "fiber": null,
+    "protein": 5.7,
+    "salt": 1.2
+   },
+   "source": "Open Food Facts Produktseite EAN 4280000878502 („Chili Con Carne Eintopf Bio – Little Lunch – 350ml“, Spalte ‚As sold for 100 g / 100 ml‘, https://world.openfoodfacts.org/product/4280000878502/chili-con-carne-eintopf-bio-little-lunch) 2026-10-16"
+  }
+ },
+ "rejected": {
+  "ATAMAW033": "Open Food Facts ohne Nährwerttabelle",
+  "ATKIEY356019": "Open Food Facts ohne Nährwerttabelle",
+  "ATKISB317356": "OFF-Titel „Kürbissuppe mit Karotten und Kartoffeln“ ≠ myProduct „Kürbissuppe mit Kokos“ (Sorte nicht eindeutig)",
+  "ATKISB324216": "OFF-Titel „Rote Linsen Suppe mit Kokos“ ≠ myProduct „Rote Linsen Orientalisch“ (Sorte nicht eindeutig)",
+  "ATKIPY355863": "Open Food Facts ohne Nährwerttabelle",
+  "ATKIPY355871": "Open Food Facts ohne Nährwerttabelle",
+  "ATKIPR356178": "Open Food Facts ohne Nährwerttabelle",
+  "ATKIPR356194": "Open Food Facts ohne Nährwerttabelle",
+  "ATAMAW031": "keine Nährwertangabe (myproduct.at: gesetzlich nicht verpflichtend / nicht veröffentlicht; nicht in OFF)",
+  "ATAMAW032": "keine Nährwertangabe (myproduct.at: gesetzlich nicht verpflichtend / nicht veröffentlicht; nicht in OFF)",
+  "ATAMAW034": "keine Nährwertangabe (myproduct.at: gesetzlich nicht verpflichtend / nicht veröffentlicht; nicht in OFF)",
+  "ATAMAW036": "keine Nährwertangabe (myproduct.at: gesetzlich nicht verpflichtend / nicht veröffentlicht; nicht in OFF)",
+  "ATAMAW035": "keine Nährwertangabe (myproduct.at: gesetzlich nicht verpflichtend / nicht veröffentlicht; nicht in OFF)",
+  "ATAMAW026": "keine Nährwertangabe (myproduct.at: gesetzlich nicht verpflichtend / nicht veröffentlicht; nicht in OFF)",
+  "ATAMAW024": "keine Nährwertangabe (myproduct.at: gesetzlich nicht verpflichtend / nicht veröffentlicht; nicht in OFF)",
+  "ATAMAW023": "keine Nährwertangabe (myproduct.at: gesetzlich nicht verpflichtend / nicht veröffentlicht; nicht in OFF)",
+  "ATAMAW021": "keine Nährwertangabe (myproduct.at: gesetzlich nicht verpflichtend / nicht veröffentlicht; nicht in OFF)",
+  "ATAMAW015": "keine Nährwertangabe (myproduct.at: gesetzlich nicht verpflichtend / nicht veröffentlicht; nicht in OFF)",
+  "ATAMAW012": "keine Nährwertangabe (myproduct.at: gesetzlich nicht verpflichtend / nicht veröffentlicht; nicht in OFF)",
+  "ATAMAW011": "keine Nährwertangabe (myproduct.at: gesetzlich nicht verpflichtend / nicht veröffentlicht; nicht in OFF)",
+  "ATAMAW010": "keine Nährwertangabe (myproduct.at: gesetzlich nicht verpflichtend / nicht veröffentlicht; nicht in OFF)",
+  "ATAMAW009": "keine Nährwertangabe (myproduct.at: gesetzlich nicht verpflichtend / nicht veröffentlicht; nicht in OFF)",
+  "ATAMAW007": "keine Nährwertangabe (myproduct.at: gesetzlich nicht verpflichtend / nicht veröffentlicht; nicht in OFF)",
+  "ATAMAW002": "keine Nährwertangabe (myproduct.at: gesetzlich nicht verpflichtend / nicht veröffentlicht; nicht in OFF)",
+  "ATKYIS348031": "keine Nährwertangabe (myproduct.at: gesetzlich nicht verpflichtend / nicht veröffentlicht; nicht in OFF)",
+  "ATKIPY355867": "keine Nährwertangabe (myproduct.at: gesetzlich nicht verpflichtend / nicht veröffentlicht; nicht in OFF)",
+  "ATKYIY355908": "keine Nährwertangabe (myproduct.at: gesetzlich nicht verpflichtend / nicht veröffentlicht; nicht in OFF)"
+ }
+}

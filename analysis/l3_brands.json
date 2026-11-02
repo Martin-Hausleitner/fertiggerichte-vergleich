@@ -1,0 +1,502 @@
+{
+ "Ager": {
+  "slug": "ager",
+  "n": 2
+ },
+ "Alnatura": {
+  "slug": "alnatura",
+  "n": 3
+ },
+ "BILLA Bio": {
+  "slug": "billa-bio",
+  "n": 17
+ },
+ "BILLA Immer Gut": {
+  "slug": "billa-immer-gut",
+  "n": 45
+ },
+ "BILLA Genusswelt": {
+  "slug": "billa-genusswelt",
+  "n": 12
+ },
+ "Barilla": {
+  "slug": "barilla",
+  "n": 2
+ },
+ "Ben's Original": {
+  "slug": "ben-s-original",
+  "n": 3
+ },
+ "Blue Elephant": {
+  "slug": "blue-elephant",
+  "n": 1
+ },
+ "Cecchin": {
+  "slug": "cecchin",
+  "n": 5
+ },
+ "CLEVER": {
+  "slug": "clever",
+  "n": 37
+ },
+ "Frosta": {
+  "slug": "frosta",
+  "n": 2
+ },
+ "iglo": {
+  "slug": "iglo",
+  "n": 28
+ },
+ "Indomie": {
+  "slug": "indomie",
+  "n": 2
+ },
+ "Kikkoman": {
+  "slug": "kikkoman",
+  "n": 1
+ },
+ "Recheis": {
+  "slug": "recheis",
+  "n": 1
+ },
+ "Reis-Fit": {
+  "slug": "reis-fit",
+  "n": 1
+ },
+ "Schär": {
+  "slug": "schaer",
+  "n": 4
+ },
+ "Simply Good": {
+  "slug": "simply-good",
+  "n": 16
+ },
+ "Stangl": {
+  "slug": "stangl",
+  "n": 4
+ },
+ "Toni Kaiser": {
+  "slug": "toni-kaiser",
+  "n": 3
+ },
+ "Vegavita": {
+  "slug": "vegavita",
+  "n": 9
+ },
+ "DESPAR": {
+  "slug": "despar",
+  "n": 5
+ },
+ "Felix": {
+  "slug": "felix",
+  "n": 16
+ },
+ "Gavrilovic": {
+  "slug": "gavrilovic",
+  "n": 1
+ },
+ "Inzersdorfer": {
+  "slug": "inzersdorfer",
+  "n": 41
+ },
+ "Knorr": {
+  "slug": "knorr",
+  "n": 106
+ },
+ "Little Lunch": {
+  "slug": "little-lunch",
+  "n": 4
+ },
+ "Nabio": {
+  "slug": "nabio",
+  "n": 3
+ },
+ "S-BUDGET": {
+  "slug": "s-budget",
+  "n": 15
+ },
+ "SPAR": {
+  "slug": "spar",
+  "n": 16
+ },
+ "SPAR PREMIUM": {
+  "slug": "spar-premium",
+  "n": 15
+ },
+ "Pure": {
+  "slug": "pure",
+  "n": 3
+ },
+ "Youcook": {
+  "slug": "youcook",
+  "n": 2
+ },
+ "Hofstädter": {
+  "slug": "hofstaedter",
+  "n": 6
+ },
+ "Radatz": {
+  "slug": "radatz",
+  "n": 7
+ },
+ "Sushitime": {
+  "slug": "sushitime",
+  "n": 1
+ },
+ "Aumaerk": {
+  "slug": "aumaerk",
+  "n": 1
+ },
+ "Rana": {
+  "slug": "rana",
+  "n": 15
+ },
+ "Ja! Natürlich": {
+  "slug": "ja-natuerlich",
+  "n": 13
+ },
+ "Omis Schmankerl": {
+  "slug": "omis-schmankerl",
+  "n": 41
+ },
+ "franuí": {
+  "slug": "franui",
+  "n": 1
+ },
+ "Pop-Up": {
+  "slug": "pop-up",
+  "n": 1
+ },
+ "BioVegan": {
+  "slug": "biovegan",
+  "n": 2
+ },
+ "Maggi": {
+  "slug": "maggi",
+  "n": 18
+ },
+ "Hink Wien": {
+  "slug": "hink-wien",
+  "n": 3
+ },
+ "Feelfood": {
+  "slug": "feelfood",
+  "n": 3
+ },
+ "Vier Diamanten": {
+  "slug": "vier-diamanten",
+  "n": 3
+ },
+ "Njami": {
+  "slug": "njami",
+  "n": 2
+ },
+ "Amlacher": {
+  "slug": "amlacher",
+  "n": 4
+ },
+ "Fratelli Barbaro": {
+  "slug": "fratelli-barbaro",
+  "n": 3
+ },
+ "Billa": {
+  "slug": "billa",
+  "n": 5
+ },
+ "Steirerkraft": {
+  "slug": "steirerkraft",
+  "n": 1
+ },
+ "Jürgen Langbein": {
+  "slug": "juergen-langbein",
+  "n": 1
+ },
+ "SPAR Veggie": {
+  "slug": "spar-veggie",
+  "n": 8
+ },
+ "SPAR Feine Küche": {
+  "slug": "spar-feine-kueche",
+  "n": 14
+ },
+ "SPAR Natur*pur": {
+  "slug": "spar-natur-pur",
+  "n": 17
+ },
+ "SPAR Vital": {
+  "slug": "spar-vital",
+  "n": 1
+ },
+ "SPAR enjoy": {
+  "slug": "spar-enjoy",
+  "n": 1
+ },
+ "Vemondo": {
+  "slug": "vemondo",
+  "n": 1
+ },
+ "Trattoria Alfredo": {
+  "slug": "trattoria-alfredo",
+  "n": 1
+ },
+ "Deluxe": {
+  "slug": "deluxe",
+  "n": 1
+ },
+ "Chef Select": {
+  "slug": "chef-select",
+  "n": 4
+ },
+ "Schwaben Krone": {
+  "slug": "schwaben-krone",
+  "n": 1
+ },
+ "Vitasia": {
+  "slug": "vitasia",
+  "n": 1
+ },
+ "Wonnemeyer": {
+  "slug": "wonnemeyer",
+  "n": 1
+ },
+ "Green Garden": {
+  "slug": "green-garden",
+  "n": 1
+ },
+ "Le Gusto": {
+  "slug": "le-gusto",
+  "n": 6
+ },
+ "Good Choice": {
+  "slug": "good-choice",
+  "n": 27
+ },
+ "Nature's Gold": {
+  "slug": "nature-s-gold",
+  "n": 2
+ },
+ "Primana": {
+  "slug": "primana",
+  "n": 20
+ },
+ "PIZZ'AH": {
+  "slug": "pizz-ah",
+  "n": 1
+ },
+ "Leibspeis'": {
+  "slug": "leibspeis",
+  "n": 3
+ },
+ "FairHOF": {
+  "slug": "fairhof",
+  "n": 1
+ },
+ "Cucina Nobile": {
+  "slug": "cucina-nobile",
+  "n": 10
+ },
+ "Cucina": {
+  "slug": "cucina",
+  "n": 4
+ },
+ "Natur Aktiv": {
+  "slug": "natur-aktiv",
+  "n": 2
+ },
+ "SONNHOF": {
+  "slug": "sonnhof",
+  "n": 1
+ },
+ "GMS Gourmet": {
+  "slug": "gms-gourmet",
+  "n": 4
+ },
+ "DOVGAN": {
+  "slug": "dovgan",
+  "n": 1
+ },
+ "MCENNEDY": {
+  "slug": "mcennedy",
+  "n": 2
+ },
+ "SELECT&GO": {
+  "slug": "select-go",
+  "n": 1
+ },
+ "Ablinger": {
+  "slug": "ablinger",
+  "n": 1
+ },
+ "Ackerl": {
+  "slug": "ackerl",
+  "n": 4
+ },
+ "Die Grillerei": {
+  "slug": "die-grillerei",
+  "n": 2
+ },
+ "Efko": {
+  "slug": "efko",
+  "n": 1
+ },
+ "Knödelwerkstatt": {
+  "slug": "knoedelwerkstatt",
+  "n": 1
+ },
+ "Marinus": {
+  "slug": "marinus",
+  "n": 2
+ },
+ "Mühlen": {
+  "slug": "muehlen",
+  "n": 1
+ },
+ "Planted": {
+  "slug": "planted",
+  "n": 1
+ },
+ "Revo": {
+  "slug": "revo",
+  "n": 1
+ },
+ "Staudinger": {
+  "slug": "staudinger",
+  "n": 2
+ },
+ "Greisinger": {
+  "slug": "greisinger",
+  "n": 4
+ },
+ "Eden": {
+  "slug": "eden",
+  "n": 1
+ },
+ "dm": {
+  "slug": "dm",
+  "n": 1
+ },
+ "My Vay": {
+  "slug": "my-vay",
+  "n": 1
+ },
+ "Kania": {
+  "slug": "kania",
+  "n": 1
+ },
+ "Natur Compagnie": {
+  "slug": "natur-compagnie",
+  "n": 1
+ },
+ "Auinger": {
+  "slug": "auinger",
+  "n": 1
+ },
+ "Delikatessa": {
+  "slug": "delikatessa",
+  "n": 1
+ },
+ "Fit Taste": {
+  "slug": "fit-taste",
+  "n": 1
+ },
+ "Rettenswert": {
+  "slug": "rettenswert",
+  "n": 2
+ },
+ "Flotte Lotte": {
+  "slug": "flotte-lotte",
+  "n": 1
+ },
+ "Tress Brüder": {
+  "slug": "tress-brueder",
+  "n": 1
+ },
+ "Mowi": {
+  "slug": "mowi",
+  "n": 1
+ },
+ "Holle": {
+  "slug": "holle",
+  "n": 1
+ },
+ "Asia": {
+  "slug": "asia",
+  "n": 1
+ },
+ "Almare": {
+  "slug": "almare",
+  "n": 1
+ },
+ "Iss mich!": {
+  "slug": "iss-mich",
+  "n": 1
+ },
+ "Limoni's": {
+  "slug": "limoni-s",
+  "n": 1
+ },
+ "Every": {
+  "slug": "every",
+  "n": 1
+ },
+ "Ben Fatto": {
+  "slug": "ben-fatto",
+  "n": 1
+ },
+ "Bio Natura": {
+  "slug": "bio-natura",
+  "n": 1
+ },
+ "Hipp": {
+  "slug": "hipp",
+  "n": 1
+ },
+ "Food for Future": {
+  "slug": "food-for-future",
+  "n": 1
+ },
+ "Hut&Stiel": {
+  "slug": "hut-stiel",
+  "n": 1
+ },
+ "Chef Menü": {
+  "slug": "chef-menue",
+  "n": 1
+ },
+ "Ströck": {
+  "slug": "stroeck",
+  "n": 1
+ },
+ "Goldblatt": {
+  "slug": "goldblatt",
+  "n": 1
+ },
+ "Fit to Go": {
+  "slug": "fit-to-go",
+  "n": 24
+ },
+ "Lorado": {
+  "slug": "lorado",
+  "n": 1
+ },
+ "Küchenbrüder": {
+  "slug": "kuechenbrueder",
+  "n": 1
+ },
+ "Spar": {
+  "slug": "spar",
+  "n": 0
+ },
+ "Hofer": {
+  "slug": "hofer",
+  "n": 0
+ },
+ "Lidl": {
+  "slug": "lidl",
+  "n": 0
+ },
+ "Penny": {
+  "slug": "penny",
+  "n": 0
+ }
+}

@@ -1,0 +1,1 @@
+import{cB as a,Z as t,_ as i,cC as s}from"./index-c48UfGRd.js";import{S as e,Z as r}from"./Scatter-BULU3auU.js";var x=a({chartName:"ScatterChart",GraphicalChild:e,defaultTooltipEventType:"item",validateTooltipEventTypes:["item"],axisComponents:[{axisType:"xAxis",AxisComp:t},{axisType:"yAxis",AxisComp:i},{axisType:"zAxis",AxisComp:r}],formatAxisMap:s});export{x as S};

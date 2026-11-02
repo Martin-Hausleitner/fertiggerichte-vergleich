@@ -1,0 +1,1058 @@
+{
+ "generated": "2026-10-13",
+ "method_de": {
+  "zertifizierung": "max 35: IFS Higher Level / BRCGS A/A+ = 35, IFS/BRC (Stufe unbekannt) = 25, kein Nachweis gefunden = 0",
+  "zusatz_siegel": "max 10: je 3 Punkte für AMA-Gütesiegel, Bio, MSC/ASC, weitere (max 10)",
+  "herkunft": "max 25: dokumentiert 100 % AT/regional rückverfolgbar = 25, 'vorwiegend regional' = 15, Import mit Zertifizierung = 12, unbekannt = 5",
+  "technologie_transparenz": "max 15: konkrete Verfahren öffentlich (≥2 belegt) = 15, eines = 8, keines = 0",
+  "rueckrufe": "max 15: kein Rückruf in AGES/Presse gefunden (letzte 24 Monate) = 15, ein Rückruf = 5",
+  "potenzial": "Score, wenn alle 'unbekannt'-Felder auf den bestmöglichen Wert fallen (Obergrenze bei aktueller Datenlage); Differenz = Recherche-/Transparenzlücke"
+ },
+ "note_de": "Nur belegte Angaben; 'value: null' = nicht gefunden (nicht 'nicht vorhanden'). Maschinenhersteller (Multivac, Krones, JBT, Hiperbaric) wurden in keiner öffentlichen Referenz einem dieser Betriebe zugeordnet. Rückrufe: Suche AGES/VKI/Presse, RASFF nicht systematisch geprüft.",
+ "producers": [
+  {
+   "slug": "karnerta",
+   "name": "KARNERTA GmbH",
+   "plant": "Klagenfurt, Südring 334",
+   "technology": {
+    "value": [
+     "Frischteigwaren-Produktionsstraße (vorgegart, frisch, TK)",
+     "eigene Fleischzerlegung (Rinder-/Schweinehälften)"
+    ],
+    "sources": [
+     "https://www.karnerta.at/produkte/teigwaren/",
+     "https://www.karnerta.at/unternehmen/"
+    ],
+    "confidence": "high"
+   },
+   "machines": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "ifs": {
+    "value": {
+     "standard": "IFS Food",
+     "level": "Higher Level (2025, Teigwaren)",
+     "since": 2003
+    },
+    "sources": [
+     "https://frischteigwaren.at/"
+    ],
+    "confidence": "high"
+   },
+   "brc": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "other_certs": {
+    "value": [
+     "Bio",
+     "Cibus (Herkunft)",
+     "V-Label vegetarisch/vegan"
+    ],
+    "sources": [
+     "https://frischteigwaren.at/"
+    ],
+    "confidence": "high"
+   },
+   "sourcing": {
+    "value": "Kärntner Fleisch, rückverfolgbar bis zum Hof; vorwiegend regionale Lieferanten, wenn möglich AT",
+    "sources": [
+     "https://www.karnerta.at/unternehmen/"
+    ],
+    "confidence": "high"
+   },
+   "recalls": {
+    "value": [],
+    "sources": [],
+    "confidence": "low"
+   },
+   "quality_score": 93,
+   "potential_score": 93,
+   "score_breakdown": {
+    "zertifizierung": 35,
+    "zusatz_siegel": 3,
+    "herkunft": 25,
+    "technologie_transparenz": 15,
+    "rueckrufe": 15
+   }
+  },
+  {
+   "slug": "blasko",
+   "name": "Wilhelm Blasko CONVENIENCE-Fertiggerichte GmbH",
+   "plant": "Bruck an der Mur (+ Oberwaltersdorf, Villach)",
+   "technology": {
+    "value": [
+     "Manufaktur-Küche, täglich frisch gekocht",
+     "Panieren + Backen in Pflanzenöl",
+     "Frisch, Heiße Theke, TK und SB-Convenience"
+    ],
+    "sources": [
+     "https://www.blasko.at/produktion/qualitaet",
+     "https://www.brandensteincom.at/blasko-convenience-traditionelle-hausmannskost-zu-100-prozent-aus-oesterreich-fuer-die-gastronomie-hotellerie/"
+    ],
+    "confidence": "high"
+   },
+   "machines": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "ifs": {
+    "value": {
+     "standard": "IFS Food v8",
+     "level": "höchstes Niveau (Higher Level) lt. Firma",
+     "year": 2026
+    },
+    "sources": [
+     "https://www.blasko.at/produktion/zertifizierungen"
+    ],
+    "confidence": "high"
+   },
+   "brc": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "other_certs": {
+    "value": [
+     "FSC-Kartons",
+     "100 % CO2-neutraler Strom"
+    ],
+    "sources": [
+     "https://www.blasko.at/produktion/zertifizierungen"
+    ],
+    "confidence": "high"
+   },
+   "sourcing": {
+    "value": "100 % österreichisches Rind- und Schweinefleisch, Frischfleisch vom Mutterbetrieb Marcher Fleischwerke; Eier aus Bodenhaltung",
+    "sources": [
+     "https://www.brandensteincom.at/blasko-convenience-traditionelle-hausmannskost-zu-100-prozent-aus-oesterreich-fuer-die-gastronomie-hotellerie/",
+     "https://www.blasko.at/produktion/qualitaet"
+    ],
+    "confidence": "high"
+   },
+   "recalls": {
+    "value": [],
+    "sources": [],
+    "confidence": "low"
+   },
+   "quality_score": 90,
+   "potential_score": 90,
+   "score_breakdown": {
+    "zertifizierung": 35,
+    "zusatz_siegel": 0,
+    "herkunft": 25,
+    "technologie_transparenz": 15,
+    "rueckrufe": 15
+   }
+  },
+  {
+   "slug": "wech",
+   "name": "Wech-Geflügel GmbH",
+   "plant": "Kärnten (KTH + WGG)",
+   "technology": {
+    "value": [
+     "Geflügelschlachtung und -verarbeitung"
+    ],
+    "sources": [
+     "https://www.wech.at/wissen/ifs-food"
+    ],
+    "confidence": "medium"
+   },
+   "machines": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "ifs": {
+    "value": {
+     "standard": "IFS Food",
+     "level": "unbekannt",
+     "sites": [
+      "KTH",
+      "WGG"
+     ]
+    },
+    "sources": [
+     "https://www.wech.at/wissen/ifs-food"
+    ],
+    "confidence": "high"
+   },
+   "brc": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "other_certs": {
+    "value": [
+     "AMA-Gütesiegel Geflügelfleisch + Fleischerzeugnisse"
+    ],
+    "sources": [
+     "https://www.wech.at/wissen/ama-guetesiegel"
+    ],
+    "confidence": "high"
+   },
+   "sourcing": {
+    "value": "AMA-Geflügel = österreichische Herkunft",
+    "sources": [
+     "https://www.wech.at/wissen/ama-guetesiegel"
+    ],
+    "confidence": "high"
+   },
+   "recalls": {
+    "value": [],
+    "sources": [],
+    "confidence": "low"
+   },
+   "quality_score": 76,
+   "potential_score": 93,
+   "score_breakdown": {
+    "zertifizierung": 25,
+    "zusatz_siegel": 3,
+    "herkunft": 25,
+    "technologie_transparenz": 8,
+    "rueckrufe": 15
+   }
+  },
+  {
+   "slug": "landena",
+   "name": "Landgenossenschaft Ennstal LANDENA KG",
+   "plant": "Stainach-Pürgg (+ Landena Wels Trocken)",
+   "technology": {
+    "value": [
+     "Konserven (Dose 24 g–3 kg, Glas) – Sterilisation in Autoklaven (neue Autoklaven: −35 % Wasser, −25 % Energie)",
+     "Tiefkühl-Fertiggerichte",
+     "Schalen- und Beutelverpackung",
+     "Wurst-Snacks",
+     "~30.000 t Fertiggerichte/Jahr, ~500 MA"
+    ],
+    "sources": [
+     "https://www.landena.at/de/produkte/",
+     "https://www.landena.at/de/produkte/produkte-in-der-dose/",
+     "https://www.landena.at/de/unternehmen/nachhaltigkeit/"
+    ],
+    "confidence": "high"
+   },
+   "machines": {
+    "value": "Autoklaven (Hersteller nicht genannt)",
+    "sources": [
+     "https://www.landena.at/de/unternehmen/nachhaltigkeit/"
+    ],
+    "confidence": "medium"
+   },
+   "ifs": {
+    "value": {
+     "standard": "IFS",
+     "level": "unbekannt"
+    },
+    "sources": [
+     "https://www.landena.at/de/produkte/trockensortiment/"
+    ],
+    "confidence": "medium"
+   },
+   "brc": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "other_certs": {
+    "value": [
+     "Bio",
+     "HACCP",
+     "Halal auf Wunsch (Suppen, Wels)"
+    ],
+    "sources": [
+     "https://www.landena.at/de/produkte/trockensortiment/"
+    ],
+    "confidence": "medium"
+   },
+   "sourcing": {
+    "value": "Enge Zusammenarbeit mit Bauern aus der Region und lokalen Lieferanten; Anteil nicht veröffentlicht",
+    "sources": [
+     "https://www.landena.at/de/"
+    ],
+    "confidence": "medium"
+   },
+   "recalls": {
+    "value": [],
+    "sources": [],
+    "confidence": "low"
+   },
+   "quality_score": 73,
+   "potential_score": 83,
+   "score_breakdown": {
+    "zertifizierung": 25,
+    "zusatz_siegel": 3,
+    "herkunft": 15,
+    "technologie_transparenz": 15,
+    "rueckrufe": 15
+   }
+  },
+  {
+   "slug": "heiploeg",
+   "name": "Heiploeg International B.V.",
+   "plant": "Zoutkamp (NL), Panserweg 14",
+   "technology": {
+    "value": [
+     "Garnelen-Verarbeitung, Verpackung, Konservierung"
+    ],
+    "sources": [
+     "https://heiploeg.com/en-us/quality/certification"
+    ],
+    "confidence": "medium"
+   },
+   "machines": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "ifs": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "brc": {
+    "value": {
+     "standard": "BRCGS Food Issue 9",
+     "grade": "A+",
+     "valid_until": "2027-06-29"
+    },
+    "sources": [
+     "https://heiploeg.com/Portals/10/PDF_files/2026/PDF%202026%20RC%2072856-2010-ABRC-NLD-ACCREDIA_BRC%20Food-20260506.pdf"
+    ],
+    "confidence": "high"
+   },
+   "other_certs": {
+    "value": [
+     "MSC CoC (MSC-C-51664, bis 2028-08-24)",
+     "ASC CoC (ASC-C-00489, bis 2028-08-24)"
+    ],
+    "sources": [
+     "https://heiploeg.com/Portals/10/PDF_files/2025/MSC-C-51664%20Heiploeg%20valid%20till%202028-08-24.pdf",
+     "https://heiploeg.com/Portals/10/PDF_files/2025/ASC-C-00489%20Heiploeg%20till%202028-08-24.pdf"
+    ],
+    "confidence": "high"
+   },
+   "sourcing": {
+    "value": "Wildfang/Aquakultur mit MSC/ASC-Rückverfolgbarkeit (Import)",
+    "sources": [
+     "https://heiploeg.com/en-us/quality/certification"
+    ],
+    "confidence": "medium"
+   },
+   "recalls": {
+    "value": [],
+    "sources": [],
+    "confidence": "low"
+   },
+   "quality_score": 73,
+   "potential_score": 80,
+   "score_breakdown": {
+    "zertifizierung": 35,
+    "zusatz_siegel": 3,
+    "herkunft": 12,
+    "technologie_transparenz": 8,
+    "rueckrufe": 15
+   }
+  },
+  {
+   "slug": "hochreiter",
+   "name": "Hochreiter Quality Meat Factory GmbH",
+   "plant": "Reichenthal (Zerlegung) / Bad Leonfelden (Fleischwaren)",
+   "technology": {
+    "value": [
+     "zentrales Fleisch-Einkaufs- und Zerlegezentrum (QMF)",
+     "Slicen + Verpacken in Folie/MAP, IQF-Fleischerzeugnisse (Hochreiter Fleischwaren)"
+    ],
+    "sources": [
+     "https://www.hochreiter.cc/wp-content/uploads/2023/04/59503msIFSFood_V7_de-1.pdf",
+     "https://www.hochreiter-gruppe.at/"
+    ],
+    "confidence": "high"
+   },
+   "machines": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "ifs": {
+    "value": {
+     "standard": "IFS Food v7",
+     "level": "Higher Level, 95,83 % (Schwesterbetrieb Hochreiter Fleischwaren)",
+     "year": 2023
+    },
+    "sources": [
+     "https://www.hochreiter.cc/wp-content/uploads/2023/04/59503msIFSFood_V7_de-1.pdf"
+    ],
+    "confidence": "medium"
+   },
+   "brc": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "other_certs": {
+    "value": [
+     "QS (QMF, 2022)"
+    ],
+    "sources": [
+     "https://www.hochreiter.cc/wp-content/uploads/2022/02/QS-QMF-bis-29.12.2022_2022.pdf"
+    ],
+    "confidence": "medium"
+   },
+   "sourcing": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "recalls": {
+    "value": [],
+    "sources": [],
+    "confidence": "low"
+   },
+   "quality_score": 70,
+   "potential_score": 90,
+   "score_breakdown": {
+    "zertifizierung": 35,
+    "zusatz_siegel": 0,
+    "herkunft": 5,
+    "technologie_transparenz": 15,
+    "rueckrufe": 15
+   }
+  },
+  {
+   "slug": "gms-gourmet",
+   "name": "GMS GOURMET GmbH",
+   "plant": "St. Pölten, Zdarskystraße 3 (AT 30733 EG)",
+   "technology": {
+    "value": [
+     "Heißabfüllung + Pasteurisation (gekühlte Fertiggerichte)",
+     "MAP-Schalenversiegelung (CPET/PP Ein-/Mehrkammerschalen)",
+     "Sterilisation von Fertiggerichten in Kunststoffverbundschalen (Retort/Autoklav)",
+     "Tiefkühlung (TK-Fertiggerichte, PP-Beutel)"
+    ],
+    "sources": [
+     "https://www.gourmet.at/fileadmin/public/dachmarke/Home_und_Unser_Angebot/Zertifikate/IFS-St._P%C3%B6lten-g%C3%BCltig_bis_07022027.pdf",
+     "https://www.gourmet.at/fileadmin/public/dachmarke/Home_und_Unser_Angebot/Zertifikate/IFS_St._Poelten_gueltig_bis_07.02.2021.pdf"
+    ],
+    "confidence": "high"
+   },
+   "machines": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "ifs": {
+    "value": {
+     "standard": "IFS Food",
+     "level": "unbekannt (2019: 89,34 % = Foundation Level)",
+     "valid_until": "2027-02-07"
+    },
+    "sources": [
+     "https://www.gourmet.at/fileadmin/public/dachmarke/Home_und_Unser_Angebot/Zertifikate/IFS-St._P%C3%B6lten-g%C3%BCltig_bis_07022027.pdf"
+    ],
+    "confidence": "high"
+   },
+   "brc": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "other_certs": {
+    "value": [
+     "Bio (seit 1997)",
+     "MSC",
+     "ASC",
+     "Fairtrade",
+     "ISO 9001",
+     "ISO 14001",
+     "ISO 22000",
+     "ISO 50001",
+     "FSSC 22000"
+    ],
+    "sources": [
+     "https://www.wlw.de/de/firma/gms-gourmet-gmbh-117012"
+    ],
+    "confidence": "medium"
+   },
+   "sourcing": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "recalls": {
+    "value": [],
+    "sources": [
+     "https://www.ages.at/mensch/produktwarnungen-produktrueckrufe"
+    ],
+    "confidence": "low"
+   },
+   "notes": "Teile ausgelagert, Brokeraktivitäten nicht GFSI-zertifiziert (lt. IFS-Zertifikat).",
+   "quality_score": 67,
+   "potential_score": 97,
+   "score_breakdown": {
+    "zertifizierung": 25,
+    "zusatz_siegel": 7,
+    "herkunft": 5,
+    "technologie_transparenz": 15,
+    "rueckrufe": 15
+   }
+  },
+  {
+   "slug": "rewe-austria-fleischwaren",
+   "name": "Rewe Austria Fleischwaren GmbH",
+   "plant": "Eberstalzell (AT 42152 EG)",
+   "technology": {
+    "value": [
+     "Zerlegung Schwein/Rind",
+     "Wurst- und Convenience-Rohstoff-Produktion"
+    ],
+    "sources": [
+     "https://rewe-group.at/de/newsroom/2023/01/staerkung-des-standorts-eberstalzell-fleischproduktion-von-st-veit-wird-gebuendelt"
+    ],
+    "confidence": "medium"
+   },
+   "machines": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "ifs": {
+    "value": {
+     "standard": "IFS Food",
+     "level": "unbekannt"
+    },
+    "sources": [
+     "https://jobborse.co.at/leiter-qualitatssicherung_oberosterreich-c14845561/2026-10-rewe-fleischwaren_i4237726191"
+    ],
+    "confidence": "medium"
+   },
+   "brc": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "other_certs": {
+    "value": [
+     "Bio",
+     "AMA-Gütesiegel",
+     "Ohne Gentechnik (OGT)"
+    ],
+    "sources": [
+     "https://jobborse.co.at/teamleiterin_oberosterreich-c14845561/2026-10-rewe-fleischwaren_i4237725612"
+    ],
+    "confidence": "medium"
+   },
+   "sourcing": {
+    "value": "Konventionelles Schwein- und Rindfleisch; AMA-Programm nahe AT-Herkunft, Anteil nicht veröffentlicht",
+    "sources": [
+     "https://rewe-group.at/de/newsroom/2023/01/staerkung-des-standorts-eberstalzell-fleischproduktion-von-st-veit-wird-gebuendelt"
+    ],
+    "confidence": "low"
+   },
+   "recalls": {
+    "value": [],
+    "sources": [],
+    "confidence": "low"
+   },
+   "quality_score": 66,
+   "potential_score": 76,
+   "score_breakdown": {
+    "zertifizierung": 25,
+    "zusatz_siegel": 6,
+    "herkunft": 5,
+    "technologie_transparenz": 15,
+    "rueckrufe": 15
+   }
+  },
+  {
+   "slug": "hubers-landhendl",
+   "name": "Hubers Landhendl GmbH",
+   "plant": "Pfaffstätt (OÖ)",
+   "technology": {
+    "value": [
+     "integriert: Schlachtung, Zerlegung, Verarbeitung Geflügel"
+    ],
+    "sources": [
+     "https://huberslandhendl.at/uber-uns/downloads/"
+    ],
+    "confidence": "high"
+   },
+   "machines": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "ifs": {
+    "value": {
+     "standard": "IFS Food",
+     "level": "unbekannt",
+     "note": "online gelistetes Zertifikat 2019–2020, aktuelles nicht geprüft"
+    },
+    "sources": [
+     "https://huberslandhendl.at/uber-uns/downloads/"
+    ],
+    "confidence": "medium"
+   },
+   "brc": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "other_certs": {
+    "value": [
+     "AMA-Gütesiegel Hühnerfleisch",
+     "AMA-Gütesiegel Kochpökelware",
+     "GVO-frei"
+    ],
+    "sources": [
+     "https://huberslandhendl.at/uber-uns/downloads/"
+    ],
+    "confidence": "high"
+   },
+   "sourcing": {
+    "value": "AMA-Geflügel: in AT geschlüpft, aufgezogen, geschlachtet, verarbeitet",
+    "sources": [
+     "https://huberslandhendl.at/"
+    ],
+    "confidence": "high"
+   },
+   "recalls": {
+    "value": [
+     {
+      "date": "2026-06-03",
+      "product": "FairHOF Chicken Wings 500 g / Gewürzte Hühner Unterkeulen 400 g (Hofer)",
+      "reason": "mögliche Salmonellen",
+      "lot": "6152007"
+     }
+    ],
+    "sources": [
+     "https://www.nachrichten.at/oberoesterreich/hofer-ruft-hubers-landhendl-wegen-salmonellengefahr-zurueck;art4,4177843",
+     "https://www.ages.at/mensch/produktwarnungen-produktrueckrufe/produkt/fairhof-chicken-wings-500-g-fairhof-gewuerzte-huehner-unterkeulen-400-g"
+    ],
+    "confidence": "high"
+   },
+   "quality_score": 66,
+   "potential_score": 83,
+   "score_breakdown": {
+    "zertifizierung": 25,
+    "zusatz_siegel": 3,
+    "herkunft": 25,
+    "technologie_transparenz": 8,
+    "rueckrufe": 5
+   }
+  },
+  {
+   "slug": "greisinger",
+   "name": "Greisinger GmbH",
+   "plant": "Münzbach, Klamer Straße 10 (59.000 m², seit 1995)",
+   "technology": {
+    "value": [
+     "Fleisch-, Wurst- und Selchwaren"
+    ],
+    "sources": [
+     "https://www.greisinger.com/fuer-unsere-partner/betriebsdaten/"
+    ],
+    "confidence": "medium"
+   },
+   "machines": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "ifs": {
+    "value": {
+     "standard": "IFS Food",
+     "level": "höheres Niveau (Higher Level) lt. Firma"
+    },
+    "sources": [
+     "https://www.greisinger.com/qualitaet-nachhaltigkeit/auszeichnungen-zertifikate/"
+    ],
+    "confidence": "medium"
+   },
+   "brc": {
+    "value": {
+     "standard": "BRC",
+     "grade": "unbekannt"
+    },
+    "sources": [
+     "https://www.greisinger.com/qualitaet-nachhaltigkeit/auszeichnungen-zertifikate/"
+    ],
+    "confidence": "medium"
+   },
+   "other_certs": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "sourcing": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "recalls": {
+    "value": [],
+    "sources": [],
+    "confidence": "low"
+   },
+   "quality_score": 63,
+   "potential_score": 100,
+   "score_breakdown": {
+    "zertifizierung": 35,
+    "zusatz_siegel": 0,
+    "herkunft": 5,
+    "technologie_transparenz": 8,
+    "rueckrufe": 15
+   }
+  },
+  {
+   "slug": "wiesbauer-gourmet",
+   "name": "Wiesbauer Gourmet Gastro GmbH",
+   "plant": "Sitzenberg-Reidling",
+   "technology": {
+    "value": [
+     "Sous-vide: vakuumversiegeltes Fleisch, 50–70 °C, viele Stunden im Wasserbad",
+     "große Wasserkochanlage („europaweit einzigartig“ lt. Firma)"
+    ],
+    "sources": [
+     "https://cdn.wiesbauer.at/user_upload/wiesbauer/Presse/Firmen_Folder_Issuu.pdf",
+     "https://www.wiesbauer-sousvide.at/",
+     "https://medianet.at/news/retail/wiesbauer-begeistert-mit-sous-vide-gegartem-schinken-braten-59940.html"
+    ],
+    "confidence": "high"
+   },
+   "machines": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "ifs": {
+    "value": {
+     "standard": "IFS Food",
+     "level": "unbekannt",
+     "since": "> 10 Jahre"
+    },
+    "sources": [
+     "https://cdn.wiesbauer.at/user_upload/wiesbauer/Presse/Firmen_Folder_Issuu.pdf"
+    ],
+    "confidence": "medium"
+   },
+   "brc": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "other_certs": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "sourcing": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "recalls": {
+    "value": [],
+    "sources": [],
+    "confidence": "low"
+   },
+   "quality_score": 60,
+   "potential_score": 100,
+   "score_breakdown": {
+    "zertifizierung": 25,
+    "zusatz_siegel": 0,
+    "herkunft": 5,
+    "technologie_transparenz": 15,
+    "rueckrufe": 15
+   }
+  },
+  {
+   "slug": "radatz",
+   "name": "Radatz - Feine Wiener Fleischwaren GmbH",
+   "plant": "Wien",
+   "technology": {
+    "value": [
+     "Fleisch- und Wurstwaren"
+    ],
+    "sources": [
+     "https://www.radatz.at/b2b"
+    ],
+    "confidence": "medium"
+   },
+   "machines": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "ifs": {
+    "value": {
+     "standard": "IFS Food",
+     "level": "unbekannt",
+     "since": 2003
+    },
+    "sources": [
+     "https://www.radatz.at/ueber-uns/qualitaet-nachhaltigkeit"
+    ],
+    "confidence": "high"
+   },
+   "brc": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "other_certs": {
+    "value": [
+     "AMA-Gütesiegel (teilweise)"
+    ],
+    "sources": [
+     "https://www.radatz.at/ueber-uns/qualitaet-nachhaltigkeit"
+    ],
+    "confidence": "high"
+   },
+   "sourcing": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "recalls": {
+    "value": [],
+    "sources": [],
+    "confidence": "low"
+   },
+   "quality_score": 56,
+   "potential_score": 93,
+   "score_breakdown": {
+    "zertifizierung": 25,
+    "zusatz_siegel": 3,
+    "herkunft": 5,
+    "technologie_transparenz": 8,
+    "rueckrufe": 15
+   }
+  },
+  {
+   "slug": "wiesbauer",
+   "name": "Wiesbauer österreichische Wurstspezialitäten GmbH",
+   "plant": "Wien-Liesing, Laxenburger Straße 256",
+   "technology": {
+    "value": [
+     "Wurst- und Fleischwarenproduktion"
+    ],
+    "sources": [
+     "https://liesing.spoe.wien/artikel/betriebsbesuch-bei-wiesbauer-tradition-qualitaet-und-innovation-in-wien-liesing"
+    ],
+    "confidence": "medium"
+   },
+   "machines": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "ifs": {
+    "value": {
+     "standard": "IFS Food",
+     "level": "unbekannt"
+    },
+    "sources": [
+     "https://liesing.spoe.wien/artikel/betriebsbesuch-bei-wiesbauer-tradition-qualitaet-und-innovation-in-wien-liesing"
+    ],
+    "confidence": "medium"
+   },
+   "brc": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "other_certs": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "sourcing": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "recalls": {
+    "value": [],
+    "sources": [],
+    "confidence": "low"
+   },
+   "quality_score": 53,
+   "potential_score": 100,
+   "score_breakdown": {
+    "zertifizierung": 25,
+    "zusatz_siegel": 0,
+    "herkunft": 5,
+    "technologie_transparenz": 8,
+    "rueckrufe": 15
+   }
+  },
+  {
+   "slug": "rewe-genusskueche",
+   "name": "Rewe Austria Genussküche GmbH",
+   "plant": "Traiskirchen",
+   "technology": {
+    "value": [
+     "2 Produktionslinien: Heißluft",
+     "pasteurisierender Mikrowellen-Tunnel",
+     "ca. 1,3 Mio. Portionen/Monat, ~4.000 m², ~120 MA (seit 2017)"
+    ],
+    "sources": [
+     "https://rewe-group.jobs/de/wir-als-arbeitgeber/fachbereiche/fleischwaren/genusskueche"
+    ],
+    "confidence": "high"
+   },
+   "machines": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "ifs": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "brc": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "other_certs": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "sourcing": {
+    "value": "Fleisch-Rohstoff aus REWE Fleischwaren (Eberstalzell/Traiskirchen) – konzernintern",
+    "sources": [
+     "https://rewe-group.jobs/de/wir-als-arbeitgeber/fachbereiche/fleischwaren/genusskueche"
+    ],
+    "confidence": "low"
+   },
+   "recalls": {
+    "value": [],
+    "sources": [],
+    "confidence": "low"
+   },
+   "quality_score": 35,
+   "potential_score": 80,
+   "score_breakdown": {
+    "zertifizierung": 0,
+    "zusatz_siegel": 0,
+    "herkunft": 5,
+    "technologie_transparenz": 15,
+    "rueckrufe": 15
+   }
+  },
+  {
+   "slug": "hink",
+   "name": "Hink GmbH",
+   "plant": "Wien-Floridsdorf, Otto-Beyschlag-Gasse 3",
+   "technology": {
+    "value": [
+     "Handarbeit, Kleinmengen (Pasteten, Terrinen)"
+    ],
+    "sources": [
+     "https://hink.wien/pages/manufaktur"
+    ],
+    "confidence": "high"
+   },
+   "machines": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "ifs": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "brc": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "other_certs": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "sourcing": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "recalls": {
+    "value": [],
+    "sources": [],
+    "confidence": "low"
+   },
+   "quality_score": 28,
+   "potential_score": 100,
+   "score_breakdown": {
+    "zertifizierung": 0,
+    "zusatz_siegel": 0,
+    "herkunft": 5,
+    "technologie_transparenz": 8,
+    "rueckrufe": 15
+   }
+  },
+  {
+   "slug": "graninger",
+   "name": "Graninger Holding GmbH",
+   "plant": "Frastanz/Feldkirch (Vbg.)",
+   "technology": {
+    "value": [
+     "Tiefkühl-Fertiggerichte/Komponenten (z. B. Kalbsrahmspätzle, Brätknödel)"
+    ],
+    "sources": [
+     "https://shop.transgourmet.at/catalog2/products/196566/tiefkuhlprodukte/tk-fertiggerichte/tk-fertiggerichte/graninger-kalbsrahmspatzle-vorgekocht-tiefgekuhlt-1-kg"
+    ],
+    "confidence": "medium"
+   },
+   "machines": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "ifs": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "brc": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "other_certs": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "sourcing": {
+    "value": null,
+    "sources": [],
+    "confidence": "none"
+   },
+   "recalls": {
+    "value": [],
+    "sources": [],
+    "confidence": "low"
+   },
+   "quality_score": 28,
+   "potential_score": 100,
+   "score_breakdown": {
+    "zertifizierung": 0,
+    "zusatz_siegel": 0,
+    "herkunft": 5,
+    "technologie_transparenz": 8,
+    "rueckrufe": 15
+   }
+  }
+ ]
+}

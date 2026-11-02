@@ -1,0 +1,1152 @@
+{
+ "Billa": {
+  "slug": "billa",
+  "cat": "Handelskette",
+  "src": [
+   "file",
+   "billa.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Spar": {
+  "slug": "spar",
+  "cat": "Handelskette",
+  "src": [
+   "file",
+   "spar.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "SPAR": {
+  "slug": "spar",
+  "cat": "Handelskette",
+  "src": [
+   "file",
+   "spar.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Hofer": {
+  "slug": "hofer",
+  "cat": "Handelskette",
+  "src": [
+   "wm",
+   "Hofer Logo 2017.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Lidl": {
+  "slug": "lidl",
+  "cat": "Handelskette",
+  "src": [
+   "file",
+   "lidl.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Penny": {
+  "slug": "penny",
+  "cat": "Handelskette",
+  "src": [
+   "file",
+   "penny.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "dm": {
+  "slug": "dm",
+  "cat": "Handelskette",
+  "src": [
+   "file",
+   "dm.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "BILLA Immer Gut": {
+  "slug": "immer-gut",
+  "cat": "Eigenmarke",
+  "src": [
+   "file",
+   "immer-gut.png"
+  ],
+  "note": null,
+  "site": null
+ },
+ "BILLA Genusswelt": {
+  "slug": "billa-genusswelt",
+  "cat": "Eigenmarke",
+  "src": [
+   "file",
+   "billa-genusswelt.png"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Omis Schmankerl": {
+  "slug": "omis-schmankerl",
+  "cat": "Eigenmarke",
+  "src": [
+   "file",
+   "omis-schmankerl.png"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Simply Good": {
+  "slug": "simply-good",
+  "cat": "Eigenmarke",
+  "src": [
+   "file",
+   "simply-good.png"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Vegavita": {
+  "slug": "vegavita",
+  "cat": "Eigenmarke",
+  "src": [
+   "url",
+   "https://assets-eu-01.kc-usercontent.com:443/d5bbd8c1-f776-012f-71ae-f309933a3006/b961241e-7b3d-4e9f-b155-5217795a7bc4/Vegavita_Logo.svg",
+   "extract"
+  ],
+  "note": null,
+  "site": null
+ },
+ "CLEVER": {
+  "slug": "clever",
+  "cat": "Budget",
+  "src": [
+   "file",
+   "clever.png"
+  ],
+  "note": null,
+  "site": null
+ },
+ "BILLA Bio": {
+  "slug": "billa-bio",
+  "cat": "Bio",
+  "src": [
+   "url",
+   "https://assets-eu-01.kc-usercontent.com:443/d5bbd8c1-f776-012f-71ae-f309933a3006/5e4de8a9-d343-4cf3-96c9-dcb63e21fb96/Billa_Bio_Logo.svg",
+   "extract"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Ja! Natürlich": {
+  "slug": "ja-natuerlich",
+  "cat": "Bio",
+  "src": [
+   "file",
+   "ja-natuerlich.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "S-BUDGET": {
+  "slug": "s-budget",
+  "cat": "Budget",
+  "src": [
+   "url",
+   "https://www.spar.at/content/dam/spardam/at/spar-website/eigenmarken/logos/s-budget-logo-mit-tannen.jpg",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "SPAR PREMIUM": {
+  "slug": "spar-premium",
+  "cat": "Eigenmarke",
+  "src": [
+   "url",
+   "https://www.spar.at/content/dam/spardam/at/spar-website/eigenmarken/spar-premium-logo.png",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "SPAR Feine Küche": {
+  "slug": "spar-feine-kueche",
+  "cat": "Eigenmarke",
+  "src": [
+   "url",
+   "https://www.spar.at/content/dam/spardam/at/spar-website/eigenmarken/lebensmittel/spar-feine-kueche/feine-kueche-spar-logo.png",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "SPAR Veggie": {
+  "slug": "spar-veggie",
+  "cat": "Eigenmarke",
+  "src": [
+   "url",
+   "https://www.spar.at/content/dam/spardam/at/spar-website/eigenmarken/lebensmittel/spar-veggie/spar-veggie-logo.png",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "SPAR Vital": {
+  "slug": "spar-vital",
+  "cat": "Eigenmarke",
+  "src": [
+   "url",
+   "https://www.spar.at/content/dam/spardam/at/spar-website/eigenmarken/logos/spar-vital-logo-web-variant-1.png",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "SPAR Natur*pur": {
+  "slug": "spar-natur-pur",
+  "cat": "Bio",
+  "src": [
+   "url",
+   "https://www.spar.at/content/dam/spardam/at/spar-website/eigenmarken/lebensmittel/spar-natur-pur/snp-logo-color-pantone-gru-n.png",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "DESPAR": {
+  "slug": "despar",
+  "cat": "Eigenmarke",
+  "src": [
+   "url",
+   "https://www.spar.at/content/dam/sparatwebsite/brands/DESPAR-Logo.jpg",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "SPAR enjoy": {
+  "slug": "spar-enjoy",
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "only white-on-transparent logo on spar.at; not used",
+  "site": null
+ },
+ "Le Gusto": {
+  "slug": "le-gusto",
+  "cat": "Eigenmarke",
+  "src": [
+   "url",
+   "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/2026_MA_Brandpage-Logo_Le-Gusto:1-1?wid=800&fit=constrain",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Cucina": {
+  "slug": "cucina",
+  "cat": "Eigenmarke",
+  "src": [
+   "url",
+   "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/2026_MA_Brandpage-Logo_Cucina:1-1?wid=800&fit=constrain",
+   null
+  ],
+  "note": "Hofer brand page /marken/cucina (Cucina Nobile merged into Cucina)",
+  "site": null
+ },
+ "Cucina Nobile": {
+  "slug": "cucina",
+  "cat": "Eigenmarke",
+  "src": [
+   "url",
+   "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/2026_MA_Brandpage-Logo_Cucina:1-1?wid=800&fit=constrain",
+   null
+  ],
+  "note": "Hofer brand page /marken/cucina (Cucina Nobile merged into Cucina)",
+  "site": null
+ },
+ "Almare": {
+  "slug": "almare",
+  "cat": "Eigenmarke",
+  "src": [
+   "url",
+   "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/2026_MA_Brandpage-Logo_ALMARE:1-1?wid=800&fit=constrain",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "GOURMET FINEST CUISINE": {
+  "slug": "hofer-gourmet",
+  "cat": "Eigenmarke",
+  "src": [
+   "url",
+   "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/2026_MA_Brandpage-Logo_GOURMET:1-1?wid=800&fit=constrain",
+   null
+  ],
+  "note": "Hofer GOURMET brand logo",
+  "site": null
+ },
+ "SONNHOF": {
+  "slug": "sonnhof",
+  "cat": "Eigenmarke",
+  "src": [
+   "url",
+   "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/Brandpage-Logo_Sonnhof_386x386px:1-1?wid=800&fit=constrain",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "FairHOF": {
+  "slug": "fairhof",
+  "cat": "Eigenmarke",
+  "src": [
+   "url",
+   "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/2026_MA_Brandpage-Logo_Fairhof:1-1?wid=800&fit=constrain",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Good Choice": {
+  "slug": "good-choice",
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "Hofer private label: no logo published on hofer.at brand pages",
+  "site": null
+ },
+ "Primana": {
+  "slug": "primana",
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "Hofer private label: no logo published on hofer.at brand pages",
+  "site": null
+ },
+ "Asia": {
+  "slug": "asia",
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "Hofer private label: no logo published on hofer.at brand pages",
+  "site": null
+ },
+ "Green Garden": {
+  "slug": "green-garden",
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "Hofer private label: no logo published on hofer.at brand pages",
+  "site": null
+ },
+ "Nature's Gold": {
+  "slug": "nature-s-gold",
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "Hofer private label: no logo published on hofer.at brand pages",
+  "site": null
+ },
+ "PIZZ'AH": {
+  "slug": "pizz-ah",
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "Hofer private label: no logo published on hofer.at brand pages",
+  "site": null
+ },
+ "Leibspeis'": {
+  "slug": "leibspeis",
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "Hofer private label: no logo published on hofer.at brand pages",
+  "site": null
+ },
+ "Natur Aktiv": {
+  "slug": "natur-aktiv",
+  "cat": "Bio",
+  "src": null,
+  "note": "Hofer private label: no logo published on hofer.at brand pages",
+  "site": null
+ },
+ "Rettenswert": {
+  "slug": "rettenswert",
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "Hofer private label: no logo published on hofer.at brand pages",
+  "site": null
+ },
+ "Wonnemeyer": {
+  "slug": "wonnemeyer",
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "Hofer private label: no logo published on hofer.at brand pages",
+  "site": null
+ },
+ "Chef Select": {
+  "slug": "chef-select",
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "Lidl private label: no official logo asset found",
+  "site": null
+ },
+ "Vemondo": {
+  "slug": "vemondo",
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "Lidl private label: no official logo asset found",
+  "site": null
+ },
+ "Deluxe": {
+  "slug": "deluxe",
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "Lidl private label: no official logo asset found",
+  "site": null
+ },
+ "Vitasia": {
+  "slug": "vitasia",
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "Lidl private label: no official logo asset found",
+  "site": null
+ },
+ "MCENNEDY": {
+  "slug": "mcennedy",
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "Lidl private label: no official logo asset found",
+  "site": null
+ },
+ "Schwaben Krone": {
+  "slug": "schwaben-krone",
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "Lidl private label: no official logo asset found",
+  "site": null
+ },
+ "SELECT&GO": {
+  "slug": "select-go",
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "Lidl private label: no official logo asset found",
+  "site": null
+ },
+ "Trattoria Alfredo": {
+  "slug": "trattoria-alfredo",
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "Lidl private label: no official logo asset found",
+  "site": null
+ },
+ "Kania": {
+  "slug": "kania",
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "Lidl private label: no official logo asset found",
+  "site": null
+ },
+ "Food for Future": {
+  "slug": "food-for-future",
+  "cat": "Eigenmarke",
+  "src": [
+   "url",
+   "https://assets-eu-01.kc-usercontent.com:443/1d32d597-5ed5-0129-acbb-0e3925686fcc/2f2e48b1-b6da-4c09-a80f-623b2c5ce926/Food_for_Future_Logo_4c.svg",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Delikatessa": {
+  "slug": null,
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "no logo found",
+  "site": null
+ },
+ "Chef Menü": {
+  "slug": null,
+  "cat": "Eigenmarke",
+  "src": null,
+  "note": "no logo found",
+  "site": null
+ },
+ "Knorr": {
+  "slug": "knorr",
+  "cat": "Markenhersteller",
+  "src": [
+   "wm",
+   "Knorr Logo 2020.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Maggi": {
+  "slug": "maggi",
+  "cat": "Markenhersteller",
+  "src": [
+   "wm",
+   "Maggi logo.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "iglo": {
+  "slug": "iglo",
+  "cat": "Markenhersteller",
+  "src": [
+   "file",
+   "iglo.png"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Felix": {
+  "slug": "felix",
+  "cat": "Markenhersteller",
+  "src": [
+   "file",
+   "felix.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Inzersdorfer": {
+  "slug": "inzersdorfer",
+  "cat": "Markenhersteller",
+  "src": [
+   "file",
+   "inzersdorfer.png"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Rana": {
+  "slug": "rana",
+  "cat": "Markenhersteller",
+  "src": [
+   "file",
+   "rana.png"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Fit to Go": {
+  "slug": "fit-to-go",
+  "cat": "Markenhersteller",
+  "src": [
+   "file",
+   "fit-to-go.png"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Planted": {
+  "slug": "planted",
+  "cat": "Markenhersteller",
+  "src": [
+   "file",
+   "planted.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Barilla": {
+  "slug": "barilla",
+  "cat": "Markenhersteller",
+  "src": [
+   "file",
+   "barilla.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Frosta": {
+  "slug": "frosta",
+  "cat": "Markenhersteller",
+  "src": [
+   "file",
+   "frosta.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Ben's Original": {
+  "slug": "ben-s-original",
+  "cat": "Markenhersteller",
+  "src": [
+   "file",
+   "ben-s-original.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Hipp": {
+  "slug": "hipp",
+  "cat": "Bio",
+  "src": [
+   "file",
+   "hipp.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Alnatura": {
+  "slug": "alnatura",
+  "cat": "Bio",
+  "src": [
+   "file",
+   "alnatura.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Kikkoman": {
+  "slug": "kikkoman",
+  "cat": "Markenhersteller",
+  "src": [
+   "wm",
+   "Kikkoman-Logo.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Recheis": {
+  "slug": "recheis",
+  "cat": "Markenhersteller",
+  "src": [
+   "wm",
+   "Recheis Logo.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Mowi": {
+  "slug": "mowi",
+  "cat": "Markenhersteller",
+  "src": [
+   "wm",
+   "Mowi ASA logo.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Schär": {
+  "slug": "schaer",
+  "cat": "Markenhersteller",
+  "src": [
+   "url",
+   "https://www.schaer.com/themes/custom/schaer_radix/logo.svg",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Toni Kaiser": {
+  "slug": "toni-kaiser",
+  "cat": "Markenhersteller",
+  "src": [
+   "url",
+   "https://www.tonikaiser.at/images/Logo_TK.svg",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Reis-Fit": {
+  "slug": "reis-fit",
+  "cat": "Markenhersteller",
+  "src": [
+   "url",
+   "https://www.reis-fit.de/wp-content/uploads/2025/11/Logo.svg",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Little Lunch": {
+  "slug": "little-lunch",
+  "cat": "Bio",
+  "src": [
+   "url",
+   "https://littlelunch.com/wp-content/uploads/2025/10/LL_Logo_2024_web_rand.svg",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Gavrilovic": {
+  "slug": "gavrilovic",
+  "cat": "Markenhersteller",
+  "src": [
+   "url",
+   "https://www.gavrilovic.com/wp-content/uploads/2026/02/gavrilovic-logo-gdpr.png",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Nabio": {
+  "slug": "nabio",
+  "cat": "Bio",
+  "src": [
+   "url",
+   "https://nabio.de/wp-content/uploads/2022/03/L_Nabio_b.svg",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Aumaerk": {
+  "slug": "aumaerk",
+  "cat": "Markenhersteller",
+  "src": [
+   "url",
+   "https://aumaerk.com/cdn/shop/files/logo_1.svg",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "BioVegan": {
+  "slug": "biovegan",
+  "cat": "Bio",
+  "src": [
+   "url",
+   "https://www.biovegan.de/cdn/shop/files/Logo_BIOVEGAN_GmbH.png?width=1180",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Fratelli Barbaro": {
+  "slug": "fratelli-barbaro",
+  "cat": "Markenhersteller",
+  "src": [
+   "url",
+   "https://www.barbaro-shop.com/cdn/shop/files/logo-barbaro.png?width=1100",
+   null
+  ],
+  "note": "barbaro-shop.com (Barbaro family shop selling Fratelli Barbaro)",
+  "site": null
+ },
+ "Vier Diamanten": {
+  "slug": "vier-diamanten",
+  "cat": "Markenhersteller",
+  "src": [
+   "url",
+   "https://vierdiamanten.com/wp-content/uploads/sites/23/2023/03/logo-neu.png",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Steirerkraft": {
+  "slug": "steirerkraft",
+  "cat": "Markenhersteller",
+  "src": [
+   "url",
+   "https://www.steirerkraft.com/wp-content/uploads/2026/08/logo-steirerkraft-2026.svg",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Fit Taste": {
+  "slug": "fit-taste",
+  "cat": "Markenhersteller",
+  "src": [
+   "url",
+   "https://fittaste.com/cdn/shop/files/Fittaste_Logo_180px_256x256_19a728f7-cbdb-44a5-89bf-cb2fc44b73fe_600x.png?v=1739462961",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Natur Compagnie": {
+  "slug": "natur-compagnie",
+  "cat": "Bio",
+  "src": [
+   "url",
+   "https://www.natur-compagnie.com/de/assets/static-images/logo.png",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Knödelwerkstatt": {
+  "slug": "knoedelwerkstatt",
+  "cat": "Markenhersteller",
+  "src": [
+   "url",
+   "https://www.knoedelwerkstatt.at/wp-content/uploads/2023/02/KnoedelwerkstattLogo100px-e1676362466120.png",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Efko": {
+  "slug": "efko",
+  "cat": "Markenhersteller",
+  "src": [
+   "url",
+   "https://www.efko.at/wp-content/uploads/2025/03/efko-logo.png",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Limoni's": {
+  "slug": "limonis",
+  "cat": "Bio",
+  "src": [
+   "url",
+   "https://limonis.at/wp-content/uploads/2021/08/Limonis-Logo-180x73.png",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Goldblatt": {
+  "slug": "goldblatt",
+  "cat": "Bio",
+  "src": [
+   "url",
+   "https://goldblatt.at/cdn/shop/files/goldblatt-logo-2026_fuer-Shop.svg?v=1790321040",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Hut&Stiel": {
+  "slug": "hut-und-stiel",
+  "cat": "Markenhersteller",
+  "src": [
+   "url",
+   "https://www.hutundstiel.at/cdn/shop/files/H_S_logo_font_1.png",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Tress Brüder": {
+  "slug": "tress-brueder",
+  "cat": "Bio",
+  "src": [
+   "url",
+   "https://www.tressbrueder.de/tressbrueder-logo.svg",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Iss mich!": {
+  "slug": "iss-mich",
+  "cat": "Bio",
+  "src": [
+   "url",
+   "https://www.issmich.at/media/6a/g0/4e/1706898229/logo_issich_132x132_nobg.png",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Revo": {
+  "slug": "revo",
+  "cat": "Markenhersteller",
+  "src": [
+   "url",
+   "https://revo-foods.com/wp-content/themes/FoundationPress/dist/assets/images/logo-black.svg",
+   null
+  ],
+  "note": "assumed Revo Foods (Vienna)",
+  "site": null
+ },
+ "Eden": {
+  "slug": "eden",
+  "cat": "Bio",
+  "src": [
+   "url",
+   "https://www.eden.de/wp-content/uploads/2023/11/EDEN-Logo_2023-Kopie-2.gif",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Holle": {
+  "slug": "holle",
+  "cat": "Bio",
+  "src": [
+   "url",
+   "https://www.holle.ch/wp-content/uploads/2022/07/HOLLE-Logo-DE.svg",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Ströck": {
+  "slug": "stroeck",
+  "cat": "Markenhersteller",
+  "src": [
+   "url",
+   "https://stroeck.at/wp-content/themes/stroeck/gfx/strock.svg",
+   null
+  ],
+  "note": null,
+  "site": null
+ },
+ "Hofstädter": {
+  "slug": "hofstaedter",
+  "cat": "Markenhersteller",
+  "src": [
+   "url",
+   "https://assets-eu-01.kc-usercontent.com:443/cc0b17b0-a734-010a-8710-f644b7ee1f24/c02a23e1-5ba7-4bff-afb8-3f90ca132e3b/BIL_LP_Zuschnitt_Knotenseiten_400x269px_Hofst%C3%A4dter.jpg?w=400&fm=webp&lossless=0&q=80&dpr=1",
+   null
+  ],
+  "note": "logo tile from billa.at Eigenmarken page (Die Grillerei is a Hofstädter line)",
+  "site": null
+ },
+ "Die Grillerei": {
+  "slug": "hofstaedter",
+  "cat": "Markenhersteller",
+  "src": [
+   "url",
+   "https://assets-eu-01.kc-usercontent.com:443/cc0b17b0-a734-010a-8710-f644b7ee1f24/c02a23e1-5ba7-4bff-afb8-3f90ca132e3b/BIL_LP_Zuschnitt_Knotenseiten_400x269px_Hofst%C3%A4dter.jpg?w=400&fm=webp&lossless=0&q=80&dpr=1",
+   null
+  ],
+  "note": "logo tile from billa.at Eigenmarken page (Die Grillerei is a Hofstädter line)",
+  "site": null
+ },
+ "Radatz": {
+  "slug": "radatz",
+  "cat": "Produzent/Werk",
+  "src": [
+   "file",
+   "radatz.png"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Hink Wien": {
+  "slug": "hink",
+  "cat": "Produzent/Werk",
+  "src": [
+   "file",
+   "hink.svg"
+  ],
+  "note": null,
+  "site": null
+ },
+ "GMS Gourmet": {
+  "slug": "gms-gourmet",
+  "cat": "Produzent/Werk",
+  "src": [
+   "file",
+   "gms-gourmet.png"
+  ],
+  "note": null,
+  "site": null
+ },
+ "Greisinger": {
+  "slug": "greisinger",
+  "cat": "Produzent/Werk",
+  "src": null,
+  "note": "no official site/logo",
+  "site": null
+ },
+ "Cecchin": {
+  "slug": "cecchin",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Stangl": {
+  "slug": "stangl",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Amlacher": {
+  "slug": "amlacher",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Ackerl": {
+  "slug": "ackerl",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Pure": {
+  "slug": "pure",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Ager": {
+  "slug": "ager",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Youcook": {
+  "slug": "youcook",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Njami": {
+  "slug": "njami",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Feelfood": {
+  "slug": "feelfood",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Marinus": {
+  "slug": "marinus",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Staudinger": {
+  "slug": "staudinger",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Mühlen": {
+  "slug": "muehlen",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Sushitime": {
+  "slug": "sushitime",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Pop-Up": {
+  "slug": "pop-up",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "franuí": {
+  "slug": "franui",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Ablinger": {
+  "slug": "ablinger",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Indomie": {
+  "slug": "indomie",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Blue Elephant": {
+  "slug": "blue-elephant",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Jürgen Langbein": {
+  "slug": "juergen-langbein",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Küchenbrüder": {
+  "slug": "kuechenbrueder",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Lorado": {
+  "slug": "lorado",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "DOVGAN": {
+  "slug": "dovgan",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Every": {
+  "slug": "every",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "My Vay": {
+  "slug": "my-vay",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Auinger": {
+  "slug": "auinger",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Flotte Lotte": {
+  "slug": "flotte-lotte",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Ben Fatto": {
+  "slug": "ben-fatto",
+  "cat": "Markenhersteller",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ },
+ "Bio Natura": {
+  "slug": "bio-natura",
+  "cat": "Bio",
+  "src": null,
+  "note": "no verified official logo found (site missing, parked, captcha or ambiguous)",
+  "site": null
+ }
+}

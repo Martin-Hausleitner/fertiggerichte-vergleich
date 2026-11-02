@@ -1,0 +1,336 @@
+{
+ "gms-gourmet": {
+  "error": "HTTPSConnectionPool(host='www.gmsgourmet.at', port=443): Max retries exceeded with url: / (Caused by"
+ },
+ "rewe-group": {
+  "final": "https://rewe-group.at/de/",
+  "status": 200,
+  "title": "REWE International AG -",
+  "og": [
+   "https://rewe-group.at/wp-content/uploads/2026/06/rewe-group-zentrale-header-1024x259.webp"
+  ],
+  "icons": [
+   "https://rewe-group.at/wp-content/uploads/2026/09/favicon-150x150.png",
+   "https://rewe-group.at/wp-content/uploads/2026/09/favicon-300x300.png",
+   "https://rewe-group.at/wp-content/uploads/2026/09/favicon-300x300.png"
+  ],
+  "logos": [
+   "https://rewe-group.at/wp-content/uploads/2026/09/REWE-GROUP_Logo_RGB_White.png",
+   "https://rewe-group.at/wp-content/uploads/2026/09/REWE-GROUP_Logo_RGB_White.png",
+   "https://rewe-group.at/wp-content/uploads/2026/09/98_2609_Logo_BILLA.png",
+   "https://rewe-group.at/wp-content/uploads/2026/09/98_2609_Logo_BILLA.png",
+   "https://rewe-group.at/wp-content/uploads/2026/09/98_2609_Logo_BIPA.png"
+  ]
+ },
+ "wiesbauer": {
+  "final": "https://www.wiesbauer.at/",
+  "status": 200,
+  "title": "Wiesbauer",
+  "og": [],
+  "icons": [
+   "https://www.wiesbauer.at/app/uploads/2025/12/cropped-unnamed-2-32x32.png",
+   "https://www.wiesbauer.at/app/uploads/2025/12/cropped-unnamed-2-192x192.png",
+   "https://www.wiesbauer.at/app/uploads/2025/12/cropped-unnamed-2-180x180.png"
+  ],
+  "logos": []
+ },
+ "blasko": {
+  "final": "https://www.blasko.at/",
+  "status": 200,
+  "title": "Blasko kocht für mich | Blasko Convenience",
+  "og": [],
+  "icons": [
+   "https://www.blasko.at/assets/at-blasko/images/favicons/apple-touch-icon.png",
+   "https://www.blasko.at/assets/at-blasko/images/favicons/favicon-32x32.png",
+   "https://www.blasko.at/assets/at-blasko/images/favicons/favicon-16x16.png",
+   "https://www.blasko.at/assets/at-blasko/images/favicons/safari-pinned-tab.svg"
+  ],
+  "logos": []
+ },
+ "karnerta": {
+  "final": "https://www.karnerta.at/",
+  "status": 200,
+  "title": "Start - KARNERTA - krönt Genuss aus Österreich",
+  "og": [],
+  "icons": [
+   "https://www.karnerta.at/wp-content/uploads/2025/02/cropped-logo-2-32x32.png",
+   "https://www.karnerta.at/wp-content/uploads/2025/02/cropped-logo-2-192x192.png",
+   "https://www.karnerta.at/wp-content/uploads/2025/02/cropped-logo-2-180x180.png"
+  ],
+  "logos": [
+   "https://www.karnerta.at/wp-content/uploads/2025/02/cropped-logo-2-32x32.png",
+   "https://www.karnerta.at/wp-content/uploads/2025/02/cropped-logo-2-192x192.png",
+   "https://www.karnerta.at/wp-content/uploads/2025/02/cropped-logo-2-180x180.png",
+   "https://www.karnerta.at/wp-content/uploads/2025/03/Logo_Karnerta_4c_mSlogan_weiss.svg",
+   "https://www.karnerta.at/wp-content/uploads/2025/03/Logo_Karnerta_4c_mSlogan_weiss.svg"
+  ]
+ },
+ "landena": {
+  "final": "https://www.landena.at/de/",
+  "status": 200,
+  "title": "Lebensmittel für Marken seit Generationen",
+  "og": [],
+  "icons": [
+   "https://www.landena.at/fileadmin/template/favicon.ico"
+  ],
+  "logos": []
+ },
+ "hink": {
+  "error": "HTTPSConnectionPool(host='www.hink.at', port=443): Max retries exceeded with url: / (Caused by SSLEr"
+ },
+ "greisinger": {
+  "error": "HTTPSConnectionPool(host='www.greisinger.at', port=443): Max retries exceeded with url: / (Caused by"
+ },
+ "hochreiter": {
+  "final": "https://www.hochreiter.at/",
+  "status": 200,
+  "title": "Homepage of Rainer Hochreiter",
+  "og": [],
+  "icons": [],
+  "logos": []
+ },
+ "hubers-landhendl": {
+  "error": "HTTPSConnectionPool(host='www.hubers.at', port=443): Max retries exceeded with url: / (Caused by SSL"
+ },
+ "graninger": {
+  "error": "HTTPSConnectionPool(host='www.graninger.at', port=443): Max retries exceeded with url: / (Caused by "
+ },
+ "radatz": {
+  "final": "https://www.radatz.at/",
+  "status": 200,
+  "title": "Willkommen bei Radatz, Ihr Wiener Fleischermeister seit 1962",
+  "og": [
+   "https://www.radatz.at/fileadmin/_processed_/e/1/csm_og_4e3c153da1.jpg"
+  ],
+  "icons": [
+   "https://www.radatz.at/apple-icon-57x57.png",
+   "https://www.radatz.at/apple-icon-60x60.png",
+   "https://www.radatz.at/apple-icon-72x72.png",
+   "https://www.radatz.at/apple-icon-76x76.png"
+  ],
+  "logos": [
+   "https://www.radatz.at/fileadmin/templates/img/stastnik-salami-logo.svg",
+   "https://www.radatz.at/fileadmin/templates/img/stastnik-salami-logo.svg"
+  ]
+ },
+ "wech": {
+  "final": "https://www.wech.at/",
+  "status": 200,
+  "title": "Das Höchste der Geflügel.\n     &#124; \n    \n    WECH",
+  "og": [
+   "https://www.wech.at/img/asset/YXNzZXRzL3dlY2hfb2dpLnBuZw==?w=1200&h=630&fit=crop&s=01e0b978793de02a901a136c16aa971c"
+  ],
+  "icons": [
+   "https://www.wech.at/favicons/favicon_head.svg",
+   "https://www.wech.at/favicons/favicon_head.svg",
+   "https://www.wech.at/favicons/apple-touch-icon.png"
+  ],
+  "logos": [
+   "https://www.wech.at/visuals/logo.svg",
+   "https://www.wech.at/visuals/logo_footer.png"
+  ]
+ },
+ "heiploeg": {
+  "final": "https://www.heiploeg.com/",
+  "status": 200,
+  "title": null,
+  "og": [],
+  "icons": [],
+  "logos": []
+ },
+ "billa": {
+  "final": "https://www.billa.at/",
+  "status": 200,
+  "title": "BILLA.at | BILLA",
+  "og": [
+   "https://assets-eu-01.kc-usercontent.com:443/cc0b17b0-a734-010a-8710-f644b7ee1f24/19d81e75-38ec-4c25-9286-8e6d1db07fd6/billa_open-graph_588x588.png"
+  ],
+  "icons": [
+   "https://assets-eu-01.kc-usercontent.com:443/cc0b17b0-a734-010a-8710-f644b7ee1f24/ff0150f7-0745-4842-b1de-9fc2b4499ac5/favicon.png"
+  ],
+  "logos": []
+ },
+ "spar": {
+  "final": "https://www.spar.at/",
+  "status": 200,
+  "title": "SPAR - Der österreichische Supermarkt in Ihrer Nähe",
+  "og": [
+   "https://www.spar.at/content/dam/sparatwebsite/SPAR-OG-Image.jpg"
+  ],
+  "icons": [
+   "https://www.spar.at/etc.clientlibs/spar-corecomponents/clientlibs/clientlib-site/resources/favicon/apple-touch-icon-180x180.png",
+   "https://www.spar.at/etc.clientlibs/spar-corecomponents/clientlibs/clientlib-site/resources/favicon/favicon-32x32.png",
+   "https://www.spar.at/etc.clientlibs/spar-corecomponents/clientlibs/clientlib-site/resources/favicon/favicon-16x16.png",
+   "https://www.spar.at/etc.clientlibs/spar-corecomponents/clientlibs/clientlib-site/resources/favicon/safari-pinned-tab.svg"
+  ],
+  "logos": [
+   "https://www.spar.at/etc.clientlibs/spar-corecomponents/clientlibs/clientlib-site/resources/images/logos/spar-logo_1x.png",
+   "https://www.spar.at/etc.clientlibs/spar-corecomponents/clientlibs/clientlib-site/resources/images/logos/spar-logo_1x.png"
+  ]
+ },
+ "hofer": {
+  "final": "https://www.hofer.at/",
+  "status": 403,
+  "title": "Access Denied",
+  "og": [],
+  "icons": [],
+  "logos": []
+ },
+ "lidl": {
+  "final": "https://www.lidl.at/",
+  "status": 200,
+  "title": "Lidl Österreich | Lidl.at",
+  "og": [],
+  "icons": [
+   "https://www.lidl.at/cdn/assets/logos/1.0.1/lidl-logo-shop-cdn.svg",
+   "https://www.lidl.at/cdn/assets/logos/1.0.1/lidl-logo-shop-cdn.svg",
+   "https://www.lidl.at/vite.svg"
+  ],
+  "logos": [
+   "https://www.lidl.at/cdn/assets/logos/1.0.1/lidl-logo-shop-cdn.svg",
+   "https://www.lidl.at/cdn/assets/logos/1.0.1/lidl-logo-shop-cdn.svg"
+  ]
+ },
+ "penny": {
+  "final": "https://www.penny.at/",
+  "status": 200,
+  "title": "PENNY Österreich | Da schau her.",
+  "og": [
+   "https://www.penny.at/tenant/logo.svg"
+  ],
+  "icons": [
+   "https://assets-eu-01.kc-usercontent.com:443/1d32d597-5ed5-0129-acbb-0e3925686fcc/ab080bb3-4093-44e0-ab8f-9247650683f6/favicon-16x16.png"
+  ],
+  "logos": [
+   "https://assets-eu-01.kc-usercontent.com:443/1d32d597-5ed5-0129-acbb-0e3925686fcc/096f8e79-9604-47d9-b69b-d8acbceccf21/ECHT_BIO_Logo.png",
+   "https://assets-eu-01.kc-usercontent.com:443/1d32d597-5ed5-0129-acbb-0e3925686fcc/2f2e48b1-b6da-4c09-a80f-623b2c5ce926/Food_for_Future_Logo_4c.svg",
+   "https://assets-eu-01.kc-usercontent.com:443/1d32d597-5ed5-0129-acbb-0e3925686fcc/c887f786-f51d-4221-bd75-dbb1ecb38ff9/EM_Logos_1200x675px_Paradiso.png",
+   "https://assets-eu-01.kc-usercontent.com:443/1d32d597-5ed5-0129-acbb-0e3925686fcc/83bdc060-bc94-4c14-a1a1-3672e90f29da/EM_Logos_1200x675px_Greenland.png",
+   "https://assets-eu-01.kc-usercontent.com:443/1d32d597-5ed5-0129-acbb-0e3925686fcc/736e3d5d-f98a-4038-b3aa-09bd988c0f8a/EM_Logos_1200x675px_BK.png"
+  ]
+ },
+ "dm": {
+  "final": "https://www.dm.at/",
+  "status": 200,
+  "title": "dm Österreich | dm drogerie markt Österreich",
+  "og": [],
+  "icons": [
+   "https://www.dm.at/favicon-32x32.png",
+   "https://www.dm.at/favicon-16x16.png",
+   "https://www.dm.at/apple-touch-icon.png",
+   "https://www.dm.at/safari-pinned-tab.svg"
+  ],
+  "logos": []
+ },
+ "fit-to-go": {
+  "final": "https://fittogo.at/",
+  "status": 200,
+  "title": "fit2go.meals â Gesunde Fertiggerichte aus Ãsterreich",
+  "og": [],
+  "icons": [
+   "https://cdn.shopify.com/oxygen-v2/60491/177587/362866/4677112/assets/favicon-k1VYfGWX.png",
+   "https://cdn.shopify.com/oxygen-v2/60491/177587/362866/4677112/assets/apple-touch-icon-DCX4a2dN.png"
+  ],
+  "logos": [
+   "https://cdn.shopify.com/oxygen-v2/60491/177587/362866/4677112/assets/logo-DJtqYc5u.png",
+   "https://cdn.shopify.com/oxygen-v2/60491/177587/362866/4677112/assets/logo-light-CPR2OUJJ.png"
+  ]
+ },
+ "knorr": {
+  "final": "https://www.knorr.com/at",
+  "status": 403,
+  "title": "Access Denied",
+  "og": [],
+  "icons": [],
+  "logos": []
+ },
+ "maggi": {
+  "final": "https://www.nestle.at/marken/alle-marken/maggi",
+  "status": 403,
+  "title": "Verifying your browser…",
+  "og": [],
+  "icons": [],
+  "logos": []
+ },
+ "inzersdorfer": {
+  "final": "https://www.inzersdorfer.at/",
+  "status": 200,
+  "title": "Inzersdorfer Fertiggerichte – so gut isst Österreich",
+  "og": [],
+  "icons": [
+   "https://www.inzersdorfer.at/wp-content/themes/rup/favicon/apple-icon-57x57.png",
+   "https://www.inzersdorfer.at/wp-content/themes/rup/favicon/apple-icon-60x60.png",
+   "https://www.inzersdorfer.at/wp-content/themes/rup/favicon/apple-icon-72x72.png",
+   "https://www.inzersdorfer.at/wp-content/themes/rup/favicon/apple-icon-76x76.png"
+  ],
+  "logos": [
+   "https://www.inzersdorfer.at/wp-content/uploads/2023/12/logo-300x0-c-default.png",
+   "https://www.inzersdorfer.at/wp-content/uploads/2023/12/logo-300x0-c-default.png",
+   "https://www.inzersdorfer.at/wp-content/uploads/2025/07/Inzersdorfer_Claim_Logo_Rot_RGB-scaled-200x0-c-default.png",
+   "https://www.inzersdorfer.at/wp-content/uploads/2025/07/Inzersdorfer_Claim_Logo_Rot_RGB-scaled-200x0-c-default.png"
+  ]
+ },
+ "felix": {
+  "final": "https://www.felix.at/",
+  "status": 200,
+  "title": "FELIX - FELIX",
+  "og": [],
+  "icons": [
+   "https://www.felix.at/_assets/3ca5a6d2666e5999e798fdaff83aff0e/Icons/Favicons/favicon.ico",
+   "https://www.felix.at/_assets/3ca5a6d2666e5999e798fdaff83aff0e/Icons/Favicons/apple-touch-icon.png",
+   "https://www.felix.at/_assets/3ca5a6d2666e5999e798fdaff83aff0e/Icons/Favicons/favicon-96x96.png",
+   "https://www.felix.at/_assets/3ca5a6d2666e5999e798fdaff83aff0e/Icons/Favicons/safari-pinned-tab.svg"
+  ],
+  "logos": []
+ },
+ "iglo": {
+  "final": "https://www.iglo.at/",
+  "status": 200,
+  "title": "Willkommen bei Iglo!",
+  "og": [],
+  "icons": [],
+  "logos": [
+   "https://www.iglo.at/_/media/project/bluesteel/shared/logos/logo-iglo-leaf-2023.png"
+  ]
+ },
+ "rana": {
+  "error": "HTTPSConnectionPool(host='www.rana.com', port=443): Max retries exceeded with url: / (Caused by SSLE"
+ },
+ "planted": {
+  "final": "https://eatplanted.com/",
+  "status": 200,
+  "title": "Planted. Approved by meat lovers.\n  \n  \n  \n    &ndash; Planted Foods CH",
+  "og": [
+   "https://cdn.shopify.com/s/files/1/0049/5383/3521/files/Planted-Steak_Tabletop-elegant_Landscape.jpg?v=1787128298"
+  ],
+  "icons": [
+   "https://eatplanted.com/cdn/shop/files/p-favicon_64_32x32.png?v=1702651536",
+   "https://eatplanted.com/cdn/shop/files/p-favicon_64_16x16.png?v=1702651536"
+  ],
+  "logos": [
+   "https://eatplanted.com/cdn/shop/t/72/assets/planted-logo-top.svg",
+   "https://eatplanted.com/cdn/shop/files/Lidl_Logo_Basis_40x40mm_CMYK.png",
+   "https://eatplanted.com/cdn/shop/files/Edeka-Logo.wine_d474fa93-c892-4452-87a3-3b2d4827b754.png",
+   "https://eatplanted.com/cdn/shop/files/Logo_REWE.svg_1.png",
+   "https://eatplanted.com/cdn/shop/files/Kaufland_201x_logo_svg.png"
+  ]
+ },
+ "vegavita": {
+  "final": "https://www.spar.at/",
+  "status": 200,
+  "title": "SPAR - Der österreichische Supermarkt in Ihrer Nähe",
+  "og": [
+   "https://www.spar.at/content/dam/sparatwebsite/SPAR-OG-Image.jpg"
+  ],
+  "icons": [
+   "https://www.spar.at/etc.clientlibs/spar-corecomponents/clientlibs/clientlib-site/resources/favicon/apple-touch-icon-180x180.png",
+   "https://www.spar.at/etc.clientlibs/spar-corecomponents/clientlibs/clientlib-site/resources/favicon/favicon-32x32.png",
+   "https://www.spar.at/etc.clientlibs/spar-corecomponents/clientlibs/clientlib-site/resources/favicon/favicon-16x16.png",
+   "https://www.spar.at/etc.clientlibs/spar-corecomponents/clientlibs/clientlib-site/resources/favicon/safari-pinned-tab.svg"
+  ],
+  "logos": [
+   "https://www.spar.at/etc.clientlibs/spar-corecomponents/clientlibs/clientlib-site/resources/images/logos/spar-logo_1x.png",
+   "https://www.spar.at/etc.clientlibs/spar-corecomponents/clientlibs/clientlib-site/resources/images/logos/spar-logo_1x.png"
+  ]
+ }
+}
