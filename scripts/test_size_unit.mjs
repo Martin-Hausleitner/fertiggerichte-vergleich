@@ -58,3 +58,17 @@ assert.notDeepEqual(kgOk(det, cmp.replace("u:r=>perKgLabel(r as any)", "u:'€'"
 assert.notDeepEqual(kgOk(det, cmp.replace("m.k==='ppk'?ppkHead(items):m.l", 'm.l')), [], 'Mutation Sheet-Kopf hart muss rot werden')
 const hd = (ids) => { const u = new Set(ids.map(id => S.perKgLabel(rows.find(r => r.id === id) ?? {}))); return u.size > 1 ? '€/kg bzw. €/l' : [...u][0] }
 console.log(`[size-unit] €/l: #3221 ${S.perKgLabel(rows.find(r => r.id === 3221) ?? fx[1])}, Kopf 3221+3220 „${hd([3221, 3220])}“, 3221+Lasagne gemischt; 3 Mutationen rot – OK`)
+// Sensecheck 100 P3-2/P3-3: gemischter Vergleich (€/kg neben €/l) vergibt keinen 🏆 für €/kg und zeigt einen Hinweis; Wert-Zelle bricht nicht um.
+const mixOk = (c) => [
+  /export const ppkMixed=\(items:Row\[\]\)=>new Set\(items\.map\(r=>perKgLabel\(/.test(c) || 'ppkMixed fehlt',
+  /const win=\(m:M\)=>\{if\(m\.k==='ppk'&&ppkMixed\(items\)\)return null;/.test(c) || 'win ohne Mixed-Ausnahme',
+  /m\.k==='ppk'&&ppkMixed\(items\)\?'kg und l nicht direkt vergleichbar/.test(c) || 'Hinweis fehlt',
+  /whitespace-nowrap text-right tabular-nums/.test(c) || 'Wert-Zelle bricht um',
+].filter(x => x !== true)
+assert.deepEqual(mixOk(cmp), [], 'gemischter €/kg-€/l-Vergleich')
+assert.notDeepEqual(mixOk(cmp.replace("if(m.k==='ppk'&&ppkMixed(items))return null;", '')), [], 'Mutation 🏆 bei gemischt muss rot werden')
+assert.notDeepEqual(mixOk(cmp.replace("m.k==='ppk'&&ppkMixed(items)?'kg und l nicht direkt vergleichbar – kein Sieger':", '')), [], 'Mutation ohne Hinweis muss rot werden')
+assert.notDeepEqual(mixOk(cmp.replace('whitespace-nowrap text-right', 'text-right')), [], 'Mutation Umbruch muss rot werden')
+const mixed = (ids) => new Set(ids.map(id => S.perKgLabel(rows.find(r => r.id === id) ?? { name: 'x', size: 400 }))).size > 1
+assert.equal(mixed([3221, 8]), true, '3221+Lasagne gemischt'); assert.equal(mixed([3221, 3220]), false, '3221+3220 nur €/l')
+console.log('[size-unit] gemischter Vergleich: kein 🏆 €/kg, Hinweis, kein Umbruch; 3 Mutationen rot – OK')
