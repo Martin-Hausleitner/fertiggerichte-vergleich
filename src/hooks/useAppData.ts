@@ -1,5 +1,6 @@
 import { dedupeGtin } from '@/app/meal'
 import { consistentP100g } from '@/app/p100g'
+import { consistentPpk } from '@/app/ppk'
 import { consistentParts } from '@/app/scoreParts'
 import { orderTopTies } from '@/app/tieOrder'
 import { findNearestStore, mergeLinzStores, type WalkStore } from '@/app/shops'
@@ -22,7 +23,7 @@ function useJson<T>(url: string, optional = false): T | null {
 /** Loads the product dataset and the merged Linz store list; exposes a nearest-branch lookup across all Linz chains. */
 export function useAppData() {
   const raw = useJson<Data>('./data.json')
-  const data = useMemo(() => raw ? orderTopTies({ ...raw, rows: consistentP100g(consistentParts(dedupeGtin(raw.rows))) as typeof raw.rows /* SC88 P3-3: parts add up to score; SC91 P3-4: €/100 g from current price */ }) /* SC91 P3-7: tie runs by unrounded ppe/pli */ : raw, [raw])
+  const data = useMemo(() => raw ? orderTopTies({ ...raw, rows: consistentPpk(consistentP100g(consistentParts(dedupeGtin(raw.rows)))) as typeof raw.rows /* SC88 P3-3: parts add up to score; SC91 P3-4: €/100 g from current price; SC100 P3-1: €/kg half cents up */ }) /* SC91 P3-7: tie runs by unrounded ppe/pli */ : raw, [raw])
   const baseStores = useJson<Stores>('./stores.json', true)
   const walkFile = useJson<{ home: { addr: string; lat: number; lon: number }; stores: WalkStore[] }>('./stores_linz_walk.json', true)
   const provFile = useJson<{ stores: any[] }>('./stores_linz_providers.json', true)

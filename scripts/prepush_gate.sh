@@ -31,6 +31,7 @@ node scripts/test_price_span.mjs   # sensecheck 84 P2(3): Preisstand je Shop sta
 node scripts/test_alsoat_gaps.mjs public/data.json   # sensecheck 86 P3: alsoAt-Lücken gezählt, aktive Zeilen 0 Lücken, max. 1 gerankt je EAN
 node scripts/test_dupof_invariant.mjs public/data.json   # sensecheck 86 P3: dupOf-Ziel existiert, keine Ketten, versteckt nie gerankt; pPor-Lücken ≤ Budget (23)
 node scripts/test_score_parts.mjs public/data.json   # sensecheck 88 P3-3: angezeigte score_parts summieren zum Score (|score − Σ| ≤ 0,05), Score/Ranking unverändert; Nicht-Rundungs-Lücken ≤ Budget (1: #1212)
+node scripts/test_ppk.mjs public/data.json     # sensecheck 100 P3-1: €/kg halbe Cent kaufmännisch aufwärts (App-Pass), echte Abweichungen unverändert
 node scripts/test_p100g.mjs public/data.json   # sensecheck 91 P3-4: €/100 g = Preis ÷ Größe × 100 (App-Pass), Preis/ppk/pPor/Score/Ranking unverändert
 node scripts/test_size_unit.mjs public/data.json   # sensecheck 92 P3: ml-Gerichte als €/100 ml / ml beschriftet, Werte unverändert
 node scripts/test_tie_order.mjs public/data.json   # sensecheck 91 P3-7: Gleichstände in topPE/topPLI nach ungerundetem Wert, Menge/Cap unverändert
