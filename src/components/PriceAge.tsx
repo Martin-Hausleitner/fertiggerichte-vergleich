@@ -8,8 +8,13 @@ export function priceAge(r: P): { old: boolean; year: string | null; date: strin
 /** Sichtbarer Hinweis bei veralteten Preisen (SC41 (2): by price-date tier, export price_stale). Sensecheck 41 (1): the text comes from priceStatusLabel (app/priceFresh.ts), the same path as
  *  'Preisstatus' / 'Preisstand' – a stale price reads 'Preis veraltet (Stand 31.12.2023)' (#1182, #1183 showed 'Preis von 2023 (31.12.2023)'
  *  in the product-detail price header); #7 BILLA Lasagne 'Preis veraltet (Stand 19.7.2026)' instead of a dateless 'Preis veraltet'. */
-export function OldPriceBadge({ r, className }: { r: P; className?: string }) {
+/** Sensecheck 103 P3-1: `wrap` (product cards via Price) lets the badge break between words inside its container instead of overflowing –
+ *  on the 144 px w-36 cards in 'Gleicher Hersteller' 'Preis veraltet (Stand …)' ran over the card edge onto the neighbour's price (#701).
+ *  The date part '(Stand …)' stays one unbroken piece, so the date is always fully visible; the text (innerText) is unchanged. */
+export function OldPriceBadge({ r, className, wrap }: { r: P; className?: string; wrap?: boolean }) {
   const a = priceAge(r); if (!a.old) return null
   const label = priceStatusLabel(r) ?? 'Preis veraltet'
+  if (wrap) { const m = label.match(/^(.*?) (\(.*\))$/)
+    return <span data-testid="old-price" title="Preis nicht aktuell – im Shop prüfen" className={cn('inline-block min-w-0 max-w-full whitespace-normal break-words rounded border border-amber-300 bg-amber-50 px-1 text-[10px] font-medium leading-tight text-amber-800 dark:bg-amber-950/40 dark:text-amber-300', className)}>{m ? <>{m[1]} <span className="whitespace-nowrap">{m[2]}</span></> : label}</span> }
   return <span data-testid="old-price" title="Preis nicht aktuell – im Shop prüfen" className={cn('inline-flex items-center whitespace-nowrap rounded border border-amber-300 bg-amber-50 px-1 text-[10px] font-medium text-amber-800 dark:bg-amber-950/40 dark:text-amber-300', className)}>{label}</span>
 }

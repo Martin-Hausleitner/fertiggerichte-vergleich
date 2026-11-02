@@ -29,6 +29,7 @@ node scripts/test_heute_tz.mjs   # sensecheck 83 P3: Heute-Kopfzeile + Sonntags-
 node scripts/test_build_files.mjs   # sensecheck 84 P3: stores*.json im Build-Hash (Cache-Bust)
 node scripts/test_price_span.mjs   # sensecheck 84 P2(3): Preisstand je Shop statt Maximum-Datum
 node scripts/test_sc103_werkgrid.mjs   # sensecheck 103 P2-1: Fabrik-Karten mobil nicht aufgeblasen (grid-cols-1, min-w-0)
+node scripts/test_sc103_oldbadge.mjs   # sensecheck 103 P3-1: Preis-veraltet-Badge bricht auf w-36-Karten um statt überzulaufen (Quelltext)
 node scripts/test_alsoat_gaps.mjs public/data.json   # sensecheck 86 P3: alsoAt-Lücken gezählt, aktive Zeilen 0 Lücken, max. 1 gerankt je EAN
 node scripts/test_dupof_invariant.mjs public/data.json   # sensecheck 86 P3: dupOf-Ziel existiert, keine Ketten, versteckt nie gerankt; pPor-Lücken ≤ Budget (23)
 node scripts/test_score_parts.mjs public/data.json   # sensecheck 88 P3-3: angezeigte score_parts summieren zum Score (|score − Σ| ≤ 0,05), Score/Ranking unverändert; Nicht-Rundungs-Lücken ≤ Budget (1: #1212)
@@ -43,5 +44,6 @@ npm run build
 node scripts/pw_gate.mjs "${PW_DIST:-$PWD/dist}"   # tests this checkout's own dist (PW_DIST overrides); Smoke-Test: alle Tabs, Desktop + Mobil, keine Konsolenfehler/leeren Seiten
 node scripts/e2e_legacy_favs.mjs   # sensecheck 29 (1): alte Favoriten → Stand wählen → genau diese Produkte
 node scripts/e2e_cap_mobile.mjs   # sensecheck 93 P3: Anbieter-Limit-Hinweis auf 390 px eigene Zeile/Badge, Desktop inline, Werte = Orakel
+node scripts/e2e_sc103_oldbadge.mjs   # sensecheck 103 P3-1: Badge innerhalb der w-36-Karte, kein Überlapp mit Nachbarpreis, 390 + 1366 px (#701)
 echo "$rows" > "$STATE"
 echo "[gate] OK"
