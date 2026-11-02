@@ -72,3 +72,9 @@ assert.notDeepEqual(mixOk(cmp.replace('whitespace-nowrap text-right', 'text-righ
 const mixed = (ids) => new Set(ids.map(id => S.perKgLabel(rows.find(r => r.id === id) ?? { name: 'x', size: 400 }))).size > 1
 assert.equal(mixed([3221, 8]), true, '3221+Lasagne gemischt'); assert.equal(mixed([3221, 3220]), false, '3221+3220 nur €/l')
 console.log('[size-unit] gemischter Vergleich: kein 🏆 €/kg, Hinweis, kein Umbruch; 3 Mutationen rot – OK')
+// Sensecheck 101 (Nicht geprüft/bekannt): Fabrik-Karten in Misc zeigen je Produkt „€/l“ bei ml-Packungen statt hart „€/kg“.
+const misc = readFileSync(new URL('../src/views/Misc.tsx', import.meta.url), 'utf8')
+const miscOk = (m) => [!/\{fmt\(r\.ppk,2\)\} €\/kg</.test(m) && /\{fmt\(r\.ppk,2\)\} \{perKgLabel\(r\)\}</.test(m) || 'Misc €/kg hart', /import \{ perKgLabel \} from '\.\.\/app\/unit'/.test(m) || 'Misc Import'].filter(x => x !== true)
+assert.deepEqual(miscOk(misc), [], 'Misc €/l-Beschriftung')
+assert.notDeepEqual(miscOk(misc.replace('{fmt(r.ppk,2)} {perKgLabel(r)}<', '{fmt(r.ppk,2)} €/kg<')), [], 'Mutation Misc hart €/kg muss rot werden')
+console.log('[size-unit] Misc Fabrik-Karten: €/l bei ml je Produkt; 1 Mutation rot – OK')
