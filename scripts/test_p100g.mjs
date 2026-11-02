@@ -55,11 +55,16 @@ if (bad.length) { console.error(`[p100g] FAIL ${bad.length}:\n` + bad.slice(0, 2
 console.log(`[p100g] OK – ${raw.length} Zeilen, ${before} Altpreis-Abweichungen im Export werden in der App korrigiert, Selftest + ${muts.length} Mutationen rot`)
 
 // SC101 P3-2: Gerichte-Karte zeigt €/100 g aus p100g (nicht ppk/10 → doppelte Rundung, #77 1,49 statt 1,50, #123 2,42 statt 2,41).
-const cardOk = (src) => src.includes("{r.p100g!=null?fmt(r.p100g,2)+' €':r.ppk!=null?fmt(r.ppk/10,2)+' €':'–'}") // p100g zuerst, ppk/10 nur ohne p100g
+// SC101b P3-2: ppk/10-Fallback nur mit Packungsgröße (25+ Zeilen ohne size/p100g haben ppk = Stückpreis → unplausible €/100 g), sonst „–“.
+const cardOk = (src) => src.includes("{r.p100g!=null?fmt(r.p100g,2)+' €':r.ppk!=null&&r.size!=null&&r.size>0?fmt(r.ppk/10,2)+' €':'–'}") // p100g zuerst, ppk/10 nur ohne p100g und mit Größe
 const gsrc = readFileSync(new URL('../src/views/Gerichte.tsx', import.meta.url), 'utf8')
 assert.ok(cardOk(gsrc), 'Gerichte.tsx: Karten-€/100 g muss r.p100g verwenden')
-for (const [n, m] of [['alter Ausdruck ppk/10', s => s.replace("r.p100g!=null?fmt(r.p100g,2)+' €':", '')], ['p100g-Zweig entfernt', s => s.replace(/fmt\(r\.p100g,2\)/g, 'fmt(r.ppk/10,2)')]])
+for (const [n, m] of [['alter Ausdruck ppk/10', s => s.replace("r.p100g!=null?fmt(r.p100g,2)+' €':", '')], ['p100g-Zweig entfernt', s => s.replace(/fmt\(r\.p100g,2\)/g, 'fmt(r.ppk/10,2)')], ['ppk/10 ohne Größe (SC101b)', s => s.replace('r.ppk!=null&&r.size!=null&&r.size>0?', 'r.ppk!=null?')]])
   assert.ok(!cardOk(m(gsrc)), `Selftest Karte: Mutation „${n}“ muss rot werden`)
 const shownRows = S.consistentP100g(raw); const fmt2 = (x) => (Math.round(x * 100) / 100).toFixed(2)
 const cardDiff = shownRows.filter(r => r.p100g != null && r.ppk != null && fmt2(r.ppk / 10) !== fmt2(r.p100g)).length
 console.log(`[p100g] Gerichte-Karte nutzt p100g – ${cardDiff} Zeilen, in denen ppk/10 abweichen würde`)
+const noSize = shownRows.filter(r => r.p100g == null && r.ppk != null && !(r.size > 0))
+const cardShown = (r) => (r.p100g != null ? fmt2(r.p100g) : r.ppk != null && r.size != null && r.size > 0 ? fmt2(r.ppk / 10) : '–')
+assert.ok(noSize.every(r => cardShown(r) === '–'), 'Zeilen ohne Größe/p100g müssen „–“ zeigen')
+console.log(`[p100g] SC101b: ${noSize.length} Zeilen ohne Größe/p100g zeigen „–“ statt ppk/10 (${noSize.filter(r => r.dishKey).length} auf der Gerichte-Karte)`)
