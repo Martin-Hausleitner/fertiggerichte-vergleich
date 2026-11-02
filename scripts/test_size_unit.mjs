@@ -41,3 +41,20 @@ assert.notDeepEqual(srcOk(det.replace('${fmt(r.size,0)} ${sizeUnit(r)}`', '${fmt
 assert.notDeepEqual(srcOk(det, vt.replace("u: r => sizeUnit(r as any)", "u: 'g'")), [], 'Mutation Vergleich hart g muss rot werden')
 assert.notDeepEqual(srcOk(det, vt.replace("u: r => per100Label(r as any)", "u: '€'")), [], 'Mutation Vergleich Preis/100 hart muss rot werden')
 console.log('[size-unit] Detail Inhalt + Vergleich Packungsgröße/Preis-100 folgen sizeUnit; 3 Mutationen rot – OK')
+// Sensecheck 99 P3-1: Grundpreis-Zeile „€/kg“ wird bei ml-Packungen „€/l“ (Detail „Packung & Preis“, Produktvergleich-Sheet).
+assert.equal(S.perKgLabel(rows.find(r => r.id === 3221) ?? fx[1]), '€/l')
+assert.equal(S.perKgLabel({ name: 'Lasagne 400 g', size: 400 }), '€/kg')
+assert.equal(S.perKgLabel(fx[2]), '€/kg', 'Non-Food bleibt €/kg')
+const cmp = readFileSync(new URL('../src/views/Compare.tsx', import.meta.url), 'utf8')
+const kgOk = (det, cmp) => [
+  !/<Row l="€\/kg" v=\{r\.ppk/.test(det) && /<Row l=\{perKgLabel\(r\)\} v=\{r\.ppk/.test(det) || 'Detail €/kg hart',
+  /k:'ppk',[^}]*u:r=>perKgLabel\(/.test(cmp) || 'Vergleich-Sheet Wert-Einheit',
+  /m\.k==='ppk'\?ppkHead\(items\)/.test(cmp) || 'Vergleich-Sheet Kopf',
+  /typeof m\.u==='function'\?m\.u\(r\)/.test(cmp) || 'Vergleich-Sheet rendert u(r)',
+].filter(x => x !== true)
+assert.deepEqual(kgOk(det, cmp), [], '€/l-Beschriftung Detail/Vergleich-Sheet')
+assert.notDeepEqual(kgOk(det.replace('<Row l={perKgLabel(r)} v={r.ppk', '<Row l="€/kg" v={r.ppk'), cmp), [], 'Mutation Detail hart €/kg muss rot werden')
+assert.notDeepEqual(kgOk(det, cmp.replace("u:r=>perKgLabel(r as any)", "u:'€'")), [], 'Mutation Sheet-Einheit hart muss rot werden')
+assert.notDeepEqual(kgOk(det, cmp.replace("m.k==='ppk'?ppkHead(items):m.l", 'm.l')), [], 'Mutation Sheet-Kopf hart muss rot werden')
+const hd = (ids) => { const u = new Set(ids.map(id => S.perKgLabel(rows.find(r => r.id === id) ?? {}))); return u.size > 1 ? '€/kg bzw. €/l' : [...u][0] }
+console.log(`[size-unit] €/l: #3221 ${S.perKgLabel(rows.find(r => r.id === 3221) ?? fx[1])}, Kopf 3221+3220 „${hd([3221, 3220])}“, 3221+Lasagne gemischt; 3 Mutationen rot – OK`)

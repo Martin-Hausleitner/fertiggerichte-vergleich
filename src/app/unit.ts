@@ -15,3 +15,5 @@ export function sizeUnit(r: R): 'g' | 'ml' {
 }
 /** „€/100 g“ oder „€/100 ml“ passend zur Packungseinheit. */
 export const per100Label = (r: R) => `€/100 ${sizeUnit(r)}`
+/** Sensecheck 99 P3-1: Grundpreis „€/kg“ oder „€/l“ passend zur Packungseinheit (Wert ppk ist €/1000 g bzw. €/1000 ml). */
+export const perKgLabel = (r: R) => (sizeUnit(r) === 'ml' ? '€/l' : '€/kg')
