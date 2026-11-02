@@ -53,3 +53,13 @@ const before = check(raw, raw).length
 const bad = check(raw, S.consistentP100g(raw))
 if (bad.length) { console.error(`[p100g] FAIL ${bad.length}:\n` + bad.slice(0, 20).join('\n')); process.exit(1) }
 console.log(`[p100g] OK – ${raw.length} Zeilen, ${before} Altpreis-Abweichungen im Export werden in der App korrigiert, Selftest + ${muts.length} Mutationen rot`)
+
+// SC101 P3-2: Gerichte-Karte zeigt €/100 g aus p100g (nicht ppk/10 → doppelte Rundung, #77 1,49 statt 1,50, #123 2,42 statt 2,41).
+const cardOk = (src) => src.includes("{r.p100g!=null?fmt(r.p100g,2)+' €':r.ppk!=null?fmt(r.ppk/10,2)+' €':'–'}") // p100g zuerst, ppk/10 nur ohne p100g
+const gsrc = readFileSync(new URL('../src/views/Gerichte.tsx', import.meta.url), 'utf8')
+assert.ok(cardOk(gsrc), 'Gerichte.tsx: Karten-€/100 g muss r.p100g verwenden')
+for (const [n, m] of [['alter Ausdruck ppk/10', s => s.replace("r.p100g!=null?fmt(r.p100g,2)+' €':", '')], ['p100g-Zweig entfernt', s => s.replace(/fmt\(r\.p100g,2\)/g, 'fmt(r.ppk/10,2)')]])
+  assert.ok(!cardOk(m(gsrc)), `Selftest Karte: Mutation „${n}“ muss rot werden`)
+const shownRows = S.consistentP100g(raw); const fmt2 = (x) => (Math.round(x * 100) / 100).toFixed(2)
+const cardDiff = shownRows.filter(r => r.p100g != null && r.ppk != null && fmt2(r.ppk / 10) !== fmt2(r.p100g)).length
+console.log(`[p100g] Gerichte-Karte nutzt p100g – ${cardDiff} Zeilen, in denen ppk/10 abweichen würde`)
