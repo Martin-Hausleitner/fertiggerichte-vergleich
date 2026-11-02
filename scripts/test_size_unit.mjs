@@ -26,3 +26,18 @@ for (const id of ml) { const r = rows.find(x => x.id === id); assert.ok(!r.nonfo
 assert.equal(S.per100Label(rows.find(r => r.id === 2722) ?? fx[0]), '€/100 ml')
 assert.equal(S.per100Label({ name: 'Lasagne', size: 400 }), '€/100 g')
 console.log(`[size-unit] ${ml.length} ml-Zeilen (${ml.join(', ')}), Rest g; Selftest + 3 Mutationen rot – OK`)
+// Sensecheck 97 P3-3: Detail „Inhalt“ und Vergleichstabelle (Packungsgröße, Preis/100) folgen ebenfalls sizeUnit statt hart „g“.
+// Quelltext-Check mit Mutation: die alte harte Schreibweise muss vom Check erkannt werden.
+const srcOk = (det, vt) => [
+  !/\$\{fmt\(r\.size,0\)\} g`/.test(det) && /\$\{fmt\(r\.size,0\)\} \$\{sizeUnit\(r\)\}`/.test(det) || 'Detail Inhalt',
+  /k: 'size',[^}]*u: r => sizeUnit\(/.test(vt) || 'Vergleich Packungsgröße',
+  /k: 'p100g',[^}]*u: r => per100Label\(/.test(vt) || 'Vergleich Preis/100',
+  /typeof m\.u === 'function' \? m\.u\(r\)/.test(vt) || 'Vergleich rendert u(r)',
+].filter(x => x !== true)
+const det = readFileSync(new URL('../src/views/Detail.tsx', import.meta.url), 'utf8')
+const vt = readFileSync(new URL('../src/views/VergleichTabelle.tsx', import.meta.url), 'utf8')
+assert.deepEqual(srcOk(det, vt), [], 'ml-Beschriftung Detail/Vergleich')
+assert.notDeepEqual(srcOk(det.replace('${fmt(r.size,0)} ${sizeUnit(r)}`', '${fmt(r.size,0)} g`'), vt), [], 'Mutation Detail hart g muss rot werden')
+assert.notDeepEqual(srcOk(det, vt.replace("u: r => sizeUnit(r as any)", "u: 'g'")), [], 'Mutation Vergleich hart g muss rot werden')
+assert.notDeepEqual(srcOk(det, vt.replace("u: r => per100Label(r as any)", "u: '€'")), [], 'Mutation Vergleich Preis/100 hart muss rot werden')
+console.log('[size-unit] Detail Inhalt + Vergleich Packungsgröße/Preis-100 folgen sizeUnit; 3 Mutationen rot – OK')
